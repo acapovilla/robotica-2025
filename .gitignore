@@ -1,6 +1,0 @@
-*.deb
-
-/.quarto/
-/_site/
-_site/*
-/env/
