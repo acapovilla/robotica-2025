@@ -1,5 +1,9 @@
 ---
 title: "Robótica 2025"
+page-navigation: false
+anchor-sections: false
+---
+
 ---
 
 # Intro
