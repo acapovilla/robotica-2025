@@ -8,6 +8,9 @@ format:
     revealjs:
         theme: dark
         #chalkboard: true
+        footer: Robótica - TUAR - FICH - UNL
+        menu: false
+        slide-number: c
 ---
 
 ## Organización de la materia
