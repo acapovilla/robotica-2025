@@ -7,7 +7,7 @@ title: "Robótica 2025"
 - **Carreras en FICH**: Tecnicatura en automatización y robótica
 - **Extensión**: Anual
 - **Carga Horaria**: 120hs
-- **Sitio**: 
+- **Sitio**: [Robótica 2025](https://acapovilla.github.io/robotica-2025/)
 - **Docente**:
     - *Capovilla, Agustín* ([`acapovilla@sinc.unl.edu.ar`](mailto:acapovilla@sinc.unl.edu.ar))
 
@@ -17,8 +17,8 @@ title: "Robótica 2025"
 
 # Clases
 
-<!-- ## Clase 01 - 17/03/2025
-- [Slides](clase-01/clase-01.qmd) -->
+## Clase 01 - 17/03/2025
+- [Slides](clase-01/clase-01.qmd)
 
 <!-- # Bibliografía -->
 
