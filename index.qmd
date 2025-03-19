@@ -22,7 +22,7 @@ anchor-sections: false
 # Clases
 
 ## Clase 01 - 17/03/2025
-- [Slides](clase-01/clase-01.qmd)
+- [Slides](clases/01)
 
 <!-- # Bibliografía -->
 
