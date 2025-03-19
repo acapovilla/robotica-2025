@@ -1,10 +1,80 @@
 [
   {
+    "objectID": "clase-01/clase-01.html#organización-de-la-materia",
+    "href": "clase-01/clase-01.html#organización-de-la-materia",
+    "title": "Robótica",
+    "section": "Organización de la materia",
+    "text": "Organización de la materia\n\nDocente: Tec. Agustín Capovilla\nCursado: Lunes de 17:00 a 19:30 (T/P) 1\nComunicación: via email acapovilla@sinc.unl.edu.ar\n\nclases de consulta a coordinar"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#evaluaciones",
+    "href": "clase-01/clase-01.html#evaluaciones",
+    "title": "Robótica",
+    "section": "Evaluaciones",
+    "text": "Evaluaciones\n\n3 trabajos prácticos integradores\n\n\n\n\n\n\n\n\nCon sus respectivas instancias de recuperación"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#evaluaciones-1",
+    "href": "clase-01/clase-01.html#evaluaciones-1",
+    "title": "Robótica",
+    "section": "Evaluaciones",
+    "text": "Evaluaciones\n\n3 trabajos prácticos integradores\n\nCodiciones de aprobación\n\nPara regularizar\n\nAprobación de al menos 2\n\nPara promocionar\n\nAprobación de todos los trabajos con mínimo de 60% + promedio mínimo de 70%"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#programa",
+    "href": "clase-01/clase-01.html#programa",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#programa-1",
+    "href": "clase-01/clase-01.html#programa-1",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales\n\nBloque 0\n\nRobot Operating System (ROS 2)"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#programa-2",
+    "href": "clase-01/clase-01.html#programa-2",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales\n\nBloque 1\n\nCinemática\nSimulación y control"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#programa-3",
+    "href": "clase-01/clase-01.html#programa-3",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales\n\nBloque 2\n\nPercepción\nLocalización y mapeo"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#programa-4",
+    "href": "clase-01/clase-01.html#programa-4",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales\n\nBloque 3\n\nPlaneamiento\nNavegación"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#herramientas-de-trabajo",
+    "href": "clase-01/clase-01.html#herramientas-de-trabajo",
+    "title": "Robótica",
+    "section": "Herramientas de trabajo",
+    "text": "Herramientas de trabajo\n\n\nFramework de robótica: ROS2\nSimulador: Gazebo\nLenguaje de programación: C++ / Python\nIDE: VSCode (potencial en sus extensiones)\nAdicionales:\n\nContenedores: Docker\nControl de versiones: Git (+ GitHub o GitLab)\nEscritura: Latex, Markdown\nDiagramas: Draw.io"
+  },
+  {
+    "objectID": "clase-01/clase-01.html#bibliografía-recursos-oficiales",
+    "href": "clase-01/clase-01.html#bibliografía-recursos-oficiales",
+    "title": "Robótica",
+    "section": "Bibliografía Recursos Oficiales",
+    "text": "Bibliografía Recursos Oficiales\n\nROS 2 Documentation, Tutorials\nGazebo\nrospy, ros_control, Nav2\nentre otros…\n\nMaterial adicional recomendado\n\nArticulated Robotics\nThe Construct\nETH Zürich - Programming for Robotic\nAutomatic Addison\n\nBibliografía (muy) complementaria\n\nSpringer Handbook of Robotics\nRobotic Systems (draft), Kris Hauser"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Robótica 2025",
     "section": "",
-    "text": "Carreras en FICH: Tecnicatura en automatización y robótica\nExtensión: Anual\nCarga Horaria: 120hs\nSitio:\nDocente:\n\nCapovilla, Agustín (acapovilla@sinc.unl.edu.ar)"
+    "text": "Carreras en FICH: Tecnicatura en automatización y robótica\nExtensión: Anual\nCarga Horaria: 120hs\nSitio: Robótica 2025\nDocente:\n\nCapovilla, Agustín (acapovilla@sinc.unl.edu.ar)"
   },
   {
     "objectID": "index.html#universidad-nacional-del-litoral-unl",
@@ -12,5 +82,12 @@
     "title": "Robótica 2025",
     "section": "Universidad Nacional del Litoral (UNL)\n",
     "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH)\n\nTecnicatura en Automatizaicón y Robótica (TUAR)"
+  },
+  {
+    "objectID": "index.html#clase-01---17032025",
+    "href": "index.html#clase-01---17032025",
+    "title": "Robótica 2025",
+    "section": "Clase 01 - 17/03/2025",
+    "text": "Clase 01 - 17/03/2025\n\nSlides"
   }
 ]
