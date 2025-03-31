@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
   <title>Robótica 2025 – Robótica</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,11 +28,11 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-949fcd71989a651394be00d684876026.css">
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-949fcd71989a651394be00d684876026.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -127,168 +127,263 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Robótica</h1>
-  <p class="subtitle">Clase 01</p>
+  <p class="subtitle">Clase 02</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">Semana 1 - 03/05/2026</p>
+  <p class="date">Semana 3 - 31/03/2025</p>
 </section>
-<section id="organización-de-la-materia" class="slide level2">
-<h2>Organización de la materia</h2>
+<section id="robot-operating-system-2" class="slide level2 smaller">
+<h2>Robot Operating System (2)</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<blockquote>
+<p>Es un conjunto de librerías de software y herramientas que ayudan a la creación de aplicaciones robóticas (SDK).</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>Motivación principal: No reinventar la rueda</p>
+</blockquote>
+</div><div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://ros.org/imgs/JazzyNoBG.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<center>
+<code>www.ros.org</code>
+</center>
+</div></div>
+<aside><div>
+<p>Documentación: <a href="https://docs.ros.org/en/jazzy" target="_blank">docs.ros.org/en/jazzy</a></p>
+</div></aside></section>
+<section id="robot-operating-system-2-1" class="slide level2 smaller">
+<h2>Robot Operating System (2)</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<p>Otras características:</p>
 <ul>
-<li><strong>Docente</strong>: Tec. Agustín Capovilla</li>
-<li><strong>Cursado</strong>: Lunes de 17:00 a 19:30 (T/P) <sup>1</sup></li>
-<li><strong>Comunicación</strong>: via email <code>acapovilla@sinc.unl.edu.ar</code></li>
+<li>Plataforma estándar y comunidad global</li>
+<li>Utilizado en educación, investigación e industria</li>
+<li>Multi-dominio (en varios sentidos) y multi-plataforma</li>
+<li>Gratuito y open-source</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>clases de consulta a coordinar</p></li></ol></aside></section>
-<section id="evaluaciones" class="slide level2">
-<h2>Evaluaciones</h2>
-<ul>
-<li>3 trabajos prácticos integradores</li>
-</ul>
+</div><div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://ros.org/imgs/JazzyNoBG.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<center>
+<code>www.ros.org</code>
+</center>
+</div></div>
+<aside><div>
+<p>Documentación: <a href="https://docs.ros.org/en/jazzy" target="_blank">docs.ros.org/en/jazzy</a></p>
+</div></aside></section>
+<section id="ros2-componentes-principales" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">ROS2: Componentes principales</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<h3 id="nodos"><code>Nodos</code></h3>
+<blockquote>
+<p>Ejecutable con <em>[una única]</em> tarea</p>
+</blockquote>
 <div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<blockquote>
+<p>Se compila, ejecuta y gestiona de forma individual</p>
+</blockquote>
 </div>
-<div class="callout-content">
-<p>Con sus respectivas instancias de recuperación</p>
+<div class="fragment">
+<blockquote>
+<p>Se organiza en paquetes</p>
+</blockquote>
 </div>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../clases/02/img/nodos-topics-msgs.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
 </div>
+</div></div>
+</section>
+<section id="ros2-componentes-principales-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">ROS2: Componentes principales</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<h3 id="topics"><code>Topics</code></h3>
+<blockquote>
+<p>Método de comunicación para los nodos</p>
+</blockquote>
+<div class="fragment">
+<blockquote>
+<p>Publisher / Suscriber</p>
+</blockquote>
 </div>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../clases/02/img/nodos-topics-msgs.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
 </div>
+</div></div>
 </section>
-<section id="evaluaciones-1" class="slide level2">
-<h2>Evaluaciones</h2>
-<ul>
-<li>3 trabajos prácticos integradores</li>
-</ul>
-<h3 id="codiciones-de-aprobación">Codiciones de aprobación</h3>
-<ul>
-<li>Para regularizar
-<ul>
-<li>Aprobación de al menos 2</li>
-</ul></li>
-<li>Para promocionar
-<ul>
-<li>Aprobación de todos los trabajos con mínimo de 60% + promedio mínimo de 70%</li>
-</ul></li>
-</ul>
-</section>
-<section id="programa" class="slide level2">
-<h2>Programa</h2>
-<ul>
-<li>4 bloques principales</li>
-</ul>
-</section>
-<section id="programa-1" class="slide level2">
-<h2>Programa</h2>
-<ul>
-<li>4 bloques principales</li>
-</ul>
-<h3 id="bloque-0">Bloque 0</h3>
-<ul>
-<li>Robot Operating System (ROS 2)</li>
-</ul>
-</section>
-<section id="programa-2" class="slide level2">
-<h2>Programa</h2>
-<ul>
-<li>4 bloques principales</li>
-</ul>
-<h3 id="bloque-1">Bloque 1</h3>
-<ul>
-<li>Cinemática</li>
-<li>Simulación y control</li>
-</ul>
-</section>
-<section id="programa-3" class="slide level2">
-<h2>Programa</h2>
-<ul>
-<li>4 bloques principales</li>
-</ul>
-<h3 id="bloque-2">Bloque 2</h3>
-<ul>
-<li>Percepción</li>
-<li>Localización y mapeo</li>
-</ul>
-</section>
-<section id="programa-4" class="slide level2">
-<h2>Programa</h2>
-<ul>
-<li>4 bloques principales</li>
-</ul>
-<h3 id="bloque-3">Bloque 3</h3>
-<ul>
-<li>Planeamiento</li>
-<li>Navegación</li>
-</ul>
-</section>
-<section id="herramientas-de-trabajo" class="slide level2 smaller">
-<h2>Herramientas de trabajo</h2>
-<div>
-<ul>
-<li class="fragment">Framework de robótica: ROS2</li>
-<li class="fragment">Simulador: Gazebo</li>
-<li class="fragment">Lenguaje de programación: C++ / Python</li>
-<li class="fragment">IDE: VSCode (<strong>potencial en sus extensiones</strong>)</li>
-<li class="fragment">Adicionales:
-<ul>
-<li class="fragment">Contenedores: Docker</li>
-<li class="fragment">Control de versiones: Git (+ GitHub o GitLab)</li>
-<li class="fragment">Escritura: Latex, Markdown</li>
-<li class="fragment">Diagramas: <a href="https://app.diagrams.net/" target="_blank">Draw.io</a></li>
-</ul></li>
-</ul>
+<section id="ros2-componentes-principales-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">ROS2: Componentes principales</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<h3 id="mensajes"><code>Mensajes</code></h3>
+<blockquote>
+<p>Estructura de datos que define un <em>topic</em></p>
+</blockquote>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../clases/02/img/nodos-topics-msgs.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
 </div>
+</div></div>
 </section>
-<section id="bibliografía-recursos-oficiales" class="slide level2 scrollable">
-<h2><del>Bibliografía</del> Recursos Oficiales</h2>
+<section id="laboratorio" class="slide level2 center">
+<h2><a href="../../clases/02/lab.html">Laboratorio</a></h2>
 <ul>
-<li><a href="https://docs.ros.org/en/jazzy/index.html" target="_blank">ROS 2 Documentation</a>, <a href="https://docs.ros.org/en/jazzy/Tutorials.html" target="_blank">Tutorials</a></li>
-<li><a href="https://gazebosim.org/docs/harmonic/getstarted/" target="_blank">Gazebo</a></li>
-<li><a href="https://docs.ros2.org/latest/api/rclpy/index.html" target="_blank"><code>rospy</code></a>, <a href="https://control.ros.org/jazzy/index.html" target="_blank"><code>ros_control</code></a>, <a href="https://docs.nav2.org/" target="_blank">Nav2</a></li>
-<li>entre otros…</li>
+<li>Instalación de ROS2</li>
+<li>Emisor / Receptor</li>
+<li>Comandos para análisis de nodos, topics y mensajes</li>
 </ul>
-<h3 id="material-adicional-recomendado">Material adicional recomendado</h3>
-<ul>
-<li><a href="https://articulatedrobotics.xyz/category/getting-ready-to-build-a-ros-robot" target="_blank">Articulated Robotics</a></li>
-<li><a href="https://www.theconstruct.ai/ros-projects-exploring-ros-using-2-wheeled-robot-part-1/" target="_blank">The Construct</a></li>
-<li><a href="https://rsl.ethz.ch/education-students/lectures/ros.html" target="_blank">ETH Zürich - Programming for Robotic</a></li>
-<li><a href="https://automaticaddison.com/" target="_blank">Automatic Addison</a></li>
-</ul>
-<h4 id="bibliografía-muy-complementaria">Bibliografía (muy) complementaria</h4>
-<ul>
-<li><a href="https://link.springer.com/book/10.1007/978-3-319-32552-1" target="_blank">Springer Handbook of Robotics</a></li>
-<li><a href="https://motion.cs.illinois.edu/RoboticSystems/" target="_blank">Robotic Systems (draft), Kris Hauser</a></li>
-</ul>
+<!-- ## Laboratorio  {.scrollable .smaller}
+
+- Instalación de ROS2
+
+::: {.panel-tabset}
+
+### Windows 10 / 11 (WSL)
+
+::: {.callout-important title="Antes de iniciar"}
+Se necesitan todas las últimas actualizaciones de Windows instaladas
+:::
+
+----------
+
+#### 1️⃣ Instalar WSL
+```{.bash code-line-numbers="false"}
+    $ wsl --install
+```
+
+----------
+
+#### 2️⃣ Instalar Ubuntu WSL
+Para ver todas las distribuciones y versiones disponibles:
+```{.bash code-line-numbers="false"}
+    $ wsl --list --online
+```
+
+Para instalar
+```{.bash code-line-numbers="false"}
+    $ wsl --install -d Ubuntu-24.04
+```
+
+----------
+
+#### 3️⃣ Ejecutar y configurar Ubuntu
+```{.bash code-line-numbers="false"}
+    $ ubuntu2404.exe
+```
+
+----------
+
+::: {.callout-note title="Crear usuario y contraseña"}
+:::
+
+↪️ Continuar con la guía para [Ubuntu 24.04](###-Ubuntu-24.04)
+
+----------
+
+Traducido de [documentation.ubuntu.com/wsl](https://documentation.ubuntu.com/wsl/en/latest/howto/install-ubuntu-wsl2/){target="_blank"}
+
+### Ubuntu 24.04
+
+::: {.callout-warning title="Actualizar el sistema"}
+```
+    $ sudo apt update
+    $ sudo apt upgrade -y
+```
+:::
+
+----------
+
+#### 1️⃣ Habilitar repositorios
+```{.bash code-line-numbers="false"}
+    $ sudo apt install software-properties-common curl -y
+```
+```{.bash code-line-numbers="false"}
+    $ sudo add-apt-repository universe
+```
+
+Agregar la key GPG de ROS 2
+
+```{.bash code-line-numbers="false"}
+    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+Agregar repositorio a la source list
+
+```{.bash code-line-numbers="false"}
+    $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+```
+
+----------
+
+#### 2️⃣ Instalar ROS 2
+Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados
+```{.bash code-line-numbers="false"}
+    $ sudo apt update & sudo apt upgrade -y
+```
+Instalación Desktop: ROS, RViz, demos, etc.
+```{.bash code-line-numbers="false"}
+    $ sudo apt install ros-jazzy-desktop -y
+```
+
+----------
+
+Traducido de [docs.ros.org](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html){target="_blank"}
+
+### Docker
+
+
+
+:::
+
+## Laboratorio
+
+- Talker / Listener
+
+- Comandos para análisis de nodos, topics y mensajes -->
 
 
 </section>
-
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>Robótica - TUAR - FICH - UNL</p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -303,7 +398,7 @@
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -324,7 +419,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

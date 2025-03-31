@@ -1,1 +1,2 @@
-Sitemap: https://acapovilla.github.io/robotica-2025/sitemap.xml
+User-agent: *
+Disallow: /
