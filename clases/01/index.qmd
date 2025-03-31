@@ -1,7 +1,7 @@
 ---
 title: "Robótica"
 subtitle: "Clase 01"
-date: "17/03/2025"
+date: "03/17/2025"
 date-format: "[Semana 1 -] DD/MM/YYYY"
 institute: "FICH - UNL"
 format:
@@ -17,6 +17,7 @@ format:
 - __Docente__: Tec. Agustín Capovilla 
 - __Cursado__: Lunes de 17:00 a 19:30 (T/P) ^[clases de consulta a coordinar]
 - __Comunicación__: via email `acapovilla@sinc.unl.edu.ar` 
+- __Repositorio__: [`acapovilla.github.io/robotica-2025`](https://acapovilla.github.io/robotica-2025){target="_blank"}
 
 ---
 
