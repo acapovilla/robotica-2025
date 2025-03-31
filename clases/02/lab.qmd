@@ -149,11 +149,11 @@ Ver paquetes instalados:
 ---------
 
 ```{.bash code-line-numbers="false"}
-    $ ros2 run demo_nodes_cpp talker
+    $ ros2 run demo_nodes_py talker
 ```
 y en otra terminal
 ```{.bash code-line-numbers="false"}
-    $ ros2 run demo_nodes_cpp listener
+    $ ros2 run demo_nodes_py listener
 ```
 
 ::: {.callout-tip}
@@ -226,7 +226,7 @@ Medir la frecuencia con la que se publican mensajes: `ros2 topic hz <nombre_topi
     $ ros2 topic echo /chatter
 ```
 
-### Mensaje
+### Mensajes
 
 #### Obtener información
 
