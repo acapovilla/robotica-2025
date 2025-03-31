@@ -32,6 +32,7 @@ El siguiente cronograma será actualizado con el correr del cursado
 |:------:|--------|--------|:------:|:------:|
 |1 | 17/03 | Introducción a la Robótica. Organización de la materia. Herramientas de trabajo. | [🖥️](/clases/01 "Slides"){aria-label="Clase 1 slides"} |
 |2  | 24/03 | Feriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia | |
+|3  | 31/03 | ROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos. | [🖥️](/clases/02 "Slides"){aria-label="Clase 2 slides"} | [🧪](/clases/02/lab.html "Lab"){aria-label="Clase 2 lab"}
 
 : {.striped .hover tbl-colwidths="[10, 10, 60, 10, 10]"}
 

@@ -1,0 +1,249 @@
+---
+title: Clase 02 - Laboratorio
+format:
+    html:
+        code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+## Instalación de ROS2
+
+::: {.panel-tabset}
+
+### Windows 10 / 11 (WSL)
+
+::: {.callout-important title="Antes de iniciar"}
+Se necesitan todas las últimas actualizaciones de Windows instaladas
+:::
+
+---------
+
+#### 1️⃣ Instalar WSL
+```{.bash code-line-numbers="false"}
+    $ wsl --install
+```
+
+---------
+
+#### 2️⃣ Instalar Ubuntu WSL
+Para ver todas las distribuciones y versiones disponibles:
+```{.bash code-line-numbers="false"}
+    $ wsl --list --online
+```
+
+Para instalar
+```{.bash code-line-numbers="false"}
+    $ wsl --install -d Ubuntu-24.04
+```
+
+---------
+
+#### 3️⃣ Ejecutar y configurar Ubuntu
+```{.bash code-line-numbers="false"}
+    $ ubuntu2404.exe
+```
+
+---------
+
+::: {.callout-note title=""}
+Continuar con la creación de usuario y contraseña
+:::
+
+#### ↪️ Continuar con la guía para *Ubuntu 24.04*
+
+---------
+
+Traducido de [documentation.ubuntu.com/wsl](https://documentation.ubuntu.com/wsl/en/latest/howto/install-ubuntu-wsl2/){target="_blank"}
+
+### Ubuntu 24.04
+
+::: {.callout-warning title="Actualizar el sistema"}
+```
+    $ sudo apt update
+    $ sudo apt upgrade -y
+```
+:::
+
+---------
+
+#### 1️⃣ Habilitar repositorios
+```{.bash code-line-numbers="false"}
+    $ sudo apt install software-properties-common curl -y
+```
+```{.bash code-line-numbers="false"}
+    $ sudo add-apt-repository universe
+```
+
+Agregar la key GPG de ROS 2
+
+```{.bash code-line-numbers="false"}
+    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+Agregar repositorio a la source list
+
+```{.bash code-line-numbers="false"}
+    $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+```
+
+---------
+
+#### 2️⃣ Instalar ROS 2
+Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados
+```{.bash code-line-numbers="false"}
+    $ sudo apt update & sudo apt upgrade -y
+```
+Instalación Desktop: ROS, RViz, demos, etc.
+```{.bash code-line-numbers="false"}
+    $ sudo apt install ros-jazzy-desktop -y
+```
+
+---------
+
+Traducido de [docs.ros.org](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html){target="_blank"}
+
+### Docker
+
+
+
+:::
+
+## Configuración del entorno
+
+Configurar el entorno:
+```{.bash code-line-numbers="false"}
+    $ source /opt/ros/jazzy/setup.bash
+```
+
+Variables de entorno: `ROS_DOMAIN_ID`
+```{.bash code-line-numbers="false"}
+    $ printenv | grep -i ROS
+```
+
+Obtener ayuda desde la terminal:
+```{.bash code-line-numbers="false"}
+    $ ros2 --help
+```
+
+## Emisor / Receptor
+
+### Instalación de paquetes de demostración: `demo-nodes-py`
+
+```{.bash code-line-numbers="false"}
+    $ sudo apt install ros-jazzy-demo-nodes-py
+```
+
+Ver paquetes instalados:
+```{.bash code-line-numbers="false"}
+    $ ros2 pkg executables
+```
+
+### Nodos `talker` y `listener` 
+
+#### Ejecutar nodos
+   
+>       $ ros2 run <nombre_paquete> <nombre_ejecutable>
+
+---------
+
+```{.bash code-line-numbers="false"}
+    $ ros2 run demo_nodes_cpp talker
+```
+y en otra terminal
+```{.bash code-line-numbers="false"}
+    $ ros2 run demo_nodes_cpp listener
+```
+
+::: {.callout-tip}
+Recuerda volver a configurar el entorno y configurar el `ROS_DOMAIN_ID` correctamente
+:::
+
+---------
+
+::: {.callout-tip}
+Para detener el nodo: `Ctrl+C`
+:::
+
+#### Listar los nodos
+
+```{.bash code-line-numbers="false"}
+    $ ros2 node list
+```
+
+#### Obtener información
+
+>       $ ros2 node info <nombre_nodo>
+
+---------
+
+```{.bash code-line-numbers="false"}
+    $ ros2 node info /talker
+```
+
+### Topics
+
+#### Listar los topics
+
+```{.bash code-line-numbers="false"}
+    $ ros2 topic list
+```
+
+#### Obtener información
+
+Información acerca del _topic_: `ros2 topic info <nombre_topic>`
+
+---------
+
+```{.bash code-line-numbers="false"}
+    $ ros2 topic info /chatter
+```
+
+Información acerca del tipo de _topic_: `ros2 topic type <nombre_topic>` 
+
+---------
+
+```{.bash code-line-numbers="false"}
+    $ ros2 topic type /chatter
+```
+
+Medir la frecuencia con la que se publican mensajes: `ros2 topic hz <nombre_topic>` 
+
+---------
+
+```{.bash code-line-numbers="false"}
+    $ ros2 topic hz /chatter
+```
+
+#### Ver los mensajes que pasan por un topic
+
+>       $ ros2 topic echo <nombre_topic>
+
+---------
+
+```{.bash code-line-numbers="false"}
+    $ ros2 topic echo /chatter
+```
+
+### Mensaje
+
+#### Obtener información
+
+>       $ ros2 interface show <nombre_del_tipo_de_mensaje>
+
+Ejemplo
+```{.bash code-line-numbers="false"}
+    $ ros2 interface show std_msgs/msg/String
+```
+
+#### Publicar mensajes
+
+>       $ ros2 topic pub <nombre_del_topic>
+>           <nombre_del_tipo_de_mensaje> '<contenido>'
+
+Ejemplo
+```{.bash code-line-numbers="false"}
+    $ ros2 topic pub /chatter std_msgs/msg/String "{data: Mensaje de prueba}"
+```
+

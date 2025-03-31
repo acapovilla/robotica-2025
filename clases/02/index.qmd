@@ -1,0 +1,226 @@
+---
+title: "Robótica"
+subtitle: "Clase 02"
+date: "03/31/2025"
+date-format: "[Semana 3 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+    revealjs:
+        theme: dark
+        #chalkboard: true
+        footer: Robótica - TUAR - FICH - UNL
+        menu: false
+        slide-number: c
+---
+
+## Robot Operating System (2) {.smaller}
+
+:::: {.columns}
+::: {.column width="65%"}
+> Es un conjunto de librerías de software y herramientas que ayudan a la creación de aplicaciones robóticas (SDK).
+
+</br>
+
+> Motivación principal: No reinventar la rueda
+:::
+
+::: {.column width="35%"}
+![](https://ros.org/imgs/JazzyNoBG.png){fig-align="center"}
+
+<center>`www.ros.org`</center>
+:::
+
+::: aside
+Documentación: [docs.ros.org/en/jazzy](https://docs.ros.org/en/jazzy){target="_blank"}
+:::
+::::
+
+## Robot Operating System (2) {.smaller}
+
+:::: {.columns}
+::: {.column width="65%"}
+Otras características:
+
+- Plataforma estándar y comunidad global
+- Utilizado en educación, investigación e industria
+- Multi-dominio (en varios sentidos) y multi-plataforma
+- Gratuito y open-source
+:::
+
+::: {.column width="35%"}
+![](https://ros.org/imgs/JazzyNoBG.png){fig-align="center"}
+
+<center>`www.ros.org`</center>
+:::
+
+::: aside
+Documentación: [docs.ros.org/en/jazzy](https://docs.ros.org/en/jazzy){target="_blank"}
+:::
+::::
+
+## ROS2: Componentes principales {auto-animate="true"}
+:::: {.columns}
+::: {.column width="60%"}
+### `Nodos`
+
+> Ejecutable con _[una única]_ tarea
+
+::: {.fragment}
+> Se compila, ejecuta y gestiona de forma individual
+:::
+::: {.fragment}
+> Se organiza en paquetes
+:::
+:::
+
+::: {.column width="40%"}
+![](/clases/02/img/nodos-topics-msgs.png){fig-align="center"}
+:::
+::::
+
+## ROS2: Componentes principales {auto-animate="true"}
+:::: {.columns}
+::: {.column width="60%"}
+### `Topics`
+
+> Método de comunicación para los nodos
+
+::: {.fragment}
+> Publisher / Suscriber
+:::
+:::
+
+::: {.column width="40%"}
+![](/clases/02/img/nodos-topics-msgs.png){fig-align="center"}
+:::
+::::
+
+## ROS2: Componentes principales {auto-animate="true"}
+:::: {.columns}
+::: {.column width="60%"}
+### `Mensajes`
+
+> Estructura de datos que define un _topic_
+
+:::
+
+::: {.column width="40%"}
+![](/clases/02/img/nodos-topics-msgs.png){fig-align="center"}
+:::
+::::
+
+## [Laboratorio](lab.qmd) {.center}
+
+- Instalación de ROS2
+- Emisor / Receptor 
+- Comandos para análisis de nodos, topics y mensajes
+
+
+<!-- ## Laboratorio  {.scrollable .smaller}
+
+- Instalación de ROS2
+
+::: {.panel-tabset}
+
+### Windows 10 / 11 (WSL)
+
+::: {.callout-important title="Antes de iniciar"}
+Se necesitan todas las últimas actualizaciones de Windows instaladas
+:::
+
+----------
+
+#### 1️⃣ Instalar WSL
+```{.bash code-line-numbers="false"}
+    $ wsl --install
+```
+
+----------
+
+#### 2️⃣ Instalar Ubuntu WSL
+Para ver todas las distribuciones y versiones disponibles:
+```{.bash code-line-numbers="false"}
+    $ wsl --list --online
+```
+
+Para instalar
+```{.bash code-line-numbers="false"}
+    $ wsl --install -d Ubuntu-24.04
+```
+
+----------
+
+#### 3️⃣ Ejecutar y configurar Ubuntu
+```{.bash code-line-numbers="false"}
+    $ ubuntu2404.exe
+```
+
+----------
+
+::: {.callout-note title="Crear usuario y contraseña"}
+:::
+
+↪️ Continuar con la guía para [Ubuntu 24.04](###-Ubuntu-24.04)
+
+----------
+
+Traducido de [documentation.ubuntu.com/wsl](https://documentation.ubuntu.com/wsl/en/latest/howto/install-ubuntu-wsl2/){target="_blank"}
+
+### Ubuntu 24.04
+
+::: {.callout-warning title="Actualizar el sistema"}
+```
+    $ sudo apt update
+    $ sudo apt upgrade -y
+```
+:::
+
+----------
+
+#### 1️⃣ Habilitar repositorios
+```{.bash code-line-numbers="false"}
+    $ sudo apt install software-properties-common curl -y
+```
+```{.bash code-line-numbers="false"}
+    $ sudo add-apt-repository universe
+```
+
+Agregar la key GPG de ROS 2
+
+```{.bash code-line-numbers="false"}
+    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+Agregar repositorio a la source list
+
+```{.bash code-line-numbers="false"}
+    $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+```
+
+----------
+
+#### 2️⃣ Instalar ROS 2
+Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados
+```{.bash code-line-numbers="false"}
+    $ sudo apt update & sudo apt upgrade -y
+```
+Instalación Desktop: ROS, RViz, demos, etc.
+```{.bash code-line-numbers="false"}
+    $ sudo apt install ros-jazzy-desktop -y
+```
+
+----------
+
+Traducido de [docs.ros.org](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html){target="_blank"}
+
+### Docker
+
+
+
+:::
+
+## Laboratorio
+
+- Talker / Listener
+
+- Comandos para análisis de nodos, topics y mensajes -->
