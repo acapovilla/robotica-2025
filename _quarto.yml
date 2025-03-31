@@ -8,15 +8,16 @@ project:
 website:
   title: "Robótica 2025"
   sidebar:
-    logo: https://sinc.unl.edu.ar/wp-content/themes/sinci/img/sinc-logo.png
+    # logo: https://sinc.unl.edu.ar/wp-content/themes/sinci/img/sinc-logo.png
     logo-alt: "sinc(i) - UNL - CONICET"
     search: false
     alignment: center
     border: true
     header: |
       ## [Universidad Nacional del Litoral](https://www.unl.edu.ar/) (UNL) \
-      ### [Facultad de Ingeniería y Ciencias Hídricas](https://www.fich.unl.edu.ar/) (FICH) \
-      **Tecnicatura en Automatizaicón y Robótica (TUAR)**
+      ### [Facultad de Ingeniería y Ciencias Hídricas](https://www.fich.unl.edu.ar/) (FICH) <br> \
+      **Tecnicatura en Automatizaicón y Robótica (TUAR)** <br> \
+      ![](https://sinc.unl.edu.ar/wp-content/themes/sinci/img/sinc-logo.png)
 
   bread-crumbs: true
 
