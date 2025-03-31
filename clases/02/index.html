@@ -154,7 +154,20 @@
 <center>
 <code>www.ros.org</code>
 </center>
-</div></div>
+</div><aside class="notes">
+<p>ROS2. Definición y propósito. Ventajas y problemas que resuelve. (https://www.ros.org/blog/ecosystem/)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
 <aside><div>
 <p>Documentación: <a href="https://docs.ros.org/en/jazzy" target="_blank">docs.ros.org/en/jazzy</a></p>
 </div></aside></section>
@@ -179,6 +192,29 @@
 <code>www.ros.org</code>
 </center>
 </div></div>
+<aside class="notes">
+<ul>
+<li>Plataforma estándar: Quiere decir que el software desarrollado por alguien en algún punto del mundo puede re-utilizarlo alguien en otro (siempre y cuando se respeten ciertas condiciones)
+<ul>
+<li>Permitió la formación de una comunidad global (que prueba los paquetes) y a su vez que sea utilizado en educación, investigación e industria</li>
+</ul></li>
+<li>Programas individuales (Nodos) que se comunican a través (Topics) de estructuras definidas (Mensajes)</li>
+<li>Distribuido: los programas pueden ejecutarse en distintas computadoras y comunicarse a través de la red</li>
+<li>Multi-lenguaje: C++ y Python (existen librerías para Java o MATLAB)</li>
+<li>Free y open-source (la mayoría de los paquetes de ROS)</li>
+<li>Facilita el desarrollo proveyendo de herramientas para la ejecución, inspección, debugging, visualización, graficación, revisiones (playback)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <aside><div>
 <p>Documentación: <a href="https://docs.ros.org/en/jazzy" target="_blank">docs.ros.org/en/jazzy</a></p>
 </div></aside></section>
@@ -203,10 +239,27 @@
 </div><div class="column" style="width:40%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../clases/02/img/nodos-topics-msgs.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="../../clases/02/img/nodos-topics-msgs.svg" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div></div>
+<aside class="notes">
+<ul>
+<li>Programas ejecutables de propósito único (no es 100% estricto)</li>
+<li>Se compilan, ejecutan y gestionan de forma individual</li>
+<li>Organizados en paquetes</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ros2-componentes-principales-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">ROS2: Componentes principales</h2>
@@ -224,10 +277,26 @@
 </div><div class="column" style="width:40%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../clases/02/img/nodos-topics-msgs.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="../../clases/02/img/nodos-topics-msgs.svg" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div></div>
+<aside class="notes">
+<ul>
+<li>Medio de comunicación entre nodos</li>
+<li>Los nodos pueden publicar o subscribirse: Generalmente en un esquema 1-pub y n-subs</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ros2-componentes-principales-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">ROS2: Componentes principales</h2>
@@ -240,10 +309,27 @@
 </div><div class="column" style="width:40%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../../clases/02/img/nodos-topics-msgs.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="../../clases/02/img/nodos-topics-msgs.svg" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div></div>
+<aside class="notes">
+<ul>
+<li>Estructura de datos que define el “tipo” de topic</li>
+<li>Se compone de tipos “estándares” o puede ser compuesto por otros “msg”</li>
+<li>Se define en archivos con extensión “.msg”</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="laboratorio" class="slide level2 center">
 <h2><a href="../../clases/02/lab.html">Laboratorio</a></h2>
@@ -252,114 +338,6 @@
 <li>Emisor / Receptor</li>
 <li>Comandos para análisis de nodos, topics y mensajes</li>
 </ul>
-<!-- ## Laboratorio  {.scrollable .smaller}
-
-- Instalación de ROS2
-
-::: {.panel-tabset}
-
-### Windows 10 / 11 (WSL)
-
-::: {.callout-important title="Antes de iniciar"}
-Se necesitan todas las últimas actualizaciones de Windows instaladas
-:::
-
-----------
-
-#### 1️⃣ Instalar WSL
-```{.bash code-line-numbers="false"}
-    $ wsl --install
-```
-
-----------
-
-#### 2️⃣ Instalar Ubuntu WSL
-Para ver todas las distribuciones y versiones disponibles:
-```{.bash code-line-numbers="false"}
-    $ wsl --list --online
-```
-
-Para instalar
-```{.bash code-line-numbers="false"}
-    $ wsl --install -d Ubuntu-24.04
-```
-
-----------
-
-#### 3️⃣ Ejecutar y configurar Ubuntu
-```{.bash code-line-numbers="false"}
-    $ ubuntu2404.exe
-```
-
-----------
-
-::: {.callout-note title="Crear usuario y contraseña"}
-:::
-
-↪️ Continuar con la guía para [Ubuntu 24.04](###-Ubuntu-24.04)
-
-----------
-
-Traducido de [documentation.ubuntu.com/wsl](https://documentation.ubuntu.com/wsl/en/latest/howto/install-ubuntu-wsl2/){target="_blank"}
-
-### Ubuntu 24.04
-
-::: {.callout-warning title="Actualizar el sistema"}
-```
-    $ sudo apt update
-    $ sudo apt upgrade -y
-```
-:::
-
-----------
-
-#### 1️⃣ Habilitar repositorios
-```{.bash code-line-numbers="false"}
-    $ sudo apt install software-properties-common curl -y
-```
-```{.bash code-line-numbers="false"}
-    $ sudo add-apt-repository universe
-```
-
-Agregar la key GPG de ROS 2
-
-```{.bash code-line-numbers="false"}
-    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-```
-
-Agregar repositorio a la source list
-
-```{.bash code-line-numbers="false"}
-    $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-```
-
-----------
-
-#### 2️⃣ Instalar ROS 2
-Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados
-```{.bash code-line-numbers="false"}
-    $ sudo apt update & sudo apt upgrade -y
-```
-Instalación Desktop: ROS, RViz, demos, etc.
-```{.bash code-line-numbers="false"}
-    $ sudo apt install ros-jazzy-desktop -y
-```
-
-----------
-
-Traducido de [docs.ros.org](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html){target="_blank"}
-
-### Docker
-
-
-
-:::
-
-## Laboratorio
-
-- Talker / Listener
-
-- Comandos para análisis de nodos, topics y mensajes -->
 
 
 </section>

@@ -74,35 +74,35 @@
     "href": "clases/02/index.html#robot-operating-system-2",
     "title": "Robótica",
     "section": "Robot Operating System (2)",
-    "text": "Robot Operating System (2)\n\n\n\nEs un conjunto de librerías de software y herramientas que ayudan a la creación de aplicaciones robóticas (SDK).\n\n\n\nMotivación principal: No reinventar la rueda\n\n\n\n\n\n\n\n\nwww.ros.org\n\n\n\nDocumentación: docs.ros.org/en/jazzy"
+    "text": "Robot Operating System (2)\n\n\n\nEs un conjunto de librerías de software y herramientas que ayudan a la creación de aplicaciones robóticas (SDK).\n\n\n\nMotivación principal: No reinventar la rueda\n\n\n\n\n\n\n\n\nwww.ros.org\n\n\nROS2. Definición y propósito. Ventajas y problemas que resuelve. (https://www.ros.org/blog/ecosystem/)\n\n\n\nDocumentación: docs.ros.org/en/jazzy"
   },
   {
     "objectID": "clases/02/index.html#robot-operating-system-2-1",
     "href": "clases/02/index.html#robot-operating-system-2-1",
     "title": "Robótica",
     "section": "Robot Operating System (2)",
-    "text": "Robot Operating System (2)\n\n\nOtras características:\n\nPlataforma estándar y comunidad global\nUtilizado en educación, investigación e industria\nMulti-dominio (en varios sentidos) y multi-plataforma\nGratuito y open-source\n\n\n\n\n\n\n\n\nwww.ros.org\n\n\n\nDocumentación: docs.ros.org/en/jazzy"
+    "text": "Robot Operating System (2)\n\n\nOtras características:\n\nPlataforma estándar y comunidad global\nUtilizado en educación, investigación e industria\nMulti-dominio (en varios sentidos) y multi-plataforma\nGratuito y open-source\n\n\n\n\n\n\n\n\nwww.ros.org\n\n\n\n\nPlataforma estándar: Quiere decir que el software desarrollado por alguien en algún punto del mundo puede re-utilizarlo alguien en otro (siempre y cuando se respeten ciertas condiciones)\n\nPermitió la formación de una comunidad global (que prueba los paquetes) y a su vez que sea utilizado en educación, investigación e industria\n\nProgramas individuales (Nodos) que se comunican a través (Topics) de estructuras definidas (Mensajes)\nDistribuido: los programas pueden ejecutarse en distintas computadoras y comunicarse a través de la red\nMulti-lenguaje: C++ y Python (existen librerías para Java o MATLAB)\nFree y open-source (la mayoría de los paquetes de ROS)\nFacilita el desarrollo proveyendo de herramientas para la ejecución, inspección, debugging, visualización, graficación, revisiones (playback)\n\n\n\nDocumentación: docs.ros.org/en/jazzy"
   },
   {
     "objectID": "clases/02/index.html#ros2-componentes-principales",
     "href": "clases/02/index.html#ros2-componentes-principales",
     "title": "Robótica",
     "section": "ROS2: Componentes principales",
-    "text": "ROS2: Componentes principales\n\n\nNodos\n\nEjecutable con [una única] tarea\n\n\n\nSe compila, ejecuta y gestiona de forma individual\n\n\n\n\nSe organiza en paquetes"
+    "text": "ROS2: Componentes principales\n\n\nNodos\n\nEjecutable con [una única] tarea\n\n\n\nSe compila, ejecuta y gestiona de forma individual\n\n\n\n\nSe organiza en paquetes\n\n\n\n\n\n\n\n\n\n\n\nProgramas ejecutables de propósito único (no es 100% estricto)\nSe compilan, ejecutan y gestionan de forma individual\nOrganizados en paquetes"
   },
   {
     "objectID": "clases/02/index.html#ros2-componentes-principales-1",
     "href": "clases/02/index.html#ros2-componentes-principales-1",
     "title": "Robótica",
     "section": "ROS2: Componentes principales",
-    "text": "ROS2: Componentes principales\n\n\nTopics\n\nMétodo de comunicación para los nodos\n\n\n\nPublisher / Suscriber"
+    "text": "ROS2: Componentes principales\n\n\nTopics\n\nMétodo de comunicación para los nodos\n\n\n\nPublisher / Suscriber\n\n\n\n\n\n\n\n\n\n\n\nMedio de comunicación entre nodos\nLos nodos pueden publicar o subscribirse: Generalmente en un esquema 1-pub y n-subs"
   },
   {
     "objectID": "clases/02/index.html#ros2-componentes-principales-2",
     "href": "clases/02/index.html#ros2-componentes-principales-2",
     "title": "Robótica",
     "section": "ROS2: Componentes principales",
-    "text": "ROS2: Componentes principales\n\n\nMensajes\n\nEstructura de datos que define un topic"
+    "text": "ROS2: Componentes principales\n\n\nMensajes\n\nEstructura de datos que define un topic\n\n\n\n\n\n\n\n\n\n\nEstructura de datos que define el “tipo” de topic\nSe compone de tipos “estándares” o puede ser compuesto por otros “msg”\nSe define en archivos con extensión “.msg”"
   },
   {
     "objectID": "clases/02/index.html#laboratorio",
@@ -151,6 +151,6 @@
     "href": "clases/02/lab.html#emisor-receptor",
     "title": "Clase 02 - Laboratorio",
     "section": "Emisor / Receptor",
-    "text": "Emisor / Receptor\n\nInstalación de paquetes de demostración: demo-nodes-py\n    $ sudo apt install ros-jazzy-demo-nodes-py\nVer paquetes instalados:\n    $ ros2 pkg executables\n\n\nNodos talker y listener\n\nEjecutar nodos\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n    $ ros2 run demo_nodes_cpp talker\ny en otra terminal\n    $ ros2 run demo_nodes_cpp listener\n\n\n\n\n\n\nTip\n\n\n\nRecuerda volver a configurar el entorno y configurar el ROS_DOMAIN_ID correctamente\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPara detener el nodo: Ctrl+C\n\n\n\n\nListar los nodos\n    $ ros2 node list\n\n\nObtener información\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n    $ ros2 node info /talker\n\n\n\nTopics\n\nListar los topics\n    $ ros2 topic list\n\n\nObtener información\nInformación acerca del topic: ros2 topic info &lt;nombre_topic&gt;\n\n    $ ros2 topic info /chatter\nInformación acerca del tipo de topic: ros2 topic type &lt;nombre_topic&gt;\n\n    $ ros2 topic type /chatter\nMedir la frecuencia con la que se publican mensajes: ros2 topic hz &lt;nombre_topic&gt;\n\n    $ ros2 topic hz /chatter\n\n\nVer los mensajes que pasan por un topic\n\n  $ ros2 topic echo &lt;nombre_topic&gt;\n\n\n    $ ros2 topic echo /chatter\n\n\n\nMensaje\n\nObtener información\n\n  $ ros2 interface show &lt;nombre_del_tipo_de_mensaje&gt;\n\nEjemplo\n    $ ros2 interface show std_msgs/msg/String\n\n\nPublicar mensajes\n\n  $ ros2 topic pub &lt;nombre_del_topic&gt;\n      &lt;nombre_del_tipo_de_mensaje&gt; '&lt;contenido&gt;'\n\nEjemplo\n    $ ros2 topic pub /chatter std_msgs/msg/String \"{data: Mensaje de prueba}\""
+    "text": "Emisor / Receptor\n\nInstalación de paquetes de demostración: demo-nodes-py\n    $ sudo apt install ros-jazzy-demo-nodes-py\nVer paquetes instalados:\n    $ ros2 pkg executables\n\n\nNodos talker y listener\n\nEjecutar nodos\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n    $ ros2 run demo_nodes_py talker\ny en otra terminal\n    $ ros2 run demo_nodes_py listener\n\n\n\n\n\n\nTip\n\n\n\nRecuerda volver a configurar el entorno y configurar el ROS_DOMAIN_ID correctamente\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPara detener el nodo: Ctrl+C\n\n\n\n\nListar los nodos\n    $ ros2 node list\n\n\nObtener información\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n    $ ros2 node info /talker\n\n\n\nTopics\n\nListar los topics\n    $ ros2 topic list\n\n\nObtener información\nInformación acerca del topic: ros2 topic info &lt;nombre_topic&gt;\n\n    $ ros2 topic info /chatter\nInformación acerca del tipo de topic: ros2 topic type &lt;nombre_topic&gt;\n\n    $ ros2 topic type /chatter\nMedir la frecuencia con la que se publican mensajes: ros2 topic hz &lt;nombre_topic&gt;\n\n    $ ros2 topic hz /chatter\n\n\nVer los mensajes que pasan por un topic\n\n  $ ros2 topic echo &lt;nombre_topic&gt;\n\n\n    $ ros2 topic echo /chatter\n\n\n\nMensajes\n\nObtener información\n\n  $ ros2 interface show &lt;nombre_del_tipo_de_mensaje&gt;\n\nEjemplo\n    $ ros2 interface show std_msgs/msg/String\n\n\nPublicar mensajes\n\n  $ ros2 topic pub &lt;nombre_del_topic&gt;\n      &lt;nombre_del_tipo_de_mensaje&gt; '&lt;contenido&gt;'\n\nEjemplo\n    $ ros2 topic pub /chatter std_msgs/msg/String \"{data: Mensaje de prueba}\""
   }
 ]
