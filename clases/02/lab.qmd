@@ -2,6 +2,8 @@
 title: Clase 02 - Laboratorio
 format:
     html:
+        code-fold: true
+        code-copy: false
         code-overflow: wrap
         toc: true
 bread-crumbs: true
@@ -112,6 +114,7 @@ Traducido de [docs.ros.org](https://docs.ros.org/en/jazzy/Installation/Ubuntu-In
 
 #### 3️⃣ Crear `devcontainer.json`
 
+{{< include _devcontainer.qmd >}}
 
 :::
 
