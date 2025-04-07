@@ -1,0 +1,523 @@
+---
+title: "Robótica"
+subtitle: "Clase 03"
+date: "04/07/2025"
+date-format: "[Semana 4 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+    revealjs:
+        theme: dark
+        #chalkboard: true
+        footer: Robótica - TUAR - FICH - UNL
+        menu: false
+        slide-number: c
+        code-copy: false
+        code-overflow: wrap
+---
+
+## Resumen Clase 02
+
+:::: {.columns}
+::: {.column width="60%"}
+- ### ROS 2 - Jazzy
+    - ### `Nodos`
+    - ### `Topics`
+    - ### `Mensajes`
+
+:::
+
+::: {.column width="40%"}
+![](/clases/02/img/nodos-topics-msgs.svg){fig-align="center"}
+:::
+::::
+
+::: {.notes}
+Algunos comandos más usados (run, node list, node info, topic list, topic info, topic echo, rqt_graph)
+:::
+
+## ROS2: Contexto y `namespaces` {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+Similaridad a una estructura de carpetas
+
+---
+
+#### Tipos
+- #### Global
+- #### Relativo
+- #### Base
+- #### Privado
+:::
+
+::: {.column width="50%"}
+```
+/
+├── sim1/
+│ └── robot/
+│     ├── cmd_vel       /sim1/robot/cmd_vel
+│     └── odometry      /sim1/robot/odometry
+└── sim2/
+    └── robot/
+        ├── cmd_vel     /sim2/robot/cmd_vel
+        └── odometry    /sim2/robot/odometry
+
+Base:       robot
+
+Privado:    ~/cmd_vel
+            ~/odometry
+```
+:::
+::::
+
+::: {.notes}
+Explicación de contexto: Estructura jerárquica de nombres utilizada en ROS para proveer encapsulamiento y así poder gestionar de una forma más sencilla grandes sistemas.
+
+Existen 4 tipos de nombres: base, relativo, global y privado.
+
+La resolución se realiza de forma relativa al namespace del nodo.
+
+- Global -> empiezan con “/” y se consideran resueltos
+- Relativo -> no empiezan con “/” y deben ser resueltos de forma relativa al namespace del nodo
+- Base -> Es un subtipo de relativo: No llevan namespaces y generalmente se utilizan para inicializar el nombre del nodo
+- Privado -> empiezan on “~” y convierten el nodo en un “namespace” 
+:::
+
+## ROS2: Servicios
+
+:::: {.columns}
+::: {.column width="60%"}
+> Modelo de llamada-respuesta
+
+::: {.fragment}
+> Bidireccional
+:::
+::: {.fragment}
+> Solo proveen información cuando son invocados
+:::
+::: {.fragment}
+> Comunicación es 1 a N
+:::
+
+:::
+
+::: {.column width="40%"}
+![](/clases/03/img/servicios.svg){fig-align="center"}
+:::
+::::
+
+::: {.notes}
+Servicios (comunicación)
+
+- Basados en un modelo de “llamada-respuesta” (call-and-response)
+- La diferencia con Topics: no son continuos, solo proveen información cuando son invocados. 
+- Muchos clientes pero solo un servidor.
+- Bidireccional
+- Definidos en archivos .srv
+:::
+
+## ROS2: Parámetros
+> Valores de configuración para un nodo
+
+
+::: {.fragment}
+> Cada nodo posee sus propios parámetros
+:::
+::: {.fragment}
+::: {style="font-size: 70%;"}
+- `int`
+- `float`
+- `bool`
+- `string`
+- `list[]`
+:::
+:::
+
+
+## [Laboratorio (parte 1)](http://localhost:4200/clases/03/lab.html#parte-1-servicios-y-par%C3%A1metros) {.center}
+
+- Invocar y analizar servicios
+
+- Comandos para setear y obtener comandos
+
+<!-- ## Organización de paquetes y código {.center} -->
+
+## Entorno de ROS y `workspace`
+
+:::: {.columns}
+::: {.column width="60%"}
+#### Dos niveles:
+
+  - `overlay` ➡️ _Nuestros_ paquetes
+  - `underlay` ➡️ Paquetes instalados
+
+::: {.fragment}
+> `Workspace`
+> 
+> ```{code-line-numbers="|2"}
+> 📂 ros_ws
+>   📁 src
+>   📁 build      ⚠️
+>   📁 install    ⚠️
+>   📁 log        ⚠️
+> ```
+:::
+:::
+
+::: {.column style="width: 40%; font-size: 50%;"}
+
+<br>
+<br>
+
++:-----------------------------------------------------------------:+
+| Workspace de desarrollo<br>
+| `. install/local_setup.bash`                                      
++-------------------------------------------------------------------+
+| Paquete de ROS instalados<br>
+| `source /opt/ros/humble/setup.bash`                               
++-------------------------------------------------------------------+
+
+: {.stripped tbl-colwidths="[100]"}
+
+:::
+::::
+
+::: {.notes}
+Dos “niveles”: Paquetes de ROS2 instalados (cuando se hace el source) “underlay” (tiene las dependencias del “overlay”), workspace de desarrollo donde se agregan paquetes nuevos “overlay”. Este último sobre-escribe paquetes del “underlay”.
+
+workspace: Estructura de carpetas que contiene paquetes
+
+- `src`: código fuente: crear y editar el código de los paquetes que se quieren compilar
+- `build`: caché y archivos intermedios de compilación
+- `install`: los paquetes o “targets” instalados
+- `log`: Información de log
+:::
+
+## Paquete de ROS
+
+:::: {.columns}
+::: {.column style="width: 60%;"}
+
+### Contiene
+
+::: {.incremental}
+- Código fuente
+- Archivos de configuración
+- Archivos “launch”
+- Definición de mensajes, servicios, etc
+- Metadatos e información
+- Documentación
+:::
+:::
+
+::: {.column width="40%"}
+
+> ```{code-line-numbers="|2"}
+> 📂 src
+>   📁 nombre_paquete
+>       📁 nombre_paquete
+>           📄 __init__.py
+>           ...
+>   📁resource
+>       📄 nombre_paquete
+>   📄 package.xml
+>   📄 setup.cfg
+>   📄 setup.py
+> ```
+
+:::
+::::
+
+::: {.notes}
+Contenedor o marco del código (contiene código fuente, archivos launch, archivos de configuración, definición de mensajes, datos y documentación). Forma que permite instalar el propio código y compartirlo.
+
+Archivos mínimos para paquetes Python (para cada paquete por separado)
+
+- `package.xml`: información acerca del paquete (cual?)
+- `setup.py` -> instrucciones para instalar el paquete
+- `setup.cfg` -> Para que el comando run encuentra los ejecutables en el caso de que existan
+- `/<nombre_paquete>` -> Carpeta con el mismo nombre del paquete junto con el archivo `__init__.py` utilizado por las herramientas de ROS2
+:::
+
+
+## Paquete de ROS: 📄 package.xml {.smaller}
+
+### Contiene
+
+- Propiedades e información del paquete
+- Formato `XML`
+
+
+```{.xml code-line-numbers="|1,2,3|5,20|6,8|7|9-13|15|17-19"}
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd"
+    schematypens="http://www.w3.org/2001/XMLSchema"?>
+
+<package format="3">
+    <name>nombre_paquete</name>
+    <version>0.0.0</version>
+    <description>Descripción del paquete</description>
+    <maintainer email="user@todo.todo">user</maintainer>
+    <license>Licencia</license>
+
+    <url type="website">https://github.com/...</url>
+    <author email="user@todo.todo">user</author>
+
+    <depend>nombre_paquete_dependencia</depend>
+
+    <export>
+        <build_type>ament_python</build_type>
+    </export>
+</package>
+```
+
+::: {.notes}
+Propiedades e información del paquete: Nombre, versión, autores, dependencias, descripción, etc
+
+Breve descripción de los archivos con codificación eXtensible Markup Language:
+
+- Lenguaje de marcado -> una forma de organizar la información utilizando etiquetas (para definir elementos) y atributos (para información adicional), de forma jerárquica.
+- Es flexible y puede personalizarse -> Útil para intercambiar información
+- Fácil de entender para humanos
+:::
+
+## Paquete de ROS: 📄 setup.py {.smaller .scrollable}
+
+### Contiene
+
+- Instrucciones de cómo se debe instalar el paquete (para el sistema de compilación)
+- Deben coincidir la información y los metadatos con los del `package.xml`
+
+
+```{.py code-line-numbers="|3|6-9,21-24|11-17|26-30"}
+from setuptools import setup
+
+package_name = 'nombre_paquete'
+
+setup(
+  name=package_name,
+  version='0.0.0',
+  # Packages to export
+  packages=[package_name],
+  # Files we want to install, specifically launch files
+  data_files=[
+      # Install marker file in the package index
+      ('share/ament_index/resource_index/packages',
+             ['resource/' + package_name]),
+      # Include our package.xml file
+      ('share/' + package_name, ['package.xml']),
+    ],
+  # This is important as well
+  install_requires=['setuptools'],
+  zip_safe=True,
+  maintainer='TODO',
+  maintainer_email='TODO',
+  description='TODO: Package description',
+  license='TODO: License declaration',
+  tests_require=['pytest'],
+  entry_points={
+      'console_scripts': [
+              'nombre_nodo = nombre_paquete.nombre_nodo:main'
+      ],
+    },
+)
+```
+
+::: {.notes}
+Contenido: repite nombre, version, descripción, maintainer y licencia. Es necesario que sean iguales en los dos archivos 
+:::
+
+## Paquete de ROS: 📄 setup.cfg {.smaller}
+
+> Si el paquete posee un ejecutable, para que `ros2 run` lo pueda encontrar
+
+```{.toml}
+[develop]
+script_dir=$base/lib/<nombre_paquete>
+
+[install]
+install_scripts=$base/lib/<nombre_paquete>
+```
+
+## `rclpy`: ROS Client Library (Python)
+
+> Acceso a los componentes de ROS
+
+::: {.incremental}
+- Inicialización y ejecución de callbacks
+- Gestión de nodos
+- Topics, servicios, acciones, etc.
+- Logs
+:::
+
+::: {.fragment}
+```{.python}
+import rclpy
+```
+:::
+
+::: {.aside}
+Documentación completa en: [docs.ros2.org/latest/api/rclpy](https://docs.ros2.org/latest/api/rclpy/index.html)
+:::
+
+::: {.notes}
+Acceso a los elementos de ROS desde la sintaxis de Python utilizando tipos nativos y patrones como listas. 
+
+Componentes principales de la librería:-Inicialización y “spinning”. Gestión del nodo. Log. Subscriber/Publisher. Parámetros.
+
+(así como servicios, acciones y elementos de sincronización)
+:::
+
+<!-- ## `rclpy`: ROS Client Library (Python)
+
+> Partes básicas del programa
+
+1. Inicialización
+
+2. Creación de 1 o más nodos
+
+3. Procesamiento de callbacks (`spinning`)
+
+4. Apagado (`shutdown`) -->
+
+## `rclpy`: ROS Client Library (Python) {auto-animate="true"}
+
+> Partes básicas del programa
+
+::: {.fragment}
+1. Inicialización
+
+        rclpy.init(..)
+
+> Antes que cualquier otra función de ROS
+
+> Define el contexto
+:::
+
+<!-- 2. Creación de 1 o más nodos
+
+3. Procesamiento de callbacks (`spinning`)
+
+4. Apagado (`shutdown`) -->
+
+::: {.notes}
+Inicialización: Debe ser llamado antes de cualquier otra función de ROS. Define el contexto.
+:::
+
+## `rclpy`: ROS Client Library (Python) {auto-animate="true"}
+
+> Partes básicas del programa
+
+1. Inicialización
+
+        rclpy.init(..)
+
+2. Creación de 1 o más nodos
+
+        rclpy.create_node(..)
+
+> Punto de acceso al sistema de ROS (topics, parámetros, servicios, etc.)
+
+> En POO sería a través de una instancia ‘node’
+
+::: {.notes}
+Creación del nodo: es el punto de acceso al sistema de ROS (topics, servicios, parámetros, etc)
+
+En el caso de utilizar clases (POO) sería a través de una instancia de ‘node’.
+:::
+
+## `rclpy`: ROS Client Library (Python) {auto-animate="true"}
+
+> Partes básicas del programa
+
+1. Inicialización
+
+        rclpy.init(..)
+
+2. Creación de 1 o más nodos
+
+        rclpy.create_node(..)
+
+3. Procesamiento de callbacks (`spinning`)
+
+        rclpy.spin(..)
+
+> Se procesan los callbacks y demás tareas del nodo
+
+::: {.notes}
+“Spinning”: Procesar los callbacks y demás rutinas
+:::
+
+
+## `rclpy`: ROS Client Library (Python) {auto-animate="true"}
+
+> Partes básicas del programa
+
+1. Inicialización
+
+        rclpy.init(..)
+
+2. Creación de 1 o más nodos
+
+        rclpy.create_node(..)
+
+3. Procesamiento de callbacks (`spinning`)
+
+        rclpy.spin(..)
+
+4. Apagado / finalización (`shutdown`)
+
+        rclpy.shutdown()
+
+::: {.notes}
+Finalización: `rclpy.shutdown()`
+:::
+
+## `rclpy`: ROS Client Library (Python)
+
+> Gestión de nodos
+
+::: {.fragment}
+- Crear un publisher: `node.create_publisher(..)`
+:::
+::: {.fragment}
+- Crear un suscriber: `node.create_subscription(..)`
+:::
+::: {.fragment}
+- Timer: `node.create_timer(..)`
+:::
+::: {.fragment}
+- Log: `node.get_logger(..)`
+:::
+
+::: {.notes}
+Manejo de nodos:
+
+- Crear un publisher: Tipo de mensaje, nombre del topic
+- Crear un subscriptor: Tipo de mensaje, nombre del topic, callback 
+- Timer: Tareas repetitivas a una frecuencia deseada. Período, callback
+- Loggear:  Mensajes en consola
+:::
+
+## Compilación del paquete
+
+> Sistema de compilación: `ament`
+
+> Herramienta de compilación: `colcon`
+
+	    colcon build --symlink-install
+
+> Dependencias:
+	    
+        rosdep update
+
+        rosdep install -i --from-path src --rosdistro humble -y
+
+::: {.callout-warning title="Ejecutar en la raíz del workspace"}
+:::
+
+## Callbacks {visibility="hidden"}
+
+::: {.notes}
+Explicación de lo que es un callback: Porción de código que es pasada como argumento, a otra parte de código, que se espera sea ejecutado (call-back) en un momento conveniente. 
+:::
