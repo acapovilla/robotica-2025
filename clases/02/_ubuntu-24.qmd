@@ -1,0 +1,44 @@
+::: {.callout-warning title="Actualizar el sistema"}
+```
+    $ sudo apt update
+    $ sudo apt upgrade -y
+```
+:::
+
+---------
+
+#### 1️⃣ Habilitar repositorios
+```{.bash code-line-numbers="false"}
+    $ sudo apt install software-properties-common curl -y
+```
+```{.bash code-line-numbers="false"}
+    $ sudo add-apt-repository universe
+```
+
+Agregar la key GPG de ROS 2
+
+```{.bash code-line-numbers="false"}
+    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+Agregar repositorio a la source list
+
+```{.bash code-line-numbers="false"}
+    $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+```
+
+---------
+
+#### 2️⃣ Instalar ROS 2
+Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados
+```{.bash code-line-numbers="false"}
+    $ sudo apt update && sudo apt upgrade -y
+```
+Instalación Desktop: ROS, RViz, demos, etc.
+```{.bash code-line-numbers="false"}
+    $ sudo apt install ros-jazzy-desktop -y
+```
+
+---------
+
+Traducido de [docs.ros.org](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html){target="_blank"}

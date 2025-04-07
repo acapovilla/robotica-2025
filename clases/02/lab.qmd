@@ -16,95 +16,11 @@ page-navigation: true
 
 ### Windows 10 / 11 (WSL)
 
-::: {.callout-important title="Antes de iniciar"}
-Se necesitan todas las últimas actualizaciones de Windows instaladas
-:::
-
----------
-
-#### 1️⃣ Instalar WSL
-```{.bash code-line-numbers="false"}
-    $ wsl --install
-```
-
----------
-
-#### 2️⃣ Instalar Ubuntu WSL
-Para ver todas las distribuciones y versiones disponibles:
-```{.bash code-line-numbers="false"}
-    $ wsl --list --online
-```
-
-Para instalar
-```{.bash code-line-numbers="false"}
-    $ wsl --install -d Ubuntu-24.04
-```
-
----------
-
-#### 3️⃣ Ejecutar y configurar Ubuntu
-```{.bash code-line-numbers="false"}
-    $ ubuntu2404.exe
-```
-
----------
-
-::: {.callout-note title=""}
-Continuar con la creación de usuario y contraseña
-:::
-
-#### ↪️ Continuar con la guía para *Ubuntu 24.04*
-
----------
-
-Traducido de [documentation.ubuntu.com/wsl](https://documentation.ubuntu.com/wsl/en/latest/howto/install-ubuntu-wsl2/){target="_blank"}
+{{< include _win10-11.qmd >}}
 
 ### Ubuntu 24.04
 
-::: {.callout-warning title="Actualizar el sistema"}
-```
-    $ sudo apt update
-    $ sudo apt upgrade -y
-```
-:::
-
----------
-
-#### 1️⃣ Habilitar repositorios
-```{.bash code-line-numbers="false"}
-    $ sudo apt install software-properties-common curl -y
-```
-```{.bash code-line-numbers="false"}
-    $ sudo add-apt-repository universe
-```
-
-Agregar la key GPG de ROS 2
-
-```{.bash code-line-numbers="false"}
-    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-```
-
-Agregar repositorio a la source list
-
-```{.bash code-line-numbers="false"}
-    $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-```
-
----------
-
-#### 2️⃣ Instalar ROS 2
-Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados
-```{.bash code-line-numbers="false"}
-    $ sudo apt update & sudo apt upgrade -y
-```
-Instalación Desktop: ROS, RViz, demos, etc.
-```{.bash code-line-numbers="false"}
-    $ sudo apt install ros-jazzy-desktop -y
-```
-
----------
-
-Traducido de [docs.ros.org](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html){target="_blank"}
+{{< include _ubuntu-24.qmd >}}
 
 ### Docker
 
