@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Robótica 2025</title>
+<title>Clase 03 - Laboratorio – Robótica 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,24 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5331a090424c4800864edc0e35859c8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-8bbfb6f89e006382878e9b648b9af03f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -101,24 +136,37 @@ ul.task-list li input[type="checkbox"] {
 </section></div>
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Robótica 2025</a> 
+      <a href="../../">Robótica 2025</a> 
     </div>
       </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#parte-1-servicios-y-parámetros" id="toc-parte-1-servicios-y-parámetros" class="nav-link active" data-scroll-target="#parte-1-servicios-y-parámetros">Parte 1: Servicios y parámetros</a>
+  <ul class="collapse">
+  <li><a href="#servicios" id="toc-servicios" class="nav-link" data-scroll-target="#servicios">Servicios</a></li>
+  <li><a href="#parámetros" id="toc-parámetros" class="nav-link" data-scroll-target="#parámetros">Parámetros</a></li>
+  </ul></li>
+  <li><a href="#parte-2-creación-de-paquetes-y-programación-de-nodo" id="toc-parte-2-creación-de-paquetes-y-programación-de-nodo" class="nav-link" data-scroll-target="#parte-2-creación-de-paquetes-y-programación-de-nodo">Parte 2: Creación de paquetes y programación de nodo</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Robótica 2025</h1>
+<h1 class="title">Clase 03 - Laboratorio</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -130,25 +178,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<hr>
-<section id="intro" class="level1">
-<h1>Intro</h1>
-<ul>
-<li><strong>Carreras en FICH</strong>: Tecnicatura en automatización y robótica</li>
-<li><strong>Extensión</strong>: Anual</li>
-<li><strong>Carga Horaria</strong>: 120hs</li>
-<li><strong>Sitio</strong>: <a href="https://acapovilla.github.io/robotica-2025/">Robótica 2025</a></li>
-<li><strong>Docente</strong>:
-<ul>
-<li><em>Capovilla, Agustín</em> (<a href="mailto:acapovilla@sinc.unl.edu.ar"><code>acapovilla@sinc.unl.edu.ar</code></a>)</li>
-</ul></li>
-</ul>
-<!-- # Régimen de aprobación y promoción -->
-<!-- # Programa -->
-</section>
-<section id="clases" class="level1">
-<h1>Clases</h1>
-<div class="callout callout-style-default callout-note callout-titled" title="">
+<section id="parte-1-servicios-y-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="parte-1-servicios-y-parámetros">Parte 1: Servicios y parámetros</h2>
+<!-- ### Instalación de paquetes de demostración: `demo-nodes-py` 
+
+```{.bash code-line-numbers="false"}
+    $ sudo apt install ros-jazzy-demo-nodes-py
+``` -->
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -158,136 +195,125 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>El siguiente cronograma será actualizado con el correr del cursado</p>
+<p>Recuerda configurar el entorno:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> source /opt/ros/jazzy/setup.bash</span></code></pre></div>
 </div>
 </div>
-<table class="table-striped table-hover caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 60%">
-<col style="width: 10%">
-<col style="width: 10%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Semana</th>
-<th>Fecha</th>
-<th>Tema</th>
-<th style="text-align: center;">Slides</th>
-<th style="text-align: center;">Lab</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td>17/03</td>
-<td>Introducción a la Robótica. Organización de la materia. Herramientas de trabajo.</td>
-<td style="text-align: center;"><a href="./clases/01" aria-label="Clase 1 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td>24/03</td>
-<td>Feriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td>31/03</td>
-<td>ROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.</td>
-<td style="text-align: center;"><a href="./clases/02" aria-label="Clase 2 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="./clases/02/lab.html" aria-label="Clase 2 lab" title="Lab">🧪</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td>07/04</td>
-<td>ROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.</td>
-<td style="text-align: center;"><a href="./clases/03" aria-label="Clase 3 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="./clases/03/lab.html" aria-label="Clase 3 lab" title="Lab">🧪</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td>14/04</td>
-<td>Revisión conceptos clase anterior. Programación de nodos, compilación y ejecución.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td>21/04</td>
-<td>Programación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td>28/04</td>
-<td>Parámetros en nodos. Programación y uso.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td>05/05</td>
-<td>Cinemática y locomoción: modelo cinemático de un robot diferencial. Odometría.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td>12/05</td>
-<td>ROS2: R.E.P. y Transformaciones. Transformaciones estáticas y herramientas de depuración.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td>19/05</td>
-<td>U.R.D.F: Representación de geometría de un robot. XACRO y paquete tf2.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td>26/05</td>
-<td>Gazebo: Entorno de simulación. Uso conjunto con ROS2.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">12</td>
-<td>02/06</td>
-<td>Paquete ros_control para ROS2 y Gazebo.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">13</td>
-<td>09/06</td>
-<td>Percepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">14</td>
-<td>16/06</td>
-<td>Feriado 16 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 17 de junio)</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">15</td>
-<td>23/06</td>
-<td>Revisión temario clase anterior. Simulación de sensores en Gazebo</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-<!-- # Bibliografía -->
-<!-- # Material de estudio -->
+<section id="servicios" class="level3">
+<h3 class="anchored" data-anchor-id="servicios">Servicios</h3>
+<section id="ejecutar-nodo-demostración-add_two_ints_server-del-paquete-demo_nodes_py" class="level4">
+<h4 class="anchored" data-anchor-id="ejecutar-nodo-demostración-add_two_ints_server-del-paquete-demo_nodes_py">Ejecutar nodo demostración <code>add_two_ints_server</code> del paquete <code>demo_nodes_py</code></h4>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;</code></pre>
+</div>
+</div>
+<hr>
+<!-- ```{.bash code-line-numbers="false"}
+    $ ros2 run demo_nodes_py add_two_ints_server
+``` -->
+</section>
+<section id="listar-los-servicios" class="level4">
+<h4 class="anchored" data-anchor-id="listar-los-servicios">Listar los Servicios</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 service list</span></code></pre></div>
+<p>Para también ver el tipo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 service list <span class="at">-t</span></span></code></pre></div>
+</section>
+<section id="obtener-información-acerca-de-un-servicio" class="level4">
+<h4 class="anchored" data-anchor-id="obtener-información-acerca-de-un-servicio">Obtener información acerca de un servicio</h4>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 service type &lt;nombre_servicio&gt;</code></pre>
+</blockquote>
+<hr>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 service type /add_two_ints</span></code></pre></div>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 interface show &lt;nombre_tipo_servicio&gt;</code></pre>
+</blockquote>
+<hr>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 interface show example_interfaces/srv/AddTwoInts</span></code></pre></div>
+</section>
+<section id="obtener-información-de-servicios-disponibles-para-cada-nodo" class="level4">
+<h4 class="anchored" data-anchor-id="obtener-información-de-servicios-disponibles-para-cada-nodo">Obtener información de servicios disponibles para cada nodo</h4>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 node info &lt;nombre_nodo&gt;</code></pre>
+</blockquote>
+</section>
+<section id="invocar-un-servicio" class="level4">
+<h4 class="anchored" data-anchor-id="invocar-un-servicio">Invocar un servicio</h4>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;</code></pre>
+</blockquote>
+<hr>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts <span class="st">"{a: 7, b: 12}"</span></span></code></pre></div>
+</section>
+</section>
+<section id="parámetros" class="level3">
+<h3 class="anchored" data-anchor-id="parámetros">Parámetros</h3>
+<section id="ejecutar-nodo-demostración-set_parameters_callback-del-paquete-demo_nodes_py" class="level4">
+<h4 class="anchored" data-anchor-id="ejecutar-nodo-demostración-set_parameters_callback-del-paquete-demo_nodes_py">Ejecutar nodo demostración <code>set_parameters_callback</code> del paquete <code>demo_nodes_py</code></h4>
+<hr>
+<!-- ```{.bash code-line-numbers="false"}
+    $ ros2 run demo_nodes_py add_two_ints_server
+``` -->
+</section>
+<section id="listar-los-parámetros" class="level4">
+<h4 class="anchored" data-anchor-id="listar-los-parámetros">Listar los parámetros</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 param list</span></code></pre></div>
+</section>
+<section id="obtener-información-acerca-de-un-parámetro" class="level4">
+<h4 class="anchored" data-anchor-id="obtener-información-acerca-de-un-parámetro">Obtener información acerca de un parámetro</h4>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;</code></pre>
+</blockquote>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 param describe /set_parameters_callback param1</span></code></pre></div>
+</section>
+<section id="obtener-el-valor-de-un-parámetro" class="level4">
+<h4 class="anchored" data-anchor-id="obtener-el-valor-de-un-parámetro">Obtener el valor de un parámetro</h4>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;</code></pre>
+</blockquote>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 param get /set_parameters_callback param1</span></code></pre></div>
+</section>
+<section id="establecer-el-valor-de-un-parámetro" class="level4">
+<h4 class="anchored" data-anchor-id="establecer-el-valor-de-un-parámetro">Establecer el valor de un parámetro</h4>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;</code></pre>
+</blockquote>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 param set /set_parameters_callback param1 1.0</span></code></pre></div>
+</section>
+<section id="obtener-el-valor-de-los-parámetros-de-un-nodo" class="level4">
+<h4 class="anchored" data-anchor-id="obtener-el-valor-de-los-parámetros-de-un-nodo">Obtener el valor de los parámetros de un nodo</h4>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 param dump &lt;nombre_nodo&gt;</code></pre>
+</blockquote>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 param dump /set_parameters_callback</span></code></pre></div>
+</section>
+<section id="cargar-un-archivo-de-parámetros-al-momento-de-ejecutar-nodos" class="level4">
+<h4 class="anchored" data-anchor-id="cargar-un-archivo-de-parámetros-al-momento-de-ejecutar-nodos">Cargar un archivo de parámetros al momento de ejecutar nodos</h4>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args 
+      --params-file &lt;archivo&gt;</code></pre>
+</blockquote>
+</section>
+</section>
+</section>
+<section id="parte-2-creación-de-paquetes-y-programación-de-nodo" class="level2">
+<h2 class="anchored" data-anchor-id="parte-2-creación-de-paquetes-y-programación-de-nodo">Parte 2: Creación de paquetes y programación de nodo</h2>
+<!-- ### Creación de paquete
+
+### Programación de publisher
+
+### Programación de suscriber
+
+### Compilación y ejecución -->
 
 
 </section>
@@ -313,67 +339,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/acapovilla\.github\.io\/robotica-2025\/");

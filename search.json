@@ -112,32 +112,179 @@
     "text": "Laboratorio\n\nInstalación de ROS2\nEmisor / Receptor\nComandos para análisis de nodos, topics y mensajes"
   },
   {
+    "objectID": "clases/03/index.html#resumen-clase-02",
+    "href": "clases/03/index.html#resumen-clase-02",
+    "title": "Robótica",
+    "section": "Resumen Clase 02",
+    "text": "Resumen Clase 02\n\n\n\nROS 2 - Jazzy\n\nNodos\nTopics\nMensajes\n\n\n\n\n\n\n\n\n\n\nAlgunos comandos más usados (run, node list, node info, topic list, topic info, topic echo, rqt_graph)"
+  },
+  {
+    "objectID": "clases/03/index.html#ros2-contexto-y-namespaces",
+    "href": "clases/03/index.html#ros2-contexto-y-namespaces",
+    "title": "Robótica",
+    "section": "ROS2: Contexto y namespaces",
+    "text": "ROS2: Contexto y namespaces\n\n\nSimilaridad a una estructura de carpetas\n\nTipos\n\nGlobal\nRelativo\nBase\nPrivado\n\n\n/\n├── sim1/\n│ └── robot/\n│     ├── cmd_vel       /sim1/robot/cmd_vel\n│     └── odometry      /sim1/robot/odometry\n└── sim2/\n    └── robot/\n        ├── cmd_vel     /sim2/robot/cmd_vel\n        └── odometry    /sim2/robot/odometry\n\nBase:       robot\n\nPrivado:    ~/cmd_vel\n            ~/odometry\n\n\nExplicación de contexto: Estructura jerárquica de nombres utilizada en ROS para proveer encapsulamiento y así poder gestionar de una forma más sencilla grandes sistemas.\nExisten 4 tipos de nombres: base, relativo, global y privado.\nLa resolución se realiza de forma relativa al namespace del nodo.\n\nGlobal -&gt; empiezan con “/” y se consideran resueltos\nRelativo -&gt; no empiezan con “/” y deben ser resueltos de forma relativa al namespace del nodo\nBase -&gt; Es un subtipo de relativo: No llevan namespaces y generalmente se utilizan para inicializar el nombre del nodo\nPrivado -&gt; empiezan on “~” y convierten el nodo en un “namespace”"
+  },
+  {
+    "objectID": "clases/03/index.html#ros2-servicios",
+    "href": "clases/03/index.html#ros2-servicios",
+    "title": "Robótica",
+    "section": "ROS2: Servicios",
+    "text": "ROS2: Servicios\n\n\n\nModelo de llamada-respuesta\n\n\n\nBidireccional\n\n\n\n\nSolo proveen información cuando son invocados\n\n\n\n\nComunicación es 1 a N\n\n\n\n\n\n\n\n\n\n\nServicios (comunicación)\n\nBasados en un modelo de “llamada-respuesta” (call-and-response)\nLa diferencia con Topics: no son continuos, solo proveen información cuando son invocados.\nMuchos clientes pero solo un servidor.\nBidireccional\nDefinidos en archivos .srv"
+  },
+  {
+    "objectID": "clases/03/index.html#ros2-parámetros",
+    "href": "clases/03/index.html#ros2-parámetros",
+    "title": "Robótica",
+    "section": "ROS2: Parámetros",
+    "text": "ROS2: Parámetros\n\nValores de configuración para un nodo\n\n\n\nCada nodo posee sus propios parámetros\n\n\n\n\n\nint\nfloat\nbool\nstring\nlist[]"
+  },
+  {
+    "objectID": "clases/03/index.html#laboratorio-parte-1",
+    "href": "clases/03/index.html#laboratorio-parte-1",
+    "title": "Robótica",
+    "section": "Laboratorio (parte 1)",
+    "text": "Laboratorio (parte 1)\n\nInvocar y analizar servicios\nComandos para setear y obtener comandos"
+  },
+  {
+    "objectID": "clases/03/index.html#entorno-de-ros-y-workspace",
+    "href": "clases/03/index.html#entorno-de-ros-y-workspace",
+    "title": "Robótica",
+    "section": "Entorno de ROS y workspace",
+    "text": "Entorno de ROS y workspace\n\n\nDos niveles:\n\noverlay ➡️ Nuestros paquetes\nunderlay ➡️ Paquetes instalados\n\n\n\nWorkspace\n📂 ros_ws\n  📁 src\n  📁 build      ⚠️\n  📁 install    ⚠️\n  📁 log        ⚠️\n\n\n\n \n\n\n\n\n\n\nWorkspace de desarrollo . install/local_setup.bash\n\n\nPaquete de ROS instalados source /opt/ros/humble/setup.bash\n\n\n\n\n\nDos “niveles”: Paquetes de ROS2 instalados (cuando se hace el source) “underlay” (tiene las dependencias del “overlay”), workspace de desarrollo donde se agregan paquetes nuevos “overlay”. Este último sobre-escribe paquetes del “underlay”.\nworkspace: Estructura de carpetas que contiene paquetes\n\nsrc: código fuente: crear y editar el código de los paquetes que se quieren compilar\nbuild: caché y archivos intermedios de compilación\ninstall: los paquetes o “targets” instalados\nlog: Información de log"
+  },
+  {
+    "objectID": "clases/03/index.html#paquete-de-ros",
+    "href": "clases/03/index.html#paquete-de-ros",
+    "title": "Robótica",
+    "section": "Paquete de ROS",
+    "text": "Paquete de ROS\n\n\nContiene\n\n\nCódigo fuente\nArchivos de configuración\nArchivos “launch”\nDefinición de mensajes, servicios, etc\nMetadatos e información\nDocumentación\n\n\n\n\n📂 src\n  📁 nombre_paquete\n      📁 nombre_paquete\n          📄 __init__.py\n          ...\n  📁resource\n      📄 nombre_paquete\n  📄 package.xml\n  📄 setup.cfg\n  📄 setup.py\n\n\n\nContenedor o marco del código (contiene código fuente, archivos launch, archivos de configuración, definición de mensajes, datos y documentación). Forma que permite instalar el propio código y compartirlo.\nArchivos mínimos para paquetes Python (para cada paquete por separado)\n\npackage.xml: información acerca del paquete (cual?)\nsetup.py -&gt; instrucciones para instalar el paquete\nsetup.cfg -&gt; Para que el comando run encuentra los ejecutables en el caso de que existan\n/&lt;nombre_paquete&gt; -&gt; Carpeta con el mismo nombre del paquete junto con el archivo __init__.py utilizado por las herramientas de ROS2"
+  },
+  {
+    "objectID": "clases/03/index.html#paquete-de-ros-package.xml",
+    "href": "clases/03/index.html#paquete-de-ros-package.xml",
+    "title": "Robótica",
+    "section": "Paquete de ROS: 📄 package.xml",
+    "text": "Paquete de ROS: 📄 package.xml\nContiene\n\nPropiedades e información del paquete\nFormato XML\n\n&lt;?xml version=\"1.0\"?&gt;\n&lt;?xml-model href=\"http://download.ros.org/schema/package_format3.xsd\"\n    schematypens=\"http://www.w3.org/2001/XMLSchema\"?&gt;\n\n&lt;package format=\"3\"&gt;\n    &lt;name&gt;nombre_paquete&lt;/name&gt;\n    &lt;version&gt;0.0.0&lt;/version&gt;\n    &lt;description&gt;Descripción del paquete&lt;/description&gt;\n    &lt;maintainer email=\"user@todo.todo\"&gt;user&lt;/maintainer&gt;\n    &lt;license&gt;Licencia&lt;/license&gt;\n\n    &lt;url type=\"website\"&gt;https://github.com/...&lt;/url&gt;\n    &lt;author email=\"user@todo.todo\"&gt;user&lt;/author&gt;\n\n    &lt;depend&gt;nombre_paquete_dependencia&lt;/depend&gt;\n\n    &lt;export&gt;\n        &lt;build_type&gt;ament_python&lt;/build_type&gt;\n    &lt;/export&gt;\n&lt;/package&gt;\n\nPropiedades e información del paquete: Nombre, versión, autores, dependencias, descripción, etc\nBreve descripción de los archivos con codificación eXtensible Markup Language:\n\nLenguaje de marcado -&gt; una forma de organizar la información utilizando etiquetas (para definir elementos) y atributos (para información adicional), de forma jerárquica.\nEs flexible y puede personalizarse -&gt; Útil para intercambiar información\nFácil de entender para humanos"
+  },
+  {
+    "objectID": "clases/03/index.html#paquete-de-ros-setup.py",
+    "href": "clases/03/index.html#paquete-de-ros-setup.py",
+    "title": "Robótica",
+    "section": "Paquete de ROS: 📄 setup.py",
+    "text": "Paquete de ROS: 📄 setup.py\nContiene\n\nInstrucciones de cómo se debe instalar el paquete (para el sistema de compilación)\nDeben coincidir la información y los metadatos con los del package.xml\n\nfrom setuptools import setup\n\npackage_name = 'nombre_paquete'\n\nsetup(\n  name=package_name,\n  version='0.0.0',\n  # Packages to export\n  packages=[package_name],\n  # Files we want to install, specifically launch files\n  data_files=[\n      # Install marker file in the package index\n      ('share/ament_index/resource_index/packages',\n             ['resource/' + package_name]),\n      # Include our package.xml file\n      ('share/' + package_name, ['package.xml']),\n    ],\n  # This is important as well\n  install_requires=['setuptools'],\n  zip_safe=True,\n  maintainer='TODO',\n  maintainer_email='TODO',\n  description='TODO: Package description',\n  license='TODO: License declaration',\n  tests_require=['pytest'],\n  entry_points={\n      'console_scripts': [\n              'nombre_nodo = nombre_paquete.nombre_nodo:main'\n      ],\n    },\n)\n\nContenido: repite nombre, version, descripción, maintainer y licencia. Es necesario que sean iguales en los dos archivos"
+  },
+  {
+    "objectID": "clases/03/index.html#paquete-de-ros-setup.cfg",
+    "href": "clases/03/index.html#paquete-de-ros-setup.cfg",
+    "title": "Robótica",
+    "section": "Paquete de ROS: 📄 setup.cfg",
+    "text": "Paquete de ROS: 📄 setup.cfg\n\nSi el paquete posee un ejecutable, para que ros2 run lo pueda encontrar\n\n[develop]\nscript_dir=$base/lib/&lt;nombre_paquete&gt;\n\n[install]\ninstall_scripts=$base/lib/&lt;nombre_paquete&gt;"
+  },
+  {
+    "objectID": "clases/03/index.html#rclpy-ros-client-library-python",
+    "href": "clases/03/index.html#rclpy-ros-client-library-python",
+    "title": "Robótica",
+    "section": "rclpy: ROS Client Library (Python)",
+    "text": "rclpy: ROS Client Library (Python)\n\nAcceso a los componentes de ROS\n\n\n\nInicialización y ejecución de callbacks\nGestión de nodos\nTopics, servicios, acciones, etc.\nLogs\n\n\n\nimport rclpy\n\n\n\nAcceso a los elementos de ROS desde la sintaxis de Python utilizando tipos nativos y patrones como listas.\nComponentes principales de la librería:-Inicialización y “spinning”. Gestión del nodo. Log. Subscriber/Publisher. Parámetros.\n(así como servicios, acciones y elementos de sincronización)\n\n\n\nDocumentación completa en: docs.ros2.org/latest/api/rclpy"
+  },
+  {
+    "objectID": "clases/03/index.html#rclpy-ros-client-library-python-1",
+    "href": "clases/03/index.html#rclpy-ros-client-library-python-1",
+    "title": "Robótica",
+    "section": "rclpy: ROS Client Library (Python)",
+    "text": "rclpy: ROS Client Library (Python)\n\nPartes básicas del programa\n\n\n\nInicialización\n rclpy.init(..)\n\n\nAntes que cualquier otra función de ROS\n\n\nDefine el contexto\n\n\n\n\nInicialización: Debe ser llamado antes de cualquier otra función de ROS. Define el contexto."
+  },
+  {
+    "objectID": "clases/03/index.html#rclpy-ros-client-library-python-2",
+    "href": "clases/03/index.html#rclpy-ros-client-library-python-2",
+    "title": "Robótica",
+    "section": "rclpy: ROS Client Library (Python)",
+    "text": "rclpy: ROS Client Library (Python)\n\nPartes básicas del programa\n\n\nInicialización\n rclpy.init(..)\nCreación de 1 o más nodos\n rclpy.create_node(..)\n\n\nPunto de acceso al sistema de ROS (topics, parámetros, servicios, etc.)\n\n\nEn POO sería a través de una instancia ‘node’\n\n\nCreación del nodo: es el punto de acceso al sistema de ROS (topics, servicios, parámetros, etc)\nEn el caso de utilizar clases (POO) sería a través de una instancia de ‘node’."
+  },
+  {
+    "objectID": "clases/03/index.html#rclpy-ros-client-library-python-3",
+    "href": "clases/03/index.html#rclpy-ros-client-library-python-3",
+    "title": "Robótica",
+    "section": "rclpy: ROS Client Library (Python)",
+    "text": "rclpy: ROS Client Library (Python)\n\nPartes básicas del programa\n\n\nInicialización\n rclpy.init(..)\nCreación de 1 o más nodos\n rclpy.create_node(..)\nProcesamiento de callbacks (spinning)\n rclpy.spin(..)\n\n\nSe procesan los callbacks y demás tareas del nodo\n\n\n“Spinning”: Procesar los callbacks y demás rutinas"
+  },
+  {
+    "objectID": "clases/03/index.html#rclpy-ros-client-library-python-4",
+    "href": "clases/03/index.html#rclpy-ros-client-library-python-4",
+    "title": "Robótica",
+    "section": "rclpy: ROS Client Library (Python)",
+    "text": "rclpy: ROS Client Library (Python)\n\nPartes básicas del programa\n\n\nInicialización\n rclpy.init(..)\nCreación de 1 o más nodos\n rclpy.create_node(..)\nProcesamiento de callbacks (spinning)\n rclpy.spin(..)\nApagado / finalización (shutdown)\n rclpy.shutdown()\n\n\nFinalización: rclpy.shutdown()"
+  },
+  {
+    "objectID": "clases/03/index.html#rclpy-ros-client-library-python-5",
+    "href": "clases/03/index.html#rclpy-ros-client-library-python-5",
+    "title": "Robótica",
+    "section": "rclpy: ROS Client Library (Python)",
+    "text": "rclpy: ROS Client Library (Python)\n\nGestión de nodos\n\n\n\nCrear un publisher: node.create_publisher(..)\n\n\n\n\nCrear un suscriber: node.create_subscription(..)\n\n\n\n\nTimer: node.create_timer(..)\n\n\n\n\nLog: node.get_logger(..)\n\n\n\nManejo de nodos:\n\nCrear un publisher: Tipo de mensaje, nombre del topic\nCrear un subscriptor: Tipo de mensaje, nombre del topic, callback\nTimer: Tareas repetitivas a una frecuencia deseada. Período, callback\nLoggear: Mensajes en consola"
+  },
+  {
+    "objectID": "clases/03/index.html#compilación-del-paquete",
+    "href": "clases/03/index.html#compilación-del-paquete",
+    "title": "Robótica",
+    "section": "Compilación del paquete",
+    "text": "Compilación del paquete\n\nSistema de compilación: ament\n\n\nHerramienta de compilación: colcon\n\n    colcon build --symlink-install\n\nDependencias:\n\n    rosdep update\n\n    rosdep install -i --from-path src --rosdistro humble -y\n\n\n\n\n\n\n\nEjecutar en la raíz del workspace"
+  },
+  {
     "objectID": "index.html#universidad-nacional-del-litoral-unl",
     "href": "index.html#universidad-nacional-del-litoral-unl",
     "title": "Robótica 2025",
     "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatizaicón y Robótica (TUAR)"
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/03/lab.html",
+    "href": "clases/03/lab.html",
+    "title": "Clase 03 - Laboratorio",
+    "section": "",
+    "text": "Note\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
+  },
+  {
+    "objectID": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 03 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/03/lab.html#parte-1-servicios-y-parámetros",
+    "href": "clases/03/lab.html#parte-1-servicios-y-parámetros",
+    "title": "Clase 03 - Laboratorio",
+    "section": "",
+    "text": "Note\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
+  },
+  {
+    "objectID": "clases/03/lab.html#parte-2-creación-de-paquetes-y-programación-de-nodo",
+    "href": "clases/03/lab.html#parte-2-creación-de-paquetes-y-programación-de-nodo",
+    "title": "Clase 03 - Laboratorio",
+    "section": "Parte 2: Creación de paquetes y programación de nodo",
+    "text": "Parte 2: Creación de paquetes y programación de nodo"
   },
   {
     "objectID": "clases/02/lab.html",
     "href": "clases/02/lab.html",
     "title": "Clase 02 - Laboratorio",
     "section": "",
-    "text": "Windows 10 / 11 (WSL)Ubuntu 24.04Docker\n\n\n\n\n\n\n\n\nAntes de iniciar\n\n\n\nSe necesitan todas las últimas actualizaciones de Windows instaladas\n\n\n\n\n\n    $ wsl --install\n\n\n\n\nPara ver todas las distribuciones y versiones disponibles:\n    $ wsl --list --online\nPara instalar\n    $ wsl --install -d Ubuntu-24.04\n\n\n\n\n    $ ubuntu2404.exe\n\n\n\n\n\n\n\nNote\n\n\n\nContinuar con la creación de usuario y contraseña\n\n\n\n\n\n\nTraducido de documentation.ubuntu.com/wsl\n\n\n\n\n\n\n\n\n\nActualizar el sistema\n\n\n\n    $ sudo apt update\n    $ sudo apt upgrade -y\n\n\n\n\n\n    $ sudo apt install software-properties-common curl -y\n    $ sudo add-apt-repository universe\nAgregar la key GPG de ROS 2\n    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg\nAgregar repositorio a la source list\n    $ echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main\" | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null\n\n\n\n\nActualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update & sudo apt upgrade -y\nInstalación Desktop: ROS, RViz, demos, etc.\n    $ sudo apt install ros-jazzy-desktop -y\n\nTraducido de docs.ros.org"
+    "text": "Windows 10 / 11 (WSL)Ubuntu 24.04Docker\n\n\n\n\n\n\n\n\nAntes de iniciar\n\n\n\nSe necesitan todas las últimas actualizaciones de Windows instaladas\n\n\n\n\n\n    $ wsl --install\n\n\n\n\nPara ver todas las distribuciones y versiones disponibles:\n    $ wsl --list --online\nPara instalar\n    $ wsl --install -d Ubuntu-24.04\n\n\n\n\n    $ ubuntu2404.exe\n\n\n\n\n\n\n\nNote\n\n\n\nContinuar con la creación de usuario y contraseña\n\n\n\n\n\n\nTraducido de documentation.ubuntu.com/wsl\n\n\n\n\n\n\n\n\n\nActualizar el sistema\n\n\n\n    $ sudo apt update\n    $ sudo apt upgrade -y\n\n\n\n\n\n    $ sudo apt install software-properties-common curl -y\n    $ sudo add-apt-repository universe\nAgregar la key GPG de ROS 2\n    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg\nAgregar repositorio a la source list\n    $ echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main\" | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null\n\n\n\n\nActualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update & sudo apt upgrade -y\nInstalación Desktop: ROS, RViz, demos, etc.\n    $ sudo apt install ros-jazzy-desktop -y\n\nTraducido de docs.ros.org\n\n\n\n\n\n\n\n\n\n\n\n\n\nVer contenido del archivo\n\n\n\ndevcontainer.json\n\n// For format details, see https://aka.ms/devcontainer.json.\n{\n    \"name\": \"TUAR - ROS2 Jazzy\",\n    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile\n    \"image\": \"registry.gitlab.com/acapovilla/ros-docker-images/ros2/jazzy-noble-desktop-full:latest\",\n    // Workspace setup\n    \"workspaceMount\": \"source=${localWorkspaceFolder},target=/workspaces/catkin_ws,type=bind,consistency=cached\",\n    \"workspaceFolder\": \"/workspaces/catkin_ws\",\n    \"remoteUser\": \"ubuntu\",\n    \"containerUser\": \"ubuntu\",\n\n    // Features to add to the dev container. More info: https://containers.dev/features.\n    \"features\": {\n        \"ghcr.io/devcontainers/features/common-utils:2\": {\n            \"installZsh\": true,\n            \"installOhMyZsh\": true,\n            \"installOhMyZshConfig\": true,\n            \"nonFreePackages\": true,\n            \"username\": \"ubuntu\",\n            \"userUid\": \"automatic\",\n            \"userGid\": \"automatic\"\n        }\n    },\n\n    // Use 'forwardPorts' to make a list of ports inside the container available locally.\n    // \"forwardPorts\": [],\n\n    // Use 'postCreateCommand' to run commands after the container is created.\n    // \"postCreateCommand\": \"uname -a\",\n\n    // Configure tool-specific properties.\n    \"customizations\": {\n        \"vscode\": {\n            \"extensions\": [\n                \"ms-vscode.cpptools\",\n                \"ms-iot.vscode-ros\",\n                \"twxs.cmake\",\n                \"mutantdino.resourcemonitor\",\n                \"donjayamanne.python-environment-manager\",\n                \"KevinRose.vsc-python-indent\",\n                \"VisualStudioExptTeam.vscodeintellicode\",\n                \"ms-python.vscode-pylance\",\n                \"ms-vscode.cmake-tools\"\n            ]\n        }\n    },\n\n    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.\n    // \"remoteUser\": \"root\"\n\n    \"containerEnv\": {\n        // Display configuration\n        \"DISPLAY\": \"${localEnv:DISPLAY}\"\n    },\n    \"mounts\": [\n        // X-Server\n        \"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,readonly=false\"\n    ],\n    \"runArgs\": [\n        \"--device=/dev/dri:/dev/dri\",\n        \"--privileged\",\n        \"--volume=/dev:/dev\",\n        \"--net=host\"\n    ],\n    \"onCreateCommand\": \"echo 'source /opt/ros/$ROS_DISTRO/setup.bash' &gt;&gt; /home/ubuntu/.bashrc\",\n    \"postCreateCommand\": \"sudo apt update && rosdep update\"\n}"
   },
   {
     "objectID": "clases/02/lab.html#universidad-nacional-del-litoral-unl",
     "href": "clases/02/lab.html#universidad-nacional-del-litoral-unl",
     "title": "Clase 02 - Laboratorio",
     "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatizaicón y Robótica (TUAR)"
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
   },
   {
     "objectID": "clases/02/lab.html#instalación-de-ros2",
     "href": "clases/02/lab.html#instalación-de-ros2",
     "title": "Clase 02 - Laboratorio",
     "section": "",
-    "text": "Windows 10 / 11 (WSL)Ubuntu 24.04Docker\n\n\n\n\n\n\n\n\nAntes de iniciar\n\n\n\nSe necesitan todas las últimas actualizaciones de Windows instaladas\n\n\n\n\n\n    $ wsl --install\n\n\n\n\nPara ver todas las distribuciones y versiones disponibles:\n    $ wsl --list --online\nPara instalar\n    $ wsl --install -d Ubuntu-24.04\n\n\n\n\n    $ ubuntu2404.exe\n\n\n\n\n\n\n\nNote\n\n\n\nContinuar con la creación de usuario y contraseña\n\n\n\n\n\n\nTraducido de documentation.ubuntu.com/wsl\n\n\n\n\n\n\n\n\n\nActualizar el sistema\n\n\n\n    $ sudo apt update\n    $ sudo apt upgrade -y\n\n\n\n\n\n    $ sudo apt install software-properties-common curl -y\n    $ sudo add-apt-repository universe\nAgregar la key GPG de ROS 2\n    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg\nAgregar repositorio a la source list\n    $ echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main\" | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null\n\n\n\n\nActualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update & sudo apt upgrade -y\nInstalación Desktop: ROS, RViz, demos, etc.\n    $ sudo apt install ros-jazzy-desktop -y\n\nTraducido de docs.ros.org"
+    "text": "Windows 10 / 11 (WSL)Ubuntu 24.04Docker\n\n\n\n\n\n\n\n\nAntes de iniciar\n\n\n\nSe necesitan todas las últimas actualizaciones de Windows instaladas\n\n\n\n\n\n    $ wsl --install\n\n\n\n\nPara ver todas las distribuciones y versiones disponibles:\n    $ wsl --list --online\nPara instalar\n    $ wsl --install -d Ubuntu-24.04\n\n\n\n\n    $ ubuntu2404.exe\n\n\n\n\n\n\n\nNote\n\n\n\nContinuar con la creación de usuario y contraseña\n\n\n\n\n\n\nTraducido de documentation.ubuntu.com/wsl\n\n\n\n\n\n\n\n\n\nActualizar el sistema\n\n\n\n    $ sudo apt update\n    $ sudo apt upgrade -y\n\n\n\n\n\n    $ sudo apt install software-properties-common curl -y\n    $ sudo add-apt-repository universe\nAgregar la key GPG de ROS 2\n    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg\nAgregar repositorio a la source list\n    $ echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main\" | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null\n\n\n\n\nActualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update & sudo apt upgrade -y\nInstalación Desktop: ROS, RViz, demos, etc.\n    $ sudo apt install ros-jazzy-desktop -y\n\nTraducido de docs.ros.org\n\n\n\n\n\n\n\n\n\n\n\n\n\nVer contenido del archivo\n\n\n\ndevcontainer.json\n\n// For format details, see https://aka.ms/devcontainer.json.\n{\n    \"name\": \"TUAR - ROS2 Jazzy\",\n    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile\n    \"image\": \"registry.gitlab.com/acapovilla/ros-docker-images/ros2/jazzy-noble-desktop-full:latest\",\n    // Workspace setup\n    \"workspaceMount\": \"source=${localWorkspaceFolder},target=/workspaces/catkin_ws,type=bind,consistency=cached\",\n    \"workspaceFolder\": \"/workspaces/catkin_ws\",\n    \"remoteUser\": \"ubuntu\",\n    \"containerUser\": \"ubuntu\",\n\n    // Features to add to the dev container. More info: https://containers.dev/features.\n    \"features\": {\n        \"ghcr.io/devcontainers/features/common-utils:2\": {\n            \"installZsh\": true,\n            \"installOhMyZsh\": true,\n            \"installOhMyZshConfig\": true,\n            \"nonFreePackages\": true,\n            \"username\": \"ubuntu\",\n            \"userUid\": \"automatic\",\n            \"userGid\": \"automatic\"\n        }\n    },\n\n    // Use 'forwardPorts' to make a list of ports inside the container available locally.\n    // \"forwardPorts\": [],\n\n    // Use 'postCreateCommand' to run commands after the container is created.\n    // \"postCreateCommand\": \"uname -a\",\n\n    // Configure tool-specific properties.\n    \"customizations\": {\n        \"vscode\": {\n            \"extensions\": [\n                \"ms-vscode.cpptools\",\n                \"ms-iot.vscode-ros\",\n                \"twxs.cmake\",\n                \"mutantdino.resourcemonitor\",\n                \"donjayamanne.python-environment-manager\",\n                \"KevinRose.vsc-python-indent\",\n                \"VisualStudioExptTeam.vscodeintellicode\",\n                \"ms-python.vscode-pylance\",\n                \"ms-vscode.cmake-tools\"\n            ]\n        }\n    },\n\n    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.\n    // \"remoteUser\": \"root\"\n\n    \"containerEnv\": {\n        // Display configuration\n        \"DISPLAY\": \"${localEnv:DISPLAY}\"\n    },\n    \"mounts\": [\n        // X-Server\n        \"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,readonly=false\"\n    ],\n    \"runArgs\": [\n        \"--device=/dev/dri:/dev/dri\",\n        \"--privileged\",\n        \"--volume=/dev:/dev\",\n        \"--net=host\"\n    ],\n    \"onCreateCommand\": \"echo 'source /opt/ros/$ROS_DISTRO/setup.bash' &gt;&gt; /home/ubuntu/.bashrc\",\n    \"postCreateCommand\": \"sudo apt update && rosdep update\"\n}"
   },
   {
     "objectID": "clases/02/lab.html#configuración-del-entorno",
