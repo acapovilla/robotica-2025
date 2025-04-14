@@ -392,7 +392,7 @@ Privado:    ~/cmd_vel
 <td style="text-align: center;">Workspace de desarrollo<br> <code>. install/local_setup.bash</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Paquete de ROS instalados<br> <code>source /opt/ros/humble/setup.bash</code></td>
+<td style="text-align: center;">Paquete de ROS instalados<br> <code>source /opt/ros/jazzy/setup.bash</code></td>
 </tr>
 </tbody>
 </table>
@@ -440,11 +440,11 @@ Privado:    ~/cmd_vel
       📁 nombre_paquete
           📄 __init__.py
           ...
-  📁resource
-      📄 nombre_paquete
-  📄 package.xml
-  📄 setup.cfg
-  📄 setup.py</code></pre>
+      📁 resource
+          📄 nombre_paquete
+      📄 package.xml
+      📄 setup.cfg
+      📄 setup.py</code></pre>
 </blockquote>
 </div></div>
 <aside class="notes">
@@ -799,18 +799,19 @@ Privado:    ~/cmd_vel
 <section id="compilación-del-paquete" class="slide level2">
 <h2>Compilación del paquete</h2>
 <blockquote>
-<p>Sistema de compilación: <code>ament</code></p>
+<p>Creación de paquetes:</p>
 </blockquote>
+<pre><code>    ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;</code></pre>
 <blockquote>
 <p>Herramienta de compilación: <code>colcon</code></p>
 </blockquote>
-<pre><code>    colcon build --symlink-install</code></pre>
+<pre><code>    colcon build [--symlink-install] [--packages-select &lt;nombre_paquete&gt;]</code></pre>
 <blockquote>
 <p>Dependencias:</p>
 </blockquote>
 <pre><code>    rosdep update
 
-    rosdep install -i --from-path src --rosdistro humble -y</code></pre>
+    rosdep install -i --from-path src --rosdistro jazzy -y</code></pre>
 <div title="Ejecutar en la raíz del workspace">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">

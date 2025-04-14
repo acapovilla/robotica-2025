@@ -204,19 +204,100 @@ Antes de iniciar
 <section id="instalar-wsl" class="level4">
 <h4 class="anchored" data-anchor-id="instalar-wsl">1️⃣ Instalar WSL</h4>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> wsl <span class="at">--install</span></span></code></pre></div>
+<details>
+<summary>
+Ver salida
+</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>La operación solicitada requiere elevación.</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Descargando: Subsistema de Windows para Linux 2.4.13</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Instalando: Subsistema de Windows para Linux 2.4.13</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Se ha instalado Subsistema de Windows para Linux 2.4.13.</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Instalando componente opcional de Windows: VirtualMachinePlatform</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Herramienta Administración y mantenimiento de imágenes de implementación</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Versión: 10.0.26100.1150</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Versión de imagen: 10.0.26100.3624</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>Habilitando características</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>[==========================100.0%==========================]</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>La operación se completó correctamente.</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>La operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>La operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.</span></code></pre></div>
+</details>
+<div class="callout callout-style-default callout-note callout-titled" title="Recomendación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Recomendación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se recomienda reiniciar la PC después de esta instalación inicial para finalizar el setup</p>
+</div>
+</div>
 <hr>
 </section>
 <section id="instalar-ubuntu-wsl" class="level4">
 <h4 class="anchored" data-anchor-id="instalar-ubuntu-wsl">2️⃣ Instalar Ubuntu WSL</h4>
 <p>Para ver todas las distribuciones y versiones disponibles:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> wsl <span class="at">--list</span> <span class="at">--online</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> wsl <span class="at">--list</span> <span class="at">--online</span></span></code></pre></div>
+<details>
+<summary>
+Ver salida
+</summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A continuación, se muestra una lista de las distribuciones válidas que se pueden instalar.</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Instalar con "wsl.exe --install &lt;Distro&gt;".</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>NAME                            FRIENDLY NAME</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>AlmaLinux-8                     AlmaLinux OS 8</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>AlmaLinux-9                     AlmaLinux OS 9</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>AlmaLinux-Kitten-10             AlmaLinux OS Kitten 10</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>Debian                          Debian GNU/Linux</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>SUSE-Linux-Enterprise-15-SP5    SUSE Linux Enterprise 15 SP5</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>SUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>Ubuntu                          Ubuntu</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>Ubuntu-24.04                    Ubuntu 24.04 LTS</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>kali-linux                      Kali Linux Rolling</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>openSUSE-Tumbleweed             openSUSE Tumbleweed</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>openSUSE-Leap-15.6              openSUSE Leap 15.6</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>Ubuntu-18.04                    Ubuntu 18.04 LTS</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>Ubuntu-20.04                    Ubuntu 20.04 LTS</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>Ubuntu-22.04                    Ubuntu 22.04 LTS</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>OracleLinux_7_9                 Oracle Linux 7.9</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>OracleLinux_8_7                 Oracle Linux 8.7</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>OracleLinux_9_1                 Oracle Linux 9.1</span></code></pre></div>
+</details>
 <p>Para instalar</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> wsl <span class="at">--install</span> <span class="at">-d</span> Ubuntu-24.04</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> wsl <span class="at">--install</span> <span class="at">-d</span> Ubuntu-24.04</span></code></pre></div>
+<details>
+<summary>
+Ver salida
+</summary>
+<div class="sourceCode" id="cb6"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Descargando: Ubuntu 24.04 LTS</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Instalando: Ubuntu 24.04 LTS</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Distribución instalada correctamente.</span></code></pre></div>
+</details>
 <hr>
 </section>
 <section id="ejecutar-y-configurar-ubuntu" class="level4">
 <h4 class="anchored" data-anchor-id="ejecutar-y-configurar-ubuntu">3️⃣ Ejecutar y configurar Ubuntu</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ubuntu2404.exe</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> wsl <span class="at">-d</span> Ubuntu-24.04</span></code></pre></div>
+<details>
+<summary>
+Ver salida
+</summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Provisioning the new WSL instance Ubuntu-24.04</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>This might take a while...</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Create a default Unix user account: ubuntu</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>New password:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Retype new password:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>passwd: password updated successfully</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>To run a command as administrator (user "root"), use "sudo &lt;command&gt;".</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>See "man sudo_root" for details.</span></code></pre></div>
+</details>
 <hr>
 <div class="callout callout-style-default callout-note callout-titled" title="">
 <div class="callout-header d-flex align-content-center">
@@ -256,20 +337,20 @@ Actualizar el sistema
 <hr>
 <section id="habilitar-repositorios" class="level4">
 <h4 class="anchored" data-anchor-id="habilitar-repositorios">1️⃣ Habilitar repositorios</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo apt install software-properties-common curl <span class="at">-y</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo add-apt-repository universe</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo apt install software-properties-common curl <span class="at">-y</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo add-apt-repository universe</span></code></pre></div>
 <p>Agregar la key GPG de ROS 2</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo curl <span class="at">-sSL</span> https://raw.githubusercontent.com/ros/rosdistro/master/ros.key <span class="at">-o</span> /usr/share/keyrings/ros-archive-keyring.gpg</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo curl <span class="at">-sSL</span> https://raw.githubusercontent.com/ros/rosdistro/master/ros.key <span class="at">-o</span> /usr/share/keyrings/ros-archive-keyring.gpg</span></code></pre></div>
 <p>Agregar repositorio a la source list</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> echo <span class="st">"deb [arch=</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="va">$(</span><span class="bu">.</span> /etc/os-release <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="va">$UBUNTU_CODENAME)</span><span class="st"> main"</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/ros2.list <span class="op">&gt;</span> /dev/null</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> echo <span class="st">"deb [arch=</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="va">$(</span><span class="bu">.</span> /etc/os-release <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="va">$UBUNTU_CODENAME)</span><span class="st"> main"</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/ros2.list <span class="op">&gt;</span> /dev/null</span></code></pre></div>
 <hr>
 </section>
 <section id="instalar-ros-2" class="level4">
 <h4 class="anchored" data-anchor-id="instalar-ros-2">2️⃣ Instalar ROS 2</h4>
 <p>Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo apt update <span class="kw">&amp;</span> <span class="fu">sudo</span> apt upgrade <span class="at">-y</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt upgrade <span class="at">-y</span></span></code></pre></div>
 <p>Instalación Desktop: ROS, RViz, demos, etc.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo apt install ros-jazzy-desktop <span class="at">-y</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo apt install ros-jazzy-desktop <span class="at">-y</span></span></code></pre></div>
 <hr>
 <p>Traducido de <a href="https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html" target="_blank">docs.ros.org</a></p>
 </section>
@@ -291,73 +372,73 @@ Ver contenido del archivo
 <div class="code-with-filename-file">
 <pre><strong>devcontainer.json</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="devcontainer.json"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">For</span> <span class="er">format</span> <span class="er">details,</span> <span class="er">see</span> <span class="er">https://aka.ms/devcontainer.json.</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"TUAR - ROS2 Jazzy"</span><span class="fu">,</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Or</span> <span class="er">use</span> <span class="er">a</span> <span class="er">Dockerfile</span> <span class="er">or</span> <span class="er">Docker</span> <span class="er">Compose</span> <span class="er">file.</span> <span class="er">More</span> <span class="er">info</span><span class="fu">:</span> <span class="er">https://containers.dev/guide/dockerfile</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"image"</span><span class="er">:</span> <span class="st">"registry.gitlab.com/acapovilla/ros-docker-images/ros2/jazzy-noble-desktop-full:latest"</span><span class="fu">,</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Workspace</span> <span class="er">setup</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"workspaceMount"</span><span class="fu">:</span> <span class="st">"source=${localWorkspaceFolder},target=/workspaces/catkin_ws,type=bind,consistency=cached"</span><span class="fu">,</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"workspaceFolder"</span><span class="fu">:</span> <span class="st">"/workspaces/catkin_ws"</span><span class="fu">,</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"remoteUser"</span><span class="fu">:</span> <span class="st">"ubuntu"</span><span class="fu">,</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"containerUser"</span><span class="fu">:</span> <span class="st">"ubuntu"</span><span class="fu">,</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Features</span> <span class="er">to</span> <span class="er">add</span> <span class="er">to</span> <span class="er">the</span> <span class="er">dev</span> <span class="er">container.</span> <span class="er">More</span> <span class="er">info</span><span class="fu">:</span> <span class="er">https://containers.dev/features.</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"features"</span><span class="er">:</span> <span class="fu">{</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"ghcr.io/devcontainers/features/common-utils:2"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"installZsh"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"installOhMyZsh"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"installOhMyZshConfig"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"nonFreePackages"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"username"</span><span class="fu">:</span> <span class="st">"ubuntu"</span><span class="fu">,</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"userUid"</span><span class="fu">:</span> <span class="st">"automatic"</span><span class="fu">,</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"userGid"</span><span class="fu">:</span> <span class="st">"automatic"</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Use</span> <span class="er">'forwardPorts'</span> <span class="er">to</span> <span class="er">make</span> <span class="er">a</span> <span class="er">list</span> <span class="er">of</span> <span class="er">ports</span> <span class="er">inside</span> <span class="er">the</span> <span class="er">container</span> <span class="er">available</span> <span class="er">locally.</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="dt">"forwardPorts"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Use</span> <span class="er">'postCreateCommand'</span> <span class="er">to</span> <span class="er">run</span> <span class="er">commands</span> <span class="er">after</span> <span class="er">the</span> <span class="er">container</span> <span class="er">is</span> <span class="er">created.</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="dt">"postCreateCommand"</span><span class="fu">:</span> <span class="st">"uname -a"</span><span class="fu">,</span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Configure</span> <span class="er">tool-specific</span> <span class="er">properties.</span></span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"customizations"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"vscode"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"extensions"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">"ms-vscode.cpptools"</span><span class="ot">,</span></span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">"ms-iot.vscode-ros"</span><span class="ot">,</span></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>                <span class="st">"twxs.cmake"</span><span class="ot">,</span></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">"mutantdino.resourcemonitor"</span><span class="ot">,</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>                <span class="st">"donjayamanne.python-environment-manager"</span><span class="ot">,</span></span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>                <span class="st">"KevinRose.vsc-python-indent"</span><span class="ot">,</span></span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>                <span class="st">"VisualStudioExptTeam.vscodeintellicode"</span><span class="ot">,</span></span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>                <span class="st">"ms-python.vscode-pylance"</span><span class="ot">,</span></span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>                <span class="st">"ms-vscode.cmake-tools"</span></span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>            <span class="ot">]</span></span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Uncomment</span> <span class="er">to</span> <span class="er">connect</span> <span class="er">as</span> <span class="er">root</span> <span class="er">instead.</span> <span class="er">More</span> <span class="er">info</span><span class="fu">:</span> <span class="er">https://aka.ms/dev-containers-non-root.</span></span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="st">"remoteUser"</span><span class="er">:</span> <span class="st">"root"</span></span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">"containerEnv"</span><span class="er">:</span> <span class="fu">{</span></span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">Display</span> <span class="er">configuration</span></span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"DISPLAY"</span><span class="fu">:</span> <span class="st">"${localEnv:DISPLAY}"</span></span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mounts"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">X-Server</span></span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,readonly=false"</span></span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"runArgs"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--device=/dev/dri:/dev/dri"</span><span class="ot">,</span></span>
-<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--privileged"</span><span class="ot">,</span></span>
-<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--volume=/dev:/dev"</span><span class="ot">,</span></span>
-<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--net=host"</span></span>
-<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"onCreateCommand"</span><span class="fu">:</span> <span class="st">"echo 'source /opt/ros/$ROS_DISTRO/setup.bash' &gt;&gt; /home/ubuntu/.bashrc"</span><span class="fu">,</span></span>
-<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"postCreateCommand"</span><span class="fu">:</span> <span class="st">"sudo apt update &amp;&amp; rosdep update"</span></span>
-<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb16" data-filename="devcontainer.json"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">For</span> <span class="er">format</span> <span class="er">details,</span> <span class="er">see</span> <span class="er">https://aka.ms/devcontainer.json.</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"TUAR - ROS2 Jazzy"</span><span class="fu">,</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Or</span> <span class="er">use</span> <span class="er">a</span> <span class="er">Dockerfile</span> <span class="er">or</span> <span class="er">Docker</span> <span class="er">Compose</span> <span class="er">file.</span> <span class="er">More</span> <span class="er">info</span><span class="fu">:</span> <span class="er">https://containers.dev/guide/dockerfile</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"image"</span><span class="er">:</span> <span class="st">"registry.gitlab.com/acapovilla/ros-docker-images/ros2/jazzy-noble-desktop-full:latest"</span><span class="fu">,</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Workspace</span> <span class="er">setup</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"workspaceMount"</span><span class="fu">:</span> <span class="st">"source=${localWorkspaceFolder},target=/workspaces/catkin_ws,type=bind,consistency=cached"</span><span class="fu">,</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"workspaceFolder"</span><span class="fu">:</span> <span class="st">"/workspaces/catkin_ws"</span><span class="fu">,</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"remoteUser"</span><span class="fu">:</span> <span class="st">"ubuntu"</span><span class="fu">,</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"containerUser"</span><span class="fu">:</span> <span class="st">"ubuntu"</span><span class="fu">,</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Features</span> <span class="er">to</span> <span class="er">add</span> <span class="er">to</span> <span class="er">the</span> <span class="er">dev</span> <span class="er">container.</span> <span class="er">More</span> <span class="er">info</span><span class="fu">:</span> <span class="er">https://containers.dev/features.</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"features"</span><span class="er">:</span> <span class="fu">{</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"ghcr.io/devcontainers/features/common-utils:2"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"installZsh"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"installOhMyZsh"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"installOhMyZshConfig"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"nonFreePackages"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"username"</span><span class="fu">:</span> <span class="st">"ubuntu"</span><span class="fu">,</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"userUid"</span><span class="fu">:</span> <span class="st">"automatic"</span><span class="fu">,</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"userGid"</span><span class="fu">:</span> <span class="st">"automatic"</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Use</span> <span class="er">'forwardPorts'</span> <span class="er">to</span> <span class="er">make</span> <span class="er">a</span> <span class="er">list</span> <span class="er">of</span> <span class="er">ports</span> <span class="er">inside</span> <span class="er">the</span> <span class="er">container</span> <span class="er">available</span> <span class="er">locally.</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="dt">"forwardPorts"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Use</span> <span class="er">'postCreateCommand'</span> <span class="er">to</span> <span class="er">run</span> <span class="er">commands</span> <span class="er">after</span> <span class="er">the</span> <span class="er">container</span> <span class="er">is</span> <span class="er">created.</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="dt">"postCreateCommand"</span><span class="fu">:</span> <span class="st">"uname -a"</span><span class="fu">,</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Configure</span> <span class="er">tool-specific</span> <span class="er">properties.</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"customizations"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"vscode"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"extensions"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">"ms-vscode.cpptools"</span><span class="ot">,</span></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">"ms-iot.vscode-ros"</span><span class="ot">,</span></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>                <span class="st">"twxs.cmake"</span><span class="ot">,</span></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">"mutantdino.resourcemonitor"</span><span class="ot">,</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>                <span class="st">"donjayamanne.python-environment-manager"</span><span class="ot">,</span></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>                <span class="st">"KevinRose.vsc-python-indent"</span><span class="ot">,</span></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>                <span class="st">"VisualStudioExptTeam.vscodeintellicode"</span><span class="ot">,</span></span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>                <span class="st">"ms-python.vscode-pylance"</span><span class="ot">,</span></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>                <span class="st">"ms-vscode.cmake-tools"</span></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>            <span class="ot">]</span></span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Uncomment</span> <span class="er">to</span> <span class="er">connect</span> <span class="er">as</span> <span class="er">root</span> <span class="er">instead.</span> <span class="er">More</span> <span class="er">info</span><span class="fu">:</span> <span class="er">https://aka.ms/dev-containers-non-root.</span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="st">"remoteUser"</span><span class="er">:</span> <span class="st">"root"</span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">"containerEnv"</span><span class="er">:</span> <span class="fu">{</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">Display</span> <span class="er">configuration</span></span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"DISPLAY"</span><span class="fu">:</span> <span class="st">"${localEnv:DISPLAY}"</span></span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mounts"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">X-Server</span></span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,readonly=false"</span></span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"runArgs"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--device=/dev/dri:/dev/dri"</span><span class="ot">,</span></span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--privileged"</span><span class="ot">,</span></span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--volume=/dev:/dev"</span><span class="ot">,</span></span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>        <span class="st">"--net=host"</span></span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"onCreateCommand"</span><span class="fu">:</span> <span class="st">"echo 'source /opt/ros/$ROS_DISTRO/setup.bash' &gt;&gt; /home/ubuntu/.bashrc"</span><span class="fu">,</span></span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"postCreateCommand"</span><span class="fu">:</span> <span class="st">"sudo apt update &amp;&amp; rosdep update"</span></span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 </div>
 </details>
 </section>
@@ -368,19 +449,19 @@ Ver contenido del archivo
 <section id="configuración-del-entorno" class="level2">
 <h2 class="anchored" data-anchor-id="configuración-del-entorno">Configuración del entorno</h2>
 <p>Configurar el entorno:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> source /opt/ros/jazzy/setup.bash</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> source /opt/ros/jazzy/setup.bash</span></code></pre></div>
 <p>Variables de entorno: <code>ROS_DOMAIN_ID</code></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> printenv <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-i</span> ROS</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> printenv <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-i</span> ROS</span></code></pre></div>
 <p>Obtener ayuda desde la terminal:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 <span class="at">--help</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 <span class="at">--help</span></span></code></pre></div>
 </section>
 <section id="emisor-receptor" class="level2">
 <h2 class="anchored" data-anchor-id="emisor-receptor">Emisor / Receptor</h2>
 <section id="instalación-de-paquetes-de-demostración-demo-nodes-py" class="level3">
 <h3 class="anchored" data-anchor-id="instalación-de-paquetes-de-demostración-demo-nodes-py">Instalación de paquetes de demostración: <code>demo-nodes-py</code></h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo apt install ros-jazzy-demo-nodes-py</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> sudo apt install ros-jazzy-demo-nodes-py</span></code></pre></div>
 <p>Ver paquetes instalados:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 pkg executables</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 pkg executables</span></code></pre></div>
 </section>
 <section id="nodos-talker-y-listener" class="level3">
 <h3 class="anchored" data-anchor-id="nodos-talker-y-listener">Nodos <code>talker</code> y <code>listener</code></h3>
@@ -390,9 +471,9 @@ Ver contenido del archivo
 <pre><code>  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;</code></pre>
 </blockquote>
 <hr>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 run demo_nodes_py talker</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 run demo_nodes_py talker</span></code></pre></div>
 <p>y en otra terminal</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 run demo_nodes_py listener</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 run demo_nodes_py listener</span></code></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -423,7 +504,7 @@ Tip
 </section>
 <section id="listar-los-nodos" class="level4">
 <h4 class="anchored" data-anchor-id="listar-los-nodos">Listar los nodos</h4>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 node list</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 node list</span></code></pre></div>
 </section>
 <section id="obtener-información" class="level4">
 <h4 class="anchored" data-anchor-id="obtener-información">Obtener información</h4>
@@ -431,26 +512,26 @@ Tip
 <pre><code>  $ ros2 node info &lt;nombre_nodo&gt;</code></pre>
 </blockquote>
 <hr>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 node info /talker</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 node info /talker</span></code></pre></div>
 </section>
 </section>
 <section id="topics" class="level3">
 <h3 class="anchored" data-anchor-id="topics">Topics</h3>
 <section id="listar-los-topics" class="level4">
 <h4 class="anchored" data-anchor-id="listar-los-topics">Listar los topics</h4>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic list</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic list</span></code></pre></div>
 </section>
 <section id="obtener-información-1" class="level4">
 <h4 class="anchored" data-anchor-id="obtener-información-1">Obtener información</h4>
 <p>Información acerca del <em>topic</em>: <code>ros2 topic info &lt;nombre_topic&gt;</code></p>
 <hr>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic info /chatter</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic info /chatter</span></code></pre></div>
 <p>Información acerca del tipo de <em>topic</em>: <code>ros2 topic type &lt;nombre_topic&gt;</code></p>
 <hr>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic type /chatter</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic type /chatter</span></code></pre></div>
 <p>Medir la frecuencia con la que se publican mensajes: <code>ros2 topic hz &lt;nombre_topic&gt;</code></p>
 <hr>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic hz /chatter</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic hz /chatter</span></code></pre></div>
 </section>
 <section id="ver-los-mensajes-que-pasan-por-un-topic" class="level4">
 <h4 class="anchored" data-anchor-id="ver-los-mensajes-que-pasan-por-un-topic">Ver los mensajes que pasan por un topic</h4>
@@ -458,7 +539,7 @@ Tip
 <pre><code>  $ ros2 topic echo &lt;nombre_topic&gt;</code></pre>
 </blockquote>
 <hr>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic echo /chatter</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic echo /chatter</span></code></pre></div>
 </section>
 </section>
 <section id="mensajes" class="level3">
@@ -469,7 +550,7 @@ Tip
 <pre><code>  $ ros2 interface show &lt;nombre_del_tipo_de_mensaje&gt;</code></pre>
 </blockquote>
 <p>Ejemplo</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 interface show std_msgs/msg/String</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 interface show std_msgs/msg/String</span></code></pre></div>
 </section>
 <section id="publicar-mensajes" class="level4">
 <h4 class="anchored" data-anchor-id="publicar-mensajes">Publicar mensajes</h4>
@@ -478,7 +559,7 @@ Tip
       &lt;nombre_del_tipo_de_mensaje&gt; '&lt;contenido&gt;'</code></pre>
 </blockquote>
 <p>Ejemplo</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic pub /chatter std_msgs/msg/String <span class="st">"{data: Mensaje de prueba}"</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 topic pub /chatter std_msgs/msg/String <span class="st">"{data: Mensaje de prueba}"</span></span></code></pre></div>
 
 
 </section>
