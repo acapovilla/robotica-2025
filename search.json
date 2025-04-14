@@ -235,7 +235,7 @@
     "href": "clases/04/index.html#resumen-clase-03",
     "title": "Robótica",
     "section": "Resumen Clase 03",
-    "text": "Resumen Clase 03\n\nWorkspace y paquetes de ROS\n\n\n\nArchivos mínimos\n\n\n📂 src\n  📁 nombre_paquete\n      📁 nombre_paquete\n          📄 __init__.py\n          📄 nodo_A.py      ⬅️ Código\n          ...                 \n      📁 resource\n          📄 nombre_paquete\n      📄 package.xml\n      📄 setup.cfg\n      📄 setup.py\n\n\n\nEntorno de ROS (dos “niveles”)\nWorkspace\nPaquete\nArchivos mínimos para paquetes Python"
+    "text": "Resumen Clase 03\n\nWorkspace y paquetes de ROS\n\n\n\nArchivos mínimos\n\n\n📂 src\n  📁 nombre_paquete\n      📁 nombre_paquete\n          📄 __init__.py\n          📄 nodo_A.py      ⬅️ Código\n          ...                 \n      📁 resource\n          📄 nombre_paquete\n      📄 package.xml\n      📄 setup.cfg\n      📄 setup.py\n\n\n\n\nEntorno de ROS (dos “niveles”)\nWorkspace\nPaquete\nArchivos mínimos para paquetes Python"
   },
   {
     "objectID": "clases/04/index.html#resumen-clase-03-1",
@@ -256,7 +256,7 @@
     "href": "clases/04/index.html#función-de-callback",
     "title": "Robótica",
     "section": "Función de callback",
-    "text": "Función de callback\nFunción que se le da a un sistema para que ejecute al ocurrir un evento\n\n\nPermite que el programa:\n\nNo se detenga esperando datos.\nReaccione solo cuando es necesario.\nSiga ejecutando otras tareas."
+    "text": "Función de callback\nFunción que se le da a un sistema para que ejecute al ocurrir un evento\n\n\nPermite al programa:\n\nNo detenerse esperando al evento\nEjecute la acción solo cuando es necesario\nPueda ejecutar otras tareas"
   },
   {
     "objectID": "clases/04/index.html#section",
@@ -333,7 +333,7 @@
     "href": "clases/04/index.html#uso-de-nombres-8",
     "title": "Robótica",
     "section": "Uso de nombres",
-    "text": "Uso de nombres\n\nNodo\n\n\n\ncoidgo.py\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  node = rclpy.create_node({nombre_nodo})\n\n  # 3. Procesamiento de callback\n  rclpy.spin(node)\n\n  # 4. Finalización\n  rclpy.shutdown()\n\nif __name__ == '__main__':\n  main()"
+    "text": "Uso de nombres\n\nNodo\n\n\n\ncodigo.py\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  node = rclpy.create_node({nombre_nodo})\n\n  # 3. Procesamiento de callback\n  rclpy.spin(node)\n\n  # 4. Finalización\n  rclpy.shutdown()\n\nif __name__ == '__main__':\n  main()"
   },
   {
     "objectID": "clases/04/index.html#dependencias",

@@ -223,6 +223,7 @@
       📄 setup.cfg
       📄 setup.py</code></pre>
 </blockquote>
+</div>
 <aside class="notes">
 <ul>
 <li>Entorno de ROS (dos “niveles”)</li>
@@ -241,7 +242,6 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</div>
 </section>
 <section id="resumen-clase-03-1" class="slide level2">
 <h2>Resumen Clase 03</h2>
@@ -286,11 +286,11 @@
 <p>Función que se le da a un sistema para que ejecute al ocurrir un evento</p>
 <div class="fragment">
 <blockquote>
-<p>Permite que el programa:</p>
+<p>Permite al programa:</p>
 <ul>
-<li>No se detenga esperando datos.</li>
-<li>Reaccione solo cuando es necesario.</li>
-<li>Siga ejecutando otras tareas.</li>
+<li>No detenerse esperando al evento</li>
+<li>Ejecute la acción solo cuando es necesario</li>
+<li>Pueda ejecutar otras tareas</li>
 </ul>
 </blockquote>
 </div>
@@ -415,7 +415,7 @@ Se activa la función callback
 <section>
 <section id="aplicación-en-ros" class="title-slide slide level1 center">
 <h1>Aplicación en ROS</h1>
-
+<p>Ejemplo de nodo publisher</p>
 </section>
 <section id="código-de-publisher" class="slide level2">
 <h2>Código de publisher</h2>
@@ -619,9 +619,9 @@ Se activa la función callback
 </blockquote>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>coidgo.py</strong></pre>
+<pre><strong>codigo.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb16" data-code-line-numbers="6" data-filename="coidgo.py" style="font-size:80%"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
+<div class="sourceCode" id="cb16" data-code-line-numbers="6" data-filename="codigo.py" style="font-size:80%"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Inicialización</span></span>
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>  rclpy.init(args<span class="op">=</span>args)</span>
 <span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -750,7 +750,7 @@ main()
 <pre><code>    colcon build [--symlink-install] [--packages-select &lt;nombre_paquete&gt;]</code></pre>
 </section>
 <section id="laboratorio-parte-2" class="slide level2 center">
-<h2><a href="http://localhost:4200/clases/04/lab.html">Laboratorio (parte 2)</a></h2>
+<h2><a href="../../clases/04/lab.html">Laboratorio (parte 2)</a></h2>
 <ul>
 <li>Creación de paquetes</li>
 <li>Programación y compilación de nodos</li>
