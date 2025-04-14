@@ -174,7 +174,7 @@ Servicios (comunicación)
 | `. install/local_setup.bash`                                      
 +-------------------------------------------------------------------+
 | Paquete de ROS instalados<br>
-| `source /opt/ros/humble/setup.bash`                               
+| `source /opt/ros/jazzy/setup.bash`                               
 +-------------------------------------------------------------------+
 
 : {.stripped tbl-colwidths="[100]"}
@@ -218,11 +218,11 @@ workspace: Estructura de carpetas que contiene paquetes
 >       📁 nombre_paquete
 >           📄 __init__.py
 >           ...
->   📁resource
->       📄 nombre_paquete
->   📄 package.xml
->   📄 setup.cfg
->   📄 setup.py
+>       📁 resource
+>           📄 nombre_paquete
+>       📄 package.xml
+>       📄 setup.cfg
+>       📄 setup.py
 > ```
 
 :::
@@ -501,17 +501,19 @@ Manejo de nodos:
 
 ## Compilación del paquete
 
-> Sistema de compilación: `ament`
+> Creación de paquetes:
+
+        ros2 pkg create --build-type ament_python <nombre_paquete>
 
 > Herramienta de compilación: `colcon`
 
-	    colcon build --symlink-install
+	    colcon build [--symlink-install] [--packages-select <nombre_paquete>]
 
 > Dependencias:
 	    
         rosdep update
 
-        rosdep install -i --from-path src --rosdistro humble -y
+        rosdep install -i --from-path src --rosdistro jazzy -y
 
 ::: {.callout-warning title="Ejecutar en la raíz del workspace"}
 :::
