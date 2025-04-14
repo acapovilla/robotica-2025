@@ -19,8 +19,7 @@ format:
 
 > Workspace y paquetes de ROS
 
-. . .
-
+::: {.fragment}
 > Archivos mínimos
 
 > ```{code-line-numbers="false" code-line-numbers="1|2-6|7-8|9-11"}
@@ -36,7 +35,7 @@ format:
 >   	📄 setup.cfg
 >   	📄 setup.py
 > ```
-
+:::
 
 ::: {.notes}
 - Entorno de ROS (dos “niveles”)
@@ -104,11 +103,11 @@ Función que se le da a un sistema para que ejecute al ocurrir un evento
 
 . . .
 
-> Permite que el programa:
+> Permite al programa:
 >
-> - No se detenga esperando datos.
-> - Reaccione solo cuando es necesario.
-> - Siga ejecutando otras tareas.
+> - No detenerse esperando al evento
+> - Ejecute la acción solo cuando es necesario
+> - Pueda ejecutar otras tareas
 
 ##
 ### Analogía "compra online"
@@ -192,6 +191,8 @@ sequenceDiagram
 </table>
 
 # Aplicación en ROS
+
+Ejemplo de nodo publisher
 
 ## Código de publisher
 
@@ -371,7 +372,7 @@ setup(
 
 > Nodo
 
-```{.py code-line-numbers="false" code-line-numbers="6" filename="coidgo.py" style="font-size:80%"}
+```{.py code-line-numbers="false" code-line-numbers="6" filename="codigo.py" style="font-size:80%"}
 def main(args=None):
   # 1. Inicialización
   rclpy.init(args=args)
@@ -503,7 +504,7 @@ entry_points={
 		colcon build [--symlink-install] [--packages-select <nombre_paquete>]
 
 
-## [Laboratorio (parte 2)](http://localhost:4200/clases/04/lab.html) {.center}
+## [Laboratorio (parte 2)](lab.qmd) {.center}
 
 - Creación de paquetes
 - Programación y compilación de nodos

@@ -134,7 +134,7 @@ Servicios (comunicación)
 :::
 
 
-## [Laboratorio (parte 1)](http://localhost:4200/clases/03/lab.html#parte-1-servicios-y-par%C3%A1metros) {.center}
+## [Laboratorio (parte 1)](lab.qmd) {.center}
 
 - Invocar y analizar servicios
 
