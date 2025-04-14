@@ -1,0 +1,509 @@
+---
+title: "Robótica"
+subtitle: "Clase 04"
+date: "04/14/2025"
+date-format: "[Semana 5 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+    revealjs:
+        theme: dark
+        #chalkboard: true
+        footer: Robótica - TUAR - FICH - UNL
+        menu: false
+        slide-number: c
+        code-copy: false
+        code-overflow: wrap
+---
+
+## Resumen Clase 03
+
+> Workspace y paquetes de ROS
+
+. . .
+
+> Archivos mínimos
+
+> ```{code-line-numbers="false" code-line-numbers="1|2-6|7-8|9-11"}
+> 📂 src
+>   📁 nombre_paquete
+>       📁 nombre_paquete
+>           📄 __init__.py
+>			📄 nodo_A.py		 ⬅️ Código
+>           ...					
+>   	📁 resource
+>   	    📄 nombre_paquete
+>   	📄 package.xml
+>   	📄 setup.cfg
+>   	📄 setup.py
+> ```
+
+
+::: {.notes}
+- Entorno de ROS (dos “niveles”)
+- Workspace
+- Paquete
+- Archivos mínimos para paquetes Python
+:::
+
+## Resumen Clase 03
+> `rclpy`: Partes básicas del programa
+
+::: {.incremental}
+1. Inicialización
+
+        rclpy.init(..)
+
+2. Creación de 1 o más nodos
+
+        rclpy.create_node(..)
+
+3. Procesamiento de callbacks (`spinning`)
+
+        rclpy.spin(..)
+
+4. Apagado / finalización (`shutdown`)
+
+        rclpy.shutdown()
+:::
+
+## Resumen Clase 03
+
+> Gestión de nodos
+
+::: {.incremental}
+- Crear un publisher: `node.create_publisher(..)`
+- Crear un suscriber: `node.create_subscription(..)`
+- Timer: `node.create_timer(..)`
+- Log: `node.get_logger(..)`
+:::
+
+## Resumen Clase 03 {visibility="hidden"}
+
+> Dependencias: `rosdep`
+	    
+        rosdep update
+
+        rosdep install -i --from-path src --rosdistro jazzy -y
+
+> Herramienta de compilación: `colcon`
+
+	    colcon build [--symlink-install] [--packages-select <nombre_paquete>]
+
+> Source:
+
+        source install/setup.bash
+
+# Callbacks
+
+Acción que se ejecuta automáticamente al ocurrir un evento
+
+
+## Función de callback
+
+Función que se le da a un sistema para que ejecute al ocurrir un evento
+
+. . .
+
+> Permite que el programa:
+>
+> - No se detenga esperando datos.
+> - Reaccione solo cuando es necesario.
+> - Siga ejecutando otras tareas.
+
+##
+### Analogía "compra online"
+
+:::: {.columns}
+::: {.column width="10%"}
+:::
+
+::: {.column width="80%"}
+```{mermaid}
+sequenceDiagram
+    participant Cliente
+    participant Tienda Online
+    participant Repartidor
+
+    Cliente->>Tienda Online: Hace un pedido 📦
+    %% Cliente-->>Cliente: Sigue con su día
+	Note left of Cliente: Sigue con su día
+    Tienda Online->>Repartidor: Despacha el paquete
+    Repartidor-->>Cliente: Notificación de entrega
+```
+:::
+
+::: {.column width="10%"}
+:::
+::::
+
+
+## {.smaller auto-animate="true"}
+### Analogía "compra online"
+
+:::: {.columns}
+::: {.column width="22.5%"}
+:::
+
+::: {.column width="55%"}
+```{mermaid}
+sequenceDiagram
+    participant Cliente
+    participant Tienda Online
+    participant Repartidor
+
+    Cliente->>Tienda Online: Hace un pedido 📦
+    %% Cliente-->>Cliente: Sigue con su día
+	Note left of Cliente: Sigue con su día
+    Tienda Online->>Repartidor: Despacha el paquete
+    Repartidor-->>Cliente: Notificación de entrega
+```
+:::
+
+::: {.column width="22.5%"}
+:::
+::::
+
+<table>
+  <tbody>
+    <tr>
+      <td style="text-align:center;">Cliente</td>
+      <td>➡️</td>
+      <td>Nodo que espera datos</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">Pedido en la tienda</td>
+      <td>➡️</td>
+      <td>Suscripción a un topic</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;" colspan="3">El nodo sigue ejecutando tareas</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">Tienda despacha el paquete</td>
+      <td>➡️</td>
+      <td>Publicador envía un mensaje</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">Notificación y entrega</td>
+      <td>➡️</td>
+      <td>Se activa la función callback</td>
+    </tr>
+  </tbody>
+</table>
+
+# Aplicación en ROS
+
+## Código de publisher
+
+```{.python code-line-numbers="1-2|4|5-6|8-9|11-12|14-15|16-19|21-22|24-25|27-28|30-31|34-35"}
+import rclpy
+from std_msgs.msg import String
+
+def main(args=None):
+    # 1. Inicialización
+    rclpy.init(args=args)
+
+    # 2. Creación de nodo
+    nodo = rclpy.create_node('publicador')
+
+    # 2.1 Creación de publisher
+    pub = nodo.create_publisher(String, 'chat', 10)
+
+    # 2.2 Programación de función de callback
+    def timer_callback():
+		# Creación de mensaje
+   		msg = String()
+        # Completar el campo 'data' del mensaje 
+        msg.data = 'Mensaje de prueba'
+
+        # Publicar el mensaje
+        pub.publish(msg)
+
+    # 2.3 Creación del timer
+    timer = nodo.create_timer(1, timer_callback)
+
+    # 3. Procesamiento de mensajes y callback
+    rclpy.spin(nodo)
+
+    # 4. Finalización 
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+# Uso de nombres
+
+## Uso de nombres
+
+Nombres para:
+
+- Paquete
+- Archivo
+- Ejecutable
+- Nodo
+
+::: {.notes}
+Uso de nombres
+- de paquete: estructura de archivos, \texttt{package.xml}, \texttt{setup.cfg}, \texttt{setup.py}, linea de comando
+- de archivo: estructura de archivos y \texttt{setup.py}
+- de ejecutable: \texttt{setup.py} y linea de comando
+- de nodo: código y linea de comando
+:::
+
+## Uso de nombres
+
+> Paquete
+
+```{.default code-line-numbers="false" code-line-numbers="2,3,8"}
+📂 src
+  📁 nombre_paquete
+      📁 nombre_paquete
+          📄 __init__.py
+		  📄 codigo.py
+          ...					
+  	📁 resource
+  	    📄 nombre_paquete
+  	📄 package.xml
+  	📄 setup.cfg
+  	📄 setup.py
+```
+
+## Uso de nombres
+
+> Archivo
+
+```{.default code-line-numbers="false" code-line-numbers="5"}
+📂 src
+  📁 nombre_paquete
+      📁 nombre_paquete
+          📄 __init__.py
+		  📄 codigo.py
+          ...					
+  	📁 resource
+  	    📄 nombre_paquete
+  	📄 package.xml
+  	📄 setup.cfg
+  	📄 setup.py
+```
+
+## Uso de nombres
+
+> Paquete
+
+```{.xml code-line-numbers="false" code-line-numbers="2" filename="package.xml"}
+<package format="3">
+    <name>{nombre_paquete}</name>
+    <version>{version}</version>
+    <description>
+		{descripcion}
+		...
+	</description>
+	...
+</package>
+```
+
+## Uso de nombres
+
+> Paquete
+
+```{.toml code-line-numbers="false" code-line-numbers="2" filename="setup.cfg"}
+[develop]
+script_dir=$base/lib/{nombre_paquete}
+[install]
+install_scripts=$base/lib/{nombre_paquete}
+```
+
+## Uso de nombres
+
+> Paquete
+
+```{.py code-line-numbers="false" code-line-numbers="4,8,10-11" filename="setup.py" style="font-size:80%"}
+from setuptools import setup
+
+setup(
+  	name={nombre_paquete},
+	version={version},
+	description={descripción},
+    ...
+	packages=[{nombre_paquete}],
+	data_files=[
+		('share/ament_index/resource_index/packages', ['resource/{nombre_paquete}’]),
+    	('share/{nombre_paquete}’, ['package.xml']),
+	],
+	...
+  	entry_points={
+    	'console_scripts': [
+        	'{nombre_ejecutable} = {nombre_paquete}.{nombre_archivo}:main'
+    	],
+	},
+)
+```
+
+## Uso de nombres
+
+> Ejecutable, paquete, archivo
+
+```{.py code-line-numbers="false" code-line-numbers="16" filename="setup.py" style="font-size:80%"}
+from setuptools import setup
+
+setup(
+  	name={nombre_paquete},
+	version={version},
+	description={descripción},
+    ...
+	packages=[{nombre_paquete}],
+	data_files=[
+		('share/ament_index/resource_index/packages', ['resource/{nombre_paquete}’]),
+    	('share/{nombre_paquete}’, ['package.xml']),
+	],
+	...
+  	entry_points={
+    	'console_scripts': [
+        	'{nombre_ejecutable} = {nombre_paquete}.{nombre_archivo}:main'
+    	],
+	},
+)
+```
+
+## Uso de nombres
+
+> Nodo
+
+```{.py code-line-numbers="false" code-line-numbers="6" filename="coidgo.py" style="font-size:80%"}
+def main(args=None):
+  # 1. Inicialización
+  rclpy.init(args=args)
+
+  # 2. Creación de nodo
+  node = rclpy.create_node({nombre_nodo})
+
+  # 3. Procesamiento de callback
+  rclpy.spin(node)
+
+  # 4. Finalización
+  rclpy.shutdown()
+
+if __name__ == '__main__':
+  main()
+```
+
+
+<!--
+Importar la librería de Python de ROS2 y el módulo Nodo
+
+import rclpy
+from rclpy.node import Node
+
+Inicializar la comunicación con ROS ( rclpy.init(args) )
+
+def main(args=None):
+rclpy.init(args=args)
+
+Crear el nodo (nombre de nodo) -> Una vez creado se puede para iniciar publishers, subscribers, servicios, obtener parámetros, etc
+
+node = Node('my_node_name')
+Se podría hacer con rclpy.create_node(..)   
+
+Crear publisher
+
+	publisher = node.create_publisher(String, 'topic_name', 10)
+
+Crear callback para publicar
+
+	msg = String()	# Crear un mensaje de tipo String (std_msgs/msg/String)
+	i = 0
+
+	# Función callback que será llamada por el timer
+	def timer_callback():
+    	nonlocal i
+	# Rellenar el contenido del campo 'data'
+    	msg.data = 'Hola desde el nodo publicador (%d)' % i	
+   	 
+    	publisher.publish(msg)          	# Publicar
+   	 
+    	# Escribir en la terminal a modo de debug
+    	node.get_logger().info('Publicando: "%s"' % msg.data)
+    	i += 1
+
+	# Cada medio segundo publicar un mensaje
+	timer_period = 0.5  # seconds
+	timer = node.create_timer(timer_period, timer_callback)
+
+Si no hacemos nada el programa termina, entonces rclpy.spin(node) pausa la ejecución hasta que se solicite matar el nodo. En este punto cualquier thread o timer que se creo, continua su ejecución. Incluso permite la ejecución de cualquier callback definido para el nodo, permitiendo la comunicación con los otros nodos.
+
+rclpy.spin(node)
+
+Cuando se solicita terminar el nodo, la función spin() termina y ningún callback puede ser ejecutado. shutdown() se encarga de finalizar todo lo iniciado con init()
+
+node.destroy_timer(timer)
+node.destroy_node()
+rclpy.shutdown()
+
+Punto de entrada para ejecutar el código -> función main
+
+if __name__ == '__main__':
+main()
+-->
+
+# Dependencias, ejecutables y compilación
+
+## Dependencias
+
+> Código fuente de un nodo
+
+```{.python code-line-numbers="false"}
+import rclpy
+from std_msgs.msg import String
+```
+
+<br>
+
+> Se refleja en las dependencias en `package.xml`
+
+```xml
+...
+	<exec_depend>rclpy</exec_depend>
+	<exec_depend>std_msgs</exec_depend>
+...
+```
+
+## Dependencias
+
+> Tipos de dependencias:
+
+- `<build_depend>`: compilación
+- `<exec_depend>`: ejecución
+- `<depend>`: compilación y ejecución
+- `<test_depend>`: solo para pruebas
+
+> Administración via `rosdep`
+
+		rosdep install -i --from-path src --rosdistro jazzy -y
+
+
+## Ejecutables y compilación
+
+> Añadir un ejecutable en `setup.py`
+
+```{.python code-line-numbers="false"}
+...
+entry_points={
+	'console_scripts': [
+		'{nombre_ejecutable} = {nombre_paquete}.{nombre_archivo}:main',
+	],
+},
+...
+```
+<br>
+
+> Compilar
+
+		colcon build [--symlink-install] [--packages-select <nombre_paquete>]
+
+
+## [Laboratorio (parte 2)](http://localhost:4200/clases/04/lab.html) {.center}
+
+- Creación de paquetes
+- Programación y compilación de nodos

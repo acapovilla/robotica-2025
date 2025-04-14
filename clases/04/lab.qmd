@@ -1,0 +1,332 @@
+---
+title: Clase 04 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+## Parte 2: Creación de paquetes y programación de nodos
+
+::: {.callout-note title="Paso inicial"}
+Creación del `workspace`
+:::
+
+- Crear una carpeta para el `workspace` (como por ejemplo *robotica-2025*) y dentro, crear la carpeta `src`:
+
+>```
+>📂 ...
+>    📂 robotica-2025
+>        📁 src
+>...
+>```
+
+::: {.callout-tip title="Recomendación"}
+Realizar este paso solo por cada proyecto individual
+:::
+
+### Creación de un paquete de ROS
+
+>       $ ros2 pkg create --build-type ament_python <nombre_paquete>
+
+::: {.callout-note appearance="simple"}
+Dentro de `workspace/src`
+:::
+
+---------
+
+```{.bash code-line-numbers="false"}
+    $ ros2 pkg create --build-type ament_python clase-04
+```
+
+Esto generará la estructura de carpetas correspondientes para un paquete de python:
+
+> ```
+> 📂 src
+>   📂 clase-04
+>       📂 clase-04
+>           📄 __init__.py
+>   📂 resource
+>       📄 clase-04
+>   📁 test
+>          ...
+>   📄 package.xml
+>   ⚙️ setup.cfg
+>   📄 setup.py
+> ```
+
+::: {.callout-tip appearance="simple"}
+Completar la información adicional en los respectivos archivos `package.xml` y `setup.py`
+:::
+
+#### Compilación
+
+```{.bash code-line-numbers="false"}
+    $ colcon build
+```
+
+::: {.callout-warning appearance="simple"}
+Siempre ejecutar este comando dentro de `workspace`
+:::
+
+::: {.callout-tip appearance="simple"}
+Cuando quieras compilar un solo paquete usa la opción `--packages-select`
+:::
+
+Se generarán las carpetas adicionales en el `workspace`:
+
+> ```
+> 📂 ...
+>     📂 robotica-2025
+>         📁 src
+>         📁 build      ⬅️
+>         📁 install    ⬅️
+>         📁 log        ⬅️
+> ...
+> ```
+
+
+---------
+
+### Programación de un nodo
+
+- #### Importar la librería de Python de ROS2
+
+```python
+import rclpy
+```
+
+- #### Inicializar la comunicación con ROS
+
+```python
+rclpy.init(args=args)
+```
+
+- #### Crear el nodo
+
+>       rclpy.create_node('<nombre_nodo>')
+
+------
+
+```python
+nodo = rclpy.create_node('publicador')
+```
+
+- #### Crear el publicador
+
+>       <nodo>.create_publisher(<tipo_mensaje>, '<nombre_topic>', <tamaño_cola>)
+
+------
+
+```python
+pub = nodo.create_publisher(String, 'chat', 10)
+```
+
+- #### Crear un timer
+
+>       <nodo>.create_timer(<periodo_en_seg>, <funcion_callback>)
+
+------
+
+```python
+timer = nodo.create_timer(1, timer_callback)
+```
+
+- #### Continuar ejecución de ROS
+
+>       rclpy.spin(<nodo>)
+
+------
+
+```python
+rclpy.spin(nodo)
+```
+
+- #### Finalizar la ejecución
+
+```python
+rclpy.shutdown()
+```
+
+------
+
+#### Programar el nodo publicador
+
+::: {.callout-note appearance="simple"}
+Dentro de la carpeta correspondiente: `**/src/<nombre_paquete>/<nombre_paquete>`
+:::
+
+```{.python code-fold="true" code-line-numbers="true" filename="nodo_publicador.py"}
+import rclpy
+
+# Importar el tipo de mensaje String
+from std_msgs.msg import String
+
+def main(args=None):
+    # 1. Inicialización
+    rclpy.init(args=args)
+
+    # 2. Creación de nodo
+    # nodo = ...
+
+    # 2.1 Creación de publisher
+    # pub = ...
+
+    # 2.2 Creación de mensaje
+    msg = String()
+
+    # 2.3 Programación de función de callback
+    def timer_callback():
+        # Completar el campo 'data' del mensaje 
+        msg.data = 'Mensaje de prueba'
+
+        # Publicar el mensaje
+        pub.publish(msg)
+
+    # 2.4 Creación del timer
+    # ...
+
+    # 3. Procesamiento de mensajes y callback
+    rclpy.spin(nodo)
+
+    # 4. Finalización 
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+---------
+
+#### Dependencias
+
+Para añadir dependencias a un paquete, modificar el archivo `package.xml`
+
+```{.xml code-line-numbers=3-4}
+<package format="3">
+    ...
+    <exec_depend>rclpy</exec_depend>
+    <exec_depend>std_msgs</exec_depend>
+    ...
+</package>
+```
+
+Instalar dependencias:
+
+```{.bash code-line-numbers="false"}
+    $ rosdep install -i --from-path src -y
+```
+
+::: {.callout-warning appearance="simple"}
+Siempre ejecutar este comando dentro de `workspace`
+:::
+
+---------
+
+#### Agregar un `entrypoint` o ejecutable
+
+Para añadir un ejecutable en un paquete de Python, modificar el archivo `setup.py`
+
+>       entry_points={
+>            'console_scripts': [
+>                    '<nombre_ejecutable> = <nombre_paquete>.<nombre_archivo>:main',
+>            ],
+>       },
+
+
+```python
+setup(
+    ...
+    entry_points={
+            'console_scripts': [
+                    'publicar = clase-04.nodo_publicador:main',
+            ],
+    },
+)
+```
+
+---------
+
+### Verificación del funcionamiento
+
+::: {.callout-note appearance="simple"}
+Recuerda compilar el paquete
+:::
+
+::: {.callout-note appearance="simple"}
+Recuerda configurar el entorno local:
+```{.bash code-line-numbers="false"}
+    $ source install/setup.bash
+```
+:::
+
+#### Ejecutar
+
+::: {.callout-tip title="Para ejecutar"}
+        $ ros2 run <nombre_paquete> <nombre_ejecutable>
+:::
+
+- #### Comprobar que el nodo se encuentre en ejecución
+
+Puedes utilizar los comandos de `ros2 node list` y `ros2 node info`
+
+- #### Comprobar que se encuentra publicando los mensajes
+
+Puedes utilizar los comandos de `ros2 topic list`, `ros2 topic info` y `ros2 topic echo`
+
+---------
+
+### Programar el nodo suscriptor
+
+- #### Crear el suscriptor
+
+>       <nodo>.create_subscription(<tipo_mensaje>, '<nombre_topic>', <funcion_callback>, <tamaño_cola>)
+
+------
+
+```python
+sub = nodo.create_subscription(String, 'chat', sub_callback, 10)
+```
+
+```{.python code-fold="true" code-line-numbers="true" filename="nodo_suscriptor.py"}
+import rclpy
+
+# Importar el tipo de mensaje String
+from std_msgs.msg import String
+
+def main(args=None):
+    # 1. Inicialización
+    # ...
+
+    # 2. Creación de nodo
+    # nodo = ...
+
+    # 2.1 Programación de función de callback
+    def sub_callback(msg):
+        # Mostrar el mensaje en consola
+        nodo.get_logger().info('Recibí: "%s"' % msg.data)
+
+    # 2.2 Creación de suscriptor
+    # ...
+
+    # 3. Procesamiento de mensajes y callback
+    rclpy.spin(nodo)
+
+    # 4. Finalización 
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+- #### Añadir un nuevo ejecutable en el archivo `setup.py`
+
+- #### Compilar y ejecutar el nodo
+
+- #### Verificar el funcionamiento de ambos nodos
