@@ -40,18 +40,18 @@ Dentro de `workspace/src`
 ---------
 
 ```{.bash code-line-numbers="false"}
-    $ ros2 pkg create --build-type ament_python clase-04
+    $ ros2 pkg create --build-type ament_python clase_04
 ```
 
 Esto generará la estructura de carpetas correspondientes para un paquete de python:
 
 > ```
 > 📂 src
->   📂 clase-04
->       📂 clase-04
+>   📂 clase_04
+>       📂 clase_04
 >           📄 __init__.py
 >   📂 resource
->       📄 clase-04
+>       📄 clase_04
 >   📁 test
 >          ...
 >   📄 package.xml
@@ -244,7 +244,7 @@ setup(
     ...
     entry_points={
             'console_scripts': [
-                    'publicar = clase-04.nodo_publicador:main',
+                    'publicar = clase_04.nodo_publicador:main',
             ],
     },
 )
