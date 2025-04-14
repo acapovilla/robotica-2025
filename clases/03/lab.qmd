@@ -18,7 +18,7 @@ page-navigation: true
     $ sudo apt install ros-jazzy-demo-nodes-py
 ``` -->
 
-::: {.callout-note}
+::: {.callout-note title="Nota"}
 Recuerda configurar el entorno:
 ```{.bash code-line-numbers="false"}
     $ source /opt/ros/jazzy/setup.bash
@@ -29,7 +29,7 @@ Recuerda configurar el entorno:
 
 #### Ejecutar nodo demostración `add_two_ints_server` del paquete `demo_nodes_py`
 
-::: {.callout-tip}
+::: {.callout-tip title="Para ejecutar"}
         $ ros2 run <nombre_paquete> <nombre_ejecutable>
 :::
 
@@ -140,14 +140,3 @@ Para también ver el tipo:
 
 >       $ ros2 run <nombre_paquete> <nombre_ejecutable> --ros-args 
 >           --params-file <archivo>
-
-
-## Parte 2: Creación de paquetes y programación de nodo
-
-<!-- ### Creación de paquete
-
-### Programación de publisher
-
-### Programación de suscriber
-
-### Compilación y ejecución -->
