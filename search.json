@@ -231,6 +231,97 @@
     "text": "Compilación del paquete\n\nCreación de paquetes:\n\n    ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\nHerramienta de compilación: colcon\n\n    colcon build [--symlink-install] [--packages-select &lt;nombre_paquete&gt;]\n\nDependencias:\n\n    rosdep update\n\n    rosdep install -i --from-path src --rosdistro jazzy -y\n\n\n\n\n\n\n\nEjecutar en la raíz del workspace"
   },
   {
+    "objectID": "clases/05/index.html#resumen-clase-04",
+    "href": "clases/05/index.html#resumen-clase-04",
+    "title": "Robótica",
+    "section": "Resumen Clase 04",
+    "text": "Resumen Clase 04\n\nCallbacks\n\n\nCódigo publisher y suscriber"
+  },
+  {
+    "objectID": "clases/05/index.html#resumen-clase-04-1",
+    "href": "clases/05/index.html#resumen-clase-04-1",
+    "title": "Robótica",
+    "section": "Resumen Clase 04",
+    "text": "Resumen Clase 04\n\nUso de nombres\n\n\nPaquete\nArchivo\nEjecutable\nNodo"
+  },
+  {
+    "objectID": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
+    "href": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
+    "title": "Robótica",
+    "section": "rclpy: Programación Orientada a Objetos",
+    "text": "rclpy: Programación Orientada a Objetos\n\nExisten 3 formas de escribir código de ROS:\n\n\n\nCódigo in-line (utilizado en la clase anterior)\nFunciones locales\nOrientado a Objetos   ⬅️"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher",
+    "href": "clases/05/index.html#código-publisher",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-1",
+    "href": "clases/05/index.html#código-publisher-1",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n  \n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-2",
+    "href": "clases/05/index.html#código-publisher-2",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-3",
+    "href": "clases/05/index.html#código-publisher-3",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-4",
+    "href": "clases/05/index.html#código-publisher-4",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-5",
+    "href": "clases/05/index.html#código-publisher-5",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-6",
+    "href": "clases/05/index.html#código-publisher-6",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-suscriber",
+    "href": "clases/05/index.html#código-suscriber",
+    "title": "Robótica",
+    "section": "Código suscriber",
+    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
+  },
+  {
+    "objectID": "clases/05/index.html#código-suscriber-1",
+    "href": "clases/05/index.html#código-suscriber-1",
+    "title": "Robótica",
+    "section": "Código suscriber",
+    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
+  },
+  {
+    "objectID": "clases/05/index.html#laboratorio",
+    "href": "clases/05/index.html#laboratorio",
+    "title": "Robótica",
+    "section": "Laboratorio",
+    "text": "Laboratorio\nModificación código de nodos publisher y suscriber"
+  },
+  {
     "objectID": "clases/04/index.html#resumen-clase-03",
     "href": "clases/04/index.html#resumen-clase-03",
     "title": "Robótica",
@@ -390,6 +481,27 @@
     "title": "Clase 04 - Laboratorio",
     "section": "",
     "text": "Paso inicial\n\n\n\nCreación del workspace\n\n\n\nCrear una carpeta para el workspace (como por ejemplo robotica-2025) y dentro, crear la carpeta src:\n\n\n📂 ...\n   📂 robotica-2025\n       📁 src\n...\n\n\n\n\n\n\n\nRecomendación\n\n\n\nRealizar este paso solo por cada proyecto individual\n\n\n\n\n\n  $ ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\n\n\n\n\n\n\nDentro de workspace/src\n\n\n\n\n    $ ros2 pkg create --build-type ament_python clase_04\nEsto generará la estructura de carpetas correspondientes para un paquete de python:\n\n📂 src\n  📂 clase_04\n      📂 clase_04\n          📄 __init__.py\n  📂 resource\n      📄 clase_04\n  📁 test\n         ...\n  📄 package.xml\n  ⚙️ setup.cfg\n  📄 setup.py\n\n\n\n\n\n\n\nCompletar la información adicional en los respectivos archivos package.xml y setup.py\n\n\n\n\n\n    $ colcon build\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\n\n\nCuando quieras compilar un solo paquete usa la opción --packages-select\n\n\n\nSe generarán las carpetas adicionales en el workspace:\n\n📂 ...\n    📂 robotica-2025\n        📁 src\n        📁 build      ⬅️\n        📁 install    ⬅️\n        📁 log        ⬅️\n...\n\n\n\n\n\n\n\n\n\nimport rclpy\n\n\n\nrclpy.init(args=args)\n\n\n\n\n  rclpy.create_node('&lt;nombre_nodo&gt;')\n\n\nnodo = rclpy.create_node('publicador')\n\n\n\n\n  &lt;nodo&gt;.create_publisher(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\npub = nodo.create_publisher(String, 'chat', 10)\n\n\n\n\n  &lt;nodo&gt;.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\ntimer = nodo.create_timer(1, timer_callback)\n\n\n\n\n  rclpy.spin(&lt;nodo&gt;)\n\n\nrclpy.spin(nodo)\n\n\n\nrclpy.shutdown()\n\n\n\n\n\n\n\n\n\nDentro de la carpeta correspondiente: **/src/&lt;nombre_paquete&gt;/&lt;nombre_paquete&gt;\n\n\n\n\n\nnodo_publicador.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Creación de publisher\n    # pub = ...\n\n    # 2.2 Creación de mensaje\n    msg = String()\n\n    # 2.3 Programación de función de callback\n    def timer_callback():\n        # Completar el campo 'data' del mensaje \n        msg.data = 'Mensaje de prueba'\n\n        # Publicar el mensaje\n        pub.publish(msg)\n\n    # 2.4 Creación del timer\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\nPara añadir dependencias a un paquete, modificar el archivo package.xml\n&lt;package format=\"3\"&gt;\n    ...\n    &lt;exec_depend&gt;rclpy&lt;/exec_depend&gt;\n    &lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;\n    ...\n&lt;/package&gt;\nInstalar dependencias:\n    $ rosdep install -i --from-path src -y\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\nPara añadir un ejecutable en un paquete de Python, modificar el archivo setup.py\n\n  entry_points={\n       'console_scripts': [\n               '&lt;nombre_ejecutable&gt; = &lt;nombre_paquete&gt;.&lt;nombre_archivo&gt;:main',\n       ],\n  },\n\nsetup(\n    ...\n    entry_points={\n            'console_scripts': [\n                    'publicar = clase_04.nodo_publicador:main',\n            ],\n    },\n)\n\n\n\n\n\n\n\n\n\n\n\nRecuerda compilar el paquete\n\n\n\n\n\n\n\n\n\nRecuerda configurar el entorno local:\n    $ source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo\n\n\n\n\n\n\n\n\n\n  &lt;nodo&gt;.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\nsub = nodo.create_subscription(String, 'chat', sub_callback, 10)\n\n\nnodo_suscriptor.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    # ...\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Programación de función de callback\n    def sub_callback(msg):\n        # Mostrar el mensaje en consola\n        nodo.get_logger().info('Recibí: \"%s\"' % msg.data)\n\n    # 2.2 Creación de suscriptor\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+  },
+  {
+    "objectID": "clases/05/lab.html",
+    "href": "clases/05/lab.html",
+    "title": "Clase 05 - Laboratorio",
+    "section": "",
+    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
+  },
+  {
+    "objectID": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 05 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
+    "href": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
+    "title": "Clase 05 - Laboratorio",
+    "section": "",
+    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
   },
   {
     "objectID": "clases/03/lab.html",
