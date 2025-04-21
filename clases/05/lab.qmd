@@ -1,0 +1,131 @@
+---
+title: Clase 05 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+## Programación Orientada a Objetos en ROS 2
+
+::: {.callout-tip appearance="simple"}
+Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior
+:::
+
+- #### Importar `rclpy` y la clase `Node`
+
+```python
+import rclpy
+from rclpy.node import Node
+```
+
+------
+
+- #### Crear la clase
+
+```python
+class <nombre_clase>(Node):
+    __init__(self):
+        super().__init__(<nombre_nodo>)
+        ...
+```
+
+------
+
+- #### Publisher, suscriber y timers
+
+Se crean de la mismas manera solo que en vez de utilizar la instancia `<nodo>` se accederá a través del objeto mediante el atributo `self`.
+
+>       self.create_publisher(
+>               <tipo_mensaje>, '<nombre_topic>', <tamaño_cola>)
+
+------
+
+>       self.create_timer(<periodo_en_seg>, <funcion_callback>)
+
+------
+
+>       self.create_subscription(<tipo_mensaje>, '<nombre_topic>',
+>                                    <funcion_callback>, <tamaño_cola>)
+
+------
+
+- #### Funciones de callback
+
+Las funciones de callback serán métodos de la clase
+
+```python
+class <nombre_clase>(Node):
+    ...
+    def timer_callback(self):
+        ...
+        # Publicar el mensaje
+        self.pub.publish(self.msg)
+```
+
+- #### Función `main`
+
+Solo será utilizada para la inicialización o `init`, la creación del nodo (instanciando la clase), el `spin` y la finalización o `shutdown`
+
+
+```{.python code-fold="true" code-line-numbers="true"}
+def main(args=None):
+    # 1. Inicialización
+    rclpy.init(args=args)
+
+    # 2. Creación de nodo
+    # nodo = ...
+
+    # 3. Procesamiento de mensajes y callback
+    rclpy.spin(nodo)
+
+    # 4. Finalización 
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+### Modificar el código del nodo publisher
+
+::: {.callout-tip appearance="simple"}
+Puedes reutilizar el código del lab anterior
+:::
+
+::: {.callout-note title="Recordatorio"}
+*Si se crea un paquete nuevo recuerda:*
+
+- Completar las dependencias en `package.xml` e instalar mediante `rosdep`
+- Crear el o los ejecutables en `setup.py`
+- Compilar el paquete con `colcon`
+- configurar el entorno: `source install/setup.bash`
+:::
+
+### Verificación del funcionamiento
+
+::: {.callout-tip appearance="simple"}
+        $ ros2 run <nombre_paquete> <nombre_ejecutable>
+:::
+
+- #### Comprobar que el nodo se encuentre en ejecución
+
+Puedes utilizar los comandos de `ros2 node list` y `ros2 node info`
+
+- #### Comprobar que se encuentra publicando los mensajes
+
+Puedes utilizar los comandos de `ros2 topic list`, `ros2 topic info` y `ros2 topic echo`
+
+---------
+
+### Modificar el código del nodo suscriber
+
+- #### Añadir un nuevo ejecutable en el archivo `setup.py`
+
+- #### Compilar y ejecutar el nodo
+
+- #### Verificar el funcionamiento de ambos nodos
