@@ -212,8 +212,8 @@ def main(args=None):
 
     # 2.2 Programación de función de callback
     def timer_callback():
-		# Creación de mensaje
-   		msg = String()
+        # Creación de mensaje
+        msg = String()
         # Completar el campo 'data' del mensaje 
         msg.data = 'Mensaje de prueba'
 
@@ -390,63 +390,6 @@ if __name__ == '__main__':
   main()
 ```
 
-
-<!--
-Importar la librería de Python de ROS2 y el módulo Nodo
-
-import rclpy
-from rclpy.node import Node
-
-Inicializar la comunicación con ROS ( rclpy.init(args) )
-
-def main(args=None):
-rclpy.init(args=args)
-
-Crear el nodo (nombre de nodo) -> Una vez creado se puede para iniciar publishers, subscribers, servicios, obtener parámetros, etc
-
-node = Node('my_node_name')
-Se podría hacer con rclpy.create_node(..)   
-
-Crear publisher
-
-	publisher = node.create_publisher(String, 'topic_name', 10)
-
-Crear callback para publicar
-
-	msg = String()	# Crear un mensaje de tipo String (std_msgs/msg/String)
-	i = 0
-
-	# Función callback que será llamada por el timer
-	def timer_callback():
-    	nonlocal i
-	# Rellenar el contenido del campo 'data'
-    	msg.data = 'Hola desde el nodo publicador (%d)' % i	
-   	 
-    	publisher.publish(msg)          	# Publicar
-   	 
-    	# Escribir en la terminal a modo de debug
-    	node.get_logger().info('Publicando: "%s"' % msg.data)
-    	i += 1
-
-	# Cada medio segundo publicar un mensaje
-	timer_period = 0.5  # seconds
-	timer = node.create_timer(timer_period, timer_callback)
-
-Si no hacemos nada el programa termina, entonces rclpy.spin(node) pausa la ejecución hasta que se solicite matar el nodo. En este punto cualquier thread o timer que se creo, continua su ejecución. Incluso permite la ejecución de cualquier callback definido para el nodo, permitiendo la comunicación con los otros nodos.
-
-rclpy.spin(node)
-
-Cuando se solicita terminar el nodo, la función spin() termina y ningún callback puede ser ejecutado. shutdown() se encarga de finalizar todo lo iniciado con init()
-
-node.destroy_timer(timer)
-node.destroy_node()
-rclpy.shutdown()
-
-Punto de entrada para ejecutar el código -> función main
-
-if __name__ == '__main__':
-main()
--->
 
 # Dependencias, ejecutables y compilación
 
