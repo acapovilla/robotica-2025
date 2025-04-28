@@ -1,5 +1,152 @@
 [
   {
+    "objectID": "clases/06/index.html#resumen-clase-05",
+    "href": "clases/06/index.html#resumen-clase-05",
+    "title": "Robótica",
+    "section": "Resumen Clase 05",
+    "text": "Resumen Clase 05\n\nProgramación Orientada a Objetos\n\n\nCódigo publisher y suscriber"
+  },
+  {
+    "objectID": "clases/06/index.html#rclpy-parámetros",
+    "href": "clases/06/index.html#rclpy-parámetros",
+    "title": "Robótica",
+    "section": "rclpy: Parámetros",
+    "text": "rclpy: Parámetros\n\nPermiten configurar nodos sin tener que reprogramarlos\n\n\n\nSe crean y destruyen con el nodo\n\n\n\n\nConsisten en\n\n\nUna key (identificador)\nUn valor\nUna descripción (opcional)\n\n\n\n\nRecapitulación: - Las primeras clases se trabajaron los conceptos de nodos, mensajes y topics; luego se trabajó con los comandos asociados a estas entidades y como interactuar u obtener información acerca de los mismos y por último aprendimos el uso de las librerías para la programación de nodos - También se trabajó con los concetos de servicios y parámetros, y posteriormente los comandos asociados y como utilizarlos - Ahora queda aprender como programar dichos parámetros dentro de los nodos"
+  },
+  {
+    "objectID": "clases/06/index.html#rclpy-parámetros-1",
+    "href": "clases/06/index.html#rclpy-parámetros-1",
+    "title": "Robótica",
+    "section": "rclpy: Parámetros",
+    "text": "rclpy: Parámetros\n\nSe declaran todos al inicio, antes de hacer uso\n\n\n    self.declare_parameter('&lt;nombre&gt;', &lt;valor&gt;)\n\n    self.declare_parameter('&lt;nombre&gt;', &lt;valor&gt;, &lt;desc&gt;)\n\n\n\nEl tipo es inferido a través del valor"
+  },
+  {
+    "objectID": "clases/06/index.html#rclpy-parámetros-2",
+    "href": "clases/06/index.html#rclpy-parámetros-2",
+    "title": "Robótica",
+    "section": "rclpy: Parámetros",
+    "text": "rclpy: Parámetros\n\nPara obtener el valor\n\n    param = self.get_parameter('&lt;nombre&gt;')\n\n    valor = param.value\n    \n\n\nEstablecer el valor (desde el nodo)\n\n    nuevo_valor = rclpy.parameter.Parameter(&lt;nombre&gt;, &lt;tipo&gt;, valor&gt;)\n    \n    self.set_parameters([ nuevo_valor ])"
+  },
+  {
+    "objectID": "clases/06/index.html#rclpy-parámetros-3",
+    "href": "clases/06/index.html#rclpy-parámetros-3",
+    "title": "Robótica",
+    "section": "rclpy: Parámetros",
+    "text": "rclpy: Parámetros\n\nExiste un callback para cuando se modifica algún parámetro\n\n    # Dentro del constructor de la clase\n    self.handler = ParameterEventHandler(self)\n    \n    self.callback_handle = self.handler.add_parameter_callback(\n        parameter_name = \"&lt;nombre_parametro&gt;\",\n        node_name = \"&lt;nombre_nodo&gt;\",\n        callback = &lt;callback&gt;,\n    )\n    \n\n\nEl callback recibe el parámetro modificado\n\n    def callback(self, p: rclpy.parameter.Parameter) -&gt; None:\n        ..."
+  },
+  {
+    "objectID": "clases/06/index.html#argumentos-en-ros2",
+    "href": "clases/06/index.html#argumentos-en-ros2",
+    "title": "Robótica",
+    "section": "Argumentos en ROS2",
+    "text": "Argumentos en ROS2\n\nPropiedades que ROS permite reconfigurar\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args ...\n\n\n\nRemapping: -r o --remap\n\n\n    $ ros2 run ... --ros-args -r __node:=&lt;nuevo_nombre_nodo&gt;\n\n\n    $ ros2 run ... --ros-args -r __ns:=/&lt;nombre_namespace&gt;\n\n\n    $ ros2 run ... --ros-args -r &lt;topic&gt;:=&lt;nuevo_nombre_topic&gt;\n\n\n\n\nNivel de log: --log-level\n  $ ros2 run ... --ros-args --log-level &lt;info|debug|warn|error&gt;"
+  },
+  {
+    "objectID": "clases/06/index.html#argumentos-en-ros2-1",
+    "href": "clases/06/index.html#argumentos-en-ros2-1",
+    "title": "Robótica",
+    "section": "Argumentos en ROS2",
+    "text": "Argumentos en ROS2\n\nPara el caso de parámetros: -p\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n            --ros-args -p &lt;nombre_parametro&gt;:=&lt;valor&gt;\n\n\n\n\n\n\n\n\nCuando el nodo se encuentra en ejecución:\n\n$ ros2 param set ..."
+  },
+  {
+    "objectID": "clases/06/index.html#ros2launch",
+    "href": "clases/06/index.html#ros2launch",
+    "title": "Robótica",
+    "section": "ros2launch",
+    "text": "ros2launch\n\nHerramienta que permite la ejecución de múltiples nodos con un simple comando: ros2 launch ...\n\n\n\nTareas más comunes:\n\n\nCrear nodos (y de forma sincronizada)\nCargar parámetros\nEjecutar comandos\nReutilizar archivos\n\n\nPor lo general, un sistema ROS 2 está compuesto de numerosos nodos que se ejecutan en diversos procesos (e incluso en distintas máquinas)\nSi bien es posible ejecutar manualmente cada uno de estos nodos, se vuelve engorroso rapidamente"
+  },
+  {
+    "objectID": "clases/06/index.html#ros2launch-1",
+    "href": "clases/06/index.html#ros2launch-1",
+    "title": "Robótica",
+    "section": "ros2launch",
+    "text": "ros2launch\n\nPor convención se ubican en la carpeta launch dentro del paquete\n\n\n\nFormatos:\n\nXML: nombre_archivo.xml\nYAML: nombre_archivo.yaml\nPython: nombre_archivo.launch.py   ⬅️"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python",
+    "href": "clases/06/index.html#archivos-launch-en-python",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nEs necesario adecuar el archivo setup.py:\n\nfrom setuptools import setup\n\nimport os\nfrom glob import glob\n\npackage_name = 'nombre_paquete'\n\nsetup(\n  # Otros parámetros ...\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n  ],\n  # El resto de la configuración ...\n)\n\n\n\n\n\n\n\nSe recomienda agregar ros2launch como dependencia de ejecución:\n\n   &lt;exec_depend&gt;ros2launch&lt;/exec_depend&gt;"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-1",
+    "href": "clases/06/index.html#archivos-launch-en-python-1",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nSe debe implementar la función\n          generate_launch_description()\nque devuelve\n          launch.LaunchDescription()\n\n\n\nEsta función será utilizada por el comando:\n  $ ros2 launch &lt;nombre_paquete&gt; &lt;nombre_archivo_launch&gt;"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-2",
+    "href": "clases/06/index.html#archivos-launch-en-python-2",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nImportar las librerías launch y launch_ros\n\n# Librería independiente de ROS2\nfrom launch import LaunchDescription\n\n# Librería específica con clases de ROS2\nfrom launch_ros import actions"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-3",
+    "href": "clases/06/index.html#archivos-launch-en-python-3",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nFormas de agregar acciones (ejemplo con nodo)\n\n\nDirectamente en el constructor\n\ndef generate_launch_description():\n  return LaunchDescription([\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n    ),\n  ])\n\nAñadiendo al objeto\n\ndef generate_launch_description():\n  node_1 = Node(\n    package = ’&lt;nombre_paquete&gt;’,\n    executable = ’&lt;nombre_ejecutable&gt;’,\n    name = ’&lt;nombre_nodo&gt;’,\n  )\n\n  ld = LaunchDescription()\n  ld.add_action(node_1)\n  return ld"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-4",
+    "href": "clases/06/index.html#archivos-launch-en-python-4",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nActions: Ejecutar un nodo\n\nfrom launch_ros.actions import Node\n...\nreturn LaunchDescription([\n  Node(\n    package = ’&lt;nombre_paquete&gt;’,\n    executable = ’&lt;nombre_ejecutable&gt;’,\n    name = ’&lt;nombre_nodo&gt;’,\n    namespace = ’&lt;nombre_namespace&gt;’,\n    parameters = [ # Pueden ser archivos\n      {‘&lt;nombre_parametro&gt;’: &lt;valor&gt;, .. }\n    ],\n    remappings = [\n      ('&lt;nombre_topic&gt;', '&lt;nuevo_nombre&gt;'),\n    ],\n    output = ’&lt;screen|log|both&gt;’,\n    ros_arguments = [...],              # Listado de argumentos de ejecución (nivel de log, etc)\n    arguments = [...],                  # Listado de argumentos para el nodo\n  ),\n])"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-5",
+    "href": "clases/06/index.html#archivos-launch-en-python-5",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nSubstitutions: Parámetros para cambiar valores en el launch\n\n...\nfrom launch.actions import DeclareLaunchArgument\nfrom launch.substitutions import LaunchConfiguration\n \ndef generate_launch_description():\n  return LaunchDescription([\n    DeclareLaunchArgument(\n      ‘&lt;nombre_parametro&gt;’, default_value=&lt;valor&gt;\n    ),\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n      parameters=[{\n        '&lt;parametro_del_nodo&gt;': LaunchConfiguration('&lt;nombre_parametro&gt;'),\n      }]\n    ),\n  ])"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-6",
+    "href": "clases/06/index.html#archivos-launch-en-python-6",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nConditions: Mecanismos para cambiar el comportamiento del launch\n\n...\nfrom launch.actions import DeclareLaunchArgument\nfrom launch.conditions import IfCondition\nfrom launch.substitutions import LaunchConfiguration, EqualsSubstitution\n\ndef generate_launch_description():\n  return LaunchDescription([\n    DeclareLaunchArgument(\n      ‘ejecutar_nodo’, default_value='true'\n    ),\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n      condition=IfCondition(\n        EqualsSubstitution(LaunchConfiguration(‘ejecutar_nodo’), 'true')\n      ),\n    ),\n  ])"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-7",
+    "href": "clases/06/index.html#archivos-launch-en-python-7",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nReutilización: Incluir otros launch\n\n...\nfrom launch.actions import IncludeLaunchDescription\nfrom launch.launch_description_sources import PythonLaunchDescriptionSource\nfrom launch_ros.substitutions import FindPackageShare\n\ndef generate_launch_description():\n  return LaunchDescription([\n    IncludeLaunchDescription(\n      PythonLaunchDescriptionSource([\n        FindPackageShare('&lt;nombre_paquete&gt;'), '/launch', '/&lt;nombre_archivo_launch&gt;'\n      ])\n    )\n    ...\n  ])"
+  },
+  {
+    "objectID": "clases/06/index.html#sistema-de-logging",
+    "href": "clases/06/index.html#sistema-de-logging",
+    "title": "Robótica",
+    "section": "Sistema de logging",
+    "text": "Sistema de logging\n\n\nPor defecto los mensajes de log se escriben en:\n\nLa consola\nEl archivo de log en el disco\nEl topic \\rosout\n\n\n\n\n\nPueden activarse y desactivarse individualmente"
+  },
+  {
+    "objectID": "clases/06/index.html#mensajes-de-log",
+    "href": "clases/06/index.html#mensajes-de-log",
+    "title": "Robótica",
+    "section": "Mensajes de log",
+    "text": "Mensajes de log\n\nEscala de gravedad (severity level)\n\n\nEn orden descendente:\n\nFATAL\nERROR\nWARN\nINFO\nDEBUG\n\n\n\nCada nodo está asociado a un nivel de severidad por lo que se pueden filtrar mensajes con severidad inferior"
+  },
+  {
+    "objectID": "clases/06/index.html#mensajes-de-log-en-rclpy",
+    "href": "clases/06/index.html#mensajes-de-log-en-rclpy",
+    "title": "Robótica",
+    "section": "Mensajes de log en rclpy",
+    "text": "Mensajes de log en rclpy\n\nObtener el logger de una clase nodo:\n  &lt;nodo&gt;.get_logger().{debug,info,warning,error,fatal}('&lt;mensaje_de_log&gt;')\n\n\n\n\n\nOpciones para configurar el comportamiento:\n\nonce: Loggear solo la primera vez\nskip_first: No loggear la primera vez, si las siguientes\nthrottle_duration_sec: Cantidad de veces que se puede enviar el mensaje por segundo"
+  },
+  {
+    "objectID": "clases/06/index.html#laboratorio-1",
+    "href": "clases/06/index.html#laboratorio-1",
+    "title": "Robótica",
+    "section": "Laboratorio",
+    "text": "Laboratorio\nUso de parámetros y archivos launch"
+  },
+  {
     "objectID": "clases/01/index.html#organización-de-la-materia",
     "href": "clases/01/index.html#organización-de-la-materia",
     "title": "Robótica",
@@ -60,7 +207,7 @@
     "href": "clases/01/index.html#herramientas-de-trabajo",
     "title": "Robótica",
     "section": "Herramientas de trabajo",
-    "text": "Herramientas de trabajo\n\n\nFramework de robótica: ROS2\nSimulador: Gazebo\nLenguaje de programación: C++ / Python\nIDE: VSCode (potencial en sus extensiones)\nAdicionales:\n\nContenedores: Docker\nControl de versiones: Git (+ GitHub o GitLab)\nEscritura: Latex, Markdown\nDiagramas: Draw.io"
+    "text": "Herramientas de trabajo\n\nFramework de robótica: ROS2\nSimulador: Gazebo\nLenguaje de programación: C++ / Python\nIDE: VSCode (potencial en sus extensiones)\nAdicionales:\n\nContenedores: Docker\nControl de versiones: Git (+ GitHub o GitLab)\nEscritura: Latex, Markdown\nDiagramas: Draw.io"
   },
   {
     "objectID": "clases/01/index.html#bibliografía-recursos-oficiales",
@@ -68,6 +215,209 @@
     "title": "Robótica",
     "section": "Bibliografía Recursos Oficiales",
     "text": "Bibliografía Recursos Oficiales\n\nROS 2 Documentation, Tutorials\nGazebo\nrospy, ros_control, Nav2\nentre otros…\n\nMaterial adicional recomendado\n\nArticulated Robotics\nThe Construct\nETH Zürich - Programming for Robotic\nAutomatic Addison\n\nBibliografía (muy) complementaria\n\nSpringer Handbook of Robotics\nRobotic Systems (draft), Kris Hauser"
+  },
+  {
+    "objectID": "clases/04/lab.html",
+    "href": "clases/04/lab.html",
+    "title": "Clase 04 - Laboratorio",
+    "section": "",
+    "text": "Paso inicial\n\n\n\nCreación del workspace\n\n\n\nCrear una carpeta para el workspace (como por ejemplo robotica-2025) y dentro, crear la carpeta src:\n\n\n📂 ...\n   📂 robotica-2025\n       📁 src\n...\n\n\n\n\n\n\n\nRecomendación\n\n\n\nRealizar este paso solo por cada proyecto individual\n\n\n\n\n\n  $ ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\n\n\n\n\n\n\nDentro de workspace/src\n\n\n\n\n    $ ros2 pkg create --build-type ament_python clase_04\nEsto generará la estructura de carpetas correspondientes para un paquete de python:\n\n📂 src\n  📂 clase_04\n      📂 clase_04\n          📄 __init__.py\n  📂 resource\n      📄 clase_04\n  📁 test\n         ...\n  📄 package.xml\n  ⚙️ setup.cfg\n  📄 setup.py\n\n\n\n\n\n\n\nCompletar la información adicional en los respectivos archivos package.xml y setup.py\n\n\n\n\n\n    $ colcon build\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\n\n\nCuando quieras compilar un solo paquete usa la opción --packages-select\n\n\n\nSe generarán las carpetas adicionales en el workspace:\n\n📂 ...\n    📂 robotica-2025\n        📁 src\n        📁 build      ⬅️\n        📁 install    ⬅️\n        📁 log        ⬅️\n...\n\n\n\n\n\n\n\n\n\nimport rclpy\n\n\n\nrclpy.init(args=args)\n\n\n\n\n  rclpy.create_node('&lt;nombre_nodo&gt;')\n\n\nnodo = rclpy.create_node('publicador')\n\n\n\n\n  &lt;nodo&gt;.create_publisher(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\npub = nodo.create_publisher(String, 'chat', 10)\n\n\n\n\n  &lt;nodo&gt;.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\ntimer = nodo.create_timer(1, timer_callback)\n\n\n\n\n  rclpy.spin(&lt;nodo&gt;)\n\n\nrclpy.spin(nodo)\n\n\n\nrclpy.shutdown()\n\n\n\n\n\n\n\n\n\nDentro de la carpeta correspondiente: **/src/&lt;nombre_paquete&gt;/&lt;nombre_paquete&gt;\n\n\n\n\n\nnodo_publicador.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Creación de publisher\n    # pub = ...\n\n    # 2.2 Creación de mensaje\n    msg = String()\n\n    # 2.3 Programación de función de callback\n    def timer_callback():\n        # Completar el campo 'data' del mensaje \n        msg.data = 'Mensaje de prueba'\n\n        # Publicar el mensaje\n        pub.publish(msg)\n\n    # 2.4 Creación del timer\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\nPara añadir dependencias a un paquete, modificar el archivo package.xml\n&lt;package format=\"3\"&gt;\n    ...\n    &lt;exec_depend&gt;rclpy&lt;/exec_depend&gt;\n    &lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;\n    ...\n&lt;/package&gt;\nInstalar dependencias:\n    $ rosdep install -i --from-path src -y\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\nPara añadir un ejecutable en un paquete de Python, modificar el archivo setup.py\n\n  entry_points={\n       'console_scripts': [\n               '&lt;nombre_ejecutable&gt; = &lt;nombre_paquete&gt;.&lt;nombre_archivo&gt;:main',\n       ],\n  },\n\nsetup(\n    ...\n    entry_points={\n            'console_scripts': [\n                    'publicar = clase_04.nodo_publicador:main',\n            ],\n    },\n)\n\n\n\n\n\n\n\n\n\n\n\nRecuerda compilar el paquete\n\n\n\n\n\n\n\n\n\nRecuerda configurar el entorno local:\n    $ source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo\n\n\n\n\n\n\n\n\n\n  &lt;nodo&gt;.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\nsub = nodo.create_subscription(String, 'chat', sub_callback, 10)\n\n\nnodo_suscriptor.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    # ...\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Programación de función de callback\n    def sub_callback(msg):\n        # Mostrar el mensaje en consola\n        nodo.get_logger().info('Recibí: \"%s\"' % msg.data)\n\n    # 2.2 Creación de suscriptor\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+  },
+  {
+    "objectID": "clases/04/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/04/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 04 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/04/lab.html#parte-2-creación-de-paquetes-y-programación-de-nodos",
+    "href": "clases/04/lab.html#parte-2-creación-de-paquetes-y-programación-de-nodos",
+    "title": "Clase 04 - Laboratorio",
+    "section": "",
+    "text": "Paso inicial\n\n\n\nCreación del workspace\n\n\n\nCrear una carpeta para el workspace (como por ejemplo robotica-2025) y dentro, crear la carpeta src:\n\n\n📂 ...\n   📂 robotica-2025\n       📁 src\n...\n\n\n\n\n\n\n\nRecomendación\n\n\n\nRealizar este paso solo por cada proyecto individual\n\n\n\n\n\n  $ ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\n\n\n\n\n\n\nDentro de workspace/src\n\n\n\n\n    $ ros2 pkg create --build-type ament_python clase_04\nEsto generará la estructura de carpetas correspondientes para un paquete de python:\n\n📂 src\n  📂 clase_04\n      📂 clase_04\n          📄 __init__.py\n  📂 resource\n      📄 clase_04\n  📁 test\n         ...\n  📄 package.xml\n  ⚙️ setup.cfg\n  📄 setup.py\n\n\n\n\n\n\n\nCompletar la información adicional en los respectivos archivos package.xml y setup.py\n\n\n\n\n\n    $ colcon build\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\n\n\nCuando quieras compilar un solo paquete usa la opción --packages-select\n\n\n\nSe generarán las carpetas adicionales en el workspace:\n\n📂 ...\n    📂 robotica-2025\n        📁 src\n        📁 build      ⬅️\n        📁 install    ⬅️\n        📁 log        ⬅️\n...\n\n\n\n\n\n\n\n\n\nimport rclpy\n\n\n\nrclpy.init(args=args)\n\n\n\n\n  rclpy.create_node('&lt;nombre_nodo&gt;')\n\n\nnodo = rclpy.create_node('publicador')\n\n\n\n\n  &lt;nodo&gt;.create_publisher(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\npub = nodo.create_publisher(String, 'chat', 10)\n\n\n\n\n  &lt;nodo&gt;.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\ntimer = nodo.create_timer(1, timer_callback)\n\n\n\n\n  rclpy.spin(&lt;nodo&gt;)\n\n\nrclpy.spin(nodo)\n\n\n\nrclpy.shutdown()\n\n\n\n\n\n\n\n\n\nDentro de la carpeta correspondiente: **/src/&lt;nombre_paquete&gt;/&lt;nombre_paquete&gt;\n\n\n\n\n\nnodo_publicador.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Creación de publisher\n    # pub = ...\n\n    # 2.2 Creación de mensaje\n    msg = String()\n\n    # 2.3 Programación de función de callback\n    def timer_callback():\n        # Completar el campo 'data' del mensaje \n        msg.data = 'Mensaje de prueba'\n\n        # Publicar el mensaje\n        pub.publish(msg)\n\n    # 2.4 Creación del timer\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\nPara añadir dependencias a un paquete, modificar el archivo package.xml\n&lt;package format=\"3\"&gt;\n    ...\n    &lt;exec_depend&gt;rclpy&lt;/exec_depend&gt;\n    &lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;\n    ...\n&lt;/package&gt;\nInstalar dependencias:\n    $ rosdep install -i --from-path src -y\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\nPara añadir un ejecutable en un paquete de Python, modificar el archivo setup.py\n\n  entry_points={\n       'console_scripts': [\n               '&lt;nombre_ejecutable&gt; = &lt;nombre_paquete&gt;.&lt;nombre_archivo&gt;:main',\n       ],\n  },\n\nsetup(\n    ...\n    entry_points={\n            'console_scripts': [\n                    'publicar = clase_04.nodo_publicador:main',\n            ],\n    },\n)\n\n\n\n\n\n\n\n\n\n\n\nRecuerda compilar el paquete\n\n\n\n\n\n\n\n\n\nRecuerda configurar el entorno local:\n    $ source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo\n\n\n\n\n\n\n\n\n\n  &lt;nodo&gt;.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\nsub = nodo.create_subscription(String, 'chat', sub_callback, 10)\n\n\nnodo_suscriptor.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    # ...\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Programación de función de callback\n    def sub_callback(msg):\n        # Mostrar el mensaje en consola\n        nodo.get_logger().info('Recibí: \"%s\"' % msg.data)\n\n    # 2.2 Creación de suscriptor\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+  },
+  {
+    "objectID": "clases/03/lab.html",
+    "href": "clases/03/lab.html",
+    "title": "Clase 03 - Laboratorio",
+    "section": "",
+    "text": "Nota\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
+  },
+  {
+    "objectID": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 03 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/03/lab.html#parte-1-servicios-y-parámetros",
+    "href": "clases/03/lab.html#parte-1-servicios-y-parámetros",
+    "title": "Clase 03 - Laboratorio",
+    "section": "",
+    "text": "Nota\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
+  },
+  {
+    "objectID": "clases/02/lab.html",
+    "href": "clases/02/lab.html",
+    "title": "Clase 02 - Laboratorio",
+    "section": "",
+    "text": "Windows 10 / 11 (WSL)Ubuntu 24.04Docker\n\n\n\n\n\n\n\n\nAntes de iniciar\n\n\n\nSe necesitan todas las últimas actualizaciones de Windows instaladas\n\n\n\n\n\n    $ wsl --install\n\n\nVer salida\n\nLa operación solicitada requiere elevación.\nDescargando: Subsistema de Windows para Linux 2.4.13\nInstalando: Subsistema de Windows para Linux 2.4.13\nSe ha instalado Subsistema de Windows para Linux 2.4.13.\nInstalando componente opcional de Windows: VirtualMachinePlatform\n\nHerramienta Administración y mantenimiento de imágenes de implementación\nVersión: 10.0.26100.1150\n\nVersión de imagen: 10.0.26100.3624\n\nHabilitando características\n[==========================100.0%==========================]\nLa operación se completó correctamente.\nLa operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.\nLa operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.\n\n\n\n\n\n\n\nRecomendación\n\n\n\nSe recomienda reiniciar la PC después de esta instalación inicial para finalizar el setup\n\n\n\n\n\n\nPara ver todas las distribuciones y versiones disponibles:\n    $ wsl --list --online\n\n\nVer salida\n\nA continuación, se muestra una lista de las distribuciones válidas que se pueden instalar.\nInstalar con \"wsl.exe --install &lt;Distro&gt;\".\n\nNAME                            FRIENDLY NAME\nAlmaLinux-8                     AlmaLinux OS 8\nAlmaLinux-9                     AlmaLinux OS 9\nAlmaLinux-Kitten-10             AlmaLinux OS Kitten 10\nDebian                          Debian GNU/Linux\nSUSE-Linux-Enterprise-15-SP5    SUSE Linux Enterprise 15 SP5\nSUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6\nUbuntu                          Ubuntu\nUbuntu-24.04                    Ubuntu 24.04 LTS\nkali-linux                      Kali Linux Rolling\nopenSUSE-Tumbleweed             openSUSE Tumbleweed\nopenSUSE-Leap-15.6              openSUSE Leap 15.6\nUbuntu-18.04                    Ubuntu 18.04 LTS\nUbuntu-20.04                    Ubuntu 20.04 LTS\nUbuntu-22.04                    Ubuntu 22.04 LTS\nOracleLinux_7_9                 Oracle Linux 7.9\nOracleLinux_8_7                 Oracle Linux 8.7\nOracleLinux_9_1                 Oracle Linux 9.1\n\nPara instalar\n    $ wsl --install -d Ubuntu-24.04\n\n\nVer salida\n\nDescargando: Ubuntu 24.04 LTS\nInstalando: Ubuntu 24.04 LTS\nDistribución instalada correctamente.\n\n\n\n\n\n    $ wsl -d Ubuntu-24.04\n\n\nVer salida\n\nProvisioning the new WSL instance Ubuntu-24.04\nThis might take a while...\nCreate a default Unix user account: ubuntu\nNew password:\nRetype new password:\npasswd: password updated successfully\nTo run a command as administrator (user \"root\"), use \"sudo &lt;command&gt;\".\nSee \"man sudo_root\" for details.\n\n\n\n\n\n\n\n\nNote\n\n\n\nContinuar con la creación de usuario y contraseña\n\n\n\n\n\n\nTraducido de documentation.ubuntu.com/wsl\n\n\n\n\n\n\n\n\n\nActualizar el sistema\n\n\n\n    $ sudo apt update\n    $ sudo apt upgrade -y\n\n\n\n\n\n    $ sudo apt install software-properties-common curl -y\n    $ sudo add-apt-repository universe\nAgregar la key GPG de ROS 2\n    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg\nAgregar repositorio a la source list\n    $ echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main\" | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null\n\n\n\n\nActualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update && sudo apt upgrade -y\nInstalación Desktop: ROS, RViz, demos, etc.\n    $ sudo apt install ros-jazzy-desktop -y\n\nTraducido de docs.ros.org\n\n\n\n\n\n\n\n\n\n\n\n\n\nVer contenido del archivo\n\n\n\ndevcontainer.json\n\n// For format details, see https://aka.ms/devcontainer.json.\n{\n    \"name\": \"TUAR - ROS2 Jazzy\",\n    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile\n    \"image\": \"registry.gitlab.com/acapovilla/ros-docker-images/ros2/jazzy-noble-desktop-full:latest\",\n    // Workspace setup\n    \"workspaceMount\": \"source=${localWorkspaceFolder},target=/workspaces/catkin_ws,type=bind,consistency=cached\",\n    \"workspaceFolder\": \"/workspaces/catkin_ws\",\n    \"remoteUser\": \"ubuntu\",\n    \"containerUser\": \"ubuntu\",\n\n    // Features to add to the dev container. More info: https://containers.dev/features.\n    \"features\": {\n        \"ghcr.io/devcontainers/features/common-utils:2\": {\n            \"installZsh\": true,\n            \"installOhMyZsh\": true,\n            \"installOhMyZshConfig\": true,\n            \"nonFreePackages\": true,\n            \"username\": \"ubuntu\",\n            \"userUid\": \"automatic\",\n            \"userGid\": \"automatic\"\n        }\n    },\n\n    // Use 'forwardPorts' to make a list of ports inside the container available locally.\n    // \"forwardPorts\": [],\n\n    // Use 'postCreateCommand' to run commands after the container is created.\n    // \"postCreateCommand\": \"uname -a\",\n\n    // Configure tool-specific properties.\n    \"customizations\": {\n        \"vscode\": {\n            \"extensions\": [\n                \"ms-vscode.cpptools\",\n                \"ms-iot.vscode-ros\",\n                \"twxs.cmake\",\n                \"mutantdino.resourcemonitor\",\n                \"donjayamanne.python-environment-manager\",\n                \"KevinRose.vsc-python-indent\",\n                \"VisualStudioExptTeam.vscodeintellicode\",\n                \"ms-python.vscode-pylance\",\n                \"ms-vscode.cmake-tools\"\n            ]\n        }\n    },\n\n    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.\n    // \"remoteUser\": \"root\"\n\n    \"containerEnv\": {\n        // Display configuration\n        \"DISPLAY\": \"${localEnv:DISPLAY}\"\n    },\n    \"mounts\": [\n        // X-Server\n        \"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,readonly=false\"\n    ],\n    \"runArgs\": [\n        \"--device=/dev/dri:/dev/dri\",\n        \"--privileged\",\n        \"--volume=/dev:/dev\",\n        \"--net=host\"\n    ],\n    \"onCreateCommand\": \"echo 'source /opt/ros/$ROS_DISTRO/setup.bash' &gt;&gt; /home/ubuntu/.bashrc\",\n    \"postCreateCommand\": \"sudo apt update && rosdep update\"\n}"
+  },
+  {
+    "objectID": "clases/02/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/02/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 02 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/02/lab.html#instalación-de-ros2",
+    "href": "clases/02/lab.html#instalación-de-ros2",
+    "title": "Clase 02 - Laboratorio",
+    "section": "",
+    "text": "Windows 10 / 11 (WSL)Ubuntu 24.04Docker\n\n\n\n\n\n\n\n\nAntes de iniciar\n\n\n\nSe necesitan todas las últimas actualizaciones de Windows instaladas\n\n\n\n\n\n    $ wsl --install\n\n\nVer salida\n\nLa operación solicitada requiere elevación.\nDescargando: Subsistema de Windows para Linux 2.4.13\nInstalando: Subsistema de Windows para Linux 2.4.13\nSe ha instalado Subsistema de Windows para Linux 2.4.13.\nInstalando componente opcional de Windows: VirtualMachinePlatform\n\nHerramienta Administración y mantenimiento de imágenes de implementación\nVersión: 10.0.26100.1150\n\nVersión de imagen: 10.0.26100.3624\n\nHabilitando características\n[==========================100.0%==========================]\nLa operación se completó correctamente.\nLa operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.\nLa operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.\n\n\n\n\n\n\n\nRecomendación\n\n\n\nSe recomienda reiniciar la PC después de esta instalación inicial para finalizar el setup\n\n\n\n\n\n\nPara ver todas las distribuciones y versiones disponibles:\n    $ wsl --list --online\n\n\nVer salida\n\nA continuación, se muestra una lista de las distribuciones válidas que se pueden instalar.\nInstalar con \"wsl.exe --install &lt;Distro&gt;\".\n\nNAME                            FRIENDLY NAME\nAlmaLinux-8                     AlmaLinux OS 8\nAlmaLinux-9                     AlmaLinux OS 9\nAlmaLinux-Kitten-10             AlmaLinux OS Kitten 10\nDebian                          Debian GNU/Linux\nSUSE-Linux-Enterprise-15-SP5    SUSE Linux Enterprise 15 SP5\nSUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6\nUbuntu                          Ubuntu\nUbuntu-24.04                    Ubuntu 24.04 LTS\nkali-linux                      Kali Linux Rolling\nopenSUSE-Tumbleweed             openSUSE Tumbleweed\nopenSUSE-Leap-15.6              openSUSE Leap 15.6\nUbuntu-18.04                    Ubuntu 18.04 LTS\nUbuntu-20.04                    Ubuntu 20.04 LTS\nUbuntu-22.04                    Ubuntu 22.04 LTS\nOracleLinux_7_9                 Oracle Linux 7.9\nOracleLinux_8_7                 Oracle Linux 8.7\nOracleLinux_9_1                 Oracle Linux 9.1\n\nPara instalar\n    $ wsl --install -d Ubuntu-24.04\n\n\nVer salida\n\nDescargando: Ubuntu 24.04 LTS\nInstalando: Ubuntu 24.04 LTS\nDistribución instalada correctamente.\n\n\n\n\n\n    $ wsl -d Ubuntu-24.04\n\n\nVer salida\n\nProvisioning the new WSL instance Ubuntu-24.04\nThis might take a while...\nCreate a default Unix user account: ubuntu\nNew password:\nRetype new password:\npasswd: password updated successfully\nTo run a command as administrator (user \"root\"), use \"sudo &lt;command&gt;\".\nSee \"man sudo_root\" for details.\n\n\n\n\n\n\n\n\nNote\n\n\n\nContinuar con la creación de usuario y contraseña\n\n\n\n\n\n\nTraducido de documentation.ubuntu.com/wsl\n\n\n\n\n\n\n\n\n\nActualizar el sistema\n\n\n\n    $ sudo apt update\n    $ sudo apt upgrade -y\n\n\n\n\n\n    $ sudo apt install software-properties-common curl -y\n    $ sudo add-apt-repository universe\nAgregar la key GPG de ROS 2\n    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg\nAgregar repositorio a la source list\n    $ echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main\" | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null\n\n\n\n\nActualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update && sudo apt upgrade -y\nInstalación Desktop: ROS, RViz, demos, etc.\n    $ sudo apt install ros-jazzy-desktop -y\n\nTraducido de docs.ros.org\n\n\n\n\n\n\n\n\n\n\n\n\n\nVer contenido del archivo\n\n\n\ndevcontainer.json\n\n// For format details, see https://aka.ms/devcontainer.json.\n{\n    \"name\": \"TUAR - ROS2 Jazzy\",\n    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile\n    \"image\": \"registry.gitlab.com/acapovilla/ros-docker-images/ros2/jazzy-noble-desktop-full:latest\",\n    // Workspace setup\n    \"workspaceMount\": \"source=${localWorkspaceFolder},target=/workspaces/catkin_ws,type=bind,consistency=cached\",\n    \"workspaceFolder\": \"/workspaces/catkin_ws\",\n    \"remoteUser\": \"ubuntu\",\n    \"containerUser\": \"ubuntu\",\n\n    // Features to add to the dev container. More info: https://containers.dev/features.\n    \"features\": {\n        \"ghcr.io/devcontainers/features/common-utils:2\": {\n            \"installZsh\": true,\n            \"installOhMyZsh\": true,\n            \"installOhMyZshConfig\": true,\n            \"nonFreePackages\": true,\n            \"username\": \"ubuntu\",\n            \"userUid\": \"automatic\",\n            \"userGid\": \"automatic\"\n        }\n    },\n\n    // Use 'forwardPorts' to make a list of ports inside the container available locally.\n    // \"forwardPorts\": [],\n\n    // Use 'postCreateCommand' to run commands after the container is created.\n    // \"postCreateCommand\": \"uname -a\",\n\n    // Configure tool-specific properties.\n    \"customizations\": {\n        \"vscode\": {\n            \"extensions\": [\n                \"ms-vscode.cpptools\",\n                \"ms-iot.vscode-ros\",\n                \"twxs.cmake\",\n                \"mutantdino.resourcemonitor\",\n                \"donjayamanne.python-environment-manager\",\n                \"KevinRose.vsc-python-indent\",\n                \"VisualStudioExptTeam.vscodeintellicode\",\n                \"ms-python.vscode-pylance\",\n                \"ms-vscode.cmake-tools\"\n            ]\n        }\n    },\n\n    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.\n    // \"remoteUser\": \"root\"\n\n    \"containerEnv\": {\n        // Display configuration\n        \"DISPLAY\": \"${localEnv:DISPLAY}\"\n    },\n    \"mounts\": [\n        // X-Server\n        \"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,readonly=false\"\n    ],\n    \"runArgs\": [\n        \"--device=/dev/dri:/dev/dri\",\n        \"--privileged\",\n        \"--volume=/dev:/dev\",\n        \"--net=host\"\n    ],\n    \"onCreateCommand\": \"echo 'source /opt/ros/$ROS_DISTRO/setup.bash' &gt;&gt; /home/ubuntu/.bashrc\",\n    \"postCreateCommand\": \"sudo apt update && rosdep update\"\n}"
+  },
+  {
+    "objectID": "clases/02/lab.html#configuración-del-entorno",
+    "href": "clases/02/lab.html#configuración-del-entorno",
+    "title": "Clase 02 - Laboratorio",
+    "section": "Configuración del entorno",
+    "text": "Configuración del entorno\nConfigurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\nVariables de entorno: ROS_DOMAIN_ID\n    $ printenv | grep -i ROS\nObtener ayuda desde la terminal:\n    $ ros2 --help"
+  },
+  {
+    "objectID": "clases/02/lab.html#emisor-receptor",
+    "href": "clases/02/lab.html#emisor-receptor",
+    "title": "Clase 02 - Laboratorio",
+    "section": "Emisor / Receptor",
+    "text": "Emisor / Receptor\n\nInstalación de paquetes de demostración: demo-nodes-py\n    $ sudo apt install ros-jazzy-demo-nodes-py\nVer paquetes instalados:\n    $ ros2 pkg executables\n\n\nNodos talker y listener\n\nEjecutar nodos\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n    $ ros2 run demo_nodes_py talker\ny en otra terminal\n    $ ros2 run demo_nodes_py listener\n\n\n\n\n\n\nTip\n\n\n\nRecuerda volver a configurar el entorno y configurar el ROS_DOMAIN_ID correctamente\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPara detener el nodo: Ctrl+C\n\n\n\n\nListar los nodos\n    $ ros2 node list\n\n\nObtener información\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n    $ ros2 node info /talker\n\n\n\nTopics\n\nListar los topics\n    $ ros2 topic list\n\n\nObtener información\nInformación acerca del topic: ros2 topic info &lt;nombre_topic&gt;\n\n    $ ros2 topic info /chatter\nInformación acerca del tipo de topic: ros2 topic type &lt;nombre_topic&gt;\n\n    $ ros2 topic type /chatter\nMedir la frecuencia con la que se publican mensajes: ros2 topic hz &lt;nombre_topic&gt;\n\n    $ ros2 topic hz /chatter\n\n\nVer los mensajes que pasan por un topic\n\n  $ ros2 topic echo &lt;nombre_topic&gt;\n\n\n    $ ros2 topic echo /chatter\n\n\n\nMensajes\n\nObtener información\n\n  $ ros2 interface show &lt;nombre_del_tipo_de_mensaje&gt;\n\nEjemplo\n    $ ros2 interface show std_msgs/msg/String\n\n\nPublicar mensajes\n\n  $ ros2 topic pub &lt;nombre_del_topic&gt;\n      &lt;nombre_del_tipo_de_mensaje&gt; '&lt;contenido&gt;'\n\nEjemplo\n    $ ros2 topic pub /chatter std_msgs/msg/String \"{data: Mensaje de prueba}\""
+  },
+  {
+    "objectID": "clases/05/lab.html",
+    "href": "clases/05/lab.html",
+    "title": "Clase 05 - Laboratorio",
+    "section": "",
+    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
+  },
+  {
+    "objectID": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 05 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
+    "href": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
+    "title": "Clase 05 - Laboratorio",
+    "section": "",
+    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
+  },
+  {
+    "objectID": "index.html#universidad-nacional-del-litoral-unl",
+    "href": "index.html#universidad-nacional-del-litoral-unl",
+    "title": "Robótica 2025",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/05/index.html#resumen-clase-04",
+    "href": "clases/05/index.html#resumen-clase-04",
+    "title": "Robótica",
+    "section": "Resumen Clase 04",
+    "text": "Resumen Clase 04\n\nCallbacks\n\n\nCódigo publisher y suscriber"
+  },
+  {
+    "objectID": "clases/05/index.html#resumen-clase-04-1",
+    "href": "clases/05/index.html#resumen-clase-04-1",
+    "title": "Robótica",
+    "section": "Resumen Clase 04",
+    "text": "Resumen Clase 04\n\nUso de nombres\n\n\nPaquete\nArchivo\nEjecutable\nNodo"
+  },
+  {
+    "objectID": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
+    "href": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
+    "title": "Robótica",
+    "section": "rclpy: Programación Orientada a Objetos",
+    "text": "rclpy: Programación Orientada a Objetos\n\nExisten 3 formas de escribir código de ROS:\n\n\nCódigo in-line (utilizado en la clase anterior)\nFunciones locales\nOrientado a Objetos   ⬅️"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher",
+    "href": "clases/05/index.html#código-publisher",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-1",
+    "href": "clases/05/index.html#código-publisher-1",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n  \n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-2",
+    "href": "clases/05/index.html#código-publisher-2",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-3",
+    "href": "clases/05/index.html#código-publisher-3",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-4",
+    "href": "clases/05/index.html#código-publisher-4",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-5",
+    "href": "clases/05/index.html#código-publisher-5",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-6",
+    "href": "clases/05/index.html#código-publisher-6",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-7",
+    "href": "clases/05/index.html#código-publisher-7",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-suscriber",
+    "href": "clases/05/index.html#código-suscriber",
+    "title": "Robótica",
+    "section": "Código suscriber",
+    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
+  },
+  {
+    "objectID": "clases/05/index.html#código-suscriber-1",
+    "href": "clases/05/index.html#código-suscriber-1",
+    "title": "Robótica",
+    "section": "Código suscriber",
+    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
+  },
+  {
+    "objectID": "clases/05/index.html#laboratorio",
+    "href": "clases/05/index.html#laboratorio",
+    "title": "Robótica",
+    "section": "Laboratorio",
+    "text": "Laboratorio\nModificación código de nodos publisher y suscriber"
   },
   {
     "objectID": "clases/02/index.html#robot-operating-system-2",
@@ -158,7 +508,7 @@
     "href": "clases/03/index.html#paquete-de-ros",
     "title": "Robótica",
     "section": "Paquete de ROS",
-    "text": "Paquete de ROS\n\n\nContiene\n\n\nCódigo fuente\nArchivos de configuración\nArchivos “launch”\nDefinición de mensajes, servicios, etc\nMetadatos e información\nDocumentación\n\n\n\n\n📂 src\n  📁 nombre_paquete\n      📁 nombre_paquete\n          📄 __init__.py\n          ...\n      📁 resource\n          📄 nombre_paquete\n      📄 package.xml\n      📄 setup.cfg\n      📄 setup.py\n\n\n\nContenedor o marco del código (contiene código fuente, archivos launch, archivos de configuración, definición de mensajes, datos y documentación). Forma que permite instalar el propio código y compartirlo.\nArchivos mínimos para paquetes Python (para cada paquete por separado)\n\npackage.xml: información acerca del paquete (cual?)\nsetup.py -&gt; instrucciones para instalar el paquete\nsetup.cfg -&gt; Para que el comando run encuentra los ejecutables en el caso de que existan\n/&lt;nombre_paquete&gt; -&gt; Carpeta con el mismo nombre del paquete junto con el archivo __init__.py utilizado por las herramientas de ROS2"
+    "text": "Paquete de ROS\n\n\nContiene\n\nCódigo fuente\nArchivos de configuración\nArchivos “launch”\nDefinición de mensajes, servicios, etc\nMetadatos e información\nDocumentación\n\n\n\n📂 src\n  📁 nombre_paquete\n      📁 nombre_paquete\n          📄 __init__.py\n          ...\n      📁 resource\n          📄 nombre_paquete\n      📄 package.xml\n      📄 setup.cfg\n      📄 setup.py\n\n\n\nContenedor o marco del código (contiene código fuente, archivos launch, archivos de configuración, definición de mensajes, datos y documentación). Forma que permite instalar el propio código y compartirlo.\nArchivos mínimos para paquetes Python (para cada paquete por separado)\n\npackage.xml: información acerca del paquete (cual?)\nsetup.py -&gt; instrucciones para instalar el paquete\nsetup.cfg -&gt; Para que el comando run encuentra los ejecutables en el caso de que existan\n/&lt;nombre_paquete&gt; -&gt; Carpeta con el mismo nombre del paquete junto con el archivo __init__.py utilizado por las herramientas de ROS2"
   },
   {
     "objectID": "clases/03/index.html#paquete-de-ros-package.xml",
@@ -186,7 +536,7 @@
     "href": "clases/03/index.html#rclpy-ros-client-library-python",
     "title": "Robótica",
     "section": "rclpy: ROS Client Library (Python)",
-    "text": "rclpy: ROS Client Library (Python)\n\nAcceso a los componentes de ROS\n\n\n\nInicialización y ejecución de callbacks\nGestión de nodos\nTopics, servicios, acciones, etc.\nLogs\n\n\n\nimport rclpy\n\n\n\nAcceso a los elementos de ROS desde la sintaxis de Python utilizando tipos nativos y patrones como listas.\nComponentes principales de la librería:-Inicialización y “spinning”. Gestión del nodo. Log. Subscriber/Publisher. Parámetros.\n(así como servicios, acciones y elementos de sincronización)\n\n\n\nDocumentación completa en: docs.ros2.org/latest/api/rclpy"
+    "text": "rclpy: ROS Client Library (Python)\n\nAcceso a los componentes de ROS\n\n\nInicialización y ejecución de callbacks\nGestión de nodos\nTopics, servicios, acciones, etc.\nLogs\n\n\nimport rclpy\n\n\n\nAcceso a los elementos de ROS desde la sintaxis de Python utilizando tipos nativos y patrones como listas.\nComponentes principales de la librería:-Inicialización y “spinning”. Gestión del nodo. Log. Subscriber/Publisher. Parámetros.\n(así como servicios, acciones y elementos de sincronización)\n\n\n\nDocumentación completa en: docs.ros2.org/latest/api/rclpy"
   },
   {
     "objectID": "clases/03/index.html#rclpy-ros-client-library-python-1",
@@ -231,97 +581,6 @@
     "text": "Compilación del paquete\n\nCreación de paquetes:\n\n    ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\nHerramienta de compilación: colcon\n\n    colcon build [--symlink-install] [--packages-select &lt;nombre_paquete&gt;]\n\nDependencias:\n\n    rosdep update\n\n    rosdep install -i --from-path src --rosdistro jazzy -y\n\n\n\n\n\n\n\nEjecutar en la raíz del workspace"
   },
   {
-    "objectID": "clases/05/index.html#resumen-clase-04",
-    "href": "clases/05/index.html#resumen-clase-04",
-    "title": "Robótica",
-    "section": "Resumen Clase 04",
-    "text": "Resumen Clase 04\n\nCallbacks\n\n\nCódigo publisher y suscriber"
-  },
-  {
-    "objectID": "clases/05/index.html#resumen-clase-04-1",
-    "href": "clases/05/index.html#resumen-clase-04-1",
-    "title": "Robótica",
-    "section": "Resumen Clase 04",
-    "text": "Resumen Clase 04\n\nUso de nombres\n\n\nPaquete\nArchivo\nEjecutable\nNodo"
-  },
-  {
-    "objectID": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
-    "href": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
-    "title": "Robótica",
-    "section": "rclpy: Programación Orientada a Objetos",
-    "text": "rclpy: Programación Orientada a Objetos\n\nExisten 3 formas de escribir código de ROS:\n\n\n\nCódigo in-line (utilizado en la clase anterior)\nFunciones locales\nOrientado a Objetos   ⬅️"
-  },
-  {
-    "objectID": "clases/05/index.html#código-publisher",
-    "href": "clases/05/index.html#código-publisher",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
-  },
-  {
-    "objectID": "clases/05/index.html#código-publisher-1",
-    "href": "clases/05/index.html#código-publisher-1",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n  \n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
-  },
-  {
-    "objectID": "clases/05/index.html#código-publisher-2",
-    "href": "clases/05/index.html#código-publisher-2",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
-  },
-  {
-    "objectID": "clases/05/index.html#código-publisher-3",
-    "href": "clases/05/index.html#código-publisher-3",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
-  },
-  {
-    "objectID": "clases/05/index.html#código-publisher-4",
-    "href": "clases/05/index.html#código-publisher-4",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
-  },
-  {
-    "objectID": "clases/05/index.html#código-publisher-5",
-    "href": "clases/05/index.html#código-publisher-5",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
-  },
-  {
-    "objectID": "clases/05/index.html#código-publisher-6",
-    "href": "clases/05/index.html#código-publisher-6",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
-  },
-  {
-    "objectID": "clases/05/index.html#código-suscriber",
-    "href": "clases/05/index.html#código-suscriber",
-    "title": "Robótica",
-    "section": "Código suscriber",
-    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
-  },
-  {
-    "objectID": "clases/05/index.html#código-suscriber-1",
-    "href": "clases/05/index.html#código-suscriber-1",
-    "title": "Robótica",
-    "section": "Código suscriber",
-    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
-  },
-  {
-    "objectID": "clases/05/index.html#laboratorio",
-    "href": "clases/05/index.html#laboratorio",
-    "title": "Robótica",
-    "section": "Laboratorio",
-    "text": "Laboratorio\nModificación código de nodos publisher y suscriber"
-  },
-  {
     "objectID": "clases/04/index.html#resumen-clase-03",
     "href": "clases/04/index.html#resumen-clase-03",
     "title": "Robótica",
@@ -333,14 +592,14 @@
     "href": "clases/04/index.html#resumen-clase-03-1",
     "title": "Robótica",
     "section": "Resumen Clase 03",
-    "text": "Resumen Clase 03\n\nrclpy: Partes básicas del programa\n\n\n\nInicialización\n rclpy.init(..)\nCreación de 1 o más nodos\n rclpy.create_node(..)\nProcesamiento de callbacks (spinning)\n rclpy.spin(..)\nApagado / finalización (shutdown)\n rclpy.shutdown()"
+    "text": "Resumen Clase 03\n\nrclpy: Partes básicas del programa\n\n\nInicialización\n rclpy.init(..)\nCreación de 1 o más nodos\n rclpy.create_node(..)\nProcesamiento de callbacks (spinning)\n rclpy.spin(..)\nApagado / finalización (shutdown)\n rclpy.shutdown()"
   },
   {
     "objectID": "clases/04/index.html#resumen-clase-03-2",
     "href": "clases/04/index.html#resumen-clase-03-2",
     "title": "Robótica",
     "section": "Resumen Clase 03",
-    "text": "Resumen Clase 03\n\nGestión de nodos\n\n\n\nCrear un publisher: node.create_publisher(..)\nCrear un suscriber: node.create_subscription(..)\nTimer: node.create_timer(..)\nLog: node.get_logger(..)"
+    "text": "Resumen Clase 03\n\nGestión de nodos\n\n\nCrear un publisher: node.create_publisher(..)\nCrear un suscriber: node.create_subscription(..)\nTimer: node.create_timer(..)\nLog: node.get_logger(..)"
   },
   {
     "objectID": "clases/04/index.html#función-de-callback",
@@ -455,108 +714,73 @@
     "text": "Laboratorio (parte 2)\n\nCreación de paquetes\nProgramación y compilación de nodos"
   },
   {
-    "objectID": "index.html#universidad-nacional-del-litoral-unl",
-    "href": "index.html#universidad-nacional-del-litoral-unl",
-    "title": "Robótica 2025",
+    "objectID": "clases/06/lab.html",
+    "href": "clases/06/lab.html",
+    "title": "Clase 06 - Laboratorio",
+    "section": "",
+    "text": "En el constructor del nodo a través del atributo self:\n\n  self.declare_parameter('&lt;nombre_parametro&gt;', &lt;valor&gt;)\n\n\n\n\n\n\n\nEl tipo es inferido a través del valor\n\n\n\n\n\n\n\nTipo texto (string):\n\n  self.get_parameter('&lt;nombre_parametro&gt;')\n          .get_parameter_value().string_value\n\nTipo entero (int), decimal (double), booleano (bool), es igual:\n\n  self.get_parameter('&lt;nombre_parametro&gt;').get_parameter_value().string_value.&lt;int|double|bool&gt;_value"
+  },
+  {
+    "objectID": "clases/06/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/06/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 06 - Laboratorio",
     "section": "Universidad Nacional del Litoral (UNL)\n",
     "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
   },
   {
-    "objectID": "clases/04/lab.html",
-    "href": "clases/04/lab.html",
-    "title": "Clase 04 - Laboratorio",
+    "objectID": "clases/06/lab.html#programación-de-nodos-con-parámetros",
+    "href": "clases/06/lab.html#programación-de-nodos-con-parámetros",
+    "title": "Clase 06 - Laboratorio",
     "section": "",
-    "text": "Paso inicial\n\n\n\nCreación del workspace\n\n\n\nCrear una carpeta para el workspace (como por ejemplo robotica-2025) y dentro, crear la carpeta src:\n\n\n📂 ...\n   📂 robotica-2025\n       📁 src\n...\n\n\n\n\n\n\n\nRecomendación\n\n\n\nRealizar este paso solo por cada proyecto individual\n\n\n\n\n\n  $ ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\n\n\n\n\n\n\nDentro de workspace/src\n\n\n\n\n    $ ros2 pkg create --build-type ament_python clase_04\nEsto generará la estructura de carpetas correspondientes para un paquete de python:\n\n📂 src\n  📂 clase_04\n      📂 clase_04\n          📄 __init__.py\n  📂 resource\n      📄 clase_04\n  📁 test\n         ...\n  📄 package.xml\n  ⚙️ setup.cfg\n  📄 setup.py\n\n\n\n\n\n\n\nCompletar la información adicional en los respectivos archivos package.xml y setup.py\n\n\n\n\n\n    $ colcon build\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\n\n\nCuando quieras compilar un solo paquete usa la opción --packages-select\n\n\n\nSe generarán las carpetas adicionales en el workspace:\n\n📂 ...\n    📂 robotica-2025\n        📁 src\n        📁 build      ⬅️\n        📁 install    ⬅️\n        📁 log        ⬅️\n...\n\n\n\n\n\n\n\n\n\nimport rclpy\n\n\n\nrclpy.init(args=args)\n\n\n\n\n  rclpy.create_node('&lt;nombre_nodo&gt;')\n\n\nnodo = rclpy.create_node('publicador')\n\n\n\n\n  &lt;nodo&gt;.create_publisher(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\npub = nodo.create_publisher(String, 'chat', 10)\n\n\n\n\n  &lt;nodo&gt;.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\ntimer = nodo.create_timer(1, timer_callback)\n\n\n\n\n  rclpy.spin(&lt;nodo&gt;)\n\n\nrclpy.spin(nodo)\n\n\n\nrclpy.shutdown()\n\n\n\n\n\n\n\n\n\nDentro de la carpeta correspondiente: **/src/&lt;nombre_paquete&gt;/&lt;nombre_paquete&gt;\n\n\n\n\n\nnodo_publicador.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Creación de publisher\n    # pub = ...\n\n    # 2.2 Creación de mensaje\n    msg = String()\n\n    # 2.3 Programación de función de callback\n    def timer_callback():\n        # Completar el campo 'data' del mensaje \n        msg.data = 'Mensaje de prueba'\n\n        # Publicar el mensaje\n        pub.publish(msg)\n\n    # 2.4 Creación del timer\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\nPara añadir dependencias a un paquete, modificar el archivo package.xml\n&lt;package format=\"3\"&gt;\n    ...\n    &lt;exec_depend&gt;rclpy&lt;/exec_depend&gt;\n    &lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;\n    ...\n&lt;/package&gt;\nInstalar dependencias:\n    $ rosdep install -i --from-path src -y\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\nPara añadir un ejecutable en un paquete de Python, modificar el archivo setup.py\n\n  entry_points={\n       'console_scripts': [\n               '&lt;nombre_ejecutable&gt; = &lt;nombre_paquete&gt;.&lt;nombre_archivo&gt;:main',\n       ],\n  },\n\nsetup(\n    ...\n    entry_points={\n            'console_scripts': [\n                    'publicar = clase_04.nodo_publicador:main',\n            ],\n    },\n)\n\n\n\n\n\n\n\n\n\n\n\nRecuerda compilar el paquete\n\n\n\n\n\n\n\n\n\nRecuerda configurar el entorno local:\n    $ source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo\n\n\n\n\n\n\n\n\n\n  &lt;nodo&gt;.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\nsub = nodo.create_subscription(String, 'chat', sub_callback, 10)\n\n\nnodo_suscriptor.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    # ...\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Programación de función de callback\n    def sub_callback(msg):\n        # Mostrar el mensaje en consola\n        nodo.get_logger().info('Recibí: \"%s\"' % msg.data)\n\n    # 2.2 Creación de suscriptor\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+    "text": "En el constructor del nodo a través del atributo self:\n\n  self.declare_parameter('&lt;nombre_parametro&gt;', &lt;valor&gt;)\n\n\n\n\n\n\n\nEl tipo es inferido a través del valor\n\n\n\n\n\n\n\nTipo texto (string):\n\n  self.get_parameter('&lt;nombre_parametro&gt;')\n          .get_parameter_value().string_value\n\nTipo entero (int), decimal (double), booleano (bool), es igual:\n\n  self.get_parameter('&lt;nombre_parametro&gt;').get_parameter_value().string_value.&lt;int|double|bool&gt;_value"
   },
   {
-    "objectID": "clases/04/lab.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/04/lab.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 04 - Laboratorio",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+    "objectID": "clases/06/lab.html#programación-de-archivos-launch",
+    "href": "clases/06/lab.html#programación-de-archivos-launch",
+    "title": "Clase 06 - Laboratorio",
+    "section": "Programación de archivos launch",
+    "text": "Programación de archivos launch\n\nCrear una carpeta para los archivos\n\nCrear la carpeta launch que contendrá los archivos\n\n📂 src\n  📂 clase_06\n      📂 launch                           ⬅️\n          📄 nombre_archivo.launch.py     ⬅️\n          ...\n      📁 resource\n      📁 test\n      📄 package.xml\n      ...\n\n\nModificar el archivo setup.py\n\nModificar la configuración de data_files para instalar correctamente los archivos launch\n\n\nsetup.py\n\nfrom setuptools import setup\n\nimport os\nfrom glob import glob\n\npackage_name = 'nombre_paquete'\n\nsetup(\n  name=package_name,\n  # Otros parámetros ...\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n  ],\n  # El resto de la configuración ...\n)\n\n\n\n\n\n\n\nSe recomienda agregar ros2launch como dependencia de ejecución:\n    &lt;exec_depend&gt;ros2launch&lt;/exec_depend&gt;\n\n\n\n\n\nImportar las librerías launch y launch_ros\n\nfrom launch import LaunchDescription\nfrom launch_ros import actions\n\nDefinir la función generate_launch_description que devolverá el LaunchDescription\n\ndef generate_launch_description():\n    ...\n    return LaunchDescription([\n        # Contenido del launch\n        ...\n    ])\n\nActions: Ejecutar un nodo\n\nImportar la librería\nfrom launch_ros.actions import Node\nCrear la acción\ndef generate_launch_description():\n    node = Node(\n        package = ’&lt;nombre_paquete&gt;’,\n        executable = ’&lt;nombre_ejecutable&gt;’,\n        # Adicionales ⬇️\n        name = ’&lt;nombre_nodo&gt;’,\n        namespace = ’&lt;nombre_namespace&gt;’,\n        parameters = [ # Pueden ser archivos\n            {‘&lt;nombre_parametro&gt;’: &lt;valor&gt;, .. }\n        ],\n        remappings = [\n            ('&lt;nombre_topic&gt;', '&lt;nuevo_nombre&gt;'),\n        ],\n        output = ’&lt;screen|log|both&gt;’,\n        ros_arguments = [...],\n        arguments = [...],\n    )\n\n    return LaunchDescription([\n        node,\n        ...\n    ])\n\n\n\n\n\n\nNote\n\n\n\nNo es necesario completar todos los campos, los requeridos son los mínimos para el comando ros2 run: package y executable\n\n\n\nDeclaración de argumentos\n\nImportar la librería\nfrom launch.substitutions import LaunchConfiguration\nfrom launch.actions import DeclareLaunchArgument\nPrimero declarar los argumentos con DeclareLaunchArgument y luego utilizarlos mediante las sustituciones LaunchConfiguration\n...\ndef generate_launch_description():\n  return LaunchDescription([\n    DeclareLaunchArgument(\n      ‘&lt;nombre_parametro&gt;’, default_value=&lt;valor&gt;\n    ),\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      ...\n      parameters=[{\n        '&lt;parametro_del_nodo&gt;': LaunchConfiguration('&lt;nombre_parametro&gt;'),\n      }]\n    ),\n  ])"
   },
   {
-    "objectID": "clases/04/lab.html#parte-2-creación-de-paquetes-y-programación-de-nodos",
-    "href": "clases/04/lab.html#parte-2-creación-de-paquetes-y-programación-de-nodos",
-    "title": "Clase 04 - Laboratorio",
-    "section": "",
-    "text": "Paso inicial\n\n\n\nCreación del workspace\n\n\n\nCrear una carpeta para el workspace (como por ejemplo robotica-2025) y dentro, crear la carpeta src:\n\n\n📂 ...\n   📂 robotica-2025\n       📁 src\n...\n\n\n\n\n\n\n\nRecomendación\n\n\n\nRealizar este paso solo por cada proyecto individual\n\n\n\n\n\n  $ ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\n\n\n\n\n\n\nDentro de workspace/src\n\n\n\n\n    $ ros2 pkg create --build-type ament_python clase_04\nEsto generará la estructura de carpetas correspondientes para un paquete de python:\n\n📂 src\n  📂 clase_04\n      📂 clase_04\n          📄 __init__.py\n  📂 resource\n      📄 clase_04\n  📁 test\n         ...\n  📄 package.xml\n  ⚙️ setup.cfg\n  📄 setup.py\n\n\n\n\n\n\n\nCompletar la información adicional en los respectivos archivos package.xml y setup.py\n\n\n\n\n\n    $ colcon build\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\n\n\nCuando quieras compilar un solo paquete usa la opción --packages-select\n\n\n\nSe generarán las carpetas adicionales en el workspace:\n\n📂 ...\n    📂 robotica-2025\n        📁 src\n        📁 build      ⬅️\n        📁 install    ⬅️\n        📁 log        ⬅️\n...\n\n\n\n\n\n\n\n\n\nimport rclpy\n\n\n\nrclpy.init(args=args)\n\n\n\n\n  rclpy.create_node('&lt;nombre_nodo&gt;')\n\n\nnodo = rclpy.create_node('publicador')\n\n\n\n\n  &lt;nodo&gt;.create_publisher(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\npub = nodo.create_publisher(String, 'chat', 10)\n\n\n\n\n  &lt;nodo&gt;.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\ntimer = nodo.create_timer(1, timer_callback)\n\n\n\n\n  rclpy.spin(&lt;nodo&gt;)\n\n\nrclpy.spin(nodo)\n\n\n\nrclpy.shutdown()\n\n\n\n\n\n\n\n\n\nDentro de la carpeta correspondiente: **/src/&lt;nombre_paquete&gt;/&lt;nombre_paquete&gt;\n\n\n\n\n\nnodo_publicador.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Creación de publisher\n    # pub = ...\n\n    # 2.2 Creación de mensaje\n    msg = String()\n\n    # 2.3 Programación de función de callback\n    def timer_callback():\n        # Completar el campo 'data' del mensaje \n        msg.data = 'Mensaje de prueba'\n\n        # Publicar el mensaje\n        pub.publish(msg)\n\n    # 2.4 Creación del timer\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\nPara añadir dependencias a un paquete, modificar el archivo package.xml\n&lt;package format=\"3\"&gt;\n    ...\n    &lt;exec_depend&gt;rclpy&lt;/exec_depend&gt;\n    &lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;\n    ...\n&lt;/package&gt;\nInstalar dependencias:\n    $ rosdep install -i --from-path src -y\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\nPara añadir un ejecutable en un paquete de Python, modificar el archivo setup.py\n\n  entry_points={\n       'console_scripts': [\n               '&lt;nombre_ejecutable&gt; = &lt;nombre_paquete&gt;.&lt;nombre_archivo&gt;:main',\n       ],\n  },\n\nsetup(\n    ...\n    entry_points={\n            'console_scripts': [\n                    'publicar = clase_04.nodo_publicador:main',\n            ],\n    },\n)\n\n\n\n\n\n\n\n\n\n\n\nRecuerda compilar el paquete\n\n\n\n\n\n\n\n\n\nRecuerda configurar el entorno local:\n    $ source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo\n\n\n\n\n\n\n\n\n\n  &lt;nodo&gt;.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\nsub = nodo.create_subscription(String, 'chat', sub_callback, 10)\n\n\nnodo_suscriptor.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    # ...\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Programación de función de callback\n    def sub_callback(msg):\n        # Mostrar el mensaje en consola\n        nodo.get_logger().info('Recibí: \"%s\"' % msg.data)\n\n    # 2.2 Creación de suscriptor\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+    "objectID": "clases/06/lab.html#uso-de-loggers",
+    "href": "clases/06/lab.html#uso-de-loggers",
+    "title": "Clase 06 - Laboratorio",
+    "section": "Uso de loggers",
+    "text": "Uso de loggers\n\nGenerar un mensaje de log\n\n\n  &lt;nodo&gt;.get_logger().{debug,info,warning,error,fatal}\n            ('&lt;mensaje_de_log&gt;')\n\n\nself.get_logger().info('Mensaje de prueba con severidad INFO')\n\nGenerar un mensaje de log por única vez\n\n\n  &lt;nodo&gt;.get_logger().{debug,info,warning,error,fatal}\n            ('&lt;mensaje_de_log&gt;', once=True)\n\n\nself.get_logger().warn('Advertencia una sola vez', once=True)\n\nEnviar el mensaje como máximo N veces por segundo\n\n\n  &lt;nodo&gt;.get_logger().{debug,info,warning,error,fatal}\n            ('&lt;mensaje_de_log&gt;', throttle_duration_sec=&lt;N&gt;)\n\n\nself.get_logger().debug(f'Valor de la medicion {valor}', throttle_duration_sec=1)"
   },
   {
-    "objectID": "clases/05/lab.html",
-    "href": "clases/05/lab.html",
-    "title": "Clase 05 - Laboratorio",
-    "section": "",
-    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
+    "objectID": "clases/06/lab.html#crear-el-nodo-temperature_sensor",
+    "href": "clases/06/lab.html#crear-el-nodo-temperature_sensor",
+    "title": "Clase 06 - Laboratorio",
+    "section": "Crear el nodo: temperature_sensor",
+    "text": "Crear el nodo: temperature_sensor\n\nEl valor de temperatura es generado a partir de un valor base (base_temperature) con una variación aleatoria máxima (max_variation) configurable ambas mediante parámetros\nPublica en el topic \\temperature utilizando el tipo de mensaje sensor_msgs/msg/Temperature\n\n\n\nEnviar un mensaje de log que muestre la temperatura generada (info o debug)\nAdemás agregar un parámetro de configuración de la frecuencia de publicación en Hz (publish_rate)\n\n\n\n\n\n\n\n\n\n\nNombre\nTipo\nDescripción\nValor por defecto\n\n\n\n\nbase_temperature\nfloat\nTemperatura inicial/base en grados Celsius\n25.0\n\n\nmax_variation\nfloat\nMáxima variación aleatoria\n5.0\n\n\npublish_rate\nint\nFrecuencia de publicación en Hz\n1\n\n\n\n\nPara generar la temperatura puedes utilizar la función uniform de la librería random\ntemperature = base_temperature + random.uniform(-max_variation, max_variation)\n\nbase_temperature: valor base\nmax_variation: cuánto puede subir o bajar como máximo en cada medición\nrandom.uniform(a, b): genera un número flotante aleatorio entre a y b.\n\n\n\n\n\n\n\n\nOpcional\n\n\n\nUno de los campos del mensaje de tipo Temperature es el header, que contiene un stamp de tipo Time y un frame_id, puedes completar dichos campos opcionalmente\nPara obtener un stamp actual puedes utilizar el método get_clock de la clase Node de ROS:\nmsg.header.stamp = self.get_clock().now().to_msg()\nmsg.header.frame_id = 'sensor1'"
   },
   {
-    "objectID": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 05 - Laboratorio",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+    "objectID": "clases/06/lab.html#crear-el-nodo-temperature_monitor",
+    "href": "clases/06/lab.html#crear-el-nodo-temperature_monitor",
+    "title": "Clase 06 - Laboratorio",
+    "section": "Crear el nodo temperature_monitor",
+    "text": "Crear el nodo temperature_monitor\n\nSuscribe al topic \\temperature y por cada mensaje verifica si la temperatura supera un umbral crítico configurable mediante un parámetro alarm_threshold\nAgregar un parámetro de configuración temperature_unit que definirá la unidad utilizada para el umbral y las alertas de temperatura\n\n\n\n\n\n\n\nConversión °C a °F\n\n\n\n\\[\nT \\, [°F]  = T \\, [°C] \\times 9/5 + 32\n\\]\n\n\n\nSi supera el umbral imprime un mensaje de alarma con severidad warn y si no publicar la temperatura recibida con severidad info o debug"
   },
   {
-    "objectID": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
-    "href": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
-    "title": "Clase 05 - Laboratorio",
-    "section": "",
-    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
+    "objectID": "clases/06/lab.html#probar-el-sistema-mediante-ros2-run",
+    "href": "clases/06/lab.html#probar-el-sistema-mediante-ros2-run",
+    "title": "Clase 06 - Laboratorio",
+    "section": "Probar el sistema mediante ros2 run",
+    "text": "Probar el sistema mediante ros2 run\n\nEjecutar ambos nodos desde consola comprobando el funcionamiento de los valores por defecto de los parámetros y el funcionamiento del sistema en su conjunto\nProbar distintas ejecuciones variando los parámetros definidos y probar cambios de parámetros durante la ejecución, comprobando cuales tienen efecto inmediato y cuales requieren reinciar el nodo\nComprobar el funcionamiento de los mensajes de log según distintos niveles de severidad seteados para cada nodo"
   },
   {
-    "objectID": "clases/03/lab.html",
-    "href": "clases/03/lab.html",
-    "title": "Clase 03 - Laboratorio",
-    "section": "",
-    "text": "Nota\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
+    "objectID": "clases/06/lab.html#crear-el-archivo-launch-para-ambos-nodos",
+    "href": "clases/06/lab.html#crear-el-archivo-launch-para-ambos-nodos",
+    "title": "Clase 06 - Laboratorio",
+    "section": "Crear el archivo launch para ambos nodos",
+    "text": "Crear el archivo launch para ambos nodos\n\nIniciar ambos nodos\n\ntemperature_sensor con una temperatura base de 27°C y una variación máxima de 5°C, con una frecuencia de publicación de 2Hz.\ntemperature_monitor con un umbral en 30°C\n\nDeclarar los argumentos necesarios para poder configurar los parámetros establecidos en ambos nodos\nAmbos nodos deben enviar la salida por la consola con nivel de severidad info"
   },
   {
-    "objectID": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 03 - Laboratorio",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
-  },
-  {
-    "objectID": "clases/03/lab.html#parte-1-servicios-y-parámetros",
-    "href": "clases/03/lab.html#parte-1-servicios-y-parámetros",
-    "title": "Clase 03 - Laboratorio",
-    "section": "",
-    "text": "Nota\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
-  },
-  {
-    "objectID": "clases/02/lab.html",
-    "href": "clases/02/lab.html",
-    "title": "Clase 02 - Laboratorio",
-    "section": "",
-    "text": "Windows 10 / 11 (WSL)Ubuntu 24.04Docker\n\n\n\n\n\n\n\n\nAntes de iniciar\n\n\n\nSe necesitan todas las últimas actualizaciones de Windows instaladas\n\n\n\n\n\n    $ wsl --install\n\n\nVer salida\n\nLa operación solicitada requiere elevación.\nDescargando: Subsistema de Windows para Linux 2.4.13\nInstalando: Subsistema de Windows para Linux 2.4.13\nSe ha instalado Subsistema de Windows para Linux 2.4.13.\nInstalando componente opcional de Windows: VirtualMachinePlatform\n\nHerramienta Administración y mantenimiento de imágenes de implementación\nVersión: 10.0.26100.1150\n\nVersión de imagen: 10.0.26100.3624\n\nHabilitando características\n[==========================100.0%==========================]\nLa operación se completó correctamente.\nLa operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.\nLa operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.\n\n\n\n\n\n\n\nRecomendación\n\n\n\nSe recomienda reiniciar la PC después de esta instalación inicial para finalizar el setup\n\n\n\n\n\n\nPara ver todas las distribuciones y versiones disponibles:\n    $ wsl --list --online\n\n\nVer salida\n\nA continuación, se muestra una lista de las distribuciones válidas que se pueden instalar.\nInstalar con \"wsl.exe --install &lt;Distro&gt;\".\n\nNAME                            FRIENDLY NAME\nAlmaLinux-8                     AlmaLinux OS 8\nAlmaLinux-9                     AlmaLinux OS 9\nAlmaLinux-Kitten-10             AlmaLinux OS Kitten 10\nDebian                          Debian GNU/Linux\nSUSE-Linux-Enterprise-15-SP5    SUSE Linux Enterprise 15 SP5\nSUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6\nUbuntu                          Ubuntu\nUbuntu-24.04                    Ubuntu 24.04 LTS\nkali-linux                      Kali Linux Rolling\nopenSUSE-Tumbleweed             openSUSE Tumbleweed\nopenSUSE-Leap-15.6              openSUSE Leap 15.6\nUbuntu-18.04                    Ubuntu 18.04 LTS\nUbuntu-20.04                    Ubuntu 20.04 LTS\nUbuntu-22.04                    Ubuntu 22.04 LTS\nOracleLinux_7_9                 Oracle Linux 7.9\nOracleLinux_8_7                 Oracle Linux 8.7\nOracleLinux_9_1                 Oracle Linux 9.1\n\nPara instalar\n    $ wsl --install -d Ubuntu-24.04\n\n\nVer salida\n\nDescargando: Ubuntu 24.04 LTS\nInstalando: Ubuntu 24.04 LTS\nDistribución instalada correctamente.\n\n\n\n\n\n    $ wsl -d Ubuntu-24.04\n\n\nVer salida\n\nProvisioning the new WSL instance Ubuntu-24.04\nThis might take a while...\nCreate a default Unix user account: ubuntu\nNew password:\nRetype new password:\npasswd: password updated successfully\nTo run a command as administrator (user \"root\"), use \"sudo &lt;command&gt;\".\nSee \"man sudo_root\" for details.\n\n\n\n\n\n\n\n\nNote\n\n\n\nContinuar con la creación de usuario y contraseña\n\n\n\n\n\n\nTraducido de documentation.ubuntu.com/wsl\n\n\n\n\n\n\n\n\n\nActualizar el sistema\n\n\n\n    $ sudo apt update\n    $ sudo apt upgrade -y\n\n\n\n\n\n    $ sudo apt install software-properties-common curl -y\n    $ sudo add-apt-repository universe\nAgregar la key GPG de ROS 2\n    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg\nAgregar repositorio a la source list\n    $ echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main\" | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null\n\n\n\n\nActualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update && sudo apt upgrade -y\nInstalación Desktop: ROS, RViz, demos, etc.\n    $ sudo apt install ros-jazzy-desktop -y\n\nTraducido de docs.ros.org\n\n\n\n\n\n\n\n\n\n\n\n\n\nVer contenido del archivo\n\n\n\ndevcontainer.json\n\n// For format details, see https://aka.ms/devcontainer.json.\n{\n    \"name\": \"TUAR - ROS2 Jazzy\",\n    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile\n    \"image\": \"registry.gitlab.com/acapovilla/ros-docker-images/ros2/jazzy-noble-desktop-full:latest\",\n    // Workspace setup\n    \"workspaceMount\": \"source=${localWorkspaceFolder},target=/workspaces/catkin_ws,type=bind,consistency=cached\",\n    \"workspaceFolder\": \"/workspaces/catkin_ws\",\n    \"remoteUser\": \"ubuntu\",\n    \"containerUser\": \"ubuntu\",\n\n    // Features to add to the dev container. More info: https://containers.dev/features.\n    \"features\": {\n        \"ghcr.io/devcontainers/features/common-utils:2\": {\n            \"installZsh\": true,\n            \"installOhMyZsh\": true,\n            \"installOhMyZshConfig\": true,\n            \"nonFreePackages\": true,\n            \"username\": \"ubuntu\",\n            \"userUid\": \"automatic\",\n            \"userGid\": \"automatic\"\n        }\n    },\n\n    // Use 'forwardPorts' to make a list of ports inside the container available locally.\n    // \"forwardPorts\": [],\n\n    // Use 'postCreateCommand' to run commands after the container is created.\n    // \"postCreateCommand\": \"uname -a\",\n\n    // Configure tool-specific properties.\n    \"customizations\": {\n        \"vscode\": {\n            \"extensions\": [\n                \"ms-vscode.cpptools\",\n                \"ms-iot.vscode-ros\",\n                \"twxs.cmake\",\n                \"mutantdino.resourcemonitor\",\n                \"donjayamanne.python-environment-manager\",\n                \"KevinRose.vsc-python-indent\",\n                \"VisualStudioExptTeam.vscodeintellicode\",\n                \"ms-python.vscode-pylance\",\n                \"ms-vscode.cmake-tools\"\n            ]\n        }\n    },\n\n    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.\n    // \"remoteUser\": \"root\"\n\n    \"containerEnv\": {\n        // Display configuration\n        \"DISPLAY\": \"${localEnv:DISPLAY}\"\n    },\n    \"mounts\": [\n        // X-Server\n        \"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,readonly=false\"\n    ],\n    \"runArgs\": [\n        \"--device=/dev/dri:/dev/dri\",\n        \"--privileged\",\n        \"--volume=/dev:/dev\",\n        \"--net=host\"\n    ],\n    \"onCreateCommand\": \"echo 'source /opt/ros/$ROS_DISTRO/setup.bash' &gt;&gt; /home/ubuntu/.bashrc\",\n    \"postCreateCommand\": \"sudo apt update && rosdep update\"\n}"
-  },
-  {
-    "objectID": "clases/02/lab.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/02/lab.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 02 - Laboratorio",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
-  },
-  {
-    "objectID": "clases/02/lab.html#instalación-de-ros2",
-    "href": "clases/02/lab.html#instalación-de-ros2",
-    "title": "Clase 02 - Laboratorio",
-    "section": "",
-    "text": "Windows 10 / 11 (WSL)Ubuntu 24.04Docker\n\n\n\n\n\n\n\n\nAntes de iniciar\n\n\n\nSe necesitan todas las últimas actualizaciones de Windows instaladas\n\n\n\n\n\n    $ wsl --install\n\n\nVer salida\n\nLa operación solicitada requiere elevación.\nDescargando: Subsistema de Windows para Linux 2.4.13\nInstalando: Subsistema de Windows para Linux 2.4.13\nSe ha instalado Subsistema de Windows para Linux 2.4.13.\nInstalando componente opcional de Windows: VirtualMachinePlatform\n\nHerramienta Administración y mantenimiento de imágenes de implementación\nVersión: 10.0.26100.1150\n\nVersión de imagen: 10.0.26100.3624\n\nHabilitando características\n[==========================100.0%==========================]\nLa operación se completó correctamente.\nLa operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.\nLa operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que se reinicie el sistema.\n\n\n\n\n\n\n\nRecomendación\n\n\n\nSe recomienda reiniciar la PC después de esta instalación inicial para finalizar el setup\n\n\n\n\n\n\nPara ver todas las distribuciones y versiones disponibles:\n    $ wsl --list --online\n\n\nVer salida\n\nA continuación, se muestra una lista de las distribuciones válidas que se pueden instalar.\nInstalar con \"wsl.exe --install &lt;Distro&gt;\".\n\nNAME                            FRIENDLY NAME\nAlmaLinux-8                     AlmaLinux OS 8\nAlmaLinux-9                     AlmaLinux OS 9\nAlmaLinux-Kitten-10             AlmaLinux OS Kitten 10\nDebian                          Debian GNU/Linux\nSUSE-Linux-Enterprise-15-SP5    SUSE Linux Enterprise 15 SP5\nSUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6\nUbuntu                          Ubuntu\nUbuntu-24.04                    Ubuntu 24.04 LTS\nkali-linux                      Kali Linux Rolling\nopenSUSE-Tumbleweed             openSUSE Tumbleweed\nopenSUSE-Leap-15.6              openSUSE Leap 15.6\nUbuntu-18.04                    Ubuntu 18.04 LTS\nUbuntu-20.04                    Ubuntu 20.04 LTS\nUbuntu-22.04                    Ubuntu 22.04 LTS\nOracleLinux_7_9                 Oracle Linux 7.9\nOracleLinux_8_7                 Oracle Linux 8.7\nOracleLinux_9_1                 Oracle Linux 9.1\n\nPara instalar\n    $ wsl --install -d Ubuntu-24.04\n\n\nVer salida\n\nDescargando: Ubuntu 24.04 LTS\nInstalando: Ubuntu 24.04 LTS\nDistribución instalada correctamente.\n\n\n\n\n\n    $ wsl -d Ubuntu-24.04\n\n\nVer salida\n\nProvisioning the new WSL instance Ubuntu-24.04\nThis might take a while...\nCreate a default Unix user account: ubuntu\nNew password:\nRetype new password:\npasswd: password updated successfully\nTo run a command as administrator (user \"root\"), use \"sudo &lt;command&gt;\".\nSee \"man sudo_root\" for details.\n\n\n\n\n\n\n\n\nNote\n\n\n\nContinuar con la creación de usuario y contraseña\n\n\n\n\n\n\nTraducido de documentation.ubuntu.com/wsl\n\n\n\n\n\n\n\n\n\nActualizar el sistema\n\n\n\n    $ sudo apt update\n    $ sudo apt upgrade -y\n\n\n\n\n\n    $ sudo apt install software-properties-common curl -y\n    $ sudo add-apt-repository universe\nAgregar la key GPG de ROS 2\n    $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg\nAgregar repositorio a la source list\n    $ echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main\" | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null\n\n\n\n\nActualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update && sudo apt upgrade -y\nInstalación Desktop: ROS, RViz, demos, etc.\n    $ sudo apt install ros-jazzy-desktop -y\n\nTraducido de docs.ros.org\n\n\n\n\n\n\n\n\n\n\n\n\n\nVer contenido del archivo\n\n\n\ndevcontainer.json\n\n// For format details, see https://aka.ms/devcontainer.json.\n{\n    \"name\": \"TUAR - ROS2 Jazzy\",\n    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile\n    \"image\": \"registry.gitlab.com/acapovilla/ros-docker-images/ros2/jazzy-noble-desktop-full:latest\",\n    // Workspace setup\n    \"workspaceMount\": \"source=${localWorkspaceFolder},target=/workspaces/catkin_ws,type=bind,consistency=cached\",\n    \"workspaceFolder\": \"/workspaces/catkin_ws\",\n    \"remoteUser\": \"ubuntu\",\n    \"containerUser\": \"ubuntu\",\n\n    // Features to add to the dev container. More info: https://containers.dev/features.\n    \"features\": {\n        \"ghcr.io/devcontainers/features/common-utils:2\": {\n            \"installZsh\": true,\n            \"installOhMyZsh\": true,\n            \"installOhMyZshConfig\": true,\n            \"nonFreePackages\": true,\n            \"username\": \"ubuntu\",\n            \"userUid\": \"automatic\",\n            \"userGid\": \"automatic\"\n        }\n    },\n\n    // Use 'forwardPorts' to make a list of ports inside the container available locally.\n    // \"forwardPorts\": [],\n\n    // Use 'postCreateCommand' to run commands after the container is created.\n    // \"postCreateCommand\": \"uname -a\",\n\n    // Configure tool-specific properties.\n    \"customizations\": {\n        \"vscode\": {\n            \"extensions\": [\n                \"ms-vscode.cpptools\",\n                \"ms-iot.vscode-ros\",\n                \"twxs.cmake\",\n                \"mutantdino.resourcemonitor\",\n                \"donjayamanne.python-environment-manager\",\n                \"KevinRose.vsc-python-indent\",\n                \"VisualStudioExptTeam.vscodeintellicode\",\n                \"ms-python.vscode-pylance\",\n                \"ms-vscode.cmake-tools\"\n            ]\n        }\n    },\n\n    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.\n    // \"remoteUser\": \"root\"\n\n    \"containerEnv\": {\n        // Display configuration\n        \"DISPLAY\": \"${localEnv:DISPLAY}\"\n    },\n    \"mounts\": [\n        // X-Server\n        \"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,readonly=false\"\n    ],\n    \"runArgs\": [\n        \"--device=/dev/dri:/dev/dri\",\n        \"--privileged\",\n        \"--volume=/dev:/dev\",\n        \"--net=host\"\n    ],\n    \"onCreateCommand\": \"echo 'source /opt/ros/$ROS_DISTRO/setup.bash' &gt;&gt; /home/ubuntu/.bashrc\",\n    \"postCreateCommand\": \"sudo apt update && rosdep update\"\n}"
-  },
-  {
-    "objectID": "clases/02/lab.html#configuración-del-entorno",
-    "href": "clases/02/lab.html#configuración-del-entorno",
-    "title": "Clase 02 - Laboratorio",
-    "section": "Configuración del entorno",
-    "text": "Configuración del entorno\nConfigurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\nVariables de entorno: ROS_DOMAIN_ID\n    $ printenv | grep -i ROS\nObtener ayuda desde la terminal:\n    $ ros2 --help"
-  },
-  {
-    "objectID": "clases/02/lab.html#emisor-receptor",
-    "href": "clases/02/lab.html#emisor-receptor",
-    "title": "Clase 02 - Laboratorio",
-    "section": "Emisor / Receptor",
-    "text": "Emisor / Receptor\n\nInstalación de paquetes de demostración: demo-nodes-py\n    $ sudo apt install ros-jazzy-demo-nodes-py\nVer paquetes instalados:\n    $ ros2 pkg executables\n\n\nNodos talker y listener\n\nEjecutar nodos\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n    $ ros2 run demo_nodes_py talker\ny en otra terminal\n    $ ros2 run demo_nodes_py listener\n\n\n\n\n\n\nTip\n\n\n\nRecuerda volver a configurar el entorno y configurar el ROS_DOMAIN_ID correctamente\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPara detener el nodo: Ctrl+C\n\n\n\n\nListar los nodos\n    $ ros2 node list\n\n\nObtener información\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n    $ ros2 node info /talker\n\n\n\nTopics\n\nListar los topics\n    $ ros2 topic list\n\n\nObtener información\nInformación acerca del topic: ros2 topic info &lt;nombre_topic&gt;\n\n    $ ros2 topic info /chatter\nInformación acerca del tipo de topic: ros2 topic type &lt;nombre_topic&gt;\n\n    $ ros2 topic type /chatter\nMedir la frecuencia con la que se publican mensajes: ros2 topic hz &lt;nombre_topic&gt;\n\n    $ ros2 topic hz /chatter\n\n\nVer los mensajes que pasan por un topic\n\n  $ ros2 topic echo &lt;nombre_topic&gt;\n\n\n    $ ros2 topic echo /chatter\n\n\n\nMensajes\n\nObtener información\n\n  $ ros2 interface show &lt;nombre_del_tipo_de_mensaje&gt;\n\nEjemplo\n    $ ros2 interface show std_msgs/msg/String\n\n\nPublicar mensajes\n\n  $ ros2 topic pub &lt;nombre_del_topic&gt;\n      &lt;nombre_del_tipo_de_mensaje&gt; '&lt;contenido&gt;'\n\nEjemplo\n    $ ros2 topic pub /chatter std_msgs/msg/String \"{data: Mensaje de prueba}\""
+    "objectID": "clases/06/lab.html#probar-el-sistema-mediante-ros2-launch",
+    "href": "clases/06/lab.html#probar-el-sistema-mediante-ros2-launch",
+    "title": "Clase 06 - Laboratorio",
+    "section": "Probar el sistema mediante ros2 launch",
+    "text": "Probar el sistema mediante ros2 launch\n\nEjecutar el archivo launchcreado para verificar el funcionamiento de los parámetros por defecto\nProbar distintas ejecuciones variando los parámetros definidos"
   }
 ]
