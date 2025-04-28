@@ -1,0 +1,332 @@
+---
+title: Clase 06 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+## Programación de nodos con parámetros
+
+- #### Definir parámetros
+
+En el constructor del nodo a través del atributo `self`:
+
+>       self.declare_parameter('<nombre_parametro>', <valor>)
+
+::: {.callout-note appearance="simple"}
+El tipo es inferido a través del valor
+:::
+
+------
+
+- #### Obtener el valor
+
+Tipo texto (`string`):
+
+>       self.get_parameter('<nombre_parametro>')
+>               .get_parameter_value().string_value
+
+Tipo entero (`int`), decimal (`double`), booleano (`bool`), es igual:
+
+>       self.get_parameter('<nombre_parametro>').get_parameter_value().string_value.<int|double|bool>_value
+
+## Programación de archivos `launch`
+
+- #### Crear una carpeta para los archivos
+
+Crear la carpeta `launch` que contendrá los archivos
+
+> ```
+> 📂 src
+>   📂 clase_06
+>       📂 launch                           ⬅️
+>           📄 nombre_archivo.launch.py     ⬅️
+>           ...
+>       📁 resource
+>       📁 test
+>       📄 package.xml
+>       ...
+> ```
+
+- #### Modificar el archivo `setup.py`
+
+Modificar la configuración de `data_files` para instalar correctamente los archivos `launch`
+
+```{.py filename="setup.py" code-fold="true" code-line-numbers="true"}
+from setuptools import setup
+
+import os
+from glob import glob
+
+package_name = 'nombre_paquete'
+
+setup(
+  name=package_name,
+  # Otros parámetros ...
+  data_files=[
+    # ... Otros archivos
+    # Incluir todos los archivos de la carpeta launch
+    (os.path.join('share', package_name, 'launch'), glob('launch/*'))
+  ],
+  # El resto de la configuración ...
+)
+```
+
+::: {.callout-note appearance="simple"}
+Se recomienda agregar `ros2launch` como dependencia de ejecución: 
+
+        <exec_depend>ros2launch</exec_depend>
+:::
+
+------
+
+
+- #### Importar las librerías `launch` y `launch_ros`
+
+```python
+from launch import LaunchDescription
+from launch_ros import actions
+```
+
+- #### Definir la función `generate_launch_description` que devolverá el `LaunchDescription`
+
+```python
+def generate_launch_description():
+    ...
+    return LaunchDescription([
+        # Contenido del launch
+        ...
+    ])
+```
+
+- #### *Actions*: Ejecutar un nodo
+
+Importar la librería
+
+```python
+from launch_ros.actions import Node
+```
+
+Crear la acción
+
+```{.py code-fold="true" code-line-numbers="true"}
+def generate_launch_description():
+    node = Node(
+        package = ’<nombre_paquete>’,
+        executable = ’<nombre_ejecutable>’,
+        # Adicionales ⬇️
+        name = ’<nombre_nodo>’,
+        namespace = ’<nombre_namespace>’,
+        parameters = [ # Pueden ser archivos
+            {‘<nombre_parametro>’: <valor>, .. }
+        ],
+        remappings = [
+            ('<nombre_topic>', '<nuevo_nombre>'),
+        ],
+        output = ’<screen|log|both>’,
+        ros_arguments = [...],
+        arguments = [...],
+    )
+
+    return LaunchDescription([
+        node,
+        ...
+    ])
+```
+
+::: {.callout-note}
+No es necesario completar todos los campos, los requeridos son los mínimos para el comando `ros2 run`: `package` y `executable`
+:::
+
+- #### Declaración de argumentos
+
+Importar la librería
+
+```python
+from launch.substitutions import LaunchConfiguration
+from launch.actions import DeclareLaunchArgument
+```
+
+Primero declarar los argumentos con `DeclareLaunchArgument` y luego utilizarlos mediante las sustituciones `LaunchConfiguration`
+
+```{.py code-fold="true" code-line-numbers="true"}
+...
+def generate_launch_description():
+  return LaunchDescription([
+    DeclareLaunchArgument(
+      ‘<nombre_parametro>’, default_value=<valor>
+    ),
+    Node(
+      package = ’<nombre_paquete>’,
+      executable = ’<nombre_ejecutable>’,
+      ...
+      parameters=[{
+        '<parametro_del_nodo>': LaunchConfiguration('<nombre_parametro>'),
+      }]
+    ),
+  ])
+```
+
+------
+
+## Uso de loggers
+
+- #### Generar un mensaje de log 
+
+>       <nodo>.get_logger().{debug,info,warning,error,fatal}
+>                 ('<mensaje_de_log>')
+
+------
+
+```python
+self.get_logger().info('Mensaje de prueba con severidad INFO')
+```
+
+
+- #### Generar un mensaje de log por única vez
+
+>       <nodo>.get_logger().{debug,info,warning,error,fatal}
+>                 ('<mensaje_de_log>', once=True)
+
+------
+
+```python
+self.get_logger().warn('Advertencia una sola vez', once=True)
+```
+
+- #### Enviar el mensaje como máximo N veces por segundo
+
+>       <nodo>.get_logger().{debug,info,warning,error,fatal}
+>                 ('<mensaje_de_log>', throttle_duration_sec=<N>)
+
+------
+
+```python
+self.get_logger().debug(f'Valor de la medicion {valor}', throttle_duration_sec=1)
+```
+
+
+------
+
+# Sistema de Monitoreo de temperatura
+
+#### Objetivos
+
+* Crear un nodo publicador que envíe mediciones de temperatura
+* Crear un nodo suscriptor que escuche esas mediciones y emita una alarma si se supera un umbral de temperatura configurable
+* Crear archivos de *launch* que permitan iniciar todo el sistema estableciendo los parámetros programados
+
+
+
+
+## Crear el nodo: `temperature_sensor`
+
+- El valor de temperatura es generado a partir de un valor base (`base_temperature`) con una variación aleatoria máxima (`max_variation`) configurable ambas mediante parámetros
+- Publica en el topic `\temperature` utilizando el tipo de mensaje [`sensor_msgs/msg/Temperature`](https://docs.ros2.org/latest/api/sensor_msgs/msg/Temperature.html){target="_blank"}
+
+<!-- ::: {.callout-tip}
+Puede utilizar el comando `ros2 interface show <tipo_mensaje>` para ver la composición
+::: -->
+
+- Enviar un mensaje de log que muestre la temperatura generada (`info` o `debug`)
+- Además agregar un parámetro de configuración de la frecuencia de publicación en Hz (`publish_rate`)
+
+|Nombre               | Tipo    | Descripción                   | Valor por defecto |
+|:--------------------|:-------:|:----------------------------  |:-----------------:|
+| `base_temperature`  | `float` | Temperatura inicial/base en grados Celsius | 25.0 |
+| `max_variation`     | `float` | Máxima variación aleatoria                 | 5.0  |
+| `publish_rate`      | `int`   | Frecuencia de publicación en Hz            | 1    |
+
+------
+
+Para generar la temperatura puedes utilizar la función `uniform` de la librería `random`
+
+```.py
+temperature = base_temperature + random.uniform(-max_variation, max_variation)
+```
+- `base_temperature`: valor base
+- `max_variation`: cuánto puede subir o bajar como máximo en cada medición
+- `random.uniform(a, b)`: genera un número flotante aleatorio entre `a` y `b`.
+
+
+------
+
+::: {.callout-note title="Opcional"}
+Uno de los campos del mensaje de tipo `Temperature` es el `header`, que contiene un `stamp` de tipo `Time` y un `frame_id`, puedes completar dichos campos *opcionalmente*
+
+Para obtener un `stamp` actual puedes utilizar el método `get_clock` de la clase `Node` de ROS:
+
+```.py
+msg.header.stamp = self.get_clock().now().to_msg()
+msg.header.frame_id = 'sensor1'
+```
+:::
+
+
+<!-- ```{.python filename="temperature_sensor.py" code-fold="true" code-line-numbers="true"}
+import rclpy
+from rclpy.node import Node
+
+...
+
+class <nombre_clase>(Node):
+    __init__(self):
+        super().__init__(<nombre_nodo>)
+    ...
+    def timer_callback(self):
+        ...
+        # Publicar el mensaje
+        self.pub.publish(self.msg)
+
+def main(args=None):
+    # 1. Inicialización
+    rclpy.init(args=args)
+    # 2. Creación de nodo
+    # nodo = ...
+    # 3. Procesamiento de mensajes y callback
+    rclpy.spin(nodo)
+    # 4. Finalización 
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+``` -->
+
+## Crear el nodo `temperature_monitor`
+
+- Suscribe al topic `\temperature` y por cada mensaje verifica si la temperatura supera un umbral crítico configurable mediante un parámetro `alarm_threshold`
+- Agregar un parámetro de configuración `temperature_unit` que definirá la unidad utilizada para el umbral y las alertas de temperatura
+
+::: {.callout-tip title="Conversión °C a °F" appearance="simple"}
+$$
+T \, [°F]  = T \, [°C] \times 9/5 + 32
+$$
+:::
+
+- Si supera el umbral imprime un mensaje de alarma con severidad `warn` y si no publicar la temperatura recibida con severidad `info` o `debug`
+
+## Probar el sistema mediante `ros2 run`
+
+- Ejecutar ambos nodos desde consola comprobando el funcionamiento de los valores por defecto de los parámetros y el funcionamiento del sistema en su conjunto
+- Probar distintas ejecuciones variando los parámetros definidos y probar cambios de parámetros durante la ejecución, comprobando cuales tienen efecto inmediato y cuales requieren reinciar el nodo
+- Comprobar el funcionamiento de los mensajes de log según distintos niveles de severidad seteados para cada nodo
+
+
+## Crear el archivo `launch` para ambos nodos
+
+- Iniciar ambos nodos
+    - `temperature_sensor` con una temperatura base de 27°C y una variación máxima de 5°C, con una frecuencia de publicación de 2Hz.
+    - `temperature_monitor` con un umbral en 30°C
+- Declarar los argumentos necesarios para poder configurar los parámetros establecidos en ambos nodos
+- Ambos nodos deben enviar la salida por la consola con nivel de severidad `info`
+
+## Probar el sistema mediante `ros2 launch`
+
+- Ejecutar el archivo `launch`creado para verificar el funcionamiento de los parámetros por defecto
+- Probar distintas ejecuciones variando los parámetros definidos

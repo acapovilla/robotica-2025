@@ -1,0 +1,460 @@
+---
+title: "Robótica"
+subtitle: "Clase 06"
+date: "04/28/2025"
+date-format: "[Semana 7 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+    revealjs:
+        theme: dark
+        #chalkboard: true
+        footer: Robótica - TUAR - FICH - UNL
+        menu: false
+        slide-number: c
+        code-copy: false
+        code-overflow: wrap
+---
+
+## Resumen Clase 05
+
+> Programación Orientada a Objetos
+
+> Código publisher y suscriber 
+
+
+# Parámetros {visibility="hidden"}
+
+## `rclpy`: Parámetros
+
+> Permiten configurar nodos sin tener que reprogramarlos
+
+::: {.fragment}
+> Se crean y destruyen con el nodo
+:::
+
+::: {.fragment}
+> Consisten en
+
+- Una *key* (identificador)
+- Un valor
+- Una descripción (opcional)
+:::
+
+<!-- ::: {.fragment style="font-size: 70%;"}
+[Documentación](docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html)
+::: -->
+
+::: {.notes}
+Recapitulación:
+- Las primeras clases se trabajaron los conceptos de nodos, mensajes y topics; luego se trabajó con los comandos asociados a estas entidades y como interactuar u obtener información acerca de los mismos y por último aprendimos el uso de las librerías para la programación de nodos
+- También se trabajó con los concetos de servicios y parámetros, y posteriormente los comandos asociados y como utilizarlos
+- Ahora queda aprender como programar dichos parámetros dentro de los nodos
+:::
+
+## `rclpy`: Parámetros
+
+> Se declaran todos al inicio, antes de hacer uso
+
+. . .
+
+        self.declare_parameter('<nombre>', <valor>)
+
+        self.declare_parameter('<nombre>', <valor>, <desc>)
+
+. . .
+
+> El tipo es inferido a través del valor
+
+<!-- <br>
+
+```{.python code-line-numbers='5,7'}
+class NodoConParametros(Node):
+    def __init__(self):
+        super().__init__('<nombre_nodo>')
+
+        self.declare_parameter('parametro_int', 5)
+
+        self.declare_parameter('parametro_string', 'string')
+        ...
+``` -->
+
+
+## `rclpy`: Parámetros
+
+> Para obtener el valor
+
+        param = self.get_parameter('<nombre>')
+
+        valor = param.value
+        
+. . . 
+
+> Establecer el valor (desde el nodo)
+
+        nuevo_valor = rclpy.parameter.Parameter(<nombre>, <tipo>, valor>)
+        
+        self.set_parameters([ nuevo_valor ])
+
+
+## `rclpy`: Parámetros
+
+> Existe un callback para cuando se modifica algún parámetro
+
+        # Dentro del constructor de la clase
+        self.handler = ParameterEventHandler(self)
+        
+        self.callback_handle = self.handler.add_parameter_callback(
+            parameter_name = "<nombre_parametro>",
+            node_name = "<nombre_nodo>",
+            callback = <callback>,
+        )
+        
+. . . 
+
+> El callback recibe el parámetro modificado
+
+        def callback(self, p: rclpy.parameter.Parameter) -> None:
+            ...
+
+
+# Argumentos {visibility="hidden"}
+
+## Argumentos en ROS2
+
+> Propiedades que ROS permite reconfigurar
+
+. . .
+
+        $ ros2 run <nombre_paquete> <nombre_ejecutable> --ros-args ...
+
+. . .
+
+* Remapping: `-r` o `--remap`
+
+::: {.fragment}
+        $ ros2 run ... --ros-args -r __node:=<nuevo_nombre_nodo>
+:::
+
+::: {.fragment}
+        $ ros2 run ... --ros-args -r __ns:=/<nombre_namespace>
+:::
+
+::: {.fragment}
+        $ ros2 run ... --ros-args -r <topic>:=<nuevo_nombre_topic>
+:::
+         
+. . .
+
+* Nivel de log: `--log-level`
+
+        $ ros2 run ... --ros-args --log-level <info|debug|warn|error>
+
+## Argumentos en ROS2
+
+
+> Para el caso de parámetros: `-p`
+
+        $ ros2 run <nombre_paquete> <nombre_ejecutable>
+                --ros-args -p <nombre_parametro>:=<valor>
+
+. . .
+
+<br>
+
+::: {.callout-note appearance="simple"}
+Cuando el nodo se encuentra en ejecución: 
+
+* `$ ros2 param set ...`
+:::
+
+
+# Sistema de *launch* {visibility="hidden"}
+
+## `ros2launch`
+
+> Herramienta que permite la ejecución de múltiples nodos con un simple comando: `ros2 launch ...`
+
+. . .
+
+> Tareas más comunes:
+
+::: {.incremental}
+* Crear nodos (y de forma sincronizada)
+* Cargar parámetros
+* Ejecutar comandos
+* Reutilizar archivos
+:::
+
+::: {.notes}
+Por lo general, un sistema ROS 2 está compuesto de numerosos nodos que se ejecutan en diversos procesos (e incluso en distintas máquinas)
+
+Si bien es posible ejecutar manualmente cada uno de estos nodos, se vuelve engorroso rapidamente
+:::
+
+## `ros2launch`
+
+> Por convención se ubican en la carpeta `launch` dentro del paquete
+
+. . . 
+
+> Formatos:
+> 
+> * XML: `nombre_archivo.xml`
+> * YAML: `nombre_archivo.yaml`
+> * Python: `nombre_archivo.launch.py` &emsp;&emsp;⬅️
+
+
+<!-- ::: {.fragment style="font-size: 70%;"}
+<br>
+
+[Documentacion](https://docs.ros.org/en/jazzy/p/launch/index.html)
+::: -->
+
+## Archivos *launch* en python {.smaller}
+
+> Es necesario adecuar el archivo `setup.py`:
+
+```{.py code-line-numbers="|3,4|12-14"}
+from setuptools import setup
+
+import os
+from glob import glob
+
+package_name = 'nombre_paquete'
+
+setup(
+  # Otros parámetros ...
+  data_files=[
+    # ... Otros archivos
+    # Incluir todos los archivos de la carpeta launch
+    (os.path.join('share', package_name, 'launch'), glob('launch/*'))
+  ],
+  # El resto de la configuración ...
+)
+```
+
+. . .
+
+::: {.callout-note appearance="simple"}
+Se recomienda agregar `ros2launch` como dependencia de ejecución: 
+
+>        <exec_depend>ros2launch</exec_depend>
+:::
+
+## Archivos *launch* en python
+
+> Se debe implementar la función
+> 
+>               generate_launch_description()
+>
+> que devuelve
+> 
+>               launch.LaunchDescription()
+
+. . .
+
+> Esta función será utilizada por el comando:
+>
+>       $ ros2 launch <nombre_paquete> <nombre_archivo_launch>
+
+## Archivos *launch* en python
+
+> Importar las librerías `launch` y `launch_ros`
+
+```{.py}
+# Librería independiente de ROS2
+from launch import LaunchDescription
+
+# Librería específica con clases de ROS2
+from launch_ros import actions
+```
+
+## Archivos *launch* en python {.smaller}
+
+> Formas de agregar acciones (ejemplo con nodo)
+
+* Directamente en el constructor
+
+```{.py}
+def generate_launch_description():
+  return LaunchDescription([
+    Node(
+      package = ’<nombre_paquete>’,
+      executable = ’<nombre_ejecutable>’,
+      name = ’<nombre_nodo>’,
+    ),
+  ])
+```
+
+* Añadiendo al objeto
+
+```{.py}
+def generate_launch_description():
+  node_1 = Node(
+    package = ’<nombre_paquete>’,
+    executable = ’<nombre_ejecutable>’,
+    name = ’<nombre_nodo>’,
+  )
+
+  ld = LaunchDescription()
+  ld.add_action(node_1)
+  return ld
+```
+
+## Archivos *launch* en python {.smaller}
+
+> *Actions*: Ejecutar un nodo
+
+```{.py code-line-numbers="|1|3-4,18-19|5-7|8|9-11|12-14|15|16|17"}
+from launch_ros.actions import Node
+...
+return LaunchDescription([
+  Node(
+    package = ’<nombre_paquete>’,
+    executable = ’<nombre_ejecutable>’,
+    name = ’<nombre_nodo>’,
+    namespace = ’<nombre_namespace>’,
+    parameters = [ # Pueden ser archivos
+      {‘<nombre_parametro>’: <valor>, .. }
+    ],
+    remappings = [
+      ('<nombre_topic>', '<nuevo_nombre>'),
+    ],
+    output = ’<screen|log|both>’,
+    ros_arguments = [...],              # Listado de argumentos de ejecución (nivel de log, etc)
+    arguments = [...],                  # Listado de argumentos para el nodo
+  ),
+])
+```
+
+## Archivos *launch* en python {.smaller}
+
+> *Substitutions*: Parámetros para cambiar valores en el *launch*
+
+```{.py code-line-numbers="|2,3|5,6|7-9|10-13|14-16"}
+...
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+ 
+def generate_launch_description():
+  return LaunchDescription([
+    DeclareLaunchArgument(
+      ‘<nombre_parametro>’, default_value=<valor>
+    ),
+    Node(
+      package = ’<nombre_paquete>’,
+      executable = ’<nombre_ejecutable>’,
+      name = ’<nombre_nodo>’,
+      parameters=[{
+        '<parametro_del_nodo>': LaunchConfiguration('<nombre_parametro>'),
+      }]
+    ),
+  ])
+```
+
+## Archivos *launch* en python {.smaller}
+
+> *Conditions*: Mecanismos para cambiar el comportamiento del *launch*
+
+```{.py code-line-numbers="|3,4|8-10|11-14|15-17"}
+...
+from launch.actions import DeclareLaunchArgument
+from launch.conditions import IfCondition
+from launch.substitutions import LaunchConfiguration, EqualsSubstitution
+
+def generate_launch_description():
+  return LaunchDescription([
+    DeclareLaunchArgument(
+      ‘ejecutar_nodo’, default_value='true'
+    ),
+    Node(
+      package = ’<nombre_paquete>’,
+      executable = ’<nombre_ejecutable>’,
+      name = ’<nombre_nodo>’,
+      condition=IfCondition(
+        EqualsSubstitution(LaunchConfiguration(‘ejecutar_nodo’), 'true')
+      ),
+    ),
+  ])
+```
+
+## Archivos *launch* en python {.smaller}
+
+> Reutilización: Incluir otros *launch*
+
+```{.py code-line-numbers="|2,3|4|7-12"}
+...
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.substitutions import FindPackageShare
+
+def generate_launch_description():
+  return LaunchDescription([
+    IncludeLaunchDescription(
+      PythonLaunchDescriptionSource([
+        FindPackageShare('<nombre_paquete>'), '/launch', '/<nombre_archivo_launch>'
+      ])
+    )
+    ...
+  ])
+```
+
+# Logging {visibility="hidden"}
+
+## Sistema de *logging*
+
+. . .
+
+> Por defecto los mensajes de log se escriben en:
+>
+> - La consola
+> - El archivo de *log* en el disco
+> - El topic `\rosout`
+
+. . .
+
+> Pueden activarse y desactivarse individualmente
+
+## Mensajes de log
+
+> Escala de gravedad (`severity level`)
+
+> En orden descendente:
+>
+> 1. `FATAL`
+> 2. `ERROR`
+> 3. `WARN`
+> 4. `INFO`
+> 5. `DEBUG`
+
+::: {.notes}
+Cada nodo está asociado a un nivel de severidad por lo que se pueden filtrar mensajes con severidad inferior
+:::
+
+## Mensajes de log en `rclpy`
+
+> Obtener el logger de una clase nodo:
+>
+>       <nodo>.get_logger().{debug,info,warning,error,fatal}('<mensaje_de_log>')
+
+. . .
+
+<br>
+
+::: {style="font-size: 70%;"}
+> Opciones para configurar el comportamiento:
+> 
+> - `once`: Loggear solo la primera vez
+> - `skip_first`: No loggear la primera vez, si las siguientes
+> - `throttle_duration_sec`: Cantidad de veces que se puede enviar el mensaje por segundo
+:::
+
+
+
+
+# Laboratorio {visibility="hidden"}
+
+## [Laboratorio](lab.qmd) {.center}
+
+Uso de parámetros y archivos *launch*
+

@@ -36,7 +36,7 @@ El siguiente cronograma será actualizado con el correr del cursado
 |4  | 07/04 | ROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación. | [🖥️](/clases/03 "Slides"){aria-label="Clase 3 slides"} | [🧪](/clases/03/lab.html "Lab"){aria-label="Clase 3 lab"}
 |5  | 14/04 | Revisión conceptos clase anterior. Programación de nodos, compilación y ejecución. | [🖥️](/clases/04 "Slides"){aria-label="Clase 4 slides"} | [🧪](/clases/04/lab.html "Lab"){aria-label="Clase 4 lab"}
 |6  | 21/04 | Programación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación. | [🖥️](/clases/05 "Slides"){aria-label="Clase 5 slides"} | [🧪](/clases/05/lab.html "Lab"){aria-label="Clase 5 lab"}
-|7  | 28/04 | Parámetros en nodos. Programación y uso. | |
+|7  | 28/04 | Parámetros en nodos y `roslaunch`, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.  | [🖥️](/clases/06 "Slides"){aria-label="Clase 6 slides"} | [🧪](/clases/06/lab.html "Lab"){aria-label="Clase 6 lab"}
 |8  | 05/05 | Cinemática y locomoción: modelo cinemático de un robot diferencial. Odometría. | |
 |9  | 12/05 | ROS2: R.E.P. y Transformaciones. Transformaciones estáticas y herramientas de depuración. | |
 |10 | 19/05 | U.R.D.F: Representación de geometría de un robot. XACRO y paquete tf2. | |
