@@ -206,7 +206,72 @@ def main(args=None):
 ::: {.column width="50%"}
 > Orientado a objetos
 
-```{.python code-line-numbers="|1|2-3"}
+```{.python code-line-numbers=""}
+class Publicador(Node):
+  def __init__(self):
+    super().__init__('publicador')
+    
+    # 2.1 Creación de publisher
+    self.pub = self.create_publisher(
+                      String, 'chat', 10)
+
+    # 2.2 Creación de mensaje
+    self.msg = String()
+    
+    # 2.4 Creación del timer
+    self.timer = self.create_timer(
+                        1, self.timer_callback)
+  
+  # 2.3 Programación de función de callback
+  def timer_callback(self):
+    # Completar el campo 'data' del mensaje 
+    self.msg.data = f'Mensaje de prueba'
+
+    # Publicar el mensaje
+    self.pub.publish(self.msg)
+
+```
+
+:::
+::::
+
+## Código publisher {.smaller}
+
+:::: {.columns}
+::: {.column style="width: 50%;"}
+> Inline
+
+```{.python code-line-numbers="22"}
+def main(args=None):
+  ...
+  ...
+  # 2.1 Lógica del programa
+  # Creación de publisher
+  pub = nodo.create_publisher(String, 'chat', 10)
+
+  # 2.2 Programación de función de callback
+  def timer_callback():
+    # Creación de mensaje
+    msg = String()
+    # Completar el campo 'data' del mensaje 
+    msg.data = 'Mensaje de prueba'
+
+    # Publicar el mensaje
+    pub.publish(msg)
+
+  # 2.3 Creación del timer
+  timer = nodo.create_timer(1, timer_callback)
+  ...
+
+
+
+```
+:::
+
+::: {.column width="50%"}
+> Orientado a objetos
+
+```{.python code-line-numbers="1|2-3"}
 class Publicador(Node):
   def __init__(self):
     super().__init__('publicador')
