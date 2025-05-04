@@ -30,6 +30,7 @@ jobs:
 
       - name: Install Inkscape
         run: |
+          sudo apt-get update
           sudo apt-get -y install inkscape
           which inkscape
 
