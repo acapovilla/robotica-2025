@@ -1,0 +1,88 @@
+## Rotación 2D
+
+::: {.columns}
+::: {.column width="50%"}
+Dado un marco de referencia $\textcolor{Orange}{\{B\}}$ rotado un ángulo $\textcolor{ForestGreen}{\theta}$ respecto de un marco de referencia $\textcolor{Blue}{\{A\}}$. Encontrar la matriz de transformación que convierte las coordenadas del marco $\textcolor{Orange}{B}$ al $\textcolor{Blue}{A}$.
+:::
+::: {.column width="50%"}
+
+<br>
+
+```{.tikz width="100%"}
+%%| filename: rot-matrix1 
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+
+
+  \def\axisLen{3.5}
+  \def\inclinacion{1.8}
+  \coordinate (P) at (1.5,2.2);
+  \coordinate (B) at (0,0);
+
+  % Ejes del marco A
+  \draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below] {$\boldsymbol{x}_A$};
+  \draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[left] {$\boldsymbol{y}_A$};
+
+  % Etiqueta del marco de referencia A (debajo del origen, a la derecha)
+  \node[below right, color=Blue] at (0,-0.1) {$\{\boldsymbol{A}\}$};
+
+  % Punto p y vector
+  \node[fill=ForestGreen,circle,scale=0.3] (0,0) at (P) {};
+  \draw[-,thick, color=ForestGreen] (B) -- (P) node[midway,right=2] {$\boldsymbol{p}$};
+
+  % Líneas punteadas para componentes en A
+  \draw[densely dashed,Blue] (P) -- (1.5,0) node[below right] {$p_{x_A}$};
+  \draw[densely dashed,Blue] (P) -- (0,2.2) node[above left] {$p_{y_A}$};
+  %\node[fill=Blue,circle,scale=0.3] at (1.5,0) {};
+  %\node[fill=Blue,circle,scale=0.3] at (0,2.2) {};
+  
+  % Ejes del marco B
+  \draw[->,very thick,color=Orange] (B) -- +(\axisLen,\inclinacion) node[right] {$\boldsymbol{x}_B$};
+  \draw[->,very thick,color=Orange] (B) -- +(-\inclinacion,\axisLen) node[left] {$\boldsymbol{y}_B$};
+
+  % Etiqueta del marco de referencia B (arriba a la izquierda del origen)
+  \node[above left,color=Orange] at (-0.2,0) {$\{\boldsymbol{B}\}$};
+
+  % Precalcular ángulos
+  \pgfmathsetmacro{\thetaB}{atan(\inclinacion/\axisLen)}
+  \pgfmathsetmacro{\angleP}{atan(2.2/1.5)}
+
+  % Líneas punteadas para componentes en B
+  % Proyección sobre x_B
+  \path[name path=xBaxis] (0,0) -- ++(\axisLen,\inclinacion);
+  \path[name path=projxB] (P) -- ++(\inclinacion,-\axisLen);
+  \path[name intersections={of=projxB and xBaxis, by=PxB}];
+  \draw[densely dashed,Orange] (P) -- (PxB) node[below right] {$p_{x_B}$};% node[midway,above,rotate=(\thetaB-90)] {\footnotesize $\sin{\alpha}$};
+  %\node[fill=Orange,circle,scale=0.3] at (PxB) {};
+
+  % Proyección sobre y_B
+  %\draw[dashed,Orange] (P) -- ++(-\axisLen,-\inclinacion) node[below left] {$p_{y_B}$};
+  \path[name path=yBaxis] (0,0) -- ++(-\inclinacion,\axisLen);
+  \path[name path=projyB] (P) -- ++(-\axisLen,-\inclinacion);
+  \path[name intersections={of=projyB and yBaxis, by=PyB}];
+  \draw[densely dashed,Orange] (P) -- (PyB) node[left] {$p_{y_B}$};% node[midway,above,rotate=(\thetaB)] {\footnotesize $\cos{\alpha}$};
+  %\node[fill=Orange,circle,scale=0.3] at (PyB) {};
+
+  % Arco para el ángulo theta
+  \draw[Gray,thick,->] 
+    (3,0) arc[start angle=0, end angle=atan(\inclinacion/\axisLen), radius=3] node[midway, right] {$\theta$};
+
+  % Arco para el ángulo alpha entre x_B y p
+  %\draw[Maroon,thick,->]
+  %  ([shift={(0,0)}] \thetaB:0.8)
+  %  arc[start angle=\thetaB, end angle=\angleP, radius=0.8] node[near end,right] {$\alpha$};
+
+  %\node[Maroon] at (1.1,0.35) {$\alpha$};
+  
+\end{tikzpicture}
+```
+
+:::
+:::
+

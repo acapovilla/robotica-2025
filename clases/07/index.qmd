@@ -14,7 +14,16 @@ format:
     code-copy: false
     code-overflow: wrap
     fig-format: svg
-
+filters:
+  - diagram
+diagram:
+    engine:
+        tikz:
+            execpath: pdflatex
+            header-includes:
+                - '\usepackage{amsmath}'
+                - '\usetikzlibrary{arrows, shapes, intersections}'
+                - '\usepackage{adjustbox}'
 jupyter: python3
 ---
 
@@ -75,4 +84,8 @@ $$ f(\boldsymbol{p}) = \begin{bmatrix} x_2 \\ y_2 \end{bmatrix} =
 \begin{bmatrix} x_1 \\ y_1 \end{bmatrix} =
 \begin{bmatrix} a x_1 + b y_1 \\ c x_1 + d y_1\end{bmatrix}
 $$
+
+# Rotaciones {visibility="hidden"}
+
+{{< include _2d-rotation.qmd >}}
 
