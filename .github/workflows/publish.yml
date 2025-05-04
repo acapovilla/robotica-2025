@@ -28,6 +28,11 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
 
+      - name: Install Inkscape
+      - run: |
+          sudo apt-get -y install inkscape
+          which inkscape
+
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:
