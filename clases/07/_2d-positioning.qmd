@@ -1,0 +1,67 @@
+## Posicionamiento 2D
+
+![](2d-positioning/robot1.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot2.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot3.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot4.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot5.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot6.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot7.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot8.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot9.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot10.png){fig-align="center" height=40%}
+
+
+
+## Posicionamiento 2D
+
+![](2d-positioning/robot11.png){fig-align="center" height=40%}
+
+::: aside
+Marcos de referencia: cómo convertirmos coordenadas entre ellos?
+:::

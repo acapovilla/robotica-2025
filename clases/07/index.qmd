@@ -1,0 +1,78 @@
+---
+title: "Robótica"
+subtitle: "Clase 07"
+date: "05/05/2025"
+date-format: "[Semana 8 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+
+jupyter: python3
+---
+
+
+# Posicionamiento 2D {visibility="hidden"} 
+
+{{< include _2d-positioning.qmd >}}
+
+# Transformaciones {visibility="hidden"}
+
+## Notación
+
+::: {.columns}
+::: {.column width="50%"}
+- Punto: $\require{color} \textcolor{PineGreen}{d}_{2D} = \begin{pmatrix} \textcolor{Orange}{a} \\ \textcolor{RedViolet}{b} \end{pmatrix} \;$ 
+
+- Vector: 
+$$\require{color} {}^{\textcolor{Blue}{A}}{\boldsymbol{\textcolor{LimeGreen}{p}}_\textcolor{PineGreen}{d}} = \textcolor{Orange}{a} \boldsymbol{\vec{i}} + \textcolor{RedViolet}{b} \boldsymbol{\vec{j}}$$
+
+![](figs/right-hand-rule.png){width="40%"}
+
+:::
+::: {.column width="50%"}
+![](figs/vector.png){width="100%"}
+
+:::
+:::
+
+## Transformaciones lineales
+
+Funciones de la forma:
+
+$$
+f(\boldsymbol{p}) = \boldsymbol{T} \, \boldsymbol{p}
+$$
+
+donde $\boldsymbol{T}$ será una matrix de $n \times n$, y $n$ la dimensión de $\boldsymbol{p}$
+
+. . .
+
+<br>
+
+> *Propiedad* 
+> 
+> Se pueden encadenar como producto de matrices
+$$f_3(f_2(f_1(\boldsymbol{p}))) = \boldsymbol{T}_3 \, \boldsymbol{T}_2 \, \boldsymbol{T}_1 \, \boldsymbol{p}$$
+
+## Transformaciones lineales
+
+Para el caso 2D
+
+$$ \boldsymbol{T} = \begin{bmatrix} a & b \\ c & d \end{bmatrix} $$
+
+entonces, dado $\boldsymbol{p} =  \begin{bmatrix} x_1 & y_1  \end{bmatrix}^T$
+
+$$ f(\boldsymbol{p}) = \begin{bmatrix} x_2 \\ y_2 \end{bmatrix} =
+\begin{bmatrix} a & b \\ c & d \end{bmatrix}
+\begin{bmatrix} x_1 \\ y_1 \end{bmatrix} =
+\begin{bmatrix} a x_1 + b y_1 \\ c x_1 + d y_1\end{bmatrix}
+$$
+
