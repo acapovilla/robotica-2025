@@ -411,7 +411,7 @@ f(\boldsymbol{p}) = \boldsymbol{T} \, \boldsymbol{p}
 \begin{pmatrix} |\textcolor{ForestGreen}{\boldsymbol{p}}| ( \cos{\textcolor{Maroon}{\alpha}} \cos{\textcolor{Plum}{\theta}} - \sin{\textcolor{Maroon}{\alpha}} \sin{\textcolor{Plum}{\theta}} )  \\  |\textcolor{ForestGreen}{\boldsymbol{p}}| ( \sin{\textcolor{Maroon}{\alpha}} \cos{\textcolor{Plum}{\theta}} + \cos{\textcolor{Maroon}{\alpha}} \sin{\textcolor{Plum}{\theta}} )  \end{pmatrix} \\
 &amp;= \begin{pmatrix} \colorbox{Gray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \cos{\textcolor{Maroon}{\alpha}} $} \cos{\textcolor{Plum}{\theta}} - \colorbox{lightgray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \sin{\textcolor{Maroon}{\alpha}} $} \sin{\textcolor{Plum}{\theta}} \\ \colorbox{lightgray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \sin{\textcolor{Maroon}{\alpha}} $} \cos{\textcolor{Plum}{\theta}} + \colorbox{Gray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \cos{\textcolor{Maroon}{\alpha}} $} \sin{\textcolor{Plum}{\theta}} \end{pmatrix} \\
 &amp;= \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}} \cos{\textcolor{Plum}{\theta}} - \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \sin{\textcolor{Plum}{\theta}} \\ \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \cos{\textcolor{Plum}{\theta}} + \textcolor{Orange}{p_{{x}_\boldsymbol{B}}} \sin{\textcolor{Plum}{\theta}} \end{pmatrix}
-= \begin{bmatrix} \cos{\textcolor{Plum}{\theta}} &amp; -\sin{\textcolor{Plum}{\theta}} \\ \sin{\textcolor{Plum}{\theta}} &amp; \cos{\textcolor{Plum}{\theta}}\end{bmatrix} \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \end{pmatrix}
+%= \begin{bmatrix} \cos{\textcolor{Plum}{\theta}} &amp; -\sin{\textcolor{Plum}{\theta}} \\ \sin{\textcolor{Plum}{\theta}} &amp; \cos{\textcolor{Plum}{\theta}}\end{bmatrix} \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \end{pmatrix}
 \end{align}
 \]</span></p>
 </div><div class="column" style="width:50%;">
@@ -422,15 +422,20 @@ f(\boldsymbol{p}) = \boldsymbol{T} \, \boldsymbol{p}
 <section id="rotación-2d-5" class="slide level2">
 <h2>Rotación 2D</h2>
 <div class="columns">
-<div class="column" style="font-size: 50%;">
+<div class="column" style="width:50%;">
+<div style="font-size: 50%;">
 <p><span class="math display">\[
 {}^{\textcolor{Orange}{\boldsymbol{B}}}{\textcolor{ForestGreen}{\boldsymbol{p}}} = \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \end{pmatrix} =
 \begin{pmatrix} \colorbox{Gray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \cos{\textcolor{Maroon}{\alpha}} $}  \\  \colorbox{lightgray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \sin{\textcolor{Maroon}{\alpha}} $} \end{pmatrix}
 \]</span></p>
+</div>
+<div style="font-size: 50%;">
 <p><span class="math display">\[
 {}^{\textcolor{Blue}{\boldsymbol{A}}}{\textcolor{ForestGreen}{\boldsymbol{p}}} = \begin{pmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}} \end{pmatrix} =
 \begin{pmatrix} |\textcolor{ForestGreen}{\boldsymbol{p}}| \cos{(\textcolor{Maroon}{\alpha}+\textcolor{Plum}{\theta})}  \\  |\textcolor{ForestGreen}{\boldsymbol{p}}| \sin{(\textcolor{Maroon}{\alpha}+\textcolor{Plum}{\theta})} \end{pmatrix}
 \]</span></p>
+</div>
+<div style="font-size: 50%;">
 <p>Sabiendo:</p>
 <!-- - $\cos{\alpha + \theta} = \cos{\alpha} \cdot \cos{\theta} - \sin{\alpha} \cdot \sin{\theta}$
 - $\sin{\alpha + \theta} = \sin{\alpha} \cdot \cos{\theta} + \cos{\alpha} \cdot \sin{\theta}$ -->
@@ -438,6 +443,8 @@ f(\boldsymbol{p}) = \boldsymbol{T} \, \boldsymbol{p}
 <li><span class="math inline">\(\sin{(A+B)} = \sin{A} \cos{B} + \cos{A} \sin{B}\)</span></li>
 <li><span class="math inline">\(\cos{(A+B)} = \cos{A} \cos{B} - \sin{A} \sin{B}\)</span></li>
 </ul>
+</div>
+<div style="font-size: 50%;">
 <p><span class="math display">\[
 \begin{align}
 \begin{pmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}} \end{pmatrix} &amp;=
@@ -447,6 +454,7 @@ f(\boldsymbol{p}) = \boldsymbol{T} \, \boldsymbol{p}
 = \begin{bmatrix} \cos{\textcolor{Plum}{\theta}} &amp; -\sin{\textcolor{Plum}{\theta}} \\ \sin{\textcolor{Plum}{\theta}} &amp; \cos{\textcolor{Plum}{\theta}}\end{bmatrix} \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \end{pmatrix}
 \end{align}
 \]</span></p>
+</div>
 </div><div class="column" style="width:50%;">
 <p><br></p>
 <p><img data-src="index_files/mediabag/rot-matrix2.svg" style="width:100.0%"></p>
@@ -476,6 +484,324 @@ f(\boldsymbol{p}) = \boldsymbol{T} \, \boldsymbol{p}
 </div><div class="column" style="width:50%;">
 <p><br></p>
 <p><img data-src="index_files/mediabag/rot-matrix2.svg" style="width:100.0%"></p>
+</div></div>
+</section></section>
+<section>
+
+<section id="traslación-2d" class="slide level2">
+<h2>Traslación 2D</h2>
+<div class="columns">
+<div class="column" style="font-size: 70%;">
+<p>Dado un marco de referencia <span class="math inline">\(\textcolor{Orange}{\{\boldsymbol{B}\}}\)</span> paralelo a un marco de referencia <span class="math inline">\(\textcolor{Blue}{\{\boldsymbol{A}\}}\)</span> trasladado <span class="math inline">\(\textcolor{ForestGreen}{{}^\boldsymbol{A}{\boldsymbol{t}}_\boldsymbol{B}}\)</span>. Encontrar la matriz de transformación que convierte las coordenadas del marco <span class="math inline">\(\textcolor{Orange}{\boldsymbol{B}}\)</span> al <span class="math inline">\(\textcolor{Blue}{\boldsymbol{A}}\)</span>.</p>
+<div class="fragment">
+<p><span class="math display">\[
+\textcolor{Blue}{{}^A{\boldsymbol{p}}} = \textcolor{ForestGreen}{{}^A\boldsymbol{t}_B} + \textcolor{Orange}{{}^B{\boldsymbol{p}}}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Puede representarse como una transformación lineal? <span class="math display">\[
+f(\boldsymbol{p}) = \boldsymbol{T} \, \boldsymbol{p}
+\]</span></p>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>No para un dimensión de <span class="math inline">\(n=2\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<img data-src="index_files/mediabag/traslacion.svg" style="width:100.0%">
+</div></div>
+</section>
+<section id="coordenadas-homogéneas" class="slide level2 smaller">
+<h2>Coordenadas homogéneas</h2>
+<blockquote>
+<p>Que sucede si representamos un punto 2D con un vector de 3 componentes?</p>
+</blockquote>
+<p>Dado un vector <span class="math inline">\({\boldsymbol{p}} = {\begin{pmatrix} a &amp; b \end{pmatrix}}^T\)</span>, su correspondiente homogéneo:</p>
+<p><span class="math display">\[
+{\boldsymbol{\tilde{p}}} = \begin{pmatrix} \tilde{a} \\ \tilde{b} \\ c \end{pmatrix} \quad \text{donde} \;
+\begin{cases}
+\tilde{a} = \tfrac{a}{c} \\
+\tilde{b} = \tfrac{b}{c} \\
+c \neq 0
+\end{cases}
+\]</span></p>
+<div class="fragment">
+<p>Con <span class="math inline">\(c = 1 \to {\boldsymbol{\tilde{p}}} = {\begin{pmatrix} a &amp; b &amp; 1 \end{pmatrix}}^T\)</span></p>
+</div>
+<div class="fragment">
+<p>En el problema de traslación 2D:</p>
+<p><span class="math display">\[
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} = \textcolor{ForestGreen}{{}^\boldsymbol{A}\boldsymbol{\tilde{t}}_\boldsymbol{B}} + \textcolor{Orange}{{}^\boldsymbol{B}{\boldsymbol{\tilde{p}}}} \to
+\begin{bmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}} \\ 1  \end{bmatrix} =
+{\begin{bmatrix} \textcolor{ForestGreen}{{t_x}} \\ \textcolor{ForestGreen}{{t_y}} \\ 0 \end{bmatrix}} + \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} =
+\begin{bmatrix} \textcolor{ForestGreen}{{t_x}} + \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{ForestGreen}{{t_y}} + \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix}
+\]</span></p>
+</div>
+</section>
+<section id="traslación-2d-en-c.h." class="slide level2 smaller">
+<h2>Traslación 2D en c.h.</h2>
+<p>El problema expresado en coordenadas homogéneas:</p>
+<p><span class="math display">\[
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} = \textcolor{Blue}{{}^\boldsymbol{A}}\boldsymbol{T}_\textcolor{Orange}{\boldsymbol{B}} \textcolor{Orange}{{}^\boldsymbol{B}{\boldsymbol{\tilde{p}}}}
+\]</span> con <span class="math inline">\({}^A\boldsymbol{T}_B\)</span> de dimension <span class="math inline">\(3 \times 3\)</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{align}
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} &amp;= \begin{bmatrix} \textcolor{ForestGreen}{{t_x}} + \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{ForestGreen}{{t_y}} + \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} = {\begin{bmatrix} ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} \\
+%&amp;= {\begin{bmatrix} ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} =
+%\begin{bmatrix} ? + ? \\ ? + ? \\ ? \end{bmatrix}
+\end{align}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{align}
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} &amp;= {\begin{bmatrix} ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} = \begin{bmatrix} ? \\ ? \\ ? \end{bmatrix}
+%&amp;= {\begin{bmatrix} ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} =
+%\begin{bmatrix} ? + ? \\ ? + ? \\ ? \end{bmatrix}
+\end{align}
+\]</span></p>
+</div>
+</section>
+<section id="traslación-2d-en-c.h.-1" class="slide level2 smaller">
+<h2>Traslación 2D en c.h.</h2>
+<p>El problema expresado en coordenadas homogéneas:</p>
+<p><span class="math display">\[
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} = \textcolor{Blue}{{}^\boldsymbol{A}}\boldsymbol{T}_\textcolor{Orange}{\boldsymbol{B}} \textcolor{Orange}{{}^\boldsymbol{B}{\boldsymbol{\tilde{p}}}}
+\]</span> con <span class="math inline">\({}^A\boldsymbol{T}_B\)</span> de dimension <span class="math inline">\(3 \times 3\)</span></p>
+<p><span class="math display">\[
+\begin{align}
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} &amp;= \begin{bmatrix} \textcolor{ForestGreen}{{t_x}} + \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{ForestGreen}{{t_y}} + \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} = {\begin{bmatrix} ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} \\
+\end{align}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} &amp;= {\begin{bmatrix} ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \\ 0 &amp; 0 &amp; 1 \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} = \begin{bmatrix} ? \\ ? \\ 1 \end{bmatrix}
+\end{align}
+\]</span></p>
+</section>
+<section id="traslación-2d-en-c.h.-2" class="slide level2 smaller">
+<h2>Traslación 2D en c.h.</h2>
+<p>El problema expresado en coordenadas homogéneas:</p>
+<p><span class="math display">\[
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} = \textcolor{Blue}{{}^\boldsymbol{A}}\boldsymbol{T}_\textcolor{Orange}{\boldsymbol{B}} \textcolor{Orange}{{}^\boldsymbol{B}{\boldsymbol{\tilde{p}}}}
+\]</span> con <span class="math inline">\({}^A\boldsymbol{T}_B\)</span> de dimension <span class="math inline">\(3 \times 3\)</span></p>
+<p><span class="math display">\[
+\begin{align}
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} &amp;= \begin{bmatrix} \textcolor{ForestGreen}{{t_x}} + \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{ForestGreen}{{t_y}} + \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} = {\begin{bmatrix} ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} \\
+\end{align}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} &amp;= {\begin{bmatrix} 1 &amp; 0 &amp; ? \\ 0 &amp; 1 &amp; ? \\ 0 &amp; 0 &amp; 1 \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} = \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}} + ? \\ \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} + ? \\ 1 \end{bmatrix}
+\end{align}
+\]</span></p>
+</section>
+<section id="traslación-2d-en-c.h.-3" class="slide level2 smaller">
+<h2>Traslación 2D en c.h.</h2>
+<p>El problema expresado en coordenadas homogéneas:</p>
+<p><span class="math display">\[
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} = \textcolor{Blue}{{}^\boldsymbol{A}}\boldsymbol{T}_\textcolor{Orange}{\boldsymbol{B}} \textcolor{Orange}{{}^\boldsymbol{B}{\boldsymbol{\tilde{p}}}}
+\]</span> con <span class="math inline">\({}^A\boldsymbol{T}_B\)</span> de dimension <span class="math inline">\(3 \times 3\)</span></p>
+<p><span class="math display">\[
+\begin{align}
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} &amp;= \begin{bmatrix} \textcolor{ForestGreen}{{t_x}} + \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{ForestGreen}{{t_y}} + \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} = {\begin{bmatrix} ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \\ ? &amp; ? &amp; ? \end{bmatrix}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} \\
+\end{align}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+\textcolor{Blue}{{}^\boldsymbol{A}{\boldsymbol{\tilde{p}}}} &amp;= \underbrace{\begin{bmatrix} 1 &amp; 0 &amp;  \textcolor{ForestGreen}{{t_x}} \\ 0 &amp; 1 &amp;  \textcolor{ForestGreen}{{t_y}} \\ 0 &amp; 0 &amp; 1 \end{bmatrix}}_{\textcolor{Blue}{{}^\boldsymbol{A}}\boldsymbol{T}_\textcolor{Orange}{\boldsymbol{B}}} \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1  \end{bmatrix} = \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}} +  \textcolor{ForestGreen}{{t_x}} \\ \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} +  \textcolor{ForestGreen}{{t_y}} \\ 1 \end{bmatrix}
+\end{align}
+\]</span></p>
+</section></section>
+<section>
+
+<section id="traslación-y-rotación" class="slide level2 smaller">
+<h2>Traslación y rotación</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>(traslación) <span class="math inline">\(\to {}^\textcolor{Blue}{\boldsymbol{A}}{\boldsymbol{p}} = {}^\textcolor{Blue}{\boldsymbol{A}}\boldsymbol{t}_{\textcolor{ForestGreen}{\boldsymbol{C}}} + {}^\textcolor{ForestGreen}{\boldsymbol{C}}{\boldsymbol{p}}\)</span></p>
+<p>(rotación) <span class="math inline">\(\to {}^\textcolor{ForestGreen}{\boldsymbol{C}}{\boldsymbol{p}} = {}^\textcolor{ForestGreen}{\boldsymbol{C}}\boldsymbol{R}_\textcolor{Orange}{\boldsymbol{B}} {}^\textcolor{Orange}{\boldsymbol{B}}{\boldsymbol{p}}\)</span></p>
+<div class="fragment">
+<p><br></p>
+<p>reemplazando <span class="math display">\[
+{}^\textcolor{Blue}{\boldsymbol{A}}{\boldsymbol{p}} = {}^\textcolor{Blue}{\boldsymbol{A}}\boldsymbol{t}_{\textcolor{ForestGreen}{\boldsymbol{C}}} + {}^\textcolor{ForestGreen}{\boldsymbol{C}}\boldsymbol{R}_\textcolor{Orange}{\boldsymbol{B}} {}^\textcolor{Orange}{\boldsymbol{B}}{\boldsymbol{p}}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><br></p>
+<p>dado que <span class="math inline">\(\textcolor{ForestGreen}{\boldsymbol{\{C\}}} \parallel \textcolor{Blue}{\boldsymbol{\{A\}}}\)</span> y <span class="math inline">\(\textcolor{Orange}{\boldsymbol{B}} \equiv \textcolor{ForestGreen}{\boldsymbol{C}}\)</span>:</p>
+<p><span class="math display">\[
+{}^\textcolor{Blue}{\boldsymbol{A}}{\boldsymbol{p}} = {}^\textcolor{Blue}{\boldsymbol{A}}\boldsymbol{t}_{\textcolor{Orange}{\boldsymbol{B}}} + {}^\textcolor{Blue}{\boldsymbol{A}}\boldsymbol{R}_\textcolor{Orange}{\boldsymbol{B}} {}^\textcolor{Orange}{\boldsymbol{B}}{\boldsymbol{p}}
+\]</span></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<img data-src="index_files/mediabag/tras-rot.svg" style="width:100.0%">
+</div></div>
+</section>
+<section id="traslación-y-rotación-1" class="slide level2 smaller">
+<h2>Traslación y rotación</h2>
+<p><span class="math display">\[
+{}^\textcolor{Blue}{\boldsymbol{A}}{\boldsymbol{p}} = {}^\textcolor{Blue}{\boldsymbol{A}}\boldsymbol{R}_\textcolor{Orange}{\boldsymbol{B}} {}^\textcolor{Orange}{\boldsymbol{B}}{\boldsymbol{p}} +  {}^\textcolor{Blue}{\boldsymbol{A}}\boldsymbol{t}_{\textcolor{Orange}{\boldsymbol{B}}}
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{bmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}}  \end{bmatrix} =
+{\begin{bmatrix} \cos{\theta} &amp; -\sin{\theta} \\ \sin{\theta} &amp; \cos{\theta} \end{bmatrix}}  \begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}}  \end{bmatrix} +
+\begin{bmatrix} \textcolor{ForestGreen}{{t_x}}  \\  \textcolor{ForestGreen}{{t_y}}  \end{bmatrix}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>En coordenadas homogéneas: <span class="math display">\[
+\begin{bmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}}  \end{bmatrix} =
+{\begin{bmatrix} \cos{\theta} &amp; -\sin{\theta} &amp; \textcolor{ForestGreen}{{t_x}} \\ \sin{\theta} &amp; \cos{\theta} &amp; \textcolor{ForestGreen}{{t_y}} \end{bmatrix}}
+\begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1 \end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}} \\ 1  \end{bmatrix} =
+{\begin{bmatrix} \cos{\theta} &amp; -\sin{\theta} &amp; \textcolor{ForestGreen}{{t_x}} \\ \sin{\theta} &amp; \cos{\theta} &amp; \textcolor{ForestGreen}{{t_y}} \\ 0 &amp; 0 &amp; 1 \end{bmatrix}}
+\begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1 \end{bmatrix}
+\]</span></p>
+</div>
+</section>
+<section id="transformación-homogénea" class="slide level2 smaller">
+<h2>Transformación homogénea</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[
+{}^A{\boldsymbol{\tilde{p}}} = \begin{pmatrix} {}^A\boldsymbol{R}_B &amp; {}^A\boldsymbol{t}_B \\ \boldsymbol{0} &amp; 1 \end{pmatrix} {}^B{\boldsymbol{\tilde{p}}}
+\]</span></p>
+<p><span class="math display">\[
+{}^A\boldsymbol{\tilde{p}} = {}^A\boldsymbol{T}_B {}^B \boldsymbol{\tilde{p}}
+\]</span></p>
+<p>donde <span class="math display">\[
+{}^A\boldsymbol{T}_B = \begin{pmatrix} {}^A\boldsymbol{R}_B &amp; {}^A\boldsymbol{t}_B \\ \boldsymbol{0} &amp; 1 \end{pmatrix}
+\]</span></p>
+<p>describe una pose relativa como una matriz <span class="math inline">\(3\times3\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<img data-src="index_files/mediabag/tras-rot-final.svg" style="width:100.0%">
+</div></div>
+</section>
+<section id="generalizando" class="slide level2 smaller">
+<h2>Generalizando</h2>
+<p>La estructura de <span class="math inline">\(\boldsymbol{T}\)</span> se puede generalizar para <span class="math inline">\(n\)</span>-dimensiones:</p>
+<p><span class="math display">\[
+\boldsymbol{T} \boldsymbol{\hat{p}} = \begin{pmatrix} \boldsymbol{R}_{n \times n} &amp; \boldsymbol{t}_{n \times 1} \\ \boldsymbol{0}_{1 \times n} &amp; 1 \end{pmatrix}_{(n+1) \times (n+1)} \boldsymbol{\hat{p}}_{(n+1)}
+\]</span></p>
+<p><strong>En resumen</strong>: a partir de la función no lineal de <em>traslación-rotación</em>, se desarrolló una función lineal en el sistema de coordenadas homogéneo <span class="math inline">\(\boldsymbol{\tilde{p}}\)</span> <span class="math display">\[
+\begin{align*}
+f(\boldsymbol{p}) &amp;= \boldsymbol{R} \boldsymbol{p} + \boldsymbol{t} \\
+&amp;\downarrow \\
+g(\boldsymbol{\tilde{p}}) &amp;= \boldsymbol{T} \tilde{p} =  \begin{pmatrix} {}^A\boldsymbol{R}_B &amp; {}^A\boldsymbol{t}_B \\ \boldsymbol{0} &amp; 1 \end{pmatrix} \tilde{p}
+\end{align*}
+\]</span></p>
+</section></section>
+<section>
+
+<section id="volviendo-al-mundo-real" class="slide level2">
+<h2>Volviendo al mundo real</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/pose1.png" class="quarto-figure quarto-figure-center" style="height:40.0%"></p>
+</figure>
+</div>
+</section>
+<section id="volviendo-al-mundo-real-1" class="slide level2">
+<h2>Volviendo al mundo real</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/pose2.png" class="quarto-figure quarto-figure-center" style="height:40.0%"></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Denominación “de referencia” (padre) y “objetivo o target” (hijo)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pose-2d" class="slide level2 smaller">
+<h2>Pose 2D</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Tres componentes: <span class="math inline">\((x, y, \theta)\)</span></li>
+</ul>
+<p><span class="math display">\[
+{}^W \boldsymbol{\xi}_R \sim {}^W\boldsymbol{T}_R = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} &amp; {}^W t_x \\ \sin{\theta} &amp; \cos{\theta} &amp; {}^W  t_y \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
+\]</span></p>
+<p><span class="math display">\[
+{}^W\boldsymbol{\tilde{p}}_d = {}^W\boldsymbol{\xi}_R {}^R\boldsymbol{\tilde{p}}_d
+\]</span></p>
+</div><div class="column" style="width:40%;">
+<p><img data-src="figs/pose3.png"></p>
+</div></div>
+<ul>
+<li class="fragment">Se puede considerar como un movimiento de traslación y rotación del marco de coordenadas</li>
+<li class="fragment">La pose de un marco de coordenada es siempre respecto a otro.</li>
+</ul>
+</section>
+<section id="pose-2d-1" class="slide level2">
+<h2>Pose 2D</h2>
+<blockquote>
+<p>Y si queremos ir del marco <span class="math inline">\(\{A\}\)</span> al <span class="math inline">\(\{B\}\)</span>?</p>
+</blockquote>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>La operación inversa</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+{{}^A \boldsymbol{\xi}_B }^{-1} = {}^B \boldsymbol{\xi}_A \to {}^B \boldsymbol{T}_A = {{}^A \boldsymbol{T}_B }^{-1}
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{\xi}^{-1} = \begin{pmatrix} \boldsymbol{R} &amp; \boldsymbol{t} \\ \boldsymbol{0} &amp; 1 \end{pmatrix}^{-1} = \begin{pmatrix} \boldsymbol{R}^T &amp; -\boldsymbol{R}^T \boldsymbol{t} \\ \boldsymbol{0} &amp; 1 \end{pmatrix}
+\]</span></p>
+</div>
+</section>
+<section id="composición-de-poses" class="slide level2 smaller">
+<h2>Composición de poses</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><span class="math display">\[
+{}^A\boldsymbol{\xi}_C = {}^A \boldsymbol{\xi}_B \otimes {}^B \boldsymbol{\xi}_C
+\]</span></p>
+<p>Se puede cacular como: <span class="math display">\[
+{}^A \boldsymbol{\xi}_B \otimes {}^B \boldsymbol{\xi}_C = {}^A\boldsymbol{T}_B {}^B\boldsymbol{T}_C
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{\xi}_1 \boldsymbol{\xi}_2 = \begin{pmatrix} \boldsymbol{R}_1 &amp; \boldsymbol{t}_1 \\ \boldsymbol{0} &amp; 1 \end{pmatrix} \begin{pmatrix} \boldsymbol{R}_2 &amp; \boldsymbol{t}_2 \\ \boldsymbol{0} &amp; 1 \end{pmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{\xi}_1 \boldsymbol{\xi}_2 = \begin{pmatrix} \boldsymbol{R}_1 \boldsymbol{R}_2 &amp; \boldsymbol{t}_1 + \boldsymbol{R}_1 \boldsymbol{t}_2 \\ \boldsymbol{0} &amp; 1 \end{pmatrix}
+\]</span></p>
+</div><div class="column" style="width:55%;">
+<p><br></p>
+<img data-src="index_files/mediabag/pose-comp.svg" style="width:100.0%">
 </div></div>
 
 
