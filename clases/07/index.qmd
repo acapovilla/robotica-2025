@@ -101,3 +101,6 @@ $$
 
 {{< include _pose.qmd >}}
 
+# Transformaciones en ROS2 y `tf2` {visibility="hidden"}
+
+{{< include _ros2-tf2.qmd >}}
