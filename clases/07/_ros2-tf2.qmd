@@ -275,7 +275,7 @@ Las transformaciones pueden ser estáticas o dinámicas (si cambian o no en el t
 
 - Ver el árbol: `ros2 run rqt_tf_tree rqt_tf_tree`
 
-- Echo: `ros2 run tf2_ros tf2_echo '[reference]' '[target]'`
+- Echo: `ros2 run tf2_ros tf2_echo <marco_de_referencia> <marco_objetivo>`
 
 - Monitor: `ros2 run tf2_ros tf2_monitor`
 

@@ -104,3 +104,9 @@ $$
 # Transformaciones en ROS2 y `tf2` {visibility="hidden"}
 
 {{< include _ros2-tf2.qmd >}}
+
+# Laboratorio {visibility="hidden"}
+
+## [Laboratorio](lab.qmd) {.center}
+
+Transformaciones 2D y `tf2`
