@@ -131,11 +131,15 @@ Se escribe $\boldsymbol{p}$ como cuaternion: $\boldsymbol{p} = \begin{pmatrix} 1
 
 ::: {.fragment}
 Aplicamos:
+
+::: {style="font-size: 75%;"}
+
 $$
-{\displaystyle
 \boldsymbol{q} \circ \boldsymbol{p} \circ \boldsymbol{q}^{-1} = \begin{bmatrix} 0 \\ 0 \\ \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{bmatrix} \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} \begin{bmatrix} 0 \\ 0 \\ \frac{-\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{bmatrix} = \begin{bmatrix} \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \\ 0 \\ 0 \end{bmatrix} \begin{bmatrix} 0 \\ 0 \\ \frac{-\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix} \Rightarrow \boldsymbol{p}' =  \begin{pmatrix} 0 \\ 1 \end{pmatrix}
-}
 $$
+
+:::
+
 :::
 
 ::: {.notes}
