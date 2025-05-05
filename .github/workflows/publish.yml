@@ -16,10 +16,6 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tinytex: true
 
       - name: Install Python and Dependencies
         uses: actions/setup-python@v5
@@ -31,7 +27,9 @@ jobs:
       - name: Install Inkscape
         run: |
           sudo apt-get update
-          sudo apt-get -y install inkscape
+          sudo apt-get -y install texlive-latex-base texlive-latex-extra
+          sudo apt-get -y install inkscape 
+          which pdflatex
           which inkscape
 
       - name: Publish to GitHub Pages (and render)
