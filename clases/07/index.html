@@ -26,6 +26,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-a877479387196f0a51385a0845e77ea0.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -803,6 +869,450 @@ g(\boldsymbol{\tilde{p}}) &amp;= \boldsymbol{T} \tilde{p} =  \begin{pmatrix} {}^
 <p><br></p>
 <img data-src="index_files/mediabag/pose-comp.svg" style="width:100.0%">
 </div></div>
+</section></section>
+<section>
+
+<section id="convenciones-ros-enhancement-proposals" class="slide level2">
+<h2>Convenciones <span style="font-size: 75%;">(ROS Enhancement Proposals)</span></h2>
+<blockquote>
+<p>REP <a href="ros.org/reps/rep-0103.html" target="_blank">103</a>: <em>“Standard Units of Measure and Coordinate Conventions”</em></p>
+</blockquote>
+<ul>
+<li class="fragment">Unidades en <a href="http://en.wikipedia.org/wiki/International_System_of_Units" target="_blank">S.I.</a> (metro, segundo, kg, radian)</li>
+<li class="fragment">Regla de la mano derecha</li>
+<li class="fragment">Marcos ENU y NED</li>
+<li class="fragment">Roll (<span style="color: red;">X</span>), Pitch (<span style="color: green;">Y</span>) y Yaw (<span style="color: blue;">Z</span>)</li>
+</ul>
+<aside class="notes">
+<p>REP = “Documentos que gobiernan ROS”</p>
+<p>REP 103:</p>
+<ul>
+<li>Unidades: Sistema internacional -&gt; Metros, kilogramo, segundo</li>
+<li>Radianes para ángulos</li>
+<li>Marcos de coordenadas: Todos son de mano derecha -&gt; Cumplen la regla de la mano derecha</li>
+<li>La orientación de los ejes para cuerpos: x-adelante, y-izquierda, z-arriba</li>
+<li>Coordenadas geográficas de “corto alcance” -&gt; ENU: X-este, Y-norte, Z-arriba</li>
+<li>Para sistemas de ambiente exteriores: -&gt; NED:X-norte, Y-este, Z-abajo</li>
+<li>Rotaciones: Roll-Pitch-Yaw alrededor de X Y Z respectivamente</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="convenciones-ros-enhancement-proposals-1" class="slide level2">
+<h2>Convenciones <span style="font-size: 75%;">(ROS Enhancement Proposals)</span></h2>
+<blockquote>
+<p>REP <a href="ros.org/reps/rep-0105.html" target="_blank">105</a>: <em>“Coordinate Frames for Mobile Platforms”</em></p>
+</blockquote>
+<ul>
+<li class="fragment">Convención de nombres</li>
+<li class="fragment">Marco de coordenadas para plataformas robóticas
+<ul>
+<li class="fragment"><code>base_link</code>: Fijo al robot (según REP103)</li>
+<li class="fragment"><code>odom</code>: Fijo al mundo (continuo, sin saltos, con drift)</li>
+<li class="fragment"><code>map</code>: Fijo al mundo (con saltos pero sin drift)</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Nombramiento marcos de coordenadas: minúscula y con guión bajo para separación de palabras. Deben ser únicos</p>
+<ul>
+<li>‘base_link’: Es el marco fijado rigidamente a la base del robot móvil -&gt; Se recomienda utilizar lo del REP103</li>
+<li>‘odom’: marco de referencia fijo respecto del mundo. Si bien sufre los problemas de drift sin límite, es continuo y no posee saltos.</li>
+<li>‘map’: marco de referencia fijo respecto del mundo, con el eje Z apuntando hacia arriba. La pose del robot respecto del ‘map’ no debe tener un drift significativo a lo largo del tiempo. El marco puede no ser continuo, sufriendo saltos en cualquier momento.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="representación-de-rotaciones" class="slide level2">
+<h2>Representación de rotaciones</h2>
+<p>Problemas con las matrices:</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">9 elementos (3D)</li>
+<li class="fragment">Difícil de interpolar</li>
+<li class="fragment">Acumulan errores (pueden perder ortogonalidad)</li>
+<li class="fragment">Gimbal lock</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="fragment">
+<div id="fig-gimbal-lock" class="quarto-float quarto-figure quarto-figure-center" data-fig-env="figure*">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-gimbal-lock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><a href="https://en.wikipedia.org/wiki/Gimbal_lock" target="_blank"><img data-src="https://upload.wikimedia.org/wikipedia/commons/4/49/Gimbal_Lock_Plane.gif" class="quarto-figure quarto-figure-center"></a><br>
+</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gimbal-lock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Cuando el pitch (verde) y el yaw (magenta) se alinean, cambios en el roll (azul) y yaw aplican la misma rotación (Fuente: <a href="https://en.wikipedia.org/wiki/Gimbal_lock">Wikipedia</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>ROS 2 no usa matrices directamente para las rotaciones porque son grandes (9 números para una rotación), difíciles de interpolar, y pueden perder ortogonalidad al acumular errores.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="representación-de-rotaciones-1" class="slide level2">
+<h2>Representación de rotaciones</h2>
+<blockquote>
+<p>Cuaterniones: Representación más compacta y robusta</p>
+</blockquote>
+<p><span class="math display">\[
+\boldsymbol{q} = \begin{pmatrix} x  \\ y \\ z \\ w  \end{pmatrix}
+\]</span></p>
+<!-- ::: {.callout-note appearance="simple"}
+ROS usa cuaterniones en todos los mensajes de pose y transformaciones.
+::: -->
+<div class="fragment">
+<ul>
+<li>Las poses ahora se componen de una traslación <span class="math inline">\(\boldsymbol t = \begin{pmatrix} x &amp; y &amp; z  \end{pmatrix}\)</span> y una orientación <span class="math inline">\(\boldsymbol{q}\)</span></li>
+</ul>
+<aside class="notes">
+<p>En vez de eso, usamos cuaterniones, que representan la rotación de forma más compacta (4 números) y más robusta para cálculos computacionales. Así como en 2D usamos un solo ángulo (theta) para representar la orientación, en 3D usamos un cuaternión.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="representación-de-rotaciones-2" class="slide level2 smaller">
+<h2>Representación de rotaciones</h2>
+<blockquote>
+<p>Ejemplo: <span class="math inline">\(\boldsymbol{p} = \begin{pmatrix} 1 &amp; 0  \end{pmatrix}^T\)</span> rotado <span class="math inline">\(90^{\circ}\)</span></p>
+</blockquote>
+<p>Ángulo: <span class="math inline">\(\theta = 90^{\circ} = \tfrac{\pi}{2}\)</span></p>
+<div class="fragment">
+<p>Matriz de rotación: <span class="math inline">\(\boldsymbol{R} = \begin{bmatrix} \cos{\theta} &amp; -\sin{\theta} \\ \sin{\theta} &amp; \cos{\theta} \end{bmatrix} = \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}\)</span></p>
+</div>
+<div class="fragment">
+<p>Aplicamos: <span class="math display">\[
+\boldsymbol{p}' = \boldsymbol{R} \cdot \boldsymbol{p} = \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \Rightarrow \boldsymbol{p}' =  \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\]</span></p>
+</div>
+</section>
+<section id="representación-de-rotaciones-3" class="slide level2 smaller">
+<h2>Representación de rotaciones</h2>
+<blockquote>
+<p>Ejemplo: <span class="math inline">\(\boldsymbol{p} = \begin{pmatrix} 1 &amp; 0  \end{pmatrix}^T\)</span> rotado <span class="math inline">\(90^{\circ}\)</span></p>
+</blockquote>
+<p>Cuaternion para rotación 2D: <span class="math inline">\(\boldsymbol{q} = \begin{pmatrix} x=0 &amp; y=0 &amp; z=\sin{ \tfrac{\theta}{2} } &amp; w=\cos{ \tfrac{\theta}{2} } \end{pmatrix}\)</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+\text{con} \, \theta = \tfrac{\pi}{2} \to  z=\sin{ \tfrac{\pi}{4}} = \frac{\sqrt{2}}{2},\quad  w=\cos{ \tfrac{\pi}{4} } = \frac{\sqrt{2}}{2}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Se escribe <span class="math inline">\(\boldsymbol{p}\)</span> como cuaternion: <span class="math inline">\(\boldsymbol{p} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span></p>
+</div>
+<div class="fragment">
+<p>Aplicamos: <span class="math display">\[
+{\displaystyle
+\boldsymbol{q} \circ \boldsymbol{p} \circ \boldsymbol{q}^{-1} = \begin{bmatrix} 0 \\ 0 \\ \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{bmatrix} \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} \begin{bmatrix} 0 \\ 0 \\ \frac{-\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{bmatrix} = \begin{bmatrix} \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \\ 0 \\ 0 \end{bmatrix} \begin{bmatrix} 0 \\ 0 \\ \frac{-\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix} \Rightarrow \boldsymbol{p}' =  \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+}
+\]</span></p>
+</div>
+<aside class="notes">
+<p>¿Por qué <span class="math inline">\(\theta / 2\)</span>?</p>
+<p>Porque los cuaterniones codifican media rotación internamente (por razones geométricas: la rotación se aplica como una conjugación, y termina duplicando el ángulo).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="librería-de-transformaciones" class="slide level2">
+<h2>Librería de transformaciones</h2>
+<div style="font-size: 75%;">
+<blockquote>
+<p>Por qué necesitamos una?</p>
+</blockquote>
+</div>
+<div class="columns">
+<div class="column" style="width:10%;">
+
+</div><div class="column" style="width:80%;">
+<div class="fragment">
+<p><a href="https://docs.nav2.org/setup_guides/transformation/setup_transforms.html"><img data-src="https://docs.nav2.org/_images/simple_robot.png"></a></p>
+</div>
+<div class="fragment">
+<p><a href="https://docs.nav2.org/setup_guides/transformation/setup_transforms.html"><img data-src="https://docs.nav2.org/_images/tf_robot.png"></a></p>
+</div>
+</div><div class="column" style="width:10%;">
+
+</div></div>
+
+<aside class="notes">
+<p>Ejemplo: un robot con dos marcos, uno el centro del robot ‘base_link’ y otro en el centro del laser ‘base_laser’. Dada la información respecto del laser ‘base_laser’, es necesario transformar esa información respecto al ‘base_link’ (definir una relación entre los dos marcos de coordenadas). Según la figura, será necesario aplicar una traslación (x: 0.1[m], y: 0.0[m], z: 0.2[m]), para ir del ‘base_link’ al ‘base_laser’. Como se requiere la transformación opuesta, sería (x: -0.1[m], y: 0.0[m], z: -0.2[m])</p>
+<p>TF2 soluciona el problema de gestionar estas relaciones para que no lo tengamos que hacer por nuestra cuenta. Es útil sobre todo para escenarios no estáticos (99%).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Ejemplo extraido de <a href="https://docs.nav2.org/setup_guides/transformation/setup_transforms.html">docs.nav2.org</a></p>
+</div></aside></section>
+<section id="tf2-librería-de-transformaciones" class="slide level2">
+<h2><code>tf2</code>: Librería de transformaciones</h2>
+<div class="columns">
+<div class="column">
+<div class="fragment" data-fragment-index="1">
+<ul>
+<li>Marco de coordenadas y sus transformaciones <u>en el tiempo</u></li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="2">
+<ul>
+<li>Estructura de árbol (no existen bucles)</li>
+</ul>
+</div>
+</div><div class="column">
+<div class="fragment" data-fragment-index="1">
+<p><img data-src="figs/hibachi-tf.png"></p>
+</div>
+</div></div>
+<div class="fragment" data-fragment-index="2">
+<p><img data-src="figs/frames.png"></p>
+</div>
+<aside class="notes">
+<ul>
+<li>Herramienta para seguir los marcos de coordenada a través del tiempo (4ta dimensión)</li>
+<li>Mantiene las relaciones entre los marcos de coordenadas en una estructura de árbol buffereado en el tiempo</li>
+<li>Cada nodo en el árbol es un marco de coordenadas, y cada conexión o arista corresponde a la transformación que debe ser aplicada para ir o venir</li>
+<li>Arbol = no hay bucles = cada nodo 1 solo padre</li>
+<li>Cada marco puede estar definido solo por una transformación desde otro marco</li>
+<li>Permite transformar puntos, vectores, etc entre marcos de coordenadas para un determinado tiempo</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tf2-librería-de-transformaciones-1" class="slide level2">
+<h2><code>tf2</code>: Librería de transformaciones</h2>
+<ul>
+<li>Basado en topics y mensajes <code>tf2_msgs/msg/TFMessage</code></li>
+</ul>
+<pre><code>geometry_msgs/TransformStamped
+├── std_msgs/Header header
+├── string child_frame_id
+└── geometry_msgs/Transform transform
+    ├── geometry_msgs/Vector3 translation     ⬅️
+    └── geometry_msgs/Quaternion rotation     ⬅️</code></pre>
+<div class="fragment">
+<ul>
+<li>No se utilizan publishers/subscribers <span class="math inline">\(\to\)</span> la librería <code>tf2_ros</code></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>ROS representa orientaciones como cuaterniones en todos los mensajes de pose y transformaciones</p>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Si bien se utilizan topics para manejar la comunicación, no se realiza una publicación/suscripción directa, sino a través de la librería por eso se dice broadcast/listen</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tf2-librería-de-transformaciones-2" class="slide level2">
+<h2><code>tf2</code>: Librería de transformaciones</h2>
+<ul>
+<li>2 Tipos de transformaciones: estáticas y dinámicas</li>
+</ul>
+<p><a href="https://articulatedrobotics.xyz/tutorials/ready-for-ros/tf"><img data-src="https://articulatedrobotics.xyz/assets/images/tf_topics-4c303e7085bb3dc329b80ae9e3b262ff.png"></a></p>
+
+<aside class="notes">
+<p>Las transformaciones pueden ser estáticas o dinámicas (si cambian o no en el tiempo). En el caso de las transformaciones estáticas pueden publicarse una sola vez y se asumen “actualizadas” hasta que se transmita una nueva.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Fuente: <a href="https://articulatedrobotics.xyz/tutorials/ready-for-ros/tf">articulatedrobotics.xyz</a></p>
+</div></aside></section>
+<section id="transformaciones-estáticas" class="slide level2">
+<h2>Transformaciones estáticas</h2>
+<blockquote>
+<p>Nodo <em>static_transform_publisher</em></p>
+</blockquote>
+<p><code>$ ros2 run tf2_ros static_transform_publisher</code></p>
+<p><code>&nbsp;&nbsp; x=[<span style="color: red;">x</span>] y=[<span style="color: green;">y</span>] z=[<span style="color: blue;">z</span>]</code></p>
+<p><code>&nbsp;&nbsp; roll=[<span style="color: red;">roll</span>] pitch=[<span style="color: green;">pitch</span>] yaw=[<span style="color: blue;">yaw</span>]</code></p>
+<p><code>&nbsp;&nbsp; [parent_frame] [child_frame]</code></p>
+</section>
+<section id="herramientas-de-visualización-y-análisis" class="slide level2">
+<h2>Herramientas de visualización y análisis</h2>
+<ul>
+<li><p>Ver el árbol: <code>ros2 run rqt_tf_tree rqt_tf_tree</code></p></li>
+<li><p>Echo: <code>ros2 run tf2_ros tf2_echo &lt;marco_de_referencia&gt; &lt;marco_objetivo&gt;</code></p></li>
+<li><p>Monitor: <code>ros2 run tf2_ros tf2_monitor</code></p></li>
+<li><p>Visualización mediante <em>RViz</em>: <code>ros2 run rviz2 rviz2</code></p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Problemas comunes: que falte un transformación o que esté mal</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="publicar-transformaciones" class="slide level2 smaller">
+<h2>Publicar transformaciones</h2>
+<blockquote>
+<p>Librerías</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">from</span> tf2_ros <span class="im">import</span> TransformBroadcaster</span>
+<span id="cb2-2"><a></a><span class="im">from</span> geometry_msgs.msg <span class="im">import</span> TransformStamped</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># Conversión ángulos de euler a cuaternion (librería transforms3d)</span></span>
+<span id="cb2-5"><a></a><span class="im">from</span> transforms3d.euler <span class="im">import</span> euler2quat </span></code></pre></div>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Completar las dependencias del paquete</p>
+<p><code>&lt;depend&gt;tf2_ros_py&lt;/depend&gt;</code></p>
+<p><code>&lt;depend&gt;python3-transforms3d&lt;/depend&gt;</code></p>
+</div>
+</div>
+</div>
+<blockquote>
+<p>Mediante el objeto <code>TransformBroadcaster</code> se podrán enviar las transformaciones</p>
+</blockquote>
+<div class="sourceCode" id="cb3" data-code-line-numbers="7"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb3-1"><a></a>...</span>
+<span id="cb3-2"><a></a><span class="kw">class</span> FramePublisher(Node):</span>
+<span id="cb3-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-4"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'frame_publisher'</span>)</span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a>        <span class="co"># Inicializar el broadcaster</span></span>
+<span id="cb3-7"><a></a>        <span class="va">self</span>.tf_broadcaster <span class="op">=</span> TransformBroadcaster(<span class="va">self</span>)</span>
+<span id="cb3-8"><a></a>...</span></code></pre></div>
+</section>
+<section id="publicar-transformaciones-1" class="slide level2 smaller">
+<h2>Publicar transformaciones</h2>
+<blockquote>
+<p>Publicar transformaciones</p>
+</blockquote>
+<div class="sourceCode" id="cb4" data-code-line-numbers="|3-5|6|8|9-12|14-17|19-20|21-24|26-27"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb4-1"><a></a>...</span>
+<span id="cb4-2"><a></a>    <span class="kw">def</span> send_tf(<span class="va">self</span>):</span>
+<span id="cb4-3"><a></a>        <span class="co"># Cálculo de los elementos de transformación</span></span>
+<span id="cb4-4"><a></a>        <span class="co"># Transformación = Traslación + Rotación</span></span>
+<span id="cb4-5"><a></a>        ...</span>
+<span id="cb4-6"><a></a>        tf <span class="op">=</span> TransformStamped()</span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a>        tf.header.stamp <span class="op">=</span> <span class="va">self</span>.get_clock().now().to_msg()</span>
+<span id="cb4-9"><a></a>        <span class="co"># Marco de referencia (padre)</span></span>
+<span id="cb4-10"><a></a>        tf.header.frame_id <span class="op">=</span> <span class="st">'world'</span>  </span>
+<span id="cb4-11"><a></a>        <span class="co"># Marco objetivo (hijo)                      </span></span>
+<span id="cb4-12"><a></a>        tf.child_frame_id <span class="op">=</span> <span class="st">'robot'</span>                 </span>
+<span id="cb4-13"><a></a></span>
+<span id="cb4-14"><a></a>        <span class="co"># Traslación</span></span>
+<span id="cb4-15"><a></a>        tf.transform.translation.x <span class="op">=</span> t_x</span>
+<span id="cb4-16"><a></a>        tf.transform.translation.y <span class="op">=</span> t_y</span>
+<span id="cb4-17"><a></a>        tf.transform.translation.z <span class="op">=</span> t_z</span>
+<span id="cb4-18"><a></a></span>
+<span id="cb4-19"><a></a>        <span class="co"># Rotación</span></span>
+<span id="cb4-20"><a></a>        q <span class="op">=</span> euler2quat(roll, pitch, yaw)  <span class="co"># Devuelve w x y z</span></span>
+<span id="cb4-21"><a></a>        tf.transform.rotation.x <span class="op">=</span> q[<span class="dv">1</span>]</span>
+<span id="cb4-22"><a></a>        tf.transform.rotation.y <span class="op">=</span> q[<span class="dv">2</span>]</span>
+<span id="cb4-23"><a></a>        tf.transform.rotation.z <span class="op">=</span> q[<span class="dv">3</span>]</span>
+<span id="cb4-24"><a></a>        tf.transform.rotation.w <span class="op">=</span> q[<span class="dv">0</span>]</span>
+<span id="cb4-25"><a></a></span>
+<span id="cb4-26"><a></a>        <span class="co"># Enviar la transformación</span></span>
+<span id="cb4-27"><a></a>        <span class="va">self</span>.tf_broadcaster.sendTransform(tf)</span></code></pre></div>
+</section></section>
+<section>
+
+<section id="laboratorio-1" class="slide level2 center">
+<h2><a href="../../clases/07/lab.html">Laboratorio</a></h2>
+<p>Transformaciones 2D y <code>tf2</code></p>
 
 
 </section></section>

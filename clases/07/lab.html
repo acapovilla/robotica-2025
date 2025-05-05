@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.29">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Clase 07 - Laboratorio – Robótica 2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ef67952ddf8d1a3ba275c874683a719f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Robótica 2025
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="quarto-sidebar-header"><section id="universidad-nacional-del-litoral-unl" class="level2 sidebar-header-item">
+<h2 data-anchor-id="universidad-nacional-del-litoral-unl"><a href="https://www.unl.edu.ar/">Universidad Nacional del Litoral</a> (UNL)<br>
+</h2>
+<section id="facultad-de-ingeniería-y-ciencias-hídricas-fich" class="level3">
+<h3 data-anchor-id="facultad-de-ingeniería-y-ciencias-hídricas-fich"><a href="https://www.fich.unl.edu.ar/">Facultad de Ingeniería y Ciencias Hídricas</a> (FICH) <br><br>
+</h3>
+<p><strong>Tecnicatura en Automatización y Robótica (TUAR)</strong> <br><br>
+<img src="https://sinc.unl.edu.ar/wp-content/themes/sinci/img/sinc-logo.png" class="img-fluid"></p>
+</section>
+</section></div>
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Robótica 2025</a> 
+    </div>
+      </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#transformaciones-2d-y-pose-2d" id="toc-transformaciones-2d-y-pose-2d" class="nav-link active" data-scroll-target="#transformaciones-2d-y-pose-2d">Transformaciones 2D y Pose 2D</a>
+  <ul class="collapse">
+  <li><a href="#práctica-de-marcos-de-referencia-y-transformaciones" id="toc-práctica-de-marcos-de-referencia-y-transformaciones" class="nav-link" data-scroll-target="#práctica-de-marcos-de-referencia-y-transformaciones">Práctica de marcos de referencia y transformaciones</a></li>
+  </ul></li>
+  <li><a href="#librería-de-transformaciones-tf2" id="toc-librería-de-transformaciones-tf2" class="nav-link" data-scroll-target="#librería-de-transformaciones-tf2">Librería de transformaciones <code>tf2</code></a>
+  <ul class="collapse">
+  <li><a href="#parte-2.-transformaciones-estáticas-y-dinámicas" id="toc-parte-2.-transformaciones-estáticas-y-dinámicas" class="nav-link" data-scroll-target="#parte-2.-transformaciones-estáticas-y-dinámicas">Parte 2. Transformaciones estáticas y dinámicas</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Clase 07 - Laboratorio</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="transformaciones-2d-y-pose-2d" class="level1">
+<h1>Transformaciones 2D y Pose 2D</h1>
+<p><img src="index_files/mediabag/tras-rot-final.svg" class="img-fluid" style="width:100.0%" data-fig-pos="center"></p>
+<section id="matriz-de-transformación-homogénea" class="level4">
+<h4 class="anchored" data-anchor-id="matriz-de-transformación-homogénea">Matriz de transformación homogénea</h4>
+<p>Sea un punto <span class="math inline">\({\boldsymbol{p}} = {\begin{pmatrix} a &amp; b \end{pmatrix}}\)</span> y su correspondiente homogéneo <span class="math inline">\({\boldsymbol{\tilde{p}}} = {\begin{pmatrix} a &amp; b &amp; 1 \end{pmatrix}}\)</span>, podemos representar una traslación y rotación 2D mediante una transformación homogénea:</p>
+<p><span class="math display">\[
+\textcolor{Blue}{{}^\boldsymbol{A}\boldsymbol{\tilde{p}}} = \textcolor{Blue}{{}^\boldsymbol{A}}\boldsymbol{T}_\textcolor{Orange}{\boldsymbol{B}} \textcolor{Orange}{{}^\boldsymbol{B}\boldsymbol{\tilde{p}}} = \begin{pmatrix} \textcolor{Maroon}{{}^\boldsymbol{A}\boldsymbol{R}_\boldsymbol{B}} &amp; \textcolor{ForestGreen}{{}^\boldsymbol{A}\boldsymbol{t}_\boldsymbol{B}} \\ \boldsymbol{0} &amp; 1 \end{pmatrix} {}^\boldsymbol{B}{\boldsymbol{\tilde{p}}}
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}} \\ 1  \end{bmatrix} =
+{\begin{bmatrix} \cos{\textcolor{Maroon}{\theta}} &amp; -\sin{\textcolor{Maroon}{\theta}} &amp; \textcolor{ForestGreen}{{t_x}} \\ \sin{\textcolor{Maroon}{\theta}} &amp; \cos{\textcolor{Maroon}{\theta}} &amp; \textcolor{ForestGreen}{{t_y}} \\ 0 &amp; 0 &amp; 1 \end{bmatrix}}
+\begin{bmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \\ 1 \end{bmatrix}
+\]</span></p>
+</section>
+<section id="rotación-2d-en-cuaternion" class="level4">
+<h4 class="anchored" data-anchor-id="rotación-2d-en-cuaternion">Rotación 2D en cuaternion</h4>
+</section>
+<section id="práctica-de-marcos-de-referencia-y-transformaciones" class="level2">
+<h2 class="anchored" data-anchor-id="práctica-de-marcos-de-referencia-y-transformaciones">Práctica de marcos de referencia y transformaciones</h2>
+<section id="escenario" class="level4">
+<h4 class="anchored" data-anchor-id="escenario">Escenario</h4>
+<ul>
+<li>Un robot <span class="math inline">\(\textbf{A}\)</span> se encuentra en la posición <span class="math inline">\((2,1)\)</span> con orientación <span class="math inline">\(30^\circ\)</span> en coordenadas del <span class="math inline">\(\textit{Mundo}\)</span></li>
+<li>Un robot <span class="math inline">\(\textbf{B}\)</span> se encuentra en la posición <span class="math inline">\((0.5,\tfrac{\sqrt{3}}{2})\)</span> con orientación <span class="math inline">\(60^\circ\)</span> en el sistema de coordenadas del robot <span class="math inline">\(\textbf{A}\)</span></li>
+<li>Un obstáculo <span class="math inline">\({}^W \boldsymbol{O}_1 = (0, 3)\)</span> en coordenadas del <span class="math inline">\(\textit{Mundo}\)</span></li>
+<li>Un obstáculo <span class="math inline">\({}^A \boldsymbol{O}_2 = (\sqrt{3}, -1)\)</span> en coordenadas del robot <span class="math inline">\(\textbf{A}\)</span></li>
+</ul>
+</section>
+<section id="representar-todos-los-robots-y-sus-poses-y-todos-los-sistemas-de-coordenadas-que-identifique" class="level4">
+<h4 class="anchored" data-anchor-id="representar-todos-los-robots-y-sus-poses-y-todos-los-sistemas-de-coordenadas-que-identifique">1. Representar todos los robots y sus poses, y todos los sistemas de coordenadas que identifique</h4>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Puedes dibujarlos en una cuadrícula o utilizar variables en python</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cuáles-son-las-coordenadas-del-obstáculo-boldsymbolo_1-en-el-sistema-de-coordenadas-del-robot-textbfa" class="level4">
+<h4 class="anchored" data-anchor-id="cuáles-son-las-coordenadas-del-obstáculo-boldsymbolo_1-en-el-sistema-de-coordenadas-del-robot-textbfa">2. ¿Cuáles son las coordenadas del obstáculo <span class="math inline">\(\boldsymbol{O}_1\)</span> en el sistema de coordenadas del robot <span class="math inline">\(\textbf{A}\)</span>?</h4>
+</section>
+<section id="cuáles-son-las-coordenadas-del-obstáculo-boldsymbolo_2-en-el-sistema-de-coordenadas-del-robot-textbfb" class="level4">
+<h4 class="anchored" data-anchor-id="cuáles-son-las-coordenadas-del-obstáculo-boldsymbolo_2-en-el-sistema-de-coordenadas-del-robot-textbfb">3. ¿Cuáles son las coordenadas del obstáculo <span class="math inline">\(\boldsymbol{O}_2\)</span> en el sistema de coordenadas del robot <span class="math inline">\(\textbf{B}\)</span>?</h4>
+</section>
+<section id="cuál-es-la-pose-del-robot-textbfb-en-coordenadas-del-textitmundo" class="level4">
+<h4 class="anchored" data-anchor-id="cuál-es-la-pose-del-robot-textbfb-en-coordenadas-del-textitmundo">4. ¿Cuál es la pose del robot <span class="math inline">\(\textbf{B}\)</span> en coordenadas del <span class="math inline">\(\textit{Mundo}\)</span>?</h4>
+<hr>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Opcional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Opcional
+</div>
+</div>
+<section id="pruebe-que-realizar-dos-rotaciones-consecutivas-es-lo-mismo-que-realizar-una-rotación-de-los-ángulos-sumados." class="level4 callout-body-container callout-body">
+<h4 class="anchored" data-anchor-id="pruebe-que-realizar-dos-rotaciones-consecutivas-es-lo-mismo-que-realizar-una-rotación-de-los-ángulos-sumados.">Pruebe que realizar dos rotaciones consecutivas es lo mismo que realizar una rotación de los ángulos sumados.</h4>
+</section>
+</div>
+</section>
+</section>
+</section>
+<section id="librería-de-transformaciones-tf2" class="level1">
+<h1>Librería de transformaciones <code>tf2</code></h1>
+<ul>
+<li><h4 id="publicar-una-transformación-estática-con-static_transform_publisher" class="anchored">Publicar una transformación estática con <code>static_transform_publisher</code></h4></li>
+</ul>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 run tf2_ros static_transform_publisher
+      x=&lt;x&gt; y=&lt;y&gt; z=&lt;z&gt; roll=&lt;roll&gt; pitch=&lt;pitch&gt; yaw=&lt;yaw&gt;
+      &lt;marco_padre&gt; &lt;marco_hijo&gt;</code></pre>
+</blockquote>
+<p>Ejemplo</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 run tf2_ros static_transform_publisher</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="va">x</span><span class="op">=</span>5.0 <span class="va">y</span><span class="op">=</span>3.0 <span class="va">yaw</span><span class="op">=</span>3.141592 <span class="ex">mundo</span> mi_robot</span></code></pre></div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Los campos vacío quedan con el valor por defecto de 0</p>
+</div>
+</div>
+</div>
+<ul>
+<li><h4 id="ver-árbol-de-transformación-rqt_tf_tree" class="anchored">Ver árbol de transformación <code>rqt_tf_tree</code></h4></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 run rqt_tf_tree rqt_tf_tree</span></code></pre></div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Si el paquete no se encuentra instalado:</p>
+<pre><code>sudo apt install ros-jazzy-rqt-tf-tree</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><h4 id="obtener-una-transformación-con-tf2_echo" class="anchored">Obtener una transformación con <code>tf2_echo</code></h4></li>
+</ul>
+<blockquote class="blockquote">
+<pre><code>  $ ros2 run tf2_ros tf2_echo
+      &lt;marco_de_referencia&gt; &lt;marco_objetivo&gt;</code></pre>
+</blockquote>
+<p>Ejemplo</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 run tf2_ros tf2_echo odom base_link</span></code></pre></div>
+<ul>
+<li><h4 id="visualizar-las-transformaciones-con-rviz2" class="anchored">Visualizar las transformaciones con <code>rviz2</code></h4></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">$</span> ros2 run rviz2 rviz2</span></code></pre></div>
+<section id="publicar-una-transformación" class="level4">
+<h4 class="anchored" data-anchor-id="publicar-una-transformación">Publicar una transformación</h4>
+<ul>
+<li><h4 id="importar-las-librerías-y-objetos-correspondientes" class="anchored">Importar las librerías y objetos correspondientes</h4></li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para publicar la transformación</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tf2_ros <span class="im">import</span> TransformBroadcaster</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Para construir el mensaje de transformación</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geometry_msgs.msg <span class="im">import</span> TransformStamped</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># función auxiliar para convertir ángulos a cuaternion</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transforms3d.euler <span class="im">import</span> euler2quat</span></code></pre></div>
+<hr>
+<ul>
+<li><h4 id="crear-el-publicador" class="anchored">Crear el publicador</h4></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.tf_broadcaster <span class="op">=</span> TransformBroadcaster(<span class="va">self</span>)</span></code></pre></div>
+<hr>
+<ul>
+<li><h4 id="crear-el-mensaje-de-transformación" class="anchored">Crear el mensaje de transformación</h4></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tf <span class="op">=</span> TransformStamped()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>tf.header.stamp <span class="op">=</span> <span class="va">self</span>.get_clock().now().to_msg()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>tf.header.frame_id <span class="op">=</span> <span class="st">'&lt;marco_referencia&gt;'</span>                       </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>tf.child_frame_id <span class="op">=</span> <span class="st">'&lt;marco_objetivo&gt;'</span>                 </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Traslación</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>tf.transform.translation.x <span class="op">=</span> t_x</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>tf.transform.translation.y <span class="op">=</span> t_y</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>tf.transform.translation.z <span class="op">=</span> t_z</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Rotación</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> euler2quat(roll, pitch, yaw)  <span class="co"># Devuelve w x y z</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>tf.transform.rotation.x <span class="op">=</span> q[<span class="dv">1</span>]</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>tf.transform.rotation.y <span class="op">=</span> q[<span class="dv">2</span>]</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>tf.transform.rotation.z <span class="op">=</span> q[<span class="dv">3</span>]</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>tf.transform.rotation.w <span class="op">=</span> q[<span class="dv">0</span>]</span></code></pre></div>
+<hr>
+<ul>
+<li><h4 id="enviar-la-transformación" class="anchored">Enviar la transformación</h4></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.tf_broadcaster.sendTransform(tf)</span></code></pre></div>
+<hr>
+</section>
+<section id="parte-2.-transformaciones-estáticas-y-dinámicas" class="level2">
+<h2 class="anchored" data-anchor-id="parte-2.-transformaciones-estáticas-y-dinámicas">Parte 2. Transformaciones estáticas y dinámicas</h2>
+<section id="crear-un-archivo-launch-que-recree-el-escenario-de-la-parte-1-utilizando-el-nodo-static_transform_publisher" class="level4">
+<h4 class="anchored" data-anchor-id="crear-un-archivo-launch-que-recree-el-escenario-de-la-parte-1-utilizando-el-nodo-static_transform_publisher">1. Crear un archivo launch que recree el escenario de la parte 1 utilizando el nodo <code>static_transform_publisher</code></h4>
+<ul>
+<li><p>Publique la transformación de cada uno de los marcos de referencia y puntos de interés</p></li>
+<li><p>El nodo <code>static_transform_publisher</code> recibe sus valores mediante argumentos, no parámetros. Por lo tanto utilizar el campo <code>arguments</code> de la acción <code>Node</code> del <em>launch</em></p></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    Node(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        arguments<span class="op">=</span>[</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">'--x'</span>, <span class="st">'&lt;x&gt;'</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">'--y'</span>, <span class="st">'&lt;y&gt;'</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">'--z'</span>, <span class="st">'&lt;z&gt;'</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">'--roll'</span>, <span class="st">'&lt;yaw&gt;'</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">'--pitch'</span>, <span class="st">'&lt;yaw&gt;'</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">'--yaw'</span>, <span class="st">'&lt;yaw&gt;'</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">'--frame-id'</span>, <span class="st">'&lt;marco_referencia&gt;'</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">'--child-frame-id'</span>, <span class="st">'&lt;marco_objetivo&gt;'</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    ),</span></code></pre></div>
+<!-- - Ejemplo para una pose $\textbf{D}$ con coordenadas $(-2,3)$ y orientación $45^\circ$ en el marco de referencia *mundo*:
+
+```{.py}
+def generate_launch_description():
+  return LaunchDescription([
+    Node(
+        package = 'tf2_ros',
+        executable = 'static_transform_publisher',
+        name = 'pose_D_tf',
+        arguments=[
+                '--x', '-2.0',
+                '--y', '3.0',
+                '--yaw', f'{np.deg2rad(45)}',
+                '--frame-id', 'mundo',
+                '--child-frame-id', 'pose_D'
+        ],
+    ),
+  ])
+``` -->
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Puede utilizar el paquete <code>rqt_tf_tree</code> o <code>rviz2</code> para verificar el resultado</p>
+</div>
+</div>
+</div>
+</section>
+<section id="mediante-el-comando-ros2-run-tf2_ros-tf2_echo-verifique-los-resultados-obtenidos-en-la-parte-1" class="level4">
+<h4 class="anchored" data-anchor-id="mediante-el-comando-ros2-run-tf2_ros-tf2_echo-verifique-los-resultados-obtenidos-en-la-parte-1">2. Mediante el comando <code>ros2 run tf2_ros tf2_echo</code> verifique los resultados obtenidos en la parte 1</h4>
+</section>
+<section id="implementar-un-nodo-que-publique-una-transformación-en-movimiento" class="level4">
+<h4 class="anchored" data-anchor-id="implementar-un-nodo-que-publique-una-transformación-en-movimiento">3. Implementar un nodo que publique una transformación en movimiento</h4>
+<ul>
+<li>Utilice como marco de referencia fijo aquel que haya utilizado como <span class="math inline">\(\textit{Mundo}\)</span> en la parte 1, y utilice <code>robotC</code> como nombre para el marco móvil</li>
+<li>Generar las coordenadas <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> mediante las siguientes ecuaciones:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+x &amp;= R \cdot \cos(t) \\
+y &amp;= R \cdot \sin(t)
+\end{align}
+\]</span></p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Puede crear un parámetro para configurar el radio <span class="math inline">\(R\)</span> del círculo</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Para obtener el tiempo <span class="math inline">\(t\)</span> puede utilizar la función <code>get_clock()</code>del nodo:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>seconds, nanoseconds <span class="op">=</span> <span class="va">self</span>.get_clock().now().seconds_nanoseconds()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (nanoseconds <span class="op">/</span> <span class="fl">1E9</span> <span class="op">+</span> seconds) <span class="op">*</span> (np.pi <span class="op">/</span> <span class="fl">2.0</span>)   <span class="co"># 1 vuelta cada 4 segundos</span></span></code></pre></div>
+<ul>
+<li>Puede utilizar una coordenada <span class="math inline">\(z = 0\)</span> constante u otro valor aproximado<br>
+</li>
+<li>Para calcular la orientación, se debe obtener el ángulo de la tangente a la trayectoria, para esto se podrá utilizar la función <code>arctan2</code> de <code>numpy</code>:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>yaw <span class="op">=</span> np.arctan2(np.cos(t), <span class="op">-</span>np.sin(t))</span></code></pre></div>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Recuerde que en rotaciones 2D el quaternion puede definirse de la siguiente forma <span class="math inline">\(\boldsymbol{q} = \begin{pmatrix} 0 &amp; 0 &amp; \sin{ \tfrac{\theta}{2} } &amp; \cos{ \tfrac{\theta}{2} } \end{pmatrix}^T\)</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li>Publique las transformaciones a más de 30 [Hz] para ver una animación fluida</li>
+</ul>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Puede crear un parámetro para configurar la frecuencia de actualización</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Modifique el <code>launch</code> del ejercicio anterior para añadir este nuevo nodo al escenario</li>
+</ul>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Recuerde siempre completar las dependencias e instalarlas, configurar adecuadamente el archivo <code>setup.py</code> de instalación, compilar el <code>workspace</code> y configurar el entorno local</p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/acapovilla\.github\.io\/robotica-2025\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
