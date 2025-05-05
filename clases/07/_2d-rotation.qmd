@@ -337,7 +337,7 @@ $$
 \begin{pmatrix} |\textcolor{ForestGreen}{\boldsymbol{p}}| ( \cos{\textcolor{Maroon}{\alpha}} \cos{\textcolor{Plum}{\theta}} - \sin{\textcolor{Maroon}{\alpha}} \sin{\textcolor{Plum}{\theta}} )  \\  |\textcolor{ForestGreen}{\boldsymbol{p}}| ( \sin{\textcolor{Maroon}{\alpha}} \cos{\textcolor{Plum}{\theta}} + \cos{\textcolor{Maroon}{\alpha}} \sin{\textcolor{Plum}{\theta}} )  \end{pmatrix} \\
 &= \begin{pmatrix} \colorbox{Gray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \cos{\textcolor{Maroon}{\alpha}} $} \cos{\textcolor{Plum}{\theta}} - \colorbox{lightgray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \sin{\textcolor{Maroon}{\alpha}} $} \sin{\textcolor{Plum}{\theta}} \\ \colorbox{lightgray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \sin{\textcolor{Maroon}{\alpha}} $} \cos{\textcolor{Plum}{\theta}} + \colorbox{Gray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \cos{\textcolor{Maroon}{\alpha}} $} \sin{\textcolor{Plum}{\theta}} \end{pmatrix} \\
 &= \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}} \cos{\textcolor{Plum}{\theta}} - \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \sin{\textcolor{Plum}{\theta}} \\ \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \cos{\textcolor{Plum}{\theta}} + \textcolor{Orange}{p_{{x}_\boldsymbol{B}}} \sin{\textcolor{Plum}{\theta}} \end{pmatrix}
-= \begin{bmatrix} \cos{\textcolor{Plum}{\theta}} & -\sin{\textcolor{Plum}{\theta}} \\ \sin{\textcolor{Plum}{\theta}} & \cos{\textcolor{Plum}{\theta}}\end{bmatrix} \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \end{pmatrix}
+%= \begin{bmatrix} \cos{\textcolor{Plum}{\theta}} & -\sin{\textcolor{Plum}{\theta}} \\ \sin{\textcolor{Plum}{\theta}} & \cos{\textcolor{Plum}{\theta}}\end{bmatrix} \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \end{pmatrix}
 \end{align}
 $$
 
@@ -355,27 +355,32 @@ $$
 ## Rotación 2D
 
 :::: {.columns}
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
 
-
+::: {style="font-size: 50%;"}
 $$
 {}^{\textcolor{Orange}{\boldsymbol{B}}}{\textcolor{ForestGreen}{\boldsymbol{p}}} = \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \end{pmatrix} =
 \begin{pmatrix} \colorbox{Gray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \cos{\textcolor{Maroon}{\alpha}} $}  \\  \colorbox{lightgray}{$ |\textcolor{ForestGreen}{\boldsymbol{p}}| \sin{\textcolor{Maroon}{\alpha}} $} \end{pmatrix}
 $$
+:::
 
+::: {style="font-size: 50%;"}
 $$
 {}^{\textcolor{Blue}{\boldsymbol{A}}}{\textcolor{ForestGreen}{\boldsymbol{p}}} = \begin{pmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}} \end{pmatrix} =
 \begin{pmatrix} |\textcolor{ForestGreen}{\boldsymbol{p}}| \cos{(\textcolor{Maroon}{\alpha}+\textcolor{Plum}{\theta})}  \\  |\textcolor{ForestGreen}{\boldsymbol{p}}| \sin{(\textcolor{Maroon}{\alpha}+\textcolor{Plum}{\theta})} \end{pmatrix}
 $$
+:::
 
+::: {style="font-size: 50%;"}
 Sabiendo:
 
 <!-- - $\cos{\alpha + \theta} = \cos{\alpha} \cdot \cos{\theta} - \sin{\alpha} \cdot \sin{\theta}$
 - $\sin{\alpha + \theta} = \sin{\alpha} \cdot \cos{\theta} + \cos{\alpha} \cdot \sin{\theta}$ -->
 - $\sin{(A+B)} = \sin{A} \cos{B} + \cos{A} \sin{B}$
 - $\cos{(A+B)} = \cos{A} \cos{B} - \sin{A} \sin{B}$
+:::
 
-
+::: {style="font-size: 50%;"}
 $$
 \begin{align}
 \begin{pmatrix} \textcolor{Blue}{p_{{x}_\boldsymbol{A}}}  \\  \textcolor{Blue}{p_{{y}_\boldsymbol{A}}} \end{pmatrix} &=
@@ -385,7 +390,7 @@ $$
 = \begin{bmatrix} \cos{\textcolor{Plum}{\theta}} & -\sin{\textcolor{Plum}{\theta}} \\ \sin{\textcolor{Plum}{\theta}} & \cos{\textcolor{Plum}{\theta}}\end{bmatrix} \begin{pmatrix} \textcolor{Orange}{p_{{x}_\boldsymbol{B}}}  \\  \textcolor{Orange}{p_{{y}_\boldsymbol{B}}} \end{pmatrix}
 \end{align}
 $$
-
+:::
 
 :::
 ::: {.column width="50%"}
