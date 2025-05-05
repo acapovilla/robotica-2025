@@ -97,3 +97,7 @@ $$
 
 {{< include _tras-rot.qmd >}} 
 
+# Pose {visibility="hidden"} 
+
+{{< include _pose.qmd >}}
+
