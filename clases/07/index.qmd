@@ -93,3 +93,7 @@ $$
 
 {{< include _2d-traslation.qmd >}}
 
+# Traslacion y rotacion {visibility="hidden"} 
+
+{{< include _tras-rot.qmd >}} 
+
