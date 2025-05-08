@@ -255,7 +255,10 @@ yaw = np.arctan2(np.cos(t), -np.sin(t))
 ```
 
 ::: {.callout-tip appearance="simple"}
-Recuerde que en rotaciones 2D el quaternion puede definirse de la siguiente forma $\boldsymbol{q} = \begin{pmatrix} 0 & 0 & \sin{ \tfrac{\theta}{2} } & \cos{ \tfrac{\theta}{2} } \end{pmatrix}^T$
+Recuerde que en rotaciones 2D el cuaternion para rotar un ángulo $\alpha$ puede definirse de la siguiente forma
+$$
+\boldsymbol{q} = \begin{pmatrix} 0 & 0 & \sin{\tfrac{\alpha}{2}} & \cos{\tfrac{\alpha}{2}} \end{pmatrix}^T
+$$
 :::
 
 - Publique las transformaciones a más de 30 [Hz] para ver una animación fluida
