@@ -6,7 +6,7 @@ on:
 name: Render and Publish
 
 jobs:
-  build-deploy:
+  render-and-publish:
     runs-on: ubuntu-latest
     # permissions:
     #   contents: write
@@ -24,7 +24,7 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
 
-      - name: Install Inkscape
+      - name: Install pdflatex and Inkscape
         run: |
           sudo apt-get update
           sudo apt-get -y install texlive-latex-base texlive-latex-extra
@@ -32,7 +32,7 @@ jobs:
           which pdflatex
           which inkscape
 
-      - name: Publish to GitHub Pages (and render)
+      - name: Render and publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
