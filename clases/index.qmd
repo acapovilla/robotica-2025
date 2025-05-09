@@ -1,0 +1,25 @@
+# Clases
+
+::: {.callout-note title=""}
+El siguiente cronograma podrá ser actualizado con el correr del cursado 
+:::
+
+| Semana | Fecha | Tema | Slides | Lab |
+|:------:|--------|--------|:------:|:------:|
+|1 | 17/03 | Introducción a la Robótica. Organización de la materia. Herramientas de trabajo. | [🖥️](/clases/01 "Slides"){aria-label="Clase 1 slides"} |
+|2  | 24/03 | Feriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia | |
+|3  | 31/03 | ROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos. | [🖥️](/clases/02 "Slides"){aria-label="Clase 2 slides"} | [🧪](/clases/02/lab.html "Lab"){aria-label="Clase 2 lab"}
+|4  | 07/04 | ROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación. | [🖥️](/clases/03 "Slides"){aria-label="Clase 3 slides"} | [🧪](/clases/03/lab.html "Lab"){aria-label="Clase 3 lab"}
+|5  | 14/04 | Revisión conceptos clase anterior. Programación de nodos, compilación y ejecución. | [🖥️](/clases/04 "Slides"){aria-label="Clase 4 slides"} | [🧪](/clases/04/lab.html "Lab"){aria-label="Clase 4 lab"}
+|6  | 21/04 | Programación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación. | [🖥️](/clases/05 "Slides"){aria-label="Clase 5 slides"} | [🧪](/clases/05/lab.html "Lab"){aria-label="Clase 5 lab"}
+|7  | 28/04 | Parámetros en nodos y `roslaunch`, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.  | [🖥️](/clases/06 "Slides"){aria-label="Clase 6 slides"} | [🧪](/clases/06/lab.html "Lab"){aria-label="Clase 6 lab"}
+|8  | 05/05 | Traslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete `tf2`. | [🖥️](/clases/07 "Slides"){aria-label="Clase 7 slides"} | [🧪](/clases/07/lab.html "Lab"){aria-label="Clase 7 lab"}
+|9  | 12/05 | U.R.D.F: Representación de geometría de un robot. Uso de XACRO, r.s.p. y `tf2`. | |
+|10 | 19/05 | Gazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete `ros2_control` y Gazebo. | |
+|11 | 26/05 | Cinemática y locomoción: modelo cinemático de un robot diferencial | |
+|12 | 02/06 | Odometría: Cálculo de posición en base a modelo cinemático | |
+|13 | 09/06 | Percepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir. | |
+|14 | 16/06 | Feriado 16 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 17 de junio) | |
+|15 | 23/06 | Revisión temario clase anterior. Simulación de sensores en Gazebo | | 
+
+: {.striped .hover tbl-colwidths="[10, 10, 60, 10, 10]"}
