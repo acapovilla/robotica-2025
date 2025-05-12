@@ -206,16 +206,56 @@
 <ul>
 <li>Permite describir geometría y características del robot</li>
 </ul>
+<aside class="notes">
+<p>Cuando se desarrolla un robot, pueden existir muchos componentes de software diferentes que necesitan conocer características físicas del robot. Lo ideal es mantener esa información en una sola ubicación donde todos puedan acceder y hacer referencia</p>
+<p>En ROS -&gt; robot description o descripción del robot; y se hace a través de archivos Unified Robot Description Format (URDF)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="fragment">
 <ul>
 <li>Formato <code>XML</code>: La información se representa a través de etiquetas anidadas</li>
 </ul>
+<aside class="notes">
+<p>El estándar URDF se basa en XML (Visto en archivos package.xml) -&gt; todo está representado a través de <strong>tags</strong> (etiquetas) que se pueden anidar</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 <div class="fragment">
 <blockquote>
 <p>Etiquetas principales: <code>&lt;robot&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;joint&gt;</code></p>
 </blockquote>
 
+<aside class="notes">
+<p>Existen muchos tipos (los cuales están estandarizados) pero tres principales</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 <aside><div>
 <p><a href="http://wiki.ros.org/urdf/XML" target="_blank">Documentación</a></p>
@@ -251,6 +291,19 @@
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>La estructura es un arbol de <code>links</code> conectados por <code>joints</code>. Los links (eslabones) representan partes o componentes físicos del robot y las <code>joints</code> (juntas) representan como se mueve un <code>link</code> con respecto a otro definiendo la ubicación del <code>link</code> en el espacio.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="urdf-links-y-joints" class="slide level2">
 <h2>URDF: <em>links</em> y <em>joints</em></h2>
@@ -274,6 +327,19 @@
 <li class="fragment">Una parte que no se mueve pero es conveniente conocer su marco de referencia <!-- ejemplo cámara --></li>
 <li class="fragment">Cadena de transformaciones para los casos anteriores</li>
 </ol>
+<aside class="notes">
+<p>Cuando se describe un robot a través de un URDF es necesario identificar como dividir el robot de forma conveniente/inteligente en <code>links</code> y <code>joints</code></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="etiqueta-robot..robot" class="slide level2">
 <h2>Etiqueta <code>&lt;robot&gt;..&lt;\robot&gt;</code></h2>
@@ -281,6 +347,19 @@
 <li>Etiqueta raíz (todo el contenido se encuentra dentro)</li>
 <li>1 solo atributo: el nombre</li>
 </ul>
+<aside class="notes">
+<p>El tag de <code>robot</code> (y la declaración XML) -&gt; Todos los archivos XML empiezan con la declaración en la primera linea (propio de XML) y luego para archivos URDF existe una única etiqueta denominada raíz donde todas las otras etiquetas conviven (están dentro de). Esta etiqueta es el <code>robot</code> tag, y el único atributo que posee es el nombre del robot <code>name=”mi_robot”</code></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="fragment">
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource xml number-lines"><code class="sourceCode xml"><span id="cb1-1"><a></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="fu">?&gt;</span></span>
 <span id="cb1-2"><a></a></span>
@@ -319,6 +398,21 @@ Preámbulo: `<?xml version="1.0"?>`
 <span id="cb2-4"><a></a>    &lt;<span class="kw">inertial</span>&gt;..&lt;/<span class="kw">inertial</span>&gt; </span>
 <span id="cb2-5"><a></a>&lt;/<span class="kw">link</span>&gt;</span></code></pre></div>
 </div>
+<aside class="notes">
+<p><code>link</code> -&gt; Permite especificar el nombre además de otras características como la apariencia visual, las propiedades inerciales y de colisión</p>
+<p>visual -&gt; Es lo que se visualiza en RViz y Gazebo</p>
+<p>Collision -&gt; Utilizado para el cálculo de colisión física en simulación</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="etiqueta-link..link-1" class="slide level2 smaller">
 <h2>Etiqueta <code>&lt;link&gt;..&lt;/link&gt;</code></h2>
@@ -333,6 +427,19 @@ Preámbulo: `<?xml version="1.0"?>`
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">origin</span><span class="ot"> xyz=</span><span class="st">"[pos_x] [pos_y] [pos_z]"</span></span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ot">            rpy=</span><span class="st">"[roll] [pitch] [yaw]"</span>/&gt;</span></code></pre></div>
+<aside class="notes">
+<p>Origin: Offset para la geometría en el caso de que no esté centrado en el origen del <code>link</code></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 <div class="fragment">
 <ul>
@@ -341,12 +448,38 @@ Preámbulo: `<?xml version="1.0"?>`
 <div class="sourceCode" id="cb4"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">material</span><span class="ot"> name=</span><span class="st">"nombre_material"</span>&gt;</span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">color</span><span class="ot"> rgba=</span><span class="st">"[R] [G] [B] [Alpha]"</span>/&gt;</span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">material</span>&gt;</span></code></pre></div>
+<aside class="notes">
+<p>Material: El color (si se declara un material con nombre, puede utilizarse, si no los valores RGB)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 <div class="fragment">
 <ul>
 <li>Geometría: <em>prisma</em></li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">box</span><span class="ot"> size=</span><span class="st">"[largo-x] [ancho-y] [alto-z]"</span> /&gt;</span></code></pre></div>
+<aside class="notes">
+<p>Geometry: con los parámetros de tamaño</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 </div><div class="column">
 <div class="fragment">
@@ -486,6 +619,19 @@ Recordar REP 103 (Unidades *S.I.*)
 <blockquote>
 <p>Geometría para simulación <code>&lt;collision&gt;..&lt;/collision&gt;</code></p>
 </blockquote>
+<aside class="notes">
+<p>Generalmente por razones de computabilidad, se busca que sea una forma más simple que la visual para simplificar los cálculos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="fragment">
 <ul>
 <li>Origen:</li>
@@ -503,6 +649,19 @@ Recordar REP 103 (Unidades *S.I.*)
 <span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">sphere</span><span class="ot"> radius=</span><span class="st">"[radio]"</span> /&gt;</span>
 <span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-7"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">mesh</span><span class="ot"> filename=</span><span class="st">"file://[nombre_del_archivo]"</span> /&gt;</span></code></pre></div>
+<aside class="notes">
+<p>Geometry y Origin: igual que para el caso visual.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 </section>
 <section id="etiqueta-joint..joint" class="slide level2">
@@ -529,7 +688,41 @@ Recordar REP 103 (Unidades *S.I.*)
 <span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">child</span><span class="ot"> link=</span><span class="st">"parteB_link"</span>/&gt;</span>
 <span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
 <span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">joint</span>&gt;</span></code></pre></div>
+<aside class="notes">
+<ul>
+<li>Parent -&gt; <code>link</code> padre</li>
+<li>Child -&gt; <code>link</code> hijo (para definir la relación de un link (hijo) respecto a otro (padre))</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
+<aside class="notes">
+<p>Son los que realmente almacenan la información de cómo se compone la estructura del robot, define la ubicación de los <code>link</code> y como se mueven entre sí. (Similar a tf donde se tienen los marcos, pero lo que importan son las transformaciones)</p>
+<p>Atributos:</p>
+<ul>
+<li>name -&gt; Nombre de cada junta</li>
+<li>type -&gt; Tipo</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="tipos-de-juntas" class="slide level2">
 <h2>Tipos de juntas</h2>
@@ -560,6 +753,20 @@ Recordar REP 103 (Unidades *S.I.*)
 </div>
 </div>
 </div></div>
+<aside class="notes">
+<p>El <code>link</code> hijo está conectado de forma rígida con el <code>link</code> padre</p>
+<p>Origin -&gt; Origen de la relación antes de cualquier movimiento (como se inicia)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="tipos-de-juntas-1" class="slide level2">
 <h2>Tipos de juntas</h2>
@@ -591,6 +798,20 @@ Recordar REP 103 (Unidades *S.I.*)
 </div>
 </div>
 </div></div>
+<aside class="notes">
+<p>Movimiento rotacional sin límites</p>
+<p>Axis -&gt; El eje en el cual se desarrolla el movimiento</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="tipos-de-juntas-2" class="slide level2">
 <h2>Tipos de juntas</h2>
@@ -626,6 +847,20 @@ Recordar REP 103 (Unidades *S.I.*)
 </div>
 </div>
 </div></div>
+<aside class="notes">
+<p>Movimiento rotacional con ángulos máximos y mínimos</p>
+<p>Limits -&gt; Límites de actuación física, pueden ser (lower|upper|velocity|effort)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="tipos-de-juntas-3" class="slide level2">
 <h2>Tipos de juntas</h2>
@@ -645,12 +880,50 @@ Recordar REP 103 (Unidades *S.I.*)
 
 <section id="xacro-macros-en-xml" class="slide level2">
 <h2>XACRO: Macros en XML</h2>
+<aside class="notes">
+<p>Cuanto más complejos los sistemas, más largos y pesados se hacen los URDF, por lo que separarlos en diferentes archivos permite encontrar las cosas de forma fácil y modificar de forma rápida, además de que al usar controles de versión los cambios quedan mejor ordenados</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment">
 <ul>
 <li>Facilita la codificación de URDF</li>
 <li>Herramienta para dividir código y evitar duplicar</li>
 <li>Provee estructuras de ‘<em>programacion</em>’</li>
 </ul>
+<aside class="notes">
+<p>Herramienta para escribir URDF facilmente. Dos características principales: dividir el código en varios archivos y evitar duplicar código.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<blockquote>
+<p>Agregar al tag <code>robot</code></p>
+</blockquote>
+<div class="sourceCode" id="cb24" data-code-line-numbers="1"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">robot</span><span class="ot"> name=</span><span class="st">"mi_robot"</span><span class="ot"> xmlns:xacro=</span><span class="st">"http://www.ros.org/wiki/xacro"</span> &gt;</span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Contenido --&gt;</span></span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>    ... </span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">robot</span>&gt;</span></code></pre></div>
 
+</div>
 <aside><div>
 <p><a href="wiki.ros.org/xacro">Documentación</a></p>
 </div></aside></section>
@@ -678,6 +951,7 @@ Recordar REP 103 (Unidades *S.I.*)
 <h2>Partición de los componentes</h2>
 <div class="columns">
 <div class="column" style="font-size: 75%;">
+<p>Ejemplos:</p>
 <ul>
 <li>La geometría principal (links y joints)</li>
 <li>Materiales</li>
@@ -686,21 +960,34 @@ Recordar REP 103 (Unidades *S.I.*)
 <li>Macros</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb25"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>📂 paquete_description</span>
-<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>    📁 paquete_description</span>
-<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a>    📂 launch</span>
-<span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a>        📄 description.launch.py</span>
-<span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
-<span id="cb25-6"><a aria-hidden="true" tabindex="-1"></a>    📂 urdf</span>
-<span id="cb25-7"><a aria-hidden="true" tabindex="-1"></a>        📄 description.urdf.xacro</span>
-<span id="cb25-8"><a aria-hidden="true" tabindex="-1"></a>        📄 materials.xacro</span>
-<span id="cb25-9"><a aria-hidden="true" tabindex="-1"></a>        📄 my_macro.xacro</span>
-<span id="cb25-10"><a aria-hidden="true" tabindex="-1"></a>        📄 sim_sensor.xacro</span>
-<span id="cb25-11"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
-<span id="cb25-12"><a aria-hidden="true" tabindex="-1"></a>    📄 package.xml</span>
-<span id="cb25-13"><a aria-hidden="true" tabindex="-1"></a>    📄 setup.py</span>
-<span id="cb25-14"><a aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>📂 paquete_description</span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>    📁 paquete_description</span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>    📂 launch</span>
+<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>        📄 description.launch.py</span>
+<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb26-6"><a aria-hidden="true" tabindex="-1"></a>    📂 urdf</span>
+<span id="cb26-7"><a aria-hidden="true" tabindex="-1"></a>        📄 description.urdf.xacro</span>
+<span id="cb26-8"><a aria-hidden="true" tabindex="-1"></a>        📄 materials.xacro</span>
+<span id="cb26-9"><a aria-hidden="true" tabindex="-1"></a>        📄 my_macro.xacro</span>
+<span id="cb26-10"><a aria-hidden="true" tabindex="-1"></a>        📄 sim_sensor.xacro</span>
+<span id="cb26-11"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb26-12"><a aria-hidden="true" tabindex="-1"></a>    📄 package.xml</span>
+<span id="cb26-13"><a aria-hidden="true" tabindex="-1"></a>    📄 setup.py</span>
+<span id="cb26-14"><a aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div>
 </div></div>
+<aside class="notes">
+<p>La división depende del escenario y la persona que lo programa, pero generalmente se sigue el siguiente esquema: Nucleo o core del robot (links y joints), lista de materiales (colores), sensores (links y joints) y los correspondientes a gazebo, macros</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="inclusión-de-archivos" class="slide level2">
 <h2>Inclusión de archivos</h2>
@@ -713,9 +1000,24 @@ Recordar REP 103 (Unidades *S.I.*)
 <li class="fragment">Archivos incluidos:
 <ul>
 <li class="fragment">extensión ‘<code>.xacro</code>’</li>
-<li class="fragment">solo contienen el tag <code>robot</code></li>
+<li class="fragment">solo contienen el tag <code>robot</code> (sin nombre)</li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>Se tiene un archivo principal o ‘main’ que representa el robot con el tag de ‘robot’ con nombre y la extensión ‘.urdf.xacro’.</p>
+<p>El archivo incluido debe ser también de tipo xacro, con el tag ‘robot’ pero esta vez sin el atributo de ‘name’.</p>
+<p>No existe límite para incluir archivos</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="fragment">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
@@ -724,6 +1026,19 @@ Recordar REP 103 (Unidades *S.I.*)
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>Dentro del archivo se incluyen los otros mediante <code>xacro:include</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 </section>
 <section id="ejemplo-xacroinclude" class="slide level2">
@@ -733,12 +1048,12 @@ Recordar REP 103 (Unidades *S.I.*)
 <div class="code-with-filename-file">
 <pre><strong>materials.xacro</strong></pre>
 </div>
-<div class="sourceCode" id="cb26" data-filename="materials.xacro"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="fu">?&gt;</span></span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">robot</span><span class="ot"> xmlns:xacro=</span><span class="st">"http://www.ros.org/wiki/xacro"</span> &gt;</span>
-<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">material</span><span class="ot"> name=</span><span class="st">"Orange"</span>&gt;</span>
-<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">color</span><span class="ot"> rgba=</span><span class="st">"1 0.3 0.1 1"</span>/&gt;</span>
-<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">material</span>&gt;</span>
-<span id="cb26-6"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">robot</span>&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb27" data-filename="materials.xacro"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="fu">?&gt;</span></span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">robot</span><span class="ot"> xmlns:xacro=</span><span class="st">"http://www.ros.org/wiki/xacro"</span> &gt;</span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">material</span><span class="ot"> name=</span><span class="st">"Orange"</span>&gt;</span>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">color</span><span class="ot"> rgba=</span><span class="st">"1 0.3 0.1 1"</span>/&gt;</span>
+<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">material</span>&gt;</span>
+<span id="cb27-6"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">robot</span>&gt;</span></code></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -748,19 +1063,19 @@ Recordar REP 103 (Unidades *S.I.*)
 <div class="code-with-filename-file">
 <pre><strong>description.urdf.xacro</strong></pre>
 </div>
-<div class="sourceCode" id="cb27" data-filename="description.urdf.xacro" data-code-line-numbers="|3|9"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="fu">?&gt;</span></span>
-<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">robot</span><span class="ot"> name=</span><span class="st">"MyBot"</span> <span class="er">...</span>&gt;</span>
-<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:include</span><span class="ot"> filename=</span><span class="st">"materials.xacro"</span> /&gt;</span>
-<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">link</span><span class="ot"> name=</span><span class="st">"base_link"</span>&gt;</span>
-<span id="cb27-6"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">visual</span>&gt;</span>
-<span id="cb27-7"><a aria-hidden="true" tabindex="-1"></a>            ...</span>
-<span id="cb27-8"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">geometry</span>&gt; ... &lt;/<span class="kw">geometry</span>&gt;</span>
-<span id="cb27-9"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">material</span><span class="ot"> name=</span><span class="st">"Orange"</span>&gt;</span>
-<span id="cb27-10"><a aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">visual</span>&gt;</span>
-<span id="cb27-11"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">link</span>&gt;</span>
-<span id="cb27-12"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb27-13"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">robot</span>&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb28" data-filename="description.urdf.xacro" data-code-line-numbers="|3|9"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="fu">?&gt;</span></span>
+<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">robot</span><span class="ot"> name=</span><span class="st">"MyBot"</span> <span class="er">...</span>&gt;</span>
+<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:include</span><span class="ot"> filename=</span><span class="st">"materials.xacro"</span> /&gt;</span>
+<span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">link</span><span class="ot"> name=</span><span class="st">"base_link"</span>&gt;</span>
+<span id="cb28-6"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">visual</span>&gt;</span>
+<span id="cb28-7"><a aria-hidden="true" tabindex="-1"></a>            ...</span>
+<span id="cb28-8"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">geometry</span>&gt; ... &lt;/<span class="kw">geometry</span>&gt;</span>
+<span id="cb28-9"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">material</span><span class="ot"> name=</span><span class="st">"Orange"</span>&gt;</span>
+<span id="cb28-10"><a aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">visual</span>&gt;</span>
+<span id="cb28-11"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">link</span>&gt;</span>
+<span id="cb28-12"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb28-13"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">robot</span>&gt;</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -772,18 +1087,18 @@ Recordar REP 103 (Unidades *S.I.*)
 <li>Propiedades <code>xacro:property</code>: Nombre y valor</li>
 </ul>
 <div class="fragment">
-<div class="sourceCode" id="cb28" data-code-line-numbers="3,4,8|5,10"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="fu">?&gt;</span></span>
-<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">robot</span><span class="ot"> name=</span><span class="st">"MyBot"</span> <span class="er">...</span>&gt;</span>
-<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:property</span><span class="ot"> name=</span><span class="st">"diametro"</span><span class="ot"> value=</span><span class="st">"2.1"</span> /&gt;</span>
-<span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:property</span><span class="ot"> name=</span><span class="st">"ancho"</span><span class="ot"> value=</span><span class="st">"4.5"</span> /&gt;</span>
-<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:property</span><span class="ot"> name=</span><span class="st">"alpha"</span><span class="ot"> value=</span><span class="st">"${30/180*pi}"</span> /&gt;</span>
-<span id="cb28-6"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb28-7"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">geometry</span><span class="ot"> type=</span><span class="st">"cylinder"</span></span>
-<span id="cb28-8"><a aria-hidden="true" tabindex="-1"></a><span class="ot">            radius=</span><span class="st">"${diametro / 2}"</span><span class="ot"> length=</span><span class="st">"${ancho}"</span> /&gt;</span>
-<span id="cb28-9"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
-<span id="cb28-10"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">origin</span><span class="ot"> xyz=</span><span class="st">"0 0 0"</span><span class="ot"> rpy=</span><span class="st">"0 0 ${alpha}"</span> /&gt;</span>
-<span id="cb28-11"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb28-12"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">robot</span>&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb29" data-code-line-numbers="3,4,8|5,10"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="fu">?&gt;</span></span>
+<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">robot</span><span class="ot"> name=</span><span class="st">"MyBot"</span> <span class="er">...</span>&gt;</span>
+<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:property</span><span class="ot"> name=</span><span class="st">"diametro"</span><span class="ot"> value=</span><span class="st">"2.1"</span> /&gt;</span>
+<span id="cb29-4"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:property</span><span class="ot"> name=</span><span class="st">"ancho"</span><span class="ot"> value=</span><span class="st">"4.5"</span> /&gt;</span>
+<span id="cb29-5"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:property</span><span class="ot"> name=</span><span class="st">"alpha"</span><span class="ot"> value=</span><span class="st">"${30/180*pi}"</span> /&gt;</span>
+<span id="cb29-6"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb29-7"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">geometry</span><span class="ot"> type=</span><span class="st">"cylinder"</span></span>
+<span id="cb29-8"><a aria-hidden="true" tabindex="-1"></a><span class="ot">            radius=</span><span class="st">"${diametro / 2}"</span><span class="ot"> length=</span><span class="st">"${ancho}"</span> /&gt;</span>
+<span id="cb29-9"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb29-10"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">origin</span><span class="ot"> xyz=</span><span class="st">"0 0 0"</span><span class="ot"> rpy=</span><span class="st">"0 0 ${alpha}"</span> /&gt;</span>
+<span id="cb29-11"><a aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb29-12"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">robot</span>&gt;</span></code></pre></div>
 </div>
 </section>
 <section id="comandos-de-rospack" class="slide level2">
@@ -791,12 +1106,12 @@ Recordar REP 103 (Unidades *S.I.*)
 <ul>
 <li>Argumentos <code>xacro:args</code>: Nombre y valor por defecto</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:arg</span><span class="ot"> name=</span><span class="st">"arg1"</span><span class="ot"> default=</span><span class="st">"false"</span>/&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:arg</span><span class="ot"> name=</span><span class="st">"arg1"</span><span class="ot"> default=</span><span class="st">"false"</span>/&gt;</span></code></pre></div>
 <div class="fragment">
 <ul>
 <li>Buscar paquetes <code>$(find ..)</code>:</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:include</span><span class="ot"> filename=</span><span class="st">"$(find </span><span class="er">&lt;</span><span class="st">nombre_paquete&gt;)/</span><span class="er">&lt;</span><span class="st">nombre_archivo&gt;.xacro"</span> /&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:include</span><span class="ot"> filename=</span><span class="st">"$(find </span><span class="er">&lt;</span><span class="st">nombre_paquete&gt;)/</span><span class="er">&lt;</span><span class="st">nombre_archivo&gt;.xacro"</span> /&gt;</span></code></pre></div>
 </div>
 </section>
 <section id="bloques-condicionales" class="slide level2">
@@ -804,40 +1119,72 @@ Recordar REP 103 (Unidades *S.I.*)
 <ul>
 <li>Etiqueta <code>xacro:if</code> para <code>true</code> y <code>xacro:unless</code> para <code>false</code></li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xacro:if</span><span class="ot"> value=</span><span class="st">"[expresion]"</span>&gt;</span>
-<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;</span></span>
-<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xacro:if</span>&gt;</span>
-<span id="cb31-4"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xacro:unless</span><span class="ot"> value=</span><span class="st">"[expresion]"</span>&gt;</span>
-<span id="cb31-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;</span></span>
-<span id="cb31-6"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xacro:unless</span>&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xacro:if</span><span class="ot"> value=</span><span class="st">"[expresion]"</span>&gt;</span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;</span></span>
+<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xacro:if</span>&gt;</span>
+<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xacro:unless</span><span class="ot"> value=</span><span class="st">"[expresion]"</span>&gt;</span>
+<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;</span></span>
+<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xacro:unless</span>&gt;</span></code></pre></div>
 </section>
 <section id="macros" class="slide level2 smaller">
 <h2>Macros</h2>
 <ul>
-<li>Porciones de código a reutilizar (funciones)</li>
+<li>Porciones de código a reutilizar (plantillas)</li>
 <li><code>xacro:macro</code>: Nombre y parámetros a recibir</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xacro:macro</span><span class="ot"> name=</span><span class="st">"rueda_esferica"</span><span class="ot"> params=</span><span class="st">"prefijo link_padre radio pos_x:=0 pos_y:=0 pos_z:=0"</span>&gt;</span>
-<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:property</span><span class="ot"> name=</span><span class="st">"nombre_link"</span><span class="ot"> value=</span><span class="st">"${prefijo}_link"</span> /&gt;</span>
-<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">link</span><span class="ot"> name=</span><span class="st">"${nombre_link}"</span>&gt;</span>
-<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">visual</span>&gt;</span>
-<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">geometry</span>&gt;</span>
-<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">sphere</span><span class="ot"> radius=</span><span class="st">"${radio}"</span> /&gt;</span>
-<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">geometry</span>&gt;</span>
-<span id="cb32-8"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">material</span><span class="ot"> name=</span><span class="st">"black"</span> /&gt;</span>
-<span id="cb32-9"><a aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">visual</span>&gt;</span>
-<span id="cb32-10"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
-<span id="cb32-11"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">link</span>&gt;</span>
-<span id="cb32-12"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">joint</span><span class="ot"> name=</span><span class="st">"${prefijo}_joint"</span><span class="ot"> type=</span><span class="st">"fixed"</span>&gt;</span>
-<span id="cb32-13"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">parent</span><span class="ot"> link=</span><span class="st">"${link_padre}$"</span>/&gt;</span>
-<span id="cb32-14"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">child</span><span class="ot"> link=</span><span class="st">"${nombre_link}"</span>/&gt;</span>
-<span id="cb32-15"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">origin</span><span class="ot"> xyz=</span><span class="st">"${pos_x} ${pos_y} ${pos_z}"</span><span class="ot"> rpy=</span><span class="st">"0 0 0"</span>/&gt;</span>
-<span id="cb32-16"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">joint</span>&gt;</span>
-<span id="cb32-17"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xacro:macro</span>&gt;</span></code></pre></div>
-<ul>
-<li>Aplicación:</li>
-</ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xacro:rueda_esferica</span><span class="ot"> prefix=</span><span class="st">"rueda_delantera"</span><span class="ot"> link_padre=</span><span class="st">"base_link"</span><span class="ot"> radio=</span><span class="st">"1.0"</span><span class="ot"> pos_x=</span><span class="st">"0.5"</span> /&gt; </span></code></pre></div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>macro.xacro</strong></pre>
+</div>
+<div class="sourceCode" id="cb33" data-filename="macro.xacro"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xacro:macro</span><span class="ot"> name=</span><span class="st">"rueda_esferica"</span></span>
+<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a><span class="ot">    params=</span><span class="st">"prefijo link_padre radio </span></span>
+<span id="cb33-3"><a aria-hidden="true" tabindex="-1"></a><span class="st">            pos_x:=0 pos_y:=0 pos_z:=0"</span>&gt;</span>
+<span id="cb33-4"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xacro:property</span><span class="ot"> name=</span><span class="st">"nombre_link"</span></span>
+<span id="cb33-5"><a aria-hidden="true" tabindex="-1"></a><span class="ot">        value=</span><span class="st">"${prefijo}_link"</span> /&gt;</span>
+<span id="cb33-6"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">link</span><span class="ot"> name=</span><span class="st">"${nombre_link}"</span>&gt;</span>
+<span id="cb33-7"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">visual</span>&gt;</span>
+<span id="cb33-8"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">geometry</span>&gt;</span>
+<span id="cb33-9"><a aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">sphere</span><span class="ot"> radius=</span><span class="st">"${radio}"</span> /&gt;</span>
+<span id="cb33-10"><a aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">geometry</span>&gt;</span>
+<span id="cb33-11"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">material</span><span class="ot"> name=</span><span class="st">"black"</span> /&gt;</span>
+<span id="cb33-12"><a aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">visual</span>&gt;</span>
+<span id="cb33-13"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb33-14"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">link</span>&gt;</span>
+<span id="cb33-15"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">joint</span><span class="ot"> name=</span><span class="st">"${prefijo}_joint"</span><span class="ot"> type=</span><span class="st">"fixed"</span>&gt;</span>
+<span id="cb33-16"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">parent</span><span class="ot"> link=</span><span class="st">"${link_padre}$"</span>/&gt;</span>
+<span id="cb33-17"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">child</span><span class="ot"> link=</span><span class="st">"${nombre_link}"</span>/&gt;</span>
+<span id="cb33-18"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">origin</span><span class="ot"> xyz=</span><span class="st">"${pos_x} ${pos_y} ${pos_z}"</span></span>
+<span id="cb33-19"><a aria-hidden="true" tabindex="-1"></a><span class="ot">            rpy=</span><span class="st">"0 0 0"</span>/&gt;</span>
+<span id="cb33-20"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">joint</span>&gt;</span>
+<span id="cb33-21"><a aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xacro:macro</span>&gt;</span></code></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="sourceCode" id="cb34"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xacro:rueda_esferica</span><span class="ot"> prefix=</span><span class="st">"rueda_delantera"</span></span>
+<span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a><span class="ot">    link_padre=</span><span class="st">"base_link"</span><span class="ot"> radio=</span><span class="st">"1.0"</span><span class="ot"> pos_x=</span><span class="st">"0.5"</span> /&gt; </span></code></pre></div>
+</div>
+<div class="fragment">
+<blockquote>
+<p>Resultado:</p>
+</blockquote>
+<div class="sourceCode" id="cb35"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">link</span><span class="ot"> name=</span><span class="st">"rueda_delantera_link"</span>&gt;</span>
+<span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">visual</span>&gt;</span>
+<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">geometry</span>&gt;</span>
+<span id="cb35-4"><a aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">sphere</span><span class="ot"> radius=</span><span class="st">"1.0"</span> /&gt;</span>
+<span id="cb35-5"><a aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">geometry</span>&gt;</span>
+<span id="cb35-6"><a aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">material</span><span class="ot"> name=</span><span class="st">"black"</span> /&gt;</span>
+<span id="cb35-7"><a aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">visual</span>&gt;</span>
+<span id="cb35-8"><a aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb35-9"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">link</span>&gt;</span>
+<span id="cb35-10"><a aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">joint</span><span class="ot"> name=</span><span class="st">"rueda_delantera_joint"</span><span class="ot"> type=</span><span class="st">"fixed"</span>&gt;</span>
+<span id="cb35-11"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">parent</span><span class="ot"> link=</span><span class="st">"base_link"</span>/&gt;</span>
+<span id="cb35-12"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">child</span><span class="ot"> link=</span><span class="st">"rueda_delantera_link"</span>/&gt;</span>
+<span id="cb35-13"><a aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">origin</span><span class="ot"> xyz=</span><span class="st">"0.5 0 0"</span><span class="ot"> rpy=</span><span class="st">"0 0 0"</span>/&gt;</span>
+<span id="cb35-14"><a aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">joint</span>&gt;</span></code></pre></div>
+</div>
+</div></div>
 </section></section>
 <section>
 
@@ -909,18 +1256,35 @@ Recordar REP 103 (Unidades *S.I.*)
 </figure>
 </div>
 </div>
+<aside class="notes">
+<p>El paquete <code>robot_state_publisher</code> toma el archivo <em>URDF</em> y automaticamente transmite todas las transformaciones necesarias</p>
+<p>Además publica el contenido en el topic <code>/robot_description</code> así todos los otros nodos que necesitan la descripción del robot utilizan el mismo archivo</p>
+<p>Para las <code>joints</code> que son fijas, se publica la transformación estática</p>
+<p>Para las móviles se necesitan datos externos (angulo o distancia) para calcular la transformación dinámica para cada instante de tiempo.</p>
+<p>Para esto el nodo se subscribe al topic <code>/joint_states</code></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="topic-joint_states" class="slide level2 smaller">
 <h2>Topic <code>/joint_states</code></h2>
 <ul>
 <li>Listado de juntas con sus respectivos estados:</li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a>        sensor_msgs/JointState</span>
-<span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a>        ├── std_msgs/Header header</span>
-<span id="cb34-3"><a aria-hidden="true" tabindex="-1"></a>        ├── string[] name</span>
-<span id="cb34-4"><a aria-hidden="true" tabindex="-1"></a>        ├── float64[] position</span>
-<span id="cb34-5"><a aria-hidden="true" tabindex="-1"></a>        ├── float64[] velocity</span>
-<span id="cb34-6"><a aria-hidden="true" tabindex="-1"></a>        └── float64[] effort</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a>        sensor_msgs/JointState</span>
+<span id="cb36-2"><a aria-hidden="true" tabindex="-1"></a>        ├── std_msgs/Header header</span>
+<span id="cb36-3"><a aria-hidden="true" tabindex="-1"></a>        ├── string[] name</span>
+<span id="cb36-4"><a aria-hidden="true" tabindex="-1"></a>        ├── float64[] position</span>
+<span id="cb36-5"><a aria-hidden="true" tabindex="-1"></a>        ├── float64[] velocity</span>
+<span id="cb36-6"><a aria-hidden="true" tabindex="-1"></a>        └── float64[] effort</span></code></pre></div>
 <div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
@@ -937,6 +1301,20 @@ Recordar REP 103 (Unidades *S.I.*)
 <p><img data-src="figs/rsp-fig2.svg" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
+<aside class="notes">
+<p>Utilizando el paquete <code>joint_state_publisher_gui</code> se puede controlar la posición de la junta.</p>
+<p>Publica posiciones ficticias de cada una de las juntas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 </section>
 <section id="sistema-completo" class="slide level2">
