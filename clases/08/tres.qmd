@@ -1,0 +1,337 @@
+---
+title: Clase 08 - Taller de resolución
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+        number-depth: 2
+bread-crumbs: true
+page-navigation: true
+---
+
+# URDF y XACRO
+
+## URDF
+
+### Etiqueta `<robot>..<\robot>`
+
+- Etiqueta raíz (todo el contenido se encuentra dentro)
+
+```{.xml}
+<?xml version="1.0"?>
+
+<robot name="mi_robot">
+    ...
+    <!-- Contenido URDF -->
+    ...	
+</robot>
+```
+
+### Etiqueta `<link> .. </link>`
+
+- 1 solo atributo: el nombre
+- 3 posibles geometrías: `<visual>`, `<collision>` y `<inertial>`
+
+```xml
+<link name="parteA_link">
+    <visual>..</visual>
+    <collision>..</collision>
+    <inertial>..</inertial>	
+</link>
+```
+
+![*Link*](https://wiki.ros.org/urdf/XML/link?action=AttachFile&do=get&target=inertial.png){fig-align="center" width="75%"}
+
+#### Etiqueta `<visual> .. </visual>`
+
+- Origen:
+```{.xml code-line-numbers="false"}
+    <origin xyz="[pos_x] [pos_y] [pos_z]" rpy="[roll] [pitch] [yaw]"/>
+```
+
+- Material:
+```{.xml code-line-numbers="false"}
+    <material name="nombre_material">
+        <color rgba="[R] [G] [B] [Alpha]"/>
+    </material>
+```
+
+- Geometría:
+  - prisma: 
+```{.xml code-line-numbers="false"}
+    <box size="[largo-x] [ancho-y] [alto-z]" />
+```
+  - cilindro:
+```{.xml code-line-numbers="false"}
+    <cylinder radius="[radio]" length="[ancho]" />
+```
+  - esfera:
+```{.xml code-line-numbers="false"}
+    <sphere radius="[radio]" />
+```
+  - malla:
+```{.xml code-line-numbers="false"}
+    <mesh filename="file://[nombre_del_archivo]" />
+```
+
+#### Etiqueta `<collision> .. </collision>`
+- Origen:
+```{.xml code-line-numbers="false"}
+    <origin xyz="[pos_x] [pos_y] [pos_z]" rpy="[roll] [pitch] [yaw]"/>
+```
+
+- Geometría: `box`, `cylinder`, `sphere`, `mesh`
+
+
+<!-- ### Ejemplo de `link`
+
+```{.xml code-line-numbers="false"}
+<?xml version="1.0"?>
+
+<robot name="diffbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <link name="parteA_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.1 0.2 0.3" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.1 0.2 0.3" />
+            </geometry>
+        </collision>
+    </link>    
+</robot>
+``` -->
+
+
+### Etiqueta `<joint> .. </joint>`
+
+![*Joint*](https://wiki.ros.org/urdf/XML/joint?action=AttachFile&do=get&target=joint.png){fig-align="center" width="50%"}
+
+- 2 atributos: el nombre y tipo
+- 2 elementos requeridos: *link* padre e hijo
+- Tipos:
+  - Fija (`fixed`)
+```{.xml code-line-numbers="false"}
+<joint name="parteA_joint" type="fixed">
+    <parent link="padre_link"/>
+    <child link="parteA_link"/>
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+        rpy="[roll] [pitch] [yaw]"/>
+</joint>
+```
+  - Continua (`continuous`)
+```{.xml code-line-numbers="false"}
+<joint name="parteA_joint" type="revolute">
+    <parent link="padre_link"/>
+    <child link="parteA_link"/>
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+        rpy="[roll] [pitch] [yaw]"/>
+    <axis xyz="[x] [y] [z]"/>
+</joint>
+```
+  - Revolución (`revolute`)
+```{.xml code-line-numbers="false"}
+<joint name="parteA_joint" type="revolute">
+    <parent link="padre_link"/>
+    <child link="parteA_link"/>
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+        rpy="[roll] [pitch] [yaw]"/>
+    <axis xyz="[x] [y] [z]"/>
+    <limit lower="[min_rad]" upper="[max_rad]"
+        velocity="[rad_por_seg]"
+        effort="[effort]" />
+</joint>
+```
+
+## XACRO
+
+### Inclusión de archivos
+
+- *Archivo principal*: extensión '`.urdf.xacro`' y contiene el tag `robot` con nombre
+- *Archivos a incluir*: extensión '`.xacro`' y solo contienen el tag `robot`
+- Para incluir:
+```{.xml code-line-numbers="false"}
+    <xacro:include filename="[nombre_archivo]" />
+```
+
+### Parametrización de atributos
+
+- Propiedades `xacro:property`: Nombre y valor
+
+```{.xml code-line-numbers="false"}
+    <xacro:property name="diametro" value="2.1" />
+```
+
+- Operaciones matemáticas y acceso a variables: `${..}` 
+```{.xml code-line-numbers="false"}
+    <geometry type="cylinder" radius="${diametro / 2}" length="${nombre_variable}" />
+```
+
+- Argumentos `xacro:args`: Nombre y valor por defecto
+```{.xml code-line-numbers="false"}
+    <xacro:arg name="[nombre_argumento]" default="[valor_defecto]"/>
+```
+::: {.callout-note appearance="minimal"}
+Luego podemos ejecutar el comando *XACRO* con el valor del argumento `nombre_argumento:=[valor]`
+:::
+
+- Buscar paquetes `$(find ..)`:
+```{.xml code-line-numbers="false"}
+    <xacro:include filename="$(find [nombre_paquete])/[nombre_archivo].xacro" />
+```
+
+### Bloques condicionales
+- Etiqueta `xacro:if` para `true` y `xacro:unless` para `false`
+```{.xml code-line-numbers="false"}
+<xacro:if value="[expresion]">
+    <!-- Si la expresión es verdadera: 'true' o 1 -->
+</xacro:if>
+<xacro:unless value="[expresion]">
+    <!-- Si la expresión es falsa: 'false' o 0  -->
+</xacro:unless>
+```
+
+### Macros
+
+- Definir *macro* `xacro:macro`: Nombre y parámetros a recibir
+```{.xml code-line-numbers="false"}
+<xacro:macro name="[nombre_macro]" params="[param1] [param2]:=[valor_defecto]">
+    <!-- Codigo del macro: ejemplo con parámetros -->
+    <link name="${param1}">
+        <visual>
+            <geometry>
+                <sphere radius="${param2}" />
+            </geometry>
+        </visual>
+    </link>
+</xacro:macro>
+```
+
+- Aplicar o ejecutar *macro* `xacro:[nombre_macro]` y los parámetros definidos:
+```{.xml code-line-numbers="false"}
+<xacro:nombre_macro param1="[valor_param1]" param2="[valor_param2]" /> 
+```
+
+- Si ejecutamos el *macro* con los valores `parteA_link` y `1.0`, la salida será:
+```{.xml code-line-numbers="false"}
+...
+    <link name="parteA_link">
+        <visual>
+            <geometry>
+                <sphere radius="1.0" />
+            </geometry>
+        </visual>
+    </link>
+...
+```
+
+### Compilación del URDF
+
+- Desde consola
+
+        $ xacro [ubicacion_del_archivo/nombre_archivo.xacro.urdf]
+
+- Desde *launch*
+  - Importar las librerías
+```python
+from launch.substitutions import Command, PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
+```
+  - Ubicar el archivo y procesarlo
+```python
+    # Ubicación del paquete y del archivo URDF
+    urdf_path = PathJoinSubstitution(
+        [FindPackageShare("[nombre_paquete]"),  "urdf", "[nombre_archivo].urdf.xacro"]
+    )
+    
+    # Procesar archivo URDF
+    urdf = Command(['xacro ', urdf_path])
+```
+
+
+
+## Adaptación del paquete
+
+- Se agregan las carpetas `urdf` para los archivos de descripción
+
+```{.default filename="Ejemplo de estructura"  code-line-numbers="false"}
+📂 paquete_description
+    📁 paquete_description
+    📂 launch
+        📄 description.launch.py
+        ...
+    📂 urdf
+        📄 description.urdf.xacro
+        📄 materials.xacro
+        📄 my_macro.xacro
+        📄 sim_sensor.xacro
+        ...
+    📄 package.xml
+    📄 setup.py
+    ...
+```
+
+- Configuración de `setup.py`
+
+```{.py filename="setup.py" code-fold="true" code-line-numbers="true"}
+  # ... Otros parámetros
+  data_files=[
+    # ... Otros archivos
+    # Incluir todos los archivos de la carpeta launch
+    (os.path.join('share', package_name, 'launch'), glob('launch/*'))
+    # Incluir todos los archivos de la carpeta urdf
+    (os.path.join('share', package_name, 'urdf'), glob('urdf/*'))
+    # Incluir todos los archivos de la carpeta meshes
+    (os.path.join('share', package_name, 'meshes'), glob('meshes/*'))
+  ],
+```
+
+# *Robot state publisher* y *joint publishers*
+
+## `robot_state_publisher`
+
+- Ejecutar desde consola
+```
+    $ ros2 run robot_state_publisher robot_state_publisher
+                --ros-args -p robot_description:='<robot_description>'
+```
+
+- Cargar desde *launch*
+```python
+    Node(
+        package = 'robot_state_publisher',
+        executable = 'robot_state_publisher',
+        parameters=[{
+            'robot_description': '<robot_description>',
+        }]
+    )
+```
+
+## `joint_state_publisher_gui`
+
+- Ejecutar desde consola
+```
+    $ ros2 run joint_state_publisher_gui joint_state_publisher_gui
+```
+
+- Cargar desde *launch*:
+```python
+    Node(
+        package = 'joint_state_publisher_gui',
+        executable = 'joint_state_publisher_gui',
+        output = 'screen',
+    )
+```
+
+# Resolución ejercicio 1 y 2
+
+{{< include ../../entregables/01/_urdf.qmd >}}

@@ -1,0 +1,761 @@
+---
+title: "Robótica"
+subtitle: "Clase 08"
+date: "05/12/2025"
+date-format: "[Semana 9 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+    revealjs:
+        theme: default
+        #chalkboard: true
+        footer: Robótica - TUAR - FICH - UNL
+        menu: false
+        slide-number: c
+        code-copy: false
+        code-overflow: wrap
+---
+
+# URDF {visibility="hidden"}
+
+## URDF: [Unified Robot Definition Format]{style="font-size: 85%;"}
+
+- Permite describir geometría y características del robot
+
+. . .
+
+- Formato `XML`: La información se representa a través de etiquetas anidadas
+
+. . .
+
+> Etiquetas principales: `<robot>`, `<link>`, `<joint>`
+
+
+::: {.aside}
+[Documentación](http://wiki.ros.org/urdf/XML){target="_blank"}
+:::
+
+## URDF: 2 Elementos fundamentales
+
+::: {.fragment fragment-index=1}
+- Eslabones: `<link>`
+:::
+::: {.fragment fragment-index=2}
+- Juntas: `<joint>`
+:::
+
+::: {layout="[-10,35,-10,35,-10]" layout-valign="center"}
+::: {.fragment fragment-index=1}
+Link
+![](https://wiki.ros.org/urdf/XML/link?action=AttachFile&do=get&target=inertial.png)
+:::
+::: {.fragment fragment-index=2}
+Joint
+![](https://wiki.ros.org/urdf/XML/joint?action=AttachFile&do=get&target=joint.png)
+:::
+:::
+
+## URDF: *links* y *joints*
+
+::: {.callout-warning title="Muy importante"}
+Identificar de forma conveniente como dividir la estructura física del robot en links y joints
+:::
+
+::: {.incremental}
+1. Una parte que se mueve relativa a otra <!-- ejemplo rueda -->
+2. Una parte que no se mueve pero es conveniente conocer su marco de referencia <!-- ejemplo cámara -->
+3. Cadena de transformaciones para los casos anteriores
+:::
+
+## Etiqueta `<robot>..<\robot>`
+
+- Etiqueta raíz (todo el contenido se encuentra dentro)
+- 1 solo atributo: el nombre
+
+. . .
+
+```xml
+<?xml version="1.0"?>
+
+<robot name="mi_robot">
+    ...
+    <!-- Contenido -->
+    ...	
+</robot>
+```
+
+<!-- ::: {.callout-note appearance="minimal"}
+Preámbulo: `<?xml version="1.0"?>`
+::: -->
+
+## Etiqueta `<link>..</link>`
+
+- 1 solo atributo: el nombre
+
+::: {.callout-note appearance="simple"}
+Por convención el nombre tiene sufijo '`_link`'
+:::
+
+::: {.fragment}
+- 3 posibles geometrías: `<visual>`, `<collision>` y `<inertial>`
+
+```xml
+<link name="parteA_link">
+    <visual>..</visual>
+    <collision>..</collision>
+    <inertial>..</inertial>	
+</link>
+```
+:::
+
+## Etiqueta `<link>..</link>` {.smaller}
+
+::: {.columns}
+::: {.column}
+> Geometría visual `<visual>..</visual>`
+
+
+::: {.fragment}
+- Origen:
+```{.xml code-line-numbers="false"}
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+            rpy="[roll] [pitch] [yaw]"/>
+```
+:::
+
+::: {.fragment}
+- Material:
+```{.xml code-line-numbers="false"}
+    <material name="nombre_material">
+        <color rgba="[R] [G] [B] [Alpha]"/>
+    </material>
+```
+:::
+
+::: {.fragment}
+- Geometría: *prisma*
+```{.xml code-line-numbers="false"}
+    <box size="[largo-x] [ancho-y] [alto-z]" />
+```
+:::
+
+:::
+::: {.column}
+
+::: {.fragment}
+Ejemplo:
+```{.xml code-line-numbers="false"}
+<visual>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <geometry>
+        <box size="0.1 0.2 0.3" />
+    </geometry>
+    <material name="Cyan">
+        <color rgba="0 1.0 1.0 1"/>
+    </material>
+</visual>
+```
+
+![](figs/box.png){width="40%" fig-align="center"}
+:::
+
+:::
+:::
+
+## Etiqueta `<link>..</link>` {.smaller}
+
+::: {.columns}
+::: {.column}
+> Geometría visual `<visual>..</visual>`
+
+- Origen:
+```{.xml code-line-numbers="false"}
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+            rpy="[roll] [pitch] [yaw]"/>
+```
+
+- Material:
+```{.xml code-line-numbers="false"}
+    <material name="nombre_material">
+        <color rgba="[R] [G] [B] [Alpha]"/>
+    </material>
+```
+
+- Geometría: *cilindro*
+```{.xml code-line-numbers="false"}
+    <cylinder radius="[radio]" length="[ancho]" />
+```
+
+:::
+::: {.column}
+
+::: {.fragment}
+Ejemplo:
+```{.xml code-line-numbers="false"}
+<visual>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <geometry>
+        <cylinder radius="0.1" length="0.1" />
+    </geometry>
+    <material name="Silver">
+        <color rgba="0.79 0.82 0.93 1"/>
+    </material>
+</visual>
+```
+
+![](figs/cylinder.png){width="40%" fig-align="center"}
+:::
+
+:::
+:::
+
+## Etiqueta `<link>..</link>` {.smaller}
+
+::: {.columns}
+::: {.column}
+> Geometría visual `<visual>..</visual>`
+
+- Origen:
+```{.xml code-line-numbers="false"}
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+            rpy="[roll] [pitch] [yaw]"/>
+```
+
+- Material:
+```{.xml code-line-numbers="false"}
+    <material name="nombre_material">
+        <color rgba="[R] [G] [B] [Alpha]"/>
+    </material>
+```
+
+- Geometría: *esfera*
+```{.xml code-line-numbers="false"}
+    <sphere radius="[radio]" />
+```
+
+:::
+::: {.column}
+
+:::
+:::
+
+## Etiqueta `<link>..</link>` {.smaller}
+
+::: {.columns}
+::: {.column}
+> Geometría visual `<visual>..</visual>`
+
+- Origen:
+```{.xml code-line-numbers="false"}
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+            rpy="[roll] [pitch] [yaw]"/>
+```
+
+- Material:
+```{.xml code-line-numbers="false"}
+    <material name="nombre_material">
+        <color rgba="[R] [G] [B] [Alpha]"/>
+    </material>
+```
+
+- Geometría: *malla*
+```{.xml code-line-numbers="false"}
+    <mesh filename="file://[nombre_del_archivo]" />
+```
+
+:::
+::: {.column}
+
+::: {.fragment}
+Ejemplo:
+```{.xml code-line-numbers="false"}
+<visual>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <geometry>
+        <mesh filename="file:///gear.stl" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="Orange">
+        <color rgba="1 0.3 0.1 1"/>
+    </material>
+</visual>
+```
+
+![](figs/gear.png){width="40%" fig-align="center"}
+:::
+
+:::
+:::
+
+<!-- ::: {.callout-note appearance="simple"}
+Recordar REP 103 (Unidades *S.I.*)
+::: -->
+
+## Etiqueta `<link>..</link>` {.smaller}
+
+
+> Geometría para simulación `<collision>..</collision>`
+
+::: {.fragment}
+- Origen:
+```{.xml code-line-numbers="false"}
+    <origin xyz="[pos_x] [pos_y] [pos_z]" rpy="[roll] [pitch] [yaw]"/>
+```
+:::
+::: {.fragment}
+- Geometría: `box`, `cylinder`, `sphere`, `mesh`
+
+```{.xml code-line-numbers="false"}
+    <box size="[largo-x] [ancho-y] [alto-z]" />
+
+    <cylinder radius="[radio]" length="[ancho]" />
+
+    <sphere radius="[radio]" />
+
+    <mesh filename="file://[nombre_del_archivo]" />
+```
+:::
+
+## Etiqueta `<joint>..</joint>`
+
+- 2 atributos: el nombre y tipo
+
+::: {.callout-note appearance="simple"}
+Por convención el nombre tiene sufijo '`_joint`'
+:::
+::: {.fragment}
+- 2 elementos requeridos: *link* padre e hijo
+
+```{.xml code-line-numbers="false"}
+<joint name="parteB_joint" type="tipo">
+    <parent link="parteA_link"/>
+    <child link="parteB_link"/>
+    ...
+</joint>
+```
+:::
+
+## Tipos de juntas
+
+::: {.columns}
+::: {.column style="font-size: 75%;"}
+
+::: {.fragment fragment-index=1}
+- Fija (`fixed`)
+:::
+
+::: {.fragment fragment-index=2}
+> 1 elemento: `<origin .. />`
+
+```{.xml code-line-numbers="false"}
+<joint name="parteA_joint" type="fixed">
+    <parent link="padre_link"/>
+    <child link="parteA_link"/>
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+        rpy="[roll] [pitch] [yaw]"/>
+</joint>
+```
+:::
+
+:::
+::: {.column}
+
+::: {.fragment fragment-index=1}
+![](figs/fixed-joint.gif){fig-align="center"}
+:::
+
+:::
+:::
+
+## Tipos de juntas
+
+::: {.columns}
+::: {.column style="font-size: 75%;"}
+
+- Fija (`fixed`)
+- Continua (`continuous`)
+
+::: {.fragment fragment-index=1}
+> 2 elementos: `<origin .. />`
+> 
+> `<axis ../>`
+
+```{.xml code-line-numbers="false"}
+<joint name="parteA_joint" type="revolute">
+    <parent link="padre_link"/>
+    <child link="parteA_link"/>
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+        rpy="[roll] [pitch] [yaw]"/>
+    <axis xyz="[x] [y] [z]"/>
+</joint>
+```
+:::
+
+:::
+::: {.column}
+
+::: {.fragment fragment-index=1}
+![](figs/continuous-joint.gif){fig-align="center"}
+:::
+
+:::
+:::
+
+## Tipos de juntas
+
+::: {.columns}
+::: {.column style="font-size: 75%;"}
+
+- Fija (`fixed`)
+- Continua (`continuous`)
+- Revolución (`revolute`)
+
+::: {.fragment fragment-index=1}
+> 3 elementos: 
+>`<origin .. />`
+>
+>`<axis ../>` y
+>`<limit ../>`
+
+
+```{.xml code-line-numbers="false"}
+<joint name="parteA_joint" type="revolute">
+    <parent link="padre_link"/>
+    <child link="parteA_link"/>
+    <origin xyz="[pos_x] [pos_y] [pos_z]"
+        rpy="[roll] [pitch] [yaw]"/>
+    <axis xyz="[x] [y] [z]"/>
+    <limit lower="[min_rad]" upper="[max_rad]"
+        velocity="[rad_por_seg]"
+        effort="[effort]" />
+</joint>
+```
+:::
+
+:::
+::: {.column}
+
+::: {.fragment fragment-index=1}
+![](figs/revolute-joint.gif){fig-align="center"}
+:::
+
+:::
+:::
+
+## Tipos de juntas
+
+::: {.columns}
+::: {.column style="font-size: 75%;"}
+
+- Fija (`fixed`)
+- Continua (`continuous`)
+- Revolución (`revolute`)
+- Prismática (`prismatic`)
+
+:::
+
+::: {.column}
+
+:::
+:::
+
+# XACRO {visibility="hidden"}
+
+## XACRO: Macros en XML
+
+- Facilita la codificación de URDF
+- Herramienta para dividir código y evitar duplicar
+- Provee estructuras de '*programacion*'
+
+
+::: {.aside}
+[Documentación](wiki.ros.org/xacro)
+:::
+
+## XACRO: Macros en XML
+
+> Se necesita un paso de compilación: 
+>
+>       $ xacro description.urdf.xacro
+
+![](figs/xacro.svg){fig-align="center"}
+
+. . .
+
+::: {.callout-note appearance="simple"}
+Actualizar dependencias: `<exec_depend>xacro</exec_depend>`
+:::
+
+## Partición de los componentes
+
+::: {.columns}
+::: {.column style="font-size: 75%;"}
+
+- La geometría principal (links y joints)
+- Materiales
+- Sensores
+- Simulador (y parámetros de simulación)
+- Macros
+
+:::
+::: {.column width="50%"}
+
+```{.default code-line-numbers="false"}
+📂 paquete_description
+    📁 paquete_description
+    📂 launch
+        📄 description.launch.py
+        ...
+    📂 urdf
+        📄 description.urdf.xacro
+        📄 materials.xacro
+        📄 my_macro.xacro
+        📄 sim_sensor.xacro
+        ...
+    📄 package.xml
+    📄 setup.py
+    ...
+```
+
+:::
+:::
+
+## Inclusión de archivos
+
+::: {.incremental}
+- Archivo principal:
+    - se lo nombre con extensión '`.urdf.xacro`'
+    - contiene el tag `robot` con nombre
+
+- Archivos incluidos:
+    - extensión '`.xacro`'
+    - solo contienen el tag `robot`
+:::
+
+. . . 
+
+::: {.callout-note appearance="minimal"}
+Se incluyen las partes mediante el tag `<xacro:include .. />`
+:::
+
+## Ejemplo `xacro:include`
+
+
+::: {style="font-size: 75%;"}
+```{.xml filename="materials.xacro" code-line-numbers="false"}
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <material name="Orange">
+        <color rgba="1 0.3 0.1 1"/>
+    </material>
+</robot>
+```
+:::
+
+. . .
+
+<br>
+
+::: {style="font-size: 75%;"}
+```{.xml filename="description.urdf.xacro" code-line-numbers="false" code-line-numbers="|3|9"}
+<?xml version="1.0"?>
+<robot name="MyBot" ...>
+    <xacro:include filename="materials.xacro" />
+    ...
+    <link name="base_link">
+        <visual>
+            ...
+            <geometry> ... </geometry>
+            <material name="Orange">
+        </visual>
+    </link>
+    ...
+</robot>
+```
+:::
+
+
+## Parametrización de atributos
+
+- Operaciones matemáticas: `${..}` 
+- Propiedades `xacro:property`: Nombre y valor
+
+. . .
+
+```{.xml code-line-numbers="false" code-line-numbers="3,4,8|5,10"}
+<?xml version="1.0"?>
+<robot name="MyBot" ...>
+    <xacro:property name="diametro" value="2.1" />
+    <xacro:property name="ancho" value="4.5" />
+    <xacro:property name="alpha" value="${30/180*pi}" />
+    ...
+        <geometry type="cylinder"
+            radius="${diametro / 2}" length="${ancho}" />
+        ...
+        <origin xyz="0 0 0" rpy="0 0 ${alpha}" />
+    ...
+</robot>
+
+```
+
+## Comandos de rospack
+
+- Argumentos `xacro:args`: Nombre y valor por defecto
+
+```{.xml code-line-numbers="false"}
+    <xacro:arg name="arg1" default="false"/>
+```
+
+. . .
+
+- Buscar paquetes `$(find ..)`:
+
+```{.xml code-line-numbers="false"}
+    <xacro:include filename="$(find <nombre_paquete>)/<nombre_archivo>.xacro" />
+```
+
+## Bloques condicionales
+
+- Etiqueta `xacro:if` para `true` y `xacro:unless` para `false`
+
+```{.xml code-line-numbers="false"}
+<xacro:if value="[expresion]">
+    <!-- Si la expresión es verdadera: 'true' o 1 -->
+</xacro:if>
+<xacro:unless value="[expresion]">
+    <!-- Si la expresión es falsa: 'false' o 0  -->
+</xacro:unless>
+```
+
+## Macros {.smaller}
+
+- Porciones de código a reutilizar (funciones)
+- `xacro:macro`: Nombre y parámetros a recibir
+
+```{.xml code-line-numbers="false"}
+<xacro:macro name="rueda_esferica" params="prefijo link_padre radio pos_x:=0 pos_y:=0 pos_z:=0">
+    <xacro:property name="nombre_link" value="${prefijo}_link" />
+    <link name="${nombre_link}">
+        <visual>
+            <geometry>
+                <sphere radius="${radio}" />
+            </geometry>
+            <material name="black" />
+        </visual>
+        ...
+    </link>
+    <joint name="${prefijo}_joint" type="fixed">
+        <parent link="${link_padre}$"/>
+        <child link="${nombre_link}"/>
+        <origin xyz="${pos_x} ${pos_y} ${pos_z}" rpy="0 0 0"/>
+    </joint>
+</xacro:macro>
+```
+- Aplicación:
+
+```{.xml code-line-numbers="false"}
+<xacro:rueda_esferica prefix="rueda_delantera" link_padre="base_link" radio="1.0" pos_x="0.5" /> 
+```
+
+# URDF y TF2 {visibility="hidden"}
+
+## Similitudes entre
+
+```{=html}
+<table>
+  <thead>
+    <tr>
+        <th style="text-align: center"><h2>URDF</h2></th>
+        <th></th>
+        <th style="text-align: center"><h2><code>tf2</code></h2></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arbol de ..</td>
+    <td></td>
+    <td>arbol de ..</td>
+    </tr>
+    <tr>
+    <td style="text-align: center"><h3>links</h3></td>
+    <td></td>
+    <td style="text-align: center"><h3>frames</h3></td>
+    </tr>
+    <tr>
+    <td>conectados por ..</td>
+    <td></td>
+    <td>conectados por ..</td>
+    </tr>
+    <tr>
+    <td style="text-align: center"><h3>joints</h3></td>
+    <td></td>   
+    <td style="text-align: center"><h3>transforms</h3></td>
+    </tr>
+  </tbody>
+</table>
+```
+
+::: {.fragment}
+::: {.callout-tip}
+Interpretando los `links` y `joints` del **robot description** puedo publicar los `frames` y `tf` correspondientes
+:::
+:::
+
+
+## Paquete `robot_state_publisher` {.smaller}
+
+::: {.incremental}
+1. Descripción del robot ➡️ `/robot_description`
+2. Juntas fijas (transformaciones estáticas) ➡️ `/tf_static`
+3. Juntas móviles ➡️ `/joint_states` ➡️ transformaciones dinámicas ➡️ `/tf`
+:::
+
+::: {.fragment}
+![](figs/rsp-fig1.svg){fig-align="center"}
+:::
+
+## Topic `/joint_states` {.smaller}
+
+- Listado de juntas con sus respectivos estados:
+
+```{.default code-line-numbers="false"}
+        sensor_msgs/JointState
+        ├── std_msgs/Header header
+        ├── string[] name
+        ├── float64[] position
+        ├── float64[] velocity
+        └── float64[] effort
+```
+
+::: {.callout-tip appearance="simple"}
+Quién publica en el `/joint_states`?
+:::
+
+. . .
+
+![](figs/rsp-fig2.svg){fig-align="center"}
+
+
+## Sistema completo
+
+![URDF + XACRO + `robot_state_publisher` + `joint_state_publisher_gui`](figs/full-diagram.svg){fig-align="center"}
+
+## Comandos de cada paquete
+
+- `robot_state_publisher`
+
+```
+    $ ros2 run robot_state_publisher robot_state_publisher
+                --ros-args -p robot_description:='<robot_description>'
+```
+
+- `joint_state_publisher_gui`
+
+```
+    $ ros2 run joint_state_publisher_gui joint_state_publisher_gui
+```
+
+# Taller de resolución {visibility="hidden"}
+
+## [Taller de resolución](tres.qmd) {.center}
+
+Ejercicios 1 y 2
+

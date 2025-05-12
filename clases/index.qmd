@@ -14,7 +14,7 @@ El siguiente cronograma podrá ser actualizado con el correr del cursado
 |6  | 21/04 | Programación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación. | [🖥️](/clases/05 "Slides"){aria-label="Clase 5 slides"} | [🧪](/clases/05/lab.html "Lab"){aria-label="Clase 5 lab"}
 |7  | 28/04 | Parámetros en nodos y `roslaunch`, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.  | [🖥️](/clases/06 "Slides"){aria-label="Clase 6 slides"} | [🧪](/clases/06/lab.html "Lab"){aria-label="Clase 6 lab"}
 |8  | 05/05 | Traslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete `tf2`. | [🖥️](/clases/07 "Slides"){aria-label="Clase 7 slides"} | [🧪](/clases/07/lab.html "Lab"){aria-label="Clase 7 lab"}
-|9  | 12/05 | U.R.D.F: Representación de geometría de un robot. Uso de XACRO, r.s.p. y `tf2`. | |
+|9  | 12/05 | U.R.D.F: Representación de geometría de un robot. Uso de XACRO, `robot_state_publisher` y `tf2`. | [🖥️](/clases/08 "Slides"){aria-label="Clase 8 slides"} | | [🛠️](/clases/08/tres.html "Taller de resolución"){aria-label="Clase 8 t.r."}
 |10 | 19/05 | Gazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete `ros2_control` y Gazebo. | |
 |11 | 26/05 | Cinemática y locomoción: modelo cinemático de un robot diferencial | |
 |12 | 02/06 | Odometría: Cálculo de posición en base a modelo cinemático | |
