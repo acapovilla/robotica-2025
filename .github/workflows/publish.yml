@@ -27,7 +27,7 @@ jobs:
       - name: Install pdflatex and Inkscape
         run: |
           sudo apt-get update
-          sudo apt-get -y install texlive-latex-base texlive-latex-extra
+          sudo apt-get -y install texlive-latex-base texlive-latex-extra texlive-xetex
           sudo apt-get -y install inkscape 
           which pdflatex
           which inkscape
