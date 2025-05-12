@@ -21,9 +21,19 @@ format:
 
 - Permite describir geometría y características del robot
 
+::: {.notes}
+Cuando se desarrolla un robot, pueden existir muchos componentes de software diferentes que necesitan conocer características físicas del robot. Lo ideal es mantener esa información en una sola ubicación donde todos puedan acceder y hacer referencia
+
+En ROS -> robot description o descripción del robot; y se hace a través de archivos Unified Robot Description Format (URDF)
+:::
+
 . . .
 
 - Formato `XML`: La información se representa a través de etiquetas anidadas
+
+::: {.notes}
+El estándar URDF se basa en XML (Visto en archivos package.xml) -> todo está representado a través de **tags** (etiquetas) que se pueden anidar
+:::
 
 . . .
 
@@ -32,6 +42,10 @@ format:
 
 ::: {.aside}
 [Documentación](http://wiki.ros.org/urdf/XML){target="_blank"}
+:::
+
+::: {.notes}
+Existen muchos tipos (los cuales están estandarizados) pero tres principales
 :::
 
 ## URDF: 2 Elementos fundamentales
@@ -54,6 +68,10 @@ Joint
 :::
 :::
 
+::: {.notes}
+La estructura es un arbol de `links` conectados por `joints`. Los links (eslabones) representan partes o componentes físicos del robot y las `joints` (juntas) representan como se mueve un `link` con respecto a otro definiendo la ubicación del `link` en el espacio.
+:::
+
 ## URDF: *links* y *joints*
 
 ::: {.callout-warning title="Muy importante"}
@@ -66,10 +84,18 @@ Identificar de forma conveniente como dividir la estructura física del robot en
 3. Cadena de transformaciones para los casos anteriores
 :::
 
+::: {.notes}
+Cuando se describe un robot a través de un URDF es necesario identificar como dividir el robot de forma conveniente/inteligente en `links` y `joints`
+:::
+
 ## Etiqueta `<robot>..<\robot>`
 
 - Etiqueta raíz (todo el contenido se encuentra dentro)
 - 1 solo atributo: el nombre
+
+::: {.notes}
+El tag de `robot` (y la declaración XML) -> Todos los archivos XML empiezan con la declaración en la primera linea (propio de XML) y luego para archivos URDF existe una única etiqueta denominada raíz donde todas las otras etiquetas conviven (están dentro de). Esta etiqueta es el `robot` tag, y el único atributo que posee es el nombre del robot `name=”mi_robot”`
+:::
 
 . . .
 
@@ -107,6 +133,14 @@ Por convención el nombre tiene sufijo '`_link`'
 ```
 :::
 
+::: {.notes}
+`link` -> Permite especificar el nombre además de otras características como la apariencia visual, las propiedades inerciales y de colisión
+
+visual -> Es lo que se visualiza en RViz y Gazebo
+
+Collision -> Utilizado para el cálculo de colisión física en simulación
+:::
+
 ## Etiqueta `<link>..</link>` {.smaller}
 
 ::: {.columns}
@@ -120,6 +154,10 @@ Por convención el nombre tiene sufijo '`_link`'
     <origin xyz="[pos_x] [pos_y] [pos_z]"
             rpy="[roll] [pitch] [yaw]"/>
 ```
+
+::: {.notes}
+Origin: Offset para la geometría en el caso de que no esté centrado en el origen del `link`
+:::
 :::
 
 ::: {.fragment}
@@ -129,6 +167,10 @@ Por convención el nombre tiene sufijo '`_link`'
         <color rgba="[R] [G] [B] [Alpha]"/>
     </material>
 ```
+
+::: {.notes}
+Material: El color (si se declara un material con nombre, puede utilizarse, si no los valores RGB)
+:::
 :::
 
 ::: {.fragment}
@@ -136,6 +178,10 @@ Por convención el nombre tiene sufijo '`_link`'
 ```{.xml code-line-numbers="false"}
     <box size="[largo-x] [ancho-y] [alto-z]" />
 ```
+
+::: {.notes}
+Geometry: con los parámetros de tamaño  
+:::
 :::
 
 :::
@@ -294,6 +340,10 @@ Recordar REP 103 (Unidades *S.I.*)
 
 > Geometría para simulación `<collision>..</collision>`
 
+::: {.notes}
+Generalmente por razones de computabilidad, se busca que sea una forma más simple que la visual para simplificar los cálculos.
+:::
+
 ::: {.fragment}
 - Origen:
 ```{.xml code-line-numbers="false"}
@@ -312,6 +362,10 @@ Recordar REP 103 (Unidades *S.I.*)
 
     <mesh filename="file://[nombre_del_archivo]" />
 ```
+
+::: {.notes}
+Geometry y Origin: igual que para el caso visual.
+:::
 :::
 
 ## Etiqueta `<joint>..</joint>`
@@ -331,6 +385,20 @@ Por convención el nombre tiene sufijo '`_joint`'
     ...
 </joint>
 ```
+
+::: {.notes}
+- Parent -> `link` padre
+- Child -> `link` hijo (para definir la relación de un link (hijo) respecto a otro (padre))
+:::
+:::
+
+::: {.notes}
+Son los que realmente almacenan la información de cómo se compone la estructura del robot, define la ubicación de los `link` y como se mueven entre sí. (Similar a tf donde se tienen los marcos, pero lo que importan son las transformaciones)
+
+Atributos: 
+
+- name -> Nombre de cada junta
+- type -> Tipo
 :::
 
 ## Tipos de juntas
@@ -365,6 +433,12 @@ Por convención el nombre tiene sufijo '`_joint`'
 :::
 :::
 
+::: {.notes}
+El `link` hijo está conectado de forma rígida con el `link` padre
+
+Origin -> Origen de la relación antes de cualquier movimiento (como se inicia)
+:::
+
 ## Tipos de juntas
 
 ::: {.columns}
@@ -397,6 +471,12 @@ Por convención el nombre tiene sufijo '`_joint`'
 :::
 
 :::
+:::
+
+::: {.notes}
+Movimiento rotacional sin límites
+
+Axis -> El eje en el cual se desarrolla el movimiento
 :::
 
 ## Tipos de juntas
@@ -440,6 +520,13 @@ Por convención el nombre tiene sufijo '`_joint`'
 :::
 :::
 
+::: {.notes}
+Movimiento rotacional con ángulos máximos y mínimos
+
+
+Limits -> Límites de actuación física, pueden ser (lower|upper|velocity|effort) 
+:::
+
 ## Tipos de juntas
 
 ::: {.columns}
@@ -461,9 +548,18 @@ Por convención el nombre tiene sufijo '`_joint`'
 
 ## XACRO: Macros en XML
 
+::: {.notes}
+Cuanto más complejos los sistemas, más largos y pesados se hacen los URDF, por lo que separarlos en diferentes archivos permite encontrar las cosas de forma fácil y modificar de forma rápida, además de que al usar controles de versión los cambios quedan mejor ordenados
+:::
+. . .
+
 - Facilita la codificación de URDF
 - Herramienta para dividir código y evitar duplicar
 - Provee estructuras de '*programacion*'
+
+::: {.notes}
+Herramienta para escribir URDF facilmente. Dos características principales: dividir el código en varios archivos y evitar duplicar código.
+:::
 
 . . .
 
@@ -501,6 +597,8 @@ Actualizar dependencias: `<exec_depend>xacro</exec_depend>`
 ::: {.columns}
 ::: {.column style="font-size: 75%;"}
 
+Ejemplos:
+
 - La geometría principal (links y joints)
 - Materiales
 - Sensores
@@ -530,6 +628,10 @@ Actualizar dependencias: `<exec_depend>xacro</exec_depend>`
 :::
 :::
 
+::: {.notes}
+La división depende del escenario y la persona que lo programa, pero generalmente se sigue el siguiente esquema: Nucleo o core del robot (links y joints), lista de materiales (colores), sensores (links y joints) y los correspondientes a gazebo, macros
+:::
+
 ## Inclusión de archivos
 
 ::: {.incremental}
@@ -539,13 +641,25 @@ Actualizar dependencias: `<exec_depend>xacro</exec_depend>`
 
 - Archivos incluidos:
     - extensión '`.xacro`'
-    - solo contienen el tag `robot`
+    - solo contienen el tag `robot` (sin nombre)
+:::
+
+::: {.notes}
+Se tiene un archivo principal o ‘main’ que representa el robot con el tag de ‘robot’ con nombre y la extensión ‘.urdf.xacro’.
+
+El archivo incluido debe ser también de tipo xacro, con el tag ‘robot’ pero esta vez sin el atributo de ‘name’.
+
+No existe límite para incluir archivos
 :::
 
 . . . 
 
 ::: {.callout-note appearance="minimal"}
 Se incluyen las partes mediante el tag `<xacro:include .. />`
+:::
+
+::: {.notes}
+Dentro del archivo se incluyen los otros mediante `xacro:include`.
 :::
 
 ## Ejemplo `xacro:include`
@@ -639,12 +753,18 @@ Se incluyen las partes mediante el tag `<xacro:include .. />`
 
 ## Macros {.smaller}
 
-- Porciones de código a reutilizar (funciones)
+- Porciones de código a reutilizar (plantillas)
 - `xacro:macro`: Nombre y parámetros a recibir
 
-```{.xml code-line-numbers="false"}
-<xacro:macro name="rueda_esferica" params="prefijo link_padre radio pos_x:=0 pos_y:=0 pos_z:=0">
-    <xacro:property name="nombre_link" value="${prefijo}_link" />
+::: {.columns}
+::: {.column width="50%"}
+
+```{.xml filename="macro.xacro" code-line-numbers="false"}
+<xacro:macro name="rueda_esferica"
+    params="prefijo link_padre radio 
+            pos_x:=0 pos_y:=0 pos_z:=0">
+    <xacro:property name="nombre_link"
+        value="${prefijo}_link" />
     <link name="${nombre_link}">
         <visual>
             <geometry>
@@ -657,15 +777,45 @@ Se incluyen las partes mediante el tag `<xacro:include .. />`
     <joint name="${prefijo}_joint" type="fixed">
         <parent link="${link_padre}$"/>
         <child link="${nombre_link}"/>
-        <origin xyz="${pos_x} ${pos_y} ${pos_z}" rpy="0 0 0"/>
+        <origin xyz="${pos_x} ${pos_y} ${pos_z}"
+            rpy="0 0 0"/>
     </joint>
 </xacro:macro>
 ```
-- Aplicación:
+
+:::
+::: {.column width="50%"}
+
+::: {.fragment}
+```{.xml code-line-numbers="false"}
+<xacro:rueda_esferica prefix="rueda_delantera"
+    link_padre="base_link" radio="1.0" pos_x="0.5" /> 
+```
+:::
+
+::: {.fragment}
+> Resultado:
 
 ```{.xml code-line-numbers="false"}
-<xacro:rueda_esferica prefix="rueda_delantera" link_padre="base_link" radio="1.0" pos_x="0.5" /> 
+    <link name="rueda_delantera_link">
+        <visual>
+            <geometry>
+                <sphere radius="1.0" />
+            </geometry>
+            <material name="black" />
+        </visual>
+        ...
+    </link>
+    <joint name="rueda_delantera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="rueda_delantera_link"/>
+        <origin xyz="0.5 0 0" rpy="0 0 0"/>
+    </joint>
 ```
+:::
+
+:::
+:::
 
 # URDF y TF2 {visibility="hidden"}
 
@@ -724,6 +874,18 @@ Interpretando los `links` y `joints` del **robot description** puedo publicar lo
 ![](figs/rsp-fig1.svg){fig-align="center"}
 :::
 
+::: {.notes}
+El paquete `robot_state_publisher` toma el archivo *URDF* y automaticamente transmite todas las transformaciones necesarias
+
+Además publica el contenido en el topic `/robot_description` así todos los otros nodos que necesitan la descripción del robot utilizan el mismo archivo
+
+Para las `joints` que son fijas, se publica la transformación estática
+
+Para las móviles se necesitan datos externos (angulo o distancia) para calcular la transformación dinámica para cada instante de tiempo.
+
+Para esto el nodo se subscribe al topic `/joint_states` 
+:::
+
 ## Topic `/joint_states` {.smaller}
 
 - Listado de juntas con sus respectivos estados:
@@ -745,6 +907,11 @@ Quién publica en el `/joint_states`?
 
 ![](figs/rsp-fig2.svg){fig-align="center"}
 
+::: {.notes}
+Utilizando el paquete `joint_state_publisher_gui` se puede controlar la posición de la junta.
+
+Publica posiciones ficticias de cada una de las juntas.
+:::
 
 ## Sistema completo
 
