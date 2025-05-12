@@ -154,6 +154,16 @@ page-navigation: true
 
 ## XACRO
 
+Agregar al tag `robot` del *URDF* `xmlns:xacro="http://www.ros.org/wiki/xacro"`:
+
+```{.xml code-line-numbers="false"}
+<robot name="mi_robot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    ...
+    <!-- Contenido -->
+    ...	
+</robot>
+```
+
 ### Inclusión de archivos
 
 - *Archivo principal*: extensión '`.urdf.xacro`' y contiene el tag `robot` con nombre

@@ -465,6 +465,18 @@ Por convención el nombre tiene sufijo '`_joint`'
 - Herramienta para dividir código y evitar duplicar
 - Provee estructuras de '*programacion*'
 
+. . .
+
+> Agregar al tag `robot`
+
+```{.xml code-line-numbers="false" code-line-numbers="1"}
+<robot name="mi_robot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    ...
+    <!-- Contenido -->
+    ...	
+</robot>
+```
+
 
 ::: {.aside}
 [Documentación](wiki.ros.org/xacro)
