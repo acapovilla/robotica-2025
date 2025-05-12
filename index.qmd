@@ -24,6 +24,17 @@ format:
 
 {{< include clases/index.qmd >}}
 
+# Guía de trabajos prácticos
+
+- ### Entregable 1 - Cinemática de un robot diferencial con ROS2
+
+    > [Fecha de entrega: 22 de Junio 2025]{.smallcaps}
+    >
+    > [Guía:]{.smallcaps} <a href="entregables/01/entregable1.pdf" download target="_blank">`entregable1.pdf`</a>
+    >
+    > [Archivos adicionales:]{.smallcaps} <a href="entregables/01/resources/entregable-1.zip" download target="_blank">`entregable-1.zip`</a>
+
+
 <!-- # Bibliografía -->
 
 <!-- # Material de estudio -->
