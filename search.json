@@ -4,7 +4,7 @@
     "href": "clases/index.html",
     "title": "Clases",
     "section": "",
-    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, r.s.p. y tf2.\n\n\n\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y Gazebo.\n\n\n\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial\n\n\n\n\n\n12\n02/06\nOdometría: Cálculo de posición en base a modelo cinemático\n\n\n\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nRevisión temario clase anterior. Simulación de sensores en Gazebo"
+    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y Gazebo.\n\n\n\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial\n\n\n\n\n\n12\n02/06\nOdometría: Cálculo de posición en base a modelo cinemático\n\n\n\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nRevisión temario clase anterior. Simulación de sensores en Gazebo"
   },
   {
     "objectID": "clases/index.html#universidad-nacional-del-litoral-unl",
@@ -194,6 +194,55 @@
     "title": "Clase 05 - Laboratorio",
     "section": "",
     "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
+  },
+  {
+    "objectID": "clases/08/tres.html",
+    "href": "clases/08/tres.html",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Etiqueta raíz (todo el contenido se encuentra dentro)\n\n&lt;?xml version=\"1.0\"?&gt;\n\n&lt;robot name=\"mi_robot\"&gt;\n    ...\n    &lt;!-- Contenido URDF --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\n\n1 solo atributo: el nombre\n3 posibles geometrías: &lt;visual&gt;, &lt;collision&gt; y &lt;inertial&gt;\n\n&lt;link name=\"parteA_link\"&gt;\n    &lt;visual&gt;..&lt;/visual&gt;\n    &lt;collision&gt;..&lt;/collision&gt;\n    &lt;inertial&gt;..&lt;/inertial&gt; \n&lt;/link&gt;\n\n\n\nLink\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría:\n\nprisma:\n\n  &lt;box size=\"[largo-x] [ancho-y] [alto-z]\" /&gt;\n\ncilindro:\n\n  &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n\nesfera:\n\n  &lt;sphere radius=\"[radio]\" /&gt;\n\nmalla:\n\n  &lt;mesh filename=\"file://[nombre_del_archivo]\" /&gt;\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nGeometría: box, cylinder, sphere, mesh\n\n\n\n\n\n\n\n\n\nJoint\n\n\n\n2 atributos: el nombre y tipo\n2 elementos requeridos: link padre e hijo\nTipos:\n\nFija (fixed)\n\n&lt;joint name=\"parteA_joint\" type=\"fixed\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n&lt;/joint&gt;\n\nContinua (continuous)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n&lt;/joint&gt;\n\nRevolución (revolute)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n  &lt;limit lower=\"[min_rad]\" upper=\"[max_rad]\"\n      velocity=\"[rad_por_seg]\"\n      effort=\"[effort]\" /&gt;\n&lt;/joint&gt;\n\n\n\n\n\n\n\n\nArchivo principal: extensión ‘.urdf.xacro’ y contiene el tag robot con nombre\nArchivos a incluir: extensión ‘.xacro’ y solo contienen el tag robot\nPara incluir:\n\n    &lt;xacro:include filename=\"[nombre_archivo]\" /&gt;\n\n\n\n\nPropiedades xacro:property: Nombre y valor\n\n    &lt;xacro:property name=\"diametro\" value=\"2.1\" /&gt;\n\nOperaciones matemáticas y acceso a variables: ${..}\n\n    &lt;geometry type=\"cylinder\" radius=\"${diametro / 2}\" length=\"${nombre_variable}\" /&gt;\n\nArgumentos xacro:args: Nombre y valor por defecto\n\n    &lt;xacro:arg name=\"[nombre_argumento]\" default=\"[valor_defecto]\"/&gt;\n\n\n\n\n\n\nLuego podemos ejecutar el comando XACRO con el valor del argumento nombre_argumento:=[valor]\n\n\n\n\nBuscar paquetes $(find ..):\n\n    &lt;xacro:include filename=\"$(find [nombre_paquete])/[nombre_archivo].xacro\" /&gt;\n\n\n\n\nEtiqueta xacro:if para true y xacro:unless para false\n\n&lt;xacro:if value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;\n&lt;/xacro:if&gt;\n&lt;xacro:unless value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;\n&lt;/xacro:unless&gt;\n\n\n\n\nDefinir macro xacro:macro: Nombre y parámetros a recibir\n\n&lt;xacro:macro name=\"[nombre_macro]\" params=\"[param1] [param2]:=[valor_defecto]\"&gt;\n    &lt;!-- Codigo del macro: ejemplo con parámetros --&gt;\n    &lt;link name=\"${param1}\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"${param2}\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n&lt;/xacro:macro&gt;\n\nAplicar o ejecutar macro xacro:[nombre_macro] y los parámetros definidos:\n\n&lt;xacro:nombre_macro param1=\"[valor_param1]\" param2=\"[valor_param2]\" /&gt; \n\nSi ejecutamos el macro con los valores parteA_link y 1.0, la salida será:\n\n...\n    &lt;link name=\"parteA_link\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"1.0\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n...\n\n\n\n\nDesde consola\n  $ xacro [ubicacion_del_archivo/nombre_archivo.xacro.urdf]\nDesde launch\n\nImportar las librerías\n\nfrom launch.substitutions import Command, PathJoinSubstitution\nfrom launch_ros.substitutions import FindPackageShare\n\nUbicar el archivo y procesarlo\n\n  # Ubicación del paquete y del archivo URDF\n  urdf_path = PathJoinSubstitution(\n      [FindPackageShare(\"[nombre_paquete]\"),  \"urdf\", \"[nombre_archivo].urdf.xacro\"]\n  )\n\n  # Procesar archivo URDF\n  urdf = Command(['xacro ', urdf_path])\n\n\n\n\n\n\nSe agregan las carpetas urdf para los archivos de descripción\n\n\n\nEjemplo de estructura\n\n📂 paquete_description\n    📁 paquete_description\n    📂 launch\n        📄 description.launch.py\n        ...\n    📂 urdf\n        📄 description.urdf.xacro\n        📄 materials.xacro\n        📄 my_macro.xacro\n        📄 sim_sensor.xacro\n        ...\n    📄 package.xml\n    📄 setup.py\n    ...\n\n\nConfiguración de setup.py\n\n\n\nsetup.py\n\n  # ... Otros parámetros\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n    # Incluir todos los archivos de la carpeta urdf\n    (os.path.join('share', package_name, 'urdf'), glob('urdf/*'))\n    # Incluir todos los archivos de la carpeta meshes\n    (os.path.join('share', package_name, 'meshes'), glob('meshes/*'))\n  ],"
+  },
+  {
+    "objectID": "clases/08/tres.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/08/tres.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/08/tres.html#urdf",
+    "href": "clases/08/tres.html#urdf",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Etiqueta raíz (todo el contenido se encuentra dentro)\n\n&lt;?xml version=\"1.0\"?&gt;\n\n&lt;robot name=\"mi_robot\"&gt;\n    ...\n    &lt;!-- Contenido URDF --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\n\n1 solo atributo: el nombre\n3 posibles geometrías: &lt;visual&gt;, &lt;collision&gt; y &lt;inertial&gt;\n\n&lt;link name=\"parteA_link\"&gt;\n    &lt;visual&gt;..&lt;/visual&gt;\n    &lt;collision&gt;..&lt;/collision&gt;\n    &lt;inertial&gt;..&lt;/inertial&gt; \n&lt;/link&gt;\n\n\n\nLink\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría:\n\nprisma:\n\n  &lt;box size=\"[largo-x] [ancho-y] [alto-z]\" /&gt;\n\ncilindro:\n\n  &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n\nesfera:\n\n  &lt;sphere radius=\"[radio]\" /&gt;\n\nmalla:\n\n  &lt;mesh filename=\"file://[nombre_del_archivo]\" /&gt;\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nGeometría: box, cylinder, sphere, mesh\n\n\n\n\n\n\n\n\n\nJoint\n\n\n\n2 atributos: el nombre y tipo\n2 elementos requeridos: link padre e hijo\nTipos:\n\nFija (fixed)\n\n&lt;joint name=\"parteA_joint\" type=\"fixed\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n&lt;/joint&gt;\n\nContinua (continuous)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n&lt;/joint&gt;\n\nRevolución (revolute)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n  &lt;limit lower=\"[min_rad]\" upper=\"[max_rad]\"\n      velocity=\"[rad_por_seg]\"\n      effort=\"[effort]\" /&gt;\n&lt;/joint&gt;"
+  },
+  {
+    "objectID": "clases/08/tres.html#xacro",
+    "href": "clases/08/tres.html#xacro",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Archivo principal: extensión ‘.urdf.xacro’ y contiene el tag robot con nombre\nArchivos a incluir: extensión ‘.xacro’ y solo contienen el tag robot\nPara incluir:\n\n    &lt;xacro:include filename=\"[nombre_archivo]\" /&gt;\n\n\n\n\nPropiedades xacro:property: Nombre y valor\n\n    &lt;xacro:property name=\"diametro\" value=\"2.1\" /&gt;\n\nOperaciones matemáticas y acceso a variables: ${..}\n\n    &lt;geometry type=\"cylinder\" radius=\"${diametro / 2}\" length=\"${nombre_variable}\" /&gt;\n\nArgumentos xacro:args: Nombre y valor por defecto\n\n    &lt;xacro:arg name=\"[nombre_argumento]\" default=\"[valor_defecto]\"/&gt;\n\n\n\n\n\n\nLuego podemos ejecutar el comando XACRO con el valor del argumento nombre_argumento:=[valor]\n\n\n\n\nBuscar paquetes $(find ..):\n\n    &lt;xacro:include filename=\"$(find [nombre_paquete])/[nombre_archivo].xacro\" /&gt;\n\n\n\n\nEtiqueta xacro:if para true y xacro:unless para false\n\n&lt;xacro:if value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;\n&lt;/xacro:if&gt;\n&lt;xacro:unless value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;\n&lt;/xacro:unless&gt;\n\n\n\n\nDefinir macro xacro:macro: Nombre y parámetros a recibir\n\n&lt;xacro:macro name=\"[nombre_macro]\" params=\"[param1] [param2]:=[valor_defecto]\"&gt;\n    &lt;!-- Codigo del macro: ejemplo con parámetros --&gt;\n    &lt;link name=\"${param1}\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"${param2}\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n&lt;/xacro:macro&gt;\n\nAplicar o ejecutar macro xacro:[nombre_macro] y los parámetros definidos:\n\n&lt;xacro:nombre_macro param1=\"[valor_param1]\" param2=\"[valor_param2]\" /&gt; \n\nSi ejecutamos el macro con los valores parteA_link y 1.0, la salida será:\n\n...\n    &lt;link name=\"parteA_link\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"1.0\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n...\n\n\n\n\nDesde consola\n  $ xacro [ubicacion_del_archivo/nombre_archivo.xacro.urdf]\nDesde launch\n\nImportar las librerías\n\nfrom launch.substitutions import Command, PathJoinSubstitution\nfrom launch_ros.substitutions import FindPackageShare\n\nUbicar el archivo y procesarlo\n\n  # Ubicación del paquete y del archivo URDF\n  urdf_path = PathJoinSubstitution(\n      [FindPackageShare(\"[nombre_paquete]\"),  \"urdf\", \"[nombre_archivo].urdf.xacro\"]\n  )\n\n  # Procesar archivo URDF\n  urdf = Command(['xacro ', urdf_path])"
+  },
+  {
+    "objectID": "clases/08/tres.html#adaptación-del-paquete",
+    "href": "clases/08/tres.html#adaptación-del-paquete",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Se agregan las carpetas urdf para los archivos de descripción\n\n\n\nEjemplo de estructura\n\n📂 paquete_description\n    📁 paquete_description\n    📂 launch\n        📄 description.launch.py\n        ...\n    📂 urdf\n        📄 description.urdf.xacro\n        📄 materials.xacro\n        📄 my_macro.xacro\n        📄 sim_sensor.xacro\n        ...\n    📄 package.xml\n    📄 setup.py\n    ...\n\n\nConfiguración de setup.py\n\n\n\nsetup.py\n\n  # ... Otros parámetros\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n    # Incluir todos los archivos de la carpeta urdf\n    (os.path.join('share', package_name, 'urdf'), glob('urdf/*'))\n    # Incluir todos los archivos de la carpeta meshes\n    (os.path.join('share', package_name, 'meshes'), glob('meshes/*'))\n  ],"
+  },
+  {
+    "objectID": "clases/08/tres.html#robot_state_publisher",
+    "href": "clases/08/tres.html#robot_state_publisher",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "robot_state_publisher",
+    "text": "robot_state_publisher\n\nEjecutar desde consola\n\n    $ ros2 run robot_state_publisher robot_state_publisher\n                --ros-args -p robot_description:='&lt;robot_description&gt;'\n\nCargar desde launch\n\n    Node(\n        package = 'robot_state_publisher',\n        executable = 'robot_state_publisher',\n        parameters=[{\n            'robot_description': '&lt;robot_description&gt;',\n        }]\n    )"
+  },
+  {
+    "objectID": "clases/08/tres.html#joint_state_publisher_gui",
+    "href": "clases/08/tres.html#joint_state_publisher_gui",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "joint_state_publisher_gui",
+    "text": "joint_state_publisher_gui\n\nEjecutar desde consola\n\n    $ ros2 run joint_state_publisher_gui joint_state_publisher_gui\n\nCargar desde launch:\n\n    Node(\n        package = 'joint_state_publisher_gui',\n        executable = 'joint_state_publisher_gui',\n        output = 'screen',\n    )"
   },
   {
     "objectID": "clases/03/lab.html",
@@ -397,6 +446,216 @@
     "title": "Robótica",
     "section": "Compilación del paquete",
     "text": "Compilación del paquete\n\nCreación de paquetes:\n\n    ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\nHerramienta de compilación: colcon\n\n    colcon build [--symlink-install] [--packages-select &lt;nombre_paquete&gt;]\n\nDependencias:\n\n    rosdep update\n\n    rosdep install -i --from-path src --rosdistro jazzy -y\n\n\n\n\n\n\n\nEjecutar en la raíz del workspace"
+  },
+  {
+    "objectID": "clases/08/index.html#urdf-unified-robot-definition-format",
+    "href": "clases/08/index.html#urdf-unified-robot-definition-format",
+    "title": "Robótica",
+    "section": "URDF: Unified Robot Definition Format",
+    "text": "URDF: Unified Robot Definition Format\n\nPermite describir geometría y características del robot\n\n\n\nFormato XML: La información se representa a través de etiquetas anidadas\n\n\n\n\nEtiquetas principales: &lt;robot&gt;, &lt;link&gt;, &lt;joint&gt;\n\n\n\n\nDocumentación"
+  },
+  {
+    "objectID": "clases/08/index.html#urdf-2-elementos-fundamentales",
+    "href": "clases/08/index.html#urdf-2-elementos-fundamentales",
+    "title": "Robótica",
+    "section": "URDF: 2 Elementos fundamentales",
+    "text": "URDF: 2 Elementos fundamentales\n\n\nEslabones: &lt;link&gt;\n\n\n\n\nJuntas: &lt;joint&gt;\n\n\n\n\n\n \n\n\nLink \n\n\n \n\n\nJoint"
+  },
+  {
+    "objectID": "clases/08/index.html#urdf-links-y-joints",
+    "href": "clases/08/index.html#urdf-links-y-joints",
+    "title": "Robótica",
+    "section": "URDF: links y joints",
+    "text": "URDF: links y joints\n\n\n\n\n\n\n\nMuy importante\n\n\nIdentificar de forma conveniente como dividir la estructura física del robot en links y joints\n\n\n\n\n\nUna parte que se mueve relativa a otra \nUna parte que no se mueve pero es conveniente conocer su marco de referencia \nCadena de transformaciones para los casos anteriores"
+  },
+  {
+    "objectID": "clases/08/index.html#etiqueta-robot..robot",
+    "href": "clases/08/index.html#etiqueta-robot..robot",
+    "title": "Robótica",
+    "section": "Etiqueta <robot>..<\\robot>",
+    "text": "Etiqueta &lt;robot&gt;..&lt;\\robot&gt;\n\nEtiqueta raíz (todo el contenido se encuentra dentro)\n1 solo atributo: el nombre\n\n\n&lt;?xml version=\"1.0\"?&gt;\n\n&lt;robot name=\"mi_robot\"&gt;\n    ...\n    &lt;!-- Contenido --&gt;\n    ... \n&lt;/robot&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#etiqueta-link..link",
+    "href": "clases/08/index.html#etiqueta-link..link",
+    "title": "Robótica",
+    "section": "Etiqueta <link>..</link>",
+    "text": "Etiqueta &lt;link&gt;..&lt;/link&gt;\n\n1 solo atributo: el nombre\n\n\n\n\n\n\n\nPor convención el nombre tiene sufijo ‘_link’\n\n\n\n\n\n3 posibles geometrías: &lt;visual&gt;, &lt;collision&gt; y &lt;inertial&gt;\n\n&lt;link name=\"parteA_link\"&gt;\n    &lt;visual&gt;..&lt;/visual&gt;\n    &lt;collision&gt;..&lt;/collision&gt;\n    &lt;inertial&gt;..&lt;/inertial&gt; \n&lt;/link&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#etiqueta-link..link-1",
+    "href": "clases/08/index.html#etiqueta-link..link-1",
+    "title": "Robótica",
+    "section": "Etiqueta <link>..</link>",
+    "text": "Etiqueta &lt;link&gt;..&lt;/link&gt;\n\n\n\nGeometría visual &lt;visual&gt;..&lt;/visual&gt;\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n            rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\n\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\n\n\nGeometría: prisma\n\n    &lt;box size=\"[largo-x] [ancho-y] [alto-z]\" /&gt;\n\n\n\nEjemplo:\n&lt;visual&gt;\n    &lt;origin xyz=\"0.0 0.0 0.0\" rpy=\"0.0 0.0 0.0\"/&gt;\n    &lt;geometry&gt;\n        &lt;box size=\"0.1 0.2 0.3\" /&gt;\n    &lt;/geometry&gt;\n    &lt;material name=\"Cyan\"&gt;\n        &lt;color rgba=\"0 1.0 1.0 1\"/&gt;\n    &lt;/material&gt;\n&lt;/visual&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#etiqueta-link..link-2",
+    "href": "clases/08/index.html#etiqueta-link..link-2",
+    "title": "Robótica",
+    "section": "Etiqueta <link>..</link>",
+    "text": "Etiqueta &lt;link&gt;..&lt;/link&gt;\n\n\n\nGeometría visual &lt;visual&gt;..&lt;/visual&gt;\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n            rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría: cilindro\n\n    &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n\n\nEjemplo:\n&lt;visual&gt;\n    &lt;origin xyz=\"0.0 0.0 0.0\" rpy=\"0.0 0.0 0.0\"/&gt;\n    &lt;geometry&gt;\n        &lt;cylinder radius=\"0.1\" length=\"0.1\" /&gt;\n    &lt;/geometry&gt;\n    &lt;material name=\"Silver\"&gt;\n        &lt;color rgba=\"0.79 0.82 0.93 1\"/&gt;\n    &lt;/material&gt;\n&lt;/visual&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#etiqueta-link..link-3",
+    "href": "clases/08/index.html#etiqueta-link..link-3",
+    "title": "Robótica",
+    "section": "Etiqueta <link>..</link>",
+    "text": "Etiqueta &lt;link&gt;..&lt;/link&gt;\n\n\n\nGeometría visual &lt;visual&gt;..&lt;/visual&gt;\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n            rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría: esfera\n\n    &lt;sphere radius=\"[radio]\" /&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#etiqueta-link..link-4",
+    "href": "clases/08/index.html#etiqueta-link..link-4",
+    "title": "Robótica",
+    "section": "Etiqueta <link>..</link>",
+    "text": "Etiqueta &lt;link&gt;..&lt;/link&gt;\n\n\n\nGeometría visual &lt;visual&gt;..&lt;/visual&gt;\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n            rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría: malla\n\n    &lt;mesh filename=\"file://[nombre_del_archivo]\" /&gt;\n\n\nEjemplo:\n&lt;visual&gt;\n    &lt;origin xyz=\"0.0 0.0 0.0\" rpy=\"0.0 0.0 0.0\"/&gt;\n    &lt;geometry&gt;\n        &lt;mesh filename=\"file:///gear.stl\" scale=\"0.01 0.01 0.01\"/&gt;\n    &lt;/geometry&gt;\n    &lt;material name=\"Orange\"&gt;\n        &lt;color rgba=\"1 0.3 0.1 1\"/&gt;\n    &lt;/material&gt;\n&lt;/visual&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#etiqueta-link..link-5",
+    "href": "clases/08/index.html#etiqueta-link..link-5",
+    "title": "Robótica",
+    "section": "Etiqueta <link>..</link>",
+    "text": "Etiqueta &lt;link&gt;..&lt;/link&gt;\n\nGeometría para simulación &lt;collision&gt;..&lt;/collision&gt;\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\n\n\nGeometría: box, cylinder, sphere, mesh\n\n    &lt;box size=\"[largo-x] [ancho-y] [alto-z]\" /&gt;\n\n    &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n\n    &lt;sphere radius=\"[radio]\" /&gt;\n\n    &lt;mesh filename=\"file://[nombre_del_archivo]\" /&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#etiqueta-joint..joint",
+    "href": "clases/08/index.html#etiqueta-joint..joint",
+    "title": "Robótica",
+    "section": "Etiqueta <joint>..</joint>",
+    "text": "Etiqueta &lt;joint&gt;..&lt;/joint&gt;\n\n2 atributos: el nombre y tipo\n\n\n\n\n\n\n\nPor convención el nombre tiene sufijo ‘_joint’\n\n\n\n\n\n2 elementos requeridos: link padre e hijo\n\n&lt;joint name=\"parteB_joint\" type=\"tipo\"&gt;\n    &lt;parent link=\"parteA_link\"/&gt;\n    &lt;child link=\"parteB_link\"/&gt;\n    ...\n&lt;/joint&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#tipos-de-juntas",
+    "href": "clases/08/index.html#tipos-de-juntas",
+    "title": "Robótica",
+    "section": "Tipos de juntas",
+    "text": "Tipos de juntas\n\n\n\n\nFija (fixed)\n\n\n\n\n1 elemento: &lt;origin .. /&gt;\n\n&lt;joint name=\"parteA_joint\" type=\"fixed\"&gt;\n    &lt;parent link=\"padre_link\"/&gt;\n    &lt;child link=\"parteA_link\"/&gt;\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n        rpy=\"[roll] [pitch] [yaw]\"/&gt;\n&lt;/joint&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#tipos-de-juntas-1",
+    "href": "clases/08/index.html#tipos-de-juntas-1",
+    "title": "Robótica",
+    "section": "Tipos de juntas",
+    "text": "Tipos de juntas\n\n\n\nFija (fixed)\nContinua (continuous)\n\n\n\n2 elementos: &lt;origin .. /&gt;\n&lt;axis ../&gt;\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n    &lt;parent link=\"padre_link\"/&gt;\n    &lt;child link=\"parteA_link\"/&gt;\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n        rpy=\"[roll] [pitch] [yaw]\"/&gt;\n    &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n&lt;/joint&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#tipos-de-juntas-2",
+    "href": "clases/08/index.html#tipos-de-juntas-2",
+    "title": "Robótica",
+    "section": "Tipos de juntas",
+    "text": "Tipos de juntas\n\n\n\nFija (fixed)\nContinua (continuous)\nRevolución (revolute)\n\n\n\n3 elementos: &lt;origin .. /&gt;\n&lt;axis ../&gt; y &lt;limit ../&gt;\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n    &lt;parent link=\"padre_link\"/&gt;\n    &lt;child link=\"parteA_link\"/&gt;\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n        rpy=\"[roll] [pitch] [yaw]\"/&gt;\n    &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n    &lt;limit lower=\"[min_rad]\" upper=\"[max_rad]\"\n        velocity=\"[rad_por_seg]\"\n        effort=\"[effort]\" /&gt;\n&lt;/joint&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#tipos-de-juntas-3",
+    "href": "clases/08/index.html#tipos-de-juntas-3",
+    "title": "Robótica",
+    "section": "Tipos de juntas",
+    "text": "Tipos de juntas\n\n\n\nFija (fixed)\nContinua (continuous)\nRevolución (revolute)\nPrismática (prismatic)"
+  },
+  {
+    "objectID": "clases/08/index.html#xacro-macros-en-xml",
+    "href": "clases/08/index.html#xacro-macros-en-xml",
+    "title": "Robótica",
+    "section": "XACRO: Macros en XML",
+    "text": "XACRO: Macros en XML\n\nFacilita la codificación de URDF\nHerramienta para dividir código y evitar duplicar\nProvee estructuras de ‘programacion’\n\n\n\nDocumentación"
+  },
+  {
+    "objectID": "clases/08/index.html#xacro-macros-en-xml-1",
+    "href": "clases/08/index.html#xacro-macros-en-xml-1",
+    "title": "Robótica",
+    "section": "XACRO: Macros en XML",
+    "text": "XACRO: Macros en XML\n\nSe necesita un paso de compilación:\n  $ xacro description.urdf.xacro\n\n\n\n\n\n\n\n\n\nActualizar dependencias: &lt;exec_depend&gt;xacro&lt;/exec_depend&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#partición-de-los-componentes",
+    "href": "clases/08/index.html#partición-de-los-componentes",
+    "title": "Robótica",
+    "section": "Partición de los componentes",
+    "text": "Partición de los componentes\n\n\n\nLa geometría principal (links y joints)\nMateriales\nSensores\nSimulador (y parámetros de simulación)\nMacros\n\n\n📂 paquete_description\n    📁 paquete_description\n    📂 launch\n        📄 description.launch.py\n        ...\n    📂 urdf\n        📄 description.urdf.xacro\n        📄 materials.xacro\n        📄 my_macro.xacro\n        📄 sim_sensor.xacro\n        ...\n    📄 package.xml\n    📄 setup.py\n    ..."
+  },
+  {
+    "objectID": "clases/08/index.html#inclusión-de-archivos",
+    "href": "clases/08/index.html#inclusión-de-archivos",
+    "title": "Robótica",
+    "section": "Inclusión de archivos",
+    "text": "Inclusión de archivos\n\nArchivo principal:\n\nse lo nombre con extensión ‘.urdf.xacro’\ncontiene el tag robot con nombre\n\nArchivos incluidos:\n\nextensión ‘.xacro’\nsolo contienen el tag robot\n\n\n\n\n\n\nSe incluyen las partes mediante el tag &lt;xacro:include .. /&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#ejemplo-xacroinclude",
+    "href": "clases/08/index.html#ejemplo-xacroinclude",
+    "title": "Robótica",
+    "section": "Ejemplo xacro:include",
+    "text": "Ejemplo xacro:include\n\n\n\nmaterials.xacro\n\n&lt;?xml version=\"1.0\"?&gt;\n&lt;robot xmlns:xacro=\"http://www.ros.org/wiki/xacro\" &gt;\n    &lt;material name=\"Orange\"&gt;\n        &lt;color rgba=\"1 0.3 0.1 1\"/&gt;\n    &lt;/material&gt;\n&lt;/robot&gt;\n\n\n\n\n\n\n\ndescription.urdf.xacro\n\n&lt;?xml version=\"1.0\"?&gt;\n&lt;robot name=\"MyBot\" ...&gt;\n    &lt;xacro:include filename=\"materials.xacro\" /&gt;\n    ...\n    &lt;link name=\"base_link\"&gt;\n        &lt;visual&gt;\n            ...\n            &lt;geometry&gt; ... &lt;/geometry&gt;\n            &lt;material name=\"Orange\"&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n    ...\n&lt;/robot&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#parametrización-de-atributos",
+    "href": "clases/08/index.html#parametrización-de-atributos",
+    "title": "Robótica",
+    "section": "Parametrización de atributos",
+    "text": "Parametrización de atributos\n\nOperaciones matemáticas: ${..}\nPropiedades xacro:property: Nombre y valor\n\n\n&lt;?xml version=\"1.0\"?&gt;\n&lt;robot name=\"MyBot\" ...&gt;\n    &lt;xacro:property name=\"diametro\" value=\"2.1\" /&gt;\n    &lt;xacro:property name=\"ancho\" value=\"4.5\" /&gt;\n    &lt;xacro:property name=\"alpha\" value=\"${30/180*pi}\" /&gt;\n    ...\n        &lt;geometry type=\"cylinder\"\n            radius=\"${diametro / 2}\" length=\"${ancho}\" /&gt;\n        ...\n        &lt;origin xyz=\"0 0 0\" rpy=\"0 0 ${alpha}\" /&gt;\n    ...\n&lt;/robot&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#comandos-de-rospack",
+    "href": "clases/08/index.html#comandos-de-rospack",
+    "title": "Robótica",
+    "section": "Comandos de rospack",
+    "text": "Comandos de rospack\n\nArgumentos xacro:args: Nombre y valor por defecto\n\n    &lt;xacro:arg name=\"arg1\" default=\"false\"/&gt;\n\n\nBuscar paquetes $(find ..):\n\n    &lt;xacro:include filename=\"$(find &lt;nombre_paquete&gt;)/&lt;nombre_archivo&gt;.xacro\" /&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#bloques-condicionales",
+    "href": "clases/08/index.html#bloques-condicionales",
+    "title": "Robótica",
+    "section": "Bloques condicionales",
+    "text": "Bloques condicionales\n\nEtiqueta xacro:if para true y xacro:unless para false\n\n&lt;xacro:if value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;\n&lt;/xacro:if&gt;\n&lt;xacro:unless value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;\n&lt;/xacro:unless&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#macros",
+    "href": "clases/08/index.html#macros",
+    "title": "Robótica",
+    "section": "Macros",
+    "text": "Macros\n\nPorciones de código a reutilizar (funciones)\nxacro:macro: Nombre y parámetros a recibir\n\n&lt;xacro:macro name=\"rueda_esferica\" params=\"prefijo link_padre radio pos_x:=0 pos_y:=0 pos_z:=0\"&gt;\n    &lt;xacro:property name=\"nombre_link\" value=\"${prefijo}_link\" /&gt;\n    &lt;link name=\"${nombre_link}\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"${radio}\" /&gt;\n            &lt;/geometry&gt;\n            &lt;material name=\"black\" /&gt;\n        &lt;/visual&gt;\n        ...\n    &lt;/link&gt;\n    &lt;joint name=\"${prefijo}_joint\" type=\"fixed\"&gt;\n        &lt;parent link=\"${link_padre}$\"/&gt;\n        &lt;child link=\"${nombre_link}\"/&gt;\n        &lt;origin xyz=\"${pos_x} ${pos_y} ${pos_z}\" rpy=\"0 0 0\"/&gt;\n    &lt;/joint&gt;\n&lt;/xacro:macro&gt;\n\nAplicación:\n\n&lt;xacro:rueda_esferica prefix=\"rueda_delantera\" link_padre=\"base_link\" radio=\"1.0\" pos_x=\"0.5\" /&gt;"
+  },
+  {
+    "objectID": "clases/08/index.html#similitudes-entre",
+    "href": "clases/08/index.html#similitudes-entre",
+    "title": "Robótica",
+    "section": "Similitudes entre",
+    "text": "Similitudes entre\n\n\n\n\n\n\n\n\nURDF\n\ntf2\n\n\n\n\narbol de ..\n\narbol de ..\n\n\nlinks\n\nframes\n\n\nconectados por ..\n\nconectados por ..\n\n\njoints\n\ntransforms\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nInterpretando los links y joints del robot description puedo publicar los frames y tf correspondientes"
+  },
+  {
+    "objectID": "clases/08/index.html#paquete-robot_state_publisher",
+    "href": "clases/08/index.html#paquete-robot_state_publisher",
+    "title": "Robótica",
+    "section": "Paquete robot_state_publisher",
+    "text": "Paquete robot_state_publisher\n\nDescripción del robot ➡️ /robot_description\nJuntas fijas (transformaciones estáticas) ➡️ /tf_static\nJuntas móviles ➡️ /joint_states ➡️ transformaciones dinámicas ➡️ /tf"
+  },
+  {
+    "objectID": "clases/08/index.html#topic-joint_states",
+    "href": "clases/08/index.html#topic-joint_states",
+    "title": "Robótica",
+    "section": "Topic /joint_states",
+    "text": "Topic /joint_states\n\nListado de juntas con sus respectivos estados:\n\n        sensor_msgs/JointState\n        ├── std_msgs/Header header\n        ├── string[] name\n        ├── float64[] position\n        ├── float64[] velocity\n        └── float64[] effort\n\n\n\n\n\n\nQuién publica en el /joint_states?"
+  },
+  {
+    "objectID": "clases/08/index.html#sistema-completo",
+    "href": "clases/08/index.html#sistema-completo",
+    "title": "Robótica",
+    "section": "Sistema completo",
+    "text": "Sistema completo\n\nURDF + XACRO + robot_state_publisher + joint_state_publisher_gui"
+  },
+  {
+    "objectID": "clases/08/index.html#comandos-de-cada-paquete",
+    "href": "clases/08/index.html#comandos-de-cada-paquete",
+    "title": "Robótica",
+    "section": "Comandos de cada paquete",
+    "text": "Comandos de cada paquete\n\nrobot_state_publisher\n\n    $ ros2 run robot_state_publisher robot_state_publisher\n                --ros-args -p robot_description:='&lt;robot_description&gt;'\n\njoint_state_publisher_gui\n\n    $ ros2 run joint_state_publisher_gui joint_state_publisher_gui"
+  },
+  {
+    "objectID": "clases/08/index.html#taller-de-resolución-1",
+    "href": "clases/08/index.html#taller-de-resolución-1",
+    "title": "Robótica",
+    "section": "Taller de resolución",
+    "text": "Taller de resolución\nEjercicios 1 y 2"
   },
   {
     "objectID": "clases/05/index.html#resumen-clase-04",
