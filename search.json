@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "clases/index.html",
-    "href": "clases/index.html",
-    "title": "Clases",
-    "section": "",
-    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y Gazebo.\n\n\n\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial\n\n\n\n\n\n12\n02/06\nOdometría: Cálculo de posición en base a modelo cinemático\n\n\n\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nRevisión temario clase anterior. Simulación de sensores en Gazebo"
-  },
-  {
-    "objectID": "clases/index.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/index.html#universidad-nacional-del-litoral-unl",
-    "title": "Clases",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
-  },
-  {
     "objectID": "clases/02/index.html#robot-operating-system-2",
     "href": "clases/02/index.html#robot-operating-system-2",
     "title": "Robótica",
@@ -56,6 +42,167 @@
     "text": "Laboratorio\n\nInstalación de ROS2\nEmisor / Receptor\nComandos para análisis de nodos, topics y mensajes"
   },
   {
+    "objectID": "clases/01/index.html#organización-de-la-materia",
+    "href": "clases/01/index.html#organización-de-la-materia",
+    "title": "Robótica",
+    "section": "Organización de la materia",
+    "text": "Organización de la materia\n\nDocente: Tec. Agustín Capovilla\nCursado: Lunes de 17:00 a 19:30 (T/P) 1\nComunicación: via email acapovilla@sinc.unl.edu.ar\nRepositorio: acapovilla.github.io/robotica-2025\n\nclases de consulta a coordinar"
+  },
+  {
+    "objectID": "clases/01/index.html#evaluaciones",
+    "href": "clases/01/index.html#evaluaciones",
+    "title": "Robótica",
+    "section": "Evaluaciones",
+    "text": "Evaluaciones\n\n3 trabajos prácticos integradores\n\n\n\n\n\n\n\n\nCon sus respectivas instancias de recuperación"
+  },
+  {
+    "objectID": "clases/01/index.html#evaluaciones-1",
+    "href": "clases/01/index.html#evaluaciones-1",
+    "title": "Robótica",
+    "section": "Evaluaciones",
+    "text": "Evaluaciones\n\n3 trabajos prácticos integradores\n\nCodiciones de aprobación\n\nPara regularizar\n\nAprobación de al menos 2\n\nPara promocionar\n\nAprobación de todos los trabajos con mínimo de 60% + promedio mínimo de 70%"
+  },
+  {
+    "objectID": "clases/01/index.html#programa",
+    "href": "clases/01/index.html#programa",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales"
+  },
+  {
+    "objectID": "clases/01/index.html#programa-1",
+    "href": "clases/01/index.html#programa-1",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales\n\nBloque 0\n\nRobot Operating System (ROS 2)"
+  },
+  {
+    "objectID": "clases/01/index.html#programa-2",
+    "href": "clases/01/index.html#programa-2",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales\n\nBloque 1\n\nCinemática\nSimulación y control"
+  },
+  {
+    "objectID": "clases/01/index.html#programa-3",
+    "href": "clases/01/index.html#programa-3",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales\n\nBloque 2\n\nPercepción\nLocalización y mapeo"
+  },
+  {
+    "objectID": "clases/01/index.html#programa-4",
+    "href": "clases/01/index.html#programa-4",
+    "title": "Robótica",
+    "section": "Programa",
+    "text": "Programa\n\n4 bloques principales\n\nBloque 3\n\nPlaneamiento\nNavegación"
+  },
+  {
+    "objectID": "clases/01/index.html#herramientas-de-trabajo",
+    "href": "clases/01/index.html#herramientas-de-trabajo",
+    "title": "Robótica",
+    "section": "Herramientas de trabajo",
+    "text": "Herramientas de trabajo\n\nFramework de robótica: ROS2\nSimulador: Gazebo\nLenguaje de programación: C++ / Python\nIDE: VSCode (potencial en sus extensiones)\nAdicionales:\n\nContenedores: Docker\nControl de versiones: Git (+ GitHub o GitLab)\nEscritura: Latex, Markdown\nDiagramas: Draw.io"
+  },
+  {
+    "objectID": "clases/01/index.html#bibliografía-recursos-oficiales",
+    "href": "clases/01/index.html#bibliografía-recursos-oficiales",
+    "title": "Robótica",
+    "section": "Bibliografía Recursos Oficiales",
+    "text": "Bibliografía Recursos Oficiales\n\nROS 2 Documentation, Tutorials\nGazebo\nrospy, ros_control, Nav2\nentre otros…\n\nMaterial adicional recomendado\n\nArticulated Robotics\nThe Construct\nETH Zürich - Programming for Robotic\nAutomatic Addison\n\nBibliografía (muy) complementaria\n\nSpringer Handbook of Robotics\nRobotic Systems (draft), Kris Hauser"
+  },
+  {
+    "objectID": "clases/09/tres.html",
+    "href": "clases/09/tres.html",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update && sudo apt upgrade -y\n\n\n\nInstalar la versión de Gazebo por defecto para ROS Jazzy\n    $ sudo apt-get install ros-jazzy-ros-gz\nTraducido de gazebosim.org\n\n\n\n\n\n\n\nNote\n\n\n\nRecuerda actualizar las dependencias. Gazebo: ros_gz y ROS2 control: gz_ros2_control\n\n\n\n\n\n\n\n\n    $ ros2 launch ros_gz_sim gz_sim.launch.py gz_args:=empty.sdf\n\n\n\n    IncludeLaunchDescription(\n        PythonLaunchDescriptionSource(\n            PathJoinSubstitution([\n                FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py'\n            ]),\n        ),\n        launch_arguments={\n            'gz_args': '-r empty.sdf',\n            'on_exit_shutdown': 'True'\n        }.items(),\n    ),\n\n\n\n\n\n\n&lt;xacro:inertial_box mass=\"[masa_kg]\" x=\"[largo]\" y=\"[ancho]\" z=\"[alto]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_box&gt;\n\n\n\n&lt;xacro:inertial_cylinder mass=\"[masa_kg]\" radius=\"[radio]\" length=\"[ancho]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_cylinder&gt;\n\n\n\n&lt;xacro:inertial_sphere mass=\"[masa_kg]\" radius=\"[radio]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_sphere&gt;\n\n\n\n&lt;dummy_inertial /&gt;\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nRecuerda que el URDF debe estar disponible en el topic \\robot_description y cumplir con todos los requerimientos de Gazebo:\n\nGeometrías de colisión e inercias definidas\nTodos los links y joints nombrados\nColores y materiales (opcional)\n\n\n\n\n\n    $ ros2 run ros_gz_sim create -topic robot_description\n        -entity &lt;nombre_robot&gt;\n\n\n\n    Node(\n        package=\"ros_gz_sim\",\n        executable=\"create\",\n        arguments=[\n            \"-entity\", \"&lt;nombre_robot&gt;\",\n            \"-topic\", \"robot_description\",\n        ],\n        output=\"screen\",\n    ),"
+  },
+  {
+    "objectID": "clases/09/tres.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/09/tres.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/09/tres.html#instalación-de-gazebo",
+    "href": "clases/09/tres.html#instalación-de-gazebo",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update && sudo apt upgrade -y\n\n\n\nInstalar la versión de Gazebo por defecto para ROS Jazzy\n    $ sudo apt-get install ros-jazzy-ros-gz\nTraducido de gazebosim.org\n\n\n\n\n\n\n\nNote\n\n\n\nRecuerda actualizar las dependencias. Gazebo: ros_gz y ROS2 control: gz_ros2_control"
+  },
+  {
+    "objectID": "clases/09/tres.html#ejecutar-gazebo",
+    "href": "clases/09/tres.html#ejecutar-gazebo",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "$ ros2 launch ros_gz_sim gz_sim.launch.py gz_args:=empty.sdf\n\n\n\n    IncludeLaunchDescription(\n        PythonLaunchDescriptionSource(\n            PathJoinSubstitution([\n                FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py'\n            ]),\n        ),\n        launch_arguments={\n            'gz_args': '-r empty.sdf',\n            'on_exit_shutdown': 'True'\n        }.items(),\n    ),"
+  },
+  {
+    "objectID": "clases/09/tres.html#macros-de-inercia-inertial_macros.xacro",
+    "href": "clases/09/tres.html#macros-de-inercia-inertial_macros.xacro",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "&lt;xacro:inertial_box mass=\"[masa_kg]\" x=\"[largo]\" y=\"[ancho]\" z=\"[alto]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_box&gt;\n\n\n\n&lt;xacro:inertial_cylinder mass=\"[masa_kg]\" radius=\"[radio]\" length=\"[ancho]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_cylinder&gt;\n\n\n\n&lt;xacro:inertial_sphere mass=\"[masa_kg]\" radius=\"[radio]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_sphere&gt;\n\n\n\n&lt;dummy_inertial /&gt;"
+  },
+  {
+    "objectID": "clases/09/tres.html#cargar-robot-en-gazebo",
+    "href": "clases/09/tres.html#cargar-robot-en-gazebo",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Warning\n\n\n\nRecuerda que el URDF debe estar disponible en el topic \\robot_description y cumplir con todos los requerimientos de Gazebo:\n\nGeometrías de colisión e inercias definidas\nTodos los links y joints nombrados\nColores y materiales (opcional)\n\n\n\n\n\n    $ ros2 run ros_gz_sim create -topic robot_description\n        -entity &lt;nombre_robot&gt;\n\n\n\n    Node(\n        package=\"ros_gz_sim\",\n        executable=\"create\",\n        arguments=[\n            \"-entity\", \"&lt;nombre_robot&gt;\",\n            \"-topic\", \"robot_description\",\n        ],\n        output=\"screen\",\n    ),"
+  },
+  {
+    "objectID": "clases/09/tres.html#definición-de-hardware-simulado-y-las-interfaces",
+    "href": "clases/09/tres.html#definición-de-hardware-simulado-y-las-interfaces",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "Definición de hardware simulado y las interfaces",
+    "text": "Definición de hardware simulado y las interfaces\n\nDefinir un hardware simulado con &lt;hardware&gt;\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    &lt;hardware&gt;\n        &lt;plugin&gt;gz_ros2_control/GazeboSimSystem&lt;/plugin&gt;\n    &lt;/hardware&gt;\n    ...\n&lt;/ros2_control&gt;\n\n\nPara cada junta &lt;joint&gt; definir las interfaces\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    &lt;hardware&gt;\n        &lt;plugin&gt;gz_ros2_control/GazeboSimSystem&lt;/plugin&gt;\n    &lt;/hardware&gt;\n    &lt;joint name=\"[nombre_junta]\"&gt;\n        &lt;!-- Interfaces --&gt;\n    &lt;/joint&gt;\n&lt;/ros2_control&gt;\n\nInterfaces de estado con &lt;state_interface .. /&gt;\n\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    ...\n    &lt;joint name=\"[nombre_junta]\"&gt;\n        &lt;!-- Interfaz de estado de posición --&gt;\n        &lt;state_interface name=\"position\" /&gt;\n        &lt;!-- Interfaz de estado de velocidad --&gt;\n        &lt;state_interface name=\"velocity\" /&gt;\n        &lt;!-- Interfaz de estado de esfuerzo --&gt;\n        &lt;state_interface name=\"effort\" /&gt;\n    &lt;/joint&gt;\n    ...\n&lt;/ros2_control&gt;\n\nInterfaces de comando &lt;command_interface .. /&gt;\n\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    ...\n    &lt;joint name=\"[nombre_junta]\"&gt;\n        &lt;!-- Interfaz de estado de posición --&gt;\n        &lt;command_interface name=\"position\" /&gt;\n        &lt;!-- Interfaz de estado de velocidad --&gt;\n        &lt;command_interface name=\"velocity\" /&gt;\n        &lt;!-- Interfaz de estado de esfuerzo --&gt;\n        &lt;command_interface name=\"effort\" /&gt;\n    &lt;/joint&gt;\n    ...\n&lt;/ros2_control&gt;\n\n\n\n\n\n\nNote\n\n\n\nAdicionalmente las interfaces pueden recibir parámetros:\n    &lt;param name=\"initial_value\"&gt;{valor inicial}&lt;/param&gt;\n    &lt;param name=\"min\"&gt;{limite_minimo}&lt;/param&gt;\n    &lt;param name=\"max\"&gt;{limite_maximo}&lt;/param&gt;"
+  },
+  {
+    "objectID": "clases/09/tres.html#definir-controladores-para-ros2_control",
+    "href": "clases/09/tres.html#definir-controladores-para-ros2_control",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "Definir controladores para ros2_control",
+    "text": "Definir controladores para ros2_control\n\nTipos de controladores:\n\nPublicar estado de las juntas: joint_state_broadcaster/JointStateBroadcaster\nControladr la velocidad de la junta: velocity_controllers/JointGroupVelocityController\n\nMediante un archivo de configuración YAML\n\ncontroller_manager:\n  ros__parameters:\n    update_rate: 30\n    use_sim_time: true\n\n    {nombre_controlador}:\n        type: {tipo_controlador}\n    ...\n\nConfiguraciones velocity_controllers/JointGroupVelocityController\n{nombre_controlador}:\n  ros__parameters:\n    joints:\n        - {nombre_junta}\n\n    command_interfaces:\n        # Según corresponda (las 3 o alguna)\n        - {velocity}\n        - {position}\n        - {effort}\n\n    state_interfaces:\n        # Según corresponda (las 3 o alguna)\n        - {velocity}\n        - {position}\n        - {effort}"
+  },
+  {
+    "objectID": "clases/09/tres.html#cargar-el-plugin-de-gz_ros2_control",
+    "href": "clases/09/tres.html#cargar-el-plugin-de-gz_ros2_control",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "Cargar el plugin de gz_ros2_control",
+    "text": "Cargar el plugin de gz_ros2_control\n\nCargar el plugin con un archivo de configuración adicional\n\n&lt;gazebo&gt;\n    &lt;plugin filename=\"gz_ros2_control-system\"\n            name=\"gz_ros2_control::GazeboSimROS2ControlPlugin\"&gt;\n        &lt;parameters&gt;\n            $(find [nombre_paquete])/config/[nombre_archivo].yaml\n        &lt;/parameters&gt;\n    &lt;/plugin&gt;\n&lt;/gazebo&gt;"
+  },
+  {
+    "objectID": "clases/09/tres.html#cargar-controladores",
+    "href": "clases/09/tres.html#cargar-controladores",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "Cargar controladores",
+    "text": "Cargar controladores\n\nDesde la linea de comando\n    $ ros2 control load_controller --set-state active\n        &lt;nombre_controlador&gt; &lt;archivo_parametros&gt;\n\n\nDesde archivo launch\n    ExecuteProcess(\n        cmd=['ros2', 'control', 'load_controller',\n             '--set-state', 'active',\n             '&lt;nombre_controlador&gt;'],\n        output='screen'\n    )"
+  },
+  {
+    "objectID": "clases/05/lab.html",
+    "href": "clases/05/lab.html",
+    "title": "Clase 05 - Laboratorio",
+    "section": "",
+    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
+  },
+  {
+    "objectID": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 05 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
+    "href": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
+    "title": "Clase 05 - Laboratorio",
+    "section": "",
+    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
+  },
+  {
     "objectID": "clases/04/lab.html",
     "href": "clases/04/lab.html",
     "title": "Clase 04 - Laboratorio",
@@ -75,6 +222,34 @@
     "title": "Clase 04 - Laboratorio",
     "section": "",
     "text": "Paso inicial\n\n\n\nCreación del workspace\n\n\n\nCrear una carpeta para el workspace (como por ejemplo robotica-2025) y dentro, crear la carpeta src:\n\n\n📂 ...\n   📂 robotica-2025\n       📁 src\n...\n\n\n\n\n\n\n\nRecomendación\n\n\n\nRealizar este paso solo por cada proyecto individual\n\n\n\n\n\n  $ ros2 pkg create --build-type ament_python &lt;nombre_paquete&gt;\n\n\n\n\n\n\n\nDentro de workspace/src\n\n\n\n\n    $ ros2 pkg create --build-type ament_python clase_04\nEsto generará la estructura de carpetas correspondientes para un paquete de python:\n\n📂 src\n  📂 clase_04\n      📂 clase_04\n          📄 __init__.py\n  📂 resource\n      📄 clase_04\n  📁 test\n         ...\n  📄 package.xml\n  ⚙️ setup.cfg\n  📄 setup.py\n\n\n\n\n\n\n\nCompletar la información adicional en los respectivos archivos package.xml y setup.py\n\n\n\n\n\n    $ colcon build\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\n\n\nCuando quieras compilar un solo paquete usa la opción --packages-select\n\n\n\nSe generarán las carpetas adicionales en el workspace:\n\n📂 ...\n    📂 robotica-2025\n        📁 src\n        📁 build      ⬅️\n        📁 install    ⬅️\n        📁 log        ⬅️\n...\n\n\n\n\n\n\n\n\n\nimport rclpy\n\n\n\nrclpy.init(args=args)\n\n\n\n\n  rclpy.create_node('&lt;nombre_nodo&gt;')\n\n\nnodo = rclpy.create_node('publicador')\n\n\n\n\n  &lt;nodo&gt;.create_publisher(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\npub = nodo.create_publisher(String, 'chat', 10)\n\n\n\n\n  &lt;nodo&gt;.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\ntimer = nodo.create_timer(1, timer_callback)\n\n\n\n\n  rclpy.spin(&lt;nodo&gt;)\n\n\nrclpy.spin(nodo)\n\n\n\nrclpy.shutdown()\n\n\n\n\n\n\n\n\n\nDentro de la carpeta correspondiente: **/src/&lt;nombre_paquete&gt;/&lt;nombre_paquete&gt;\n\n\n\n\n\nnodo_publicador.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Creación de publisher\n    # pub = ...\n\n    # 2.2 Creación de mensaje\n    msg = String()\n\n    # 2.3 Programación de función de callback\n    def timer_callback():\n        # Completar el campo 'data' del mensaje \n        msg.data = 'Mensaje de prueba'\n\n        # Publicar el mensaje\n        pub.publish(msg)\n\n    # 2.4 Creación del timer\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\nPara añadir dependencias a un paquete, modificar el archivo package.xml\n&lt;package format=\"3\"&gt;\n    ...\n    &lt;exec_depend&gt;rclpy&lt;/exec_depend&gt;\n    &lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;\n    ...\n&lt;/package&gt;\nInstalar dependencias:\n    $ rosdep install -i --from-path src -y\n\n\n\n\n\n\nSiempre ejecutar este comando dentro de workspace\n\n\n\n\n\n\n\nPara añadir un ejecutable en un paquete de Python, modificar el archivo setup.py\n\n  entry_points={\n       'console_scripts': [\n               '&lt;nombre_ejecutable&gt; = &lt;nombre_paquete&gt;.&lt;nombre_archivo&gt;:main',\n       ],\n  },\n\nsetup(\n    ...\n    entry_points={\n            'console_scripts': [\n                    'publicar = clase_04.nodo_publicador:main',\n            ],\n    },\n)\n\n\n\n\n\n\n\n\n\n\n\nRecuerda compilar el paquete\n\n\n\n\n\n\n\n\n\nRecuerda configurar el entorno local:\n    $ source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo\n\n\n\n\n\n\n\n\n\n  &lt;nodo&gt;.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\nsub = nodo.create_subscription(String, 'chat', sub_callback, 10)\n\n\nnodo_suscriptor.py\n\nimport rclpy\n\n# Importar el tipo de mensaje String\nfrom std_msgs.msg import String\n\ndef main(args=None):\n    # 1. Inicialización\n    # ...\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 2.1 Programación de función de callback\n    def sub_callback(msg):\n        # Mostrar el mensaje en consola\n        nodo.get_logger().info('Recibí: \"%s\"' % msg.data)\n\n    # 2.2 Creación de suscriptor\n    # ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+  },
+  {
+    "objectID": "clases/07/lab.html",
+    "href": "clases/07/lab.html",
+    "title": "Clase 07 - Laboratorio",
+    "section": "",
+    "text": "Sea un punto \\({\\boldsymbol{p}} = {\\begin{pmatrix} a & b \\end{pmatrix}}\\) y su correspondiente homogéneo \\({\\boldsymbol{\\tilde{p}}} = {\\begin{pmatrix} a & b & 1 \\end{pmatrix}}\\), podemos representar una traslación y rotación 2D mediante una transformación homogénea:\n\\[\n\\textcolor{Blue}{{}^\\boldsymbol{A}\\boldsymbol{\\tilde{p}}} = \\textcolor{Blue}{{}^\\boldsymbol{A}}\\boldsymbol{T}_\\textcolor{Orange}{\\boldsymbol{B}} \\textcolor{Orange}{{}^\\boldsymbol{B}\\boldsymbol{\\tilde{p}}} = \\begin{pmatrix} \\textcolor{Maroon}{{}^\\boldsymbol{A}\\boldsymbol{R}_\\boldsymbol{B}} & \\textcolor{ForestGreen}{{}^\\boldsymbol{A}\\boldsymbol{t}_\\boldsymbol{B}} \\\\ \\boldsymbol{0} & 1 \\end{pmatrix} {}^\\boldsymbol{B}{\\boldsymbol{\\tilde{p}}}\n\\]\n\\[\n\\begin{bmatrix} \\textcolor{Blue}{p_{{x}_\\boldsymbol{A}}}  \\\\  \\textcolor{Blue}{p_{{y}_\\boldsymbol{A}}} \\\\ 1  \\end{bmatrix} =\n{\\begin{bmatrix} \\cos{\\textcolor{Maroon}{\\theta}} & -\\sin{\\textcolor{Maroon}{\\theta}} & \\textcolor{ForestGreen}{{t_x}} \\\\ \\sin{\\textcolor{Maroon}{\\theta}} & \\cos{\\textcolor{Maroon}{\\theta}} & \\textcolor{ForestGreen}{{t_y}} \\\\ 0 & 0 & 1 \\end{bmatrix}}\n\\begin{bmatrix} \\textcolor{Orange}{p_{{x}_\\boldsymbol{B}}}  \\\\  \\textcolor{Orange}{p_{{y}_\\boldsymbol{B}}} \\\\ 1 \\end{bmatrix}\n\\]\n\n\n\n\n\n\n\n\n\nUn robot \\(\\textbf{A}\\) se encuentra en la posición \\((2,1)\\) con orientación \\(30^\\circ\\) en coordenadas del \\(\\textit{Mundo}\\)\nUn robot \\(\\textbf{B}\\) se encuentra en la posición \\((0.5,\\tfrac{\\sqrt{3}}{2})\\) con orientación \\(60^\\circ\\) en el sistema de coordenadas del robot \\(\\textbf{A}\\)\nUn obstáculo \\({}^W \\boldsymbol{O}_1 = (0, 3)\\) en coordenadas del \\(\\textit{Mundo}\\)\nUn obstáculo \\({}^A \\boldsymbol{O}_2 = (\\sqrt{3}, -1)\\) en coordenadas del robot \\(\\textbf{A}\\)\n\n\n\n\n\n\n\n\n\n\nPuedes dibujarlos en una cuadrícula o utilizar variables en python\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpcional"
+  },
+  {
+    "objectID": "clases/07/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/07/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 07 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/07/lab.html#práctica-de-marcos-de-referencia-y-transformaciones",
+    "href": "clases/07/lab.html#práctica-de-marcos-de-referencia-y-transformaciones",
+    "title": "Clase 07 - Laboratorio",
+    "section": "",
+    "text": "Un robot \\(\\textbf{A}\\) se encuentra en la posición \\((2,1)\\) con orientación \\(30^\\circ\\) en coordenadas del \\(\\textit{Mundo}\\)\nUn robot \\(\\textbf{B}\\) se encuentra en la posición \\((0.5,\\tfrac{\\sqrt{3}}{2})\\) con orientación \\(60^\\circ\\) en el sistema de coordenadas del robot \\(\\textbf{A}\\)\nUn obstáculo \\({}^W \\boldsymbol{O}_1 = (0, 3)\\) en coordenadas del \\(\\textit{Mundo}\\)\nUn obstáculo \\({}^A \\boldsymbol{O}_2 = (\\sqrt{3}, -1)\\) en coordenadas del robot \\(\\textbf{A}\\)\n\n\n\n\n\n\n\n\n\n\nPuedes dibujarlos en una cuadrícula o utilizar variables en python\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpcional"
+  },
+  {
+    "objectID": "clases/07/lab.html#parte-2.-transformaciones-estáticas-y-dinámicas",
+    "href": "clases/07/lab.html#parte-2.-transformaciones-estáticas-y-dinámicas",
+    "title": "Clase 07 - Laboratorio",
+    "section": "Parte 2. Transformaciones estáticas y dinámicas",
+    "text": "Parte 2. Transformaciones estáticas y dinámicas\n\n1. Crear un archivo launch que recree el escenario de la parte 1 utilizando el nodo static_transform_publisher\n\nPublique la transformación de cada uno de los marcos de referencia y puntos de interés\nEl nodo static_transform_publisher recibe sus valores mediante argumentos, no parámetros. Por lo tanto utilizar el campo arguments de la acción Node del launch\n\n    Node(\n        ...\n        arguments=[\n                '--x', '&lt;x&gt;',\n                '--y', '&lt;y&gt;',\n                '--z', '&lt;z&gt;',\n                '--roll', '&lt;yaw&gt;',\n                '--pitch', '&lt;yaw&gt;',\n                '--yaw', '&lt;yaw&gt;',\n                '--frame-id', '&lt;marco_referencia&gt;',\n                '--child-frame-id', '&lt;marco_objetivo&gt;'\n        ],\n        ...\n    ),\n\n\n\n\n\n\n\nPuede utilizar el paquete rqt_tf_tree o rviz2 para verificar el resultado\n\n\n\n\n\n2. Mediante el comando ros2 run tf2_ros tf2_echo verifique los resultados obtenidos en la parte 1\n\n\n3. Implementar un nodo que publique una transformación en movimiento\n\nUtilice como marco de referencia fijo aquel que haya utilizado como \\(\\textit{Mundo}\\) en la parte 1, y utilice robotC como nombre para el marco móvil\nGenerar las coordenadas \\(x\\) e \\(y\\) mediante las siguientes ecuaciones:\n\n\\[\n\\begin{align}\nx &= R \\cdot \\cos(t) \\\\\ny &= R \\cdot \\sin(t)\n\\end{align}\n\\]\n\n\n\n\n\n\nPuede crear un parámetro para configurar el radio \\(R\\) del círculo\n\n\n\n\nPara obtener el tiempo \\(t\\) puede utilizar la función get_clock()del nodo:\n\nseconds, nanoseconds = self.get_clock().now().seconds_nanoseconds()\nt = (nanoseconds / 1E9 + seconds) * (np.pi / 2.0)   # 1 vuelta cada 4 segundos\n\nPuede utilizar una coordenada \\(z = 0\\) constante u otro valor aproximado\n\nPara calcular la orientación, se debe obtener el ángulo de la tangente a la trayectoria, para esto se podrá utilizar la función arctan2 de numpy:\n\nyaw = np.arctan2(np.cos(t), -np.sin(t))\n\n\n\n\n\n\nRecuerde que en rotaciones 2D el cuaternion para rotar un ángulo \\(\\alpha\\) puede definirse de la siguiente forma \\[\n\\boldsymbol{q} = \\begin{pmatrix} 0 & 0 & \\sin{\\tfrac{\\alpha}{2}} & \\cos{\\tfrac{\\alpha}{2}} \\end{pmatrix}^T\n\\]\n\n\n\n\nPublique las transformaciones a más de 30 [Hz] para ver una animación fluida\n\n\n\n\n\n\n\nPuede crear un parámetro para configurar la frecuencia de actualización\n\n\n\n\nModifique el launch del ejercicio anterior para añadir este nuevo nodo al escenario\n\n\n\n\n\n\n\nRecuerde siempre completar las dependencias e instalarlas, configurar adecuadamente el archivo setup.py de instalación, compilar el workspace y configurar el entorno local"
   },
   {
     "objectID": "clases/06/lab.html",
@@ -145,188 +320,6 @@
     "title": "Clase 06 - Laboratorio",
     "section": "Probar el sistema mediante ros2 launch",
     "text": "Probar el sistema mediante ros2 launch\n\nEjecutar el archivo launchcreado para verificar el funcionamiento de los parámetros por defecto\nProbar distintas ejecuciones variando los parámetros definidos"
-  },
-  {
-    "objectID": "clases/07/lab.html",
-    "href": "clases/07/lab.html",
-    "title": "Clase 07 - Laboratorio",
-    "section": "",
-    "text": "Sea un punto \\({\\boldsymbol{p}} = {\\begin{pmatrix} a & b \\end{pmatrix}}\\) y su correspondiente homogéneo \\({\\boldsymbol{\\tilde{p}}} = {\\begin{pmatrix} a & b & 1 \\end{pmatrix}}\\), podemos representar una traslación y rotación 2D mediante una transformación homogénea:\n\\[\n\\textcolor{Blue}{{}^\\boldsymbol{A}\\boldsymbol{\\tilde{p}}} = \\textcolor{Blue}{{}^\\boldsymbol{A}}\\boldsymbol{T}_\\textcolor{Orange}{\\boldsymbol{B}} \\textcolor{Orange}{{}^\\boldsymbol{B}\\boldsymbol{\\tilde{p}}} = \\begin{pmatrix} \\textcolor{Maroon}{{}^\\boldsymbol{A}\\boldsymbol{R}_\\boldsymbol{B}} & \\textcolor{ForestGreen}{{}^\\boldsymbol{A}\\boldsymbol{t}_\\boldsymbol{B}} \\\\ \\boldsymbol{0} & 1 \\end{pmatrix} {}^\\boldsymbol{B}{\\boldsymbol{\\tilde{p}}}\n\\]\n\\[\n\\begin{bmatrix} \\textcolor{Blue}{p_{{x}_\\boldsymbol{A}}}  \\\\  \\textcolor{Blue}{p_{{y}_\\boldsymbol{A}}} \\\\ 1  \\end{bmatrix} =\n{\\begin{bmatrix} \\cos{\\textcolor{Maroon}{\\theta}} & -\\sin{\\textcolor{Maroon}{\\theta}} & \\textcolor{ForestGreen}{{t_x}} \\\\ \\sin{\\textcolor{Maroon}{\\theta}} & \\cos{\\textcolor{Maroon}{\\theta}} & \\textcolor{ForestGreen}{{t_y}} \\\\ 0 & 0 & 1 \\end{bmatrix}}\n\\begin{bmatrix} \\textcolor{Orange}{p_{{x}_\\boldsymbol{B}}}  \\\\  \\textcolor{Orange}{p_{{y}_\\boldsymbol{B}}} \\\\ 1 \\end{bmatrix}\n\\]\n\n\n\n\n\n\n\n\n\nUn robot \\(\\textbf{A}\\) se encuentra en la posición \\((2,1)\\) con orientación \\(30^\\circ\\) en coordenadas del \\(\\textit{Mundo}\\)\nUn robot \\(\\textbf{B}\\) se encuentra en la posición \\((0.5,\\tfrac{\\sqrt{3}}{2})\\) con orientación \\(60^\\circ\\) en el sistema de coordenadas del robot \\(\\textbf{A}\\)\nUn obstáculo \\({}^W \\boldsymbol{O}_1 = (0, 3)\\) en coordenadas del \\(\\textit{Mundo}\\)\nUn obstáculo \\({}^A \\boldsymbol{O}_2 = (\\sqrt{3}, -1)\\) en coordenadas del robot \\(\\textbf{A}\\)\n\n\n\n\n\n\n\n\n\n\nPuedes dibujarlos en una cuadrícula o utilizar variables en python\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpcional"
-  },
-  {
-    "objectID": "clases/07/lab.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/07/lab.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 07 - Laboratorio",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
-  },
-  {
-    "objectID": "clases/07/lab.html#práctica-de-marcos-de-referencia-y-transformaciones",
-    "href": "clases/07/lab.html#práctica-de-marcos-de-referencia-y-transformaciones",
-    "title": "Clase 07 - Laboratorio",
-    "section": "",
-    "text": "Un robot \\(\\textbf{A}\\) se encuentra en la posición \\((2,1)\\) con orientación \\(30^\\circ\\) en coordenadas del \\(\\textit{Mundo}\\)\nUn robot \\(\\textbf{B}\\) se encuentra en la posición \\((0.5,\\tfrac{\\sqrt{3}}{2})\\) con orientación \\(60^\\circ\\) en el sistema de coordenadas del robot \\(\\textbf{A}\\)\nUn obstáculo \\({}^W \\boldsymbol{O}_1 = (0, 3)\\) en coordenadas del \\(\\textit{Mundo}\\)\nUn obstáculo \\({}^A \\boldsymbol{O}_2 = (\\sqrt{3}, -1)\\) en coordenadas del robot \\(\\textbf{A}\\)\n\n\n\n\n\n\n\n\n\n\nPuedes dibujarlos en una cuadrícula o utilizar variables en python\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpcional"
-  },
-  {
-    "objectID": "clases/07/lab.html#parte-2.-transformaciones-estáticas-y-dinámicas",
-    "href": "clases/07/lab.html#parte-2.-transformaciones-estáticas-y-dinámicas",
-    "title": "Clase 07 - Laboratorio",
-    "section": "Parte 2. Transformaciones estáticas y dinámicas",
-    "text": "Parte 2. Transformaciones estáticas y dinámicas\n\n1. Crear un archivo launch que recree el escenario de la parte 1 utilizando el nodo static_transform_publisher\n\nPublique la transformación de cada uno de los marcos de referencia y puntos de interés\nEl nodo static_transform_publisher recibe sus valores mediante argumentos, no parámetros. Por lo tanto utilizar el campo arguments de la acción Node del launch\n\n    Node(\n        ...\n        arguments=[\n                '--x', '&lt;x&gt;',\n                '--y', '&lt;y&gt;',\n                '--z', '&lt;z&gt;',\n                '--roll', '&lt;yaw&gt;',\n                '--pitch', '&lt;yaw&gt;',\n                '--yaw', '&lt;yaw&gt;',\n                '--frame-id', '&lt;marco_referencia&gt;',\n                '--child-frame-id', '&lt;marco_objetivo&gt;'\n        ],\n        ...\n    ),\n\n\n\n\n\n\n\nPuede utilizar el paquete rqt_tf_tree o rviz2 para verificar el resultado\n\n\n\n\n\n2. Mediante el comando ros2 run tf2_ros tf2_echo verifique los resultados obtenidos en la parte 1\n\n\n3. Implementar un nodo que publique una transformación en movimiento\n\nUtilice como marco de referencia fijo aquel que haya utilizado como \\(\\textit{Mundo}\\) en la parte 1, y utilice robotC como nombre para el marco móvil\nGenerar las coordenadas \\(x\\) e \\(y\\) mediante las siguientes ecuaciones:\n\n\\[\n\\begin{align}\nx &= R \\cdot \\cos(t) \\\\\ny &= R \\cdot \\sin(t)\n\\end{align}\n\\]\n\n\n\n\n\n\nPuede crear un parámetro para configurar el radio \\(R\\) del círculo\n\n\n\n\nPara obtener el tiempo \\(t\\) puede utilizar la función get_clock()del nodo:\n\nseconds, nanoseconds = self.get_clock().now().seconds_nanoseconds()\nt = (nanoseconds / 1E9 + seconds) * (np.pi / 2.0)   # 1 vuelta cada 4 segundos\n\nPuede utilizar una coordenada \\(z = 0\\) constante u otro valor aproximado\n\nPara calcular la orientación, se debe obtener el ángulo de la tangente a la trayectoria, para esto se podrá utilizar la función arctan2 de numpy:\n\nyaw = np.arctan2(np.cos(t), -np.sin(t))\n\n\n\n\n\n\nRecuerde que en rotaciones 2D el cuaternion para rotar un ángulo \\(\\alpha\\) puede definirse de la siguiente forma \\[\n\\boldsymbol{q} = \\begin{pmatrix} 0 & 0 & \\sin{\\tfrac{\\alpha}{2}} & \\cos{\\tfrac{\\alpha}{2}} \\end{pmatrix}^T\n\\]\n\n\n\n\nPublique las transformaciones a más de 30 [Hz] para ver una animación fluida\n\n\n\n\n\n\n\nPuede crear un parámetro para configurar la frecuencia de actualización\n\n\n\n\nModifique el launch del ejercicio anterior para añadir este nuevo nodo al escenario\n\n\n\n\n\n\n\nRecuerde siempre completar las dependencias e instalarlas, configurar adecuadamente el archivo setup.py de instalación, compilar el workspace y configurar el entorno local"
-  },
-  {
-    "objectID": "clases/05/lab.html",
-    "href": "clases/05/lab.html",
-    "title": "Clase 05 - Laboratorio",
-    "section": "",
-    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
-  },
-  {
-    "objectID": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/05/lab.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 05 - Laboratorio",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
-  },
-  {
-    "objectID": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
-    "href": "clases/05/lab.html#programación-orientada-a-objetos-en-ros-2",
-    "title": "Clase 05 - Laboratorio",
-    "section": "",
-    "text": "Se recomienda crear un paquete nuevo, distinto del utilizado en el lab anterior\n\n\n\n\n\n\nimport rclpy\nfrom rclpy.node import Node\n\n\n\n\nclass &lt;nombre_clase&gt;(Node):\n    __init__(self):\n        super().__init__(&lt;nombre_nodo&gt;)\n        ...\n\n\n\n\nSe crean de la mismas manera solo que en vez de utilizar la instancia &lt;nodo&gt; se accederá a través del objeto mediante el atributo self.\n\n  self.create_publisher(\n          &lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;', &lt;tamaño_cola&gt;)\n\n\n\n  self.create_timer(&lt;periodo_en_seg&gt;, &lt;funcion_callback&gt;)\n\n\n\n  self.create_subscription(&lt;tipo_mensaje&gt;, '&lt;nombre_topic&gt;',\n                               &lt;funcion_callback&gt;, &lt;tamaño_cola&gt;)\n\n\n\n\n\nLas funciones de callback serán métodos de la clase\nclass &lt;nombre_clase&gt;(Node):\n    ...\n    def timer_callback(self):\n        ...\n        # Publicar el mensaje\n        self.pub.publish(self.msg)\n\n\n\nSolo será utilizada para la inicialización o init, la creación del nodo (instanciando la clase), el spin y la finalización o shutdown\ndef main(args=None):\n    # 1. Inicialización\n    rclpy.init(args=args)\n\n    # 2. Creación de nodo\n    # nodo = ...\n\n    # 3. Procesamiento de mensajes y callback\n    rclpy.spin(nodo)\n\n    # 4. Finalización \n    rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n\n\n\n\n\nPuedes reutilizar el código del lab anterior\n\n\n\n\n\n\n\n\n\nRecordatorio\n\n\n\nSi se crea un paquete nuevo recuerda:\n\nCompletar las dependencias en package.xml e instalar mediante rosdep\nCrear el o los ejecutables en setup.py\nCompilar el paquete con colcon\nconfigurar el entorno: source install/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\nPuedes utilizar los comandos de ros2 node list y ros2 node info\n\n\n\nPuedes utilizar los comandos de ros2 topic list, ros2 topic info y ros2 topic echo"
-  },
-  {
-    "objectID": "clases/08/tres.html",
-    "href": "clases/08/tres.html",
-    "title": "Clase 08 - Taller de resolución",
-    "section": "",
-    "text": "Etiqueta raíz (todo el contenido se encuentra dentro)\n\n&lt;?xml version=\"1.0\"?&gt;\n\n&lt;robot name=\"mi_robot\"&gt;\n    ...\n    &lt;!-- Contenido URDF --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\n\n1 solo atributo: el nombre\n3 posibles geometrías: &lt;visual&gt;, &lt;collision&gt; y &lt;inertial&gt;\n\n&lt;link name=\"parteA_link\"&gt;\n    &lt;visual&gt;..&lt;/visual&gt;\n    &lt;collision&gt;..&lt;/collision&gt;\n    &lt;inertial&gt;..&lt;/inertial&gt; \n&lt;/link&gt;\n\n\n\nLink\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría:\n\nprisma:\n\n  &lt;box size=\"[largo-x] [ancho-y] [alto-z]\" /&gt;\n\ncilindro:\n\n  &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n\nesfera:\n\n  &lt;sphere radius=\"[radio]\" /&gt;\n\nmalla:\n\n  &lt;mesh filename=\"file://[nombre_del_archivo]\" /&gt;\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nGeometría: box, cylinder, sphere, mesh\n\n\n\n\n\n\n\n\n\nJoint\n\n\n\n2 atributos: el nombre y tipo\n2 elementos requeridos: link padre e hijo\nTipos:\n\nFija (fixed)\n\n&lt;joint name=\"parteA_joint\" type=\"fixed\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n&lt;/joint&gt;\n\nContinua (continuous)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n&lt;/joint&gt;\n\nRevolución (revolute)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n  &lt;limit lower=\"[min_rad]\" upper=\"[max_rad]\"\n      velocity=\"[rad_por_seg]\"\n      effort=\"[effort]\" /&gt;\n&lt;/joint&gt;\n\n\n\n\n\nAgregar al tag robot del URDF xmlns:xacro=\"http://www.ros.org/wiki/xacro\":\n&lt;robot name=\"mi_robot\" xmlns:xacro=\"http://www.ros.org/wiki/xacro\" &gt;\n    ...\n    &lt;!-- Contenido --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\nArchivo principal: extensión ‘.urdf.xacro’ y contiene el tag robot con nombre\nArchivos a incluir: extensión ‘.xacro’ y solo contienen el tag robot\nPara incluir:\n\n    &lt;xacro:include filename=\"[nombre_archivo]\" /&gt;\n\n\n\n\nPropiedades xacro:property: Nombre y valor\n\n    &lt;xacro:property name=\"diametro\" value=\"2.1\" /&gt;\n\nOperaciones matemáticas y acceso a variables: ${..}\n\n    &lt;geometry type=\"cylinder\" radius=\"${diametro / 2}\" length=\"${nombre_variable}\" /&gt;\n\nArgumentos xacro:args: Nombre y valor por defecto\n\n    &lt;xacro:arg name=\"[nombre_argumento]\" default=\"[valor_defecto]\"/&gt;\n\n\n\n\n\n\nLuego podemos ejecutar el comando XACRO con el valor del argumento nombre_argumento:=[valor]\n\n\n\n\nBuscar paquetes $(find ..):\n\n    &lt;xacro:include filename=\"$(find [nombre_paquete])/[nombre_archivo].xacro\" /&gt;\n\n\n\n\nEtiqueta xacro:if para true y xacro:unless para false\n\n&lt;xacro:if value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;\n&lt;/xacro:if&gt;\n&lt;xacro:unless value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;\n&lt;/xacro:unless&gt;\n\n\n\n\nDefinir macro xacro:macro: Nombre y parámetros a recibir\n\n&lt;xacro:macro name=\"[nombre_macro]\" params=\"[param1] [param2]:=[valor_defecto]\"&gt;\n    &lt;!-- Codigo del macro: ejemplo con parámetros --&gt;\n    &lt;link name=\"${param1}\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"${param2}\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n&lt;/xacro:macro&gt;\n\nAplicar o ejecutar macro xacro:[nombre_macro] y los parámetros definidos:\n\n&lt;xacro:nombre_macro param1=\"[valor_param1]\" param2=\"[valor_param2]\" /&gt; \n\nSi ejecutamos el macro con los valores parteA_link y 1.0, la salida será:\n\n...\n    &lt;link name=\"parteA_link\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"1.0\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n...\n\n\n\n\nDesde consola\n  $ xacro [ubicacion_del_archivo/nombre_archivo.xacro.urdf]\nDesde launch\n\nImportar las librerías\n\nfrom launch.substitutions import Command, PathJoinSubstitution\nfrom launch_ros.substitutions import FindPackageShare\n\nUbicar el archivo y procesarlo\n\n  # Ubicación del paquete y del archivo URDF\n  urdf_path = PathJoinSubstitution(\n      [FindPackageShare(\"[nombre_paquete]\"),  \"urdf\", \"[nombre_archivo].urdf.xacro\"]\n  )\n\n  # Procesar archivo URDF\n  urdf = Command(['xacro ', urdf_path])\n\n\n\n\n\n\nSe agregan las carpetas urdf para los archivos de descripción\n\n\n\nEjemplo de estructura\n\n📂 paquete_description\n    📁 paquete_description\n    📂 launch\n        📄 description.launch.py\n        ...\n    📂 urdf\n        📄 description.urdf.xacro\n        📄 materials.xacro\n        📄 my_macro.xacro\n        📄 sim_sensor.xacro\n        ...\n    📄 package.xml\n    📄 setup.py\n    ...\n\n\nConfiguración de setup.py\n\n\n\nsetup.py\n\n  # ... Otros parámetros\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n    # Incluir todos los archivos de la carpeta urdf\n    (os.path.join('share', package_name, 'urdf'), glob('urdf/*'))\n    # Incluir todos los archivos de la carpeta meshes\n    (os.path.join('share', package_name, 'meshes'), glob('meshes/*'))\n  ],"
-  },
-  {
-    "objectID": "clases/08/tres.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/08/tres.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 08 - Taller de resolución",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
-  },
-  {
-    "objectID": "clases/08/tres.html#urdf",
-    "href": "clases/08/tres.html#urdf",
-    "title": "Clase 08 - Taller de resolución",
-    "section": "",
-    "text": "Etiqueta raíz (todo el contenido se encuentra dentro)\n\n&lt;?xml version=\"1.0\"?&gt;\n\n&lt;robot name=\"mi_robot\"&gt;\n    ...\n    &lt;!-- Contenido URDF --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\n\n1 solo atributo: el nombre\n3 posibles geometrías: &lt;visual&gt;, &lt;collision&gt; y &lt;inertial&gt;\n\n&lt;link name=\"parteA_link\"&gt;\n    &lt;visual&gt;..&lt;/visual&gt;\n    &lt;collision&gt;..&lt;/collision&gt;\n    &lt;inertial&gt;..&lt;/inertial&gt; \n&lt;/link&gt;\n\n\n\nLink\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría:\n\nprisma:\n\n  &lt;box size=\"[largo-x] [ancho-y] [alto-z]\" /&gt;\n\ncilindro:\n\n  &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n\nesfera:\n\n  &lt;sphere radius=\"[radio]\" /&gt;\n\nmalla:\n\n  &lt;mesh filename=\"file://[nombre_del_archivo]\" /&gt;\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nGeometría: box, cylinder, sphere, mesh\n\n\n\n\n\n\n\n\n\nJoint\n\n\n\n2 atributos: el nombre y tipo\n2 elementos requeridos: link padre e hijo\nTipos:\n\nFija (fixed)\n\n&lt;joint name=\"parteA_joint\" type=\"fixed\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n&lt;/joint&gt;\n\nContinua (continuous)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n&lt;/joint&gt;\n\nRevolución (revolute)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n  &lt;limit lower=\"[min_rad]\" upper=\"[max_rad]\"\n      velocity=\"[rad_por_seg]\"\n      effort=\"[effort]\" /&gt;\n&lt;/joint&gt;"
-  },
-  {
-    "objectID": "clases/08/tres.html#xacro",
-    "href": "clases/08/tres.html#xacro",
-    "title": "Clase 08 - Taller de resolución",
-    "section": "",
-    "text": "Agregar al tag robot del URDF xmlns:xacro=\"http://www.ros.org/wiki/xacro\":\n&lt;robot name=\"mi_robot\" xmlns:xacro=\"http://www.ros.org/wiki/xacro\" &gt;\n    ...\n    &lt;!-- Contenido --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\nArchivo principal: extensión ‘.urdf.xacro’ y contiene el tag robot con nombre\nArchivos a incluir: extensión ‘.xacro’ y solo contienen el tag robot\nPara incluir:\n\n    &lt;xacro:include filename=\"[nombre_archivo]\" /&gt;\n\n\n\n\nPropiedades xacro:property: Nombre y valor\n\n    &lt;xacro:property name=\"diametro\" value=\"2.1\" /&gt;\n\nOperaciones matemáticas y acceso a variables: ${..}\n\n    &lt;geometry type=\"cylinder\" radius=\"${diametro / 2}\" length=\"${nombre_variable}\" /&gt;\n\nArgumentos xacro:args: Nombre y valor por defecto\n\n    &lt;xacro:arg name=\"[nombre_argumento]\" default=\"[valor_defecto]\"/&gt;\n\n\n\n\n\n\nLuego podemos ejecutar el comando XACRO con el valor del argumento nombre_argumento:=[valor]\n\n\n\n\nBuscar paquetes $(find ..):\n\n    &lt;xacro:include filename=\"$(find [nombre_paquete])/[nombre_archivo].xacro\" /&gt;\n\n\n\n\nEtiqueta xacro:if para true y xacro:unless para false\n\n&lt;xacro:if value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;\n&lt;/xacro:if&gt;\n&lt;xacro:unless value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;\n&lt;/xacro:unless&gt;\n\n\n\n\nDefinir macro xacro:macro: Nombre y parámetros a recibir\n\n&lt;xacro:macro name=\"[nombre_macro]\" params=\"[param1] [param2]:=[valor_defecto]\"&gt;\n    &lt;!-- Codigo del macro: ejemplo con parámetros --&gt;\n    &lt;link name=\"${param1}\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"${param2}\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n&lt;/xacro:macro&gt;\n\nAplicar o ejecutar macro xacro:[nombre_macro] y los parámetros definidos:\n\n&lt;xacro:nombre_macro param1=\"[valor_param1]\" param2=\"[valor_param2]\" /&gt; \n\nSi ejecutamos el macro con los valores parteA_link y 1.0, la salida será:\n\n...\n    &lt;link name=\"parteA_link\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"1.0\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n...\n\n\n\n\nDesde consola\n  $ xacro [ubicacion_del_archivo/nombre_archivo.xacro.urdf]\nDesde launch\n\nImportar las librerías\n\nfrom launch.substitutions import Command, PathJoinSubstitution\nfrom launch_ros.substitutions import FindPackageShare\n\nUbicar el archivo y procesarlo\n\n  # Ubicación del paquete y del archivo URDF\n  urdf_path = PathJoinSubstitution(\n      [FindPackageShare(\"[nombre_paquete]\"),  \"urdf\", \"[nombre_archivo].urdf.xacro\"]\n  )\n\n  # Procesar archivo URDF\n  urdf = Command(['xacro ', urdf_path])"
-  },
-  {
-    "objectID": "clases/08/tres.html#adaptación-del-paquete",
-    "href": "clases/08/tres.html#adaptación-del-paquete",
-    "title": "Clase 08 - Taller de resolución",
-    "section": "",
-    "text": "Se agregan las carpetas urdf para los archivos de descripción\n\n\n\nEjemplo de estructura\n\n📂 paquete_description\n    📁 paquete_description\n    📂 launch\n        📄 description.launch.py\n        ...\n    📂 urdf\n        📄 description.urdf.xacro\n        📄 materials.xacro\n        📄 my_macro.xacro\n        📄 sim_sensor.xacro\n        ...\n    📄 package.xml\n    📄 setup.py\n    ...\n\n\nConfiguración de setup.py\n\n\n\nsetup.py\n\n  # ... Otros parámetros\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n    # Incluir todos los archivos de la carpeta urdf\n    (os.path.join('share', package_name, 'urdf'), glob('urdf/*'))\n    # Incluir todos los archivos de la carpeta meshes\n    (os.path.join('share', package_name, 'meshes'), glob('meshes/*'))\n  ],"
-  },
-  {
-    "objectID": "clases/08/tres.html#robot_state_publisher",
-    "href": "clases/08/tres.html#robot_state_publisher",
-    "title": "Clase 08 - Taller de resolución",
-    "section": "robot_state_publisher",
-    "text": "robot_state_publisher\n\nEjecutar desde consola\n\n    $ ros2 run robot_state_publisher robot_state_publisher\n                --ros-args -p robot_description:='&lt;robot_description&gt;'\n\nCargar desde launch\n\n    Node(\n        package = 'robot_state_publisher',\n        executable = 'robot_state_publisher',\n        parameters=[{\n            'robot_description': '&lt;robot_description&gt;',\n        }]\n    )"
-  },
-  {
-    "objectID": "clases/08/tres.html#joint_state_publisher_gui",
-    "href": "clases/08/tres.html#joint_state_publisher_gui",
-    "title": "Clase 08 - Taller de resolución",
-    "section": "joint_state_publisher_gui",
-    "text": "joint_state_publisher_gui\n\nEjecutar desde consola\n\n    $ ros2 run joint_state_publisher_gui joint_state_publisher_gui\n\nCargar desde launch:\n\n    Node(\n        package = 'joint_state_publisher_gui',\n        executable = 'joint_state_publisher_gui',\n        output = 'screen',\n    )"
-  },
-  {
-    "objectID": "clases/03/lab.html",
-    "href": "clases/03/lab.html",
-    "title": "Clase 03 - Laboratorio",
-    "section": "",
-    "text": "Nota\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
-  },
-  {
-    "objectID": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
-    "href": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 03 - Laboratorio",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
-  },
-  {
-    "objectID": "clases/03/lab.html#parte-1-servicios-y-parámetros",
-    "href": "clases/03/lab.html#parte-1-servicios-y-parámetros",
-    "title": "Clase 03 - Laboratorio",
-    "section": "",
-    "text": "Nota\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
-  },
-  {
-    "objectID": "entregables/01/entregable1.html",
-    "href": "entregables/01/entregable1.html",
-    "title": "Ejercicios",
-    "section": "",
-    "text": "Fecha de entrega: 22 de Junio\nFormato de entrega: Archivo comprimido con el código fuente de los paquetes. Formato pdf en caso de necesitar entregar ejercicios de desarrollo. Proveer en un archivo de texto README.md los comandos necesarios para la ejecución de el/los paquete/s para los ejercicios.\nArchivos disponibles: entregable-1.zip\n\nCarpeta meshes con archivos .stl para las geometrías visuales de los componentes del robot.\nCarpeta urdf con dos archivos: inertial_macros.xacro con definición de inercias y materiales de ejemplo; motor.xacrocon macro para insertar un motor en el robot."
-  },
-  {
-    "objectID": "entregables/01/entregable1.html#universidad-nacional-del-litoral-unl",
-    "href": "entregables/01/entregable1.html#universidad-nacional-del-litoral-unl",
-    "title": "Ejercicios",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
-  },
-  {
-    "objectID": "entregables/01/entregable1.html#urdf",
-    "href": "entregables/01/entregable1.html#urdf",
-    "title": "Ejercicios",
-    "section": "URDF",
-    "text": "URDF\nCrear un paquete de ROS llamado (*)_description para albergar el robot description siguiendo la estructura vista en clases. Crear un archivo de definición del robot en formato XACRO respetando la geometría representada en las vistas del anexo y cumpliendo con los siguientes requerimientos:\n\nDebe contener al menos un base_link asignado al chasis del robot y un link y un joint por cada rueda\nCada link deberá tener definida la geometría visual y de colisión, según la tabla correspondiente del anexo\nDebe estar parametrizado al menos el radio de las ruedas de tracción y la separación de las mismas\nEn caso de poder reutilizar bloques, hacer uso de macros\nUtilice el macro motor importando el archivo motor.xacro para ubicar el motor izquierdo y derecho. El macro recibe 3 parámetros:\n\nprefix (String): para diferenciar el link con un prefijo\nchassis_width (Double): ancho del chasis\nreflect (Bool): No reflejar (False) o sí reflejar (True). La orientación original es hacia la izquierda\n\n\n\nEn el mismo paquete, crear un archivo launch de nombre description.launch.py, en el cuál se deberá procesar el archivo XACRO con la descripción del robot y se deberá publicar la misma a través del paquete robot_state_publisher. El launch deberá recibir, a través de un parámetro de tipo bool llamado testing, la condición para ejecutar o no el paquete joint_state_publisher_gui y RViz.\n\n\n\n\n\n\nEste archivo será útil para probar el archivo del ejercicio anterior, por lo que se recomienda realizarlos en paralelo"
-  },
-  {
-    "objectID": "entregables/01/entregable1.html#gazebo",
-    "href": "entregables/01/entregable1.html#gazebo",
-    "title": "Ejercicios",
-    "section": "Gazebo",
-    "text": "Gazebo\nEditar el o los archivos XACRO del ejercicio 1, de manera que sea/n compatible/s con los requerimientos de Gazebo, haciendo uso de los macros disponibles en el archivo inertial_macros.xacro.\nCrear un paquete (*)_gz y un archivo launch nuevo, que ejecute Gazebo, procese la descripción del robot y, utilizando el ejecutable spawn_entity.py, cargue el robot en el simulador. Puede reutilizar el archivo creado en el ejercicio 2 incluyéndolo (no debe ejecutar el joint_state_publisher_gui ni RViz)."
-  },
-  {
-    "objectID": "entregables/01/entregable1.html#ros2-control",
-    "href": "entregables/01/entregable1.html#ros2-control",
-    "title": "Ejercicios",
-    "section": "ROS2 control",
-    "text": "ROS2 control\nEditar el archivo de definición del robot y agregar los elementos necesarios para configurar ROS2 control y Gazebo de forma tal que las juntas correspondientes a las ruedas de tracción reciban comandos de velocidad y devuelvan el estado de posición y velocidad. Para esto deberá añadir los tags &lt;ros2_control&gt; y &lt;gazebo&gt;.\nCrear un paquete (*)_control, con una carpeta config y un archivo de configuración en formato YAML con los parámetros necesarios para que el controller_manager de ROS2 control cargue un JointStateBroadcaster y dos controladores de velocidad de tipo JointGroupVelocityController, uno para cada rueda de tracción.\nEditar el archivo launch del ejercicio 3 para invocar al comando load_controller de ros2_control y cargar los controladores del inciso anterior."
-  },
-  {
-    "objectID": "entregables/01/entregable1.html#cinemática",
-    "href": "entregables/01/entregable1.html#cinemática",
-    "title": "Ejercicios",
-    "section": "Cinemática",
-    "text": "Cinemática\nCalcular la velocidad lineal y angular del robot y de las ruedas para que se complete:\n\nuna trayectoria recta de 1[m] en 10 [s].\nuna trayectoria circular con un radio de 0.5 [m] en sentido horario en 20 [s].\n\nExaminar la definición de los mensajes de tipo geometry_msgs/Twist y describir cuál sería la secuencia de comandos de velocidad a aplicar al robot para seguir la trayectoria mostrada en la Figure 1 utilizando dichos mensajes. La velocidad máxima de giro de los motores es de \\(50 [rpm]\\).\n\n\n\n\n\n\nFigure 1: Trayectoria para el ejercicio 6\n\n\n\n\n\n\n\n\n\nEl punto inicial del robot será asignado por el docente.\n\n\n\nExaminar la definición de los mensajes del topic suscripto por el JointGroupVelocityController. Calcule las velocidades angulares de las ruedas para cada comando del ejercicio 6 y construya la secuencia de mensajes de comando correspondientes.\n\n\n\n\n\n\nEl campo layout no se debe completar.\n\n\n\nDentro del paquete (*)_control, cree un nodo que reciba comandos de tipo geometry_msgs/Twist a través de un topic llamado cmd_vel, calcule las velocidades angulares en base al modelo cinemático inverso del robot y escriba los comandos de velocidad de cada rueda de tracción en los topics left_wheel_cmd y right_wheel_cmd. Tenga en cuenta que los parámetros del robot se encuentran en el robot description."
-  },
-  {
-    "objectID": "entregables/01/entregable1.html#odometría",
-    "href": "entregables/01/entregable1.html#odometría",
-    "title": "Ejercicios",
-    "section": "Odometría",
-    "text": "Odometría\nCrear un nodo (en el mismo paquete que el ejercicio anterior o por separado) que lea el o los topics de posición de las juntas de las ruedas (publicados por el JointStateBroadcaster), calcule la odometría basado en el modelo cinemático directo del robot y publique la misma en el topic \\odom con mensajes de tipo nav_msgs/Odometry. El nodo debe recibir como parámetro las dimensiones geométricas del modelo cinemático y los nombres correspondientes a las juntas de las ruedas de tracción.\n\n\n\n\n\n\nNote\n\n\n\nEl campo twist y covariance en pose no se deben completar para el mensaje nav_msgs/Odometry.\n\n\nCree un nuevo paquete (*)_bringup con un archivo launch en el cual se cargue todo el sistema desarrollado (URDF, Gazebo, los controladores de ROS2 control) y los nodos de los ejercicios 8 y 9. Recuerde configurar correctamente los parámetros y topics de cada nodo. Puede probar que el robot se encuentra funcionando utilizando el teleop_twist_keyboard o publicando mensajes de Twist como los del ejercicio 5 o 6."
-  },
-  {
-    "objectID": "entregables/01/entregable1.html#ros-2-y-tf2",
-    "href": "entregables/01/entregable1.html#ros-2-y-tf2",
-    "title": "Ejercicios",
-    "section": "ROS 2 y tf2",
-    "text": "ROS 2 y tf2\n\n(Opción A) Crear un nodo que publique la transformación entre los frames odom y base_link a partir de los mensajes del topic /odom. Agregar la ejecución del mismo al launch del ejercicio anterior.\n(Opción B) Modificar el nodo del ejercicio 9 para que que publique la transformación entre los frames odom y base_link. Agregar un parámetro para que cuando no se requiera esta transformación, no se publique.\n\nCree un archivo launch en el paquete (*)_bringup que extienda (inclusión o copia) al del ejercicio 10 y añada la ejecución de RViz junto con su respectivo archivo de configuración, el cual muestre el robot en el frame odom y las transformaciones de todos los links definidos en el URDF."
-  },
-  {
-    "objectID": "index.html#universidad-nacional-del-litoral-unl",
-    "href": "index.html#universidad-nacional-del-litoral-unl",
-    "title": "Robótica 2025",
-    "section": "Universidad Nacional del Litoral (UNL)\n",
-    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
   },
   {
     "objectID": "clases/03/index.html#resumen-clase-02",
@@ -658,102 +651,298 @@
     "text": "Taller de resolución\nEjercicios 1 y 2"
   },
   {
-    "objectID": "clases/05/index.html#resumen-clase-04",
-    "href": "clases/05/index.html#resumen-clase-04",
-    "title": "Robótica",
-    "section": "Resumen Clase 04",
-    "text": "Resumen Clase 04\n\nCallbacks\n\n\nCódigo publisher y suscriber"
+    "objectID": "index.html#universidad-nacional-del-litoral-unl",
+    "href": "index.html#universidad-nacional-del-litoral-unl",
+    "title": "Robótica 2025",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
   },
   {
-    "objectID": "clases/05/index.html#resumen-clase-04-1",
-    "href": "clases/05/index.html#resumen-clase-04-1",
-    "title": "Robótica",
-    "section": "Resumen Clase 04",
-    "text": "Resumen Clase 04\n\nUso de nombres\n\n\nPaquete\nArchivo\nEjecutable\nNodo"
+    "objectID": "entregables/01/entregable1.html",
+    "href": "entregables/01/entregable1.html",
+    "title": "Ejercicios",
+    "section": "",
+    "text": "Fecha de entrega: 22 de Junio\nFormato de entrega: Archivo comprimido con el código fuente de los paquetes. Formato pdf en caso de necesitar entregar ejercicios de desarrollo. Proveer en un archivo de texto README.md los comandos necesarios para la ejecución de el/los paquete/s para los ejercicios.\nArchivos disponibles: entregable-1.zip\n\nCarpeta meshes con archivos .stl para las geometrías visuales de los componentes del robot.\nCarpeta urdf con dos archivos: inertial_macros.xacro con definición de inercias y materiales de ejemplo; motor.xacrocon macro para insertar un motor en el robot."
   },
   {
-    "objectID": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
-    "href": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
-    "title": "Robótica",
-    "section": "rclpy: Programación Orientada a Objetos",
-    "text": "rclpy: Programación Orientada a Objetos\n\nExisten 3 formas de escribir código de ROS:\n\n\nCódigo in-line (utilizado en la clase anterior)\nFunciones locales\nOrientado a Objetos   ⬅️"
+    "objectID": "entregables/01/entregable1.html#universidad-nacional-del-litoral-unl",
+    "href": "entregables/01/entregable1.html#universidad-nacional-del-litoral-unl",
+    "title": "Ejercicios",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
   },
   {
-    "objectID": "clases/05/index.html#código-publisher",
-    "href": "clases/05/index.html#código-publisher",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+    "objectID": "entregables/01/entregable1.html#urdf",
+    "href": "entregables/01/entregable1.html#urdf",
+    "title": "Ejercicios",
+    "section": "URDF",
+    "text": "URDF\nCrear un paquete de ROS llamado (*)_description para albergar el robot description siguiendo la estructura vista en clases. Crear un archivo de definición del robot en formato XACRO respetando la geometría representada en las vistas del anexo y cumpliendo con los siguientes requerimientos:\n\nDebe contener al menos un base_link asignado al chasis del robot y un link y un joint por cada rueda\nCada link deberá tener definida la geometría visual y de colisión, según la tabla correspondiente del anexo\nDebe estar parametrizado al menos el radio de las ruedas de tracción y la separación de las mismas\nEn caso de poder reutilizar bloques, hacer uso de macros\nUtilice el macro motor importando el archivo motor.xacro para ubicar el motor izquierdo y derecho. El macro recibe 3 parámetros:\n\nprefix (String): para diferenciar el link con un prefijo\nchassis_width (Double): ancho del chasis\nreflect (Bool): No reflejar (False) o sí reflejar (True). La orientación original es hacia la izquierda\n\n\n\nEn el mismo paquete, crear un archivo launch de nombre description.launch.py, en el cuál se deberá procesar el archivo XACRO con la descripción del robot y se deberá publicar la misma a través del paquete robot_state_publisher. El launch deberá recibir, a través de un parámetro de tipo bool llamado testing, la condición para ejecutar o no el paquete joint_state_publisher_gui y RViz.\n\n\n\n\n\n\nEste archivo será útil para probar el archivo del ejercicio anterior, por lo que se recomienda realizarlos en paralelo"
   },
   {
-    "objectID": "clases/05/index.html#código-publisher-1",
-    "href": "clases/05/index.html#código-publisher-1",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n  \n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
+    "objectID": "entregables/01/entregable1.html#gazebo",
+    "href": "entregables/01/entregable1.html#gazebo",
+    "title": "Ejercicios",
+    "section": "Gazebo",
+    "text": "Gazebo\nEditar el o los archivos XACRO del ejercicio 1, de manera que sea/n compatible/s con los requerimientos de Gazebo, haciendo uso de los macros disponibles en el archivo inertial_macros.xacro.\nCrear un paquete (*)_gz y un archivo launch nuevo, que ejecute Gazebo, procese la descripción del robot y, utilizando el ejecutable spawn_entity.py, cargue el robot en el simulador. Puede reutilizar el archivo creado en el ejercicio 2 incluyéndolo (no debe ejecutar el joint_state_publisher_gui ni RViz)."
   },
   {
-    "objectID": "clases/05/index.html#código-publisher-2",
-    "href": "clases/05/index.html#código-publisher-2",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+    "objectID": "entregables/01/entregable1.html#ros2-control",
+    "href": "entregables/01/entregable1.html#ros2-control",
+    "title": "Ejercicios",
+    "section": "ROS2 control",
+    "text": "ROS2 control\nEditar el archivo de definición del robot y agregar los elementos necesarios para configurar ROS2 control y Gazebo de forma tal que las juntas correspondientes a las ruedas de tracción reciban comandos de velocidad y devuelvan el estado de posición y velocidad. Para esto deberá añadir los tags &lt;ros2_control&gt; y &lt;gazebo&gt;.\nCrear un paquete (*)_control, con una carpeta config y un archivo de configuración en formato YAML con los parámetros necesarios para que el controller_manager de ROS2 control cargue un JointStateBroadcaster y dos controladores de velocidad de tipo JointGroupVelocityController, uno para cada rueda de tracción.\nEditar el archivo launch del ejercicio 3 para invocar al comando load_controller de ros2_control y cargar los controladores del inciso anterior."
   },
   {
-    "objectID": "clases/05/index.html#código-publisher-3",
-    "href": "clases/05/index.html#código-publisher-3",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+    "objectID": "entregables/01/entregable1.html#cinemática",
+    "href": "entregables/01/entregable1.html#cinemática",
+    "title": "Ejercicios",
+    "section": "Cinemática",
+    "text": "Cinemática\nCalcular la velocidad lineal y angular del robot y de las ruedas para que se complete:\n\nuna trayectoria recta de 1[m] en 10 [s].\nuna trayectoria circular con un radio de 0.5 [m] en sentido horario en 20 [s].\n\nExaminar la definición de los mensajes de tipo geometry_msgs/Twist y describir cuál sería la secuencia de comandos de velocidad a aplicar al robot para seguir la trayectoria mostrada en la Figure 1 utilizando dichos mensajes. La velocidad máxima de giro de los motores es de \\(50 [rpm]\\).\n\n\n\n\n\n\nFigure 1: Trayectoria para el ejercicio 6\n\n\n\n\n\n\n\n\n\nEl punto inicial del robot será asignado por el docente.\n\n\n\nExaminar la definición de los mensajes del topic suscripto por el JointGroupVelocityController. Calcule las velocidades angulares de las ruedas para cada comando del ejercicio 6 y construya la secuencia de mensajes de comando correspondientes.\n\n\n\n\n\n\nEl campo layout no se debe completar.\n\n\n\nDentro del paquete (*)_control, cree un nodo que reciba comandos de tipo geometry_msgs/Twist a través de un topic llamado cmd_vel, calcule las velocidades angulares en base al modelo cinemático inverso del robot y escriba los comandos de velocidad de cada rueda de tracción en los topics left_wheel_cmd y right_wheel_cmd. Tenga en cuenta que los parámetros del robot se encuentran en el robot description."
   },
   {
-    "objectID": "clases/05/index.html#código-publisher-4",
-    "href": "clases/05/index.html#código-publisher-4",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+    "objectID": "entregables/01/entregable1.html#odometría",
+    "href": "entregables/01/entregable1.html#odometría",
+    "title": "Ejercicios",
+    "section": "Odometría",
+    "text": "Odometría\nCrear un nodo (en el mismo paquete que el ejercicio anterior o por separado) que lea el o los topics de posición de las juntas de las ruedas (publicados por el JointStateBroadcaster), calcule la odometría basado en el modelo cinemático directo del robot y publique la misma en el topic \\odom con mensajes de tipo nav_msgs/Odometry. El nodo debe recibir como parámetro las dimensiones geométricas del modelo cinemático y los nombres correspondientes a las juntas de las ruedas de tracción.\n\n\n\n\n\n\nNote\n\n\n\nEl campo twist y covariance en pose no se deben completar para el mensaje nav_msgs/Odometry.\n\n\nCree un nuevo paquete (*)_bringup con un archivo launch en el cual se cargue todo el sistema desarrollado (URDF, Gazebo, los controladores de ROS2 control) y los nodos de los ejercicios 8 y 9. Recuerde configurar correctamente los parámetros y topics de cada nodo. Puede probar que el robot se encuentra funcionando utilizando el teleop_twist_keyboard o publicando mensajes de Twist como los del ejercicio 5 o 6."
   },
   {
-    "objectID": "clases/05/index.html#código-publisher-5",
-    "href": "clases/05/index.html#código-publisher-5",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+    "objectID": "entregables/01/entregable1.html#ros-2-y-tf2",
+    "href": "entregables/01/entregable1.html#ros-2-y-tf2",
+    "title": "Ejercicios",
+    "section": "ROS 2 y tf2",
+    "text": "ROS 2 y tf2\n\n(Opción A) Crear un nodo que publique la transformación entre los frames odom y base_link a partir de los mensajes del topic /odom. Agregar la ejecución del mismo al launch del ejercicio anterior.\n(Opción B) Modificar el nodo del ejercicio 9 para que que publique la transformación entre los frames odom y base_link. Agregar un parámetro para que cuando no se requiera esta transformación, no se publique.\n\nCree un archivo launch en el paquete (*)_bringup que extienda (inclusión o copia) al del ejercicio 10 y añada la ejecución de RViz junto con su respectivo archivo de configuración, el cual muestre el robot en el frame odom y las transformaciones de todos los links definidos en el URDF."
   },
   {
-    "objectID": "clases/05/index.html#código-publisher-6",
-    "href": "clases/05/index.html#código-publisher-6",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+    "objectID": "clases/08/tres.html",
+    "href": "clases/08/tres.html",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Etiqueta raíz (todo el contenido se encuentra dentro)\n\n&lt;?xml version=\"1.0\"?&gt;\n\n&lt;robot name=\"mi_robot\"&gt;\n    ...\n    &lt;!-- Contenido URDF --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\n\n1 solo atributo: el nombre\n3 posibles geometrías: &lt;visual&gt;, &lt;collision&gt; y &lt;inertial&gt;\n\n&lt;link name=\"parteA_link\"&gt;\n    &lt;visual&gt;..&lt;/visual&gt;\n    &lt;collision&gt;..&lt;/collision&gt;\n    &lt;inertial&gt;..&lt;/inertial&gt; \n&lt;/link&gt;\n\n\n\nLink\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría:\n\nprisma:\n\n  &lt;box size=\"[largo-x] [ancho-y] [alto-z]\" /&gt;\n\ncilindro:\n\n  &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n\nesfera:\n\n  &lt;sphere radius=\"[radio]\" /&gt;\n\nmalla:\n\n  &lt;mesh filename=\"file://[nombre_del_archivo]\" /&gt;\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nGeometría: box, cylinder, sphere, mesh\n\n\n\n\n\n\n\n\n\nJoint\n\n\n\n2 atributos: el nombre y tipo\n2 elementos requeridos: link padre e hijo\nTipos:\n\nFija (fixed)\n\n&lt;joint name=\"parteA_joint\" type=\"fixed\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n&lt;/joint&gt;\n\nContinua (continuous)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n&lt;/joint&gt;\n\nRevolución (revolute)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n  &lt;limit lower=\"[min_rad]\" upper=\"[max_rad]\"\n      velocity=\"[rad_por_seg]\"\n      effort=\"[effort]\" /&gt;\n&lt;/joint&gt;\n\n\n\n\n\nAgregar al tag robot del URDF xmlns:xacro=\"http://www.ros.org/wiki/xacro\":\n&lt;robot name=\"mi_robot\" xmlns:xacro=\"http://www.ros.org/wiki/xacro\" &gt;\n    ...\n    &lt;!-- Contenido --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\nArchivo principal: extensión ‘.urdf.xacro’ y contiene el tag robot con nombre\nArchivos a incluir: extensión ‘.xacro’ y solo contienen el tag robot\nPara incluir:\n\n    &lt;xacro:include filename=\"[nombre_archivo]\" /&gt;\n\n\n\n\nPropiedades xacro:property: Nombre y valor\n\n    &lt;xacro:property name=\"diametro\" value=\"2.1\" /&gt;\n\nOperaciones matemáticas y acceso a variables: ${..}\n\n    &lt;geometry type=\"cylinder\" radius=\"${diametro / 2}\" length=\"${nombre_variable}\" /&gt;\n\nArgumentos xacro:args: Nombre y valor por defecto\n\n    &lt;xacro:arg name=\"[nombre_argumento]\" default=\"[valor_defecto]\"/&gt;\n\n\n\n\n\n\nLuego podemos ejecutar el comando XACRO con el valor del argumento nombre_argumento:=[valor]\n\n\n\n\nBuscar paquetes $(find ..):\n\n    &lt;xacro:include filename=\"$(find [nombre_paquete])/[nombre_archivo].xacro\" /&gt;\n\n\n\n\nEtiqueta xacro:if para true y xacro:unless para false\n\n&lt;xacro:if value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;\n&lt;/xacro:if&gt;\n&lt;xacro:unless value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;\n&lt;/xacro:unless&gt;\n\n\n\n\nDefinir macro xacro:macro: Nombre y parámetros a recibir\n\n&lt;xacro:macro name=\"[nombre_macro]\" params=\"[param1] [param2]:=[valor_defecto]\"&gt;\n    &lt;!-- Codigo del macro: ejemplo con parámetros --&gt;\n    &lt;link name=\"${param1}\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"${param2}\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n&lt;/xacro:macro&gt;\n\nAplicar o ejecutar macro xacro:[nombre_macro] y los parámetros definidos:\n\n&lt;xacro:nombre_macro param1=\"[valor_param1]\" param2=\"[valor_param2]\" /&gt; \n\nSi ejecutamos el macro con los valores parteA_link y 1.0, la salida será:\n\n...\n    &lt;link name=\"parteA_link\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"1.0\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n...\n\n\n\n\nDesde consola\n  $ xacro [ubicacion_del_archivo/nombre_archivo.xacro.urdf]\nDesde launch\n\nImportar las librerías\n\nfrom launch.substitutions import Command, PathJoinSubstitution\nfrom launch_ros.substitutions import FindPackageShare\n\nUbicar el archivo y procesarlo\n\n  # Ubicación del paquete y del archivo URDF\n  urdf_path = PathJoinSubstitution(\n      [FindPackageShare(\"[nombre_paquete]\"),  \"urdf\", \"[nombre_archivo].urdf.xacro\"]\n  )\n\n  # Procesar archivo URDF\n  urdf = Command(['xacro ', urdf_path])\n\n\n\n\n\n\nSe agregan las carpetas urdf para los archivos de descripción\n\n\n\nEjemplo de estructura\n\n📂 paquete_description\n    📁 paquete_description\n    📂 launch\n        📄 description.launch.py\n        ...\n    📂 urdf\n        📄 description.urdf.xacro\n        📄 materials.xacro\n        📄 my_macro.xacro\n        📄 sim_sensor.xacro\n        ...\n    📄 package.xml\n    📄 setup.py\n    ...\n\n\nConfiguración de setup.py\n\n\n\nsetup.py\n\n  # ... Otros parámetros\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n    # Incluir todos los archivos de la carpeta urdf\n    (os.path.join('share', package_name, 'urdf'), glob('urdf/*'))\n    # Incluir todos los archivos de la carpeta meshes\n    (os.path.join('share', package_name, 'meshes'), glob('meshes/*'))\n  ],"
   },
   {
-    "objectID": "clases/05/index.html#código-publisher-7",
-    "href": "clases/05/index.html#código-publisher-7",
-    "title": "Robótica",
-    "section": "Código publisher",
-    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+    "objectID": "clases/08/tres.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/08/tres.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
   },
   {
-    "objectID": "clases/05/index.html#código-suscriber",
-    "href": "clases/05/index.html#código-suscriber",
-    "title": "Robótica",
-    "section": "Código suscriber",
-    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
+    "objectID": "clases/08/tres.html#urdf",
+    "href": "clases/08/tres.html#urdf",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Etiqueta raíz (todo el contenido se encuentra dentro)\n\n&lt;?xml version=\"1.0\"?&gt;\n\n&lt;robot name=\"mi_robot\"&gt;\n    ...\n    &lt;!-- Contenido URDF --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\n\n1 solo atributo: el nombre\n3 posibles geometrías: &lt;visual&gt;, &lt;collision&gt; y &lt;inertial&gt;\n\n&lt;link name=\"parteA_link\"&gt;\n    &lt;visual&gt;..&lt;/visual&gt;\n    &lt;collision&gt;..&lt;/collision&gt;\n    &lt;inertial&gt;..&lt;/inertial&gt; \n&lt;/link&gt;\n\n\n\nLink\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nMaterial:\n\n    &lt;material name=\"nombre_material\"&gt;\n        &lt;color rgba=\"[R] [G] [B] [Alpha]\"/&gt;\n    &lt;/material&gt;\n\nGeometría:\n\nprisma:\n\n  &lt;box size=\"[largo-x] [ancho-y] [alto-z]\" /&gt;\n\ncilindro:\n\n  &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n\nesfera:\n\n  &lt;sphere radius=\"[radio]\" /&gt;\n\nmalla:\n\n  &lt;mesh filename=\"file://[nombre_del_archivo]\" /&gt;\n\n\n\n\n\nOrigen:\n\n    &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\" rpy=\"[roll] [pitch] [yaw]\"/&gt;\n\nGeometría: box, cylinder, sphere, mesh\n\n\n\n\n\n\n\n\n\nJoint\n\n\n\n2 atributos: el nombre y tipo\n2 elementos requeridos: link padre e hijo\nTipos:\n\nFija (fixed)\n\n&lt;joint name=\"parteA_joint\" type=\"fixed\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n&lt;/joint&gt;\n\nContinua (continuous)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n&lt;/joint&gt;\n\nRevolución (revolute)\n\n&lt;joint name=\"parteA_joint\" type=\"revolute\"&gt;\n  &lt;parent link=\"padre_link\"/&gt;\n  &lt;child link=\"parteA_link\"/&gt;\n  &lt;origin xyz=\"[pos_x] [pos_y] [pos_z]\"\n      rpy=\"[roll] [pitch] [yaw]\"/&gt;\n  &lt;axis xyz=\"[x] [y] [z]\"/&gt;\n  &lt;limit lower=\"[min_rad]\" upper=\"[max_rad]\"\n      velocity=\"[rad_por_seg]\"\n      effort=\"[effort]\" /&gt;\n&lt;/joint&gt;"
   },
   {
-    "objectID": "clases/05/index.html#código-suscriber-1",
-    "href": "clases/05/index.html#código-suscriber-1",
-    "title": "Robótica",
-    "section": "Código suscriber",
-    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
+    "objectID": "clases/08/tres.html#xacro",
+    "href": "clases/08/tres.html#xacro",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Agregar al tag robot del URDF xmlns:xacro=\"http://www.ros.org/wiki/xacro\":\n&lt;robot name=\"mi_robot\" xmlns:xacro=\"http://www.ros.org/wiki/xacro\" &gt;\n    ...\n    &lt;!-- Contenido --&gt;\n    ... \n&lt;/robot&gt;\n\n\n\nArchivo principal: extensión ‘.urdf.xacro’ y contiene el tag robot con nombre\nArchivos a incluir: extensión ‘.xacro’ y solo contienen el tag robot\nPara incluir:\n\n    &lt;xacro:include filename=\"[nombre_archivo]\" /&gt;\n\n\n\n\nPropiedades xacro:property: Nombre y valor\n\n    &lt;xacro:property name=\"diametro\" value=\"2.1\" /&gt;\n\nOperaciones matemáticas y acceso a variables: ${..}\n\n    &lt;geometry type=\"cylinder\" radius=\"${diametro / 2}\" length=\"${nombre_variable}\" /&gt;\n\nArgumentos xacro:args: Nombre y valor por defecto\n\n    &lt;xacro:arg name=\"[nombre_argumento]\" default=\"[valor_defecto]\"/&gt;\n\n\n\n\n\n\nLuego podemos ejecutar el comando XACRO con el valor del argumento nombre_argumento:=[valor]\n\n\n\n\nBuscar paquetes $(find ..):\n\n    &lt;xacro:include filename=\"$(find [nombre_paquete])/[nombre_archivo].xacro\" /&gt;\n\n\n\n\nEtiqueta xacro:if para true y xacro:unless para false\n\n&lt;xacro:if value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es verdadera: 'true' o 1 --&gt;\n&lt;/xacro:if&gt;\n&lt;xacro:unless value=\"[expresion]\"&gt;\n    &lt;!-- Si la expresión es falsa: 'false' o 0  --&gt;\n&lt;/xacro:unless&gt;\n\n\n\n\nDefinir macro xacro:macro: Nombre y parámetros a recibir\n\n&lt;xacro:macro name=\"[nombre_macro]\" params=\"[param1] [param2]:=[valor_defecto]\"&gt;\n    &lt;!-- Codigo del macro: ejemplo con parámetros --&gt;\n    &lt;link name=\"${param1}\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"${param2}\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n&lt;/xacro:macro&gt;\n\nAplicar o ejecutar macro xacro:[nombre_macro] y los parámetros definidos:\n\n&lt;xacro:nombre_macro param1=\"[valor_param1]\" param2=\"[valor_param2]\" /&gt; \n\nSi ejecutamos el macro con los valores parteA_link y 1.0, la salida será:\n\n...\n    &lt;link name=\"parteA_link\"&gt;\n        &lt;visual&gt;\n            &lt;geometry&gt;\n                &lt;sphere radius=\"1.0\" /&gt;\n            &lt;/geometry&gt;\n        &lt;/visual&gt;\n    &lt;/link&gt;\n...\n\n\n\n\nDesde consola\n  $ xacro [ubicacion_del_archivo/nombre_archivo.xacro.urdf]\nDesde launch\n\nImportar las librerías\n\nfrom launch.substitutions import Command, PathJoinSubstitution\nfrom launch_ros.substitutions import FindPackageShare\n\nUbicar el archivo y procesarlo\n\n  # Ubicación del paquete y del archivo URDF\n  urdf_path = PathJoinSubstitution(\n      [FindPackageShare(\"[nombre_paquete]\"),  \"urdf\", \"[nombre_archivo].urdf.xacro\"]\n  )\n\n  # Procesar archivo URDF\n  urdf = Command(['xacro ', urdf_path])"
   },
   {
-    "objectID": "clases/05/index.html#laboratorio",
-    "href": "clases/05/index.html#laboratorio",
+    "objectID": "clases/08/tres.html#adaptación-del-paquete",
+    "href": "clases/08/tres.html#adaptación-del-paquete",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "",
+    "text": "Se agregan las carpetas urdf para los archivos de descripción\n\n\n\nEjemplo de estructura\n\n📂 paquete_description\n    📁 paquete_description\n    📂 launch\n        📄 description.launch.py\n        ...\n    📂 urdf\n        📄 description.urdf.xacro\n        📄 materials.xacro\n        📄 my_macro.xacro\n        📄 sim_sensor.xacro\n        ...\n    📄 package.xml\n    📄 setup.py\n    ...\n\n\nConfiguración de setup.py\n\n\n\nsetup.py\n\n  # ... Otros parámetros\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n    # Incluir todos los archivos de la carpeta urdf\n    (os.path.join('share', package_name, 'urdf'), glob('urdf/*'))\n    # Incluir todos los archivos de la carpeta meshes\n    (os.path.join('share', package_name, 'meshes'), glob('meshes/*'))\n  ],"
+  },
+  {
+    "objectID": "clases/08/tres.html#robot_state_publisher",
+    "href": "clases/08/tres.html#robot_state_publisher",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "robot_state_publisher",
+    "text": "robot_state_publisher\n\nEjecutar desde consola\n\n    $ ros2 run robot_state_publisher robot_state_publisher\n                --ros-args -p robot_description:='&lt;robot_description&gt;'\n\nCargar desde launch\n\n    Node(\n        package = 'robot_state_publisher',\n        executable = 'robot_state_publisher',\n        parameters=[{\n            'robot_description': '&lt;robot_description&gt;',\n        }]\n    )"
+  },
+  {
+    "objectID": "clases/08/tres.html#joint_state_publisher_gui",
+    "href": "clases/08/tres.html#joint_state_publisher_gui",
+    "title": "Clase 08 - Taller de resolución",
+    "section": "joint_state_publisher_gui",
+    "text": "joint_state_publisher_gui\n\nEjecutar desde consola\n\n    $ ros2 run joint_state_publisher_gui joint_state_publisher_gui\n\nCargar desde launch:\n\n    Node(\n        package = 'joint_state_publisher_gui',\n        executable = 'joint_state_publisher_gui',\n        output = 'screen',\n    )"
+  },
+  {
+    "objectID": "clases/03/lab.html",
+    "href": "clases/03/lab.html",
+    "title": "Clase 03 - Laboratorio",
+    "section": "",
+    "text": "Nota\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
+  },
+  {
+    "objectID": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/03/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 03 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/03/lab.html#parte-1-servicios-y-parámetros",
+    "href": "clases/03/lab.html#parte-1-servicios-y-parámetros",
+    "title": "Clase 03 - Laboratorio",
+    "section": "",
+    "text": "Nota\n\n\n\nRecuerda configurar el entorno:\n    $ source /opt/ros/jazzy/setup.bash\n\n\n\n\n\n\n\n\n\n\n\n\nPara ejecutar\n\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n\n\n\n\n\n\n\n    $ ros2 service list\nPara también ver el tipo:\n    $ ros2 service list -t\n\n\n\n\n  $ ros2 service type &lt;nombre_servicio&gt;\n\n\n    $ ros2 service type /add_two_ints\n\n  $ ros2 interface show &lt;nombre_tipo_servicio&gt;\n\n\n    $ ros2 interface show example_interfaces/srv/AddTwoInts\n\n\n\n\n  $ ros2 node info &lt;nombre_nodo&gt;\n\n\n\n\n\n  $ ros2 service call &lt;nombre_servicio&gt; &lt;nombre_tipo_servicio&gt; &lt;argumentos&gt;\n\n\n    $ ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts \"{a: 7, b: 12}\"\n\n\n\n\n\n\n\n\n\n\n\n    $ ros2 param list\n\n\n\n\n  $ ros2 param describe &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param describe /set_parameters_callback param1\n\n\n\n\n  $ ros2 param get &lt;nombre_nodo&gt; &lt;nombre_parametro&gt;\n\n    $ ros2 param get /set_parameters_callback param1\n\n\n\n\n  $ ros2 param set &lt;nombre_nodo&gt; &lt;nombre_parametro&gt; &lt;valor&gt;\n\n    $ ros2 param set /set_parameters_callback param1 1.0\n\n\n\n\n  $ ros2 param dump &lt;nombre_nodo&gt;\n\n    $ ros2 param dump /set_parameters_callback\n\n\n\n\n  $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args \n      --params-file &lt;archivo&gt;"
+  },
+  {
+    "objectID": "clases/index.html",
+    "href": "clases/index.html",
+    "title": "Clases",
+    "section": "",
+    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial\n\n\n\n\n\n12\n02/06\nOdometría: Cálculo de posición en base a modelo cinemático\n\n\n\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nRevisión temario clase anterior. Simulación de sensores en Gazebo"
+  },
+  {
+    "objectID": "clases/index.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/index.html#universidad-nacional-del-litoral-unl",
+    "title": "Clases",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/06/index.html#resumen-clase-05",
+    "href": "clases/06/index.html#resumen-clase-05",
+    "title": "Robótica",
+    "section": "Resumen Clase 05",
+    "text": "Resumen Clase 05\n\nProgramación Orientada a Objetos\n\n\nCódigo publisher y suscriber"
+  },
+  {
+    "objectID": "clases/06/index.html#rclpy-parámetros",
+    "href": "clases/06/index.html#rclpy-parámetros",
+    "title": "Robótica",
+    "section": "rclpy: Parámetros",
+    "text": "rclpy: Parámetros\n\nPermiten configurar nodos sin tener que reprogramarlos\n\n\n\nSe crean y destruyen con el nodo\n\n\n\n\nConsisten en\n\n\nUna key (identificador)\nUn valor\nUna descripción (opcional)\n\n\n\n\nRecapitulación: - Las primeras clases se trabajaron los conceptos de nodos, mensajes y topics; luego se trabajó con los comandos asociados a estas entidades y como interactuar u obtener información acerca de los mismos y por último aprendimos el uso de las librerías para la programación de nodos - También se trabajó con los concetos de servicios y parámetros, y posteriormente los comandos asociados y como utilizarlos - Ahora queda aprender como programar dichos parámetros dentro de los nodos"
+  },
+  {
+    "objectID": "clases/06/index.html#rclpy-parámetros-1",
+    "href": "clases/06/index.html#rclpy-parámetros-1",
+    "title": "Robótica",
+    "section": "rclpy: Parámetros",
+    "text": "rclpy: Parámetros\n\nSe declaran todos al inicio, antes de hacer uso\n\n\n    self.declare_parameter('&lt;nombre&gt;', &lt;valor&gt;)\n\n    self.declare_parameter('&lt;nombre&gt;', &lt;valor&gt;, &lt;desc&gt;)\n\n\n\nEl tipo es inferido a través del valor"
+  },
+  {
+    "objectID": "clases/06/index.html#rclpy-parámetros-2",
+    "href": "clases/06/index.html#rclpy-parámetros-2",
+    "title": "Robótica",
+    "section": "rclpy: Parámetros",
+    "text": "rclpy: Parámetros\n\nPara obtener el valor\n\n    param = self.get_parameter('&lt;nombre&gt;')\n\n    valor = param.value\n    \n\n\nEstablecer el valor (desde el nodo)\n\n    nuevo_valor = rclpy.parameter.Parameter(&lt;nombre&gt;, &lt;tipo&gt;, valor&gt;)\n    \n    self.set_parameters([ nuevo_valor ])"
+  },
+  {
+    "objectID": "clases/06/index.html#rclpy-parámetros-3",
+    "href": "clases/06/index.html#rclpy-parámetros-3",
+    "title": "Robótica",
+    "section": "rclpy: Parámetros",
+    "text": "rclpy: Parámetros\n\nExiste un callback para cuando se modifica algún parámetro\n\n    # Dentro del constructor de la clase\n    self.handler = ParameterEventHandler(self)\n    \n    self.callback_handle = self.handler.add_parameter_callback(\n        parameter_name = \"&lt;nombre_parametro&gt;\",\n        node_name = \"&lt;nombre_nodo&gt;\",\n        callback = &lt;callback&gt;,\n    )\n    \n\n\nEl callback recibe el parámetro modificado\n\n    def callback(self, p: rclpy.parameter.Parameter) -&gt; None:\n        ..."
+  },
+  {
+    "objectID": "clases/06/index.html#argumentos-en-ros2",
+    "href": "clases/06/index.html#argumentos-en-ros2",
+    "title": "Robótica",
+    "section": "Argumentos en ROS2",
+    "text": "Argumentos en ROS2\n\nPropiedades que ROS permite reconfigurar\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args ...\n\n\n\nRemapping: -r o --remap\n\n\n    $ ros2 run ... --ros-args -r __node:=&lt;nuevo_nombre_nodo&gt;\n\n\n    $ ros2 run ... --ros-args -r __ns:=/&lt;nombre_namespace&gt;\n\n\n    $ ros2 run ... --ros-args -r &lt;topic&gt;:=&lt;nuevo_nombre_topic&gt;\n\n\n\n\nNivel de log: --log-level\n  $ ros2 run ... --ros-args --log-level &lt;info|debug|warn|error&gt;"
+  },
+  {
+    "objectID": "clases/06/index.html#argumentos-en-ros2-1",
+    "href": "clases/06/index.html#argumentos-en-ros2-1",
+    "title": "Robótica",
+    "section": "Argumentos en ROS2",
+    "text": "Argumentos en ROS2\n\nPara el caso de parámetros: -p\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n            --ros-args -p &lt;nombre_parametro&gt;:=&lt;valor&gt;\n\n\n\n\n\n\n\n\nCuando el nodo se encuentra en ejecución:\n\n$ ros2 param set ..."
+  },
+  {
+    "objectID": "clases/06/index.html#ros2launch",
+    "href": "clases/06/index.html#ros2launch",
+    "title": "Robótica",
+    "section": "ros2launch",
+    "text": "ros2launch\n\nHerramienta que permite la ejecución de múltiples nodos con un simple comando: ros2 launch ...\n\n\n\nTareas más comunes:\n\n\nCrear nodos (y de forma sincronizada)\nCargar parámetros\nEjecutar comandos\nReutilizar archivos\n\n\nPor lo general, un sistema ROS 2 está compuesto de numerosos nodos que se ejecutan en diversos procesos (e incluso en distintas máquinas)\nSi bien es posible ejecutar manualmente cada uno de estos nodos, se vuelve engorroso rapidamente"
+  },
+  {
+    "objectID": "clases/06/index.html#ros2launch-1",
+    "href": "clases/06/index.html#ros2launch-1",
+    "title": "Robótica",
+    "section": "ros2launch",
+    "text": "ros2launch\n\nPor convención se ubican en la carpeta launch dentro del paquete\n\n\n\nFormatos:\n\nXML: nombre_archivo.xml\nYAML: nombre_archivo.yaml\nPython: nombre_archivo.launch.py   ⬅️"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python",
+    "href": "clases/06/index.html#archivos-launch-en-python",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nEs necesario adecuar el archivo setup.py:\n\nfrom setuptools import setup\n\nimport os\nfrom glob import glob\n\npackage_name = 'nombre_paquete'\n\nsetup(\n  # Otros parámetros ...\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n  ],\n  # El resto de la configuración ...\n)\n\n\n\n\n\n\n\nSe recomienda agregar ros2launch como dependencia de ejecución:\n\n   &lt;exec_depend&gt;ros2launch&lt;/exec_depend&gt;"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-1",
+    "href": "clases/06/index.html#archivos-launch-en-python-1",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nSe debe implementar la función\n          generate_launch_description()\nque devuelve\n          launch.LaunchDescription()\n\n\n\nEsta función será utilizada por el comando:\n  $ ros2 launch &lt;nombre_paquete&gt; &lt;nombre_archivo_launch&gt;"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-2",
+    "href": "clases/06/index.html#archivos-launch-en-python-2",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nImportar las librerías launch y launch_ros\n\n# Librería independiente de ROS2\nfrom launch import LaunchDescription\n\n# Librería específica con clases de ROS2\nfrom launch_ros import actions"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-3",
+    "href": "clases/06/index.html#archivos-launch-en-python-3",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nFormas de agregar acciones (ejemplo con nodo)\n\n\nDirectamente en el constructor\n\ndef generate_launch_description():\n  return LaunchDescription([\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n    ),\n  ])\n\nAñadiendo al objeto\n\ndef generate_launch_description():\n  node_1 = Node(\n    package = ’&lt;nombre_paquete&gt;’,\n    executable = ’&lt;nombre_ejecutable&gt;’,\n    name = ’&lt;nombre_nodo&gt;’,\n  )\n\n  ld = LaunchDescription()\n  ld.add_action(node_1)\n  return ld"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-4",
+    "href": "clases/06/index.html#archivos-launch-en-python-4",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nActions: Ejecutar un nodo\n\nfrom launch_ros.actions import Node\n...\nreturn LaunchDescription([\n  Node(\n    package = ’&lt;nombre_paquete&gt;’,\n    executable = ’&lt;nombre_ejecutable&gt;’,\n    name = ’&lt;nombre_nodo&gt;’,\n    namespace = ’&lt;nombre_namespace&gt;’,\n    parameters = [ # Pueden ser archivos\n      {‘&lt;nombre_parametro&gt;’: &lt;valor&gt;, .. }\n    ],\n    remappings = [\n      ('&lt;nombre_topic&gt;', '&lt;nuevo_nombre&gt;'),\n    ],\n    output = ’&lt;screen|log|both&gt;’,\n    ros_arguments = [...],              # Listado de argumentos de ejecución (nivel de log, etc)\n    arguments = [...],                  # Listado de argumentos para el nodo\n  ),\n])"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-5",
+    "href": "clases/06/index.html#archivos-launch-en-python-5",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nSubstitutions: Parámetros para cambiar valores en el launch\n\n...\nfrom launch.actions import DeclareLaunchArgument\nfrom launch.substitutions import LaunchConfiguration\n \ndef generate_launch_description():\n  return LaunchDescription([\n    DeclareLaunchArgument(\n      ‘&lt;nombre_parametro&gt;’, default_value=&lt;valor&gt;\n    ),\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n      parameters=[{\n        '&lt;parametro_del_nodo&gt;': LaunchConfiguration('&lt;nombre_parametro&gt;'),\n      }]\n    ),\n  ])"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-6",
+    "href": "clases/06/index.html#archivos-launch-en-python-6",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nConditions: Mecanismos para cambiar el comportamiento del launch\n\n...\nfrom launch.actions import DeclareLaunchArgument\nfrom launch.conditions import IfCondition\nfrom launch.substitutions import LaunchConfiguration, EqualsSubstitution\n\ndef generate_launch_description():\n  return LaunchDescription([\n    DeclareLaunchArgument(\n      ‘ejecutar_nodo’, default_value='true'\n    ),\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n      condition=IfCondition(\n        EqualsSubstitution(LaunchConfiguration(‘ejecutar_nodo’), 'true')\n      ),\n    ),\n  ])"
+  },
+  {
+    "objectID": "clases/06/index.html#archivos-launch-en-python-7",
+    "href": "clases/06/index.html#archivos-launch-en-python-7",
+    "title": "Robótica",
+    "section": "Archivos launch en python",
+    "text": "Archivos launch en python\n\nReutilización: Incluir otros launch\n\n...\nfrom launch.actions import IncludeLaunchDescription\nfrom launch.launch_description_sources import PythonLaunchDescriptionSource\nfrom launch_ros.substitutions import FindPackageShare\n\ndef generate_launch_description():\n  return LaunchDescription([\n    IncludeLaunchDescription(\n      PythonLaunchDescriptionSource([\n        FindPackageShare('&lt;nombre_paquete&gt;'), '/launch', '/&lt;nombre_archivo_launch&gt;'\n      ])\n    )\n    ...\n  ])"
+  },
+  {
+    "objectID": "clases/06/index.html#sistema-de-logging",
+    "href": "clases/06/index.html#sistema-de-logging",
+    "title": "Robótica",
+    "section": "Sistema de logging",
+    "text": "Sistema de logging\n\n\nPor defecto los mensajes de log se escriben en:\n\nLa consola\nEl archivo de log en el disco\nEl topic \\rosout\n\n\n\n\n\nPueden activarse y desactivarse individualmente"
+  },
+  {
+    "objectID": "clases/06/index.html#mensajes-de-log",
+    "href": "clases/06/index.html#mensajes-de-log",
+    "title": "Robótica",
+    "section": "Mensajes de log",
+    "text": "Mensajes de log\n\nEscala de gravedad (severity level)\n\n\nEn orden descendente:\n\nFATAL\nERROR\nWARN\nINFO\nDEBUG\n\n\n\nCada nodo está asociado a un nivel de severidad por lo que se pueden filtrar mensajes con severidad inferior"
+  },
+  {
+    "objectID": "clases/06/index.html#mensajes-de-log-en-rclpy",
+    "href": "clases/06/index.html#mensajes-de-log-en-rclpy",
+    "title": "Robótica",
+    "section": "Mensajes de log en rclpy",
+    "text": "Mensajes de log en rclpy\n\nObtener el logger de una clase nodo:\n  &lt;nodo&gt;.get_logger().{debug,info,warning,error,fatal}('&lt;mensaje_de_log&gt;')\n\n\n\n\n\nOpciones para configurar el comportamiento:\n\nonce: Loggear solo la primera vez\nskip_first: No loggear la primera vez, si las siguientes\nthrottle_duration_sec: Cantidad de veces que se puede enviar el mensaje por segundo"
+  },
+  {
+    "objectID": "clases/06/index.html#laboratorio-1",
+    "href": "clases/06/index.html#laboratorio-1",
     "title": "Robótica",
     "section": "Laboratorio",
-    "text": "Laboratorio\nModificación código de nodos publisher y suscriber"
+    "text": "Laboratorio\nUso de parámetros y archivos launch"
   },
   {
     "objectID": "clases/07/index.html#posicionamiento-2d-1",
@@ -1113,153 +1302,6 @@
     "text": "Laboratorio\nTransformaciones 2D y tf2"
   },
   {
-    "objectID": "clases/06/index.html#resumen-clase-05",
-    "href": "clases/06/index.html#resumen-clase-05",
-    "title": "Robótica",
-    "section": "Resumen Clase 05",
-    "text": "Resumen Clase 05\n\nProgramación Orientada a Objetos\n\n\nCódigo publisher y suscriber"
-  },
-  {
-    "objectID": "clases/06/index.html#rclpy-parámetros",
-    "href": "clases/06/index.html#rclpy-parámetros",
-    "title": "Robótica",
-    "section": "rclpy: Parámetros",
-    "text": "rclpy: Parámetros\n\nPermiten configurar nodos sin tener que reprogramarlos\n\n\n\nSe crean y destruyen con el nodo\n\n\n\n\nConsisten en\n\n\nUna key (identificador)\nUn valor\nUna descripción (opcional)\n\n\n\n\nRecapitulación: - Las primeras clases se trabajaron los conceptos de nodos, mensajes y topics; luego se trabajó con los comandos asociados a estas entidades y como interactuar u obtener información acerca de los mismos y por último aprendimos el uso de las librerías para la programación de nodos - También se trabajó con los concetos de servicios y parámetros, y posteriormente los comandos asociados y como utilizarlos - Ahora queda aprender como programar dichos parámetros dentro de los nodos"
-  },
-  {
-    "objectID": "clases/06/index.html#rclpy-parámetros-1",
-    "href": "clases/06/index.html#rclpy-parámetros-1",
-    "title": "Robótica",
-    "section": "rclpy: Parámetros",
-    "text": "rclpy: Parámetros\n\nSe declaran todos al inicio, antes de hacer uso\n\n\n    self.declare_parameter('&lt;nombre&gt;', &lt;valor&gt;)\n\n    self.declare_parameter('&lt;nombre&gt;', &lt;valor&gt;, &lt;desc&gt;)\n\n\n\nEl tipo es inferido a través del valor"
-  },
-  {
-    "objectID": "clases/06/index.html#rclpy-parámetros-2",
-    "href": "clases/06/index.html#rclpy-parámetros-2",
-    "title": "Robótica",
-    "section": "rclpy: Parámetros",
-    "text": "rclpy: Parámetros\n\nPara obtener el valor\n\n    param = self.get_parameter('&lt;nombre&gt;')\n\n    valor = param.value\n    \n\n\nEstablecer el valor (desde el nodo)\n\n    nuevo_valor = rclpy.parameter.Parameter(&lt;nombre&gt;, &lt;tipo&gt;, valor&gt;)\n    \n    self.set_parameters([ nuevo_valor ])"
-  },
-  {
-    "objectID": "clases/06/index.html#rclpy-parámetros-3",
-    "href": "clases/06/index.html#rclpy-parámetros-3",
-    "title": "Robótica",
-    "section": "rclpy: Parámetros",
-    "text": "rclpy: Parámetros\n\nExiste un callback para cuando se modifica algún parámetro\n\n    # Dentro del constructor de la clase\n    self.handler = ParameterEventHandler(self)\n    \n    self.callback_handle = self.handler.add_parameter_callback(\n        parameter_name = \"&lt;nombre_parametro&gt;\",\n        node_name = \"&lt;nombre_nodo&gt;\",\n        callback = &lt;callback&gt;,\n    )\n    \n\n\nEl callback recibe el parámetro modificado\n\n    def callback(self, p: rclpy.parameter.Parameter) -&gt; None:\n        ..."
-  },
-  {
-    "objectID": "clases/06/index.html#argumentos-en-ros2",
-    "href": "clases/06/index.html#argumentos-en-ros2",
-    "title": "Robótica",
-    "section": "Argumentos en ROS2",
-    "text": "Argumentos en ROS2\n\nPropiedades que ROS permite reconfigurar\n\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt; --ros-args ...\n\n\n\nRemapping: -r o --remap\n\n\n    $ ros2 run ... --ros-args -r __node:=&lt;nuevo_nombre_nodo&gt;\n\n\n    $ ros2 run ... --ros-args -r __ns:=/&lt;nombre_namespace&gt;\n\n\n    $ ros2 run ... --ros-args -r &lt;topic&gt;:=&lt;nuevo_nombre_topic&gt;\n\n\n\n\nNivel de log: --log-level\n  $ ros2 run ... --ros-args --log-level &lt;info|debug|warn|error&gt;"
-  },
-  {
-    "objectID": "clases/06/index.html#argumentos-en-ros2-1",
-    "href": "clases/06/index.html#argumentos-en-ros2-1",
-    "title": "Robótica",
-    "section": "Argumentos en ROS2",
-    "text": "Argumentos en ROS2\n\nPara el caso de parámetros: -p\n\n    $ ros2 run &lt;nombre_paquete&gt; &lt;nombre_ejecutable&gt;\n            --ros-args -p &lt;nombre_parametro&gt;:=&lt;valor&gt;\n\n\n\n\n\n\n\n\nCuando el nodo se encuentra en ejecución:\n\n$ ros2 param set ..."
-  },
-  {
-    "objectID": "clases/06/index.html#ros2launch",
-    "href": "clases/06/index.html#ros2launch",
-    "title": "Robótica",
-    "section": "ros2launch",
-    "text": "ros2launch\n\nHerramienta que permite la ejecución de múltiples nodos con un simple comando: ros2 launch ...\n\n\n\nTareas más comunes:\n\n\nCrear nodos (y de forma sincronizada)\nCargar parámetros\nEjecutar comandos\nReutilizar archivos\n\n\nPor lo general, un sistema ROS 2 está compuesto de numerosos nodos que se ejecutan en diversos procesos (e incluso en distintas máquinas)\nSi bien es posible ejecutar manualmente cada uno de estos nodos, se vuelve engorroso rapidamente"
-  },
-  {
-    "objectID": "clases/06/index.html#ros2launch-1",
-    "href": "clases/06/index.html#ros2launch-1",
-    "title": "Robótica",
-    "section": "ros2launch",
-    "text": "ros2launch\n\nPor convención se ubican en la carpeta launch dentro del paquete\n\n\n\nFormatos:\n\nXML: nombre_archivo.xml\nYAML: nombre_archivo.yaml\nPython: nombre_archivo.launch.py   ⬅️"
-  },
-  {
-    "objectID": "clases/06/index.html#archivos-launch-en-python",
-    "href": "clases/06/index.html#archivos-launch-en-python",
-    "title": "Robótica",
-    "section": "Archivos launch en python",
-    "text": "Archivos launch en python\n\nEs necesario adecuar el archivo setup.py:\n\nfrom setuptools import setup\n\nimport os\nfrom glob import glob\n\npackage_name = 'nombre_paquete'\n\nsetup(\n  # Otros parámetros ...\n  data_files=[\n    # ... Otros archivos\n    # Incluir todos los archivos de la carpeta launch\n    (os.path.join('share', package_name, 'launch'), glob('launch/*'))\n  ],\n  # El resto de la configuración ...\n)\n\n\n\n\n\n\n\nSe recomienda agregar ros2launch como dependencia de ejecución:\n\n   &lt;exec_depend&gt;ros2launch&lt;/exec_depend&gt;"
-  },
-  {
-    "objectID": "clases/06/index.html#archivos-launch-en-python-1",
-    "href": "clases/06/index.html#archivos-launch-en-python-1",
-    "title": "Robótica",
-    "section": "Archivos launch en python",
-    "text": "Archivos launch en python\n\nSe debe implementar la función\n          generate_launch_description()\nque devuelve\n          launch.LaunchDescription()\n\n\n\nEsta función será utilizada por el comando:\n  $ ros2 launch &lt;nombre_paquete&gt; &lt;nombre_archivo_launch&gt;"
-  },
-  {
-    "objectID": "clases/06/index.html#archivos-launch-en-python-2",
-    "href": "clases/06/index.html#archivos-launch-en-python-2",
-    "title": "Robótica",
-    "section": "Archivos launch en python",
-    "text": "Archivos launch en python\n\nImportar las librerías launch y launch_ros\n\n# Librería independiente de ROS2\nfrom launch import LaunchDescription\n\n# Librería específica con clases de ROS2\nfrom launch_ros import actions"
-  },
-  {
-    "objectID": "clases/06/index.html#archivos-launch-en-python-3",
-    "href": "clases/06/index.html#archivos-launch-en-python-3",
-    "title": "Robótica",
-    "section": "Archivos launch en python",
-    "text": "Archivos launch en python\n\nFormas de agregar acciones (ejemplo con nodo)\n\n\nDirectamente en el constructor\n\ndef generate_launch_description():\n  return LaunchDescription([\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n    ),\n  ])\n\nAñadiendo al objeto\n\ndef generate_launch_description():\n  node_1 = Node(\n    package = ’&lt;nombre_paquete&gt;’,\n    executable = ’&lt;nombre_ejecutable&gt;’,\n    name = ’&lt;nombre_nodo&gt;’,\n  )\n\n  ld = LaunchDescription()\n  ld.add_action(node_1)\n  return ld"
-  },
-  {
-    "objectID": "clases/06/index.html#archivos-launch-en-python-4",
-    "href": "clases/06/index.html#archivos-launch-en-python-4",
-    "title": "Robótica",
-    "section": "Archivos launch en python",
-    "text": "Archivos launch en python\n\nActions: Ejecutar un nodo\n\nfrom launch_ros.actions import Node\n...\nreturn LaunchDescription([\n  Node(\n    package = ’&lt;nombre_paquete&gt;’,\n    executable = ’&lt;nombre_ejecutable&gt;’,\n    name = ’&lt;nombre_nodo&gt;’,\n    namespace = ’&lt;nombre_namespace&gt;’,\n    parameters = [ # Pueden ser archivos\n      {‘&lt;nombre_parametro&gt;’: &lt;valor&gt;, .. }\n    ],\n    remappings = [\n      ('&lt;nombre_topic&gt;', '&lt;nuevo_nombre&gt;'),\n    ],\n    output = ’&lt;screen|log|both&gt;’,\n    ros_arguments = [...],              # Listado de argumentos de ejecución (nivel de log, etc)\n    arguments = [...],                  # Listado de argumentos para el nodo\n  ),\n])"
-  },
-  {
-    "objectID": "clases/06/index.html#archivos-launch-en-python-5",
-    "href": "clases/06/index.html#archivos-launch-en-python-5",
-    "title": "Robótica",
-    "section": "Archivos launch en python",
-    "text": "Archivos launch en python\n\nSubstitutions: Parámetros para cambiar valores en el launch\n\n...\nfrom launch.actions import DeclareLaunchArgument\nfrom launch.substitutions import LaunchConfiguration\n \ndef generate_launch_description():\n  return LaunchDescription([\n    DeclareLaunchArgument(\n      ‘&lt;nombre_parametro&gt;’, default_value=&lt;valor&gt;\n    ),\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n      parameters=[{\n        '&lt;parametro_del_nodo&gt;': LaunchConfiguration('&lt;nombre_parametro&gt;'),\n      }]\n    ),\n  ])"
-  },
-  {
-    "objectID": "clases/06/index.html#archivos-launch-en-python-6",
-    "href": "clases/06/index.html#archivos-launch-en-python-6",
-    "title": "Robótica",
-    "section": "Archivos launch en python",
-    "text": "Archivos launch en python\n\nConditions: Mecanismos para cambiar el comportamiento del launch\n\n...\nfrom launch.actions import DeclareLaunchArgument\nfrom launch.conditions import IfCondition\nfrom launch.substitutions import LaunchConfiguration, EqualsSubstitution\n\ndef generate_launch_description():\n  return LaunchDescription([\n    DeclareLaunchArgument(\n      ‘ejecutar_nodo’, default_value='true'\n    ),\n    Node(\n      package = ’&lt;nombre_paquete&gt;’,\n      executable = ’&lt;nombre_ejecutable&gt;’,\n      name = ’&lt;nombre_nodo&gt;’,\n      condition=IfCondition(\n        EqualsSubstitution(LaunchConfiguration(‘ejecutar_nodo’), 'true')\n      ),\n    ),\n  ])"
-  },
-  {
-    "objectID": "clases/06/index.html#archivos-launch-en-python-7",
-    "href": "clases/06/index.html#archivos-launch-en-python-7",
-    "title": "Robótica",
-    "section": "Archivos launch en python",
-    "text": "Archivos launch en python\n\nReutilización: Incluir otros launch\n\n...\nfrom launch.actions import IncludeLaunchDescription\nfrom launch.launch_description_sources import PythonLaunchDescriptionSource\nfrom launch_ros.substitutions import FindPackageShare\n\ndef generate_launch_description():\n  return LaunchDescription([\n    IncludeLaunchDescription(\n      PythonLaunchDescriptionSource([\n        FindPackageShare('&lt;nombre_paquete&gt;'), '/launch', '/&lt;nombre_archivo_launch&gt;'\n      ])\n    )\n    ...\n  ])"
-  },
-  {
-    "objectID": "clases/06/index.html#sistema-de-logging",
-    "href": "clases/06/index.html#sistema-de-logging",
-    "title": "Robótica",
-    "section": "Sistema de logging",
-    "text": "Sistema de logging\n\n\nPor defecto los mensajes de log se escriben en:\n\nLa consola\nEl archivo de log en el disco\nEl topic \\rosout\n\n\n\n\n\nPueden activarse y desactivarse individualmente"
-  },
-  {
-    "objectID": "clases/06/index.html#mensajes-de-log",
-    "href": "clases/06/index.html#mensajes-de-log",
-    "title": "Robótica",
-    "section": "Mensajes de log",
-    "text": "Mensajes de log\n\nEscala de gravedad (severity level)\n\n\nEn orden descendente:\n\nFATAL\nERROR\nWARN\nINFO\nDEBUG\n\n\n\nCada nodo está asociado a un nivel de severidad por lo que se pueden filtrar mensajes con severidad inferior"
-  },
-  {
-    "objectID": "clases/06/index.html#mensajes-de-log-en-rclpy",
-    "href": "clases/06/index.html#mensajes-de-log-en-rclpy",
-    "title": "Robótica",
-    "section": "Mensajes de log en rclpy",
-    "text": "Mensajes de log en rclpy\n\nObtener el logger de una clase nodo:\n  &lt;nodo&gt;.get_logger().{debug,info,warning,error,fatal}('&lt;mensaje_de_log&gt;')\n\n\n\n\n\nOpciones para configurar el comportamiento:\n\nonce: Loggear solo la primera vez\nskip_first: No loggear la primera vez, si las siguientes\nthrottle_duration_sec: Cantidad de veces que se puede enviar el mensaje por segundo"
-  },
-  {
-    "objectID": "clases/06/index.html#laboratorio-1",
-    "href": "clases/06/index.html#laboratorio-1",
-    "title": "Robótica",
-    "section": "Laboratorio",
-    "text": "Laboratorio\nUso de parámetros y archivos launch"
-  },
-  {
     "objectID": "clases/04/index.html#resumen-clase-03",
     "href": "clases/04/index.html#resumen-clase-03",
     "title": "Robótica",
@@ -1393,74 +1435,249 @@
     "text": "Laboratorio (parte 2)\n\nCreación de paquetes\nProgramación y compilación de nodos"
   },
   {
-    "objectID": "clases/01/index.html#organización-de-la-materia",
-    "href": "clases/01/index.html#organización-de-la-materia",
+    "objectID": "clases/05/index.html#resumen-clase-04",
+    "href": "clases/05/index.html#resumen-clase-04",
     "title": "Robótica",
-    "section": "Organización de la materia",
-    "text": "Organización de la materia\n\nDocente: Tec. Agustín Capovilla\nCursado: Lunes de 17:00 a 19:30 (T/P) 1\nComunicación: via email acapovilla@sinc.unl.edu.ar\nRepositorio: acapovilla.github.io/robotica-2025\n\nclases de consulta a coordinar"
+    "section": "Resumen Clase 04",
+    "text": "Resumen Clase 04\n\nCallbacks\n\n\nCódigo publisher y suscriber"
   },
   {
-    "objectID": "clases/01/index.html#evaluaciones",
-    "href": "clases/01/index.html#evaluaciones",
+    "objectID": "clases/05/index.html#resumen-clase-04-1",
+    "href": "clases/05/index.html#resumen-clase-04-1",
     "title": "Robótica",
-    "section": "Evaluaciones",
-    "text": "Evaluaciones\n\n3 trabajos prácticos integradores\n\n\n\n\n\n\n\n\nCon sus respectivas instancias de recuperación"
+    "section": "Resumen Clase 04",
+    "text": "Resumen Clase 04\n\nUso de nombres\n\n\nPaquete\nArchivo\nEjecutable\nNodo"
   },
   {
-    "objectID": "clases/01/index.html#evaluaciones-1",
-    "href": "clases/01/index.html#evaluaciones-1",
+    "objectID": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
+    "href": "clases/05/index.html#rclpy-programación-orientada-a-objetos",
     "title": "Robótica",
-    "section": "Evaluaciones",
-    "text": "Evaluaciones\n\n3 trabajos prácticos integradores\n\nCodiciones de aprobación\n\nPara regularizar\n\nAprobación de al menos 2\n\nPara promocionar\n\nAprobación de todos los trabajos con mínimo de 60% + promedio mínimo de 70%"
+    "section": "rclpy: Programación Orientada a Objetos",
+    "text": "rclpy: Programación Orientada a Objetos\n\nExisten 3 formas de escribir código de ROS:\n\n\nCódigo in-line (utilizado en la clase anterior)\nFunciones locales\nOrientado a Objetos   ⬅️"
   },
   {
-    "objectID": "clases/01/index.html#programa",
-    "href": "clases/01/index.html#programa",
+    "objectID": "clases/05/index.html#código-publisher",
+    "href": "clases/05/index.html#código-publisher",
     "title": "Robótica",
-    "section": "Programa",
-    "text": "Programa\n\n4 bloques principales"
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
   },
   {
-    "objectID": "clases/01/index.html#programa-1",
-    "href": "clases/01/index.html#programa-1",
+    "objectID": "clases/05/index.html#código-publisher-1",
+    "href": "clases/05/index.html#código-publisher-1",
     "title": "Robótica",
-    "section": "Programa",
-    "text": "Programa\n\n4 bloques principales\n\nBloque 0\n\nRobot Operating System (ROS 2)"
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\nimport rclpy\n\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = rclpy.create_node('publicador')\n\n  # 2.1 Lógica del programa\n  ...\n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()\n\n\nOrientado a objetos\n\nimport rclpy\nfrom rclpy.node import Node\nfrom std_msgs.msg import String\n\ndef main(args=None):\n  # 1. Inicialización\n  rclpy.init(args=args)\n\n  # 2. Creación de nodo\n  nodo = Publicador()\n\n  # 2.1 La lógica se encuentra en la clase\n  \n\n  # 3. Procesamiento de mensajes y callback\n  rclpy.spin(nodo)\n\n  # 4. Finalización \n  rclpy.shutdown()\n\n\nif __name__ == '__main__':\n    main()"
   },
   {
-    "objectID": "clases/01/index.html#programa-2",
-    "href": "clases/01/index.html#programa-2",
+    "objectID": "clases/05/index.html#código-publisher-2",
+    "href": "clases/05/index.html#código-publisher-2",
     "title": "Robótica",
-    "section": "Programa",
-    "text": "Programa\n\n4 bloques principales\n\nBloque 1\n\nCinemática\nSimulación y control"
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
   },
   {
-    "objectID": "clases/01/index.html#programa-3",
-    "href": "clases/01/index.html#programa-3",
+    "objectID": "clases/05/index.html#código-publisher-3",
+    "href": "clases/05/index.html#código-publisher-3",
     "title": "Robótica",
-    "section": "Programa",
-    "text": "Programa\n\n4 bloques principales\n\nBloque 2\n\nPercepción\nLocalización y mapeo"
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
   },
   {
-    "objectID": "clases/01/index.html#programa-4",
-    "href": "clases/01/index.html#programa-4",
+    "objectID": "clases/05/index.html#código-publisher-4",
+    "href": "clases/05/index.html#código-publisher-4",
     "title": "Robótica",
-    "section": "Programa",
-    "text": "Programa\n\n4 bloques principales\n\nBloque 3\n\nPlaneamiento\nNavegación"
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
   },
   {
-    "objectID": "clases/01/index.html#herramientas-de-trabajo",
-    "href": "clases/01/index.html#herramientas-de-trabajo",
+    "objectID": "clases/05/index.html#código-publisher-5",
+    "href": "clases/05/index.html#código-publisher-5",
     "title": "Robótica",
-    "section": "Herramientas de trabajo",
-    "text": "Herramientas de trabajo\n\nFramework de robótica: ROS2\nSimulador: Gazebo\nLenguaje de programación: C++ / Python\nIDE: VSCode (potencial en sus extensiones)\nAdicionales:\n\nContenedores: Docker\nControl de versiones: Git (+ GitHub o GitLab)\nEscritura: Latex, Markdown\nDiagramas: Draw.io"
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
   },
   {
-    "objectID": "clases/01/index.html#bibliografía-recursos-oficiales",
-    "href": "clases/01/index.html#bibliografía-recursos-oficiales",
+    "objectID": "clases/05/index.html#código-publisher-6",
+    "href": "clases/05/index.html#código-publisher-6",
     "title": "Robótica",
-    "section": "Bibliografía Recursos Oficiales",
-    "text": "Bibliografía Recursos Oficiales\n\nROS 2 Documentation, Tutorials\nGazebo\nrospy, ros_control, Nav2\nentre otros…\n\nMaterial adicional recomendado\n\nArticulated Robotics\nThe Construct\nETH Zürich - Programming for Robotic\nAutomatic Addison\n\nBibliografía (muy) complementaria\n\nSpringer Handbook of Robotics\nRobotic Systems (draft), Kris Hauser"
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-publisher-7",
+    "href": "clases/05/index.html#código-publisher-7",
+    "title": "Robótica",
+    "section": "Código publisher",
+    "text": "Código publisher\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  ...\n  # 2.1 Lógica del programa\n  # Creación de publisher\n  pub = nodo.create_publisher(String, 'chat', 10)\n\n  # 2.2 Programación de función de callback\n  def timer_callback():\n    # Creación de mensaje\n    msg = String()\n    # Completar el campo 'data' del mensaje \n    msg.data = 'Mensaje de prueba'\n\n    # Publicar el mensaje\n    pub.publish(msg)\n\n  # 2.3 Creación del timer\n  timer = nodo.create_timer(1, timer_callback)\n  ...\n\n\n\n\nOrientado a objetos\n\nclass Publicador(Node):\n  def __init__(self):\n    super().__init__('publicador')\n    \n    # 2.1 Creación de publisher\n    self.pub = self.create_publisher(\n                      String, 'chat', 10)\n\n    # 2.2 Creación de mensaje\n    self.msg = String()\n    \n    # 2.4 Creación del timer\n    self.timer = self.create_timer(\n                        1, self.timer_callback)\n  \n  # 2.3 Programación de función de callback\n  def timer_callback(self):\n    # Completar el campo 'data' del mensaje \n    self.msg.data = f'Mensaje de prueba'\n\n    # Publicar el mensaje\n    self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/05/index.html#código-suscriber",
+    "href": "clases/05/index.html#código-suscriber",
+    "title": "Robótica",
+    "section": "Código suscriber",
+    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
+  },
+  {
+    "objectID": "clases/05/index.html#código-suscriber-1",
+    "href": "clases/05/index.html#código-suscriber-1",
+    "title": "Robótica",
+    "section": "Código suscriber",
+    "text": "Código suscriber\n\n\n\nInline\n\ndef main(args=None):\n  ...\n  # 2.1 Lógica del programa\n  # Programación de función de callback\n  def sub_callback(msg):\n    # Mostrar el mensaje en consola\n    nodo.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')\n\n  # 2.2 Creación de suscriptor\n  sub = nodo.create_subscription(\n              String, 'chat', sub_callback, 10)\n  ...\n\n\nOrientado a objetos\n\nclass Suscriptor(Node):\n  def __init__(self):\n    super().__init__('suscriptor')\n    \n    # 2.2 Creación de suscriptor\n    self.sub = self.create_subscription(\n        String, 'chat', self.sub_callback, 10)\n      \n  # 2.1 Programación de función de callback\n  def sub_callback(self, msg):\n    # Mostrar el mensaje en consola\n    self.get_logger()\n          .info(f'Recibí: \"{msg.data}\"')"
+  },
+  {
+    "objectID": "clases/05/index.html#laboratorio",
+    "href": "clases/05/index.html#laboratorio",
+    "title": "Robótica",
+    "section": "Laboratorio",
+    "text": "Laboratorio\nModificación código de nodos publisher y suscriber"
+  },
+  {
+    "objectID": "clases/09/index.html#gazebo-1",
+    "href": "clases/09/index.html#gazebo-1",
+    "title": "Robótica",
+    "section": "Gazebo",
+    "text": "Gazebo\n\n\n\nImportancia de los entornos de simulación\nGratuito y open-source\nMantenido por Open Robotics (ROS)\n\n\n\n\n\n\n\n\ngazebosim.org\n\n\n\n\nProbar en hardware real muchas veces es caro y además consume mucho esfuerzo y tiempo\nLas acciones de ciertos robots pueden contener peligro y “deployar” código no probado puede suponer un alto riesgo\nA veces el hardware real puede introducir una serie de problemas que no permiten el correcto desarrollo de software (relacionado con aislar variables)\n\nPor estas razones es apropiado desarrollar entornos de simulación precisos. Gazebo es uno, gratuito y open-source.\nEl proyecto es mantenido por el grupo “Open Robotics” que se encuentra detrás de ROS también, sin embargo son dos proyectos separados.\n\n\nDocumentación: gazebosim.org/docs/harmonic"
+  },
+  {
+    "objectID": "clases/09/index.html#gazebo-ros",
+    "href": "clases/09/index.html#gazebo-ros",
+    "title": "Robótica",
+    "section": "Gazebo + ROS",
+    "text": "Gazebo + ROS\n\nEntorno virtual que reemplaza al real\n\n\nRobot simulado que reemplaza al real\n\n\nLectura de sensores simulados\nComandar actuadores virtuales\nObtener feedback de los comandos\n\n\nCon Gazebo se crea un entorno o mundo virtual, y se carga la versión simulada del robot.\nLos sensores simulados pueden detectar el entorno virtual y publicar la información a los mismos topics de ROS como un sensor real lo haría, permitiendo probar algoritmos de forma fácil.\nLuego se pueden aplicar comandos a los actuadores simulados en el robot para así probar la respuesta del sistema."
+  },
+  {
+    "objectID": "clases/09/index.html#sistema-con-joint_state_publisher_gui",
+    "href": "clases/09/index.html#sistema-con-joint_state_publisher_gui",
+    "title": "Robótica",
+    "section": "Sistema con joint_state_publisher_gui",
+    "text": "Sistema con joint_state_publisher_gui\n\n\nSe utilizaba joint_state_publisher_gui para crear datos fakes en el topic /joint_states para que el robot_state_publisher publique las transformaciones"
+  },
+  {
+    "objectID": "clases/09/index.html#sistema-con-gazebo",
+    "href": "clases/09/index.html#sistema-con-gazebo",
+    "title": "Robótica",
+    "section": "Sistema con Gazebo",
+    "text": "Sistema con Gazebo\n\n\nCon Gazebo se busca representar el mundo real, un robot físico con el que interactuar de varias maneras. Por ejemplo, que se mueva basado en una entrada de control, leer la información de los sensores, y obtener un feedback de los actuadores."
+  },
+  {
+    "objectID": "clases/09/index.html#ejcutar-gazebo-con-ros2",
+    "href": "clases/09/index.html#ejcutar-gazebo-con-ros2",
+    "title": "Robótica",
+    "section": "Ejcutar Gazebo con ROS2",
+    "text": "Ejcutar Gazebo con ROS2\n\nDesde la linea de comando\n\n$ ros2 launch ros_gz_sim gz_sim.launch.py gz_args:=empty.sdf\n\nDesde archivo launch\n\n    IncludeLaunchDescription(\n        PythonLaunchDescriptionSource(\n            PathJoinSubstitution([\n                FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py'\n            ]),\n        ),\n        launch_arguments={\n            'gz_args': '-r empty.sdf',\n            'on_exit_shutdown': 'True'\n        }.items(),\n    ),"
+  },
+  {
+    "objectID": "clases/09/index.html#sdf-simulation-description-format",
+    "href": "clases/09/index.html#sdf-simulation-description-format",
+    "title": "Robótica",
+    "section": "SDF: Simulation Description Format",
+    "text": "SDF: Simulation Description Format\n\nGazebo utiliza archivos SDF (\\(\\neq\\) URDF)\nPermite describir un mundo (además de modelos)\n\n\n\n\n\n\n\n\nSe puede convertir URDF a SDF, pero se necesitan ajustes\n\n\n\n\nNo es necesario escribir un URDF y un SDF para el robot, Gazebo convierte el primero en el segundo, siempre y cuando se realicen ciertas modificaciones o agregados para que pueda trabajar correctamente con Gazebo.\nEsto permite combinar nuestro robot con variedad de modelos y entornos creados por la comunidad (online)"
+  },
+  {
+    "objectID": "clases/09/index.html#gazebo-y-urdf",
+    "href": "clases/09/index.html#gazebo-y-urdf",
+    "title": "Robótica",
+    "section": "Gazebo y URDF",
+    "text": "Gazebo y URDF\n\nPara agregar elementos de Gazebo:\n\n&lt;gazebo&gt; .. &lt;/gazebo&gt;\n\nPara hacer referencia a elementos del URDF:\n\n&lt;gazebo name=\"[nombre_link|joint|etc]\"&gt;\n\nPara agregar elementos específicos de Gazebo se utilizan tags &lt;gazebo&gt;&lt;/gazebo&gt;. Esto permite capturar el contenido para generar los archivos SDF e ignorar el resto de contenido."
+  },
+  {
+    "objectID": "clases/09/index.html#gazebo-y-urdf-1",
+    "href": "clases/09/index.html#gazebo-y-urdf-1",
+    "title": "Robótica",
+    "section": "Gazebo y URDF",
+    "text": "Gazebo y URDF\n\nRequisitos:\n\n\nNombramiento\nPropiedades inerciales\nMateriales y colores\n\n\n\nNombres o nombramiento: Para evitar conflictos se recomienda nombrar cada junta y cada link con un nombre único (ej utilizando _joint y _link respectivamente)\nCombinación de links: Gazebo toma los links unidos por juntas fijas y los combina en un solo SDF link, no sería un problema pero puede quedar confuso a veces\nPropiedades inerciales: Gazebo requiere que cada link posea su tag intertial asociado\nWorld links: En el caso de que el robot esté fijo al suelo, el primer link debe ser nombrado world, y Gazebo mantendrá fijo ese link más allá del de la física. Para un robot móvil el primer link NO debe llamarse world\nMateriales y colores: Gazebo no utiliza los materiales definidos en el URDF. Es necesario utilizar el tag gazebo para cada link y especificar el material apropiado allí"
+  },
+  {
+    "objectID": "clases/09/index.html#gazebo-y-urdf-collision",
+    "href": "clases/09/index.html#gazebo-y-urdf-collision",
+    "title": "Robótica",
+    "section": "Gazebo y URDF: <collision>",
+    "text": "Gazebo y URDF: &lt;collision&gt;\n\nDeben definirse los elementos de colisión para cada link\n\n&lt;link name=\"[nombre_link]\"&gt;\n    ..\n    &lt;collision&gt;\n        &lt;origin xyz=\"[origen]\" rpy=\"[orientacion]\"/&gt;\n        &lt;geometry&gt;\n            &lt;!-- Prisma --&gt;\n            &lt;box size=\"[largo] [ancho] [alto]\"/&gt;\n            &lt;!-- Cilindro --&gt;\n             &lt;cylinder radius=\"[radio]\" length=\"[ancho]\" /&gt;\n            &lt;!-- Esfera --&gt;\n            &lt;sphere radius=\"[radio]\" /&gt;\n        &lt;/geometry&gt;\n    &lt;/collision&gt;\n    ..\n&lt;/link&gt;\n\n\nEl tag de colisión es al mismo nivel que el tag &lt;visual&gt;\nEl elemento de colisión define la geometría igual que el visual\nSe puede especificar un origen específico"
+  },
+  {
+    "objectID": "clases/09/index.html#gazebo-y-urdf-inertial",
+    "href": "clases/09/index.html#gazebo-y-urdf-inertial",
+    "title": "Robótica",
+    "section": "Gazebo y URDF: <inertial>",
+    "text": "Gazebo y URDF: &lt;inertial&gt;\n\nDeben definirse las propiedades físicas para cada link\n\n&lt;link name=\"[nombre_link]\"&gt;\n    ..\n    &lt;inertial&gt;\n        &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n        &lt;mass value=\"[masa_kg]\"/&gt;\n        &lt;inertia ixx=\"[I_xx]\" ixy=\"[I_xy]\" ixz=\"[I_xz]\"\n                              iyy=\"[I_yy]\" iyz=\"[I_yz]\"\n                                           izz=\"[I_zz]\"/&gt;\n    &lt;/inertial&gt;\n    ..\n&lt;/link&gt;\n\n\nLa masa se define en kilogramo\nLa matriz 3x3 rotacional de inercia se especifica con el tag inertia\nAl ser simétrica se especifican los 6 elementos por separado\nLa inercia depende de la distribución de la masa del objeto\nMediante el tag origin se especifica el centro de gravedad"
+  },
+  {
+    "objectID": "clases/09/index.html#inertial_macros.xacro",
+    "href": "clases/09/index.html#inertial_macros.xacro",
+    "title": "Robótica",
+    "section": "inertial_macros.xacro",
+    "text": "inertial_macros.xacro\n\nSe facilita un archivo XACRO para el cálculo de las inercias según la geometría\n\n\nPrisma\n\n    &lt;xacro:inertial_box mass=\"[masa_kg]\" x=\"[largo]\" y=\"[ancho]\" z=\"[alto]\"&gt;\n        &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n    &lt;/xacro:inertial_box&gt;\n\nCilindro\n\n    &lt;xacro:inertial_cylinder mass=\"[masa_kg]\" radius=\"[radio]\" length=\"[ancho]\"&gt;\n        &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n    &lt;/xacro:inertial_cylinder&gt;\n\nPara cuando sea necesario una inercia despreciable\n\n    &lt;dummy_inertial /&gt;\n\n\nTensores de inercia"
+  },
+  {
+    "objectID": "clases/09/index.html#importar-urdf-en-gazebo",
+    "href": "clases/09/index.html#importar-urdf-en-gazebo",
+    "title": "Robótica",
+    "section": "Importar URDF en Gazebo",
+    "text": "Importar URDF en Gazebo\n\nDada la descripción del robot disponible en el topic /robot_description (y Gazebo ejecutandose)\n\n\nDesde la linea de comando:\n\n$ ros2 run ros_gz_sim create -topic robot_description -entity &lt;nombre_robot&gt;\n\nDesde archivo launch\n\n    Node(\n        package=\"ros_gz_sim\",\n        executable=\"create\",\n        arguments=[\n            \"-entity\", \"&lt;nombre_robot&gt;\",\n            \"-topic\", \"robot_description\",\n        ],\n        output=\"screen\",\n    )"
+  },
+  {
+    "objectID": "clases/09/index.html#ros2_control",
+    "href": "clases/09/index.html#ros2_control",
+    "title": "Robótica",
+    "section": "ros2_control",
+    "text": "ros2_control\n\nConjunto de paquetes para desarrollar controladores genéricos para todo tipo de robots"
+  },
+  {
+    "objectID": "clases/09/index.html#ros2_control-gazebo-gz_ros2_control",
+    "href": "clases/09/index.html#ros2_control-gazebo-gz_ros2_control",
+    "title": "Robótica",
+    "section": "ros2_control + Gazebo = gz_ros2_control",
+    "text": "ros2_control + Gazebo = gz_ros2_control"
+  },
+  {
+    "objectID": "clases/09/index.html#actualizar-el-urdf",
+    "href": "clases/09/index.html#actualizar-el-urdf",
+    "title": "Robótica",
+    "section": "Actualizar el URDF",
+    "text": "Actualizar el URDF\n\nDefinir un hardware simulado con &lt;ros2_control&gt;\n\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    &lt;hardware&gt;\n        &lt;plugin&gt;gz_ros2_control/GazeboSimSystem&lt;/plugin&gt;\n    &lt;/hardware&gt;\n    ...\n&lt;/ros2_control&gt;\n\nAñadir el plugin de gz_ros2_control:\n\n&lt;gazebo&gt;\n    &lt;plugin filename=\"gz_ros2_control-system\"\n            name=\"gz_ros2_control::GazeboSimROS2ControlPlugin\" /&gt;\n&lt;/gazebo&gt;"
+  },
+  {
+    "objectID": "clases/09/index.html#actualizar-el-urdf-1",
+    "href": "clases/09/index.html#actualizar-el-urdf-1",
+    "title": "Robótica",
+    "section": "Actualizar el URDF",
+    "text": "Actualizar el URDF\n\nDefinir interfaces para las juntas:\n\nInterfaces de estado: &lt;state_interface ../&gt;\nInterfaces de comando &lt;command_interface .. /&gt;\n\n\n\nEn ambos casos pueden ser:\n\nde posición\nde velocidad\nde esfuerzo"
+  },
+  {
+    "objectID": "clases/09/index.html#actualizar-el-urdf-2",
+    "href": "clases/09/index.html#actualizar-el-urdf-2",
+    "title": "Robótica",
+    "section": "Actualizar el URDF",
+    "text": "Actualizar el URDF\n\nEjemplo control de velocidad y sensado de posición y velocidad\n\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    ...\n    &lt;joint name=\"[nombre_junta]\"&gt;\n        &lt;command_interface name=\"velocity\"&gt;\n            &lt;!-- Límite de 10 rpm --&gt;\n            &lt;param name=\"min\"&gt;-1.047198&lt;/param&gt;\n            &lt;param name=\"max\"&gt;1.047198&lt;/param&gt;\n        &lt;/command_interface&gt;\n        &lt;state_interface name=\"position\" /&gt;\n        &lt;state_interface name=\"velocity\" /&gt;\n    &lt;/joint&gt;\n    ...\n&lt;/ros2_control&gt;"
+  },
+  {
+    "objectID": "clases/09/index.html#definir-controladores",
+    "href": "clases/09/index.html#definir-controladores",
+    "title": "Robótica",
+    "section": "Definir controladores",
+    "text": "Definir controladores\n\nMediante un archivo de configuración YAML\n\ncontroller_manager:\n  ros__parameters:\n    update_rate: 30\n    use_sim_time: true\n\n    # NOMBRE_CONTROLADOR\n    #  type: TIPO_CONTROLADOR\n\n    joint_broadcaster:\n        type: joint_state_broadcaster/JointStateBroadcaster\n\n    velocity_controller:\n        type: velocity_controllers/JointGroupVelocityController"
+  },
+  {
+    "objectID": "clases/09/index.html#definir-parámetros",
+    "href": "clases/09/index.html#definir-parámetros",
+    "title": "Robótica",
+    "section": "Definir parámetros",
+    "text": "Definir parámetros\n\nMediante un archivo de configuración YAML\n\nvelocity_controller:\n  ros__parameters:\n    joints:\n        - {nombre_junta}\n\n    command_interfaces:\n        - velocity\n\n    state_interfaces:\n        - position\n        - velocity"
+  },
+  {
+    "objectID": "clases/09/index.html#cargar-controladores",
+    "href": "clases/09/index.html#cargar-controladores",
+    "title": "Robótica",
+    "section": "Cargar controladores",
+    "text": "Cargar controladores\n\nDesde la linea de comando\n\n    $ ros2 control load_controller --set-state active\n                &lt;nombre_controlador&gt;\n\nDesde archivo launch\n\n    ExecuteProcess(\n        cmd=['ros2', 'control', 'load_controller',\n             '--set-state', 'active',\n             '&lt;nombre_controlador&gt;'],\n        output='screen'\n    )"
+  },
+  {
+    "objectID": "clases/09/index.html#comandos-de-ros2_control",
+    "href": "clases/09/index.html#comandos-de-ros2_control",
+    "title": "Robótica",
+    "section": "Comandos de ros2_control",
+    "text": "Comandos de ros2_control\n\nListar componentes de hardware disponibles\n\n    $ ros2 control list_hardware_components\n\nListar interfaces de hardware disponibles\n\n    $ ros2 control list_hardware_interfaces\n\nListar controladores disponibles (para cargar)\n\n    $ ros2 control list_controller_types\n\nListar controladores cargados\n\n    $ ros2 control list_controllers\n\n\n\n\nMás comandos"
   },
   {
     "objectID": "clases/02/lab.html",
