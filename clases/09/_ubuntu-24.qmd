@@ -1,0 +1,44 @@
+::: {.callout-warning title="Actualizar el sistema"}
+```
+    $ sudo apt update
+    $ sudo apt upgrade -y
+```
+:::
+
+---------
+
+#### 1️⃣ Habilitar repositorios
+```{.bash code-line-numbers="false"}
+    $ sudo apt install lsb-release gnupg -y
+```
+```{.bash code-line-numbers="false"}
+    $ sudo add-apt-repository universe
+```
+
+Agregar la key GPG de Gazebo
+
+```{.bash code-line-numbers="false"}
+    $ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+```
+
+Agregar repositorio a la source list
+
+```{.bash code-line-numbers="false"}
+    $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null 
+```
+
+---------
+
+#### 2️⃣ Instalar Gazebo Harmonic
+Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados
+```{.bash code-line-numbers="false"}
+    $ sudo apt update && sudo apt upgrade -y
+```
+Instalación Desktop: ROS, RViz, demos, etc.
+```{.bash code-line-numbers="false"}
+    $ sudo apt install gz-harmonic -y
+```
+
+---------
+
+Traducido de [gazebosim.org](https://gazebosim.org/docs/harmonic/install_ubuntu/){target="_blank"}

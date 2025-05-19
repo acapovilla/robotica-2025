@@ -1,0 +1,423 @@
+---
+title: "Robótica"
+subtitle: "Clase 09"
+date: "05/19/2025"
+date-format: "[Semana 10 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+    revealjs:
+        theme: default
+        #chalkboard: true
+        footer: Robótica - TUAR - FICH - UNL
+        menu: false
+        slide-number: c
+        code-copy: false
+        code-overflow: wrap
+---
+
+# Gazebo {visibility="hidden"}
+
+## Gazebo
+
+:::: {.columns}
+::: {.column width="65%"}
+- Importancia de los entornos de simulación
+- Gratuito y open-source
+- Mantenido por *Open Robotics* (ROS)
+:::
+
+::: {.column width="35%"}
+![](https://gazebosim.org/assets/images/release_logos/gazebo_harmonic.svg){fig-align="center"}
+
+<center>`gazebosim.org`</center>
+:::
+
+::: aside
+Documentación: [gazebosim.org/docs/harmonic](https://gazebosim.org/docs/harmonic){target="_blank"}
+:::
+::::
+
+::: {.notes}
+- Probar en hardware real muchas veces es caro y además consume mucho esfuerzo y tiempo
+- Las acciones de ciertos robots pueden contener peligro y “deployar” código no probado puede suponer un alto riesgo
+- A veces el hardware real puede introducir una serie de problemas que no permiten el correcto desarrollo de software (relacionado con aislar variables)
+
+Por estas razones es apropiado desarrollar entornos de simulación precisos. Gazebo es uno, gratuito y open-source.
+
+El proyecto es mantenido por el grupo “Open Robotics” que se encuentra detrás de ROS también, sin embargo son dos proyectos separados.
+:::
+
+## Gazebo + ROS
+
+> Entorno virtual que reemplaza al real
+
+> Robot simulado que reemplaza al real
+
+::: {.incremental}
+- Lectura de sensores simulados
+- Comandar actuadores virtuales
+- Obtener feedback de los comandos
+:::
+
+::: {.notes}
+Con Gazebo se crea un entorno o mundo virtual, y se carga la versión simulada del robot.
+
+Los sensores simulados pueden detectar el entorno virtual y publicar la información a los mismos topics de ROS como un sensor real lo haría, permitiendo probar algoritmos de forma fácil.
+
+Luego se pueden aplicar comandos a los actuadores simulados en el robot para así probar la respuesta del sistema.
+:::
+
+## [Sistema con `joint_state_publisher_gui`]{style="font-size: 75%;"}
+
+![](../08/figs/full-diagram.svg){fig-align="center"}
+
+::: {.notes}
+Se utilizaba `joint_state_publisher_gui` para crear datos *fakes* en el topic `/joint_states` para que el `robot_state_publisher` publique las transformaciones
+:::
+
+## [Sistema con Gazebo]{style="font-size: 75%;"}
+
+![](figs/diagram-gazebo.svg){fig-align="center"}
+
+::: {.notes}
+Con Gazebo se busca representar el mundo real, un robot físico con el que interactuar de varias maneras. Por ejemplo, que se mueva basado en una entrada de control, leer la información de los sensores, y obtener un feedback de los actuadores. 
+:::
+
+## Ejcutar Gazebo con ROS2
+
+> Desde la linea de comando
+
+```{.bash code-line-numbers="false"}
+$ ros2 launch ros_gz_sim gz_sim.launch.py gz_args:=empty.sdf
+```
+
+> Desde archivo *launch*
+
+```{.py code-line-numbers="false"}
+    IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([
+                FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py'
+            ]),
+        ),
+        launch_arguments={
+            'gz_args': '-r empty.sdf',
+            'on_exit_shutdown': 'True'
+        }.items(),
+    ),
+```
+
+## SDF: Simulation Description Format
+
+- Gazebo utiliza archivos SDF ($\neq$ URDF)
+- Permite describir un mundo (además de modelos)
+
+. . . 
+
+::: {.callout-note appearance="simple"}
+Se puede convertir URDF a SDF, pero se necesitan ajustes
+:::
+
+::: {.notes}
+No es necesario escribir un URDF y un SDF para el robot, Gazebo convierte el primero en el segundo, siempre y cuando se realicen ciertas modificaciones o agregados para que pueda trabajar correctamente con Gazebo.
+
+Esto permite combinar nuestro robot con variedad de modelos y entornos creados por la comunidad (online)
+:::
+
+## Gazebo y URDF
+
+- Para agregar elementos de Gazebo:
+
+`<gazebo> .. </gazebo>`
+
+- Para hacer referencia a elementos del URDF:
+
+`<gazebo name="[nombre_link|joint|etc]">`
+
+::: {.notes}
+Para agregar elementos específicos de Gazebo se utilizan tags `<gazebo></gazebo>`. Esto permite capturar el contenido para generar los archivos SDF e ignorar el resto de contenido.
+:::
+
+## Gazebo y URDF
+
+> Requisitos:
+
+::: {.incremental}
+- Nombramiento
+- Propiedades inerciales
+- Materiales y colores
+:::
+
+::: {.notes}
+- Nombres o nombramiento: Para evitar conflictos se recomienda nombrar cada junta y cada link con un nombre único (ej utilizando `_joint` y `_link` respectivamente)
+- Combinación de links: Gazebo toma los links unidos por juntas fijas y los combina en un solo SDF link, no sería un problema pero puede quedar confuso a veces
+- Propiedades inerciales: Gazebo requiere que cada link posea su tag `intertial` asociado
+- World links: En el caso de que el robot esté fijo al suelo, el primer link debe ser nombrado `world`, y Gazebo mantendrá fijo ese link más allá del de la física. Para un robot móvil el primer link NO debe llamarse world
+- Materiales y colores: Gazebo no utiliza los materiales definidos en el URDF. Es necesario utilizar el tag `gazebo` para cada link y especificar el material apropiado allí
+:::
+
+## Gazebo y URDF: `<collision>`
+
+> Deben definirse los elementos de colisión para cada link
+
+```{.xml code-line-numbers="false"}
+<link name="[nombre_link]">
+    ..
+    <collision>
+        <origin xyz="[origen]" rpy="[orientacion]"/>
+        <geometry>
+            <!-- Prisma -->
+            <box size="[largo] [ancho] [alto]"/>
+            <!-- Cilindro -->
+             <cylinder radius="[radio]" length="[ancho]" />
+            <!-- Esfera -->
+            <sphere radius="[radio]" />
+        </geometry>
+    </collision>
+    ..
+</link>
+```
+
+::: {.notes}
+- El tag de colisión es al mismo nivel que el tag `<visual>`
+- El elemento de colisión define la geometría igual que el visual
+- Se puede especificar un origen específico 
+:::
+
+## Gazebo y URDF: `<inertial>`
+
+> Deben definirse las propiedades físicas para cada link
+
+```{.xml code-line-numbers="false"}
+<link name="[nombre_link]">
+    ..
+    <inertial>
+        <origin xyz="[traslacion]" rpy="[rotacion]"/>
+        <mass value="[masa_kg]"/>
+        <inertia ixx="[I_xx]" ixy="[I_xy]" ixz="[I_xz]"
+                              iyy="[I_yy]" iyz="[I_yz]"
+                                           izz="[I_zz]"/>
+    </inertial>
+    ..
+</link>
+```
+
+::: {.notes}
+- La masa se define en kilogramo
+- La matriz 3x3 rotacional de inercia se especifica con el tag `inertia`
+- Al ser simétrica se especifican los 6 elementos por separado
+- La inercia depende de la distribución de la masa del objeto
+- Mediante el tag `origin` se especifica el centro de gravedad
+- 
+:::
+
+## `inertial_macros.xacro` {.smaller}
+
+> Se facilita un archivo *XACRO* para el cálculo de las inercias según la geometría
+
+- Prisma
+```{.xml code-line-numbers="false"}
+    <xacro:inertial_box mass="[masa_kg]" x="[largo]" y="[ancho]" z="[alto]">
+        <origin xyz="[traslacion]" rpy="[rotacion]"/>
+    </xacro:inertial_box>
+```
+
+- Cilindro
+```{.xml code-line-numbers="false"}
+    <xacro:inertial_cylinder mass="[masa_kg]" radius="[radio]" length="[ancho]">
+        <origin xyz="[traslacion]" rpy="[rotacion]"/>
+    </xacro:inertial_cylinder>
+```
+
+- Para cuando sea necesario una inercia despreciable
+
+```{.xml code-line-numbers="false"}
+    <dummy_inertial />
+```
+
+
+::: {.aside}
+[Tensores de inercia](https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors){target=_blank}
+:::
+
+
+## Importar URDF en Gazebo {.smaller}
+
+> Dada la descripción del robot disponible en el topic `/robot_description` (y *Gazebo* ejecutandose)
+
+- Desde la linea de comando:
+
+```{.bash code-line-numbers="false"}
+$ ros2 run ros_gz_sim create -topic robot_description -entity <nombre_robot>
+```
+
+- Desde archivo *launch*
+
+```{.py code-line-numbers="false"}
+    Node(
+        package="ros_gz_sim",
+        executable="create",
+        arguments=[
+            "-entity", "<nombre_robot>",
+            "-topic", "robot_description",
+        ],
+        output="screen",
+    )
+```
+
+
+# ROS2 Control {visibility="hidden"}
+
+## `ros2_control` {.smaller}
+
+> Conjunto de paquetes para desarrollar controladores genéricos para todo tipo de robots
+
+![](https://wiki.ros.org/ros_control?action=AttachFile&do=get&target=gazebo_ros_control.png){fig-align="center"}
+
+
+## [`ros2_control` + Gazebo = `gz_ros2_control`]{style="font-size: 75%;"}
+
+![](https://github.com/osrf/gazebo_tutorials/raw/master/ros_control/Gazebo_ros_transmission.png){fig-align="center"}
+
+
+## Actualizar el URDF
+
+- Definir un hardware simulado con `<ros2_control>`
+
+```{.xml code-line-numbers="false"}
+<ros2_control name="GazeboSystem" type="system">
+	<hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+	...
+</ros2_control>
+```
+
+- Añadir el plugin de `gz_ros2_control`:
+
+```{.xml code-line-numbers="false"}
+<gazebo>
+    <plugin filename="gz_ros2_control-system"
+            name="gz_ros2_control::GazeboSimROS2ControlPlugin" />
+</gazebo>
+```
+
+## Actualizar el URDF
+
+- Definir interfaces para las juntas:
+  - Interfaces de estado: `<state_interface ../>`
+  - Interfaces de comando `<command_interface .. />`
+
+> En ambos casos pueden ser:
+>
+> - de posición
+> - de velocidad
+> - de esfuerzo
+
+## Actualizar el URDF
+
+> Ejemplo control de velocidad y sensado de posición y velocidad
+
+```{.xml code-line-numbers="false"}
+<ros2_control name="GazeboSystem" type="system">
+	...
+    <joint name="[nombre_junta]">
+        <command_interface name="velocity">
+            <!-- Límite de 10 rpm -->
+            <param name="min">-1.047198</param>
+            <param name="max">1.047198</param>
+        </command_interface>
+        <state_interface name="position" />
+        <state_interface name="velocity" />
+    </joint>
+	...
+</ros2_control>
+```
+
+## Definir controladores
+
+> Mediante un archivo de configuración *YAML*
+
+```{.yaml code-line-numbers="false"}
+controller_manager:
+  ros__parameters:
+	update_rate: 30
+	use_sim_time: true
+
+    # NOMBRE_CONTROLADOR
+    #  type: TIPO_CONTROLADOR
+
+	joint_broadcaster:
+  		type: joint_state_broadcaster/JointStateBroadcaster
+
+	velocity_controller:
+  		type: velocity_controllers/JointGroupVelocityController
+
+```
+
+## Definir parámetros
+
+> Mediante un archivo de configuración *YAML*
+
+```{.yaml code-line-numbers="false"}
+velocity_controller:
+  ros__parameters:
+	joints:
+  		- {nombre_junta}
+
+	command_interfaces:
+  		- velocity
+
+	state_interfaces:
+  		- position
+  		- velocity
+
+```
+
+## Cargar controladores
+
+> Desde la linea de comando
+
+        $ ros2 control load_controller --set-state active
+                    <nombre_controlador>
+
+> Desde archivo *launch*
+
+```{.py code-line-numbers="false"}
+    ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller',
+             '--set-state', 'active',
+             '<nombre_controlador>'],
+        output='screen'
+    )
+```
+
+## Comandos de `ros2_control` {.smaller}
+
+> Listar componentes de hardware disponibles
+
+```{.bash code-line-numbers="false"}
+    $ ros2 control list_hardware_components
+```
+
+> Listar interfaces de hardware disponibles
+
+```{.bash code-line-numbers="false"}
+    $ ros2 control list_hardware_interfaces
+```
+
+> Listar controladores disponibles (para cargar)
+
+```{.bash code-line-numbers="false"}
+    $ ros2 control list_controller_types
+```
+
+> Listar controladores cargados
+
+```{.bash code-line-numbers="false"}
+    $ ros2 control list_controllers
+```
+
+::: {.aside}
+[Más comandos](https://control.ros.org/jazzy/doc/ros2_control/ros2controlcli/doc/userdoc.html)
+:::
