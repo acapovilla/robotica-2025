@@ -35,9 +35,11 @@ Tipo entero (`int`), decimal (`double`), booleano (`bool`), es igual:
 
 >       self.get_parameter('<nombre_parametro>').get_parameter_value().string_value.<int|double|bool>_value
 
-## Programación de archivos `launch`
+## Programación de archivos *launch*
 
-- #### Crear una carpeta para los archivos
+### Adecuación del paquete para albergar los archivos
+
+- #### Crear una carpeta `launch`
 
 Crear la carpeta `launch` que contendrá los archivos
 
@@ -85,6 +87,7 @@ Se recomienda agregar `ros2launch` como dependencia de ejecución:
 
 ------
 
+### Programación del *launch*
 
 - #### Importar las librerías `launch` y `launch_ros`
 
@@ -117,18 +120,18 @@ Crear la acción
 ```{.py code-fold="true" code-line-numbers="true"}
 def generate_launch_description():
     node = Node(
-        package = ’<nombre_paquete>’,
-        executable = ’<nombre_ejecutable>’,
-        # Adicionales ⬇️
-        name = ’<nombre_nodo>’,
-        namespace = ’<nombre_namespace>’,
+        package = '<nombre_paquete>',
+        executable = '<nombre_ejecutable>',
+        # Adicionales (según corresponda) ⬇️
+        name = '<nombre_nodo>',
+        namespace = '<nombre_namespace>',
         parameters = [ # Pueden ser archivos
-            {‘<nombre_parametro>’: <valor>, .. }
+            {'<nombre_parametro>': <valor>, .. }
         ],
         remappings = [
             ('<nombre_topic>', '<nuevo_nombre>'),
         ],
-        output = ’<screen|log|both>’,
+        output = '<screen|log|both>',
         ros_arguments = [...],
         arguments = [...],
     )
@@ -159,15 +162,15 @@ Primero declarar los argumentos con `DeclareLaunchArgument` y luego utilizarlos 
 def generate_launch_description():
   return LaunchDescription([
     DeclareLaunchArgument(
-      ‘<nombre_parametro>’, default_value=<valor>
+      '<nombre_parametro>', default_value=<valor>
     ),
     Node(
-      package = ’<nombre_paquete>’,
-      executable = ’<nombre_ejecutable>’,
-      ...
-      parameters=[{
-        '<parametro_del_nodo>': LaunchConfiguration('<nombre_parametro>'),
-      }]
+        package = '<nombre_paquete>',
+        executable = '<nombre_ejecutable>',
+        ...
+        parameters=[{
+            '<parametro_del_nodo>': LaunchConfiguration('<nombre_parametro>'),
+        }]
     ),
   ])
 ```
