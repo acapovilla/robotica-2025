@@ -179,7 +179,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#programación-de-nodos-con-parámetros" id="toc-programación-de-nodos-con-parámetros" class="nav-link active" data-scroll-target="#programación-de-nodos-con-parámetros">Programación de nodos con parámetros</a></li>
-  <li><a href="#programación-de-archivos-launch" id="toc-programación-de-archivos-launch" class="nav-link" data-scroll-target="#programación-de-archivos-launch">Programación de archivos <code>launch</code></a></li>
+  <li><a href="#programación-de-archivos-launch" id="toc-programación-de-archivos-launch" class="nav-link" data-scroll-target="#programación-de-archivos-launch">Programación de archivos <em>launch</em></a>
+  <ul class="collapse">
+  <li><a href="#adecuación-del-paquete-para-albergar-los-archivos" id="toc-adecuación-del-paquete-para-albergar-los-archivos" class="nav-link" data-scroll-target="#adecuación-del-paquete-para-albergar-los-archivos">Adecuación del paquete para albergar los archivos</a></li>
+  <li><a href="#programación-del-launch" id="toc-programación-del-launch" class="nav-link" data-scroll-target="#programación-del-launch">Programación del <em>launch</em></a></li>
+  </ul></li>
   <li><a href="#uso-de-loggers" id="toc-uso-de-loggers" class="nav-link" data-scroll-target="#uso-de-loggers">Uso de loggers</a></li>
   <li><a href="#sistema-de-monitoreo-de-temperatura" id="toc-sistema-de-monitoreo-de-temperatura" class="nav-link" data-scroll-target="#sistema-de-monitoreo-de-temperatura">Sistema de Monitoreo de temperatura</a>
   <ul class="collapse">
@@ -248,9 +252,11 @@ window.Quarto = {
 </blockquote>
 </section>
 <section id="programación-de-archivos-launch" class="level2">
-<h2 class="anchored" data-anchor-id="programación-de-archivos-launch">Programación de archivos <code>launch</code></h2>
+<h2 class="anchored" data-anchor-id="programación-de-archivos-launch">Programación de archivos <em>launch</em></h2>
+<section id="adecuación-del-paquete-para-albergar-los-archivos" class="level3">
+<h3 class="anchored" data-anchor-id="adecuación-del-paquete-para-albergar-los-archivos">Adecuación del paquete para albergar los archivos</h3>
 <ul>
-<li><h4 id="crear-una-carpeta-para-los-archivos" class="anchored">Crear una carpeta para los archivos</h4></li>
+<li><h4 id="crear-una-carpeta-launch" class="anchored">Crear una carpeta <code>launch</code></h4></li>
 </ul>
 <p>Crear la carpeta <code>launch</code> que contendrá los archivos</p>
 <blockquote class="blockquote">
@@ -302,6 +308,9 @@ window.Quarto = {
 </div>
 </div>
 <hr>
+</section>
+<section id="programación-del-launch" class="level3">
+<h3 class="anchored" data-anchor-id="programación-del-launch">Programación del <em>launch</em></h3>
 <ul>
 <li><h4 id="importar-las-librerías-launch-y-launch_ros" class="anchored">Importar las librerías <code>launch</code> y <code>launch_ros</code></h4></li>
 </ul>
@@ -324,18 +333,18 @@ window.Quarto = {
 <p>Crear la acción</p>
 <div class="sourceCode" id="cb10" data-code-fold="true"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">def</span> generate_launch_description():</span>
 <span id="cb10-2"><a href="#cb10-2"></a>    node <span class="op">=</span> Node(</span>
-<span id="cb10-3"><a href="#cb10-3"></a>        package <span class="op">=</span> ’<span class="op">&lt;</span>nombre_paquete<span class="op">&gt;</span>’,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>        executable <span class="op">=</span> ’<span class="op">&lt;</span>nombre_ejecutable<span class="op">&gt;</span>’,</span>
-<span id="cb10-5"><a href="#cb10-5"></a>        <span class="co"># Adicionales ⬇️</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>        name <span class="op">=</span> ’<span class="op">&lt;</span>nombre_nodo<span class="op">&gt;</span>’,</span>
-<span id="cb10-7"><a href="#cb10-7"></a>        namespace <span class="op">=</span> ’<span class="op">&lt;</span>nombre_namespace<span class="op">&gt;</span>’,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>        package <span class="op">=</span> <span class="st">'&lt;nombre_paquete&gt;'</span>,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>        executable <span class="op">=</span> <span class="st">'&lt;nombre_ejecutable&gt;'</span>,</span>
+<span id="cb10-5"><a href="#cb10-5"></a>        <span class="co"># Adicionales (según corresponda) ⬇️</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>        name <span class="op">=</span> <span class="st">'&lt;nombre_nodo&gt;'</span>,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>        namespace <span class="op">=</span> <span class="st">'&lt;nombre_namespace&gt;'</span>,</span>
 <span id="cb10-8"><a href="#cb10-8"></a>        parameters <span class="op">=</span> [ <span class="co"># Pueden ser archivos</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>            {‘<span class="op">&lt;</span>nombre_parametro<span class="op">&gt;</span>’: <span class="op">&lt;</span>valor<span class="op">&gt;</span>, .. }</span>
+<span id="cb10-9"><a href="#cb10-9"></a>            {<span class="st">'&lt;nombre_parametro&gt;'</span>: <span class="op">&lt;</span>valor<span class="op">&gt;</span>, .. }</span>
 <span id="cb10-10"><a href="#cb10-10"></a>        ],</span>
 <span id="cb10-11"><a href="#cb10-11"></a>        remappings <span class="op">=</span> [</span>
 <span id="cb10-12"><a href="#cb10-12"></a>            (<span class="st">'&lt;nombre_topic&gt;'</span>, <span class="st">'&lt;nuevo_nombre&gt;'</span>),</span>
 <span id="cb10-13"><a href="#cb10-13"></a>        ],</span>
-<span id="cb10-14"><a href="#cb10-14"></a>        output <span class="op">=</span> ’<span class="op">&lt;</span>screen<span class="op">|</span>log<span class="op">|</span>both<span class="op">&gt;</span>’,</span>
+<span id="cb10-14"><a href="#cb10-14"></a>        output <span class="op">=</span> <span class="st">'&lt;screen|log|both&gt;'</span>,</span>
 <span id="cb10-15"><a href="#cb10-15"></a>        ros_arguments <span class="op">=</span> [...],</span>
 <span id="cb10-16"><a href="#cb10-16"></a>        arguments <span class="op">=</span> [...],</span>
 <span id="cb10-17"><a href="#cb10-17"></a>    )</span>
@@ -368,18 +377,19 @@ Note
 <span id="cb12-2"><a href="#cb12-2"></a><span class="kw">def</span> generate_launch_description():</span>
 <span id="cb12-3"><a href="#cb12-3"></a>  <span class="cf">return</span> LaunchDescription([</span>
 <span id="cb12-4"><a href="#cb12-4"></a>    DeclareLaunchArgument(</span>
-<span id="cb12-5"><a href="#cb12-5"></a>      ‘<span class="op">&lt;</span>nombre_parametro<span class="op">&gt;</span>’, default_value<span class="op">=&lt;</span>valor<span class="op">&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>      <span class="st">'&lt;nombre_parametro&gt;'</span>, default_value<span class="op">=&lt;</span>valor<span class="op">&gt;</span></span>
 <span id="cb12-6"><a href="#cb12-6"></a>    ),</span>
 <span id="cb12-7"><a href="#cb12-7"></a>    Node(</span>
-<span id="cb12-8"><a href="#cb12-8"></a>      package <span class="op">=</span> ’<span class="op">&lt;</span>nombre_paquete<span class="op">&gt;</span>’,</span>
-<span id="cb12-9"><a href="#cb12-9"></a>      executable <span class="op">=</span> ’<span class="op">&lt;</span>nombre_ejecutable<span class="op">&gt;</span>’,</span>
-<span id="cb12-10"><a href="#cb12-10"></a>      ...</span>
-<span id="cb12-11"><a href="#cb12-11"></a>      parameters<span class="op">=</span>[{</span>
-<span id="cb12-12"><a href="#cb12-12"></a>        <span class="st">'&lt;parametro_del_nodo&gt;'</span>: LaunchConfiguration(<span class="st">'&lt;nombre_parametro&gt;'</span>),</span>
-<span id="cb12-13"><a href="#cb12-13"></a>      }]</span>
+<span id="cb12-8"><a href="#cb12-8"></a>        package <span class="op">=</span> <span class="st">'&lt;nombre_paquete&gt;'</span>,</span>
+<span id="cb12-9"><a href="#cb12-9"></a>        executable <span class="op">=</span> <span class="st">'&lt;nombre_ejecutable&gt;'</span>,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>        ...</span>
+<span id="cb12-11"><a href="#cb12-11"></a>        parameters<span class="op">=</span>[{</span>
+<span id="cb12-12"><a href="#cb12-12"></a>            <span class="st">'&lt;parametro_del_nodo&gt;'</span>: LaunchConfiguration(<span class="st">'&lt;nombre_parametro&gt;'</span>),</span>
+<span id="cb12-13"><a href="#cb12-13"></a>        }]</span>
 <span id="cb12-14"><a href="#cb12-14"></a>    ),</span>
 <span id="cb12-15"><a href="#cb12-15"></a>  ])</span></code></pre></div>
 <hr>
+</section>
 </section>
 <section id="uso-de-loggers" class="level2">
 <h2 class="anchored" data-anchor-id="uso-de-loggers">Uso de loggers</h2>
