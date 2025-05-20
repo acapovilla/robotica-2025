@@ -58,7 +58,7 @@ page-navigation: true
     </material>
 ```
 
-- Geometría:
+- Geometría: `<geometry> .. </geometry>`
   - prisma: 
 ```{.xml code-line-numbers="false"}
     <box size="[largo-x] [ancho-y] [alto-z]" />
@@ -271,7 +271,7 @@ from launch_ros.substitutions import FindPackageShare
 
 ## Adaptación del paquete
 
-- Se agregan las carpetas `urdf` para los archivos de descripción
+- Se agrega la carpeta `urdf` para los archivos de descripción
 
 ```{.default filename="Ejemplo de estructura"  code-line-numbers="false"}
 📂 paquete_description
