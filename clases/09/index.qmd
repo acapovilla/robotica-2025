@@ -277,7 +277,7 @@ $ ros2 run ros_gz_sim create -topic robot_description -entity <nombre_robot>
 
 ## [`ros2_control` + Gazebo = `gz_ros2_control`]{style="font-size: 75%;"}
 
-![](https://github.com/osrf/gazebo_tutorials/raw/master/ros_control/Gazebo_ros_transmission.png){fig-align="center"}
+![](https:///raw.githubusercontent.com/osrf/gazebo_tutorials/master/ros_control/Gazebo_ros_transmission.png){fig-align="center"}
 
 
 ## Actualizar el URDF
@@ -421,3 +421,9 @@ velocity_controller:
 ::: {.aside}
 [Más comandos](https://control.ros.org/jazzy/doc/ros2_control/ros2controlcli/doc/userdoc.html)
 :::
+
+# Taller de resolución {visibility="hidden"}
+
+## [Taller de resolución](tres.qmd) {.center}
+
+Ejercicios 3 y 4
