@@ -214,7 +214,7 @@ workspace: Estructura de carpetas que contiene paquetes
 
 > ```{code-line-numbers="|2"}
 > 📂 src
->   📁 nombre_paquete
+>   📂 nombre_paquete
 >       📁 nombre_paquete
 >           📄 __init__.py
 >           ...

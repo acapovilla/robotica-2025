@@ -48,15 +48,14 @@ Esto generará la estructura de carpetas correspondientes para un paquete de pyt
 > ```
 > 📂 src
 >   📂 clase_04
->       📂 clase_04
->           📄 __init__.py
->   📂 resource
+>     📂 clase_04
+>       📄 __init__.py
+>     📂 resource
 >       📄 clase_04
->   📁 test
->          ...
->   📄 package.xml
->   ⚙️ setup.cfg
->   📄 setup.py
+>     📁 test
+>     📄 package.xml
+>     ⚙️ setup.cfg
+>     📄 setup.py
 > ```
 
 ::: {.callout-tip appearance="simple"}
