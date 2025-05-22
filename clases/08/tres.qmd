@@ -342,6 +342,6 @@ from launch_ros.substitutions import FindPackageShare
     )
 ```
 
-# Resolución ejercicio 1 y 2
+# Resolución ejercicios 1 y 2
 
 {{< include ../../entregables/01/_urdf.qmd >}}

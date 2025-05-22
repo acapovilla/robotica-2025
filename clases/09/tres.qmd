@@ -1,5 +1,5 @@
 ---
-title: Clase 08 - Taller de resolución
+title: Clase 09 - Taller de resolución
 format:
     html:
         code-fold: true
@@ -273,7 +273,7 @@ controller_manager:
 ```
 
 
-# Resolución ejercicio 3 y 4
+# Resolución ejercicios 3 y 4
 
 {{< include ../../entregables/01/_gazebo.qmd >}}
 
