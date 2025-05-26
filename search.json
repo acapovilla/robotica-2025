@@ -114,70 +114,70 @@
   {
     "objectID": "clases/09/tres.html",
     "href": "clases/09/tres.html",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "",
     "text": "Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update && sudo apt upgrade -y\n\n\n\nInstalar la versión de Gazebo por defecto para ROS Jazzy\n    $ sudo apt-get install ros-jazzy-ros-gz\nTraducido de gazebosim.org\n\n\n\n\n\n\n\nNote\n\n\n\nRecuerda actualizar las dependencias. Gazebo: ros_gz y ROS2 control: gz_ros2_control\n\n\n\n\n\n\n\n\n    $ ros2 launch ros_gz_sim gz_sim.launch.py gz_args:=empty.sdf\n\n\n\n    IncludeLaunchDescription(\n        PythonLaunchDescriptionSource(\n            PathJoinSubstitution([\n                FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py'\n            ]),\n        ),\n        launch_arguments={\n            'gz_args': '-r empty.sdf',\n            'on_exit_shutdown': 'True'\n        }.items(),\n    ),\n\n\n\n\n\n\n&lt;xacro:inertial_box mass=\"[masa_kg]\" x=\"[largo]\" y=\"[ancho]\" z=\"[alto]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_box&gt;\n\n\n\n&lt;xacro:inertial_cylinder mass=\"[masa_kg]\" radius=\"[radio]\" length=\"[ancho]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_cylinder&gt;\n\n\n\n&lt;xacro:inertial_sphere mass=\"[masa_kg]\" radius=\"[radio]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_sphere&gt;\n\n\n\n&lt;dummy_inertial /&gt;\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nRecuerda que el URDF debe estar disponible en el topic \\robot_description y cumplir con todos los requerimientos de Gazebo:\n\nGeometrías de colisión e inercias definidas\nTodos los links y joints nombrados\nColores y materiales (opcional)\n\n\n\n\n\n    $ ros2 run ros_gz_sim create -topic robot_description\n        -entity &lt;nombre_robot&gt;\n\n\n\n    Node(\n        package=\"ros_gz_sim\",\n        executable=\"create\",\n        arguments=[\n            \"-entity\", \"&lt;nombre_robot&gt;\",\n            \"-topic\", \"robot_description\",\n        ],\n        output=\"screen\",\n    ),"
   },
   {
     "objectID": "clases/09/tres.html#universidad-nacional-del-litoral-unl",
     "href": "clases/09/tres.html#universidad-nacional-del-litoral-unl",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "Universidad Nacional del Litoral (UNL)\n",
     "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
   },
   {
     "objectID": "clases/09/tres.html#instalación-de-gazebo",
     "href": "clases/09/tres.html#instalación-de-gazebo",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "",
     "text": "Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizados\n    $ sudo apt update && sudo apt upgrade -y\n\n\n\nInstalar la versión de Gazebo por defecto para ROS Jazzy\n    $ sudo apt-get install ros-jazzy-ros-gz\nTraducido de gazebosim.org\n\n\n\n\n\n\n\nNote\n\n\n\nRecuerda actualizar las dependencias. Gazebo: ros_gz y ROS2 control: gz_ros2_control"
   },
   {
     "objectID": "clases/09/tres.html#ejecutar-gazebo",
     "href": "clases/09/tres.html#ejecutar-gazebo",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "",
     "text": "$ ros2 launch ros_gz_sim gz_sim.launch.py gz_args:=empty.sdf\n\n\n\n    IncludeLaunchDescription(\n        PythonLaunchDescriptionSource(\n            PathJoinSubstitution([\n                FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py'\n            ]),\n        ),\n        launch_arguments={\n            'gz_args': '-r empty.sdf',\n            'on_exit_shutdown': 'True'\n        }.items(),\n    ),"
   },
   {
     "objectID": "clases/09/tres.html#macros-de-inercia-inertial_macros.xacro",
     "href": "clases/09/tres.html#macros-de-inercia-inertial_macros.xacro",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "",
     "text": "&lt;xacro:inertial_box mass=\"[masa_kg]\" x=\"[largo]\" y=\"[ancho]\" z=\"[alto]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_box&gt;\n\n\n\n&lt;xacro:inertial_cylinder mass=\"[masa_kg]\" radius=\"[radio]\" length=\"[ancho]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_cylinder&gt;\n\n\n\n&lt;xacro:inertial_sphere mass=\"[masa_kg]\" radius=\"[radio]\"&gt;\n    &lt;origin xyz=\"[traslacion]\" rpy=\"[rotacion]\"/&gt;\n&lt;/xacro:inertial_sphere&gt;\n\n\n\n&lt;dummy_inertial /&gt;"
   },
   {
     "objectID": "clases/09/tres.html#cargar-robot-en-gazebo",
     "href": "clases/09/tres.html#cargar-robot-en-gazebo",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "",
     "text": "Warning\n\n\n\nRecuerda que el URDF debe estar disponible en el topic \\robot_description y cumplir con todos los requerimientos de Gazebo:\n\nGeometrías de colisión e inercias definidas\nTodos los links y joints nombrados\nColores y materiales (opcional)\n\n\n\n\n\n    $ ros2 run ros_gz_sim create -topic robot_description\n        -entity &lt;nombre_robot&gt;\n\n\n\n    Node(\n        package=\"ros_gz_sim\",\n        executable=\"create\",\n        arguments=[\n            \"-entity\", \"&lt;nombre_robot&gt;\",\n            \"-topic\", \"robot_description\",\n        ],\n        output=\"screen\",\n    ),"
   },
   {
     "objectID": "clases/09/tres.html#definición-de-hardware-simulado-y-las-interfaces",
     "href": "clases/09/tres.html#definición-de-hardware-simulado-y-las-interfaces",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "Definición de hardware simulado y las interfaces",
     "text": "Definición de hardware simulado y las interfaces\n\nDefinir un hardware simulado con &lt;hardware&gt;\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    &lt;hardware&gt;\n        &lt;plugin&gt;gz_ros2_control/GazeboSimSystem&lt;/plugin&gt;\n    &lt;/hardware&gt;\n    ...\n&lt;/ros2_control&gt;\n\n\nPara cada junta &lt;joint&gt; definir las interfaces\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    &lt;hardware&gt;\n        &lt;plugin&gt;gz_ros2_control/GazeboSimSystem&lt;/plugin&gt;\n    &lt;/hardware&gt;\n    &lt;joint name=\"[nombre_junta]\"&gt;\n        &lt;!-- Interfaces --&gt;\n    &lt;/joint&gt;\n&lt;/ros2_control&gt;\n\nInterfaces de estado con &lt;state_interface .. /&gt;\n\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    ...\n    &lt;joint name=\"[nombre_junta]\"&gt;\n        &lt;!-- Interfaz de estado de posición --&gt;\n        &lt;state_interface name=\"position\" /&gt;\n        &lt;!-- Interfaz de estado de velocidad --&gt;\n        &lt;state_interface name=\"velocity\" /&gt;\n        &lt;!-- Interfaz de estado de esfuerzo --&gt;\n        &lt;state_interface name=\"effort\" /&gt;\n    &lt;/joint&gt;\n    ...\n&lt;/ros2_control&gt;\n\nInterfaces de comando &lt;command_interface .. /&gt;\n\n&lt;ros2_control name=\"GazeboSystem\" type=\"system\"&gt;\n    ...\n    &lt;joint name=\"[nombre_junta]\"&gt;\n        &lt;!-- Interfaz de estado de posición --&gt;\n        &lt;command_interface name=\"position\" /&gt;\n        &lt;!-- Interfaz de estado de velocidad --&gt;\n        &lt;command_interface name=\"velocity\" /&gt;\n        &lt;!-- Interfaz de estado de esfuerzo --&gt;\n        &lt;command_interface name=\"effort\" /&gt;\n    &lt;/joint&gt;\n    ...\n&lt;/ros2_control&gt;\n\n\n\n\n\n\nNote\n\n\n\nAdicionalmente las interfaces pueden recibir parámetros:\n    &lt;param name=\"initial_value\"&gt;{valor inicial}&lt;/param&gt;\n    &lt;param name=\"min\"&gt;{limite_minimo}&lt;/param&gt;\n    &lt;param name=\"max\"&gt;{limite_maximo}&lt;/param&gt;"
   },
   {
     "objectID": "clases/09/tres.html#definir-controladores-para-ros2_control",
     "href": "clases/09/tres.html#definir-controladores-para-ros2_control",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "Definir controladores para ros2_control",
     "text": "Definir controladores para ros2_control\n\nTipos de controladores:\n\nPublicar estado de las juntas: joint_state_broadcaster/JointStateBroadcaster\nControladr la velocidad de la junta: velocity_controllers/JointGroupVelocityController\n\nMediante un archivo de configuración YAML\n\ncontroller_manager:\n  ros__parameters:\n    update_rate: 30\n    use_sim_time: true\n\n    {nombre_controlador}:\n        type: {tipo_controlador}\n    ...\n\nConfiguraciones velocity_controllers/JointGroupVelocityController\n{nombre_controlador}:\n  ros__parameters:\n    joints:\n        - {nombre_junta}\n\n    command_interfaces:\n        # Según corresponda (las 3 o alguna)\n        - {velocity}\n        - {position}\n        - {effort}\n\n    state_interfaces:\n        # Según corresponda (las 3 o alguna)\n        - {velocity}\n        - {position}\n        - {effort}"
   },
   {
     "objectID": "clases/09/tres.html#cargar-el-plugin-de-gz_ros2_control",
     "href": "clases/09/tres.html#cargar-el-plugin-de-gz_ros2_control",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "Cargar el plugin de gz_ros2_control",
     "text": "Cargar el plugin de gz_ros2_control\n\nCargar el plugin con un archivo de configuración adicional\n\n&lt;gazebo&gt;\n    &lt;plugin filename=\"gz_ros2_control-system\"\n            name=\"gz_ros2_control::GazeboSimROS2ControlPlugin\"&gt;\n        &lt;parameters&gt;\n            $(find [nombre_paquete])/config/[nombre_archivo].yaml\n        &lt;/parameters&gt;\n    &lt;/plugin&gt;\n&lt;/gazebo&gt;"
   },
   {
     "objectID": "clases/09/tres.html#cargar-controladores",
     "href": "clases/09/tres.html#cargar-controladores",
-    "title": "Clase 08 - Taller de resolución",
+    "title": "Clase 09 - Taller de resolución",
     "section": "Cargar controladores",
     "text": "Cargar controladores\n\nDesde la linea de comando\n    $ ros2 control load_controller --set-state active\n        &lt;nombre_controlador&gt; &lt;archivo_parametros&gt;\n\n\nDesde archivo launch\n    ExecuteProcess(\n        cmd=['ros2', 'control', 'load_controller',\n             '--set-state', 'active',\n             '&lt;nombre_controlador&gt;'],\n        output='screen'\n    )"
   },
@@ -651,6 +651,223 @@
     "text": "Taller de resolución\nEjercicios 1 y 2"
   },
   {
+    "objectID": "clases/10/index.html#cinemática-1",
+    "href": "clases/10/index.html#cinemática-1",
+    "title": "Robótica",
+    "section": "Cinemática",
+    "text": "Cinemática\n\nDef.: Rama de la mecánica que describe el de los objetos sólidos sin considerar las causas que lo originan. Estudio de la trayectoria en función del tiempo 1\n\n\n\nUtiliza velocidades y aceleraciones\nDiferencia con Dinámica (estudio de fuerzas y sus efectos)\nModelos más simples\n\n\n\n\n\n\n\n\n\n\nSe utilizará la notación de Newton para las derivadas\n\n\nVelocidad \\(\\boldsymbol{\\upsilon}\\) (primera derivada) y aceleración \\(\\boldsymbol{a}\\) (segunda derivada):\n\\[\n\\boldsymbol{\\upsilon} = \\frac{d\\boldsymbol{x}}{dt} = \\boldsymbol{\\dot{x}} \\qquad\\qquad \\boldsymbol{a} = \\frac{d^2\\boldsymbol{x}}{dt^2} = \\boldsymbol{\\ddot{x}}\n\\]\n\n\n\n\n\nWikipedia, “Cinemática”, disponible en: es.wikipedia.org/wiki/Cinemática"
+  },
+  {
+    "objectID": "clases/10/index.html#modelo-cinemático",
+    "href": "clases/10/index.html#modelo-cinemático",
+    "title": "Robótica",
+    "section": "Modelo cinemático",
+    "text": "Modelo cinemático\n\nLos modelos cinemáticos lidian con la relación entre el movimiento de las ruedas y las restricciones de movimiento de la plataforma\n\n\n\n\n\n\n\n\n\n\n\nCinemática directa\nCinemática inversa\n\n\n\n\nDado un conjunto de velocidades de las ruedas (y la geometría del robot), determinar la velocidad del robot.\nDada la velocidad del robot (y la geometría), determinar el conjunto de velocidades de las ruedas.\n\n\nAplicación: Posicionamiento\nAplicación: Control"
+  },
+  {
+    "objectID": "clases/10/index.html#grados-de-libertad",
+    "href": "clases/10/index.html#grados-de-libertad",
+    "title": "Robótica",
+    "section": "Grados de libertad",
+    "text": "Grados de libertad\n\n\n\n\n\n\n\n\nSistemas holonómicos\nSistemas no-holonómicos\n\n\n\n\nEl sistema puede moverse instantáneamente en cualquier dirección según sus grados de libertad\nEl sistema no puede moverse instantáneamente en cualquier dirección\n\n\nSilla de oficina con rueditas\nAuto de calle"
+  },
+  {
+    "objectID": "clases/10/index.html#locomoción",
+    "href": "clases/10/index.html#locomoción",
+    "title": "Robótica",
+    "section": "Locomoción",
+    "text": "Locomoción\n\nDef.: mecanismos que permiten al robot moverse libremente dentro de su entorno 1\n\n\n\nSe diferencia con Manipulación donde el robot está fijo y se mueven los objetos\nPara robótica móvil el uso de ruedas es eficiente en terrenos planos y firmes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR. Siegwart, I. R. Nourbakhsh, and D. Scaramuzza, Introduction to Autonomous Mobile Robots, 2nd ed. Cambridge, MA: MIT Press, 2011"
+  },
+  {
+    "objectID": "clases/10/index.html#tipos-de-ruedas",
+    "href": "clases/10/index.html#tipos-de-ruedas",
+    "title": "Robótica",
+    "section": "Tipos de ruedas",
+    "text": "Tipos de ruedas\n\n\n\n3 ruedas son suficientes para garantizar estabilidad. Más de 3 requieren un sistema de suspención adecuado\nLa selección depende de la aplicación"
+  },
+  {
+    "objectID": "clases/10/index.html#configuraciones-de-robots-con-ruedas",
+    "href": "clases/10/index.html#configuraciones-de-robots-con-ruedas",
+    "title": "Robótica",
+    "section": "Configuraciones de robots con ruedas",
+    "text": "Configuraciones de robots con ruedas"
+  },
+  {
+    "objectID": "clases/10/index.html#robot-diferencial-1",
+    "href": "clases/10/index.html#robot-diferencial-1",
+    "title": "Robótica",
+    "section": "Robot diferencial",
+    "text": "Robot diferencial\n\n\n\nPrincipio: controlar la dirección del movimiento variando las velocidades de la rueda izq. (\\(v_L\\)) y derecha por separado (\\(v_R\\))"
+  },
+  {
+    "objectID": "clases/10/index.html#suposiciones-para-el-modelo",
+    "href": "clases/10/index.html#suposiciones-para-el-modelo",
+    "title": "Robótica",
+    "section": "Suposiciones para el modelo",
+    "text": "Suposiciones para el modelo\n\nEl movimiento es en una superficie horizontal.\nEl contacto de las ruedas con la superficie es un punto.\nLas ruedas no son deformables.\nLas ruedas se encuentran conectadas por una estructura rígida."
+  },
+  {
+    "objectID": "clases/10/index.html#suposiciones-para-el-modelo-1",
+    "href": "clases/10/index.html#suposiciones-para-el-modelo-1",
+    "title": "Robótica",
+    "section": "Suposiciones para el modelo",
+    "text": "Suposiciones para el modelo\n\n\n\nEl movimiento a lo largo del eje Y se conoce como rodaje (roll), cualquier otro movimiento se conoce como deslizamiento.\nSe asume que el movimiento es de rodaje puro.\nSe asume que no existe deslizamiento de ningún tipo (sliding, skidding, slipping)."
+  },
+  {
+    "objectID": "clases/10/index.html#suposiciones-para-el-modelo-2",
+    "href": "clases/10/index.html#suposiciones-para-el-modelo-2",
+    "title": "Robótica",
+    "section": "Suposiciones para el modelo",
+    "text": "Suposiciones para el modelo\n\n\n\nNo existe fricción para una rotación alrededor del punto de contacto.\nLos ejes de rotación son ortogonales a la superficie.\nPara una vuelta completa de una rueda de radio \\(r\\), el centro se desplaza \\(2 \\pi \\, r\\)."
+  },
+  {
+    "objectID": "clases/10/index.html#icr-instantaneous-center-of-rotation",
+    "href": "clases/10/index.html#icr-instantaneous-center-of-rotation",
+    "title": "Robótica",
+    "section": "ICR (Instantaneous Center of Rotation)",
+    "text": "ICR (Instantaneous Center of Rotation)\n\n\n\nPara un robot con múltiples ruedas, existe un punto en común de rotación denominado ICR\nLa velocidad de cada rueda debe ser consistente con la rotación de la estructura rígida de modo que no exista movimiento relativo entre ellas\n\n\n\n\n\n\n\n\n\n\n\n\nFig. 24.5a,b. de W. Chung and K. Iagnemma, “Wheeled robots” in Springer Handbook of Robotics, 2nd ed., B. Siciliano and O. Khatib, Eds. Cham, Switzerland: Springer, 2016, pp. 575–593"
+  },
+  {
+    "objectID": "clases/10/index.html#suposiciones-para-el-modelo-de-un-r.d.",
+    "href": "clases/10/index.html#suposiciones-para-el-modelo-de-un-r.d.",
+    "title": "Robótica",
+    "section": "Suposiciones para el modelo de un r.d.",
+    "text": "Suposiciones para el modelo de un r.d.\n\n\n\nPar de ruedas montadas a lo largo de un eje y una tercera de apoyo (no activa)\nEl ICR se ubica a lo largo de este eje"
+  },
+  {
+    "objectID": "clases/10/index.html#velocidad-angular-y-velocidad-lineal",
+    "href": "clases/10/index.html#velocidad-angular-y-velocidad-lineal",
+    "title": "Robótica",
+    "section": "Velocidad angular y velocidad lineal",
+    "text": "Velocidad angular y velocidad lineal\n\n\n\nUna rueda ubicada a \\(\\require{color} \\textcolor{ForestGreen}{\\mathcal{R}}\\) unidades del ICR, rota alrededor del ICR a lo largo de un círculo de radio \\(\\textcolor{ForestGreen}{\\mathcal{R}}\\)\nLa velocidad lineal \\(\\textcolor{Blue}{\\upsilon}\\) de una rueda puede definirse como \\(\\textcolor{Blue}{\\upsilon} = \\tfrac{2 \\pi \\textcolor{ForestGreen}{\\mathcal{R}}}{T}\\) donde \\(T\\) es el tiempo que tarda en completar una vuelta.\nLa velocidad angular \\(\\textcolor{Orange}{\\dot\\theta}\\) se define como \\(\\textcolor{Orange}{\\dot\\theta} = \\tfrac{2 \\pi}{T}\\) y tiene unidades de rad/s.\nCombinando estas dos ecuaciones, se obtiene la relación entre velocidad lineal y angular para un movimiento circular: \\[\n\\textcolor{Blue}{\\upsilon} = \\textcolor{Orange}{\\dot\\theta} \\textcolor{ForestGreen}{\\mathcal{R}}\n\\qquad(1)\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#deducción-del-modelo-de-un-r.d.",
+    "href": "clases/10/index.html#deducción-del-modelo-de-un-r.d.",
+    "title": "Robótica",
+    "section": "Deducción del modelo de un r.d.",
+    "text": "Deducción del modelo de un r.d.\n\n\n\nDado el punto medio entre las ruedas \\(\\textcolor{Maroon}{P}\\) a una distancia \\(\\textcolor{ForestGreen}{R}\\) del ICR, la distancia de la rueda izquierda y la derecha al ICR es:\n\n\\[\n\\begin{cases}\n    \\mathcal{R}_L = \\textcolor{ForestGreen}{R} - \\tfrac{\\textcolor{Gray}{b}}{2}\\\\\n    \\mathcal{R}_R = \\textcolor{ForestGreen}{R} + \\tfrac{\\textcolor{Gray}{b}}{2}\n\\end{cases}\n\\]\n\n\nReemplazando en 1 (\\(\\textcolor{Blue}{\\upsilon} = \\textcolor{Orange}{\\dot\\theta} \\mathcal{R}\\)), las velocidades lineales quedan definidas como: \\[\n\\begin{cases}\n  \\textcolor{Blue}{\\upsilon_L} = \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} - \\tfrac{\\textcolor{Gray}{b}}{2})\\\\\n  \\textcolor{Blue}{\\upsilon_R} = \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} + \\tfrac{\\textcolor{Gray}{b}}{2})\n\\end{cases}\n\\qquad(2)\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#velocidad-angular-de-un-robot-diferencial",
+    "href": "clases/10/index.html#velocidad-angular-de-un-robot-diferencial",
+    "title": "Robótica",
+    "section": "Velocidad angular de un robot diferencial",
+    "text": "Velocidad angular de un robot diferencial\n\\[\n\\begin{cases}\n    \\textcolor{Blue}{\\upsilon_R} = \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} + \\tfrac{\\textcolor{Gray}{b}}{2})\\\\\n    \\textcolor{Blue}{\\upsilon_L} = \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} - \\tfrac{\\textcolor{Gray}{b}}{2})\n\\end{cases}\n\\]\n\nRestando ambas ecuaciones y resolviendo para \\(\\textcolor{Orange}{\\dot\\theta}\\)\n\n\\[\n\\require{cancel}\n\\begin{align*}\n    \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} + \\tfrac{\\textcolor{Gray}{b}}{2}) - \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} - \\tfrac{\\textcolor{Gray}{b}}{2}) &= \\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L} \\\\\n    \\textcolor{Orange}{\\dot\\theta} (\\cancel{\\textcolor{ForestGreen}{{R}}} + \\tfrac{\\textcolor{Gray}{b}}{2} - \\cancel{\\textcolor{ForestGreen}{{R}}} + \\tfrac{\\textcolor{Gray}{b}}{2}) &= \\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L} \\\\\n    \\textcolor{Orange}{\\dot\\theta} \\textcolor{Gray}{b} &= \\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L} \\to \\textcolor{Orange}{\\dot\\theta} = (\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}) / {\\textcolor{Gray}{b}}\\\\\n\\end{align*}\n\\]\n\nExpresión de \\(\\textcolor{Orange}{\\dot\\theta}\\) en función de las velocidades de las ruedas y la geometría:\n\n\\[\n\\textcolor{Orange}{\\dot\\theta} = \\frac{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}}\n\\qquad(3)\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#radio-de-giro-de-un-robot-diferencial",
+    "href": "clases/10/index.html#radio-de-giro-de-un-robot-diferencial",
+    "title": "Robótica",
+    "section": "Radio de giro de un robot diferencial",
+    "text": "Radio de giro de un robot diferencial\n\\[\n\\begin{cases}\n    \\textcolor{Blue}{\\upsilon_R} = \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} + \\tfrac{\\textcolor{Gray}{b}}{2})\\\\\n    \\textcolor{Blue}{\\upsilon_L} = \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} - \\tfrac{\\textcolor{Gray}{b}}{2})\n\\end{cases}\n\\]\n\nSumando ambas ecuaciones y resolviendo para \\(\\textcolor{ForestGreen}{{R}}\\):\n\n\\[\n\\begin{align*}\n    \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} + \\tfrac{\\textcolor{Gray}{b}}{2}) + \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} - \\tfrac{\\textcolor{Gray}{b}}{2}) &= \\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}\\\\\n    \\textcolor{Orange}{\\dot\\theta} (\\textcolor{ForestGreen}{{R}} + \\cancel{\\tfrac{\\textcolor{Gray}{b}}{2}} + \\textcolor{ForestGreen}{{R}} - \\cancel{\\tfrac{\\textcolor{Gray}{b}}{2}}) &= \\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L} \\\\\n    2 \\textcolor{ForestGreen}{{R}} \\, \\textcolor{Orange}{\\dot\\theta} &= \\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L} \\to \\textcolor{ForestGreen}{{R}} = (\\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}) / {2 \\textcolor{Orange}{\\dot\\theta}} \\\\\n    %R &= \\frac{\\upsilon_R + \\upsilon_L}{2 \\dot\\omega}\n\\end{align*}\n\\]\n\nReemplazando con 3, expresión de \\(\\textcolor{ForestGreen}{{R}}\\) en función de las velocidades de las ruedas y la geometría: \\[\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}}{2 \\frac{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}}} \\to \\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#casos-particulares-del-modelo-de-r.d.",
+    "href": "clases/10/index.html#casos-particulares-del-modelo-de-r.d.",
+    "title": "Robótica",
+    "section": "Casos particulares del modelo de r.d.",
+    "text": "Casos particulares del modelo de r.d.\n\\[\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}}\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}\n\\end{split}\n\\]\n\nTres casos particulares:\n\n\\[\n\\begin{array}{lllc}\n\\textcolor{white}{{\\upsilon_R} = {\\upsilon_L}}  & \\textcolor{white}{{\\dot\\theta} = 0} & \\textcolor{white}{{{R}} = \\infty} & \\textcolor{white}{\\text{Movimiento en línea recta}} \\\\\n\\hline\n\\textcolor{white}{{\\upsilon_L} = -{\\upsilon_R}} & \\textcolor{white}{{\\dot\\theta} = \\begin{cases}\\tfrac{2 {\\upsilon_R}}{{b}} \\\\[.25em] \\tfrac{-2 {\\upsilon_L}}{{b}} \\end{cases}} & \\textcolor{white}{{{R}} = 0} & \\textcolor{white}{\\text{Movimiento de rotación}} \\\\\n\\hline\n\\begin{array}{l}\n\\textcolor{white}{{\\upsilon_L} = 0 \\; \\text{y} \\; {\\upsilon_R} \\neq 0}  \\\\[.25em] \\textcolor{white}{{\\upsilon_R} = 0 \\; \\text{y} \\; {\\upsilon_L} \\neq 0}\n\\end{array} & \\textcolor{white}{{\\dot\\theta} = \\begin{cases}\\tfrac{{\\upsilon_R}}{{b}} \\\\[.25em]  \\tfrac{-{\\upsilon_L}}{{b}} \\end{cases}} & \\textcolor{white}{{{R}} = \\begin{cases} \\tfrac{{b}}{2} \\\\[.25em]  \\tfrac{-{b}}{2} \\end{cases}} & \\textcolor{white}{\\text{Rotación sobre una rueda}} \\\\\n\\end{array}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#casos-particulares-del-modelo-de-r.d.-1",
+    "href": "clases/10/index.html#casos-particulares-del-modelo-de-r.d.-1",
+    "title": "Robótica",
+    "section": "Casos particulares del modelo de r.d.",
+    "text": "Casos particulares del modelo de r.d.\n\\[\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}}\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}\n\\end{split}\n\\]\n\nTres casos particulares:\n\n\\[\n\\begin{array}{lllc}\n\\textcolor{Blue}{\\upsilon_R} = \\textcolor{Blue}{\\upsilon_L}  & \\textcolor{Orange}{\\dot\\theta} = 0 & \\textcolor{ForestGreen}{{R}} = \\infty & \\text{Movimiento en línea recta} \\\\\n\\hline\n\\textcolor{white}{{\\upsilon_L} = -{\\upsilon_R}} & \\textcolor{white}{{\\dot\\theta} = \\begin{cases}\\tfrac{2 {\\upsilon_R}}{{b}} \\\\[.25em] \\tfrac{-2 {\\upsilon_L}}{{b}} \\end{cases}} & \\textcolor{white}{{{R}} = 0} & \\textcolor{white}{\\text{Movimiento de rotación}} \\\\\n\\hline\n\\begin{array}{l}\n\\textcolor{white}{{\\upsilon_L} = 0 \\; \\text{y} \\; {\\upsilon_R} \\neq 0}  \\\\[.25em] \\textcolor{white}{{\\upsilon_R} = 0 \\; \\text{y} \\; {\\upsilon_L} \\neq 0}\n\\end{array} & \\textcolor{white}{{\\dot\\theta} = \\begin{cases}\\tfrac{{\\upsilon_R}}{{b}} \\\\[.25em]  \\tfrac{-{\\upsilon_L}}{{b}} \\end{cases}} & \\textcolor{white}{{{R}} = \\begin{cases} \\tfrac{{b}}{2} \\\\[.25em]  \\tfrac{-{b}}{2} \\end{cases}} & \\textcolor{white}{\\text{Rotación sobre una rueda}} \\\\\n\\end{array}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#casos-particulares-del-modelo-de-r.d.-2",
+    "href": "clases/10/index.html#casos-particulares-del-modelo-de-r.d.-2",
+    "title": "Robótica",
+    "section": "Casos particulares del modelo de r.d.",
+    "text": "Casos particulares del modelo de r.d.\n\\[\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}}\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}\n\\end{split}\n\\]\n\nTres casos particulares:\n\n\\[\n\\begin{array}{lllc}\n\\textcolor{Blue}{\\upsilon_R} = \\textcolor{Blue}{\\upsilon_L}  & \\textcolor{Orange}{\\dot\\theta} = 0 & \\textcolor{ForestGreen}{{R}} = \\infty & \\text{Movimiento en línea recta} \\\\\n\\hline\n\\textcolor{Blue}{\\upsilon_L} = -\\textcolor{Blue}{\\upsilon_R} & \\textcolor{Orange}{\\dot\\theta} = \\begin{cases}\\tfrac{2 \\textcolor{Blue}{\\upsilon_R}}{\\textcolor{Gray}{b}} \\\\[.25em] \\tfrac{-2 \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}} \\end{cases} & \\textcolor{ForestGreen}{{R}} = 0 & \\text{Movimiento de rotación} \\\\\n\\hline\n\\begin{array}{l}\n\\textcolor{white}{{\\upsilon_L} = 0 \\; \\text{y} \\; {\\upsilon_R} \\neq 0}  \\\\[.25em] \\textcolor{white}{{\\upsilon_R} = 0 \\; \\text{y} \\; {\\upsilon_L} \\neq 0}\n\\end{array} & \\textcolor{white}{{\\dot\\theta} = \\begin{cases}\\tfrac{{\\upsilon_R}}{{b}} \\\\[.25em]  \\tfrac{-{\\upsilon_L}}{{b}} \\end{cases}} & \\textcolor{white}{{{R}} = \\begin{cases} \\tfrac{{b}}{2} \\\\[.25em]  \\tfrac{-{b}}{2} \\end{cases}} & \\textcolor{white}{\\text{Rotación sobre una rueda}} \\\\\n\\end{array}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#casos-particulares-del-modelo-de-r.d.-3",
+    "href": "clases/10/index.html#casos-particulares-del-modelo-de-r.d.-3",
+    "title": "Robótica",
+    "section": "Casos particulares del modelo de r.d.",
+    "text": "Casos particulares del modelo de r.d.\n\\[\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}}\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}\n\\end{split}\n\\]\n\nTres casos particulares:\n\n\\[\n\\begin{array}{lllc}\n\\textcolor{Blue}{\\upsilon_R} = \\textcolor{Blue}{\\upsilon_L}  & \\textcolor{Orange}{\\dot\\theta} = 0 & \\textcolor{ForestGreen}{{R}} = \\infty & \\text{Movimiento en línea recta} \\\\\n\\hline\n\\textcolor{Blue}{\\upsilon_L} = -\\textcolor{Blue}{\\upsilon_R} & \\textcolor{Orange}{\\dot\\theta} = \\begin{cases}\\tfrac{2 \\textcolor{Blue}{\\upsilon_R}}{\\textcolor{Gray}{b}} \\\\[.25em] \\tfrac{-2 \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}} \\end{cases} & \\textcolor{ForestGreen}{{R}} = 0 & \\text{Movimiento de rotación} \\\\\n\\hline\n\\begin{array}{l}\n\\textcolor{Blue}{\\upsilon_L} = 0 \\; \\text{y} \\; \\textcolor{Blue}{\\upsilon_R} \\neq 0  \\\\[.25em] \\textcolor{Blue}{\\upsilon_R} = 0 \\; \\text{y} \\; \\textcolor{Blue}{\\upsilon_L} \\neq 0\n\\end{array} & \\textcolor{Orange}{\\dot\\theta} = \\begin{cases}\\tfrac{\\textcolor{Blue}{\\upsilon_R}}{\\textcolor{Gray}{b}} \\\\[.25em]  \\tfrac{-\\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}} \\end{cases} & \\textcolor{ForestGreen}{{R}} = \\begin{cases} \\tfrac{\\textcolor{Gray}{b}}{2} \\\\[.25em]  \\tfrac{-\\textcolor{Gray}{b}}{2} \\end{cases} & \\text{Rotación sobre una rueda} \\\\\n\\end{array}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#velocidades-angulares-de-las-ruedas",
+    "href": "clases/10/index.html#velocidades-angulares-de-las-ruedas",
+    "title": "Robótica",
+    "section": "Velocidades angulares de las ruedas",
+    "text": "Velocidades angulares de las ruedas\n\n\n\\[\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Gray}{b}}\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Blue}{\\upsilon_R} + \\textcolor{Blue}{\\upsilon_L}}{\\textcolor{Blue}{\\upsilon_R} - \\textcolor{Blue}{\\upsilon_L}}\n\\end{split}\n\\]\n\nSea \\(\\textcolor{Plum}{\\dot\\phi}\\) la velocidad de rotación de la rueda: \\[\\textcolor{Blue}{\\upsilon} = \\textcolor{Plum}{\\dot\\phi} \\, r\\]\n\n\n\nReemplazando para \\(\\textcolor{Blue}{\\upsilon_R}\\) y \\(\\textcolor{Blue}{\\upsilon_L}\\):\n\n\\[\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{r}{\\textcolor{Gray}{b}}(\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L})\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L}}{\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L}}\n\\end{split}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#velocidades-lineales-del-robot-diferencial",
+    "href": "clases/10/index.html#velocidades-lineales-del-robot-diferencial",
+    "title": "Robótica",
+    "section": "Velocidades lineales del robot diferencial",
+    "text": "Velocidades lineales del robot diferencial\n\n\n\\[\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{r}{\\textcolor{Gray}{b}}(\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L})\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L}}{\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L}}\n\\end{split}\n\\]\n\nSea \\(\\textcolor{ForestGreen}{\\dot{x}}\\) e \\(\\textcolor{ForestGreen}{\\dot{y}}\\) la velocidad lineal del robot en los ejes \\(\\textcolor{Maroon}{\\boldsymbol{x}_R}\\) e \\(\\textcolor{Maroon}{\\boldsymbol{y}_R}\\)\nUtilizando la ecuación de velocidad angular: \\[\n\\require{cancel}\n\\begin{align*}\n  {}^\\textcolor{Maroon}{R}\\textcolor{ForestGreen}{\\dot{x}} = \\textcolor{Orange}{\\dot\\theta} \\, R &=  \\frac{r}{{\\textcolor{Gray}{b}}} {(\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L})} \\, \\frac{{\\textcolor{Gray}{b}}}{2} \\frac{\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L}}{{\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L}}}\\\\\n  {}^\\textcolor{Maroon}{R}\\textcolor{ForestGreen}{\\dot{x}} &= \\frac{r}{2} \\, (\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L})\n\\end{align*}\n\\]\n\n\n\n\n\n\n\n\nQue pasa con \\(\\textcolor{ForestGreen}{\\dot{y}}\\) ?"
+  },
+  {
+    "objectID": "clases/10/index.html#velocidades-lineales-del-robot-diferencial-1",
+    "href": "clases/10/index.html#velocidades-lineales-del-robot-diferencial-1",
+    "title": "Robótica",
+    "section": "Velocidades lineales del robot diferencial",
+    "text": "Velocidades lineales del robot diferencial\n\n\n\\[\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{r}{\\textcolor{Gray}{b}}(\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L})\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L}}{\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L}}\n\\end{split}\n\\]\n\nSea \\(\\textcolor{ForestGreen}{\\dot{x}}\\) e \\(\\textcolor{ForestGreen}{\\dot{y}}\\) la velocidad lineal del robot en los ejes \\(\\textcolor{Maroon}{\\boldsymbol{x}_R}\\) e \\(\\textcolor{Maroon}{\\boldsymbol{y}_R}\\)\nUtilizando la ecuación de velocidad angular: \\[\n\\begin{align*}\n  {}^\\textcolor{Maroon}{R}\\textcolor{ForestGreen}{\\dot{x}} &= \\frac{r}{2} \\, (\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L})\\\\\n  {}^\\textcolor{Maroon}{R}\\textcolor{ForestGreen}{\\dot{y}} &= 0\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#modelo-cinemático-de-un-robot-diferencial",
+    "href": "clases/10/index.html#modelo-cinemático-de-un-robot-diferencial",
+    "title": "Robótica",
+    "section": "Modelo cinemático de un robot diferencial",
+    "text": "Modelo cinemático de un robot diferencial\n\n\n\nSe define un marco inercial \\(\\textcolor{Blue}{\\mathcal{O}: \\{ \\mathcal{X}_O, \\mathcal{Y}_O \\}}\\) y un marco de referencia local del robot \\(\\textcolor{Maroon}{\\mathcal{P}: \\{ \\mathcal{X}_R, \\mathcal{Y}_R \\}}\\)\n\n\n\nLa velocidad del robot en el marco local:\n\n\\[\n{}^\\textcolor{Maroon}{R} \\boldsymbol{\\dot \\xi}_\\textcolor{Maroon}{P} =\n\\sideset{^\\textcolor{Maroon}{R}}{}{\\begin{pmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\\n    \\textcolor{ForestGreen}{\\dot{y}} \\\\\n    \\textcolor{Orange}{\\dot\\theta}\n\\end{pmatrix}_\\textcolor{Maroon}{P}} =\n\\sideset{^\\textcolor{Maroon}{R}}{}{\\begin{pmatrix}\n    \\frac{r}{2} \\, (\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L})\\\\\n    0 \\\\\n    \\frac{r}{\\textcolor{Gray}{b}}(\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L})\n\\end{pmatrix}_\\textcolor{Maroon}{P}}\n\\]\n\n\n\nExpresado en forma matricial \\[\n\\sideset{^\\textcolor{Maroon}{R}}{}{\\begin{bmatrix}\n  \\textcolor{ForestGreen}{\\dot{x}} \\\\\n  \\textcolor{ForestGreen}{\\dot{y}} \\\\\n  \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}_\\textcolor{Maroon}{P}} = \\begin{bmatrix}\n  \\frac{r}{2} & \\frac{r}{2}\\\\\n  0 & 0\\\\\n  \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n\\qquad(4)\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#modelo-cinemático-directo-de-un-r.d.",
+    "href": "clases/10/index.html#modelo-cinemático-directo-de-un-r.d.",
+    "title": "Robótica",
+    "section": "Modelo cinemático directo de un r.d.",
+    "text": "Modelo cinemático directo de un r.d.\n\nModelo cinemático directo: Dada las velocidades de las ruedas, la orientación actual y la geometría del robot, obtener la velocidad en el marco global.\n\n\\[\n\\boldsymbol{f}(\\textcolor{Gray}{b}, r, \\textcolor{Orange}{\\theta}, \\textcolor{Plum}{\\dot\\phi_R}, \\textcolor{Plum}{\\dot\\phi_L} ) = \\sideset{^\\textcolor{Blue}{O}}{}{\\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{R}} = \\sideset{^\\textcolor{Blue}{O}}{}{\\begin{bmatrix} \\textcolor{ForestGreen}{\\dot{x}} \\\\ \\textcolor{ForestGreen}{\\dot{y}} \\\\ \\textcolor{Orange}{\\dot\\theta} \\end{bmatrix}_\\textcolor{Maroon}{R}}\n\\]\n\n\nDada \\(\\boldsymbol{R}(\\textcolor{Orange}{\\theta})\\) la matriz de rotación entre el marco local \\(\\textcolor{Maroon}{R}\\) y el global \\(\\textcolor{Blue}{O}\\):\n\n\\[\n{}^\\textcolor{Blue}{O} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{R} = \\boldsymbol{R}(\\textcolor{Orange}{\\theta}) {}^\\textcolor{Maroon}{R} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{P} =\n\\begin{bmatrix}\n\\cos{\\textcolor{Orange}{\\theta}} & -\\sin{\\textcolor{Orange}{\\theta}} & 0 \\\\\n\\sin{\\textcolor{Orange}{\\theta}} & \\cos{\\textcolor{Orange}{\\theta}} & 0 \\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\sideset{^\\textcolor{Maroon}{R}}{}{\\begin{bmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\\n    \\textcolor{ForestGreen}{\\dot{y}} \\\\\n    \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}_\\textcolor{Maroon}{P}}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#modelo-cinemático-directo-de-un-r.d.-1",
+    "href": "clases/10/index.html#modelo-cinemático-directo-de-un-r.d.-1",
+    "title": "Robótica",
+    "section": "Modelo cinemático directo de un r.d.",
+    "text": "Modelo cinemático directo de un r.d.\n\\[\n{}^\\textcolor{Blue}{O} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{R} =\n\\begin{bmatrix}\n\\cos{\\textcolor{Orange}{\\theta}} & -\\sin{\\textcolor{Orange}{\\theta}} & 0 \\\\\n\\sin{\\textcolor{Orange}{\\theta}} & \\cos{\\textcolor{Orange}{\\theta}} & 0 \\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\sideset{^\\textcolor{Maroon}{R}}{}{\\begin{bmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\\n    \\textcolor{ForestGreen}{\\dot{y}} \\\\\n    \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}_\\textcolor{Maroon}{P}}\n\\]\n\nUtilizando la definición de 4:\n\n\\[\n{}^\\textcolor{Blue}{O} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{R} =\n\\begin{bmatrix}\n\\cos{\\textcolor{Orange}{\\theta}} & -\\sin{\\textcolor{Orange}{\\theta}} & 0 \\\\\n\\sin{\\textcolor{Orange}{\\theta}} & \\cos{\\textcolor{Orange}{\\theta}} & 0 \\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    0 & 0\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n\\]\n\\[\n\\boldsymbol{f}(\\textcolor{Gray}{b}, r, \\textcolor{Orange}{\\theta}, \\textcolor{Plum}{\\dot\\phi_R}, \\textcolor{Plum}{\\dot\\phi_L} ) =\n\\begin{bmatrix}\n\\cos{\\textcolor{Orange}{\\theta}} & -\\sin{\\textcolor{Orange}{\\theta}} & 0 \\\\\n\\sin{\\textcolor{Orange}{\\theta}} & \\cos{\\textcolor{Orange}{\\theta}} & 0 \\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    0 & 0\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#modelo-cinemático-directo-de-un-r.d.-2",
+    "href": "clases/10/index.html#modelo-cinemático-directo-de-un-r.d.-2",
+    "title": "Robótica",
+    "section": "Modelo cinemático directo de un r.d.",
+    "text": "Modelo cinemático directo de un r.d.\n\nNombrando \\(\\textcolor{ForestGreen}{V}\\) a la velocidad lineal en el eje \\(\\textcolor{Maroon}{\\boldsymbol{x}_R}\\) del marco local del robot:\n\n\\[\n\\textcolor{ForestGreen}{V} = {}^\\textcolor{Maroon}{R}\\textcolor{ForestGreen}{\\dot{x}} = \\frac{r}{2} \\, (\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L})\n\\]\n\nSabiendo que \\(\\textcolor{Orange}{\\dot\\theta} =  \\frac{r}{\\textcolor{Gray}{b}}(\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L})\\), podemos escribir de forma abreviada:\n\n\\[\n\\boldsymbol{f}(\\textcolor{Gray}{b}, r, \\textcolor{Orange}{\\theta}, \\textcolor{Plum}{\\dot\\phi_R}, \\textcolor{Plum}{\\dot\\phi_L} ) =\n\\begin{bmatrix}\n\\cos{\\textcolor{Orange}{\\theta}} & 0 \\\\\n\\sin{\\textcolor{Orange}{\\theta}} & 0 \\\\\n0 & 1\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{ForestGreen}{V} \\\\ \\textcolor{Orange}{\\dot\\theta} \\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#modelo-cinemático-inverso-de-un-r.d.",
+    "href": "clases/10/index.html#modelo-cinemático-inverso-de-un-r.d.",
+    "title": "Robótica",
+    "section": "Modelo cinemático inverso de un r.d.",
+    "text": "Modelo cinemático inverso de un r.d.\n\nModelo cinemático inverso: Dada la velocidad del robot, la orientación actual y la geometría del robot, obtener las velocidades de las ruedas.\n\n\\[\n\\boldsymbol{g}(\\textcolor{Gray}{b}, r, \\textcolor{Orange}{\\theta}, {}^\\textcolor{Blue}{O} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{R} ) = \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} & \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix} \\Rightarrow \\boldsymbol{f}^{-1} = {( {}^\\textcolor{Blue}{O}{\\boldsymbol{\\dot\\xi}}_\\textcolor{Maroon}{R} )}^{-1} = \\sideset{^\\textcolor{Maroon}{R}}{_\\textcolor{Blue}{O}}{\\boldsymbol{\\dot\\xi}}\n\\]\n\n\nComo está planteado el problema, no es invertible:\n\n\\[\n\\boldsymbol{g} = \\boldsymbol{f}^{-1} =\n\\left(\n\\begin{bmatrix}\n\\cos{\\textcolor{Orange}{\\theta}} & -\\sin{\\textcolor{Orange}{\\theta}} & 0 \\\\\n\\sin{\\textcolor{Orange}{\\theta}} & \\cos{\\textcolor{Orange}{\\theta}} & 0 \\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    0 & 0\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n\\right)^{-1}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#modelo-cinemático-inverso-de-un-r.d.-1",
+    "href": "clases/10/index.html#modelo-cinemático-inverso-de-un-r.d.-1",
+    "title": "Robótica",
+    "section": "Modelo cinemático inverso de un r.d.",
+    "text": "Modelo cinemático inverso de un r.d.\n\nSabiendo que no hay velocidad en la componente \\(\\textcolor{Maroon}{\\boldsymbol{y}_R}\\) del robot, es posible reducir 4 a dos ecuaciones:\n\n\\[\n\\begin{gather*}\n{}^\\textcolor{Maroon}{R} \\boldsymbol{\\dot \\xi}_\\textcolor{Maroon}{P} =\n\\sideset{^\\textcolor{Maroon}{R}}{}{\\begin{bmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\\n    \\textcolor{ForestGreen}{\\dot{y}} \\\\\n    \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}_\\textcolor{Maroon}{P}} = \\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    0 & 0\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\\\\[0.5em]\n\\downarrow\\\\[0.5em]\n\\overline{{}^\\textcolor{Maroon}{R} \\boldsymbol{\\dot \\xi}_\\textcolor{Maroon}{P}} =\n\\sideset{^\\textcolor{Maroon}{R}}{_\\textcolor{Maroon}{P}}{\\begin{bmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\ \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}} =\n\\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix}\n\\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n\\end{gather*}\n\\]"
+  },
+  {
+    "objectID": "clases/10/index.html#modelo-cinemático-inverso-de-un-r.d.-2",
+    "href": "clases/10/index.html#modelo-cinemático-inverso-de-un-r.d.-2",
+    "title": "Robótica",
+    "section": "Modelo cinemático inverso de un r.d.",
+    "text": "Modelo cinemático inverso de un r.d.\n\nInvirtiendo el sistema:\n\n\\[\n\\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix} =\n\\begin{bmatrix}\n    \\tfrac{r}{2} & \\tfrac{r}{2}\\\\\n    \\tfrac{r}{b} & -\\tfrac{r}{b}\n\\end{bmatrix}^{-1}\n\\sideset{^\\textcolor{Maroon}{R}}{}{\n\\begin{bmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\ \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}} =\n\\begin{bmatrix}\n    \\tfrac{1}{r} & \\tfrac{b}{2r}\\\\\n    \\tfrac{1}{r} & - \\tfrac{b}{2r}\n\\end{bmatrix}\n\\begin{bmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\ \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}\n\\]\n\n\nDe forma simplificada:\n\n\\[\n\\begin{cases}\n    \\textcolor{Plum}{\\dot\\phi_R} = \\frac{1}{r} (\\textcolor{ForestGreen}{\\dot{x}} + \\frac{\\textcolor{Gray}{b}}{2} \\textcolor{Orange}{\\dot\\theta}) \\\\[0.5em]\n    \\textcolor{Plum}{\\dot\\phi_L} = \\frac{1}{r} (\\textcolor{ForestGreen}{\\dot{x}} - \\frac{\\textcolor{Gray}{b}}{2} \\textcolor{Orange}{\\dot\\theta})\n\\end{cases}\n\\]\n\n\n\nSe puede verificar reemplazando la definición 1 en 2 y \\(\\upsilon = \\dot\\phi \\, r\\)"
+  },
+  {
+    "objectID": "clases/10/index.html#taller-de-resolución-1",
+    "href": "clases/10/index.html#taller-de-resolución-1",
+    "title": "Robótica",
+    "section": "Taller de resolución",
+    "text": "Taller de resolución\nEjercicios 5 al 8"
+  },
+  {
     "objectID": "index.html#universidad-nacional-del-litoral-unl",
     "href": "index.html#universidad-nacional-del-litoral-unl",
     "title": "Robótica 2025",
@@ -712,6 +929,41 @@
     "title": "Ejercicios",
     "section": "ROS 2 y tf2",
     "text": "ROS 2 y tf2\n\n(Opción A) Crear un nodo que publique la transformación entre los frames odom y base_link a partir de los mensajes del topic /odom. Agregar la ejecución del mismo al launch del ejercicio anterior.\n(Opción B) Modificar el nodo del ejercicio 9 para que que publique la transformación entre los frames odom y base_link. Agregar un parámetro para que cuando no se requiera esta transformación, no se publique.\n\nCree un archivo launch en el paquete (*)_bringup que extienda (inclusión o copia) al del ejercicio 10 y añada la ejecución de RViz junto con su respectivo archivo de configuración, el cual muestre el robot en el frame odom y las transformaciones de todos los links definidos en el URDF."
+  },
+  {
+    "objectID": "clases/10/tres.html",
+    "href": "clases/10/tres.html",
+    "title": "Clase 10 - Taller de resolución",
+    "section": "",
+    "text": "Dada las velocidades angulares de las ruedas (derecha \\(\\textcolor{Blue}{\\upsilon_R}\\) e izquierda \\(\\textcolor{Blue}{\\upsilon_L}\\)) y las propiedades geométricos del robot (separación entre las ruedas \\(\\textcolor{Gray}{b}\\) y radio de las ruedas \\(r\\)), calcular su velocidad angular \\(\\textcolor{Orange}{\\dot\\theta}\\) y radio de giro \\(\\textcolor{ForestGreen}{{R}}\\) al rededor del \\(\\textcolor{Plum}{ICR}\\):\n\n\\[\n{\\Large\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{r}{\\textcolor{Gray}{b}}(\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L})\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L}}{\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L}}\n\\end{split}\n}\n\\]\n\n\n\n\nDada la velocidad lineal \\(\\textcolor{ForestGreen}{\\dot{x}}\\) y la velocidad angular \\(\\textcolor{Orange}{\\dot\\theta}\\) del robot junto con las propiedades geométricas (separación entre las ruedas \\(\\textcolor{Gray}{b}\\) y radio de las ruedas \\(r\\)), calcular las velocidades angulares de la rueda derecha \\(\\textcolor{Blue}{\\upsilon_R}\\) e izquierda \\(\\textcolor{Blue}{\\upsilon_L}\\):\n\n\\[\n{\\Large\n\\begin{cases}\n    \\textcolor{Plum}{\\dot\\phi_R} = \\frac{1}{r} (\\textcolor{ForestGreen}{\\dot{x}} + \\frac{\\textcolor{Gray}{b}}{2} \\textcolor{Orange}{\\dot\\theta}) \\\\[0.5em]\n    \\textcolor{Plum}{\\dot\\phi_L} = \\frac{1}{r} (\\textcolor{ForestGreen}{\\dot{x}} - \\frac{\\textcolor{Gray}{b}}{2} \\textcolor{Orange}{\\dot\\theta})\n\\end{cases}\n}\n\\]\n\n\n\n\n\n\n\n\n\nPose en el marco de referencia local del robot \\(\\textcolor{Maroon}{\\mathcal{P}: \\{ \\mathcal{X}_R, \\mathcal{Y}_R \\}}\\)\n\n\\[\n{\\Large\n{}^\\textcolor{Maroon}{R} \\boldsymbol{\\dot \\xi} =\n\\sideset{^\\textcolor{Maroon}{R}}{}{\\begin{bmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\\n    \\textcolor{ForestGreen}{\\dot{y}} \\\\\n    \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}} = \\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    0 & 0\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n}\n\\]\n\nPose en el marco de referencia inercial (global) \\(\\textcolor{Blue}{\\mathcal{O}: \\{ \\mathcal{X}_O, \\mathcal{Y}_O \\}}\\)\n\n\\[\n{\\Large\n{}^\\textcolor{Blue}{O} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{R} = \\boldsymbol{R}(\\textcolor{Orange}{\\theta}) {}^\\textcolor{Maroon}{R} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{P} =\n\\begin{bmatrix}\n\\cos{\\textcolor{Orange}{\\theta}} & -\\sin{\\textcolor{Orange}{\\theta}} & 0 \\\\\n\\sin{\\textcolor{Orange}{\\theta}} & \\cos{\\textcolor{Orange}{\\theta}} & 0 \\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    0 & 0\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n}\n\\]"
+  },
+  {
+    "objectID": "clases/10/tres.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/10/tres.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 10 - Taller de resolución",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/10/tres.html#modelo-cinemático-directo",
+    "href": "clases/10/tres.html#modelo-cinemático-directo",
+    "title": "Clase 10 - Taller de resolución",
+    "section": "",
+    "text": "Dada las velocidades angulares de las ruedas (derecha \\(\\textcolor{Blue}{\\upsilon_R}\\) e izquierda \\(\\textcolor{Blue}{\\upsilon_L}\\)) y las propiedades geométricos del robot (separación entre las ruedas \\(\\textcolor{Gray}{b}\\) y radio de las ruedas \\(r\\)), calcular su velocidad angular \\(\\textcolor{Orange}{\\dot\\theta}\\) y radio de giro \\(\\textcolor{ForestGreen}{{R}}\\) al rededor del \\(\\textcolor{Plum}{ICR}\\):\n\n\\[\n{\\Large\n\\begin{split}\n\\textcolor{Orange}{\\dot\\theta} = \\frac{r}{\\textcolor{Gray}{b}}(\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L})\n\\end{split}\n\\quad\\quad\\quad\n\\begin{split}\n\\textcolor{ForestGreen}{{R}} = \\frac{\\textcolor{Gray}{b}}{2} \\frac{\\textcolor{Plum}{\\dot\\phi_R} + \\textcolor{Plum}{\\dot\\phi_L}}{\\textcolor{Plum}{\\dot\\phi_R} - \\textcolor{Plum}{\\dot\\phi_L}}\n\\end{split}\n}\n\\]"
+  },
+  {
+    "objectID": "clases/10/tres.html#modelo-cinemático-inverso",
+    "href": "clases/10/tres.html#modelo-cinemático-inverso",
+    "title": "Clase 10 - Taller de resolución",
+    "section": "",
+    "text": "Dada la velocidad lineal \\(\\textcolor{ForestGreen}{\\dot{x}}\\) y la velocidad angular \\(\\textcolor{Orange}{\\dot\\theta}\\) del robot junto con las propiedades geométricas (separación entre las ruedas \\(\\textcolor{Gray}{b}\\) y radio de las ruedas \\(r\\)), calcular las velocidades angulares de la rueda derecha \\(\\textcolor{Blue}{\\upsilon_R}\\) e izquierda \\(\\textcolor{Blue}{\\upsilon_L}\\):\n\n\\[\n{\\Large\n\\begin{cases}\n    \\textcolor{Plum}{\\dot\\phi_R} = \\frac{1}{r} (\\textcolor{ForestGreen}{\\dot{x}} + \\frac{\\textcolor{Gray}{b}}{2} \\textcolor{Orange}{\\dot\\theta}) \\\\[0.5em]\n    \\textcolor{Plum}{\\dot\\phi_L} = \\frac{1}{r} (\\textcolor{ForestGreen}{\\dot{x}} - \\frac{\\textcolor{Gray}{b}}{2} \\textcolor{Orange}{\\dot\\theta})\n\\end{cases}\n}\n\\]"
+  },
+  {
+    "objectID": "clases/10/tres.html#marco-inercial",
+    "href": "clases/10/tres.html#marco-inercial",
+    "title": "Clase 10 - Taller de resolución",
+    "section": "",
+    "text": "Pose en el marco de referencia local del robot \\(\\textcolor{Maroon}{\\mathcal{P}: \\{ \\mathcal{X}_R, \\mathcal{Y}_R \\}}\\)\n\n\\[\n{\\Large\n{}^\\textcolor{Maroon}{R} \\boldsymbol{\\dot \\xi} =\n\\sideset{^\\textcolor{Maroon}{R}}{}{\\begin{bmatrix}\n    \\textcolor{ForestGreen}{\\dot{x}} \\\\\n    \\textcolor{ForestGreen}{\\dot{y}} \\\\\n    \\textcolor{Orange}{\\dot\\theta}\n\\end{bmatrix}} = \\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    0 & 0\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n}\n\\]\n\nPose en el marco de referencia inercial (global) \\(\\textcolor{Blue}{\\mathcal{O}: \\{ \\mathcal{X}_O, \\mathcal{Y}_O \\}}\\)\n\n\\[\n{\\Large\n{}^\\textcolor{Blue}{O} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{R} = \\boldsymbol{R}(\\textcolor{Orange}{\\theta}) {}^\\textcolor{Maroon}{R} \\boldsymbol{\\dot\\xi}_\\textcolor{Maroon}{P} =\n\\begin{bmatrix}\n\\cos{\\textcolor{Orange}{\\theta}} & -\\sin{\\textcolor{Orange}{\\theta}} & 0 \\\\\n\\sin{\\textcolor{Orange}{\\theta}} & \\cos{\\textcolor{Orange}{\\theta}} & 0 \\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\n    \\frac{r}{2} & \\frac{r}{2}\\\\\n    0 & 0\\\\\n    \\frac{r}{\\textcolor{Gray}{b}} & - \\frac{r}{\\textcolor{Gray}{b}}\n\\end{bmatrix} \\begin{bmatrix} \\textcolor{Plum}{\\dot\\phi_R} \\\\ \\textcolor{Plum}{\\dot\\phi_L} \\end{bmatrix}\n}\n\\]"
   },
   {
     "objectID": "clases/08/tres.html",
@@ -788,7 +1040,7 @@
     "href": "clases/index.html",
     "title": "Clases",
     "section": "",
-    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial\n\n\n\n\n\n12\n02/06\nOdometría: Cálculo de posición en base a modelo cinemático\n\n\n\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nRevisión temario clase anterior. Simulación de sensores en Gazebo"
+    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.\n🖥️\n\n🛠️\n\n\n12\n02/06\nOdometría: Cálculo de posición en base a modelo cinemático\n\n\n\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nRevisión temario clase anterior. Simulación de sensores en Gazebo"
   },
   {
     "objectID": "clases/index.html#universidad-nacional-del-litoral-unl",

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Clase 08 - Taller de resolución – Robótica 2025</title>
+<title>Clase 09 - Taller de resolución – Robótica 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cargar-el-plugin-de-gz_ros2_control" id="toc-cargar-el-plugin-de-gz_ros2_control" class="nav-link" data-scroll-target="#cargar-el-plugin-de-gz_ros2_control">Cargar el plugin de <code>gz_ros2_control</code></a></li>
   <li><a href="#cargar-controladores" id="toc-cargar-controladores" class="nav-link" data-scroll-target="#cargar-controladores">Cargar controladores</a></li>
   </ul></li>
-  <li><a href="#resolución-ejercicio-3-y-4" id="toc-resolución-ejercicio-3-y-4" class="nav-link" data-scroll-target="#resolución-ejercicio-3-y-4">Resolución ejercicio 3 y 4</a></li>
+  <li><a href="#resolución-ejercicios-3-y-4" id="toc-resolución-ejercicios-3-y-4" class="nav-link" data-scroll-target="#resolución-ejercicios-3-y-4">Resolución ejercicios 3 y 4</a></li>
   </ul>
 </nav>
     </div>
@@ -172,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Clase 08 - Taller de resolución</h1>
+<h1 class="title">Clase 09 - Taller de resolución</h1>
 </div>
 
 
@@ -496,8 +496,8 @@ Note
 </section>
 </section>
 </section>
-<section id="resolución-ejercicio-3-y-4" class="level1">
-<h1>Resolución ejercicio 3 y 4</h1>
+<section id="resolución-ejercicios-3-y-4" class="level1">
+<h1>Resolución ejercicios 3 y 4</h1>
 <p>Editar el o los archivos <em>XACRO</em> del ejercicio 1, de manera que sea/n compatible/s con los requerimientos de <em>Gazebo</em>, haciendo uso de los <em>macros</em> disponibles en el archivo <code>inertial_macros.xacro</code>.</p>
 <p>Crear un paquete <code>(*)_gz</code> y un archivo <em>launch</em> nuevo, que ejecute <em>Gazebo</em>, procese la descripción del robot y, utilizando el ejecutable <code>spawn_entity.py</code>, cargue el robot en el simulador. Puede reutilizar el archivo creado en el ejercicio 2 incluyéndolo (no debe ejecutar el <code>joint_state_publisher_gui</code> ni <code>RViz</code>).</p>
 <p>Editar el archivo de definición del robot y agregar los elementos necesarios para configurar <em>ROS2 control</em> y <em>Gazebo</em> de forma tal que las juntas correspondientes a las ruedas de tracción reciban comandos de velocidad y devuelvan el estado de posición y velocidad. Para esto deberá añadir los <em>tags</em> <code>&lt;ros2_control&gt;</code> y <code>&lt;gazebo&gt;</code>.</p>

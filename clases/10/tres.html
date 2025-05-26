@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Robótica 2025</title>
+<title>Clase 10 - Taller de resolución – Robótica 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-479d7433b2982d9e6e13067dea95d1d4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-13f898aafbf6d8635be99970f9b96f84.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -103,176 +132,171 @@ ul.task-list li input[type="checkbox"] {
 </section></div>
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Robótica 2025</a> 
+      <a href="../../">Robótica 2025</a> 
     </div>
       </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#cinemática-de-un-robot-diferencial" id="toc-cinemática-de-un-robot-diferencial" class="nav-link active" data-scroll-target="#cinemática-de-un-robot-diferencial">Cinemática de un robot diferencial</a>
+  <ul class="collapse">
+  <li><a href="#modelo-cinemático-directo" id="toc-modelo-cinemático-directo" class="nav-link" data-scroll-target="#modelo-cinemático-directo">Modelo cinemático directo</a></li>
+  <li><a href="#modelo-cinemático-inverso" id="toc-modelo-cinemático-inverso" class="nav-link" data-scroll-target="#modelo-cinemático-inverso">Modelo cinemático inverso</a></li>
+  <li><a href="#marco-inercial" id="toc-marco-inercial" class="nav-link" data-scroll-target="#marco-inercial">Marco inercial</a></li>
+  </ul></li>
+  <li><a href="#resolución-ejercicios-5-al-8" id="toc-resolución-ejercicios-5-al-8" class="nav-link" data-scroll-target="#resolución-ejercicios-5-al-8">Resolución ejercicios 5 al 8</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Clase 10 - Taller de resolución</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-body">
 
-<section id="clases" class="level1">
-<h1>Clases</h1>
-<div class="callout callout-style-default callout-note callout-titled" title="">
-<div class="callout-header d-flex align-content-center">
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="cinemática-de-un-robot-diferencial" class="level1">
+<h1>Cinemática de un robot diferencial</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/mediabag/diff-bot-icr.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<section id="modelo-cinemático-directo" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-cinemático-directo">Modelo cinemático directo</h2>
+<ul>
+<li>Dada las velocidades angulares de las ruedas (derecha <span class="math inline">\(\textcolor{Blue}{\upsilon_R}\)</span> e izquierda <span class="math inline">\(\textcolor{Blue}{\upsilon_L}\)</span>) y las propiedades geométricos del robot (separación entre las ruedas <span class="math inline">\(\textcolor{Gray}{b}\)</span> y radio de las ruedas <span class="math inline">\(r\)</span>), calcular su velocidad angular <span class="math inline">\(\textcolor{Orange}{\dot\theta}\)</span> y radio de giro <span class="math inline">\(\textcolor{ForestGreen}{{R}}\)</span> al rededor del <span class="math inline">\(\textcolor{Plum}{ICR}\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+{\Large
+\begin{split}
+\textcolor{Orange}{\dot\theta} = \frac{r}{\textcolor{Gray}{b}}(\textcolor{Plum}{\dot\phi_R} - \textcolor{Plum}{\dot\phi_L})
+\end{split}
+\quad\quad\quad
+\begin{split}
+\textcolor{ForestGreen}{{R}} = \frac{\textcolor{Gray}{b}}{2} \frac{\textcolor{Plum}{\dot\phi_R} + \textcolor{Plum}{\dot\phi_L}}{\textcolor{Plum}{\dot\phi_R} - \textcolor{Plum}{\dot\phi_L}}
+\end{split}
+}
+\]</span></p>
+</section>
+<section id="modelo-cinemático-inverso" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-cinemático-inverso">Modelo cinemático inverso</h2>
+<ul>
+<li>Dada la velocidad lineal <span class="math inline">\(\textcolor{ForestGreen}{\dot{x}}\)</span> y la velocidad angular <span class="math inline">\(\textcolor{Orange}{\dot\theta}\)</span> del robot junto con las propiedades geométricas (separación entre las ruedas <span class="math inline">\(\textcolor{Gray}{b}\)</span> y radio de las ruedas <span class="math inline">\(r\)</span>), calcular las velocidades angulares de la rueda derecha <span class="math inline">\(\textcolor{Blue}{\upsilon_R}\)</span> e izquierda <span class="math inline">\(\textcolor{Blue}{\upsilon_L}\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+{\Large
+\begin{cases}
+    \textcolor{Plum}{\dot\phi_R} = \frac{1}{r} (\textcolor{ForestGreen}{\dot{x}} + \frac{\textcolor{Gray}{b}}{2} \textcolor{Orange}{\dot\theta}) \\[0.5em]
+    \textcolor{Plum}{\dot\phi_L} = \frac{1}{r} (\textcolor{ForestGreen}{\dot{x}} - \frac{\textcolor{Gray}{b}}{2} \textcolor{Orange}{\dot\theta})
+\end{cases}
+}
+\]</span></p>
+</section>
+<section id="marco-inercial" class="level2">
+<h2 class="anchored" data-anchor-id="marco-inercial">Marco inercial</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/mediabag/diff-bot-inertial-speeds.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Pose en el marco de referencia local del robot <span class="math inline">\(\textcolor{Maroon}{\mathcal{P}: \{ \mathcal{X}_R, \mathcal{Y}_R \}}\)</span></li>
+</ul>
+<p><span class="math display">\[
+{\Large
+{}^\textcolor{Maroon}{R} \boldsymbol{\dot \xi} =
+\sideset{^\textcolor{Maroon}{R}}{}{\begin{bmatrix}
+    \textcolor{ForestGreen}{\dot{x}} \\
+    \textcolor{ForestGreen}{\dot{y}} \\
+    \textcolor{Orange}{\dot\theta}
+\end{bmatrix}} = \begin{bmatrix}
+    \frac{r}{2} &amp; \frac{r}{2}\\
+    0 &amp; 0\\
+    \frac{r}{\textcolor{Gray}{b}} &amp; - \frac{r}{\textcolor{Gray}{b}}
+\end{bmatrix} \begin{bmatrix} \textcolor{Plum}{\dot\phi_R} \\ \textcolor{Plum}{\dot\phi_L} \end{bmatrix}
+}
+\]</span></p>
+<ul>
+<li>Pose en el marco de referencia inercial (global) <span class="math inline">\(\textcolor{Blue}{\mathcal{O}: \{ \mathcal{X}_O, \mathcal{Y}_O \}}\)</span></li>
+</ul>
+<p><span class="math display">\[
+{\Large
+{}^\textcolor{Blue}{O} \boldsymbol{\dot\xi}_\textcolor{Maroon}{R} = \boldsymbol{R}(\textcolor{Orange}{\theta}) {}^\textcolor{Maroon}{R} \boldsymbol{\dot\xi}_\textcolor{Maroon}{P} =
+\begin{bmatrix}
+\cos{\textcolor{Orange}{\theta}} &amp; -\sin{\textcolor{Orange}{\theta}} &amp; 0 \\
+\sin{\textcolor{Orange}{\theta}} &amp; \cos{\textcolor{Orange}{\theta}} &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+    \frac{r}{2} &amp; \frac{r}{2}\\
+    0 &amp; 0\\
+    \frac{r}{\textcolor{Gray}{b}} &amp; - \frac{r}{\textcolor{Gray}{b}}
+\end{bmatrix} \begin{bmatrix} \textcolor{Plum}{\dot\phi_R} \\ \textcolor{Plum}{\dot\phi_L} \end{bmatrix}
+}
+\]</span></p>
+</section>
+</section>
+<section id="resolución-ejercicios-5-al-8" class="level1">
+<h1>Resolución ejercicios 5 al 8</h1>
+<p>Calcular la velocidad lineal y angular del robot y de las ruedas para que se complete:</p>
+<ul>
+<li>una trayectoria recta de 1[m] en 10 [s].</li>
+<li>una trayectoria circular con un radio de 0.5 [m] en sentido horario en 20 [s].</li>
+</ul>
+<p>Examinar la definición de los mensajes de tipo <code>geometry_msgs/Twist</code> y describir cuál sería la secuencia de comandos de velocidad a aplicar al robot para seguir la trayectoria mostrada en la <a href="#fig-camino" class="quarto-xref">Figure&nbsp;1</a> utilizando dichos mensajes. La velocidad máxima de giro de los motores es de <span class="math inline">\(50 [rpm]\)</span>.</p>
+<div id="fig-camino" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-camino-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tres_files/mediabag/camino.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-camino-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Trayectoria para el ejercicio 6
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Note
+<div class="callout-body-container">
+<p>El punto inicial del robot será asignado por el docente.</p>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>El siguiente cronograma podrá ser actualizado con el correr del cursado</p>
+</div>
+<p>Examinar la definición de los mensajes del <em>topic</em> suscripto por el <code>JointGroupVelocityController</code>. Calcule las velocidades angulares de las ruedas para cada comando del ejercicio 6 y construya la secuencia de mensajes de comando correspondientes.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El campo <code>layout</code> no se debe completar.</p>
 </div>
 </div>
-<table class="table-striped table-hover caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 60%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Semana</th>
-<th>Fecha</th>
-<th>Tema</th>
-<th style="text-align: center;">Slides</th>
-<th style="text-align: center;"><span title="Laboratorio">Lab</span></th>
-<th style="text-align: center;"><span title="Taller de resolución">T.R</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td>17/03</td>
-<td>Introducción a la Robótica. Organización de la materia. Herramientas de trabajo.</td>
-<td style="text-align: center;"><a href="../clases/01" aria-label="Clase 1 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td>24/03</td>
-<td><strong>Feriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td>31/03</td>
-<td>ROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.</td>
-<td style="text-align: center;"><a href="../clases/02" aria-label="Clase 2 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/02/lab.html" aria-label="Clase 2 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td>07/04</td>
-<td>ROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.</td>
-<td style="text-align: center;"><a href="../clases/03" aria-label="Clase 3 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/03/lab.html" aria-label="Clase 3 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td>14/04</td>
-<td>Revisión conceptos clase anterior. Programación de nodos, compilación y ejecución.</td>
-<td style="text-align: center;"><a href="../clases/04" aria-label="Clase 4 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/04/lab.html" aria-label="Clase 4 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td>21/04</td>
-<td>Programación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.</td>
-<td style="text-align: center;"><a href="../clases/05" aria-label="Clase 5 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/05/lab.html" aria-label="Clase 5 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td>28/04</td>
-<td>Parámetros en nodos y <code>roslaunch</code>, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.</td>
-<td style="text-align: center;"><a href="../clases/06" aria-label="Clase 6 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/06/lab.html" aria-label="Clase 6 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td>05/05</td>
-<td>Traslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete <code>tf2</code>.</td>
-<td style="text-align: center;"><a href="../clases/07" aria-label="Clase 7 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/07/lab.html" aria-label="Clase 7 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td>12/05</td>
-<td>U.R.D.F: Representación de geometría de un robot. Uso de XACRO, <code>robot_state_publisher</code> y <code>tf2</code>.</td>
-<td style="text-align: center;"><a href="../clases/08" aria-label="Clase 8 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="../clases/08/tres.html" aria-label="Clase 8 t.r." title="Taller de resolución">🛠️</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td>19/05</td>
-<td>Gazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete <code>ros2_control</code> y <code>gz_ros2_contol</code>. <em>Hardware interface</em> y controladores.</td>
-<td style="text-align: center;"><a href="../clases/09" aria-label="Clase 9 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="../clases/09/tres.html" aria-label="Clase 9 t.r." title="Taller de resolución">🛠️</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td>26/05</td>
-<td>Cinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.</td>
-<td style="text-align: center;"><a href="../clases/10" aria-label="Clase 10 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="../clases/10/tres.html" aria-label="Clase 10 t.r." title="Taller de resolución">🛠️</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">12</td>
-<td>02/06</td>
-<td>Odometría: Cálculo de posición en base a modelo cinemático</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">13</td>
-<td>09/06</td>
-<td>Percepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">14</td>
-<td>16/06</td>
-<td><strong>Feriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">15</td>
-<td>23/06</td>
-<td>Revisión temario clase anterior. Simulación de sensores en Gazebo</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
+</div>
+<p>Dentro del paquete <code>(*)_control</code>, cree un nodo que reciba comandos de tipo <code>geometry_msgs/Twist</code> a través de un <em>topic</em> llamado <code>cmd_vel</code>, calcule las velocidades angulares en base al modelo cinemático inverso del robot y escriba los comandos de velocidad de cada rueda de tracción en los <em>topics</em> <code>left_wheel_cmd</code> y <code>right_wheel_cmd</code>. Tenga en cuenta que los parámetros del robot se encuentran en el <em>robot description</em>.</p>
 
 
 </section>
@@ -287,67 +311,6 @@ Note
       icon: icon
     };
     anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
         var filterRegex = new RegExp("https:\/\/acapovilla\.github\.io\/robotica-2025\/");
