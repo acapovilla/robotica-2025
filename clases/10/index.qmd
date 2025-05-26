@@ -1,0 +1,49 @@
+---
+title: "Robótica"
+subtitle: "Clase 10"
+date: "05/26/2025"
+date-format: "[Semana 11 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+
+filters:
+  - diagram
+diagram:
+    engine:
+        tikz:
+            execpath: pdflatex
+            header-includes:
+                - '\usepackage{cancel}'
+                - '\usepackage{amsmath}'
+                - '\usetikzlibrary{arrows.meta, shapes, intersections, decorations.markings,bending}'
+                - '\usepackage{adjustbox}'
+                - '\usepackage{tikz-3dplot}'
+jupyter: python3
+---
+
+# Cinemática {visibility="hidden"}
+
+{{< include _cinematica.qmd >}}
+
+# Robot diferencial {visibility="hidden"}
+
+{{< include _diff-drive.qmd >}}
+
+# Modelo cinemático {visibility="hidden"}
+
+{{< include _mod-cinematico.qmd >}}
+
+# Taller de resolución {visibility="hidden"}
+
+## [Taller de resolución](tres.qmd) {.center}
+
+Ejercicios 5 al 8
