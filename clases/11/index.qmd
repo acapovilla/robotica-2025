@@ -225,3 +225,9 @@ $$
 - [Deslizamiento]{.underline}: La condición de no deslizamiento utilizada en el modelo difícilmente se cumpla siempre, y el error producido nunca se elimina.
 - [Calibración de parámetros]{.underline}: Además de las mediciones, el modelo tiene dos parámetros $r$ y $b$. La medición imperfecta de estos parámetros introduce un error en cada iteración. Se puede corregir con un re-ajuste.
 :::
+
+# Taller de resolución {visibility="hidden"}
+
+## [Taller de resolución](tres.qmd) {.center}
+
+Ejercicios 9 al 12
