@@ -34,7 +34,7 @@ Actualizar repositorios apt y asegurar que los paquetes se encuentren actualizad
 
 Instalar la versión de Gazebo por defecto para ROS *Jazzy*
 ```{.bash code-line-numbers="false"}
-    $ sudo apt-get install ros-jazzy-ros-gz
+    $ sudo apt install ros-jazzy-ros-gz
 ```
 
 Traducido de [gazebosim.org](https://gazebosim.org/docs/harmonic/ros_installation/){target="_blank"}
