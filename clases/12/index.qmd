@@ -14,11 +14,11 @@ format:
     code-copy: false
     code-overflow: wrap
     fig-format: svg
-  html:
-    rendering:
-      plotly-connected: false
-      keep-ipynb: true
-      keep-md: true
+#  html:
+#    rendering:
+#      plotly-connected: false
+#      keep-ipynb: true
+#      keep-md: true
 
 # filters:
 #   - diagram
