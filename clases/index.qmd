@@ -18,7 +18,7 @@ El siguiente cronograma podrá ser actualizado con el correr del cursado
 |10 | 19/05 | Gazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete `ros2_control` y `gz_ros2_contol`. *Hardware interface* y controladores. | [🖥️](/clases/09 "Slides"){aria-label="Clase 9 slides"} | | [🛠️](/clases/09/tres.html "Taller de resolución"){aria-label="Clase 9 t.r."}
 |11 | 26/05 | Cinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa. | [🖥️](/clases/10 "Slides"){aria-label="Clase 10 slides"} | | [🛠️](/clases/10/tres.html "Taller de resolución"){aria-label="Clase 10 t.r."}
 |12 | 02/06 | Odometría: Cálculo de posición en base al modelo cinemático directo. | [🖥️](/clases/11 "Slides"){aria-label="Clase 11 slides"} | | [🛠️](/clases/11/tres.html "Taller de resolución"){aria-label="Clase 11 t.r."}
-|13 | 09/06 | Percepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir. | |
+|13 | 09/06 | Percepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir. | [🖥️](/clases/12 "Slides"){aria-label="Clase 12 slides"} | | 
 |14 | 16/06 | **Feriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)** | |
 |15 | 23/06 | Revisión temario clase anterior. Simulación de sensores en Gazebo | | 
 

@@ -1,0 +1,477 @@
+---
+title: "Robótica"
+subtitle: "Clase 12"
+date: "06/09/2025"
+date-format: "[Semana 13 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+  html:
+    rendering:
+      plotly-connected: false
+      keep-ipynb: true
+      keep-md: true
+
+# filters:
+#   - diagram
+# diagram:
+#     engine:
+#         tikz:
+#             execpath: pdflatex
+#             header-includes:
+#                 - '\usepackage{cancel}'
+#                 - '\usepackage{amsmath}'
+#                 - '\usetikzlibrary{arrows.meta, shapes, intersections, decorations.markings,bending}'
+#                 - '\usepackage{adjustbox}'
+#                 - '\usepackage{tikz-3dplot}'
+jupyter: python3
+---
+
+# Percepción {visibility="hidden"}
+
+## Percepción 
+
+::: {.columns}
+::: {.column}
+
+Una de las tareas más importantes en sistemas autónomos es la de adquirir información acerca del entorno a través de **Sensores**
+
+:::
+::: {.column}
+
+::: {layout-ncol=1}
+[![[Fuente: Clearpath (<a href="https://clearpathrobotics.com/" target="_blank">clearpathrobotics.com</a>)]{style="font-size: 70%;"}](https://s3.amazonaws.com/assets.clearpathrobotics.com/wp-content/uploads/2023/10/08224611/Husky-Observer-web-1-2048x1368.jpg "Husky Observer"){fig-align="center" fig-env="figure*"} ](https://clearpathrobotics.com/husky-observer/){target=_blank}
+:::
+
+:::
+:::
+
+## Sensores: algunas clasificaciones {.smaller}
+
+> [Propioceptivos]{.underline}: Miden variables internas del robot
+
+- Velocidad de una rueda/motor
+- Ángulo de articulación de un brazo
+- Voltaje de la batería
+
+>[Extraceptivos]{.underline}: Adquieren información del entorno del robot <!--que se procesan para extraer características ambientales significativas -->
+
+- Medida de distancia
+- Intensidad de la luz
+- Amplitud de sonido
+
+## Sensores: algunas clasificaciones {.smaller}
+
+> [Pasivos]{.underline}: Miden la energía que ingresa del medio que los rodea
+
+- Sondas de temperatura
+- Micrófonos
+- Cámaras
+
+>[Activos]{.underline}: Emiten energía y luego miden la reacción del medio ambiente
+
+- Encoders ópticos o magnéticos
+- Sonares o ultrasónicos
+- Cámaras de luz estructurada
+
+# Caracterización {visibility="hidden"}
+
+## Caracterización
+
+
+::: {.columns}
+::: {.column}
+
+- [Sensibilidad]{.underline}: Cambio en la salida según la variación de la magnitud física de entrada
+
+:::
+::: {.column}
+
+{{< embed _graficos.ipynb#sensivity-ideal-sensor >}}
+
+:::
+:::
+
+## Caracterización
+
+
+::: {.columns}
+::: {.column}
+
+- [Rango]{.underline}: Valor máximo y mínimo
+
+:::
+::: {.column}
+
+{{< embed _graficos.ipynb#range-ideal-sensor >}}
+
+:::
+:::
+
+## Caracterización
+
+
+::: {.columns}
+::: {.column}
+
+- [Exactitud]{.underline}: Diferencia entre la salida del sensor y el valor real
+  - Error de sensibilidad: desviación a la pendiente de la curva ideal
+  - Error de corrimiento: desviación de la medida 0
+
+:::
+::: {.column}
+
+{{< embed _graficos.ipynb#accuracy-ideal-sensor >}}
+
+:::
+:::
+
+## Caracterización
+
+
+::: {.columns}
+::: {.column}
+
+- [Resolución]{.underline}: Mínima diferencia que puede detectarse entre dos valores
+
+:::
+::: {.column}
+
+{{< embed _graficos.ipynb#resolution-real-sensor >}}
+
+:::
+:::
+
+## Caracterización
+
+::: {.columns}
+::: {.column}
+
+- [Presición]{.underline}: Grado de reproducibilidad de la medida
+
+:::
+::: {.column}
+
+{{< embed _graficos.ipynb#precision-real-sensor >}}
+
+:::
+:::
+
+## Caracterización
+
+
+::: {.columns}
+::: {.column}
+
+- [Linealidad]{.underline}: Comportamiento lineal del sensor
+
+:::
+::: {.column}
+
+{{< embed _graficos.ipynb#precision-nonlinear-sensor >}}
+
+:::
+:::
+
+## Caracterización
+
+
+::: {.columns}
+::: {.column}
+
+- [Tiempo de respuesta]{.underline}: Tiempo que tarda la salida de un sensor en cambiar a un valor final
+
+- [Ancho de banda]{.underline}: Rango de frecuencia que puede detectar adecuadamente
+
+:::
+::: {.column}
+
+{{< embed _graficos.ipynb#response-time-sensor >}}
+
+:::
+:::
+
+# Propioceptivos {visibility="hidden"}
+
+## Encoders {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Dispositivos que pueden detectar o medir desplazamiento angular (o lineal)
+
+- Propioceptivos
+- Clasificación primaria: Incrementales y Absolutos
+- Principios de funcionamiento:
+    - Mecánico (Pasivo)
+    - Óptico (Activo)
+    - Magnético (Activo)
+
+:::
+::: {.column}
+
+![](figs/fig3-2.gif){width="60%" fig-align="center"}
+
+![Fuente: AsahiKASEI (<a href="https://www.akm.com/global/en" target="_blank">www.akm.com</a>) ](figs/fig3-6.gif){width="60%" fig-align="center"}
+
+:::
+:::
+
+## Encoders de cuadratura {.smaller}
+
+> Encoder magnético montado en motor DC con escobilla
+
+::: {.columns}
+::: {.column}
+
+![Fuente: Pololu (<a href="https://www.pololu.com" target="_blank">www.pololu.com</a>)](https://a.pololu-files.com/picture/0J6852.1200.jpg?7327e7dca0d965a95aa0f700b51a9bbe){width="80%" fig-align="center"}
+
+:::
+::: {.column}
+
+![](https://a.pololu-files.com/picture/0J2643.1200.png?954dd7f1ce65b04b95900587e35eaf20){width="80%" fig-align="center"}
+
+:::
+:::
+
+## Características de los encoders {.smaller}
+
+- [Rango]{.underline}: Ángulo o cantidad de vueltas (absolutos)
+- [Resolución]{.underline}: Angular (absolutos) - CPR (incrementales)
+- [Linealidad]{.underline}: (no aplica)
+- [Ancho de banda]{.underline}: Tiempo de conmutación, max RPM (generalemente sobredimensionada)
+- [Error]{.underline}: angular para los absolutos. En el caso de los incrementales depende del sistema de decodificación
+- [Otros parámetros]{.underline}: Tipo de salida (NPN, PushPull, protocolo, etc). Velocidad máxima. Voltaje/Corriente de trabajo.
+
+
+## Acelerómetro {.smaller}
+
+> Dispositivos electromecánicos que miden la aceleración a la que se encuentran afectados (propioceptivos y pasivos)
+
+::: {.columns}
+::: {.column}
+
+**ADXL362**: Accelerómetro de 3 ejes (3DoF)
+
+![Fuente: Sparkfun (<a href="https://www.sparkfun.com" target="_blank">www.sparkfun.com</a>)](https://www.sparkfun.com/media/catalog/product/cache/a793f13fd3d678cea13d28206895ba0c/1/1/11446-04a.jpg){width="60%" fig-align="center"}
+
+:::
+::: {.column}
+
+Medición de la aceleración asociada a una masa en movimiento
+
+![Fuente: Analog Devices (<a href="https://www.analog.com" target="_blank">www.analog.com</a>)](https://www.analog.com/en/_/media/analog/en/landing-pages/technical-articles/accelerometer-and-gyroscopes-sensors-operation-sensing-and-applications/5830fig03.png?rev=42070923190f41b286539ce7ee916431){width="80%" fig-align="center"}
+
+:::
+:::
+
+## Características de los acelerómetros {.smaller}
+
+- [Rango]{.underline}: Aceleración máxima (en múltiplos de gravedad, ej: $\pm2 g$, $\pm4 g$)
+- [Resolución]{.underline}: en mV/g (analógicos) o en LSB/g (digitales)
+<!-- - [Linealidad]{.underline}:  -->
+- [Ancho de banda]{.underline}: Rango de vibraciones al que puede responder
+- [Error]{.underline}: Densidad de ruido y salida para 0-g
+- [Otros parámetros]{.underline}: Tipo de salida (analógico o digital y el protocolo)
+- [Problemas asociados]{.underline}: Ruido de alta frecuencia. Vector gravedad.
+
+## Giróscopos {.smaller}
+
+> Dispositivos electromecánicos que miden la velocidad angular a la que se encuentran afectados (propioceptivos y pasivos)
+
+::: {.columns}
+::: {.column}
+
+**LPY503AL**: Giróscopo de 2 ejes (2DoF)
+
+![Fuente: Sparkfun (<a href="https://www.sparkfun.com" target="_blank">www.sparkfun.com</a>)](https://cdn.sparkfun.com/assets/0/1/5/c/f/5112d377ce395ffd27000002.jpg){width="60%" fig-align="center"}
+
+:::
+::: {.column}
+
+Medición de la velocidad angular
+
+![Fuente: Analog Devices (<a href="https://www.analog.com" target="_blank">www.analog.com</a>)](https://www.analog.com/en/_/media/analog/en/landing-pages/technical-articles/accelerometer-and-gyroscopes-sensors-operation-sensing-and-applications/5830fig09.png?rev=630b2c22fc3648fba2818861493ae61f){width="60%" fig-align="center"}
+
+:::
+:::
+
+## Características de los acelerómetros {.smaller}
+
+- [Rango]{.underline}: Velocidad máxima (en °/s o rad/s)
+- [Resolución]{.underline}: Resolución: en mV/°/s (analógicos) o en LSB/°/s (digitales)
+<!-- - [Linealidad]{.underline}:  -->
+- [Ancho de banda]{.underline}: Rango de variación al que puede responder
+- [Error]{.underline}: Densidad de ruido
+- [Otros parámetros]{.underline}: Tipo de salida (analógico o digital y el protocolo)
+- [Problemas asociados]{.underline}: Bias (valor a velocidad angular 0)
+
+## IMU (Inertial Measurement Unit) {.smaller}
+
+- 3 giróscopos ortogonales y 3 acelerómetros ortogonales
+- Permite estimar:
+    - Directamente: aceleración (A), velocidad angular (G)
+    - Primera integral: velocidad lineal (A), orientación (G)
+    - Segunda integral: posición (A)
+- Errores cuadráticos y de acumulación
+- Mediciones absolutas (GPS o cámara) permiten cancelar esta deriva de error
+
+# Extraceptivos {visibility="hidden"}
+
+## Sensores de rango activo {.smaller}
+
+> Sensores capaces de medir directamente la distancia a un objeto en la vecindad del robot (extraceptivos)
+
+- [Activos]{.underline}: emiten algún tipo de energía en forma de señal y miden la señal de respuesta del entorno
+- Costos proporcionales a la precisión, resolución, al rango y aplicación 
+- Múltiples principios de funcionamientos (con sus respectivas características)
+
+- 2 principios más usados: **ToF** y **Triangulación**
+
+## Time of Flight (ToF) {.smaller}
+
+> Principio de funcionamiento basado en la velocidad del sonido o una onda electromagnética (luz)
+$$
+d = c \cdot t
+$$
+
+donde $c$ es la velocidad de la onda, $t$ es el tiempo de vuelo (ToF) y $d$ la distancia (generalmente de ida y vuelta)
+
+- Ejemplo con una distancia de 3 metros:
+    - Velocidad de la luz: $c \approx 0.3 [\mathrm{m/ns}]$ $\to$ $t = 10 [\mathrm{ns}] = 0.00000001 [\mathrm{s}]$
+    - velocidad del sonido: $c \approx 0.3 [\mathrm{m/ms}]$ $\to$ $t = 10 [\mathrm{ms}] = 0.01 [\mathrm{s}]$
+
+## Time of Flight (ToF) {.smaller}
+
+La calidad de estos sensores depende principalmente de:
+
+- Errores de medición del $t$ y el tiempo exacto de arribo de la señal reflejada
+- Dispersión del haz
+- Interacción con el medio (absorción, reflejos, "contaminación")
+- Variaciones o valor exacto de la velocidad de propagación
+- La velocidad relativa en objetivos dinámicos
+
+## Sensor de ultrasonido ToF {.smaller}
+
+
+::: {.columns}
+::: {.column}
+
+> Transmite un ”paquete” de ondas de presión ultrasónicas y mide el tiempo que tardan en reflejarse y volver.
+
+- Generalmente en robótica móvil se utilizan en rangos de 5 a 200 [cm]
+- Cuanto más cerrado es el ángulo de apertura del haz mejor resolución direccional
+- Principal limitación: se obtiene la profundidad de una región constante (1D)
+
+:::
+::: {.column}
+
+![**URM09**: Sensor de distancia ultrasónico](https://dfimg.dfrobot.com/enshop/SEN0307/SEN0307_Main_01.jpg){width="45%" fig-align="center"}
+
+![Fuente: DFRobot (<a href="https://www.dfrobot.com" target="_blank">www.dfrobot.com</a>)](https://dfimg.dfrobot.com/enshop/image/data/SEN0304/URM09-2.png){width="90%" fig-align="center"}
+
+:::
+:::
+
+## Sensor láser ToF {.smaller}
+
+> Emisor que ilumina el objetivo con un láser y un receptor capaz de detectar la componente de luz reflejada alineada al haz emitido
+
+- Mejora respecto del sensor de ultrasonido al utilizar un haz de luz (pero genera problema con objetos translúcidos)
+- Formas de medir el ToF:
+    - Emisión de un pulso y medir el tiempo que transcurre directamente (picosegundos)
+    - Emitir una onda modulada y medir el cambio de fase (desfase)
+
+## Sensor láser ToF {.smaller}
+
+::: {.columns}
+::: {.column}
+
+**TFmini** sensor de distancia 1D
+
+![Fuente: Adafruit (<a href="https://www.adafruit.com" target="_blank">www.adafruit.com</a>)](https://cdn-shop.adafruit.com/970x728/3978-00.jpg){width="80%" fig-align="center"}
+
+:::
+::: {.column}
+
+**VL53L7CX** sensor de distancia 2D (8x8)
+
+![Fuente: Pololu (<a href="https://www.pololu.com" target="_blank">www.pololu.com</a>)](https://a.pololu-files.com/picture/0J12239.1200.jpg?284a742371b99bce7402a89897848f4b){width="75%" fig-align="center"}
+
+:::
+:::
+
+## Triangulación {.smaller}
+
+> Principio de funcionamiento basado en geometría y el ángulo de reflexión
+
+![Fuente: Siegwart, R. (2011). Introduction to Autonomous Mobile Robots (2nd ed.)](figs/triangulacion.png){width="100%" fig-align="center"}
+
+## Triangulación óptica 1D {.smaller}
+
+- Buena exactitud con alta precisión a un bajo costo
+- Gran ancho de banda y no sufre interferencia como el ultrasonido
+- Rango limitado por la geometría del sensor
+
+**GP2Y0A02YK0F** (20-150cm) y **GP2Y0A60SZLF** (10-150cm)
+
+![Fuente: Pololu (<a href="https://www.pololu.com" target="_blank">www.pololu.com</a>)](https://a.pololu-files.com/picture/0J5788.1200.jpg?e76bc7fce22d2bbb4667acc943debf0e){fig-align="center"}
+
+
+## Light Detection and Ranging - LiDAR {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Medir la distancia al objeto más próximo en un radio de 360° sobre un plano con gran precisión angular y lineal
+
+- Utilizan triangulación (mayoría) o ToF
+- Extensión a 3D mediante mecanismos mecánicos y/u ópticos
+
+:::
+::: {.column}
+
+Slamtec **RPLiDAR A3M1** (2D)
+
+![Fuente: Seeedstudio (<a href="https://www.seeedstudio.com" target="_blank">www.seeedstudio.com</a>)](https://media-cdn.seeedstudio.com/media/catalog/product/cache/bb49d3ec4ee05b6f018e93f896b8a25d/h/t/httpsstatics3.seeedstudio.comseeedfile2018-07bazaar858712_img_1253.jpg){width="100%" fig-align="center"}
+
+:::
+:::
+
+## Características de los LiDAR {.smaller}
+
+- [Rango]{.underline}: Distancia mínima y máxima (entre $\times 10^{-2}$ y $\times 10^{2}$ metros)
+- [Velocidad de rotación]{.underline}: 5, 10, 15 [Hz] (r.p.s)
+- [Resolución]{.underline}: angular y lineal
+<!-- - [Linealidad]{.underline}:  -->
+<!-- - [Ancho de banda]{.underline}: -->
+<!-- - [Error]{.underline}: -->
+- [Otros parámetros]{.underline}: Protocolo de comunicación (UART, Ethernet, etc)
+- [Problemas asociados]{.underline}: Apto o no para ambientes exteriores. Corriente de consumo.
+
+## Sistema global de navegación por satélite (GNSS) {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Información relativa a la ubicación, velocidad y sincronización horaria
+- Posición absoluta con precisión de 1.5 a 2 metros
+- Baja frecuencia de actualización
+- Sistemas RTK con mejor precisión y frecuencia (a mayor costo)
+- Problemas de recepción de señal
+
+:::
+::: {.column}
+
+![Fuente: S. Miao, Mathematical Approaches to Global Positioning Systems, TomRocksMaths, 2023, fig. 6, p. 6.](figs/trilateralizacion.png){width="100%" fig-align="center"}
+
+:::
+:::
