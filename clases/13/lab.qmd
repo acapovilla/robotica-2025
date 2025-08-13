@@ -1,0 +1,297 @@
+---
+title: Clase 13 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+        number-depth: 2
+        fig-format: svg
+
+bread-crumbs: true
+page-navigation: true
+
+jupyter: python3
+notebook-links: false
+---
+
+# Simulación de sensores con *Gazebo*
+
+## Sensor de tipo IMU
+
+- #### Descripción del sensor
+
+```{.xml code-line-numbers="false"}
+<gazebo reference="{nombre_link}">
+    <sensor name="{nombre_sensor}" type="imu">
+        <plugin
+            filename="gz-sim-imu-system" 
+            name="gz::sim::systems::Imu">
+        </plugin>
+
+        <!-- Atributos -->
+        <update_rate>{freq_hz}</update_rate>
+        <topic>{nombre_topic}</topic>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+    </sensor>
+</gazebo>
+```
+
+::: {.callout-note appearance="simple"}
+Recuerda modificar el *URDF* para añadir el `link` y la `joint` correspondiente
+
+>        <link name="{nombre_link}">
+>            <xacro:dummy_inertial />
+>        </link>
+>
+>        <joint name="{nombre_joint}" type="fixed">
+>            <parent link="base_link" />
+>            <child link="{nombre_link}" />
+>            <origin xyz="{x} {y} {z}" rpy="{r} {p} {y}" />
+>        </joint>
+:::
+
+::: {.callout-tip appearance="simple"}
+Puedes crear un archivo aparte para separar los sensores del resto de la descripción, por ej. `sensors.xacro`
+:::
+
+- #### Modelo de ruido gaussiano
+
+```{.xml code-line-numbers="false"}
+<noise type="gaussian">
+    <!-- Media -->
+    <mean>{media}</mean>
+    <!-- Desviación estándar -->      
+    <stddev>{desviacion_estandar}</stddev>
+</noise>
+```
+
+- #### Parámetros de ejemplo
+
+> **Acelerómetro**:
+>
+>   - Frecuencia de actualización: 100 [Hz]
+>   - Ruido estándar: 0.0016 [m/s<sup>2</sup>] (X-Y), 0.0019 [m/s<sup>2</sup>] (Z)
+>   - Bias: 0.020 [m/s<sup>2</sup>]
+
+> **Giroscopo**:
+>
+>   - Frecuencia de actualización: 100 [Hz]
+>   - Ruido estándar: 0.00174533 [rad/s]
+>   - Bias: 0.0174533 [rad/s]
+
+```{.xml code-line-numbers="true"}
+<sensor name="imu" type="imu">
+    <plugin
+        filename="gz-sim-imu-system" 
+        name="gz::sim::systems::Imu">
+    </plugin>
+
+    <always_on>1</always_on>
+    <update_rate>100</update_rate>
+    <topic>/imu/data</topic>
+    <visualize>true</visualize>
+
+    <imu>
+        <linear_acceleration>
+            <x>
+            <noise type="gaussian">
+                <mean>0.020</mean>
+                <stddev>0.0016</stddev>
+            </noise>
+            </x>
+            <!-- 'y' repite los parámetros de 'x' -->
+            <z>
+            <noise type="gaussian">
+                <mean>0.020</mean>
+                <stddev>0.0019</stddev>
+            </noise>
+            </z>
+        </linear_acceleration>
+        <angular_velocity>
+            <x>
+            <noise type="gaussian">
+                <mean>0.0174533</mean>
+                <stddev>0.00174533</stddev>
+            </noise>
+            </x>
+            <!-- 'y' y 'z' repiten los parámetros de 'x'  -->
+        </angular_velocity>
+    </imu>
+</sensor>
+```
+
+## Sensor de tipo LiDAR
+
+- #### Descripción del sensor
+
+```{.xml code-line-numbers="false"}
+<gazebo reference="{nombre_link}">
+    <sensor name="{nombre_sensor}" type="gpu_lidar">
+        <update_rate>{freq_hz}</update_rate>
+        <topic>{nombre_topic}</topic>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+
+        <lidar>
+        <scan>
+        <horizontal>
+            <samples>{cantidad_rayos}</samples>
+            <resolution>1</resolution>
+            <min_angle>{min}</min_angle>
+            <max_angle>{max}</max_angle>
+        </horizontal>
+        <vertical>
+            <!-- Mismos parámetros que 'horizontal' -->
+        </vertical>
+        </scan>
+        <range>
+            <min>{rango_min}</min>
+            <max>{rango_max}</max>
+            <resolution>{res_lineal}</resolution>
+        </range>
+        </lidar>
+    </sensor>
+</gazebo>
+```
+
+- #### Modelo de ruido gaussiano
+
+```{.xml code-line-numbers="false"}
+<noise>
+    <type>gaussian</type>
+    <!-- Media -->
+    <mean>{media}</mean>
+    <!-- Desviación estándar -->      
+    <stddev>{desviacion_estandar}</stddev>
+</noise>
+```
+
+- #### Parámetros de ejemplo
+
+>   - Rango de distancia: 0.05 - 15.0 [m]
+>   - Frecuencia de escaneo: 10 [Hz]
+>   - Resolución angular: 0.1125°
+>   - Presición: ± 30 [mm]
+>   - Resolución: 10 [mm]
+
+
+```{.xml code-line-numbers="true"}
+<sensor name="lidar" type="gpu_lidar">
+    <always_on>true</always_on>
+    <update_rate>10</update_rate>
+    <topic>/scan</topic>
+    <visualize>true</visualize>
+
+    <lidar>
+        <scan>
+        <horizontal>
+            <samples>3200</samples>
+            <resolution>1</resolution>
+            <min_angle>${-pi}</min_angle>
+            <max_angle>${pi}</max_angle>
+        </horizontal>
+        <!-- Al ser 2D no tiene parámetros verticales -->
+        </scan>
+        <range>
+            <min>0.05</min>
+            <max>15</max>
+            <resolution>0.010</resolution>
+        </range>
+        <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.030</stddev>
+        </noise>
+    </lidar>
+</sensor>
+```
+
+## Configuración del `ros_gz_bridge`
+
+::: {.callout-note appearance="simple"}
+Recuerda crear la carpeta `config`, el archivo `.yaml` correspondiente y configurar correctamente el archivo `setup.py`
+:::
+
+```{.yaml filename="gz_bridge.yaml" code-line-numbers=""}
+- topic_name: "<nombre_topic>"
+  ros_type_name: "<tipo_topic_ROS>"
+  gz_type_name: "<tipo_topic_Gazebo>"
+  direction: <direccion> # GZ_TO_ROS | ROS_TO_GZ | BIDIRECTIONAL
+  lazy: true
+
+- # Siguiente ..
+```
+
+- #### Ejemplo con topic `cmd_vel` desde interfaz de *Gazebo*
+
+```{.yaml code-line-numbers="false"}
+- topic_name: "/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/Twist"
+  gz_type_name: "gz.msgs.Twist"
+  direction: GZ_TO_ROS
+  lazy: true
+```
+
+## Modificación del `.launch.py`
+
+- #### Cargar un archivo *world* en *Gazebo*
+
+```{.py code-line-numbers="false"}
+# ...
+    IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution(
+                [FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py']
+            ),
+        ),
+        launch_arguments={
+            'gz_args': [
+                TextSubstitution(text="-r"),
+                PathJoinSubstitution([
+                    FindPackageShare("<nombre_paquete>"),
+                    'worlds',
+                    '<nombre_archivo>.world',
+                ]),
+            ]
+        }.items()
+    )
+# ...
+```
+
+::: {.callout-note appearance="minimal"}
+Agregar al inicio el *import* correspondiente
+
+`from launch.substitutions import PathJoinSubstitution, TextSubstitution`
+:::
+
+
+- #### Iniciar el `ros_gz_bridge`
+
+```{.py code-line-numbers="false"}
+# ...
+    Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        parameters=[{
+            "config_file": PathJoinSubstitution(
+                [FindPackageShare("<nombre_paquete>"), "config", "gz_bridge.yaml"]
+            ),
+        }],
+    )
+# ...
+```
+
+## Detector de obstáculos con LiDAR
+
+- #### 1. Modificar el `URDF` del robot para implementar un LiDAR simulado
+
+- #### 2. Crear un nodo que a partir de los datos del sensor detecte obstáculos dentro de 5 zonas particulares
+
+::: {.callout-note appearance="simple"}
+Puede mostrar la distancia mínima para cada zona o si supera cierto umbral enviar un mensaje indicando que zona/s
+:::
+
+{{< embed _graficos.ipynb#detection-zones >}}

@@ -1,0 +1,483 @@
+---
+title: "Robótica"
+subtitle: "Clase 13"
+date: "08/13/2025"
+date-format: "[Semana 16 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+
+jupyter: python3
+---
+
+# Simulación de sensores con *Gazebo* {visibility="hidden"}
+
+## Simulación de sensores
+
+> **Gazebo** tiene la capacidad de simular sensores y publicar su salida en topics
+
+- Se utiliza el *tag* `<sensor></sensor>` en el *URDF*
+
+```{.xml code-line-numbers="false"}
+<gazebo reference="{nombre_link}">
+    <sensor name="{nombre}" type="{tipo}">
+        <!-- Atributos -->
+    </sensor>
+</gazebo>
+```
+
+- Cada sensor tiene que estar referenciado a un link
+
+- Cada tipo de sensor tiene su implementación específica
+
+## Sensor tipo IMU {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Parámetros
+
+- Tipo: `imu`
+- Plugin: `gz::sim::systems::Imu`
+- Iniciar encendido (`always_on`)
+- Frecuencia de datos en [Hz]
+- Topic (de tipo `gz.msgs.IMU`)
+
+:::
+::: {.column}
+
+<br>
+
+```{.xml code-line-numbers="|1,2,12,13|3-6|8-11"}
+<gazebo reference="imu_link">
+  <sensor name="imu" type="imu">
+    <plugin
+      filename="gz-sim-imu-system" 
+      name="gz::sim::systems::Imu">
+    </plugin>
+
+    <always_on>true</always_on>
+    <update_rate>{freq_hz}</update_rate>
+    <topic>{nombre_topic}</topic>
+    <visualize>true</visualize>
+  </sensor>
+</gazebo>
+```
+
+:::
+:::
+
+<br>
+
+::: {.fragment}
+::: {.callout-note appearance="simple"}
+Con esa definición la IMU se comporta como un sensor ideal con mediciones casi perfectas
+:::
+:::
+
+## Simulando ruido {.smaller}
+
+> **Gazebo** provee un motor de ruido para simular sensores reales
+
+- Ejemplo de ruido *gaussiano*
+
+```{.xml code-line-numbers="|1,11|2,3|4,5|7-10"}
+<noise type="gaussian">
+  <mean>{media}</mean>                        <!-- Media -->
+  <stddev>{desviacion_estandar}</stddev>      <!-- Desviación estándar -->
+  <bias_mean>{corr_media}</bias_mean>         <!-- Corrimiento de la media -->
+  <bias_stddev>{corr_dev_std}</bias_stddev>   <!-- Corrimiento de la dev. std. -->
+  
+  <!-- Corrimiento dinámico de la desviación estándar y bias -->
+  <dynamic_bias_stddev>{dyn_bias_stddev}</dynamic_bias_stddev>
+  <!-- Corrimiento del bias a lo largo del tiempo -->
+  <dynamic_bias_correlation_time>{dyn_bias_time}</dynamic_bias_correlation_time>
+</noise>
+```
+
+## Ejemplo: *BMI088* {.smaller}
+
+::: {.columns}
+::: {.column width="60%"}
+
+- #### Table 4: Accelerometer specifications
+  - `Zero-g Offset` ($\mathrm{Off}$): $20 \mathrm{[mg]}$
+  - `Output Data Rate` ($\mathrm{ODR}$): $12.5 - 1600 \mathrm{[Hz]}$
+  - `Output Noise Density` ($\mathrm{n_{rms}}$): $190$ (Z-axis)   $160$ (X- & Y-axis) $\mathrm{[\mu g / \surd Hz]}$
+
+- #### Table 5: Gyroscope specifications
+  - `Zero-rate Offset` ($\mathrm{Off \, \Omega_x \Omega_y \Omega_z}$): $\pm 1 \mathrm{[°/s]}$
+  - `Data rate`: $2000, 1000, 400, 200, 100 \mathrm{[Hz]}$
+  - `Output Noise` ($\mathrm{n_{rms}}$): $0.1 \mathrm{[°/s]}$
+
+:::
+::: {.column width="40%"}
+
+[![Fuente: Bosch (<a href="https://www.bosch-sensortec.com" target="_blank">www.bosch-sensortec.com</a>)](https://www.bosch-sensortec.com/media/boschsensortec/products/motion_sensors/imus/16_16/bosch-sensortec_website-relaunch_stage_bmi088-16-9_res_1200x1200.jpg "BMI088"){fig-align="center" fig-env="figure*" style="object-fit: cover; width: 800px; height: 500px;"} ](https://www.bosch-sensortec.com/products/motion-sensors/imus/bmi088/){target=_blank}
+
+:::
+:::
+
+::: {.aside}
+[Datasheet BMI088 (www.bosch-sensortec.com)](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi088-ds001.pdf)
+:::
+
+## Definición de los parámetros {.smaller}
+
+> Ejemplo *BMI088*
+
+```{.xml code-line-numbers="|2-10|13-29|30-43"}
+<sensor name="imu" type="imu">
+  <plugin
+    filename="gz-sim-imu-system" 
+    name="gz::sim::systems::Imu">
+  </plugin>
+
+  <always_on>1</always_on>
+  <update_rate>100</update_rate>
+  <topic>/imu/data</topic>
+  <visualize>true</visualize>
+
+  <imu>
+    <linear_acceleration>
+      <x>
+      <noise type="gaussian">
+        <mean>0.020</mean>
+        <stddev>0.0016</stddev>
+      </noise>
+      </x>
+      <y>
+        <!-- Repite los parámetros de X -->
+      </y>
+      <z>
+      <noise type="gaussian">
+        <mean>0.020</mean>
+        <stddev>0.0019</stddev>
+      </noise>
+      </z>
+    </linear_acceleration>
+    <angular_velocity>
+      <x>
+      <noise type="gaussian">
+        <mean>0.0174533</mean>          <!-- 1° en rad -->
+        <stddev>0.00174533</stddev>     <!-- 0.1° en rad -->
+      </noise>
+      </x>
+      <y>
+        <!-- Repite los parámetros de X  -->
+      </y>
+      <z>
+        <!-- Repite los parámetros de X -->
+      </z>
+    </angular_velocity>
+  </imu>
+</sensor>
+```
+
+## Sensor tipo LiDAR {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Parámetros
+
+- Tipo: `gpu_lidar`
+- Plugin: `gz::sim::systems::Sensors`
+- Topic (de tipo `gz.msgs.LaserScan`)
+:::
+::: {.column}
+
+<br>
+
+```{.xml code-line-numbers="1-6,31-32"}
+<gazebo reference="lidar_link">
+  <sensor name="lidar" type="gpu_lidar">
+    <always_on>true</always_on>
+    <update_rate>{freq_hz}</update_rate>
+    <topic>{nombre_topic}</topic>
+    <visualize>true</visualize>
+
+    <lidar>
+      <scan>
+        <horizontal>
+          <samples>{cantidad_rayos}</samples>
+          <resolution>{res}</resolution>
+          <min_angle>{min}</min_angle>
+          <max_angle>{max}</max_angle>
+        </horizontal>
+        <vertical>
+          <!-- Mismos parámetros -->
+        </vertical>
+      </scan>
+      <range>
+        <min>{rango_min}</min>
+        <max>{rango_max}</max>
+        <resolution>{res_lineal}</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>{media}</mean>
+        <stddev>{dev_std}</stddev>
+      </noise>
+    </lidar>
+  </sensor>
+</gazebo>
+```
+
+:::
+:::
+
+## Sensor tipo LiDAR {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Parámetros
+
+- Parámetros angulares (`scan`):
+  - Cantidad de rayos
+  - Resolución (angular)
+  - Apertura (ángulo min. y max en °)
+  - Para un *LiDAR* 3D el valor de samples en `vertical` debe ser $\mathrm{> 1}$
+- Parámetros lineales (`range`):
+  - Distancia máxima y mínima a detectar
+  - Resolución lineal
+- Parámetros de ruido *gaussiano*
+
+:::
+::: {.column}
+
+<br>
+
+```{.xml code-line-numbers="8-30|11|12|13,14|16-18|20-24|25-29"}
+<gazebo reference="lidar_link">
+  <sensor name="lidar" type="gpu_lidar">
+    <always_on>true</always_on>
+    <update_rate>{freq_hz}</update_rate>
+    <topic>{nombre_topic}</topic>
+    <visualize>true</visualize>
+
+    <lidar>
+      <scan>
+        <horizontal>
+          <samples>{cantidad_rayos}</samples>
+          <resolution>{res}</resolution>
+          <min_angle>{min}</min_angle>
+          <max_angle>{max}</max_angle>
+        </horizontal>
+        <vertical>
+          <!-- Mismos parámetros -->
+        </vertical>
+      </scan>
+      <range>
+        <min>{rango_min}</min>
+        <max>{rango_max}</max>
+        <resolution>{res_lineal}</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>{media}</mean>
+        <stddev>{dev_std}</stddev>
+      </noise>
+    </lidar>
+  </sensor>
+</gazebo>
+```
+
+:::
+:::
+
+## Ejemplo 2D: *Slamtec S3M1-R2* {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- #### Measurement Performance
+  - `Distance Range`: $0.05 - 15.0 \mathrm{[m]}$
+  - `Scanning Frequency`: Typ. $10 \mathrm{[Hz]}$
+  - `Angular Resolution`: Typ. $0.1125 ^{\circ}$
+  - `Accuracy`: $\pm 30 \mathrm{[mm]}$
+  - `Resolution`: $10 \mathrm{[mm]}$
+
+:::
+::: {.column}
+
+[![Fuente: RobotShop (<a href="https://ca.robotshop.com" target="_blank">robotshop.com</a>)](https://ca.robotshop.com/cdn/shop/files/rplidar-s3-360-laser-scanner-40-m-img1.webp "Slamtec RPlidar S3"){fig-align="center" fig-env="figure*"} ](https://www.robotshop.com/products/slamtec-rplidar-s3-360-laser-scanner-40-m){target=_blank}
+
+:::
+:::
+
+::: {.aside}
+[Datasheet S3 (slamtec.com)](https://bucket-download.slamtec.com/f9435aaf1a6563d781120f799cd63f7b0413c5bc/SLAMTEC_rplidar_datasheet_S3_v1.1_en.pdf)
+:::
+
+## Definición de los parámetros {.smaller}
+
+> Ejemplo *S3M1-R2*
+
+```{.xml code-line-numbers="|2-5|9-14|15|17-21|22-26"}
+<sensor name="lidar" type="gpu_lidar">
+    <always_on>true</always_on>
+    <update_rate>10</update_rate>
+    <topic>/scan</topic>
+    <visualize>true</visualize>
+
+    <lidar>
+      <scan>
+        <horizontal>
+          <samples>3200</samples>     <!-- 360/0.1125 -->
+          <resolution>1</resolution>
+          <min_angle>${-pi}</min_angle>
+          <max_angle>${pi}</max_angle>
+        </horizontal>
+        <!-- Al ser 2D no tiene parámetros verticales -->
+      </scan>
+      <range>
+        <min>0.05</min>                 <!-- 5 cm -->
+        <max>15</max>                   <!-- 15 m -->
+        <resolution>0.010</resolution>  <!-- 10 mm -->
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.030</stddev>          <!-- 30 mm -->
+      </noise>
+    </lidar>
+  </sensor>
+```
+
+# *Gazebo* World y Bridge {visibility="hidden"}
+
+## Objetos para detectar
+
+> Cambiar el entorno de *Gazebo* para agregar objetos: primitivas o modelos de [Fuel](https://app.gazebosim.org/)
+
+- **Opción 1**: Editar el mundo por defecto `empty.sdf` con *Gazebo* y exportarlo
+- **Opción 2**: Generar un archivo `.world` en formato SDF
+
+## Cargar un archivo *world* en *Gazebo* {.smaller}
+
+- En el archivo `.launch.py`
+```{.py code-line-numbers="1,10-17"}
+from launch.substitutions import PathJoinSubstitution, TextSubstitution
+# ...
+    IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution(
+                [FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py']
+            ),
+        ),
+        launch_arguments={
+            'gz_args': [
+                TextSubstitution(text="-r -v 4"),
+                PathJoinSubstitution([
+                    FindPackageShare("<nombre_paquete>"),
+                    'worlds',
+                    '<nombre_archivo>.world',
+                ]),
+            ]
+        }.items()
+    )
+```
+
+## Topics de *Gazebo* {.smaller}
+
+> Los sensores publicarán topics de *Gazebo*
+
+::: {.callout-note appearance="simple"}
+Será necesario "puentearlos" hacia *ROS2* mediante el paquete `ros_gz_bridge`
+:::
+
+. . .
+
+```{.py filename="launch.py" code-line-numbers=""}
+    Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        parameters=[{
+            "config_file": PathJoinSubstitution(
+                [FindPackageShare("<nombre_paquete>"), "config", "gz_bridge.yaml"]
+            ),
+        }],
+    )
+```
+
+```{.yaml filename="gz_bridge.yaml" code-line-numbers=""}
+- topic_name: "<nombre_topic>"
+  ros_type_name: "<tipo_topic_ROS>"
+  gz_type_name: "<tipo_topic_Gazebo>"
+  direction: <direccion> # GZ_TO_ROS | ROS_TO_GZ | BIDIRECTIONAL
+  lazy: true
+```
+
+## Mensajes de IMU {.smaller}
+
+- *Gazebo*: `gz.msgs.IMU`
+- *ROS2*: `sensor_msgs/msg/Imu`
+
+```{.default code-line-numbers="false"}
+sensor_msgs/Imu
+├── std_msgs/Header header
+├── geometry_msgs/Quaternion
+|   ├── float64 x
+|   ├── float64 y
+|   ├── float64 z
+|   └── float64 w
+├── float64[9] orientation_covariance
+|
+├── geometry_msgs/Vector3 angular_velocity      # Velocidad rotacional en rad/s
+|   ├── float64 x
+|   ├── float64 y
+|   └── float64 z
+├── float64[9] orientation_covariance
+|
+├── geometry_msgs/Vector3 linear_acceleration   # Aceleraciones en m/s^2
+|   ├── float64 x
+|   ├── float64 y
+|   └── float64 z
+└── float64[9] orientation_covariance
+```
+
+::: {.aside}
+[Definición del mensaje (docs.ros.org)](https://docs.ros.org/en/latest/api/sensor_msgs/html/msg/Imu.html)
+:::
+
+## Mensajes de LIDAR {.smaller}
+
+- *Gazebo*: `gz.msgs.LaserScan`
+- *ROS2*: `sensor_msgs/msg/LaserScan`
+
+```{.default code-line-numbers="false"}
+sensor_msgs/LaserScan
+├── std_msgs/Header header
+├── float32 angle_min           # Angulo incial [rad]
+├── float32 angle_max           # Angulo final [rad]
+├── float32 angle_increment     # Distancia angular entre mediciones [rad]
+|
+├── float32 time_increment      # Tiempo entre mediciones [seconds]
+├── float32 scan_time           # Tiempo entre scans [seconds]
+|
+├── float32 range_min           # Rango mínimo [m]
+├── float32 range_max           # Rango máximo [m]
+|
+├── float32[] ranges            # Valores de rango medidos [m]
+└── float32[] intensities       # Intensidades de luminosidad medidas
+```
+
+::: {.aside}
+[Definición del mensaje (docs.ros.org)](https://docs.ros.org/en/latest/api/sensor_msgs/html/msg/LaserScan.html)
+:::
+
+# Laboratorio {visibility="hidden"}
+
+## [Laboratorio](lab.qmd) {.center}
+
+Simulación de sensores y aplicación
