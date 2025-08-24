@@ -102,7 +102,7 @@ Ubicación incorrecta de geometrías de colisión
 
 <br>
 
-```{.py code-line-numbers="true" code-line-numbers="|16|20|38|48" filename="description.launch.py"}
+```{.py code-line-numbers="true" code-line-numbers="|16|20|37|47" filename="description.launch.py"}
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
@@ -167,7 +167,9 @@ def generate_launch_description():
 > Dependencias: `xacro`, `robot_state_publisher`, `joint_state_publisher`, `rviz2`
 
 ```xml
-<!-- ... -->
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd"
+    schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
     <name>diffbot_description</name>
     <version> .. </version>
@@ -191,11 +193,9 @@ Dependencias no utilizadas por el paquete
 
 ## Ejercicio 3 - *Gazebo*  {.smaller}
 
-- Dependencias
+<!-- - Dependencias -->
 
-::: {.fragment}
 - `ros_gz_bridge` y `use_sim_time`
-:::
 
 ::: {.fragment}
 - Carga del robot:
@@ -371,21 +371,25 @@ right_wheel_velocity_controller:
 
 # Ejercicio 5 {visibility="hidden"}
 
-## Ejercicio 5 {.smaller}
+## Ejercicio 5
+
+::: { style="font-size: 70%;"}
 
 >  Calcular la velocidad lineal y angular del robot y de las ruedas para que se complete:
 >
 >   - una trayectoria recta de 1[m] en 10 [s].
 >   - una trayectoria circular con un radio de 0.5 [m] en sentido horario en 20 [s].
 
-<br>
-
 #### [Datos del anexo]{.underline}
 
 - Radio de las ruedas: $0.035 \textrm{[m]}$
 - Separación de las ruedas: $0.135 \textrm{[m]}$
 
-## Ejercicio 5 - Trayectoria recta {.smaller}
+:::
+
+## Ejercicio 5 - Trayectoria recta
+
+::: { style="font-size: 70%;"}
 
 > Una trayectoria recta de 1[m] en 10 [s].
 
@@ -398,8 +402,11 @@ right_wheel_velocity_controller:
 - V angular rueda derecha = V angular rueda izquierda: 
 $$\dot\phi_{L|R} = \frac{v}{r} = \frac{0.1 \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 2.857 \mathrm{\left[\frac{rad}{s}\right]}$$
 
+:::
 
-## Ejercicio 5 - Trayectoria circular {.smaller}
+## Ejercicio 5 - Trayectoria circular
+
+::: { style="font-size: 70%;"}
 
 > Una trayectoria circular con un radio de 0.5 [m] en sentido horario en 20 [s].
 
@@ -414,6 +421,8 @@ $$\dot\phi_{L|R} = \frac{v}{r} = \frac{0.1 \mathrm{\left[\frac{m}{s}\right]}}{0.
 - V angular rueda izquierda: $\dot\phi_{L} = \frac{\upsilon_L}{r} = \frac{0.178 \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 5.09 \mathrm{\left[\frac{rad}{s}\right]}$
 
 - V angular rueda derecha: $\dot\phi_{R} = \frac{\upsilon_R}{r} = \frac{0.136 \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 3.88 \mathrm{\left[\frac{rad}{s}\right]}$
+
+:::
 
 # Ejercicio 6 {visibility="hidden"}
 
@@ -439,7 +448,9 @@ $$\dot\phi_{L|R} = \frac{v}{r} = \frac{0.1 \mathrm{\left[\frac{m}{s}\right]}}{0.
 - Linea recta  $1 \mathrm{[m]}$
 - Giro horario con $\mathcal{R} = 0.25 \mathrm{[m]}$
 
-## Ejercicio 6 - Segmento recto {.smaller}
+## Ejercicio 6 - Segmento recto
+
+::: { style="font-size: 70%;"}
 
 - Por el **Ejercicio 5**, la velocidad de rotación de las ruedas para una velocidad lineal de $0.1 \mathrm{\left[\frac{m}{s}\right]}$ y una velocidad angular de $0 \mathrm{\left[\frac{rad}{s}\right]}$ es aproximadamente $2.86 \mathrm{\left[\frac{rad}{s}\right]}$:
 
@@ -447,9 +458,13 @@ $$ 2.86 \mathrm{\left[\frac{rad}{s}\right]} \approx 0.455 \mathrm{[rps]} \approx
 
 <br>
 
-#### [Por lo tanto]{.underline}: se propone un comando de $v = 0.1 \mathrm{\left[\frac{m}{s}\right]}$ y $\dot\theta = 0 \mathrm{\left[\frac{rad}{s}\right]}$ por 10 [s]
+#### [Por lo tanto]{.underline}: un comando de $v = 0.1 \mathrm{\left[\frac{m}{s}\right]}$ y $\dot\theta = 0 \mathrm{\left[\frac{rad}{s}\right]}$ por 10 [s]
 
-## Ejercicio 6 - Giro horario {.smaller}
+:::
+
+## Ejercicio 6 - Giro horario
+
+::: { style="font-size: 70%;"}
 
 - Por el **Ejercicio 5**, la velocidad de rotación de las ruedas para una velocidad angular de $-0.314 \mathrm{\left[\frac{rad}{s}\right]}$ y una velocidad lineal de $\textcolor{Maroon}{-} 0.314 \mathrm{\left[\frac{rad}{s}\right]} \times \textcolor{Maroon}{-} 0.25 \mathrm{\left[\frac{m}{rad}\right]} = 0.0785 \mathrm{\left[\frac{m}{s}\right]}$ es:
 
@@ -461,9 +476,13 @@ $2.848 \mathrm{\left[\frac{rad}{s}\right]} \approx 27.2 \mathrm{[rpm]} < 50 \mat
 
 <br>
 
-#### [Por lo tanto]{.underline}: se propone un comando de $\dot\theta = -0.314 \mathrm{\left[\frac{rad}{s}\right]}$ y $v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}$ por 10 [s]
+#### [Por lo tanto]{.underline}: un comando de $\dot\theta = -0.314 \mathrm{\left[\frac{rad}{s}\right]}$ y $v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}$ por 10 [s]
 
-## Ejercicio 6 - Giro anti-horario {.smaller}
+:::
+
+## Ejercicio 6 - Giro anti-horario
+
+::: { style="font-size: 70%;"}
 
 - Utilizando la misma magnitud que el giro horario, las velocidades angulares de las ruedas son las mismas pero intercambiadas: $\dot\theta = 0.314 \mathrm{\left[\frac{rad}{s}\right]}$ y $v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}$
 
@@ -473,21 +492,33 @@ $$\dot\phi_{R} = \frac{\dot{x} + \frac{b}{2} \dot\theta}{r} = \frac{0.0785 + \fr
 
 <br>
 
-#### [Por lo tanto]{.underline}: se propone un comando de $\dot\theta = -0.314 \mathrm{\left[\frac{rad}{s}\right]}$ y $v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}$ por 10 [s]
+#### [Por lo tanto]{.underline}: un comando de $\dot\theta = 0.314 \mathrm{\left[\frac{rad}{s}\right]}$ y $v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}$ por 10 [s]
+
+:::
 
 ## Ejercicio 6 - `geometry_msgs/Twist`
 
-- Definición del mensaje
+> Definición del mensaje
 
-        geometry_msgs/Twist
-        ├── geometry_msgs/Vector3 linear
-        |   ├── float64 x     ⬅️
-        |   ├── float64 y
-        |   └── float64 z
-        └── geometry_msgs/Vector3 angular
-            ├── float64 x
-            ├── float64 y
-            └── float64 z     ⬅️
+```{.bash code-line-numbers="false"}
+$ ros2 interface show geometry_msgs/msg/Twist
+```
+
+<br>
+
+```{.default code-line-numbers="false"}
+# This expresses velocity in free space broken into its linear and
+angular parts.
+
+Vector3  linear
+        float64 x     ⬅️
+        float64 y
+        float64 z
+Vector3  angular
+        float64 x
+        float64 y
+        float64 z     ⬅️
+```
 
 
 ## Ejercicio 6 - Respuesta {.smaller}
@@ -564,13 +595,24 @@ $\dot\phi_{L} = 2.848 \mathrm{\left[\frac{rad}{s}\right]}$, $\dot\phi_{R} = 1.63
 
 $\dot\phi_{L} = 1.637 \mathrm{\left[\frac{rad}{s}\right]}$, $\dot\phi_{R} = 2.848 \mathrm{\left[\frac{rad}{s}\right]}$
 
-## Ejercicio 7 - `std_msgs/Float64MultiArray`
+## Ejercicio 7 - [`std_msgs/Float64MultiArray`]{style="font-size: 80%;"}
 
-- Definición del mensaje
+> Definición del mensaje
 
-        std_msgs/Float64MultiArray
-        ├── std_msgs/MultiArrayLayout layout
-        └── float64[] data    ⬅️
+```{.bash code-line-numbers="false"}
+$ ros2 interface show std_msgs/msg/Float64MultiArray 
+```
+
+<br>
+
+```{.default code-line-numbers="false"}
+...
+# Please look at the MultiArrayLayout message definition for
+# documentation on all multiarrays.
+
+MultiArrayLayout  layout
+float64[]         data     ⬅️
+```
 
 ## Ejercicio 7 - Respuesta {.smaller}
 
@@ -656,7 +698,7 @@ ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64Mul
 
 ## Ejercicio 8 - Cinemática inversa {.smaller}
 
-> Dentro del paquete `(*)_control`, cree un nodo que reciba comandos de tipo `geometry_msgs/Twist` a través de un *topic* llamado `cmd_vel` [..]
+> Dentro del paquete `(*)_control`, cree un nodo que reciba comandos de tipo `geometry_msgs/Twist` a través de un *topic* llamado `/cmd_vel` [..]
 
 ```{.py code-line-numbers="16-26|5-14|3,9-10"}
 import rclpy
@@ -814,7 +856,7 @@ if __name__ == '__main__':
 > Crear un nodo que lea el o los *topics* de posición de las juntas de las ruedas (publicados por el `JointStateBroadcaster`) [..] El nodo debe recibir como parámetro las dimensiones geométricas del modelo cinemático y los nombres correspondientes a las juntas de las ruedas de tracción.
 
 
-```{.py code-line-numbers="17-18|9-15"}
+```{.py code-line-numbers="3,17-18|9-15"}
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
@@ -827,7 +869,7 @@ class DiffbotOdometry(Node):
         self.declare_parameter('wheel_separation', 0.135)
         self.declare_parameter('wheel_radius', 0.07/2)
 
-        # Parámetro para el nomrbe de las juntas
+        # Parámetro para el nombre de las juntas
         self.declare_parameter('left_wheel_name', 'front_left_wheel_joint')
         self.declare_parameter('right_wheel_name', 'front_right_wheel_joint')
                
@@ -836,7 +878,7 @@ class DiffbotOdometry(Node):
 
         # ..
         
-    def sub_callback(self, msg: Twist):
+    def sub_callback(self, msg: JointState):
         # ...
 
 # ..
@@ -848,7 +890,7 @@ class DiffbotOdometry(Node):
 
 ## Ejercicio 9 - Odometría  {.smaller}
 
-> [..] calcule la odometría basado en el modelo cinemático directo del robot y publique la misma en el *topic* `\odom` con mensajes de tipo `nav_msgs/Odometry`. [..]
+> [..] calcule la odometría basado en el modelo cinemático directo del robot y publique la misma en el *topic* `/odom` con mensajes de tipo `nav_msgs/Odometry`. [..]
 
 ```{.py code-line-numbers="2,8-9|14-21|23-33|35-45|47-52"}
 # ..
@@ -863,7 +905,7 @@ class DiffbotOdometry(Node):
 
         # ..
         
-    def sub_callback(self, msg: Twist):
+    def sub_callback(self, msg: JointState):
         # Chequear si el primer elemento es el joint
         # de la rueda izquierda o derecha
         lwheel_ang, rwheel_ang = 0.0, 0.0
@@ -981,7 +1023,7 @@ class DiffbotOdometry(Node):
           self.tf_broadcaster = TransformBroadcaster(self)
         # ..
 
-    def sub_callback(self, msg: Twist):
+    def sub_callback(self, msg: JointState):
       # ..
       if self.publish_tf:
         self.send_tf()
