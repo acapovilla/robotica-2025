@@ -5,8 +5,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.34">
 
   <title>Robótica 2025 – Robótica</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -252,7 +252,7 @@
 <div class="code-with-filename-file">
 <pre><strong>description.launch.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-code-line-numbers="|16|20|38|48" data-filename="description.launch.py"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
+<div class="sourceCode" id="cb3" data-code-line-numbers="|16|20|37|47" data-filename="description.launch.py"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
 <span id="cb3-2"><a></a><span class="im">from</span> launch.actions <span class="im">import</span> DeclareLaunchArgument</span>
 <span id="cb3-3"><a></a><span class="im">from</span> launch.conditions <span class="im">import</span> IfCondition</span>
 <span id="cb3-4"><a></a><span class="im">from</span> launch.substitutions <span class="im">import</span> Command, PathJoinSubstitution, LaunchConfiguration, EqualsSubstitution</span>
@@ -315,20 +315,22 @@
 <blockquote>
 <p>Dependencias: <code>xacro</code>, <code>robot_state_publisher</code>, <code>joint_state_publisher</code>, <code>rviz2</code></p>
 </blockquote>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource xml number-lines"><code class="sourceCode xml"><span id="cb4-1"><a></a><span class="co">&lt;!-- ... --&gt;</span></span>
-<span id="cb4-2"><a></a>&lt;<span class="kw">package</span><span class="ot"> format=</span><span class="st">"3"</span>&gt;</span>
-<span id="cb4-3"><a></a>    &lt;<span class="kw">name</span>&gt;diffbot_description&lt;/<span class="kw">name</span>&gt;</span>
-<span id="cb4-4"><a></a>    &lt;<span class="kw">version</span>&gt; .. &lt;/<span class="kw">version</span>&gt;</span>
-<span id="cb4-5"><a></a>    &lt;<span class="kw">description</span>&gt; .. &lt;/<span class="kw">description</span>&gt;</span>
-<span id="cb4-6"><a></a></span>
-<span id="cb4-7"><a></a>    <span class="co">&lt;!-- ... --&gt;</span></span>
-<span id="cb4-8"><a></a>    &lt;<span class="kw">exec_depend</span>&gt;xacro&lt;/<span class="kw">exec_depend</span>&gt;</span>
-<span id="cb4-9"><a></a>    &lt;<span class="kw">exec_depend</span>&gt;robot_state_publisher&lt;/<span class="kw">exec_depend</span>&gt;</span>
-<span id="cb4-10"><a></a></span>
-<span id="cb4-11"><a></a>    &lt;<span class="kw">exec_depend</span>&gt;joint_state_publisher_gui&lt;/<span class="kw">exec_depend</span>&gt;</span>
-<span id="cb4-12"><a></a>    &lt;<span class="kw">exec_depend</span>&gt;rviz2&lt;/<span class="kw">exec_depend</span>&gt;</span>
-<span id="cb4-13"><a></a>    <span class="co">&lt;!-- ... --&gt;</span></span>
-<span id="cb4-14"><a></a>&lt;/<span class="kw">package</span>&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource xml number-lines"><code class="sourceCode xml"><span id="cb4-1"><a></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">"1.0"</span><span class="fu">?&gt;</span></span>
+<span id="cb4-2"><a></a><span class="fu">&lt;?xml-model</span> href="http://download.ros.org/schema/package_format3.xsd"</span>
+<span id="cb4-3"><a></a>    schematypens="http://www.w3.org/2001/XMLSchema"<span class="fu">?&gt;</span></span>
+<span id="cb4-4"><a></a>&lt;<span class="kw">package</span><span class="ot"> format=</span><span class="st">"3"</span>&gt;</span>
+<span id="cb4-5"><a></a>    &lt;<span class="kw">name</span>&gt;diffbot_description&lt;/<span class="kw">name</span>&gt;</span>
+<span id="cb4-6"><a></a>    &lt;<span class="kw">version</span>&gt; .. &lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb4-7"><a></a>    &lt;<span class="kw">description</span>&gt; .. &lt;/<span class="kw">description</span>&gt;</span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a>    <span class="co">&lt;!-- ... --&gt;</span></span>
+<span id="cb4-10"><a></a>    &lt;<span class="kw">exec_depend</span>&gt;xacro&lt;/<span class="kw">exec_depend</span>&gt;</span>
+<span id="cb4-11"><a></a>    &lt;<span class="kw">exec_depend</span>&gt;robot_state_publisher&lt;/<span class="kw">exec_depend</span>&gt;</span>
+<span id="cb4-12"><a></a></span>
+<span id="cb4-13"><a></a>    &lt;<span class="kw">exec_depend</span>&gt;joint_state_publisher_gui&lt;/<span class="kw">exec_depend</span>&gt;</span>
+<span id="cb4-14"><a></a>    &lt;<span class="kw">exec_depend</span>&gt;rviz2&lt;/<span class="kw">exec_depend</span>&gt;</span>
+<span id="cb4-15"><a></a>    <span class="co">&lt;!-- ... --&gt;</span></span>
+<span id="cb4-16"><a></a>&lt;/<span class="kw">package</span>&gt;</span></code></pre></div>
 <aside class="notes">
 <p>Dependencias no utilizadas por el paquete</p>
 <style type="text/css">
@@ -347,14 +349,10 @@
 
 <section id="ejercicio-3---gazebo" class="slide level2 smaller">
 <h2>Ejercicio 3 - <em>Gazebo</em></h2>
-<ul>
-<li>Dependencias</li>
-</ul>
-<div class="fragment">
+<!-- - Dependencias -->
 <ul>
 <li><code>ros_gz_bridge</code> y <code>use_sim_time</code></li>
 </ul>
-</div>
 <div class="fragment">
 <ul>
 <li>Carga del robot:</li>
@@ -583,8 +581,9 @@
 </section></section>
 <section>
 
-<section id="ejercicio-5-1" class="slide level2 smaller">
+<section id="ejercicio-5-1" class="slide level2">
 <h2>Ejercicio 5</h2>
+<div style="font-size: 70%;">
 <blockquote>
 <p>Calcular la velocidad lineal y angular del robot y de las ruedas para que se complete:</p>
 <ul>
@@ -592,15 +591,16 @@
 <li>una trayectoria circular con un radio de 0.5 [m] en sentido horario en 20 [s].</li>
 </ul>
 </blockquote>
-<p><br></p>
 <h4 id="datos-del-anexo"><u>Datos del anexo</u></h4>
 <ul>
 <li>Radio de las ruedas: <span class="math inline">\(0.035 \textrm{[m]}\)</span></li>
 <li>Separación de las ruedas: <span class="math inline">\(0.135 \textrm{[m]}\)</span></li>
 </ul>
+</div>
 </section>
-<section id="ejercicio-5---trayectoria-recta" class="slide level2 smaller">
+<section id="ejercicio-5---trayectoria-recta" class="slide level2">
 <h2>Ejercicio 5 - Trayectoria recta</h2>
+<div style="font-size: 70%;">
 <blockquote>
 <p>Una trayectoria recta de 1[m] en 10 [s].</p>
 </blockquote>
@@ -610,9 +610,11 @@
 <li><p>V lineal rueda derecha = V lineal rueda izquierda (linea recta): <span class="math display">\[\upsilon_{L|R} = 0.1 \mathrm{\left[\frac{m}{s}\right]}\]</span></p></li>
 <li><p>V angular rueda derecha = V angular rueda izquierda: <span class="math display">\[\dot\phi_{L|R} = \frac{v}{r} = \frac{0.1 \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 2.857 \mathrm{\left[\frac{rad}{s}\right]}\]</span></p></li>
 </ul>
+</div>
 </section>
-<section id="ejercicio-5---trayectoria-circular" class="slide level2 smaller">
+<section id="ejercicio-5---trayectoria-circular" class="slide level2">
 <h2>Ejercicio 5 - Trayectoria circular</h2>
+<div style="font-size: 70%;">
 <blockquote>
 <p>Una trayectoria circular con un radio de 0.5 [m] en sentido horario en 20 [s].</p>
 </blockquote>
@@ -624,6 +626,7 @@
 <li><p>V angular rueda izquierda: <span class="math inline">\(\dot\phi_{L} = \frac{\upsilon_L}{r} = \frac{0.178 \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 5.09 \mathrm{\left[\frac{rad}{s}\right]}\)</span></p></li>
 <li><p>V angular rueda derecha: <span class="math inline">\(\dot\phi_{R} = \frac{\upsilon_R}{r} = \frac{0.136 \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 3.88 \mathrm{\left[\frac{rad}{s}\right]}\)</span></p></li>
 </ul>
+</div>
 </section></section>
 <section>
 
@@ -651,17 +654,20 @@
 <li>Giro horario con <span class="math inline">\(\mathcal{R} = 0.25 \mathrm{[m]}\)</span></li>
 </ul>
 </section>
-<section id="ejercicio-6---segmento-recto" class="slide level2 smaller">
+<section id="ejercicio-6---segmento-recto" class="slide level2">
 <h2>Ejercicio 6 - Segmento recto</h2>
+<div style="font-size: 70%;">
 <ul>
 <li>Por el <strong>Ejercicio 5</strong>, la velocidad de rotación de las ruedas para una velocidad lineal de <span class="math inline">\(0.1 \mathrm{\left[\frac{m}{s}\right]}\)</span> y una velocidad angular de <span class="math inline">\(0 \mathrm{\left[\frac{rad}{s}\right]}\)</span> es aproximadamente <span class="math inline">\(2.86 \mathrm{\left[\frac{rad}{s}\right]}\)</span>:</li>
 </ul>
 <p><span class="math display">\[ 2.86 \mathrm{\left[\frac{rad}{s}\right]} \approx 0.455 \mathrm{[rps]} \approx 27.3 \mathrm{[rpm]} &lt; 50 \mathrm{[rpm]}\]</span></p>
 <p><br></p>
-<h4 id="por-lo-tanto-se-propone-un-comando-de-v-0.1-mathrmleftfracmsright-y-dottheta-0-mathrmleftfracradsright-por-10-s"><u>Por lo tanto</u>: se propone un comando de <span class="math inline">\(v = 0.1 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = 0 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</h4>
+<h4 id="por-lo-tanto-un-comando-de-v-0.1-mathrmleftfracmsright-y-dottheta-0-mathrmleftfracradsright-por-10-s"><u>Por lo tanto</u>: un comando de <span class="math inline">\(v = 0.1 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = 0 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</h4>
+</div>
 </section>
-<section id="ejercicio-6---giro-horario" class="slide level2 smaller">
+<section id="ejercicio-6---giro-horario" class="slide level2">
 <h2>Ejercicio 6 - Giro horario</h2>
+<div style="font-size: 70%;">
 <ul>
 <li>Por el <strong>Ejercicio 5</strong>, la velocidad de rotación de las ruedas para una velocidad angular de <span class="math inline">\(-0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> y una velocidad lineal de <span class="math inline">\(\textcolor{Maroon}{-} 0.314 \mathrm{\left[\frac{rad}{s}\right]} \times \textcolor{Maroon}{-} 0.25 \mathrm{\left[\frac{m}{rad}\right]} = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> es:</li>
 </ul>
@@ -669,32 +675,39 @@
 <p><span class="math display">\[\dot\phi_{R} = \frac{\dot{x} + \frac{b}{2} \dot\theta}{r} = \frac{0.0785 + \frac{0.135}{2} (-0.314) \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 1.637 \mathrm{\left[\frac{rad}{s}\right]}\]</span></p>
 <p><span class="math inline">\(2.848 \mathrm{\left[\frac{rad}{s}\right]} \approx 27.2 \mathrm{[rpm]} &lt; 50 \mathrm{[rpm]}\)</span> y <span class="math inline">\(1.637 \mathrm{\left[\frac{rad}{s}\right]} \approx 15.6 \mathrm{[rpm]} &lt; 50 \mathrm{[rpm]}\)</span></p>
 <p><br></p>
-<h4 id="por-lo-tanto-se-propone-un-comando-de-dottheta--0.314-mathrmleftfracradsright-y-v-0.0785-mathrmleftfracmsright-por-10-s"><u>Por lo tanto</u>: se propone un comando de <span class="math inline">\(\dot\theta = -0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> y <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> por 10 [s]</h4>
+<h4 id="por-lo-tanto-un-comando-de-dottheta--0.314-mathrmleftfracradsright-y-v-0.0785-mathrmleftfracmsright-por-10-s"><u>Por lo tanto</u>: un comando de <span class="math inline">\(\dot\theta = -0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> y <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> por 10 [s]</h4>
+</div>
 </section>
-<section id="ejercicio-6---giro-anti-horario" class="slide level2 smaller">
+<section id="ejercicio-6---giro-anti-horario" class="slide level2">
 <h2>Ejercicio 6 - Giro anti-horario</h2>
+<div style="font-size: 70%;">
 <ul>
 <li>Utilizando la misma magnitud que el giro horario, las velocidades angulares de las ruedas son las mismas pero intercambiadas: <span class="math inline">\(\dot\theta = 0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> y <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span></li>
 </ul>
 <p><span class="math display">\[\dot\phi_{L} = \frac{\dot{x} - \frac{b}{2} \dot\theta}{r} = \frac{0.0785 - \frac{0.135}{2} (0.314) \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 1.637 \mathrm{\left[\frac{rad}{s}\right]}\]</span></p>
 <p><span class="math display">\[\dot\phi_{R} = \frac{\dot{x} + \frac{b}{2} \dot\theta}{r} = \frac{0.0785 + \frac{0.135}{2} (0.314) \mathrm{\left[\frac{m}{s}\right]}}{0.035 \mathrm{\left[\frac{m}{rad}\right]}} \approx 2.848 \mathrm{\left[\frac{rad}{s}\right]}\]</span></p>
 <p><br></p>
-<h4 id="por-lo-tanto-se-propone-un-comando-de-dottheta--0.314-mathrmleftfracradsright-y-v-0.0785-mathrmleftfracmsright-por-10-s-1"><u>Por lo tanto</u>: se propone un comando de <span class="math inline">\(\dot\theta = -0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> y <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> por 10 [s]</h4>
+<h4 id="por-lo-tanto-un-comando-de-dottheta-0.314-mathrmleftfracradsright-y-v-0.0785-mathrmleftfracmsright-por-10-s"><u>Por lo tanto</u>: un comando de <span class="math inline">\(\dot\theta = 0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> y <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> por 10 [s]</h4>
+</div>
 </section>
 <section id="ejercicio-6---geometry_msgstwist" class="slide level2">
 <h2>Ejercicio 6 - <code>geometry_msgs/Twist</code></h2>
-<ul>
-<li><p>Definición del mensaje</p>
-<pre><code>  geometry_msgs/Twist
-  ├── geometry_msgs/Vector3 linear
-  |   ├── float64 x     ⬅️
-  |   ├── float64 y
-  |   └── float64 z
-  └── geometry_msgs/Vector3 angular
-      ├── float64 x
-      ├── float64 y
-      └── float64 z     ⬅️</code></pre></li>
-</ul>
+<blockquote>
+<p>Definición del mensaje</p>
+</blockquote>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ros2 interface show geometry_msgs/msg/Twist</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a># This expresses velocity in free space broken into its linear and</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>angular parts.</span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>Vector3  linear</span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>        float64 x     ⬅️</span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>        float64 y</span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>        float64 z</span>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>Vector3  angular</span>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>        float64 x</span>
+<span id="cb10-10"><a aria-hidden="true" tabindex="-1"></a>        float64 y</span>
+<span id="cb10-11"><a aria-hidden="true" tabindex="-1"></a>        float64 z     ⬅️</span></code></pre></div>
 </section>
 <section id="ejercicio-6---respuesta" class="slide level2 smaller">
 <h2>Ejercicio 6 - Respuesta</h2>
@@ -702,19 +715,19 @@
 <ul>
 <li>Giro antihorario: <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = 0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb10-1"><a></a>{linear: { x: 0.0785 }, angular: { z: 0.314 }}</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb11-1"><a></a>{linear: { x: 0.0785 }, angular: { z: 0.314 }}</span></code></pre></div>
 <ul>
 <li>Linea recta: <span class="math inline">\(v = 0.1 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = 0 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb11-1"><a></a>{linear: { x: 0.1 }, angular: { z: 0.0 }}</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb12-1"><a></a>{linear: { x: 0.1 }, angular: { z: 0.0 }}</span></code></pre></div>
 <ul>
 <li>Giro horario: <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = -0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb12-1"><a></a>{linear: { x: 0.0785 }, angular: { z: -0.314 }}</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb13-1"><a></a>{linear: { x: 0.0785 }, angular: { z: -0.314 }}</span></code></pre></div>
 <ul>
 <li>Linea recta: <span class="math inline">\(v = 0.1 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = 0 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb13-1"><a></a>{linear: { x: 0.1 }, angular: { z: 0.0 }}</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb14-1"><a></a>{linear: { x: 0.1 }, angular: { z: 0.0 }}</span></code></pre></div>
 </section>
 <section id="ejercicio-6---respuesta-1" class="slide level2 smaller">
 <h2>Ejercicio 6 - Respuesta</h2>
@@ -722,19 +735,19 @@
 <ul>
 <li>Linea recta: <span class="math inline">\(v = 0.1 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = 0 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb14-1"><a></a>{linear: { x: 0.1 }, angular: { z: 0.0 }}</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb15-1"><a></a>{linear: { x: 0.1 }, angular: { z: 0.0 }}</span></code></pre></div>
 <ul>
 <li>Giro antihorario: <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = 0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb15-1"><a></a>{linear: { x: 0.0785 }, angular: { z: 0.314 }}</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb16-1"><a></a>{linear: { x: 0.0785 }, angular: { z: 0.314 }}</span></code></pre></div>
 <ul>
 <li>Linea recta: <span class="math inline">\(v = 0.1 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = 0 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb16-1"><a></a>{linear: { x: 0.1 }, angular: { z: 0.0 }}</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb17-1"><a></a>{linear: { x: 0.1 }, angular: { z: 0.0 }}</span></code></pre></div>
 <ul>
 <li>Giro horario: <span class="math inline">\(v = 0.0785 \mathrm{\left[\frac{m}{s}\right]}\)</span> y <span class="math inline">\(\dot\theta = -0.314 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb17-1"><a></a>{linear: { x: 0.0785 }, angular: { z: -0.314 }}</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb18-1"><a></a>{linear: { x: 0.0785 }, angular: { z: -0.314 }}</span></code></pre></div>
 </section></section>
 <section>
 
@@ -757,13 +770,18 @@
 <p><span class="math inline">\(\dot\phi_{L} = 1.637 \mathrm{\left[\frac{rad}{s}\right]}\)</span>, <span class="math inline">\(\dot\phi_{R} = 2.848 \mathrm{\left[\frac{rad}{s}\right]}\)</span></p>
 </section>
 <section id="ejercicio-7---std_msgsfloat64multiarray" class="slide level2">
-<h2>Ejercicio 7 - <code>std_msgs/Float64MultiArray</code></h2>
-<ul>
-<li><p>Definición del mensaje</p>
-<pre><code>  std_msgs/Float64MultiArray
-  ├── std_msgs/MultiArrayLayout layout
-  └── float64[] data    ⬅️</code></pre></li>
-</ul>
+<h2>Ejercicio 7 - <span style="font-size: 80%;"><code>std_msgs/Float64MultiArray</code></span></h2>
+<blockquote>
+<p>Definición del mensaje</p>
+</blockquote>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ros2 interface show std_msgs/msg/Float64MultiArray </span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a># Please look at the MultiArrayLayout message definition for</span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a># documentation on all multiarrays.</span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>MultiArrayLayout  layout</span>
+<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>float64[]         data     ⬅️</span></code></pre></div>
 </section>
 <section id="ejercicio-7---respuesta" class="slide level2 smaller">
 <h2>Ejercicio 7 - Respuesta</h2>
@@ -771,23 +789,23 @@
 <ul>
 <li>Giro antihorario: <span class="math inline">\(\dot\phi_{L} = 1.637 \mathrm{\left[\frac{rad}{s}\right]}\)</span> y <span class="math inline">\(\dot\phi_{R} = 2.848 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [1.64]}</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.85]}</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [1.64]}</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.85]}</span></code></pre></div>
 <ul>
 <li>Linea recta: <span class="math inline">\(\dot\phi_{L|R} = 2.857 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
 <ul>
 <li>Giro horario: <span class="math inline">\(\dot\phi_{L} = 2.848 \mathrm{\left[\frac{rad}{s}\right]}\)</span>, <span class="math inline">\(\dot\phi_{R} = 1.637 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.85]}</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [1.64]}</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.85]}</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [1.64]}</span></code></pre></div>
 <ul>
 <li>Linea recta: <span class="math inline">\(\dot\phi_{L|R} = 2.857 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
 </section>
 <section id="ejercicio-7---respuesta-1" class="slide level2 smaller">
 <h2>Ejercicio 7 - Respuesta</h2>
@@ -795,60 +813,60 @@
 <ul>
 <li>Linea recta: <span class="math inline">\(\dot\phi_{L|R} = 2.857 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
 <ul>
 <li>Giro antihorario: <span class="math inline">\(\dot\phi_{L} = 1.637 \mathrm{\left[\frac{rad}{s}\right]}\)</span> y <span class="math inline">\(\dot\phi_{R} = 2.848 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [1.64]}</span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.85]}</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [1.64]}</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.85]}</span></code></pre></div>
 <ul>
 <li>Linea recta: <span class="math inline">\(\dot\phi_{L|R} = 2.857 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.86]}</span></code></pre></div>
 <ul>
 <li>Giro horario: <span class="math inline">\(\dot\phi_{L} = 2.848 \mathrm{\left[\frac{rad}{s}\right]}\)</span>, <span class="math inline">\(\dot\phi_{R} = 1.637 \mathrm{\left[\frac{rad}{s}\right]}\)</span> por 10 [s]</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.85]}</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [1.64]}</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /left_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [2.85]}</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a>ros2 topic pub /right_wheel_velocity_controller/commands std_msgs/msg/Float64MultiArray {data: [1.64]}</span></code></pre></div>
 </section></section>
 <section>
 
 <section id="ejercicio-8---cinemática-inversa" class="slide level2 smaller">
 <h2>Ejercicio 8 - Cinemática inversa</h2>
 <blockquote>
-<p>Dentro del paquete <code>(*)_control</code>, cree un nodo que reciba comandos de tipo <code>geometry_msgs/Twist</code> a través de un <em>topic</em> llamado <code>cmd_vel</code> [..]</p>
+<p>Dentro del paquete <code>(*)_control</code>, cree un nodo que reciba comandos de tipo <code>geometry_msgs/Twist</code> a través de un <em>topic</em> llamado <code>/cmd_vel</code> [..]</p>
 </blockquote>
-<div class="sourceCode" id="cb35" data-code-line-numbers="16-26|5-14|3,9-10"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="im">import</span> rclpy</span>
-<span id="cb35-2"><a></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb35-3"><a></a><span class="im">from</span> geometry_msgs.msg <span class="im">import</span> Twist</span>
-<span id="cb35-4"><a></a></span>
-<span id="cb35-5"><a></a><span class="kw">class</span> DiffbotControl(Node):</span>
-<span id="cb35-6"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb35-7"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'diffbot_control_node'</span>)</span>
-<span id="cb35-8"><a></a>        </span>
-<span id="cb35-9"><a></a>        <span class="co"># Creación de suscriptor</span></span>
-<span id="cb35-10"><a></a>        <span class="va">self</span>.sub <span class="op">=</span> <span class="va">self</span>.create_subscription(Twist, <span class="st">'cmd_vel'</span>, <span class="va">self</span>.sub_callback, <span class="dv">10</span>)</span>
-<span id="cb35-11"><a></a></span>
-<span id="cb35-12"><a></a>        </span>
-<span id="cb35-13"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
-<span id="cb35-14"><a></a>        <span class="co"># ...</span></span>
-<span id="cb35-15"><a></a></span>
-<span id="cb35-16"><a></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb35-17"><a></a>    <span class="co"># 1. Inicialización</span></span>
-<span id="cb35-18"><a></a>    rclpy.init(args<span class="op">=</span>args)</span>
-<span id="cb35-19"><a></a>    <span class="co"># 2. Creación de nodo</span></span>
-<span id="cb35-20"><a></a>    nodo <span class="op">=</span> DiffbotControl()</span>
-<span id="cb35-21"><a></a>    <span class="cf">try</span>:</span>
-<span id="cb35-22"><a></a>        <span class="co"># 3. Procesamiento de mensajes y callback</span></span>
-<span id="cb35-23"><a></a>        rclpy.spin(nodo)</span>
-<span id="cb35-24"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb35-25"><a></a>        <span class="co"># 4. Finalización </span></span>
-<span id="cb35-26"><a></a>        rclpy.shutdown()</span>
-<span id="cb35-27"><a></a></span>
-<span id="cb35-28"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb35-29"><a></a>    main()</span></code></pre></div>
+<div class="sourceCode" id="cb37" data-code-line-numbers="16-26|5-14|3,9-10"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb37-1"><a></a><span class="im">import</span> rclpy</span>
+<span id="cb37-2"><a></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb37-3"><a></a><span class="im">from</span> geometry_msgs.msg <span class="im">import</span> Twist</span>
+<span id="cb37-4"><a></a></span>
+<span id="cb37-5"><a></a><span class="kw">class</span> DiffbotControl(Node):</span>
+<span id="cb37-6"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb37-7"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'diffbot_control_node'</span>)</span>
+<span id="cb37-8"><a></a>        </span>
+<span id="cb37-9"><a></a>        <span class="co"># Creación de suscriptor</span></span>
+<span id="cb37-10"><a></a>        <span class="va">self</span>.sub <span class="op">=</span> <span class="va">self</span>.create_subscription(Twist, <span class="st">'cmd_vel'</span>, <span class="va">self</span>.sub_callback, <span class="dv">10</span>)</span>
+<span id="cb37-11"><a></a></span>
+<span id="cb37-12"><a></a>        </span>
+<span id="cb37-13"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
+<span id="cb37-14"><a></a>        <span class="co"># ...</span></span>
+<span id="cb37-15"><a></a></span>
+<span id="cb37-16"><a></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb37-17"><a></a>    <span class="co"># 1. Inicialización</span></span>
+<span id="cb37-18"><a></a>    rclpy.init(args<span class="op">=</span>args)</span>
+<span id="cb37-19"><a></a>    <span class="co"># 2. Creación de nodo</span></span>
+<span id="cb37-20"><a></a>    nodo <span class="op">=</span> DiffbotControl()</span>
+<span id="cb37-21"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb37-22"><a></a>        <span class="co"># 3. Procesamiento de mensajes y callback</span></span>
+<span id="cb37-23"><a></a>        rclpy.spin(nodo)</span>
+<span id="cb37-24"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb37-25"><a></a>        <span class="co"># 4. Finalización </span></span>
+<span id="cb37-26"><a></a>        rclpy.shutdown()</span>
+<span id="cb37-27"><a></a></span>
+<span id="cb37-28"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb37-29"><a></a>    main()</span></code></pre></div>
 <aside class="notes">
 <ul>
 <li>No respeta nombres solicitados</li>
@@ -901,38 +919,38 @@
 <blockquote>
 <p>[..] calcule las velocidades angulares en base al modelo cinemático inverso del robot y escriba los comandos de velocidad de cada rueda de tracción en los <em>topics</em> <code>left_wheel_cmd</code> y <code>right_wheel_cmd</code> [..]</p>
 </blockquote>
-<div class="sourceCode" id="cb36" data-code-line-numbers="8-12|15-21|23-30"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="co"># ..</span></span>
-<span id="cb36-2"><a></a><span class="im">from</span> std_msgs.msg <span class="im">import</span> Float64MultiArray</span>
-<span id="cb36-3"><a></a></span>
-<span id="cb36-4"><a></a><span class="kw">class</span> DiffbotControl(Node):</span>
-<span id="cb36-5"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb36-6"><a></a>        <span class="co"># ..</span></span>
-<span id="cb36-7"><a></a></span>
-<span id="cb36-8"><a></a>        <span class="co"># Crear los dos publisher a los topics de cada rueda</span></span>
-<span id="cb36-9"><a></a>        <span class="va">self</span>.pub_lwheel <span class="op">=</span> <span class="va">self</span>.create_publisher(Float64MultiArray,</span>
-<span id="cb36-10"><a></a>            <span class="st">'left_wheel_velocity_controller/commands'</span>, <span class="dv">10</span>)</span>
-<span id="cb36-11"><a></a>        <span class="va">self</span>.pub_rwheel <span class="op">=</span> <span class="va">self</span>.create_publisher(Float64MultiArray,</span>
-<span id="cb36-12"><a></a>            <span class="st">'right_wheel_velocity_controller/commands'</span>, <span class="dv">10</span>)</span>
-<span id="cb36-13"><a></a>        </span>
-<span id="cb36-14"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
-<span id="cb36-15"><a></a>        <span class="co"># Obtengo la velocidad lineal y angular deseada</span></span>
-<span id="cb36-16"><a></a>        x_dot <span class="op">=</span> msg.linear.x</span>
-<span id="cb36-17"><a></a>        w_dot <span class="op">=</span> msg.angular.z</span>
-<span id="cb36-18"><a></a>        </span>
-<span id="cb36-19"><a></a>        <span class="co"># Modelo cinemático inverso</span></span>
-<span id="cb36-20"><a></a>        phi_dot_lwheel <span class="op">=</span> (x_dot <span class="op">-</span> ((<span class="va">self</span>.wheel_sep<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> w_dot)) <span class="op">/</span> <span class="va">self</span>.wheel_r</span>
-<span id="cb36-21"><a></a>        phi_dot_rwheel <span class="op">=</span> (x_dot <span class="op">+</span> ((<span class="va">self</span>.wheel_sep<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> w_dot)) <span class="op">/</span> <span class="va">self</span>.wheel_r</span>
-<span id="cb36-22"><a></a></span>
-<span id="cb36-23"><a></a>        <span class="co"># Crear los mensajes y publicar</span></span>
-<span id="cb36-24"><a></a>        lwheel_msg <span class="op">=</span> Float64MultiArray()</span>
-<span id="cb36-25"><a></a>        lwheel_msg.data <span class="op">=</span> [phi_dot_lwheel]</span>
-<span id="cb36-26"><a></a>        <span class="va">self</span>.pub_lwheel.publish(lwheel_msg)</span>
-<span id="cb36-27"><a></a></span>
-<span id="cb36-28"><a></a>        rwheel_msg <span class="op">=</span> Float64MultiArray()</span>
-<span id="cb36-29"><a></a>        rwheel_msg.data <span class="op">=</span> [phi_dot_rwheel]</span>
-<span id="cb36-30"><a></a>        <span class="va">self</span>.pub_rwheel.publish(rwheel_msg)</span>
-<span id="cb36-31"><a></a></span>
-<span id="cb36-32"><a></a><span class="co"># ..</span></span></code></pre></div>
+<div class="sourceCode" id="cb38" data-code-line-numbers="8-12|15-21|23-30"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="co"># ..</span></span>
+<span id="cb38-2"><a></a><span class="im">from</span> std_msgs.msg <span class="im">import</span> Float64MultiArray</span>
+<span id="cb38-3"><a></a></span>
+<span id="cb38-4"><a></a><span class="kw">class</span> DiffbotControl(Node):</span>
+<span id="cb38-5"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb38-6"><a></a>        <span class="co"># ..</span></span>
+<span id="cb38-7"><a></a></span>
+<span id="cb38-8"><a></a>        <span class="co"># Crear los dos publisher a los topics de cada rueda</span></span>
+<span id="cb38-9"><a></a>        <span class="va">self</span>.pub_lwheel <span class="op">=</span> <span class="va">self</span>.create_publisher(Float64MultiArray,</span>
+<span id="cb38-10"><a></a>            <span class="st">'left_wheel_velocity_controller/commands'</span>, <span class="dv">10</span>)</span>
+<span id="cb38-11"><a></a>        <span class="va">self</span>.pub_rwheel <span class="op">=</span> <span class="va">self</span>.create_publisher(Float64MultiArray,</span>
+<span id="cb38-12"><a></a>            <span class="st">'right_wheel_velocity_controller/commands'</span>, <span class="dv">10</span>)</span>
+<span id="cb38-13"><a></a>        </span>
+<span id="cb38-14"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
+<span id="cb38-15"><a></a>        <span class="co"># Obtengo la velocidad lineal y angular deseada</span></span>
+<span id="cb38-16"><a></a>        x_dot <span class="op">=</span> msg.linear.x</span>
+<span id="cb38-17"><a></a>        w_dot <span class="op">=</span> msg.angular.z</span>
+<span id="cb38-18"><a></a>        </span>
+<span id="cb38-19"><a></a>        <span class="co"># Modelo cinemático inverso</span></span>
+<span id="cb38-20"><a></a>        phi_dot_lwheel <span class="op">=</span> (x_dot <span class="op">-</span> ((<span class="va">self</span>.wheel_sep<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> w_dot)) <span class="op">/</span> <span class="va">self</span>.wheel_r</span>
+<span id="cb38-21"><a></a>        phi_dot_rwheel <span class="op">=</span> (x_dot <span class="op">+</span> ((<span class="va">self</span>.wheel_sep<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span> w_dot)) <span class="op">/</span> <span class="va">self</span>.wheel_r</span>
+<span id="cb38-22"><a></a></span>
+<span id="cb38-23"><a></a>        <span class="co"># Crear los mensajes y publicar</span></span>
+<span id="cb38-24"><a></a>        lwheel_msg <span class="op">=</span> Float64MultiArray()</span>
+<span id="cb38-25"><a></a>        lwheel_msg.data <span class="op">=</span> [phi_dot_lwheel]</span>
+<span id="cb38-26"><a></a>        <span class="va">self</span>.pub_lwheel.publish(lwheel_msg)</span>
+<span id="cb38-27"><a></a></span>
+<span id="cb38-28"><a></a>        rwheel_msg <span class="op">=</span> Float64MultiArray()</span>
+<span id="cb38-29"><a></a>        rwheel_msg.data <span class="op">=</span> [phi_dot_rwheel]</span>
+<span id="cb38-30"><a></a>        <span class="va">self</span>.pub_rwheel.publish(rwheel_msg)</span>
+<span id="cb38-31"><a></a></span>
+<span id="cb38-32"><a></a><span class="co"># ..</span></span></code></pre></div>
 <aside class="notes">
 <ul>
 <li>Modelo cinemático mal aplicado, calcula las velocidades lineales de las ruedas, no las angulares</li>
@@ -955,41 +973,41 @@
 <blockquote>
 <p>[..] Tenga en cuenta que los parámetros del robot se encuentran en el <em>robot description</em>.</p>
 </blockquote>
-<div class="sourceCode" id="cb37" data-code-line-numbers="8-11|13-15"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb37-1"><a></a><span class="co"># ..</span></span>
-<span id="cb37-2"><a></a><span class="im">from</span> std_msgs.msg <span class="im">import</span> Float64MultiArray</span>
-<span id="cb37-3"><a></a></span>
-<span id="cb37-4"><a></a><span class="kw">class</span> DiffbotControl(Node):</span>
-<span id="cb37-5"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb37-6"><a></a>        <span class="co"># ..</span></span>
-<span id="cb37-7"><a></a></span>
-<span id="cb37-8"><a></a>        <span class="co"># Parámetro de separación de ruedas</span></span>
-<span id="cb37-9"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'wheel_separation'</span>, <span class="fl">0.135</span>)</span>
-<span id="cb37-10"><a></a>        <span class="co"># Parámetro de radio de rueda</span></span>
-<span id="cb37-11"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'wheel_radius'</span>, <span class="fl">0.07</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb37-12"><a></a></span>
-<span id="cb37-13"><a></a>        <span class="co"># Obtener los parámetros</span></span>
-<span id="cb37-14"><a></a>        <span class="va">self</span>.wheel_sep <span class="op">=</span> <span class="va">self</span>.get_parameter(<span class="st">'wheel_separation'</span>).get_parameter_value().double_value</span>
-<span id="cb37-15"><a></a>        <span class="va">self</span>.wheel_r <span class="op">=</span> <span class="va">self</span>.get_parameter(<span class="st">'wheel_radius'</span>).get_parameter_value().double_value</span>
-<span id="cb37-16"><a></a></span>
-<span id="cb37-17"><a></a>        <span class="co"># ..</span></span>
-<span id="cb37-18"><a></a></span>
-<span id="cb37-19"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
-<span id="cb37-20"><a></a>        <span class="co"># ...</span></span>
-<span id="cb37-21"><a></a></span>
-<span id="cb37-22"><a></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb37-23"><a></a>    <span class="co"># 1. Inicialización</span></span>
-<span id="cb37-24"><a></a>    rclpy.init(args<span class="op">=</span>args)</span>
-<span id="cb37-25"><a></a>    <span class="co"># 2. Creación de nodo</span></span>
-<span id="cb37-26"><a></a>    nodo <span class="op">=</span> DiffbotControl()</span>
-<span id="cb37-27"><a></a>    <span class="cf">try</span>:</span>
-<span id="cb37-28"><a></a>        <span class="co"># 3. Procesamiento de mensajes y callback</span></span>
-<span id="cb37-29"><a></a>        rclpy.spin(nodo)</span>
-<span id="cb37-30"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb37-31"><a></a>        <span class="co"># 4. Finalización </span></span>
-<span id="cb37-32"><a></a>        rclpy.shutdown()</span>
-<span id="cb37-33"><a></a></span>
-<span id="cb37-34"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb37-35"><a></a>    main()</span></code></pre></div>
+<div class="sourceCode" id="cb39" data-code-line-numbers="8-11|13-15"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="co"># ..</span></span>
+<span id="cb39-2"><a></a><span class="im">from</span> std_msgs.msg <span class="im">import</span> Float64MultiArray</span>
+<span id="cb39-3"><a></a></span>
+<span id="cb39-4"><a></a><span class="kw">class</span> DiffbotControl(Node):</span>
+<span id="cb39-5"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb39-6"><a></a>        <span class="co"># ..</span></span>
+<span id="cb39-7"><a></a></span>
+<span id="cb39-8"><a></a>        <span class="co"># Parámetro de separación de ruedas</span></span>
+<span id="cb39-9"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'wheel_separation'</span>, <span class="fl">0.135</span>)</span>
+<span id="cb39-10"><a></a>        <span class="co"># Parámetro de radio de rueda</span></span>
+<span id="cb39-11"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'wheel_radius'</span>, <span class="fl">0.07</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb39-12"><a></a></span>
+<span id="cb39-13"><a></a>        <span class="co"># Obtener los parámetros</span></span>
+<span id="cb39-14"><a></a>        <span class="va">self</span>.wheel_sep <span class="op">=</span> <span class="va">self</span>.get_parameter(<span class="st">'wheel_separation'</span>).get_parameter_value().double_value</span>
+<span id="cb39-15"><a></a>        <span class="va">self</span>.wheel_r <span class="op">=</span> <span class="va">self</span>.get_parameter(<span class="st">'wheel_radius'</span>).get_parameter_value().double_value</span>
+<span id="cb39-16"><a></a></span>
+<span id="cb39-17"><a></a>        <span class="co"># ..</span></span>
+<span id="cb39-18"><a></a></span>
+<span id="cb39-19"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
+<span id="cb39-20"><a></a>        <span class="co"># ...</span></span>
+<span id="cb39-21"><a></a></span>
+<span id="cb39-22"><a></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb39-23"><a></a>    <span class="co"># 1. Inicialización</span></span>
+<span id="cb39-24"><a></a>    rclpy.init(args<span class="op">=</span>args)</span>
+<span id="cb39-25"><a></a>    <span class="co"># 2. Creación de nodo</span></span>
+<span id="cb39-26"><a></a>    nodo <span class="op">=</span> DiffbotControl()</span>
+<span id="cb39-27"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb39-28"><a></a>        <span class="co"># 3. Procesamiento de mensajes y callback</span></span>
+<span id="cb39-29"><a></a>        rclpy.spin(nodo)</span>
+<span id="cb39-30"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb39-31"><a></a>        <span class="co"># 4. Finalización </span></span>
+<span id="cb39-32"><a></a>        rclpy.shutdown()</span>
+<span id="cb39-33"><a></a></span>
+<span id="cb39-34"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb39-35"><a></a>    main()</span></code></pre></div>
 <aside class="notes">
 <ul>
 <li>Parámetros geométricos del robot programados dentro de la clase</li>
@@ -1013,31 +1031,31 @@
 <blockquote>
 <p>Crear un nodo que lea el o los <em>topics</em> de posición de las juntas de las ruedas (publicados por el <code>JointStateBroadcaster</code>) [..] El nodo debe recibir como parámetro las dimensiones geométricas del modelo cinemático y los nombres correspondientes a las juntas de las ruedas de tracción.</p>
 </blockquote>
-<div class="sourceCode" id="cb38" data-code-line-numbers="17-18|9-15"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="im">import</span> rclpy</span>
-<span id="cb38-2"><a></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb38-3"><a></a><span class="im">from</span> sensor_msgs.msg <span class="im">import</span> JointState</span>
-<span id="cb38-4"><a></a></span>
-<span id="cb38-5"><a></a><span class="kw">class</span> DiffbotOdometry(Node):</span>
-<span id="cb38-6"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb38-7"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'diffbot_odometry_node'</span>)</span>
-<span id="cb38-8"><a></a></span>
-<span id="cb38-9"><a></a>        <span class="co"># Parámetro de radio y separación de ruedas</span></span>
-<span id="cb38-10"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'wheel_separation'</span>, <span class="fl">0.135</span>)</span>
-<span id="cb38-11"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'wheel_radius'</span>, <span class="fl">0.07</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb38-12"><a></a></span>
-<span id="cb38-13"><a></a>        <span class="co"># Parámetro para el nomrbe de las juntas</span></span>
-<span id="cb38-14"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'left_wheel_name'</span>, <span class="st">'front_left_wheel_joint'</span>)</span>
-<span id="cb38-15"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'right_wheel_name'</span>, <span class="st">'front_right_wheel_joint'</span>)</span>
-<span id="cb38-16"><a></a>               </span>
-<span id="cb38-17"><a></a>        <span class="co"># Crear el suscriptor al topic joint_states</span></span>
-<span id="cb38-18"><a></a>        <span class="va">self</span>.sub <span class="op">=</span> <span class="va">self</span>.create_subscription(JointState, <span class="st">'joint_states'</span>, <span class="va">self</span>.sub_callback, <span class="dv">10</span>)</span>
-<span id="cb38-19"><a></a></span>
-<span id="cb38-20"><a></a>        <span class="co"># ..</span></span>
-<span id="cb38-21"><a></a>        </span>
-<span id="cb38-22"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
-<span id="cb38-23"><a></a>        <span class="co"># ...</span></span>
-<span id="cb38-24"><a></a></span>
-<span id="cb38-25"><a></a><span class="co"># ..</span></span></code></pre></div>
+<div class="sourceCode" id="cb40" data-code-line-numbers="3,17-18|9-15"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="im">import</span> rclpy</span>
+<span id="cb40-2"><a></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb40-3"><a></a><span class="im">from</span> sensor_msgs.msg <span class="im">import</span> JointState</span>
+<span id="cb40-4"><a></a></span>
+<span id="cb40-5"><a></a><span class="kw">class</span> DiffbotOdometry(Node):</span>
+<span id="cb40-6"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb40-7"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'diffbot_odometry_node'</span>)</span>
+<span id="cb40-8"><a></a></span>
+<span id="cb40-9"><a></a>        <span class="co"># Parámetro de radio y separación de ruedas</span></span>
+<span id="cb40-10"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'wheel_separation'</span>, <span class="fl">0.135</span>)</span>
+<span id="cb40-11"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'wheel_radius'</span>, <span class="fl">0.07</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb40-12"><a></a></span>
+<span id="cb40-13"><a></a>        <span class="co"># Parámetro para el nombre de las juntas</span></span>
+<span id="cb40-14"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'left_wheel_name'</span>, <span class="st">'front_left_wheel_joint'</span>)</span>
+<span id="cb40-15"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'right_wheel_name'</span>, <span class="st">'front_right_wheel_joint'</span>)</span>
+<span id="cb40-16"><a></a>               </span>
+<span id="cb40-17"><a></a>        <span class="co"># Crear el suscriptor al topic joint_states</span></span>
+<span id="cb40-18"><a></a>        <span class="va">self</span>.sub <span class="op">=</span> <span class="va">self</span>.create_subscription(JointState, <span class="st">'joint_states'</span>, <span class="va">self</span>.sub_callback, <span class="dv">10</span>)</span>
+<span id="cb40-19"><a></a></span>
+<span id="cb40-20"><a></a>        <span class="co"># ..</span></span>
+<span id="cb40-21"><a></a>        </span>
+<span id="cb40-22"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: JointState):</span>
+<span id="cb40-23"><a></a>        <span class="co"># ...</span></span>
+<span id="cb40-24"><a></a></span>
+<span id="cb40-25"><a></a><span class="co"># ..</span></span></code></pre></div>
 <aside class="notes">
 <ul>
 <li>Estructura incompleta para la función ‘main’</li>
@@ -1057,62 +1075,62 @@
 <section id="ejercicio-9---odometría-1" class="slide level2 smaller">
 <h2>Ejercicio 9 - Odometría</h2>
 <blockquote>
-<p>[..] calcule la odometría basado en el modelo cinemático directo del robot y publique la misma en el <em>topic</em> <code>\odom</code> con mensajes de tipo <code>nav_msgs/Odometry</code>. [..]</p>
+<p>[..] calcule la odometría basado en el modelo cinemático directo del robot y publique la misma en el <em>topic</em> <code>/odom</code> con mensajes de tipo <code>nav_msgs/Odometry</code>. [..]</p>
 </blockquote>
-<div class="sourceCode" id="cb39" data-code-line-numbers="2,8-9|14-21|23-33|35-45|47-52"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="co"># ..</span></span>
-<span id="cb39-2"><a></a><span class="im">from</span> nav_msgs.msg <span class="im">import</span> Odometry</span>
-<span id="cb39-3"><a></a></span>
-<span id="cb39-4"><a></a><span class="kw">class</span> DiffbotOdometry(Node):</span>
-<span id="cb39-5"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb39-6"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'diffbot_odometry_node'</span>)</span>
-<span id="cb39-7"><a></a></span>
-<span id="cb39-8"><a></a>        <span class="co"># Crear el publisher de la odometría</span></span>
-<span id="cb39-9"><a></a>        <span class="va">self</span>.pub_odom <span class="op">=</span> <span class="va">self</span>.create_publisher(Odometry, <span class="st">'odom'</span>, <span class="dv">10</span>)</span>
-<span id="cb39-10"><a></a></span>
-<span id="cb39-11"><a></a>        <span class="co"># ..</span></span>
-<span id="cb39-12"><a></a>        </span>
-<span id="cb39-13"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
-<span id="cb39-14"><a></a>        <span class="co"># Chequear si el primer elemento es el joint</span></span>
-<span id="cb39-15"><a></a>        <span class="co"># de la rueda izquierda o derecha</span></span>
-<span id="cb39-16"><a></a>        lwheel_ang, rwheel_ang <span class="op">=</span> <span class="fl">0.0</span>, <span class="fl">0.0</span></span>
-<span id="cb39-17"><a></a>        <span class="cf">for</span> name, position <span class="kw">in</span> <span class="bu">zip</span>(msg.name, msg.position):</span>
-<span id="cb39-18"><a></a>            <span class="cf">if</span> name <span class="op">==</span> <span class="va">self</span>.left_wheel_name:</span>
-<span id="cb39-19"><a></a>                lwheel_ang <span class="op">=</span> position</span>
-<span id="cb39-20"><a></a>            <span class="cf">if</span> name <span class="op">==</span> <span class="va">self</span>.right_wheel_name:</span>
-<span id="cb39-21"><a></a>                rwheel_ang <span class="op">=</span> position</span>
-<span id="cb39-22"><a></a>        </span>
-<span id="cb39-23"><a></a>        <span class="co"># Cálculo de la distancia recorrida</span></span>
-<span id="cb39-24"><a></a>        dl_k <span class="op">=</span> (lwheel_ang <span class="op">-</span> <span class="va">self</span>.lwheel_ang_old) <span class="op">*</span> <span class="va">self</span>.wheel_r</span>
-<span id="cb39-25"><a></a>        dr_k <span class="op">=</span> (rwheel_ang <span class="op">-</span> <span class="va">self</span>.rwheel_ang_old) <span class="op">*</span> <span class="va">self</span>.wheel_r</span>
-<span id="cb39-26"><a></a>        </span>
-<span id="cb39-27"><a></a>        dA_k <span class="op">=</span> (dr_k <span class="op">+</span> dl_k) <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb39-28"><a></a>        Dw_k <span class="op">=</span> (dr_k <span class="op">-</span> dl_k) <span class="op">/</span> <span class="va">self</span>.wheel_sep</span>
-<span id="cb39-29"><a></a></span>
-<span id="cb39-30"><a></a>        <span class="co"># Cálculo de la odometría (pose)</span></span>
-<span id="cb39-31"><a></a>        x_k_new <span class="op">=</span> <span class="va">self</span>.x_k <span class="op">+</span> dA_k <span class="op">*</span> np.cos(<span class="va">self</span>.w_k)</span>
-<span id="cb39-32"><a></a>        y_k_new <span class="op">=</span> <span class="va">self</span>.y_k <span class="op">+</span> dA_k <span class="op">*</span> np.sin(<span class="va">self</span>.w_k)</span>
-<span id="cb39-33"><a></a>        w_k_new <span class="op">=</span> <span class="va">self</span>.w_k <span class="op">+</span> Dw_k</span>
-<span id="cb39-34"><a></a></span>
-<span id="cb39-35"><a></a>        odom_msg <span class="op">=</span> Odometry()</span>
-<span id="cb39-36"><a></a>        odom_msg.pose.pose.position.x <span class="op">=</span> x_k_new</span>
-<span id="cb39-37"><a></a>        odom_msg.pose.pose.position.y <span class="op">=</span> y_k_new</span>
-<span id="cb39-38"><a></a>        </span>
-<span id="cb39-39"><a></a>        odom_msg.pose.pose.orientation.x <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb39-40"><a></a>        odom_msg.pose.pose.orientation.y <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb39-41"><a></a>        odom_msg.pose.pose.orientation.z <span class="op">=</span> np.sin(w_k_new<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb39-42"><a></a>        odom_msg.pose.pose.orientation.w <span class="op">=</span> np.cos(w_k_new<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb39-43"><a></a>        </span>
-<span id="cb39-44"><a></a>        <span class="co"># Publicar</span></span>
-<span id="cb39-45"><a></a>        <span class="va">self</span>.pub_odom.publish(odom_msg)</span>
-<span id="cb39-46"><a></a></span>
-<span id="cb39-47"><a></a>        <span class="co"># Actualizar valores</span></span>
-<span id="cb39-48"><a></a>        <span class="va">self</span>.lwheel_ang_old <span class="op">=</span> lwheel_ang</span>
-<span id="cb39-49"><a></a>        <span class="va">self</span>.rwheel_ang_old <span class="op">=</span> rwheel_ang</span>
-<span id="cb39-50"><a></a>        <span class="va">self</span>.x_k <span class="op">=</span> x_k_new</span>
-<span id="cb39-51"><a></a>        <span class="va">self</span>.y_k <span class="op">=</span> y_k_new</span>
-<span id="cb39-52"><a></a>        <span class="va">self</span>.w_k <span class="op">=</span> w_k_new</span>
-<span id="cb39-53"><a></a></span>
-<span id="cb39-54"><a></a><span class="co"># ..</span></span></code></pre></div>
+<div class="sourceCode" id="cb41" data-code-line-numbers="2,8-9|14-21|23-33|35-45|47-52"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="co"># ..</span></span>
+<span id="cb41-2"><a></a><span class="im">from</span> nav_msgs.msg <span class="im">import</span> Odometry</span>
+<span id="cb41-3"><a></a></span>
+<span id="cb41-4"><a></a><span class="kw">class</span> DiffbotOdometry(Node):</span>
+<span id="cb41-5"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb41-6"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'diffbot_odometry_node'</span>)</span>
+<span id="cb41-7"><a></a></span>
+<span id="cb41-8"><a></a>        <span class="co"># Crear el publisher de la odometría</span></span>
+<span id="cb41-9"><a></a>        <span class="va">self</span>.pub_odom <span class="op">=</span> <span class="va">self</span>.create_publisher(Odometry, <span class="st">'odom'</span>, <span class="dv">10</span>)</span>
+<span id="cb41-10"><a></a></span>
+<span id="cb41-11"><a></a>        <span class="co"># ..</span></span>
+<span id="cb41-12"><a></a>        </span>
+<span id="cb41-13"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: JointState):</span>
+<span id="cb41-14"><a></a>        <span class="co"># Chequear si el primer elemento es el joint</span></span>
+<span id="cb41-15"><a></a>        <span class="co"># de la rueda izquierda o derecha</span></span>
+<span id="cb41-16"><a></a>        lwheel_ang, rwheel_ang <span class="op">=</span> <span class="fl">0.0</span>, <span class="fl">0.0</span></span>
+<span id="cb41-17"><a></a>        <span class="cf">for</span> name, position <span class="kw">in</span> <span class="bu">zip</span>(msg.name, msg.position):</span>
+<span id="cb41-18"><a></a>            <span class="cf">if</span> name <span class="op">==</span> <span class="va">self</span>.left_wheel_name:</span>
+<span id="cb41-19"><a></a>                lwheel_ang <span class="op">=</span> position</span>
+<span id="cb41-20"><a></a>            <span class="cf">if</span> name <span class="op">==</span> <span class="va">self</span>.right_wheel_name:</span>
+<span id="cb41-21"><a></a>                rwheel_ang <span class="op">=</span> position</span>
+<span id="cb41-22"><a></a>        </span>
+<span id="cb41-23"><a></a>        <span class="co"># Cálculo de la distancia recorrida</span></span>
+<span id="cb41-24"><a></a>        dl_k <span class="op">=</span> (lwheel_ang <span class="op">-</span> <span class="va">self</span>.lwheel_ang_old) <span class="op">*</span> <span class="va">self</span>.wheel_r</span>
+<span id="cb41-25"><a></a>        dr_k <span class="op">=</span> (rwheel_ang <span class="op">-</span> <span class="va">self</span>.rwheel_ang_old) <span class="op">*</span> <span class="va">self</span>.wheel_r</span>
+<span id="cb41-26"><a></a>        </span>
+<span id="cb41-27"><a></a>        dA_k <span class="op">=</span> (dr_k <span class="op">+</span> dl_k) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb41-28"><a></a>        Dw_k <span class="op">=</span> (dr_k <span class="op">-</span> dl_k) <span class="op">/</span> <span class="va">self</span>.wheel_sep</span>
+<span id="cb41-29"><a></a></span>
+<span id="cb41-30"><a></a>        <span class="co"># Cálculo de la odometría (pose)</span></span>
+<span id="cb41-31"><a></a>        x_k_new <span class="op">=</span> <span class="va">self</span>.x_k <span class="op">+</span> dA_k <span class="op">*</span> np.cos(<span class="va">self</span>.w_k)</span>
+<span id="cb41-32"><a></a>        y_k_new <span class="op">=</span> <span class="va">self</span>.y_k <span class="op">+</span> dA_k <span class="op">*</span> np.sin(<span class="va">self</span>.w_k)</span>
+<span id="cb41-33"><a></a>        w_k_new <span class="op">=</span> <span class="va">self</span>.w_k <span class="op">+</span> Dw_k</span>
+<span id="cb41-34"><a></a></span>
+<span id="cb41-35"><a></a>        odom_msg <span class="op">=</span> Odometry()</span>
+<span id="cb41-36"><a></a>        odom_msg.pose.pose.position.x <span class="op">=</span> x_k_new</span>
+<span id="cb41-37"><a></a>        odom_msg.pose.pose.position.y <span class="op">=</span> y_k_new</span>
+<span id="cb41-38"><a></a>        </span>
+<span id="cb41-39"><a></a>        odom_msg.pose.pose.orientation.x <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb41-40"><a></a>        odom_msg.pose.pose.orientation.y <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb41-41"><a></a>        odom_msg.pose.pose.orientation.z <span class="op">=</span> np.sin(w_k_new<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb41-42"><a></a>        odom_msg.pose.pose.orientation.w <span class="op">=</span> np.cos(w_k_new<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb41-43"><a></a>        </span>
+<span id="cb41-44"><a></a>        <span class="co"># Publicar</span></span>
+<span id="cb41-45"><a></a>        <span class="va">self</span>.pub_odom.publish(odom_msg)</span>
+<span id="cb41-46"><a></a></span>
+<span id="cb41-47"><a></a>        <span class="co"># Actualizar valores</span></span>
+<span id="cb41-48"><a></a>        <span class="va">self</span>.lwheel_ang_old <span class="op">=</span> lwheel_ang</span>
+<span id="cb41-49"><a></a>        <span class="va">self</span>.rwheel_ang_old <span class="op">=</span> rwheel_ang</span>
+<span id="cb41-50"><a></a>        <span class="va">self</span>.x_k <span class="op">=</span> x_k_new</span>
+<span id="cb41-51"><a></a>        <span class="va">self</span>.y_k <span class="op">=</span> y_k_new</span>
+<span id="cb41-52"><a></a>        <span class="va">self</span>.w_k <span class="op">=</span> w_k_new</span>
+<span id="cb41-53"><a></a></span>
+<span id="cb41-54"><a></a><span class="co"># ..</span></span></code></pre></div>
 <aside class="notes">
 <ul>
 <li>La actualización del ángulo ‘theta’ está en el orden incorrecto</li>
@@ -1142,35 +1160,35 @@
 <div class="code-with-filename-file">
 <pre><strong>bringup.launch.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb40" data-filename="bringup.launch.py" data-code-line-numbers="4-10|12-22"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="co"># ..</span></span>
-<span id="cb40-2"><a></a><span class="kw">def</span> generate_launch_description():</span>
-<span id="cb40-3"><a></a>    <span class="co"># Launch simulation</span></span>
-<span id="cb40-4"><a></a>    simulation <span class="op">=</span> IncludeLaunchDescription(</span>
-<span id="cb40-5"><a></a>        PythonLaunchDescriptionSource(</span>
-<span id="cb40-6"><a></a>            PathJoinSubstitution(</span>
-<span id="cb40-7"><a></a>                [FindPackageShare(<span class="st">'diffbot_gazebo'</span>), <span class="st">'launch'</span>, <span class="st">'gazebo.launch.py'</span>]</span>
-<span id="cb40-8"><a></a>            ),</span>
-<span id="cb40-9"><a></a>        ),</span>
-<span id="cb40-10"><a></a>    )</span>
-<span id="cb40-11"><a></a></span>
-<span id="cb40-12"><a></a>    node_diffbot_controller <span class="op">=</span> Node(</span>
-<span id="cb40-13"><a></a>        package <span class="op">=</span> <span class="st">'diffbot_control'</span>,</span>
-<span id="cb40-14"><a></a>        executable <span class="op">=</span> <span class="st">'run_controller'</span>,</span>
-<span id="cb40-15"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
-<span id="cb40-16"><a></a>    )</span>
-<span id="cb40-17"><a></a>    </span>
-<span id="cb40-18"><a></a>    node_diffbot_odometry <span class="op">=</span> Node(</span>
-<span id="cb40-19"><a></a>        package <span class="op">=</span> <span class="st">'diffbot_control'</span>,</span>
-<span id="cb40-20"><a></a>        executable <span class="op">=</span> <span class="st">'run_odometry'</span>,</span>
-<span id="cb40-21"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
-<span id="cb40-22"><a></a>    )</span>
-<span id="cb40-23"><a></a></span>
-<span id="cb40-24"><a></a>    <span class="cf">return</span> LaunchDescription([</span>
-<span id="cb40-25"><a></a>        simulation,</span>
-<span id="cb40-26"><a></a>        node_diffbot_controller,</span>
-<span id="cb40-27"><a></a>        node_diffbot_odometry,</span>
-<span id="cb40-28"><a></a>    ])</span>
-<span id="cb40-29"><a></a></span></code></pre></div>
+<div class="sourceCode" id="cb42" data-filename="bringup.launch.py" data-code-line-numbers="4-10|12-22"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="co"># ..</span></span>
+<span id="cb42-2"><a></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb42-3"><a></a>    <span class="co"># Launch simulation</span></span>
+<span id="cb42-4"><a></a>    simulation <span class="op">=</span> IncludeLaunchDescription(</span>
+<span id="cb42-5"><a></a>        PythonLaunchDescriptionSource(</span>
+<span id="cb42-6"><a></a>            PathJoinSubstitution(</span>
+<span id="cb42-7"><a></a>                [FindPackageShare(<span class="st">'diffbot_gazebo'</span>), <span class="st">'launch'</span>, <span class="st">'gazebo.launch.py'</span>]</span>
+<span id="cb42-8"><a></a>            ),</span>
+<span id="cb42-9"><a></a>        ),</span>
+<span id="cb42-10"><a></a>    )</span>
+<span id="cb42-11"><a></a></span>
+<span id="cb42-12"><a></a>    node_diffbot_controller <span class="op">=</span> Node(</span>
+<span id="cb42-13"><a></a>        package <span class="op">=</span> <span class="st">'diffbot_control'</span>,</span>
+<span id="cb42-14"><a></a>        executable <span class="op">=</span> <span class="st">'run_controller'</span>,</span>
+<span id="cb42-15"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
+<span id="cb42-16"><a></a>    )</span>
+<span id="cb42-17"><a></a>    </span>
+<span id="cb42-18"><a></a>    node_diffbot_odometry <span class="op">=</span> Node(</span>
+<span id="cb42-19"><a></a>        package <span class="op">=</span> <span class="st">'diffbot_control'</span>,</span>
+<span id="cb42-20"><a></a>        executable <span class="op">=</span> <span class="st">'run_odometry'</span>,</span>
+<span id="cb42-21"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
+<span id="cb42-22"><a></a>    )</span>
+<span id="cb42-23"><a></a></span>
+<span id="cb42-24"><a></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb42-25"><a></a>        simulation,</span>
+<span id="cb42-26"><a></a>        node_diffbot_controller,</span>
+<span id="cb42-27"><a></a>        node_diffbot_odometry,</span>
+<span id="cb42-28"><a></a>    ])</span>
+<span id="cb42-29"><a></a></span></code></pre></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1199,49 +1217,49 @@
 <blockquote>
 <p><strong>(Opción B)</strong> Modificar el nodo del ejercicio 9 para que que publique la transformación entre los <em>frames</em> <code>odom</code> y <code>base_link</code>. Agregar un parámetro para que cuando no se requiera esta transformación, no se publique.</p>
 </blockquote>
-<div class="sourceCode" id="cb41" data-code-line-numbers="5-12|15,17-18|20-41"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="co"># ..</span></span>
-<span id="cb41-2"><a></a><span class="kw">class</span> DiffbotOdometry(Node):</span>
-<span id="cb41-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb41-4"><a></a>        <span class="co"># ..      </span></span>
-<span id="cb41-5"><a></a>        <span class="co"># Parámetro para activar la publicación de las transformaciones</span></span>
-<span id="cb41-6"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'publish_tf'</span>, <span class="va">True</span>)</span>
-<span id="cb41-7"><a></a></span>
-<span id="cb41-8"><a></a>        <span class="co"># ..</span></span>
-<span id="cb41-9"><a></a>        <span class="va">self</span>.publish_tf <span class="op">=</span> <span class="va">self</span>.get_parameter(<span class="st">'publish_tf'</span>).get_parameter_value().bool_value</span>
-<span id="cb41-10"><a></a>        <span class="cf">if</span> <span class="va">self</span>.publish_tf:</span>
-<span id="cb41-11"><a></a>          <span class="co"># Inicializar el broadcaster</span></span>
-<span id="cb41-12"><a></a>          <span class="va">self</span>.tf_broadcaster <span class="op">=</span> TransformBroadcaster(<span class="va">self</span>)</span>
-<span id="cb41-13"><a></a>        <span class="co"># ..</span></span>
-<span id="cb41-14"><a></a></span>
-<span id="cb41-15"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: Twist):</span>
-<span id="cb41-16"><a></a>      <span class="co"># ..</span></span>
-<span id="cb41-17"><a></a>      <span class="cf">if</span> <span class="va">self</span>.publish_tf:</span>
-<span id="cb41-18"><a></a>        <span class="va">self</span>.send_tf()</span>
-<span id="cb41-19"><a></a>        </span>
-<span id="cb41-20"><a></a>    <span class="kw">def</span> send_tf(<span class="va">self</span>):</span>
-<span id="cb41-21"><a></a>        tf <span class="op">=</span> TransformStamped()</span>
-<span id="cb41-22"><a></a></span>
-<span id="cb41-23"><a></a>        tf.header.stamp <span class="op">=</span> <span class="va">self</span>.get_clock().now().to_msg()</span>
-<span id="cb41-24"><a></a>        <span class="co"># Marco de referencia (padre)</span></span>
-<span id="cb41-25"><a></a>        tf.header.frame_id <span class="op">=</span> <span class="st">'odom'</span>  </span>
-<span id="cb41-26"><a></a>        <span class="co"># Marco objetivo (hijo)                      </span></span>
-<span id="cb41-27"><a></a>        tf.child_frame_id <span class="op">=</span> <span class="st">'base_link'</span>                 </span>
-<span id="cb41-28"><a></a></span>
-<span id="cb41-29"><a></a>        <span class="co"># Traslación</span></span>
-<span id="cb41-30"><a></a>        tf.transform.translation.x <span class="op">=</span> <span class="va">self</span>.x_k</span>
-<span id="cb41-31"><a></a>        tf.transform.translation.y <span class="op">=</span> <span class="va">self</span>.y_k</span>
-<span id="cb41-32"><a></a>        tf.transform.translation.z <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb41-33"><a></a></span>
-<span id="cb41-34"><a></a>        <span class="co"># Rotación</span></span>
-<span id="cb41-35"><a></a>        tf.transform.rotation.x <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb41-36"><a></a>        tf.transform.rotation.y <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb41-37"><a></a>        tf.transform.rotation.z <span class="op">=</span> np.sin(<span class="va">self</span>.w_k<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb41-38"><a></a>        tf.transform.rotation.w <span class="op">=</span> np.cos(<span class="va">self</span>.w_k<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb41-39"><a></a>        </span>
-<span id="cb41-40"><a></a>        <span class="co"># Enviar la transformación</span></span>
-<span id="cb41-41"><a></a>        <span class="va">self</span>.tf_broadcaster.sendTransform(tf)</span>
-<span id="cb41-42"><a></a></span>
-<span id="cb41-43"><a></a><span class="co"># ..</span></span></code></pre></div>
+<div class="sourceCode" id="cb43" data-code-line-numbers="5-12|15,17-18|20-41"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="co"># ..</span></span>
+<span id="cb43-2"><a></a><span class="kw">class</span> DiffbotOdometry(Node):</span>
+<span id="cb43-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb43-4"><a></a>        <span class="co"># ..      </span></span>
+<span id="cb43-5"><a></a>        <span class="co"># Parámetro para activar la publicación de las transformaciones</span></span>
+<span id="cb43-6"><a></a>        <span class="va">self</span>.declare_parameter(<span class="st">'publish_tf'</span>, <span class="va">True</span>)</span>
+<span id="cb43-7"><a></a></span>
+<span id="cb43-8"><a></a>        <span class="co"># ..</span></span>
+<span id="cb43-9"><a></a>        <span class="va">self</span>.publish_tf <span class="op">=</span> <span class="va">self</span>.get_parameter(<span class="st">'publish_tf'</span>).get_parameter_value().bool_value</span>
+<span id="cb43-10"><a></a>        <span class="cf">if</span> <span class="va">self</span>.publish_tf:</span>
+<span id="cb43-11"><a></a>          <span class="co"># Inicializar el broadcaster</span></span>
+<span id="cb43-12"><a></a>          <span class="va">self</span>.tf_broadcaster <span class="op">=</span> TransformBroadcaster(<span class="va">self</span>)</span>
+<span id="cb43-13"><a></a>        <span class="co"># ..</span></span>
+<span id="cb43-14"><a></a></span>
+<span id="cb43-15"><a></a>    <span class="kw">def</span> sub_callback(<span class="va">self</span>, msg: JointState):</span>
+<span id="cb43-16"><a></a>      <span class="co"># ..</span></span>
+<span id="cb43-17"><a></a>      <span class="cf">if</span> <span class="va">self</span>.publish_tf:</span>
+<span id="cb43-18"><a></a>        <span class="va">self</span>.send_tf()</span>
+<span id="cb43-19"><a></a>        </span>
+<span id="cb43-20"><a></a>    <span class="kw">def</span> send_tf(<span class="va">self</span>):</span>
+<span id="cb43-21"><a></a>        tf <span class="op">=</span> TransformStamped()</span>
+<span id="cb43-22"><a></a></span>
+<span id="cb43-23"><a></a>        tf.header.stamp <span class="op">=</span> <span class="va">self</span>.get_clock().now().to_msg()</span>
+<span id="cb43-24"><a></a>        <span class="co"># Marco de referencia (padre)</span></span>
+<span id="cb43-25"><a></a>        tf.header.frame_id <span class="op">=</span> <span class="st">'odom'</span>  </span>
+<span id="cb43-26"><a></a>        <span class="co"># Marco objetivo (hijo)                      </span></span>
+<span id="cb43-27"><a></a>        tf.child_frame_id <span class="op">=</span> <span class="st">'base_link'</span>                 </span>
+<span id="cb43-28"><a></a></span>
+<span id="cb43-29"><a></a>        <span class="co"># Traslación</span></span>
+<span id="cb43-30"><a></a>        tf.transform.translation.x <span class="op">=</span> <span class="va">self</span>.x_k</span>
+<span id="cb43-31"><a></a>        tf.transform.translation.y <span class="op">=</span> <span class="va">self</span>.y_k</span>
+<span id="cb43-32"><a></a>        tf.transform.translation.z <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb43-33"><a></a></span>
+<span id="cb43-34"><a></a>        <span class="co"># Rotación</span></span>
+<span id="cb43-35"><a></a>        tf.transform.rotation.x <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb43-36"><a></a>        tf.transform.rotation.y <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb43-37"><a></a>        tf.transform.rotation.z <span class="op">=</span> np.sin(<span class="va">self</span>.w_k<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb43-38"><a></a>        tf.transform.rotation.w <span class="op">=</span> np.cos(<span class="va">self</span>.w_k<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb43-39"><a></a>        </span>
+<span id="cb43-40"><a></a>        <span class="co"># Enviar la transformación</span></span>
+<span id="cb43-41"><a></a>        <span class="va">self</span>.tf_broadcaster.sendTransform(tf)</span>
+<span id="cb43-42"><a></a></span>
+<span id="cb43-43"><a></a><span class="co"># ..</span></span></code></pre></div>
 <aside class="notes">
 <ul>
 <li>Se supone elección de la Opcion B, pero no agrega parámetro para desactivar transformación</li>
@@ -1270,49 +1288,49 @@
 <div class="code-with-filename-file">
 <pre><strong>odom_tf.launch.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb42" data-filename="odom_tf.launch.py" data-code-line-numbers="4-23|25-32"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="co"># ..</span></span>
-<span id="cb42-2"><a></a><span class="kw">def</span> generate_launch_description():</span>
-<span id="cb42-3"><a></a>    <span class="co"># Launch simulation</span></span>
-<span id="cb42-4"><a></a>    simulation <span class="op">=</span> IncludeLaunchDescription(</span>
-<span id="cb42-5"><a></a>        PythonLaunchDescriptionSource(</span>
-<span id="cb42-6"><a></a>            PathJoinSubstitution(</span>
-<span id="cb42-7"><a></a>                [FindPackageShare(<span class="st">'diffbot_gazebo'</span>), <span class="st">'launch'</span>, <span class="st">'gazebo.launch.py'</span>]</span>
-<span id="cb42-8"><a></a>            ),</span>
-<span id="cb42-9"><a></a>        ),</span>
-<span id="cb42-10"><a></a>    )</span>
-<span id="cb42-11"><a></a></span>
-<span id="cb42-12"><a></a>    node_diffbot_controller <span class="op">=</span> Node(</span>
-<span id="cb42-13"><a></a>        package <span class="op">=</span> <span class="st">'diffbot_control'</span>,</span>
-<span id="cb42-14"><a></a>        executable <span class="op">=</span> <span class="st">'run_controller'</span>,</span>
-<span id="cb42-15"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
-<span id="cb42-16"><a></a>    )</span>
-<span id="cb42-17"><a></a>    </span>
-<span id="cb42-18"><a></a>    node_diffbot_odometry <span class="op">=</span> Node(</span>
-<span id="cb42-19"><a></a>        package <span class="op">=</span> <span class="st">'diffbot_control'</span>,</span>
-<span id="cb42-20"><a></a>        executable <span class="op">=</span> <span class="st">'run_odometry'</span>,</span>
-<span id="cb42-21"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
-<span id="cb42-22"><a></a>        parameters <span class="op">=</span> [{ <span class="st">'publish_tf'</span>: <span class="va">True</span> }]</span>
-<span id="cb42-23"><a></a>    )</span>
-<span id="cb42-24"><a></a>    </span>
-<span id="cb42-25"><a></a>    node_rviz <span class="op">=</span>  Node(</span>
-<span id="cb42-26"><a></a>        package<span class="op">=</span><span class="st">'rviz2'</span>,</span>
-<span id="cb42-27"><a></a>        executable<span class="op">=</span><span class="st">'rviz2'</span>,</span>
-<span id="cb42-28"><a></a>        arguments<span class="op">=</span>[<span class="st">'-d'</span>, PathJoinSubstitution(</span>
-<span id="cb42-29"><a></a>                [FindPackageShare(<span class="st">'diffbot_bringup'</span>), <span class="st">'rviz'</span>, <span class="st">'odom.rviz'</span>]</span>
-<span id="cb42-30"><a></a>            )</span>
-<span id="cb42-31"><a></a>        ]</span>
-<span id="cb42-32"><a></a>    )</span>
-<span id="cb42-33"><a></a></span>
-<span id="cb42-34"><a></a>    <span class="cf">return</span> LaunchDescription([</span>
-<span id="cb42-35"><a></a>        simulation,</span>
-<span id="cb42-36"><a></a>        node_diffbot_controller,</span>
-<span id="cb42-37"><a></a>        node_diffbot_odometry,</span>
-<span id="cb42-38"><a></a>        node_odom_view,</span>
-<span id="cb42-39"><a></a>        node_odom_view_gt,</span>
-<span id="cb42-40"><a></a>        node_rviz</span>
-<span id="cb42-41"><a></a>    ])</span>
-<span id="cb42-42"><a></a></span>
-<span id="cb42-43"><a></a><span class="co"># ..</span></span></code></pre></div>
+<div class="sourceCode" id="cb44" data-filename="odom_tf.launch.py" data-code-line-numbers="4-23|25-32"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="co"># ..</span></span>
+<span id="cb44-2"><a></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb44-3"><a></a>    <span class="co"># Launch simulation</span></span>
+<span id="cb44-4"><a></a>    simulation <span class="op">=</span> IncludeLaunchDescription(</span>
+<span id="cb44-5"><a></a>        PythonLaunchDescriptionSource(</span>
+<span id="cb44-6"><a></a>            PathJoinSubstitution(</span>
+<span id="cb44-7"><a></a>                [FindPackageShare(<span class="st">'diffbot_gazebo'</span>), <span class="st">'launch'</span>, <span class="st">'gazebo.launch.py'</span>]</span>
+<span id="cb44-8"><a></a>            ),</span>
+<span id="cb44-9"><a></a>        ),</span>
+<span id="cb44-10"><a></a>    )</span>
+<span id="cb44-11"><a></a></span>
+<span id="cb44-12"><a></a>    node_diffbot_controller <span class="op">=</span> Node(</span>
+<span id="cb44-13"><a></a>        package <span class="op">=</span> <span class="st">'diffbot_control'</span>,</span>
+<span id="cb44-14"><a></a>        executable <span class="op">=</span> <span class="st">'run_controller'</span>,</span>
+<span id="cb44-15"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
+<span id="cb44-16"><a></a>    )</span>
+<span id="cb44-17"><a></a>    </span>
+<span id="cb44-18"><a></a>    node_diffbot_odometry <span class="op">=</span> Node(</span>
+<span id="cb44-19"><a></a>        package <span class="op">=</span> <span class="st">'diffbot_control'</span>,</span>
+<span id="cb44-20"><a></a>        executable <span class="op">=</span> <span class="st">'run_odometry'</span>,</span>
+<span id="cb44-21"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
+<span id="cb44-22"><a></a>        parameters <span class="op">=</span> [{ <span class="st">'publish_tf'</span>: <span class="va">True</span> }]</span>
+<span id="cb44-23"><a></a>    )</span>
+<span id="cb44-24"><a></a>    </span>
+<span id="cb44-25"><a></a>    node_rviz <span class="op">=</span>  Node(</span>
+<span id="cb44-26"><a></a>        package<span class="op">=</span><span class="st">'rviz2'</span>,</span>
+<span id="cb44-27"><a></a>        executable<span class="op">=</span><span class="st">'rviz2'</span>,</span>
+<span id="cb44-28"><a></a>        arguments<span class="op">=</span>[<span class="st">'-d'</span>, PathJoinSubstitution(</span>
+<span id="cb44-29"><a></a>                [FindPackageShare(<span class="st">'diffbot_bringup'</span>), <span class="st">'rviz'</span>, <span class="st">'odom.rviz'</span>]</span>
+<span id="cb44-30"><a></a>            )</span>
+<span id="cb44-31"><a></a>        ]</span>
+<span id="cb44-32"><a></a>    )</span>
+<span id="cb44-33"><a></a></span>
+<span id="cb44-34"><a></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb44-35"><a></a>        simulation,</span>
+<span id="cb44-36"><a></a>        node_diffbot_controller,</span>
+<span id="cb44-37"><a></a>        node_diffbot_odometry,</span>
+<span id="cb44-38"><a></a>        node_odom_view,</span>
+<span id="cb44-39"><a></a>        node_odom_view_gt,</span>
+<span id="cb44-40"><a></a>        node_rviz</span>
+<span id="cb44-41"><a></a>    ])</span>
+<span id="cb44-42"><a></a></span>
+<span id="cb44-43"><a></a><span class="co"># ..</span></span></code></pre></div>
 </div>
 <aside class="notes">
 <ul>
