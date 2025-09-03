@@ -1,0 +1,310 @@
+---
+title: Clase 15 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+# Line follower
+
+## Sensor de tipo Cámara
+
+- #### Descripción del sensor
+
+```{.xml code-line-numbers="false"}
+<gazebo reference="{nombre_link}">
+    <sensor name="{nombre_sensor}" type="camera">
+
+        <!-- Atributos -->
+        <update_rate>{fps}</update_rate>
+        <topic>{nombre_topic}</topic>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+    </sensor>
+
+    <camera_camera_info_topic>camera_info</camera_camera_info_topic>
+    <optical_frame_id>{nombre_optical_link}</optical_frame_id>
+
+    <camera name="{nombre_camara}">
+        <horizontal_fov>{horizontal_fov}</horizontal_fov>
+        <lens>
+            <intrinsics>
+                <fx>{f_x}</fx>
+                <fy>{f_y}</fy>
+                <cx>{c_x}</cx>
+                <cy>{c_y}</cy>
+                <s>0</s>
+            </intrinsics>
+        </lens>
+        <image>
+            <width>{ancho_pixeles}</width>
+            <height>{alto_pixeles}</height>
+            <format>R8G8B8</format>
+        </image>
+        <clip>
+            <near>{plano_cercano}</near>
+            <far>{plano_lejano}</far>
+        </clip>
+        <noise>
+            <type>gaussian</type>
+            <mean>{ruido_mean}</mean>
+            <stddev>{ruido_std}</stddev>
+        </noise>
+    </camera>
+</gazebo>
+```
+
+----------
+
+$$\texttt{f\_x} = \frac{W}{2 \cdot \tan(\frac{H_{FoV} \mathrm{[rad]}}{2})} \qquad \texttt{f\_y} = \frac{H}{2 \cdot \tan(\frac{V_{FoV} \mathrm{[rad]}}{2})}$$
+$$\texttt{c\_x} = \frac{W - 1}{2} \qquad \texttt{c\_y} = \frac{H - 1}{2}$$
+
+::: {.callout-note appearance="simple"}
+Recuerda modificar el *URDF* para añadir los `link` y las `joint` correspondiente
+
+>        <link name="{nombre_link}">
+>            <xacro:dummy_inertial />
+>        </link>
+>
+>        <joint name="{nombre_joint}" type="fixed">
+>            <parent link="base_link" />
+>            <child link="{nombre_link}" />
+>            <origin xyz="{x} {y} {z}" rpy="{r} {p} {y}" />
+>        </joint>
+:::
+
+::: {.callout-tip appearance="simple"}
+Puedes utilizar la rotación del link para inclinar el sensor hacia abajo y capturar mejor las lineas 
+:::
+
+
+- #### Parámetros de ejemplo
+
+> **Raspberry Pi Camera Module v2**:
+>
+>   - Profundidad de campo: 10 [cm] a $\infty$
+>   - Distancia focal: 3.04 [mm]
+>   - Campo de visión (FoV) horizontal: 62.2°
+>   - Campo de visión (FoV) vertical: 48.8°
+>   - Tamaño: 25 x 24 x 9 [mm]
+
+
+```{.xml code-line-numbers="true"}
+<gazebo reference="cam_link">
+  <sensor name="RPiCamV2" type="camera">
+    <always_on>1</always_on>
+    
+    <update_rate>25</update_rate>
+  
+    <visualize>true</visualize>
+    <topic>camera</topic>
+    <camera_camera_info_topic>camera_info</camera_camera_info_topic>
+
+    <optical_frame_id>cam_optical_link</optical_frame_id>
+
+    <camera name="IMX219">
+        <horizontal_fov>1.085595</horizontal_fov>
+        <lens>
+            <intrinsics>
+                <fx>530.47</fx>
+                <fy>529.08</fy>
+                <cx>319.5</cx>
+                <cy>239.5</cy>
+                <s>0</s>
+            </intrinsics>
+        </lens>
+        <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+        </image>
+        <clip>
+            <near>0.01</near>
+            <far>25</far>
+        </clip>
+        <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.007</stddev>
+        </noise>
+    </camera>
+  </sensor>
+</gazebo>
+```
+
+## Configuración del `ros_gz_bridge`
+
+::: {.callout-note appearance="simple"}
+Recuerda actualizar la configuración del punte entre *ROS2* y *Gazebo*
+:::
+
+```{.yaml filename="gz_bridge.yaml" code-line-numbers=""}
+# ..
+- topic_name: "camera"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+```
+
+------
+
+# Sistema de seguimiento de líneas
+
+#### Objetivos
+
+- Obtener imágenes desde un topic de cámara de ROS2
+- Utilizar procesamiento de imágenes para detectar el camino
+- Enviar comandos de `Twist` para que el robot siga la pista
+
+## Configuración del escenario
+
+- #### Descomprimir el archivo <a href="resources/LineTrack.zip" download target="_blank">`LineTrack.zip`</a> en una carpeta `models` dentro del paquete donde se encuentre el *launch* de Gazebo
+
+::: {.callout-note}
+Recuerda configurar adecuadamente el archivo `setup.py` para instalar los archivos correctamente
+:::
+
+### Modificar el *launch* de Gazebo
+
+- #### Configurar la nueva ubicación de los modelos:
+
+```{.py}
+gz_resource_path = AppendEnvironmentVariable(
+    'GZ_SIM_RESOURCE_PATH',
+    PathJoinSubstitution([FindPackageShare("diffbot_gazebo"), "models"]),
+)
+# ..
+return LaunchDescription([
+    gz_resource_path,
+])
+```
+
+- #### Agregar la directiva `--render-engine` a la ejecución de Gazebo:
+
+```{.py code-line-numbers="" code-line-numbers="9"}
+# Launch Gazebo
+gz_sim = IncludeLaunchDescription(
+    PythonLaunchDescriptionSource(
+        PathJoinSubstitution(
+            [FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py']
+        ),
+    ),
+    launch_arguments={
+        'gz_args': '-r --render-engine ogre empty.sdf',
+    }.items()
+)
+```
+
+- #### Eliminar el suelo por defecto:
+
+```{.py}
+remove_ground_plane = Node(
+    package="ros_gz_sim",
+    executable="remove",
+    parameters=[
+        { 'entity_name': 'ground_plane'},
+    ],
+    output="screen",
+)
+```
+
+- #### Cargar el modelo `LineTrack`:
+
+```{.py}
+load_track = Node(
+    package="ros_gz_sim",
+    executable="create",
+    arguments=[
+        "-entity", "track",
+        "-file", "model://LineTrack",
+    ],
+    output="screen",
+)
+```
+
+## Crear el nodo: `LineDetector`
+
+- #### Crear el nodo y suscribir el topic `/camera` para obtener los mensajes de tipo `Image`
+
+- #### Importar las librería y mensajes de tipo `Image`
+
+```{.py }
+from sensor_msgs.msg import Image
+import cv_bridge
+import cv2
+```
+
+## Procesamiento mediante `cv2`
+
+### Captura de la imagen desde *ROS2*
+
+- #### Crear un `CvBridge` para convertir las imágenes 
+
+```{.py }
+class LineDetector(Node):
+    def __init__(self):
+        # ..        
+        self.bridge = cv_bridge.CvBridge()
+```
+
+- #### Convertir mensajes de tipo `Image` 
+
+```{.py }
+def sub_callback(self, msg: Image):
+    image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+```
+
+### Preprocesamiento
+
+- #### Utilizar la función `resize` para disminuir la resolución
+
+```{.py }
+RESIZE_RATIO = 0.25
+image = cv2.resize(image, None, 1, 
+            RESIZE_RATIO, RESIZE_RATIO, cv2.INTER_CUBIC)
+```
+
+- #### Convertir a representación HSV
+
+```{.py }
+image_HSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+```
+
+### Detección del camino
+
+- #### Aplicar una máscara entre 2 límites con la función `mask`
+
+```{.py }
+LOWER = np.array([ 0,  0,  0])
+UPPER = np.array([180, 255, 30])
+mask = cv2.inRange(image_HSV, LOWER, UPPER)
+```
+
+- #### Calcular el centroide utilizando la función `moments`
+
+```{.py}
+M = cv2.moments(mask)
+if M['m00'] > 0:
+    cx = int(M['m10']/M['m00'])
+    cy = int(M['m01']/M['m00'])
+```
+
+## Enviar comandos de velocidad
+
+- #### Calcular la desviación del centroide y transformarlo en comandos de `Twist`
+ 
+Sea $W$ el ancho en pixeles de la imágen y $c_x$ la coordenada $x$ del centroide:
+
+$$
+\require{color}
+\dot\theta = \textcolor{Maroon}{\alpha} * \dot\theta_{max}
+$$
+
+$$
+\textcolor{Maroon}{\alpha} = 1 - \frac{2 * c_x}{W}
+$$

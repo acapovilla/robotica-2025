@@ -1,0 +1,827 @@
+---
+title: "Robótica"
+subtitle: "Clase 15"
+date: "09/03/2025"
+date-format: "[Semana 19 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+
+jupyter: python3
+---
+
+# Line follower {visibility="hidden"}
+
+## Caso práctico: Seguidor de línea {.smaller}
+
+### [Objetivos]{.underline}
+
+- Simular una cámara en Gazebo y obtener video desde ROS2
+- Utilizar procesamiento de imágenes para detectar el camino
+- Controlar el robot para seguir la pista
+
+::: {.columns}
+::: {.column}
+![](figs/gazebo_view.png){width="100%" fig-align="center" style="filter: drop-shadow(0px 0px 0.5rem hsla(0deg, 0%, 0%, 0.5));"}
+:::
+::: {.column}
+[Desde la cámara]{.underline}:
+
+![](figs/start-image.png){width="50%" fig-align="center" style="filter: drop-shadow(0px 0px 0.5rem hsla(0deg, 0%, 0%, 0.5));"}
+:::
+:::
+
+# Simulación de cámara {visibility="hidden"}
+
+## Simulación de cámara {.smaller}
+
+> Sensor de referencia: Raspberry Pi Camera V2
+
+::: {.columns}
+::: {.column width="60%"}
+
+- `Sensor model`: **Sony IMX219** - 8MP
+- `Video modes`: 1080p47, 1640x1232p41 and 640x480p206
+- `Depth of field`: $10 \mathrm{[cm]}$ to $\infty$ 
+- `Focal length`: $3.04 \mathrm{[mm]}$
+- `Horizontal Field of View (FoV)`: $62.2 \mathrm{°}$
+- `Vertical Field of View (FoV)`: $48.8 \mathrm{°}$
+- `Size`: $25 \times 24 \times 9 \mathrm{[mm]}$
+
+:::
+::: {.column width="40%"}
+
+[![Fuente: Raspberry Pi (<a href="https://www.raspberrypi.com" target="_blank">www.raspberrypi.com</a>)](https://assets.raspberrypi.com/static/6a75fa481019db1ac6bca74e5192cb5b/9ff6b/ffa68a46-fd44-4995-9ad4-ac846a5563f1_Camera%2BV2%2BHero.webp "Camera Module 2"){fig-align="center" fig-env="figure*"} ](https://www.raspberrypi.com/products/camera-module-v2/){target=_blank}
+
+:::
+:::
+
+::: {.aside}
+[Especificaciones Camera Module v2 (www.raspberrypi.com)](https://www.raspberrypi.com/documentation/accessories/camera.html#hardware-specification){target=_blank}
+:::
+
+## Simulación de cámara {.smaller visibility="hidden"}
+
+- Crear el `link` y la `joint` correspondiente
+
+```{.xml code-line-numbers=""}
+<link name="cam_link">
+  <visual>
+    <origin xyz="0 0 -0.0024" rpy="${pi/2} 0 ${pi/2}"/>
+    <geometry>
+        <mesh filename="file://$(find diffbot_description)/meshes/RPi_Camera_V2.1.stl"
+              scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="red" />
+  </visual>
+
+  <collision>
+    <origin xyz="0.00175 0 -0.0024" rpy="${pi/2} 0 ${pi/2}"/>
+    <geometry>
+        <box size="0.024 0.025 0.0083"/> <!-- 25mm x 24mm x 8.3mm-->
+    </geometry>
+  </collision>
+  
+  <xacro:dummy_inertial />
+</link>
+
+<joint name="cam_joint" type="fixed">
+  <parent link="base_link" />
+  <child link="cam_link" />
+  <!-- 8cm hacia adelante y 2.5cm hacia arriba -->
+  <origin xyz="0.08 0 0.025" rpy="0 0 0" />
+</joint>
+
+<!-- Link óptico de la cámara que representa el lente -->
+<link name="cam_optical_link"></link>
+
+<joint name="cam_optical_joint" type="fixed">
+    <!-- Las coordenadas son X horizontal, Y vertical, Z hacia adentro --> 
+    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}" />
+    <parent link="cam_link" />
+    <child link="cam_optical_link" />
+</joint>
+```
+
+## Sistema de coordenadas {.smaller}
+
+- Por lo general la dirección del eje $\require{color} \textcolor{red}{\mathbf{x}}$ es de izquierda a derecha y la dirección del eje $\require{color} \textcolor{green}{\mathbf{y}}$ de arriba hacia abajo
+- Por regla de la mano derecha, el eje $\require{color} \textcolor{blue}{\mathbf{z}}$ debe ir hacia adelante de la cámara
+
+![](https://facebookresearch.github.io/projectaria_tools/assets/images/camera3d-coordinate-frame-8e7eb3a8462f8402724205da4332725a.png){fig-align="center"}
+
+## Sistema de coordenadas {.smaller}
+
+- Para solucionarlo utilizamos dos marcos:
+  - uno para la cámara (con orientación **ENU**): `cam_link`
+  - otro que represente el marco óptico: `cam_optical_link`
+
+```{.xml code-line-numbers="false" code-line-numbers="4"}
+<link name="cam_optical_link"></link>
+
+<joint name="cam_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}" />
+    <parent link="cam_link" />
+    <child link="cam_optical_link" />
+</joint>
+```
+
+<br>
+
+::: {.callout-note appearance="simple"}
+Luego los *headers* de los mensages de `Image` y `CameraInfo` deben hacer referencia al `cam_optical_link` 
+:::
+
+## Parámetros de la cámara {.smaller}
+
+- Descripción del sensor: *RPiCamV2*
+  - Links: `cam_link`, `cam_optical_link`
+  - Fotogramas por segundo: 25
+
+```{.xml code-line-numbers="" filename="sim_camera.xacro"}
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"> 
+  <!-- .. -->
+  <gazebo reference="cam_link">
+    <sensor name="RPiCamV2" type="camera">
+      <always_on>1</always_on>
+      <update_rate>25</update_rate>
+      <visualize>true</visualize>
+      
+      <topic>camera</topic>
+      <camera_camera_info_topic>camera_info</camera_camera_info_topic>
+      <optical_frame_id>cam_optical_link</optical_frame_id>
+
+      <camera name="IMX219">
+          <!-- Parámetros de la cámara -->
+      </camera>
+    </sensor>
+  </gazebo>
+  <!-- .. -->
+</robot>
+```
+
+## Parámetros de la cámara {.smaller}
+
+- Descripción de los parámetros de la cámara
+
+::: {.columns}
+::: {.column}
+
+- $W = 640 \mathrm{px}$, $H = 480 \mathrm{px}$
+- $H_{FoV} = 62.2 \mathrm{°} \approx 1.085595 \mathrm{[rad]}$
+- $V_{FoV} = 48.8 \mathrm{°} \approx 0.851721 \mathrm{[rad]}$
+- $\texttt{fx} = \frac{W}{2 \cdot \tan(\frac{H_{FoV} \mathrm{[rad]}}{2})} \approx 530.47$
+- $\texttt{fy} = \frac{H}{2 \cdot \tan(\frac{V_{FoV} \mathrm{[rad]}}{2})} \approx 529.08$
+- $\texttt{cx} = \frac{W - 1}{2} = \frac{639}{2} = 319.5$
+- $\texttt{cy} = \frac{H - 1}{2} = \frac{479}{2} = 239.5$
+
+:::
+::: {.column}
+
+```{.xml code-line-numbers="false" filename="sim_camera.xacro"}
+<camera name="IMX219">
+  <horizontal_fov>1.085595</horizontal_fov>
+  <lens>
+    <intrinsics>
+      <fx>530.47</fx>
+      <fy>529.08</fy>
+      <cx>319.5</cx>
+      <cy>239.5</cy>
+      <s>0</s>
+    </intrinsics>
+  </lens>
+  <image> <!-- 640x480 mode -->
+    <width>640</width>
+    <height>480</height>
+    <format>R8G8B8</format>
+  </image>
+  <clip>
+    <near>0.01</near>
+    <far>25</far>
+  </clip>
+  <noise>
+    <type>gaussian</type>
+    <mean>0</mean>
+    <stddev>0.007</stddev>
+  </noise>
+</camera>
+```
+
+:::
+:::
+
+
+## Plugin de sensores {.smaller}
+
+- Para la simulación del sensor es necesario añadir en el `URDF` el plugin de `Sensors` 
+
+```{.xml code-line-numbers="" filename="sim_camera.xacro"}
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"> 
+  <!-- .. -->
+  <gazebo>
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+  </gazebo>
+  <!-- .. -->
+</robot>
+```
+
+## `ros_gz_bridge` {.smaller}
+
+- Actualizar el *launch*
+
+```{.py filename="*.launch.py" code-line-numbers=""}
+    Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        parameters=[{
+            "config_file": PathJoinSubstitution(
+                [FindPackageShare("<nombre_paquete>"), "config", "gz_bridge.yaml"]
+            ),
+        }],
+    )
+```
+
+- Actualizar el archivo de configuración:
+
+```{.yaml filename="gz_bridge.yaml" code-line-numbers=""}
+# Image from camera
+- topic_name: "/camera"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+```
+
+## Visualización de la imágen {.smaller}
+
+> #### `rqt_image_view`
+
+```{.sh code-line-numbers="false"}
+  $ ros2 run rqt_image_view rqt_image_view
+```
+
+![](figs/rqt_image_view.png){width="50%" fig-align="center"}
+
+# Procesamiento con `cv2` {visibility="hidden"}
+
+## Procesamiento mediante `cv2`
+
+### [Etapas]{.underline}
+
+::: {.incremental}
+0. Captura
+1. Preprocesamiento
+2. Detección del camino
+3. Estimación del curso
+:::
+
+## 0. Captura desde ROS2 {.smaller}
+
+> Se utiliza el paquete `cv_bridge` de `vision_opencv` para convertir los mensajes de tipo `Image` de ROS2 al tipo de dato utilizado por `cv2`
+
+- Dado el nodo `LineDetector` se crea el `CvBridge` y el subscriptor al topic `/camera`:
+
+```{.py }
+import rclpy
+from rclpy.node import Node
+
+from sensor_msgs.msg import Image
+import cv_bridge
+
+class LineDetector(Node):
+    def __init__(self):
+        # ..        
+        self.bridge = cv_bridge.CvBridge()
+        self.sub = self.create_subscription(Image, 'camera', self.sub_callback, 10)
+
+    def sub_callback(self, msg: Image):
+        image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        # ..
+```
+
+## 0. Captura desde ROS2 {.smaller}
+
+> Se utiliza el paquete `cv_bridge` de `vision_opencv` para convertir los mensajes de tipo `Image` de ROS2 al tipo de dato utilizado por `cv2`
+
+<br>
+
+![](figs/examples.svg){fig-align="center"}
+
+## 1. Preprocesamiento {.smaller}
+
+> Disminuir la resolución para reducir la carga computacional y obtener mejor rendimiento
+
+<!--
+- Ratio: 25% en ambos ejes
+-->
+```{.py }
+image = cv2.resize(image, None, 1, 0.25, 0.25, cv2.INTER_CUBIC)
+```
+
+![](figs/downsampling.svg){fig-align="center"}
+
+## 2. Detección del camino {.smaller}
+
+> Aplicar una máscara sobre la representación HSV
+
+
+- Utilizando la representación HSV podemos utilizar la información del canal de `Value` para detectar los píxeles de la línea
+- Representaciones HSV:
+
+```{=html}
+<table><thead>
+  <tr>
+    <th></th>
+    <th colspan="3" style="vertical-align: middle; text-align: center">Representación RGB</th>
+    <th colspan="3" style="vertical-align: middle; text-align: center">Representación HSV</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td></td>
+    <td style="vertical-align: middle; text-align: center">Red</td>
+    <td style="vertical-align: middle; text-align: center">Green</td>
+    <td style="vertical-align: middle; text-align: center">Blue</td>
+    <td style="vertical-align: middle; text-align: center">Hue</td>
+    <td style="vertical-align: middle; text-align: center">Sat.</td>
+    <td style="vertical-align: middle; text-align: center">Value</td>
+  </tr>
+  <tr style="background-color:rgba(255, 0, 0, 0.2);">
+    <td>rojo</td>
+    <td>255</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0°</td>
+    <td>100%</td>
+    <td>100%</td>
+  </tr>
+  <tr style="background-color:rgba(0, 255, 0, 0.2);">
+    <td>verde</td>
+    <td>0</td>
+    <td>255</td>
+    <td>0</td>
+    <td>120°</td>
+    <td>100%</td>
+    <td>100%</td>
+  </tr>
+  <tr style="background-color:rgba(0, 0, 255, 0.2);">
+    <td>azul</td>
+    <td>0</td>
+    <td>0</td>
+    <td>255</td>
+    <td>240°</td>
+    <td>100%</td>
+    <td>100%</td>
+  </tr>
+  <tr style="background-color:rgba(255, 255, 255, 0.2);">
+    <td>blanco</td>
+    <td>255</td>
+    <td>255</td>
+    <td>255</td>
+    <td>-</td>
+    <td>0%</td>
+    <td>100%</td>
+  </tr>
+  <tr style="background-color:rgba(0, 0, 0, 0.2);">
+    <td>negro</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>-</td>
+    <td>-</td>
+    <td>0%</td>
+  </tr>
+</tbody></table>
+```
+
+## 2. Detección del camino {.smaller}
+
+<!--
+> Usar las funciones `cvtColor` y `inRange`
+-->
+
+> Usar la función `inRange(..)` para construir la máscara
+
+- Recibe como parámetros:
+  - Una imágen de 3 canales: $I(x,y) = (H(x,y), S(x,y), V(x,y))$
+  - El límite inferior: $L = (H_{min}, S_{min}, V_{min})$
+  - El límite superior: $U = (H_{max}, S_{max}, V_{max})$
+
+- Devuelve:
+  - Una imágen de 1 canal $M(x,y)$:
+$$
+M(x,y) = \begin{cases}
+255 \quad \textrm{si} \, \left| \begin{matrix} H_{min} \leq H(x,y) \leq H_{max} \\
+S_{min} \leq  S(x,y) \leq S_{max} \\
+V_{min} \leq V(x,y) \leq V_{max} \\
+\end{matrix} \right. \\
+0 \quad \textrm{en cualquier otro caso}
+\end{cases}
+$$
+
+## 2. Detección del camino {.smaller}
+
+> Usar la función `inRange(..)` para construir la máscara
+
+- Ejemplo para el negro: H: (0-180°), S: (0-100%), **V: (0-12%)**
+```{.py }
+# Definir rango de la máscara
+lower = np.array([0, 0, 0])
+upper = np.array([255, 255, 30])
+# Aplicar máscara
+mask = cv2.inRange(image_hsv, lower, upper)
+```
+![](figs/mask-example.svg){fig-align="center"}
+
+## 2. Detección del camino {.smaller}
+
+> Usar la función `inRange(..)` para construir la máscara
+
+- Aplicado a la imágen del camino:
+
+![](figs/mask.svg){fig-align="center"}
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- Recibe como parámetro:
+  - Una imágen con intensidad de píxel $I(x,y)$
+
+- Devuelve:
+  - Momentos hasta de 3er orden:
+
+$$
+M_{pq} = \sum_x \sum_y x^p y^q I(x,y)
+$$
+
+donde $p$ y $q$ son los índices del momento, el orden se define como $p + q$ 
+
+<!--
+::: {.callout-note appearance="simple"}
+En este caso utilizaremos los momentos de orden cero y uno: $M_{00}$, $M_{10}$, $M_{01}$
+:::
+-->
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- Momento de orden cero: $p=0$ y $q=0$
+
+$$
+M_{00} = \sum_x \sum_y x^0 y^0 I(x,y) = \sum_x \sum_y (1) (1) I(x,y) = \sum_x \sum_y I(x,y)
+$$
+
+::: {.callout-note appearance="simple"}
+En una imágen binaria, es equivalente a contar la cantidad de píxeles con valor 1
+:::
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- Momentos de orden uno: $\langle p=1, q=0 \rangle$ y $\langle p=0, q=1 \rangle$
+
+$$
+M_{10} = \sum_x \sum_y x^1 y^0 I(x,y) = \sum_x \sum_y x (1) I(x,y) = \sum_x \sum_y x I(x,y)
+$$
+
+$$
+M_{01} = \sum_x \sum_y x^0 y^1 I(x,y) = \sum_x \sum_y (1) y I(x,y) = \sum_x \sum_y y I(x,y)
+$$
+
+::: {.callout-note appearance="simple"}
+En una imágen binaria, es equivalente a sumar las coordenadas $x$ (para $M_{10}$) e $y$ (para $M_{01}$) de píxeles con valor 1
+:::
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- A partir de los momentos es posible calcular el centroide $(C_x, C_y)$:
+
+$$
+C_x = \frac{M_{10}}{M_{00}} \qquad C_y = \frac{M_{01}}{M_{00}}
+$$
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- #### [Ejemplo numérico]{.underline}: Sea una imágen de $100\times100$ píxeles negros, con un cuadrado de $50\times50$ de píxeles blancos ubicados en el centro
+
+::: {.callout-tip appearance="simple"}
+Para todos los momentos solo se contalibilizaran los píxeles blancos, es decir, solo los píxeles $(x,y)$ tal que $25 \leq x,y < 75$:
+:::
+
+- Momento de orden cero:
+
+$$
+M_{00} = \sum_{x=25}^{74} \sum_{y=25}^{74} 1 = 50 \times 50 = 2500
+$$
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- #### [Ejemplo numérico]{.underline}: Sea una imágen de $100\times100$ píxeles negros, con un cuadrado de $50\times50$ de píxeles blancos ubicados en el centro
+
+- Momento de orden 1: $M_{10}$ (sumatoria en $x$)
+
+$$
+M_{10} = \sum_{x=25}^{74} \sum_{y=25}^{74} x
+$$
+
+para una coordenada $x$ la sumatoria sobre $y$, $x$ se mantiene constante
+
+$$
+M_{10} = \sum_{x=25}^{74} (50 \cdot x) =  50 \cdot \sum_{x=25}^{74} x = 50 \cdot \frac{50 (25 + 74)}{2} = 50 \cdot 2475 = 123750
+$$
+
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- #### [Ejemplo numérico]{.underline}: Sea una imágen de $100\times100$ píxeles negros, con un cuadrado de $50\times50$ de píxeles blancos ubicados en el centro
+
+- Momento de orden 1: $M_{01}$ (sumatoria en $y$): Al ser simétrico el ejemplo, el valor es igual a $M_{10}$
+
+$$
+M_{01} = 50 \cdot \sum_{y=25}^{74} y = 50 \cdot 2475 = 123750
+$$
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- #### [Ejemplo numérico]{.underline}: Sea una imágen de $100\times100$ píxeles negros, con un cuadrado de $50\times50$ de píxeles blancos ubicados en el centro
+
+::: {.columns}
+::: {.column}
+
+<br>
+
+$$
+C_x = \frac{M_{10}}{M_{00}} = \frac{123750}{2500} = 49.5
+$$
+$$
+C_y = \frac{M_{01}}{M_{00}} = \frac{123750}{2500} = 49.5
+$$
+
+:::
+::: {.column}
+
+![](figs/centroid-rectangle.svg){fig-align="center" width="70%"}
+
+:::
+:::
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+- #### [Otros ejemplos]{.underline}
+
+![](figs/centroids-examples.svg){fig-align="center"}
+
+## 3. Estimación del curso {.smaller}
+
+> Encontrar el centroide usando la función `moments(..)`
+
+```{.py}
+M = cv2.moments(mask)
+if M['m00'] > 0:
+    cx = int(M['m10']/M['m00'])
+    cy = int(M['m01']/M['m00'])
+```
+
+![](figs/centroids.svg){fig-align="center"}
+
+# Control de la velocidad angular {visibility="hidden"}
+
+## Seguimiento de la pista {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+
+> Utilizando la desviación horizontal del centroide respecto del centro podemos controlar el robot para mantener el curso
+
+- Sea el centro de la imagen $W/2$ y $e$ la diferencia con la coordenada $x$ del centroide, $c_x$:
+$$e = (W/2) - c_x$$
+
+- Si el centroide está a la izquierda:
+$$0 \leq c_x < W/2 \to 0 < e \leq W/2$$
+:::
+::: {.column width="50%"}
+
+![](figs/left-example.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+
+## Seguimiento de la pista {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+
+> Utilizando la desviación horizontal del centroide respecto del centro podemos controlar el robot para mantener el curso
+
+- Sea el centro de la imagen $W/2$ y $e$ la diferencia con la coordenada $x$ del centroide, $c_x$:
+$$e = (W/2) - c_x$$
+
+- Si el centroide está a la derecha:
+$$W/2 < c_x \leq W \to -W/2 \leq e < 0$$
+:::
+::: {.column width="50%"}
+
+![](figs/right-example.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+## Seguimiento de la pista {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+
+> Utilizando la desviación horizontal del centroide respecto del centro podemos controlar el robot para mantener el curso
+
+- Sea el centro de la imagen $W/2$ y $e$ la diferencia con la coordenada $x$ del centroide, $c_x$:
+$$e = (W/2) - c_x$$
+
+:::
+::: {.column width="50%"}
+
+![](figs/right-example.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+- Por lo tanto:
+$$
+\left.
+\begin{alignat}{2}
+% c_x < W/2& \to      -W/2 &&\leq e  < 0 \\
+0 \leq c_x < W/2& \to \qquad 0 &&< e \leq W/2 \\
+%c_x > W/2& \to \qquad   0 &&< e \geq W/2
+W/2 < c_x \leq W& \to -W/2 &&\leq e < 0
+\end{alignat}\right\} -W/2 \leq e \leq W/2 
+$$
+
+## Seguimiento de la pista {.smaller}
+
+#### Comando de `Twist`
+
+- Velocidad lineal: puede ser constante $\to 0.25 \textrm{[m/s]}$
+- Velocidad angular: variable entre $\to (-\dot\theta_{max},\dot\theta_{max}) \textrm{[rad/s]}$
+
+$$
+\require{color}
+\dot\theta = \textcolor{Maroon}{\alpha} * \dot\theta_{max} \quad \textrm{con} \ \textcolor{Maroon}{\alpha} \in (-1, 1)
+$$
+
+- Dividiendo $e$ por $W/2$ se puede acotar entre $(-1, 1)$:
+
+$$
+-W/2 \leq e \leq W/2 \ \to \ -1 \leq \frac{e}{W/2} \leq 1
+$$
+<!--
+$$
+-W/2 \leq e \leq W/2 \ \to \ \frac{-W/2}{W/2} \leq \frac{e}{W/2} \leq \frac{W/2}{W/2} \ \to \ -1 \leq \frac{e}{W/2} \leq 1
+$$
+-->
+
+$$
+\textcolor{Maroon}{\alpha} = \frac{e}{W/2} = \frac{(W/2) - c_x}{W/2} = 1 - \frac{c_x}{W/2} = 1 - \frac{2 * c_x}{W}
+$$
+
+# Ejemplos {visibility="hidden"}
+
+## Ejemplo 1 {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+
+> Centroide a la izquierda
+
+$$
+\textcolor{Maroon}{\alpha} = 1 - \frac{2 c_x}{W} = 1 - \frac{2 * 54}{160} = 0.325
+$$
+
+$$
+\begin{aligned}
+\dot\theta &= \textcolor{Maroon}{\alpha} * \theta_{max} \\
+           &= 0.325 * 1.0 \textrm{[rad/s]} \\
+           &= 0.325 \textrm{[rad/s]}
+\end{aligned}
+$$
+
+- Comando:
+
+```default
+{linear: { x: 0.25 }, angular: { z: 0.315 }}
+```
+
+:::
+::: {.column width="50%"}
+
+<br>
+
+![](figs/left-example.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+::: {.callout-tip appearance="simple"}
+Con velocidad angular positiva el robot girará hacia su izquierda ✅
+:::
+
+## Ejemplo 2 {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+
+> Centroide a la derecha
+
+$$
+\textcolor{Maroon}{\alpha} = 1 - \frac{2 c_x}{W} = 1 - \frac{2 * 99}{160} = -0.2375
+$$
+
+$$
+\begin{aligned}
+\dot\theta &= \textcolor{Maroon}{\alpha} * \theta_{max} \\
+           &= -0.2375 * 1.0 \textrm{[rad/s]} \\
+           &= -0.2375 \textrm{[rad/s]}
+\end{aligned}
+$$
+
+- Comando:
+
+```default
+{linear: { x: 0.25 }, angular: { z: -0.2375 }}
+```
+
+:::
+::: {.column width="50%"}
+
+<br>
+
+![](figs/right-example.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+::: {.callout-tip appearance="simple"}
+Con velocidad angular negativa el robot girará hacia su derecha ✅
+:::
+
+## Funciones auxiliares {.smaller}
+
+### Ver el procesamiento en tiempo real
+
+- Se crea una ventana utilizando la función `namedWindow` en el constructor del nodo
+
+```{.py }
+class LineDetector(Node):
+    def __init__(self):
+        # ..        
+        cv2.namedWindow("Robot_camera", 1)
+```
+
+- Luego en el *callback* se puede mostrar el resultado
+
+```{.py }
+    def sub_callback(self, msg: Image):
+        image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        # ..
+        # Dibujar el centroide
+        cv2.circle(image, (cx, cy), 5, (0,0,255), -1)
+        
+        cv2.imshow("Robot_camera", image)
+        cv2.waitKey(3)
+```
+
+# Demo {visibility="hidden"}
+
+## Demo
+
+![](figs/line-follower.gif)
+
+# Laboratorio {visibility="hidden"}
+
+## [Laboratorio](lab.qmd) {.center}
+
+Seguidor de lineas
