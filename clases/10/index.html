@@ -5,8 +5,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <title>Robótica 2025 – Robótica</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,7 +27,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-a877479387196f0a51385a0845e77ea0.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbddfaabaaccfd8a5ddbf403c6be5566.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -374,7 +374,7 @@
 <li class="fragment">La velocidad angular <span class="math inline">\(\textcolor{Orange}{\dot\theta}\)</span> se define como <span class="math inline">\(\textcolor{Orange}{\dot\theta} = \tfrac{2 \pi}{T}\)</span> y tiene unidades de <em>rad/s</em>.</li>
 <li class="fragment">Combinando estas dos ecuaciones, se obtiene la relación entre velocidad lineal y angular para un movimiento circular: <span id="eq-V-lin"><span class="math display">\[
 \textcolor{Blue}{\upsilon} = \textcolor{Orange}{\dot\theta} \textcolor{ForestGreen}{\mathcal{R}}
-\qquad(1)\]</span></span></li>
+\tag{1}\]</span></span></li>
 </ul>
 </div><div class="column" style="width:5%;">
 
@@ -404,7 +404,7 @@
   \textcolor{Blue}{\upsilon_L} = \textcolor{Orange}{\dot\theta} (\textcolor{ForestGreen}{{R}} - \tfrac{\textcolor{Gray}{b}}{2})\\
   \textcolor{Blue}{\upsilon_R} = \textcolor{Orange}{\dot\theta} (\textcolor{ForestGreen}{{R}} + \tfrac{\textcolor{Gray}{b}}{2})
 \end{cases}
-\qquad(2)\]</span></span></li>
+\tag{2}\]</span></span></li>
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
@@ -435,7 +435,7 @@
 </ul>
 <p><span id="eq-vR-ang"><span class="math display">\[
 \textcolor{Orange}{\dot\theta} = \frac{\textcolor{Blue}{\upsilon_R} - \textcolor{Blue}{\upsilon_L}}{\textcolor{Gray}{b}}
-\qquad(3)\]</span></span></p>
+\tag{3}\]</span></span></p>
 </section>
 <section id="radio-de-giro-de-un-robot-diferencial" class="slide level2 smaller">
 <h2><span style="font-size: 80%;">Radio de giro de un robot diferencial</span></h2>
@@ -714,7 +714,7 @@
   0 &amp; 0\\
   \frac{r}{\textcolor{Gray}{b}} &amp; - \frac{r}{\textcolor{Gray}{b}}
 \end{bmatrix} \begin{bmatrix} \textcolor{Plum}{\dot\phi_R} \\ \textcolor{Plum}{\dot\phi_L} \end{bmatrix}
-\qquad(4)\]</span></span></li>
+\tag{4}\]</span></span></li>
 </ul>
 </div>
 </div><div class="column" style="width:5%;">
@@ -1112,7 +1112,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
