@@ -1,0 +1,228 @@
+## Corrección de errores de Tipo A
+
+::: {style="font-size:70%;"}
+
+- Error de **Tipo A** y **Tipo B** para la dirección $x$ en trayectoria con sentido horario y anti-horario:
+
+$$
+\begin{alignat}{2}
+&\textrm{A)} \, \cw{x} &= -2 L \alpha \qquad &&\textrm{B)} \, \cw{x} &= -2 L \beta \\
+&\textrm{A)} \, \ccw{x} &= -2 L \alpha \qquad &&\textrm{B)} \, \ccw{x} &= 2 L \beta
+\end{alignat}
+$$
+
+
+- Superponiendo ambos tipos de error y [sumando]{.underline} ambas expresiones:
+
+$$
+\left.
+\begin{alignat}{3}
+&\cw{\textrm{x:}} \, -&2 L \alpha - &2 L \beta
+&&= \cw{\bar{x}} \\
+&\ccw{\textrm{x:}} \, -&2 L \alpha + &2 L \beta
+&&= \ccw{\bar{x}}
+\end{alignat}
+\right\}
+-4 L \alpha = \cw{\bar{x}} + \ccw{\bar{x}} \to \alpha = \frac{\cw{\bar{x}} + \ccw{\bar{x}}}{-4L}
+$${#eq-alpha_x}
+
+:::
+
+## Corrección de errores de Tipo A
+
+::: {style="font-size:70%;"}
+
+- El mismo análisis para la dirección $y$ muestra un resultado similar:
+
+$$
+\begin{alignat}{3}
+&\textrm{A)} \, &\cw{y} &= -2 L \alpha \qquad &&\textrm{B)} \, \cw{y} &= -2 L \beta \\
+&\textrm{A)} \, &\ccw{y} &= 2 L \alpha \qquad &&\textrm{B)} \, \ccw{y} &= - 2 L \beta
+\end{alignat}
+$$
+
+- Superponiendo ambos tipos de error y [restando]{.underline} ambas expresiones:
+
+$$
+\left.
+\begin{alignat}{4}
+&\cw{\textrm{y:}} \, -&2 L \alpha - &2 L \beta
+&&= \cw{\bar{y}} \\
+&\ccw{\textrm{y:}} \, &2 L \alpha - &2 L \beta
+&&= \ccw{\bar{y}}
+\end{alignat}
+\right\}
+-4 L \alpha = \cw{\bar{y}} - \ccw{\bar{y}} \to \alpha = \frac{\cw{\bar{y}} - \ccw{\bar{y}}}{-4L}
+$${#eq-alpha_y}
+
+:::
+
+## Corrección de errores de Tipo A
+
+::: {style="font-size:70%;"}
+
+- Dado que la distancia entre ejes $b$ es inversamente proporcional a la rotación real
+
+$$
+\frac{b_{\textrm{actual}}}{\pi / 2} = \frac{b_{\textrm{nominal}}}{\pi / 2 - \alpha} \to b_{\textrm{actual}} = \frac{\pi / 2}{\pi / 2 - \alpha} b_{\textrm{nominal}}
+$${#eq-b_actual}
+
+y por lo tanto:
+
+$$
+E_b = \frac{\pi / 2}{\pi / 2 - \alpha}
+$${#eq-E_b_alpha}
+
+:::
+
+
+## Corrección de errores Tipo B
+
+::: {style="font-size:70%;"}
+
+- Análisis similar al anterior para la dirección en $x$
+
+$$
+\begin{alignat}{2}
+&\textrm{A)} \, &\cw{x} = -2 L \alpha \qquad &&\textrm{B)} \, &\cw{x} &= -2 L \beta \\
+&\textrm{A)} \, &\ccw{x} = -2 L \alpha \qquad &&\textrm{B)} \, &\ccw{x} &= 2 L \beta
+\end{alignat}
+$$
+
+- Superponiendo ambos tipos de error y [restando]{.underline} ambas expresiones:
+
+$$
+\left.
+\begin{alignat}{3}
+&\cw{\textrm{x:}} \, -&2 L \alpha - &2 L \beta
+&&= \cw{\bar{x}} \\
+&\ccw{\textrm{x:}} \, -&2 L \alpha + &2 L \beta
+&&= \ccw{\bar{x}}
+\end{alignat}
+\right\}
+-4 L \beta = \cw{\bar{x}} - \ccw{\bar{x}} \to \beta = \frac{\cw{\bar{x}} - \ccw{\bar{x}}}{-4L}
+$${#eq-beta_x}
+
+:::
+
+## Corrección de errores Tipo B
+
+::: {style="font-size:70%;"}
+
+- El mismo procedimiento para la dirección en $y$ arroja un resultado similar
+
+$$
+\begin{alignat}{3}
+&\textrm{A)} \, &\cw{y} &= -2 L \alpha \qquad &&\textrm{B)} \, \cw{y} &= -2 L \beta \\
+&\textrm{A)} \, &\ccw{y} &= 2 L \alpha \qquad &&\textrm{B)} \, \ccw{y} &= - 2 L \beta
+\end{alignat}
+$$
+
+- Superponiendo ambos tipos de error y [sumando]{.underline} ambas expresiones:
+
+$$
+\left.
+\begin{alignat}{4}
+&\cw{\textrm{y:}} \, -&2 L \alpha - &2 L \beta
+&&= \cw{\bar{y}} \\
+&\ccw{\textrm{y:}} \, &2 L \alpha - &2 L \beta
+&&= \ccw{\bar{y}}
+\end{alignat}
+\right\}
+-4 L \beta = \cw{\bar{y}} + \ccw{\bar{y}} \to \beta = \frac{\cw{\bar{y}} + \ccw{\bar{y}}}{-4L}
+$${#eq-beta_y}
+
+:::
+
+## Corrección de errores Tipo B {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- El radio de curvatura $R$ de las trayectorias en linea recta se puede encontrar a partir del triángulo $\overset{\triangle}{ABM}$ en la figura
+$$
+R = \frac{L/2}{\sin(\beta/2)}
+$${#eq-R_beta}
+
+- Para determinar la relación entre los diámetros de las ruedas:
+
+$$
+E_d = \frac{D_R}{D_L} = \frac{R + b/2}{R - b/2}
+\label{eq:wheel_correction}
+$${#eq-E_d_R} 
+
+::: {.callout-tip appearance="minimal"}
+Esta relación se puede utilizar para corregir errores de **Tipo B**
+:::
+
+:::
+::: {.column}
+
+<br>
+
+![](figura9.png){fig-align="center"}
+
+:::
+:::
+
+
+## Corrección de ambos tipo de error {.smaller}
+
+- La corrección del error de distancia entre ejes $E_b$ es trivial
+
+> La distancia entre ejes $b$ se redefine según la ecuación:
+$$
+b_{\textrm{actual}} = \frac{\pi / 2}{\pi / 2 - \alpha} b_{\textrm{nominal}}
+$$
+
+- La corrección para los diámetros de rueda desiguales $E_d$ es más compleja
+
+>  Al aplicar un factor de compensación, debemos asegurarnos de no modificar el diámetro medio de la rueda $D_a = (D_R + D_L)/2$
+
+::: {.notes}
+Una vez conocidos los valores cuantitativos de $E_d$ y $E_b$, es fácil compensar estos errores en el software. 
+
+La corrección del error de distancia entre ejes $E_b$ es trivial: la distancia entre ejes $b$ se redefine en el software según la ecuación \ref{eq:new_b}.
+
+La corrección para los diámetros de rueda desiguales, $E_d$, es ligeramente más compleja. Tras realizar los experimentos bidireccionales, se conoce la relación real de los diámetros de la ruedas $E_d = D_R/D_L$ a partir de la ecuación \ref{eq:wheel_correction}. Sin embargo, al aplicar un factor de compensación, debemos asegurarnos de no modificar el diámetro medio de la rueda $D_a$, ya que sería necesario recalibrar dicho parámetro. Por lo tanto $D_a = (D_R + D_L)/2$
+:::
+
+## Corrección de ambos tipo de error {.smaller}
+
+- Resolviendo
+
+$$
+\left.
+\begin{aligned}
+D_a = (D_R + D_L)/2 \\
+E_d = \frac{D_R}{D_L}
+\end{aligned}
+\right\}
+E_d D_L + \frac{D_R}{E_d} = 2 D_a
+$$
+
+- Se obtiene
+
+$$
+\begin{align*}
+E_d D_L + D_L = 2 D_a &\to D_L = \frac{2}{E_d +1} D_a \\ 
+D_R + \frac{D_R}{E_d} = 2 D_a &\to D_R = \frac{2}{\frac{1}{E_d} +1} D_a
+\end{align*}
+$$
+
+## Corrección de ambos tipo de error {.smaller}
+
+- Se definen dos factores de corrección:
+
+$$
+\begin{align*}
+c_L &= \frac{2}{E_d + 1} \\
+c_R &= \frac{2}{\frac{1}{E_d} + 1}
+\end{align*}
+$${#eq-cL_cR}
+
+- Se re-escribe la ecuación de desplazamiento lineal de las ruedas:
+
+$$
+\Delta s_{L|R,i} = \pi \cdot D_{L|R} \cdot \frac{N_{L|R, i}}{c_e} \cdot c_{L|R}
+$$

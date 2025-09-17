@@ -1,0 +1,140 @@
+---
+title: Clase 16 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+# Calibración de odometría
+
+#### Objetivos
+
+* Obtener los parámetros de calibración de odometría
+* Editar los nodos de control y de cálculo de odometría para recibir los parámetros de calibración
+* Probar la mejora de la estimación de posición
+
+## Cargar el plugin `OdometryPublisher`
+
+- Con la finadad de obtener la posición precisa del robot para comparar con la odometría calculada se utilizará el plugin provisto por *Gazebo* `OdometryPublisher`. Para esto será necesario añadirlo en el archivo *XACRO* como si fuera un sensor más.
+
+```{.xml code-line-numbers="true"}
+<gazebo>
+  <plugin filename="gz-sim-odometry-publisher-system"
+          name="gz::sim::systems::OdometryPublisher">
+    <odom_frame>odom</odom_frame>
+    <robot_base_frame>base_link</robot_base_frame>
+    <dimensions>2</dimensions>
+  </plugin>
+</gazebo>
+```
+
+- El plugin publica el topic de gazebo `/model/{nombre_del_robot}/odometry` con el tipo `gz.msgs.Odometry`, por lo que será necesario configurar el `ros_gz_bridge` de forma que se publiquen los mensajes en ROS2 a través del tipo `nav_msgs/msg/Odometry`.
+
+::: {.callout-tip appearance="simple"}
+Si es necesario listar los topics en *Gazebo* puede utilizar el comando `gz topic -l`
+:::
+
+
+## Ejecutar el procedimiento de calibración
+
+#### 1. Programación de la trayectoria cuadrada
+
+- Programar un nodo para ejecutar una trayectoria cuadrada de 4x4 [m] con rotaciones puras en las esquinas
+- Para simplificar el proceso, envíe comandos de velocidad lineal o velocidad angular preprogramados en un cierto intervalo de tiempo, sin utilizar retroalimetación o *feedback* de la posición. Es decir, programar para un segmento recto de 1[m] una velocidad lineal de 0.2 [m/s] durante 5[s].
+- Recuerde enviar un comando con velocidad lineal y angular 0 para detener el robot
+- A través de un parámetro, seleccionar si la trayectoria es en sentido horario (*CW*) o anti-horario (*CCW*)
+
+#### 2. Obtención de las muestras para calibración
+
+<ol type="A">
+    <li>Cargar el robot en un mundo vacío (*empty.sdf*)</li>
+    <li>Ejecutar la trayectoria en sentido anti-horario</li>
+    <li>Obtener la posición en $x$ e $y$ calculada por el nodo de odometría</li>
+    <li>Obtener la posición en $x$ e $y$ real del robot mediante el *topic* de odometría publicado por *Gazebo*</li>
+    <li>Calcular y almacenar los valores de error $\epsilon_x$ y $\epsilon_y$</li>
+    <li>Repetir los pasos **A-D** al menos 4 veces más</li>
+    <li>Repetir los pasos **A-E** para la trayectoria en sentido horario</li>
+</ol>
+ 
+
+::: {.callout-tip appearance="simple"}
+Para obtener las posiciones existen múltiples opciones:
+
+- Puede utilizar el comando de consola `ros2 topic echo` con la opción `--once`
+- Programar un nodo extra que obtenga e imprima los valores
+- Programar en el mismo nodo de la trayectoria que se impriman ambos valores al finalizar
+:::
+
+#### 3. Cálculo de los parámetros de corrección
+
+::: {.hidden}
+$$
+\def\ccw#1{{\underset{\scriptsize \textrm{CCW}}{#1}}}
+\def\cw#1{{\underset{\scriptsize \textrm{CW}}{#1}}}
+\def\ccwcw#1{{\underset{\scriptsize \textrm{CCW|CW}}{#1}}}
+$$
+:::
+
+- Calcular los centroides de cada grupo $\ccwcw{\bar{x}}$ y $\ccwcw{\bar{y}}$
+
+$$
+\ccwcw{\bar{x}} = \frac{1}{N} \sum_{i = 1}^N \ccwcw{\epsilon_{x_i}} \qquad \ccwcw{\bar{y}} = \frac{1}{N} \sum_{i = 1}^N \ccwcw{\epsilon_{y_i}}
+$$
+con $N = 3,5,7 \cdots$ la cantidad de repeticiones para cada lado
+
+- Calcular $\alpha$ y obtener el valor de $E_b$:
+
+$$
+\alpha = \frac{\cw{\bar{x}} + \ccw{\bar{x}}}{-4L} \quad ó \quad  \alpha = \frac{\cw{\bar{y}} - \ccw{\bar{y}}}{-4L}
+$$
+
+$$
+E_b = \frac{\pi / 2}{\pi / 2 - \alpha}
+$$
+
+
+
+- Calcular $\beta$, $R$ y obtener el valor de $E_d$:
+
+$$
+\beta = \frac{\cw{\bar{x}} - \ccw{\bar{x}}}{-4L} \quad ó \quad  \beta = \frac{\cw{\bar{y}} + \ccw{\bar{y}}}{-4L}
+$$
+
+$$
+R = \frac{L/2}{\sin(\beta/2)}
+$$
+
+$$
+E_d = \frac{R + b/2}{R - b/2}
+\label{eq:wheel_correction}
+$$
+
+- Obtener los coeficientes de corrección $c_L$ y $c_R$:
+
+$$
+c_L = \frac{2}{E_d + 1} \qquad
+c_R = \frac{2}{\frac{1}{E_d} + 1}
+$$
+
+
+#### 4. Modificación de los nodos de control y odometría
+
+- Implemente dentro de aquellos nodos que utilicen el modélo cinemático del robot diferencial los parámetros de corrección vistos en la clase
+
+- Los nodos deben recibir los 3 parámetros ($c_L$ $c_R$ y $b$) y aplicar las correcciones:
+
+$$
+b_{\textrm{actual}} = E_b \cdot b_{\textrm{nominal}}
+$$
+$$
+\Delta s_{L|R,i} = \left( \phi_{L|R,i} - \phi_{L|R,i-1} \right) \cdot r_{L|R} \cdot c_{L|R}
+$$
+
+#### 5. Modificación del *launch*
+
+- Incorpore a el/los archivo/s *launch* correspondientes los valores de los parámetros calculados anteriormente

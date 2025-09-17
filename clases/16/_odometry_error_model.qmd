@@ -1,0 +1,418 @@
+## Repaso odometría {.smaller}
+
+> Calculo del desplazamiento desde una posición inicial mediante la medición de las revoluciones de las ruedas
+
+- Sea la posición en el instante $k-1$:
+$$
+p_{k-1} = \begin{bmatrix} x & y & \theta \end{bmatrix}^\top 
+$$
+
+- La posición estimada para el instante $k$ puede obtenerse sumando las distancias recorridas de forma incremental:
+
+$$
+p_{k} = p_{k-1} + \Delta p
+$$
+
+::: {.notes}
+El posicionamiento relativo suele basarse en la odometría (medición de las revoluciones de las ruedas para calcular el desplazamiento desde una posición inicial conocida). 
+
+La odometría calcula el desplazamiento horizontal relativo del robot y el cambio de orientación en función del desplazamiento horizontal incremental de las ruedas motrices.
+
+La odometría se basa en ecuaciones sencillas de fácil implementación que utilizan datos de encoders incrementales de rueda económicos.
+
+Sin embargo, parte de la suposición de que las revoluciones de la rueda pueden traducirse en un desplazamiento lineal con respecto al suelo. Esta suposición tiene una validez limitada. Un ejemplo extremo es el deslizamiento de una rueda: si una rueda patinara, por ejemplo, en un lugar con aceite, el encoder asociado a la rueda registraría las revoluciones aunque estas no correspondieran a un desplazamiento lineal.
+
+Además de este caso extremo de deslizamiento total, existen otras razones más sutiles que explican las imprecisiones en la traducción de las lecturas del encoder de rueda a movimiento lineal.
+:::
+
+## Repaso odometría
+
+::: {style="font-size:70%;"}
+
+- Para un robot *differential-drive*, con un período de muestreo fijo $\Delta t$:
+
+$$
+\Delta p = 
+\begin{bmatrix} \Delta x \\ \Delta y \\ \Delta\theta \end{bmatrix} =
+\begin{bmatrix}
+\Delta s \cos(\theta + \frac{\Delta\theta}{2})\\
+\Delta s \sin(\theta + \frac{\Delta\theta}{2})\\
+\frac{\Delta s_{R} - \Delta s_{L}}{b}
+\end{bmatrix}
+$$
+
+
+donde:
+
+- $\Delta x, \Delta y, \Delta\theta$: el avance en el último período
+- $\Delta s_{L|R}$: la distancia recorrida por la rueda izquierda y derecha respectivamente
+- $\Delta s = (\Delta s_{L} + \Delta s_{R}) / 2$ 
+- $b$: la distancia entre ruedas
+
+:::
+
+## Repaso odometría
+
+::: {style="font-size:70%;"}
+
+- Utilizando las definiciones de $\Delta s$ y $\Delta\theta$ se obtiene la ecuación para la actualización de la posición
+
+```{python}
+#| echo: false
+#| output: asis
+
+import sympy as sp
+from sympy.utilities.lambdify import implemented_function
+
+x, y, th = sp.symbols(r'x,y,\theta')
+b = sp.Symbol('b')
+p = sp.Matrix([[x], [y], [th]])
+
+Delta_sL = sp.Symbol(r'\Delta s_L')
+Delta_sR = sp.Symbol(r'\Delta s_R')
+
+Delta_s = (Delta_sL + Delta_sR) / 2
+Delta_th = (Delta_sR - Delta_sL) / b
+
+Delta_x = Delta_s * sp.cos(th + Delta_th/2)
+Delta_y = Delta_s * sp.sin(th + Delta_th/2)
+
+p = sp.Matrix([[x], [y], [th]])
+Delta_p = sp.Matrix([[Delta_x], [Delta_y], [Delta_th]])
+p_next = sp.Matrix(p + Delta_p)
+
+print(r'$$\begin{align*}p_k &= p_{k-1} + \Delta p\\ &= '+sp.latex(p)+r' + '+sp.latex(Delta_p)+r'\end{align*}$$')
+```
+
+::: {.hidden}
+$$
+\def\f{{\boldsymbol{f}}}
+$$
+:::
+
+- De forma reducida:
+
+$$
+p_{k} = \f \left( x, \  y, \  \theta, \  \Delta s_{L}, \  \Delta s_{R}, \  b\right)
+$$
+
+:::
+
+# Modelo de error de odometría {visibility="hidden"}
+
+## Modelo de error de odometría {.smaller}
+
+- Para el movimiento incremental $\Delta s_L$ y $\Delta s_R$ se asume una matriz de covarianza $\Sigma_\Delta$:
+
+$$
+\Sigma_\Delta = \mathcal{covar}(\Delta s_L, \Delta s_R) = \begin{bmatrix}
+k_L |\Delta s_L|  & 0\\
+               0  & k_R |\Delta s_R|
+\end{bmatrix}
+$$
+
+1. Los errores de las ruedas motrices son independientes
+2. La varianza de los errores es proporcional al valor absoluto de la distancia recorrida
+3. $k_L$ y $k_R$ son coeficientes de error constantes
+
+::: {.notes}
+Las actualizaciones de la posición odométrica solo pueden proporcionar una estimación muy aproximada de la posición real
+
+Debido a los errores de integración de las incertidumbres de p y a los errores de movimiento durante el movimiento incremental, el error de posición basado en la integración odométrica aumenta con el tiempo
+
+Se establecerá un modelo de error para la posición integrada $p_{k}$ con el fin de obtener la matriz de covarianza $\Sigma p_{k}$ de la estimación de la posición odométrica.
+
+Se asume:
+
+- En el punto de partida se conoce la matriz de covarianza inicial $\Sigma p_{k-1}$
+- $k_R$, $k_L$ son constantes de error que representan los parámetros no deterministas del accionamiento del motor y la interacción de la rueda y el suelo
+- Los dos errores de las ruedas motrices individuales son independientes
+- La varianza de los errores (ruedas izquierda y derecha) es proporcional al valor absoluto de las distancias recorridas
+
+Estas suposiciones no son perfectas, pero simplifican el desarrollo del modelo de error
+
+Los errores de movimiento se deben a movimientos imprecisos debido a la deformación de la rueda, deslizamiento, suelo irregular, errores en los codificadores, etc. Los valores de las constantes de error $k_L$ y $k_R$ dependen del robot y del entorno, y deben determinarse experimentalmente mediante la realización y el análisis de movimientos representativos.
+:::
+
+## Modelo de error de odometría {.smaller}
+
+- Suponiendo que $p_{k-1}$ y $\Delta_{L,R} = \begin{bmatrix} \Delta s_L & \Delta s_R \end{bmatrix}$ no están correlacionados y $\boldsymbol{f}$ se puede aproximar mediante la expansión de *Taylor* de primer orden:
+
+$$
+\Sigma_{p_k} = \nabla_p \f \cdot \Sigma_{p_{k-1}} \cdot \nabla_p \f^\top + \nabla_{\Delta_{L,R}} \f \cdot \Sigma_\Delta \cdot \nabla_{\Delta_{L,R}} \f^\top
+$$
+
+donde $\Sigma_{p_{k-1}}$ está dado por el paso anterior, y puede calcularse a partir de un valor incial (generalmente $\Sigma_{p_0} = \mathbb{0}$)
+
+- Utilizando la definción de $p_{k} = \f(\cdot)$ es posible obtener los *Jacobianos*:
+
+$$
+F_p = \nabla_p \f \\
+F_{\Delta_{L,R}} = \nabla_{\Delta_{L,R}} \f
+$$
+
+::: {.notes}
+Si suponemos que $p_{k-1}$ y $\Delta_{L,R} = \begin{bmatrix} \Delta s_L & \Delta s_R \end{bmatrix})$ no están correlacionados y la derivada de $f$ se puede aproximar mediante la expansión de Taylor de primer orden
+:::
+
+## Modelo de error de odometría
+
+::: {style="font-size:70%;"}
+
+- El *Jacobiano* de $\f$ con respecto al vector de posición $p = \begin{bmatrix}x & y & \theta \end{bmatrix}$:
+
+$$
+F_p = \nabla_p \f = \nabla_p (\f^\top) = \begin{bmatrix} \frac{\partial \f}{\partial x} & \frac{\partial \f}{\partial y} & \frac{\partial \f}{\partial \theta} \end{bmatrix}
+$$
+
+- Que resulta en:
+
+::: {#eq-f_definition}
+```{python}
+#| echo: false
+#| output: asis
+
+F_p = p_next.jacobian(p)
+
+print(r'$$F_p = '+sp.latex(F_p.subs([(Delta_s, sp.Symbol(r'\Delta s')), (Delta_th, sp.Symbol(r'\Delta\theta')), ]))+r'$$')
+```
+:::
+
+:::
+
+## Modelo de error de odometría
+
+::: {style="font-size:70%;"}
+
+- El *Jacobiano* de $\f$ con respecto al desplazamiento de las ruedas $\Delta_{L,R} = \begin{bmatrix} \Delta s_L & \Delta s_R \end{bmatrix}$:
+
+$$
+F_{\Delta_{L,R}} = \nabla_{\Delta_{L,R}} \f = \begin{bmatrix} \frac{\partial \f}{\partial \Delta s_L} & \frac{\partial \f}{\partial \Delta s_R} \end{bmatrix}
+$$
+
+- Que resulta en:
+
+```{python}
+#| echo: false
+#| output: asis
+
+F_DeltaRL = p_next.jacobian([Delta_sL, Delta_sR])
+
+print(r'$$F_{\Delta_{L,R}} = '+sp.latex(F_DeltaRL.subs([(Delta_s, sp.Symbol(r'\Delta s')), (Delta_th, sp.Symbol(r'\Delta\theta')), ]))+r'$$')
+```
+
+:::
+
+## Modelo de error de odometría {.smaller}
+
+- Dados los parámetros de error $k_L$ y $k_R$, se puede ver la evolución del error de posición
+
+```{python}
+#| echo: false
+#| output: no
+import numpy as np
+import matplotlib.pyplot as plt
+
+from matplotlib.patches import Ellipse
+import matplotlib.transforms as transforms
+
+k_L = sp.Symbol(r'k_L')
+k_R = sp.Symbol(r'k_R')
+
+Sigma_Delta = sp.Matrix([
+    [k_R * sp.Abs(Delta_sR),                      0],
+    [                     0, k_L * sp.Abs(Delta_sL)]
+])
+
+Sigma_p = sp.Matrix(sp.MatrixSymbol(r'\Sigma p', 3, 3))
+
+Sigma_pnext =  F_p * (Sigma_p * F_p.T) + F_DeltaRL * (Sigma_Delta * F_DeltaRL.T)
+
+calc_Sigma_pnext = sp.lambdify([th, Sigma_p, Delta_sL, Delta_sR, k_L, k_R, b], Sigma_pnext, modules='numpy')
+
+def simulate_diffdrive(cmd_vel, duration, x0, dt, b_nom, r_nom, b_actual = None, rl_actual = None, rr_actual = None):
+    # Obtengo la velocidad lineal y angular deseada
+    x_dot, w_dot = cmd_vel[0], cmd_vel[1]
+        
+    # Modelo cinemático inverso
+    phi_dot_lwheel = (x_dot - ((b_nom/2) * w_dot)) / r_nom
+    phi_dot_rwheel = (x_dot + ((b_nom/2) * w_dot)) / r_nom
+    
+    if b_actual is None:
+        b_actual = b_nom
+    if rl_actual is None:
+        rl_actual = r_nom
+    if rr_actual is None:
+        rr_actual = r_nom
+    
+    T = np.arange(0, duration+dt, dt)
+    odom = np.zeros((T.shape[0], 3))
+    odom[0] = x0
+
+    cov = [np.zeros((3,3))]
+    
+    for idx, t in enumerate(T[1:], 1):
+        # Cálculo de la distancia recorrida
+        dl_k = (phi_dot_lwheel * dt) * rl_actual
+        dr_k = (phi_dot_rwheel * dt) * rr_actual
+        
+        dA_k = (dr_k + dl_k) / 2
+        Dw_k = (dr_k - dl_k) / b_actual
+
+        # Cálculo de la odometría (pose)
+        odom[idx, 0] = odom[idx-1,0] + dA_k * np.cos(odom[idx-1,2])
+        odom[idx, 1] = odom[idx-1,1] + dA_k * np.sin(odom[idx-1,2])
+        odom[idx, 2] = odom[idx-1,2] + Dw_k
+        
+        cov.append(calc_Sigma_pnext(
+            odom[idx-1,2], cov[idx-1].reshape(-1,1), dl_k, dr_k, 0.0001, 0.0001, b_nom
+        ).squeeze())
+    
+    return odom, (phi_dot_lwheel, phi_dot_rwheel), cov
+
+def simulate_trajectory(trajectory, x0, **args):
+    odom = np.array([x0])
+    for (vx, vang, dur) in trajectory:
+        sim = simulate_diffdrive([vx, vang], dur, odom[-1], **args)
+        
+        odom = np.vstack((odom, sim[0][1:]))
+    
+    return odom
+
+def confidence_ellipse(cov, ax, n_std=3.0, cx = 0.0, cy = 0.0, facecolor='none', **kwargs):
+    """
+    Create a plot of the covariance confidence ellipse of *x* and *y*.
+
+    Parameters
+    ----------
+    cov : array-like, shape (2,2)
+        Input data.
+
+    ax : matplotlib.axes.Axes
+        The Axes object to draw the ellipse into.
+
+    n_std : float
+        The number of standard deviations to determine the ellipse's radiuses.
+
+    **kwargs
+        Forwarded to `~matplotlib.patches.Ellipse`
+
+    Returns
+    -------
+    matplotlib.patches.Ellipse
+    """
+    # if x.size != y.size:
+    #     raise ValueError("x and y must be the same size")
+
+    # cov = np.cov(x, y)
+    pearson = cov[0, 1]/np.sqrt(cov[0, 0] * cov[1, 1])
+    # Using a special case to obtain the eigenvalues of this
+    # two-dimensional dataset.
+    ell_radius_x = np.sqrt(1 + pearson)
+    ell_radius_y = np.sqrt(1 - pearson)
+    ellipse = Ellipse((0, 0), width=ell_radius_x * 2, height=ell_radius_y * 2,
+                      facecolor=facecolor, **kwargs)
+
+    # Calculating the standard deviation of x from
+    # the squareroot of the variance and multiplying
+    # with the given number of standard deviations.
+    scale_x = np.sqrt(cov[0, 0]) * n_std
+    # mean_x = np.mean(x)
+
+    # calculating the standard deviation of y ...
+    scale_y = np.sqrt(cov[1, 1]) * n_std
+    # mean_y = np.mean(y)
+
+    transf = transforms.Affine2D() \
+        .rotate_deg(45) \
+        .scale(scale_x, scale_y) \
+        .translate(cx, cy)
+
+    ellipse.set_transform(transf + ax.transData)
+    return ax.add_patch(ellipse)
+
+
+DT = 0.1/np.pi
+B_NOM = 0.135
+R_NOM = 0.035
+```
+
+```{python}
+#| echo: false
+#| layout-ncol: 2
+#| fig-align: center
+#| fig-format: svg
+#| fig-cap: 
+#|   - "* La incertidumbre en $y$ crece mucho más rápido que en la dirección del movimiento"
+#|   - "* El eje principal de la elipse no permanece perpendicular a la dirección del movimiento"
+
+%config InlineBackend.figure_format = 'svg'
+
+odom, _, cov = simulate_diffdrive([np.pi/(2*5), 0.0], 5, np.array([0.0, 0.0, 0.0]), dt=DT, b_nom=B_NOM, r_nom=R_NOM)
+
+fig, ax = plt.subplots(figsize=(4.5,7))
+
+ellip_color = 'C0'
+
+ax.plot(odom[:101,0], odom[:101,1], '-', color='k', linewidth=2)
+
+for loc, c in zip(odom[1:101:20], cov[1:101:20]):
+    confidence_ellipse(c, plt.gca(), cx = loc[0], cy = loc[1], edgecolor=ellip_color, zorder=10)
+    ax.scatter(loc[0], loc[1], marker='o', color='k', linewidths=2)
+    
+confidence_ellipse(cov[101], plt.gca(), cx = odom[101, 0], cy = odom[101, 1], edgecolor=ellip_color, zorder=10)
+ax.scatter(odom[101, 0], odom[101, 1], marker='o', color='k', linewidths=2)
+
+ax.grid(which='minor', alpha=0.3)
+ax.grid(which='major', alpha=0.6)
+ax.set_xlabel("x [m]")
+ax.set_ylabel("y [m]")
+
+ax.set_xlim((0,1.2))
+ax.set_ylim((-0.6,0.6))
+ax.set_aspect('equal')
+
+plt.legend(handles = [plt.plot([], ls="-", color=ellip_color, label=r"$3\sigma$")[0]])
+plt.tight_layout()
+plt.show()
+
+odom, _, cov = simulate_diffdrive([np.pi/(2*5), np.pi/(2*5)], 5, np.array([0.0, 0.0, 0.0]), dt=DT, b_nom=B_NOM, r_nom=R_NOM)
+
+fig, ax = plt.subplots(figsize=(4.5,7))
+
+ax.plot(odom[:,0], odom[:,1], '-', color='k', linewidth=2)
+
+for loc, c in zip(odom[1::20], cov[1::20]):
+    confidence_ellipse(c, plt.gca(), cx = loc[0], cy = loc[1], edgecolor=ellip_color, zorder=10)
+    ax.scatter(loc[0], loc[1], marker='o', color='k', linewidths=2)
+
+confidence_ellipse(cov[-1], plt.gca(), cx = odom[-1, 0], cy = odom[-1, 1], edgecolor=ellip_color, zorder=10)
+ax.scatter(odom[-1, 0], odom[-1, 1], marker='o', color='k', linewidths=2)
+
+# ax.grid(which='minor', alpha=0.3)
+ax.grid(which='major', alpha=0.6)
+
+ax.set_xlabel("x [m]")#, x=1.0,  rotation=0, labelpad=0, ha='right')
+ax.set_ylabel("y [m]")#, y=1.05, rotation=0, labelpad=0, ha='left')
+
+# ax.set_aspect('equal', 'box')
+ax.set_xlim((0,1.2))
+ax.set_ylim((-0.1,1.1))
+ax.set_aspect('equal')
+
+plt.legend(handles = [plt.plot([], ls="-", color=ellip_color, label=r"$3\sigma$")[0]])
+
+plt.tight_layout()
+plt.show()
+```
+
+::: {.notes}
+Las FIGURAS muestran ejemplos típicos de cómo aumentan los errores de posición con el tiempo
+
+Crecimiento de la incertidumbre de la postura para el movimiento en línea recta: Nótese que la incertidumbre en y crece mucho más rápido que en la dirección del movimiento. Esto se debe a la integración de la incertidumbre sobre la orientación del robot
+
+Crecimiento de la incertidumbre de la pose para el movimiento circular (r = constante): Nuevamente, la incertidumbre perpendicular al movimiento crece mucho más rápido que la de la dirección del movimiento. Nótese que el eje principal de la elipse de incertidumbre no permanece perpendicular a la dirección del movimiento.
+
+
+Los errores deterministas se pueden compensar calibrando correctamente el robot. Sin embargo, los parámetros de error que especifican los errores no deterministas solo se pueden cuantificar mediante mediciones estadísticas (repetitivas)
+:::

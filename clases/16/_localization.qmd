@@ -1,0 +1,152 @@
+
+## Localización {.smaller}
+
+> Responder a la pregunta: [¿Dónde está el robot ahora?]{.underline}
+
+<br>
+
+::: {.callout-tip appearance="simple"}
+Si se pudiera conectar un GPS preciso a un robot móvil todo el tiempo se solucionaría gran parte del problema
+:::
+
+. . .
+
+::: {.columns}
+::: {.column width="45%"}
+
+#### Realidad
+
+- Precisión inaceptable para robots móviles a escala humana
+- No funciona en interiores ni áreas obstruidas (ej, calles rodeadas por edificios altos)
+- Posición respecto al planeta Tierra
+
+:::
+::: {.column width="55%"}
+
+[![Fuente: U-blox (<a href="https://www.u-blox.com" target="_blank">www.u-blox.com</a>)](https://content.u-blox.com/sites/default/files/2022-09/RF%20interference.jpg "Position accuracy factors"){fig-align="center" fig-env="figure*" width="75%"} ](https://www.u-blox.com/en/blogs/tech/reducing-rf-interference-gnss-performance){target=_blank}
+
+:::
+:::
+
+
+::: {.notes}
+Un GPS preciso en un robot solucionaría gran parte del problema de localización. El GPS informaría al robot de su posición exacta, en interiores y exteriores, y la respuesta a la pregunta "¿Dónde estoy?" siempre estaría disponible de inmediato.
+
+Desafortunadamente, un sensor de este tipo no es práctico. La red GPS proporciona una precisión inaceptable para localizar robots móviles a escala humana (utilizando módulos convencionales). Además, las tecnologías GPS no funciona en interiores ni en áreas obstruidas (ej, calles rodeadeas por edificios altos) y, por lo tanto, su área de trabajo está limitada.
+:::
+
+
+## Localización {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Más problemas
+
+#### Un robot que interactúa con humanos
+
+- Su posición relativa con respecto al objetivo es igualmente importante que su posición absoluta
+- Identificación de obstáculos dinámicos y estáticos: construir un mapa e identificar la posición en relación al mismo
+
+::: {.fragment}
+
+#### 2 tipos de posicionamiento
+  * Absolutos
+  * Relativos
+
+:::
+
+:::
+::: {.column}
+
+![Extraído de  <a href="https://www.youtube.com/watch?v=0SeTapE9WIA" target="_blank">YouTube</a>](figs/humanoid.gif){width="60%" fig-align="center"}
+
+:::
+:::
+
+::: {.notes}
+La localización implica más que conocer la posición absoluta en el sistema de referencia terrestre.
+
+Consideremos un robot que interactúa con humanos. Su posición relativa con respecto a los humanos objetivo es igualmente importante que su posición absoluta. Su tarea de localización puede incluir identificar humanos mediante su conjunto de sensores y luego calcular su posición relativa.
+
+Además, durante la etapa de cognición, un robot seleccionará una estrategia para lograr sus objetivos. Si pretende llegar a una ubicación específica, la localización puede no ser suficiente. El robot puede necesitar adquirir o construir un modelo ambiental, un mapa, que le ayude a planificar una ruta hacia el objetivo. Una vez más, la localización significa más que simplemente determinar una posición absoluta en el espacio; significa construir un mapa y luego identificar la posición del robot en relación con ese mapa.
+
+Claramente, los sensores y efectores del robot desempeñan un papel integral en todas las formas de localización mencionadas. Debido a la inexactitud e incompletitud de estos sensores y efectores, la localización plantea grandes desafíos.
+:::
+
+
+## Localización {.smaller visibility="hidden"}
+
+
+![](figure_5-2.png)
+
+
+
+## Métodos absolutos {.smaller}
+
+
+::: {.columns}
+::: {.column}
+
+> Basados en referencias y sensores exteroceptivos
+
+[Ejemplos]{.underline}:
+
+1. Brújulas magnéticas
+2. Balizas (*beacons*) de navegación
+3. Sistema de posicionamiento global (*GPS*)
+4. Puntos de referencias (activos o pasivos)
+5. Otros..
+
+:::
+::: {.column}
+
+![Frese, U., & Wagner, R. & Röfer, T. A SLAM overview from a users perspective. Künstl Intell 24, 191-198 (2010). <a href="https://doi.org/10.1007/s13218-010-0040-4" target="_blank">10.1007/s13218-010-0040-4</a>.](figs/robot-localization-mark.png)
+
+:::
+:::
+
+
+::: {.notes}
+Cada uno de estos enfoques puede implementarse mediante diversos métodos y sensores
+
+Sin embargo, ninguno de los sistemas existentes es especialmente elegante.
+
+Los beacons y los puntos de referencia suelen requerir instalaciones y mantenimiento costosos, mientras que la navegación por satélite (GPS) suelen ser más lentos que la odometría y solo puede utilizarse en exteriores.
+:::
+
+## Métodos relativos {.smaller}
+
+> Por lo general basado en sensores propioceptivos
+
+- Se determina [la ubicación actual]{style="color: #1f77b4;"} ["avanzando"]{style="color: #ff7f0e;"} desde [una posición previa]{style="color: #d62728;"}, con la [información de velocidad]{style="color: #7f7f7f;"} en un cierto [período de tiempo]{style="color: #2ca02c;"}, hacia [una dirección conocida]{style="color: #9467bd;"}
+
+$$
+\require{color}
+\textcolor{#1f77b4}{\boldsymbol{p}_k} = \textcolor{#d62728}{\boldsymbol{p}_{k-1}} \textcolor{#ff7f0e}{+} \textcolor{#7f7f7f}{{\boldsymbol{\stackrel{\cdot}{p}}_k}} \cdot \textcolor{#9467bd}{\vec{\boldsymbol{\theta}}} \cdot \textcolor{#2ca02c}{\Delta t}
+$$
+
+- #### También conocidos como *dead-reckoning*
+
+[Ejemplos]{.underline}:
+
+1. Navegación inercial
+2. Odometría
+
+::: {.notes}
+*dead-reckoning*: Procedimiento matemático para determinar la ubicación actual "avanzando" desde una posición previa a través de un curso conocido con la información de velocidad en un cierto período de tiempo
+
+Otro enfoque se basa en la navegación inercial con giroscopos y/o acelerómetros. Los datos del acelerómetro deben integrarse dos veces para obtener la posición, lo que hace que estos sensores sean extremadamente sensibles al "bias" o deriva.
+
+Otro problema es que las aceleraciones en condiciones de funcionamiento típicas pueden ser muy pequeñas, del orden de 0,01 g. Sin embargo, ya se producen fluctuaciones de esta magnitud si el sensor se inclina tan solo 0,5° respecto del plano horizontal (por ejemplo, cuando el vehículo circula sobre superficies irregulares)
+
+Los giroscopios pueden ser más precisos, pero solo proporcionan información sobre la velocidad de rotación del vehículo (sus datos deben integrarse una sola vez)
+
+Este problema no existe con las brújulas electrónicas (o magnetómetros) que miden la orientación del robot respecto al campo magnético terrestre. Sin embargo, no se recomiendan para aplicaciones en interiores debido a las grandes distorsiones del campo magnético terrestre cerca de líneas eléctricas o estructuras de acero.
+
+La odometría es el método más utilizado para determinar la posición en robótica móvil. Es sencilla, económica y fácil de implementar en tiempo real.
+
+Proporciona información de posicionamiento en tiempo real y de fácil acceso entre mediciones periódicas de posición absoluta. La frecuencia con la que deben realizarse las mediciones absolutas (generalmente costosas y/o laboriosas) depende en gran medida de la precisión del sistema de odometría.
+
+La GRAN desventaja de la odometría es su acumulación de error ilimitado (no acotado).
+:::

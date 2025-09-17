@@ -1,0 +1,151 @@
+---
+title: "Robótica"
+subtitle: "Clase 16"
+date: "09/17/2025"
+date-format: "[Semana 21 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+execute:
+  echo: false
+jupyter: python3
+---
+
+# Navegación {visibility="hidden"}
+
+## Navegación
+
+> Área más desafiante en robótica móvil
+
+::: {.columns}
+::: {.column}
+
+#### [4 pilares]{.underline}
+
+- Percepción
+- [Localización]{.mark}
+- Cognición
+- Control
+
+:::
+::: {.column}
+
+![](figs/nav-gemini.png){fig-align="center" width="75%"}
+
+:::
+:::
+
+::: {.notes}
+Dominio de cuatro pilares:
+
+- Percepción (interpretar sus sensores para extraer información significativa)
+- Localización (el robot debe determinar su posición en el entorno)
+- Cognición (el robot debe decidir cómo actuar para lograr sus objetivos)
+- Control de movimiento (el robot debe controlar la respuesta de sus motores para lograr la trayectoria deseada)
+:::
+
+# Localización {visibility="hidden"}
+
+{{< include _localization.qmd >}}
+
+# Odometría {visibility="hidden"}
+
+## Odometría {.smaller}
+
+- El método más utilizado y económico
+- Buena precisión a corto plazo y alta frecuencia de muestreo
+- Implementación más común a través de encoders ópticos acoplados a los ejes de las ruedas
+- Para calcular la distancia incremental de ambas ruedas en el intervalo $i$:
+
+$$
+\Delta s_{L|R,i} = \pi \cdot D_{L|R} \cdot \frac{N_{L|R, i}}{c_e}
+$$
+
+donde:
+
+- $D_{L|R}$: Diámetro de la rueda (en [mm])
+- $N_{L|R, i}$: incremento de pulsos del encoder en el intervalo
+- $c_e$: Resolución del encoder (en [pulsos por revolución])
+
+
+
+::: {.notes}
+Es el método de navegación más utilizado para el posicionamiento de robots móviles. Es bien sabido que proporciona una buena precisión a corto plazo, es económica y permite frecuencias de muestreo muy altas. Sin embargo la acumulación de errores es inevitable.
+
+La precisión de las mediciones de odometría para dead-reckoning es una acción directa del diseño cinemático de un vehículo. Se debe considerar detenidamente el diseño cinemático antes de intentar mejorar la precisión de la navegación a estima.
+:::
+
+{{< include _odometry_error_model.qmd >}}
+
+# Fuentes de error {visibility="hidden"}
+
+{{< include _error-sources.qmd >}}
+
+# Trayectoria cuadrada unidireccional {visibility="hidden"}
+
+{{< include _unidirectional-square.qmd >}}
+
+# Trayectoria cuadrada bidireccional {visibility="hidden"}
+
+{{< include _bidirectional-square.qmd >}}
+
+# Corrección de odometría {visibility="hidden"}
+
+{{< include _error-correction.qmd >}}
+
+
+## Resumen del procedimiento {.smaller}
+
+1. Medir la posición absoluta del vehículo.
+2. Realizar la trayectoria cuadrada de 4x4 [m] en [sentido horario]{.underline}, asegurándose de:
+      - detenerse después de cada tramo recto de 4[m]
+      - realizar un total de cuatro giros de 90° en la esquina
+      - conducir el robot lentamente para evitar deslizamientos
+3. Al regresar a la zona de inicio, medir la posición absoluta del vehículo.
+4. Compare la posición absoluta con la posición calculada del robot utilizando las ecuaciones en -@eq-errors.
+5. Repita los pasos 1 a 4 cuatro veces más
+6. Repita los pasos 1 a 5 en [sentido antihorario]{.underline}
+7. Utilice las ecuaciones -@eq-x_centroid, -@eq-y_centroid para obtener $\ccwcw{\bar{x}}$ y $\ccwcw{\bar{y}}$ 
+
+## Resumen del procedimiento {.smaller}
+
+::: {.columns}
+::: {.column}
+
+8. Con $\alpha$ (ec. -@eq-alpha_x o -@eq-alpha_y), obtener el nuevo valor de $b$ (-@eq-b_actual):
+$$
+b_{\textrm{actual}} = \frac{\pi / 2}{\pi / 2 - \alpha} b_{\textrm{nominal}}
+$$
+
+9. Con $\beta$ (ec. -@eq-beta_x o -@eq-beta_y), $R$ (-@eq-R_beta) y $E_d$ (-@eq-E_d_R), obtener los coeficientes de corrección $c_L$ y $c_R$ (-@eq-cL_cR):
+$$
+\begin{align*}
+c_L &= \frac{2}{E_d + 1} \\
+c_R &= \frac{2}{\frac{1}{E_d} + 1}
+\end{align*}
+$$
+
+:::
+::: {.column}
+
+<br>
+
+![](figs/figura11.svg){fig-align="center"}
+
+:::
+:::
+
+# Laboratorio {visibility="hidden"}
+
+## [Laboratorio](lab.qmd) {.center}
+
+Calibración de odometría
+

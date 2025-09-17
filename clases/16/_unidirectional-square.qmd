@@ -1,0 +1,124 @@
+## Trayectoria cuadrada unidireccional {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Se compone de 4 segmentos en línea rcta y 4 rotaciones **puras** en las esquinas
+
+- El robot parte de la posición $(x_0, y_0)$, y angulo $\theta_0$
+- La posición final muestra el error de odometría
+
+
+:::
+::: {.column}
+
+![](figs/figura1.svg){fig-align="center"}
+
+:::
+:::
+
+
+::: {.notes}
+La FIGURA muestra una trayectoria unidireccional cuadrada de $4 \mathrm{[m]}$ de lado. El robot parte de la posición $x_0$, $y_0$, $\theta_0$. El área de inicio debe ubicarse cerca de la esquina de dos paredes perpendiculares. Las paredes sirven como referencia fija antes y después de la carrera: medir la distancia entre tres puntos específicos del robot y las paredes permite determinar con precisión su posición y orientación absolutas.
+
+Estas mediciones absolutas se comparan con la posición y la orientación del vehículo, calculadas a partir de los datos odométricos. El resultado es un conjunto de errores de posición de retorno causados ​​por la odometría, denominados $\epsilon_x$, $\epsilon_y$ y $\epsilon_\theta$
+:::
+
+## Trayectoria cuadrada unidireccional {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Al comparar la pose del vehículo medida con la calculada por la odometría se obtiene un conjunto de errores $\epsilon_x$, $\epsilon_y$ y $\epsilon_\theta$
+
+$$
+\begin{gather*}
+\epsilon_x = x_{\textrm{abs}} - x_{\textrm{calc}} \\
+\epsilon_y = y_{\textrm{abs}} - y_{\textrm{calc}}\\
+\epsilon_\theta = \theta_{\textrm{abs}} - \theta_{\textrm{calc}}
+\label{eq:errors}
+\end{gather*}
+$$ {#eq-errors}
+
+donde:
+
+- $\{x,y,\theta\}_{\textrm{abs}}$: Posición y orientación absoluta del robot
+- $\{x,y,\theta\}_{\textrm{calc}}$:  Posición y orientación del robot calculada por la odometría
+
+:::
+::: {.column}
+
+![](figs/figura2.svg){fig-align="center"}
+
+
+:::
+:::
+
+## Trayectoria cuadrada unidireccional {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- El error $\textcolor{#9467bd}{E_d}$ por diámetros desiguales se muestra en la trayectoria ligeramente curvada (línea punteada)
+- El error $\textcolor{#d62728}{E_b}$ por incertidumbre sobre la distancia entre ejes provoca un giro deficiente (línea discontinua)
+
+<br>
+
+::: {.fragment}
+::: {.callout-warning appearance="simple"} 
+Cualquiera de estos dos errores podría haber producido el mismo error de posición
+:::
+::: 
+
+:::
+::: {.column}
+
+![](figs/figura3.svg){fig-align="center"}
+
+:::
+:::
+
+::: {.notes}
+Como se puede ver en la FIGURA, cualquiera de estos dos casos podría haber producido aproximadamente el mismo error de posición. El hecho de que dos mecanismos de error diferentes puedan resultar en el mismo error general puede llevar al experimentador a cometer un grave error: corregir solo una de las dos fuentes de error en el software.
+:::
+
+## Simple compensación de error {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Se aumenta el valor de $b$ para que el robot "gire más" en cada esquina, a lo que parece ser el valor *"ideal"*
+
+:::
+::: {.column}
+
+![](figs/figura4-ccw.svg){fig-align="center"}
+
+:::
+:::
+
+::: {.notes}
+Este error es tan grave porque producirá resultados aparentemente "excelentes", como se muestra en el ejemplo de la FIGURA. En este ejemplo, asumimos que el experimentador comenzó a "mejorar" el rendimiento ajustando la distancia entre ejes b en el software de control. El experimentador solo necesita aumentar el valor de b para que el robot gire más en cada giro nominal de 90°. Al hacerlo, el experimentador pronto habrá ajustado b a lo que parece ser el valor "ideal", es decir, el que hará que el robot gire 93°, compensando así eficazmente el error de orientación de 3° introducido por cada tramo ligeramente curvado (pero nominalmente recto) de la trayectoria cuadrada.
+:::
+
+## Simple compensación de error {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Se aumenta el valor de $b$ para que el robot "gire más" en cada esquina, a lo que parece ser el valor *"ideal"*
+- El robot *"calibrado"* tendrá enormes errores de odometría, a pesar de que la trayectoria en un sentido muestre que está bien calibrado
+
+:::
+::: {.column}
+
+![](figs/figura4-cw.svg){fig-align="center"}
+
+:::
+:::
+
+::: {.notes}
+Obviamente, el robot así "calibrado" incurriría en enormes errores de odometría, a pesar de que el procedimiento de calibración unidireccional demostró que el robot estaba bien calibrado.
+
+El problema, por lo tanto, es cómo distinguir y calcular los errores de tipo A y tipo B a partir de los errores de posición final medidos del robot en el experimento de trayectoria cuadrada bidireccional
+:::

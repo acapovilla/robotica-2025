@@ -1,0 +1,368 @@
+## Trayectoria cuadrada bidireccional {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Realizar la misma trayectoria, pero en ambos sentidos de giro: horario (*CW*) y anti-horario (*CCW*)
+- Se obtienen conjuntos de errores $\epsilon_x$, $\epsilon_y$ y $\epsilon_\theta$ para cada sentido
+- [Se puede observar]{.underline}:
+
+> ::: {.nonincremental}
+> 1. Los errores se agrupan en dos áreas distintas
+> 2. La distribución dentro de los grupos es el resultado de errores no sistemáticos
+> :::
+
+:::
+::: {.column}
+
+![](figs/figura5.svg){fig-align="center"}
+
+:::
+:::
+
+
+::: {.notes}
+Las posiciones de parada para cinco recorridos, cada uno en sentido horario (cw) y antihorario (ccw), se muestran en la FIGURA.
+
+Los resultados de la FIGURA pueden interpretarse de la siguiente manera:
+- a. Las posiciones de frenado después de las carreras en sentido horario y antihorario se agrupan en dos áreas distintas.
+- b. La distribución dentro de los grupos en sentido horario y antihorario es el resultado de errores no sistemáticos, como se menciona en la Sección 2.1. Sin embargo, la FIGURA muestra que, en un vehículo no calibrado que circula sobre un suelo de hormigón razonablemente liso, la contribución de los errores sistemáticos al error odométrico total es notablemente mayor que la de los errores no sistemáticos.
+:::
+
+## Trayectoria cuadrada bidireccional {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Coordenadas de los centroides
+
+::: {.hidden}
+$$
+\def\ccw#1{{\underset{\scriptsize \textrm{CCW}}{#1}}}
+\def\cw#1{{\underset{\scriptsize \textrm{CW}}{#1}}}
+\def\ccwcw#1{{\underset{\scriptsize \textrm{CCW|CW}}{#1}}}
+$$
+:::
+
+$$
+\ccwcw{\bar{x}} = \frac{1}{N} \sum_{i = 1}^N \ccwcw{\epsilon_{x_i}}
+\label{eq:x_centroid}
+$${#eq-x_centroid}
+
+$$
+\ccwcw{\bar{y}} = \frac{1}{N} \sum_{i = 1}^N \ccwcw{\epsilon_{y_i}}
+\label{eq:y_centroid}
+$${#eq-y_centroid}
+con $N = 3,5,7 \cdots$ la cantidad de repeticiones para cada lado
+
+:::
+::: {.column}
+
+![](figs/figura5.svg){fig-align="center"}
+
+:::
+:::
+
+
+::: {.notes}
+Tras realizar el experimento, se podría derivar un único valor numérico que exprese la precisión odométrica (con respecto a los errores sistemáticos) del vehículo probado. Para minimizar el efecto de los errores no sistemáticos, sugerimos considerar el centroide de cada grupo como representativo de los errores odométricos en las direcciones en sentido horario y antihorario. 
+:::
+
+## Trayectoria cuadrada bidireccional {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- *Offset* de los centroides con respecto al origen
+
+$$
+\ccw{\bar{r}} = \sqrt{\ccw{\bar{x}}^2 + \ccw{\bar{y}}^2}
+\label{eq:r_ccw_centroid}
+$$
+
+$$
+\cw{\bar{r}} = \sqrt{\cw{\bar{x}}^2 + \cw{\bar{y}}^2}
+\label{eq:r_cw_centroid}
+$$
+
+- El mayor valor como la medida para errores sistemáticos:
+
+$$
+E_{\textrm{max,sist.}} = \max{\left( \ccw{\bar{r}}, \cw{\bar{r}} \right)}
+$$
+
+:::
+::: {.column}
+
+![](figs/figura5.svg){fig-align="center"}
+
+:::
+:::
+
+## Análisis de los errores sistemáticos {.smaller visibility="hidden"}
+
+[Supuestos]{.underline}
+
+- $E_d$ y $E_b$ son las principales fuentes de errores sistemáticos
+- La distancia entre ejes incorrecta ($E_b$) solo causa error al girar, pero no en una trayectoria recta
+- Los diámetros de ruedas desiguales ($E_d$) solo causan error en trayectoria recta, pero no al girar
+- $E_b$ causa errores de Tipo A, pero no de Tipo B
+- $E_d$ causa errores de Tipo B, pero no de Tipo A
+
+[Consecuencias]{.underline}
+
+- Al eliminar $E_b$ se eliminan casi por completo errores de tipo A del sistema
+- Al eliminar $E_d$ se eliminan casi por completo errores de tipo B del sistema
+
+## Análisis de los errores sistemáticos {.smaller}
+
+- Se analizarán los errores por separado y posteriormente se superpondrán para representar condiciones reales
+
+- Utilizaremos aproximaciones de ángulos pequeños (medidos en radianes):
+
+$$ L\sin{\gamma} \approx L \gamma \qquad L \cos{\gamma} \approx L$$
+
+- Para simplicidad la posición inicial del robot $(x_0, y_0) = (0,0)$
+
+
+## Errores de tipo A {.smaller}
+
+- La figura muestra la contribución de los errores de **Tipo A** (asociados a $E_b$)
+- Causan un giro excesivo (o insuficiente) en las esquinas
+- La diferencia de rotación en cada giro de 90° se denota como $\alpha$ (en $\textrm{[rad]}$).
+
+::: {layout="[[-5,40,-10,40,-5]]"}
+![](figs/figura6.svg){fig-align="center"}
+
+![](figs/figura7.svg){fig-align="center"}
+:::
+
+
+##  Errores de tipo A
+
+::: {.columns}
+::: {.column}
+
+::: {style="font-size:50%;"}
+
+- [Segmento 1]{.underline}:
+$$
+\begin{align*}
+x_1 &= x_0 + L\\
+y_1 &= y_0
+\end{align*}
+$$
+
+- [Segmento 2]{.underline}:
+$$
+\begin{align*}
+x_2 &= x_1 + L \sin{\alpha} \approx (L) + L\alpha\\
+y_2 &= y_1 + L \cos{\alpha} \approx L
+\end{align*}
+$$
+
+- [Segmento 3]{.underline}:
+$$
+\begin{align*}
+x_3 &= x_2 - L \cos{2 \alpha} \approx (L + L\alpha) - L \approx L\alpha\\
+y_3 &= y_2 + L \sin{2 \alpha} \approx (L) + 2 L \alpha
+\end{align*}
+$$
+
+- [Segmento 4]{.underline}:
+$$
+\begin{align*}
+x_4 &= x_3 - L \sin{3 \alpha} \approx (L\alpha) - 3 L \alpha \approx \boxed{-2 L \alpha}\\
+y_4 &= y_3 - L \cos{3 \alpha} \approx (L + 2 L \alpha) - L \approx \boxed{2 L \alpha}
+\end{align*}
+$$
+
+:::
+
+:::
+::: {.column}
+
+::: {style="font-size:70%;"}
+> En sentido anti-horario:
+:::
+
+![](figs/figura6.svg){fig-align="center"}
+
+:::
+:::
+
+##  Errores de tipo A
+
+::: {.columns}
+::: {.column}
+
+::: {style="font-size:50%;"}
+
+- [Segmento 1]{.underline}:
+$$
+\begin{align*}
+x_1 &= x_0 + L\\
+y_1 &= y_0
+\end{align*}
+$$
+
+- [Segmento 2]{.underline}:
+$$
+\begin{align*}
+x_2 &= x_1 + L \sin{\alpha} \approx (L) + L\alpha\\
+y_2 &= y_1 - L \cos{\alpha} \approx -L
+\end{align*}
+$$
+
+- [Segmento 3]{.underline}:
+$$
+\begin{align*}
+x_3 &= x_2 - L \cos{2 \alpha} \approx (L + L\alpha) - L \approx L\alpha\\
+y_3 &= y_2 - L \sin{2 \alpha} \approx (-L) - 2 L \alpha \approx -L -2 L \alpha
+\end{align*}
+$$
+
+- [Segmento 4]{.underline}:
+$$
+\begin{align*}
+x_4 &= x_3 - L \sin{3 \alpha} \approx (L\alpha) - 3 L \alpha \approx \boxed{-2 L \alpha}\\
+y_4 &= y_3 + L \cos{3 \alpha} \approx (-L - 2 L \alpha) + L \approx \boxed{-2 L \alpha}
+\end{align*}
+$$
+
+:::
+
+:::
+::: {.column}
+
+::: {style="font-size:70%;"}
+> En sentido horario:
+:::
+
+![](figs/figura7.svg){fig-align="center"}
+
+:::
+:::
+
+## Errores tipo B {.smaller}
+
+- La figura muestra la contribución de los errores de **Tipo B** (asociados a $E_d$)
+- Causan una trayectoria ligeramente curva durante los tramos rectos
+- El robot adquiere un error de orientación incremental $\beta$ (en $\textrm{[rad]}$).
+
+::: {layout="[[-5,40,-10,40,-5]]"}
+![](figs/figura8b.svg){fig-align="center"}
+
+![](figs/figura9.svg){fig-align="center"}
+:::
+
+
+- La línea auxiliar $c^\prime_1$ (que conecta los vértices de la trayectoria real) tiene una pendiente de $\beta/2$
+
+
+## Errores tipo B
+
+::: {.columns}
+::: {.column}
+
+::: {style="font-size:50%;"}
+
+- [Segmento 1]{.underline}:
+$$
+\begin{align*}
+x_1 &= x_0 + L \cos{\beta/2} \approx L\\
+y_1 &= y_0 + L \sin{\beta/2} \approx L \beta / 2
+\end{align*}
+$$
+
+- [Segmento 2]{.underline}:
+$$
+\begin{align*}
+x_2 &= x_1 - L \sin{3 \beta/2} \approx L - L \beta/2\\
+y_2 &= y_1 + L \cos{3 \beta/2} \approx L \beta/2 + L
+\end{align*}
+$$
+
+- [Segmento 3]{.underline}:
+$$
+\begin{align*}
+x_3 &= x_2 - L \cos{5 \beta/2} \approx -3 L \beta/2 \\
+y_3 &= y_2 - L \sin{5 \beta/2} \approx -2 L \beta/2 + L
+\end{align*}
+$$
+
+- [Segmento 4]{.underline}:
+$$
+\begin{align*}
+x_4 &= x_3 + L \sin{7 \beta/2} \approx \boxed{2 L \beta}\\
+y_4 &= y_3 - L \cos{7 \beta/2} \approx \boxed{-2 L \beta}
+\end{align*}
+$$
+
+:::
+
+:::
+::: {.column}
+
+
+::: {style="font-size:70%;"}
+> En sentido anti-horario:
+:::
+
+![](figs/figura8a.svg){width="70%" fig-align="center"}
+
+:::
+:::
+
+## Errores tipo B
+
+::: {.columns}
+::: {.column}
+
+::: {style="font-size:50%;"}
+
+- [Segmento 1]{.underline}:
+$$
+\begin{align*}
+x_1 &= x_0 + L \cos{\beta/2} \approx L\\
+y_1 &= y_0 + L \sin{\beta/2} \approx L \beta / 2
+\end{align*}
+$$
+
+- [Segmento 2]{.underline}:
+$$
+\begin{align*}
+x_2 &= x_1 + L \sin{3 \beta/2} \approx L + 3 L \beta/2\\
+y_2 &= y_1 - L \cos{3 \beta/2} \approx L \beta/2 - L
+\end{align*}
+$$
+
+- [Segmento 3]{.underline}:
+$$
+\begin{align*}
+x_3 &= x_2 - L \cos{5 \beta/2} \approx  3 L \beta/2 \\
+y_3 &= y_2 - L \sin{5 \beta/2} \approx -L (\beta/2 + 1)
+\end{align*}
+$$
+
+- [Segmento 4]{.underline}:
+$$
+\begin{align*}
+x_4 &= x_3 - L \sin{7 \beta/2} \approx \boxed{-2 L \beta}\\
+y_4 &= y_3 + L \cos{7 \beta/2} \approx \boxed{-2 L \beta}
+\end{align*}
+$$
+
+:::
+
+:::
+::: {.column}
+
+::: {style="font-size:70%;"}
+> En sentido horario:
+:::
+
+![](figs/figura9.svg){width="70%" fig-align="center"}
+
+:::
+:::

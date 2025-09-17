@@ -23,7 +23,8 @@ El siguiente cronograma podrá ser actualizado con el correr del cursado
 |15 | 23/06 | Presentación entregable 1 | |
 |16 | 13/08 | Simulación de sensores en Gazebo | [🖥️](/clases/13 "Slides"){aria-label="Clase 13 slides"} | [🧪](/clases/13/lab.html "Lab"){aria-label="Clase 13 lab"} |
 |17 | 20/08 | Revisión entregable 1 | [🖥️](/clases/14 "Slides"){aria-label="Clase 14 slides"} | |
-|18 | 27/08 | | |
-|19 | 03/09 | Caso práctico simulación de sensors. Cámara. Seguidor de línea | [🖥️](/clases/15 "Slides"){aria-label="Clase 15 slides"} | |
+|19 | 03/09 | Caso práctico simulación de sensors. Cámara. Seguidor de línea. | [🖥️](/clases/15 "Slides"){aria-label="Clase 15 slides"} | [🧪](/clases/15/lab.html "Lab"){aria-label="Clase 15 lab"} |
+|20 | 10/09 | Caso práctico simulación de sensors (cont.) | |
+|21 | 17/09 | Localización con odometría. Incertidumbre y estimación de posición. | [🖥️](/clases/16 "Slides"){aria-label="Clase 16 slides"} | [🧪](/clases/16/lab.html "Lab"){aria-label="Clase 16 lab"} |
 
 : {.striped .hover tbl-colwidths="[8, 8, 60, 8, 8, 8]"}

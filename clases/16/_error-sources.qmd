@@ -1,0 +1,131 @@
+## Fuentes de error {.smaller}
+
+> La verdadera fuente de error generalmente se produce por un modelo incompleto del entorno
+
+- #### Errores sistemáticos
+- #### Errores aleatorios (o [no]{.underline} sistemáticos)
+
+::: {.notes}
+Todas estas fuentes de error se clasifican en dos categorías: (1) errores sistemáticos y (2) errores no sistemáticos.
+:::
+
+## Errores [no]{.underline} sistemáticos {.smaller}
+
+> Causados ​​por la interacción del robot con características impredecibles del entorno (aleatorios)
+
+- Desplazamiento sobre superficies irregulares u objetos inesperados
+- Deslizamientos:
+  - Suelo con baja adherencia
+  - Giro rápido (derrape)
+  - Fuerzas externas (interacción con cuerpos externos)
+  - Fuerzas internas (ruedas libres, patines, etc)
+- Contacto **no** puntual de las ruedas y el suelo
+
+::: {.notes}
+- Por ejemplo, las irregularidades de la superficie del suelo, como baches, grietas o residuos, harán que una rueda gire más de lo previsto.
+- En superficies rugosas con irregularidades significativas, son predominantes los errores no sistemáticos
+- Los errores no sistemáticos representan un gran problema para las aplicaciones reales, mediante el uso de encoders redundantes, los errores no sistemáticos pueden reducirse 
+:::
+
+## Errores sistemáticos {.smaller}
+
+> Suelen deberse a imperfecciones en la construcción de un robot móvil (deterministas)
+
+- Ruedas no alineadas o diámetro desiguales
+- El promedio de los diámetros difiere del nominal
+- Variación en el punto de contacto de la rueda
+- Resolución y frecuencia de muestro de encoder limitada
+- Por el propio modelo de odometría
+
+::: {.notes}
+Incerteza en la separación de las ruedas (dado que el punto de contacto de la rueda con el suelo no es "un punto")
+
+Se pueden introducir errores de odometría adicionales mediante las propias ecuaciones de odometría, ya que aproximan el movimiento arbitrario como una serie de segmentos rectos cortos. La precisión de esta aproximación depende de la frecuencia de muestreo con respecto a la velocidad del robot. Sin embargo, en nuestra experiencia práctica, este error es insignificante al trabajar con tiempos de muestreo típicos de Ts < 10 ms y velocidades típicas de V < 1 m/s.
+:::
+
+
+## Errores sistemáticos {.smaller}
+
+> No suelen cambiar durante la operación
+
+- Puede mejorarse la odometría midiendo las fuentes de error más predominantes y contrarrestando su efecto mediante software
+
+<br>
+
+- #### 2 fuentes de error más comunes:
+  * Diámetro desiguales de las ruedas $$D_L \neq D_R$$
+  * Incerteza en la distancia entre las ruedas $$b?$$
+
+::: {.notes}
+Los errores sistemáticos son específicos del vehículo y no suelen cambiar durante la operación (aunque diferentes distribuciones de carga pueden modificar cuantitativamente algunos errores sistemáticos). Por lo tanto, la odometría puede mejorarse en significativamente midiendo la contribución individual de las fuentes de error más predominantes y contrarrestando su efecto en el software.
+:::
+
+## Incerteza en la distancia entre ruedas {.smaller}
+
+> - Las ruedas de goma no entran en contacto con el suelo en un punto, sino en una zona de contacto
+
+
+#### Denominamos este error [Tipo A]{.underline} asociado al coeficiente $E_b$:
+
+$$
+E_b = \frac{b_{\textrm{actual}}}{b_{\textrm{nominal}}}
+$$
+
+donde $b$ es la distancia entre ruedas
+
+::: {.notes}
+- El Tipo A se define como un error de orientación que reduce (o aumenta) la rotación total del robot tanto en sentido horario como antihorario.
+- La distancia entre ejes se define como la distancia entre los puntos de contacto de las dos ruedas motrices y el suelo.
+- Es necesario conocer la distancia entre ejes para calcular el número de pulsos del codificador diferencial correspondientes a una determinada rotación del vehículo. La incertidumbre se debe a que las ruedas (por lo general de goma) no entran en contacto con el suelo en un punto, sino en una zona de contacto.
+- La incertidumbre resultante puede ser del orden del 1%
+:::
+
+
+## Diámetro desiguales {.smaller}
+
+> - No se fabrican 2 ruedas exactamente iguales
+> - Ruedas de goma se comprimen
+
+
+
+#### Denominamos este error [Tipo B]{.underline} asociado al coeficiente $E_d$:
+
+$$
+E_d = \frac{D_R}{D_L}
+$$
+
+donde $D_{L|R}$ es el diámetro de las ruedas izquierda y derecha respectivamente
+
+<br>
+
+- $E_d$ y $E_b$ son valores adimensionales, expresados ​​como fracciones del valor nominal
+
+- $E_b$ solo afecta al girar y $E_d$ solo afecta al movimiento en línea recta
+
+
+
+::: {.notes}
+El Tipo B se define como un error de orientación que reduce (o aumenta) la rotación total en una dirección, pero la aumenta (o reduce) en la otra
+
+La mayoría de los robots móviles utilizan ruedas de goma difíciles de fabricar con el mismo diámetro. Además, el material elástico se comprimen de forma diferente bajo una distribución asimétrica de la carga. Cualquiera de estos efectos puede causar errores odométricos considerables.
+:::
+
+## Errores de escala {.smaller}
+
+- Si el [promedio]{.underline} de los dos diámetros reales $D_a$ difiere del diámetro nominal $D_n$ el vehículo experimentará un error odométrico adicional, denominado error de escala $E_s$
+
+- También conocidos como errores de alcance
+
+
+- $E_s$ afecta el movimiento en [línea recta]{.underline} y el movimiento de [giro puro]{.underline}
+
+- Para largos períodos de tiempo, los errores de **Tipo A** y **Tipo B** superan los errores de escala
+
+
+- $E_s$ es fácil de medir y corregir con una regla o cinta métrica
+
+
+
+::: {.notes}
+Si el promedio de los dos diámetros reales de las ruedas, $D_a$, difiere del diámetro nominal de las ruedas, $D_n$, el vehículo experimentará un error odométrico adicional, denominado error de escala $E_s$. $E_s$ afecta el movimiento en línea recta y el movimiento de giro puro. No obstante, aunque $E_s$ puede ser un error significativo, es extremadamente fácil de medir. Por esta razón, asumiremos que $E_s$ se ha medido y corregido antes de realizar cualquiera de los procedimientos descritos a continuación.
+:::
