@@ -17,6 +17,9 @@ format:
 execute:
   echo: false
 jupyter: python3
+bibliography: references.bib
+nocite: |
+  @*
 ---
 
 # Navegación {visibility="hidden"}
@@ -141,6 +144,14 @@ $$
 ![](figs/figura11.svg){fig-align="center"}
 
 :::
+:::
+
+# Referencias {visibility="hidden"}
+
+## Referencias
+
+::: {#refs}
+
 :::
 
 # Laboratorio {visibility="hidden"}
