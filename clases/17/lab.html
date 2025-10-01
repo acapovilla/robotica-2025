@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>entregable1 – Robótica 2025</title>
+<title>Clase 17 - Laboratorio – Robótica 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9c54bebe4522b0dd20b0b0c77034dc0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3a2893c2363331b62a610d238e486396.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Clase 17 - Laboratorio</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -137,228 +137,104 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="entregable1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#point-follower" id="toc-point-follower" class="nav-link active" data-scroll-target="#point-follower">Point-follower</a>
+  <ul class="collapse">
+  <li><a href="#modificar-controlador-de-differential-drive" id="toc-modificar-controlador-de-differential-drive" class="nav-link" data-scroll-target="#modificar-controlador-de-differential-drive">Modificar controlador de <em>differential drive</em></a></li>
+  <li><a href="#programación-del-nodo" id="toc-programación-del-nodo" class="nav-link" data-scroll-target="#programación-del-nodo">Programación del nodo</a></li>
+  <li><a href="#configuraciń-del-launch" id="toc-configuraciń-del-launch" class="nav-link" data-scroll-target="#configuraciń-del-launch">Configuraciń del <code>launch</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Clase 17 - Laboratorio</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-body">
 
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="point-follower" class="level1">
+<h1>Point-follower</h1>
+<section id="objetivos" class="level4">
+<h4 class="anchored" data-anchor-id="objetivos">Objetivos</h4>
 <ul>
-<li><p>Fecha de entrega: 22 de Junio</p></li>
-<li><p>Formato de entrega: Archivo comprimido con el código fuente de los paquetes. Formato pdf en caso de necesitar entregar ejercicios de desarrollo. Proveer en un archivo de texto <code>README.md</code> los comandos necesarios para la ejecución de el/los paquete/s para los ejercicios.</p></li>
-<li><p>Archivos disponibles: <code>entregable-1.zip</code></p>
-<ul>
-<li>Carpeta <code>meshes</code> con archivos <code>.stl</code> para las geometrías visuales de los componentes del robot.</li>
-<li>Carpeta <code>urdf</code> con dos archivos: <code>inertial_macros.xacro</code> con definición de inercias y materiales de ejemplo; <code>motor.xacro</code>con macro para insertar un motor en el robot.</li>
-</ul></li>
+<li>Implementar un controlador cinemático que dado un par de coordenadas objetivo envíe comandos de velocidad angular y velocidad lineal para conducir el robot a dicho punto</li>
 </ul>
-<section id="ejercicios" class="level1">
-<h1>Ejercicios</h1>
-<section id="urdf" class="level2">
-<h2 class="anchored" data-anchor-id="urdf">URDF</h2>
-<p>Crear un paquete de ROS llamado <code>(*)_description</code> para albergar el <em>robot description</em> siguiendo la estructura vista en clases. Crear un archivo de definición del robot en formato <em>XACRO</em> respetando la geometría representada en las vistas del anexo y cumpliendo con los siguientes requerimientos:</p>
+</section>
+<section id="modificar-controlador-de-differential-drive" class="level2">
+<h2 class="anchored" data-anchor-id="modificar-controlador-de-differential-drive">Modificar controlador de <em>differential drive</em></h2>
 <ul>
-<li>Debe contener al menos un <code>base_link</code> asignado al chasis del robot y un <em>link</em> y un <em>joint</em> por cada rueda</li>
-<li>Cada <em>link</em> deberá tener definida la geometría visual y de colisión, según la tabla correspondiente del anexo</li>
-<li>Debe estar parametrizado al menos el radio de las ruedas de tracción y la separación de las mismas</li>
-<li>En caso de poder reutilizar bloques, hacer uso de <em>macros</em></li>
-<li>Utilice el <em>macro</em> <code>motor</code> importando el archivo <code>motor.xacro</code> para ubicar el motor izquierdo y derecho. El macro recibe 3 parámetros:
-<ul>
-<li><code>prefix</code> (<em>String</em>): para diferenciar el <em>link</em> con un prefijo</li>
-<li><code>chassis_width</code> (<em>Double</em>): ancho del chasis</li>
-<li><code>reflect</code> (<em>Bool</em>): No reflejar (<code>False</code>) o sí reflejar (<code>True</code>). La orientación original es hacia la izquierda</li>
-</ul></li>
+<li>Con el fin de mejorar la seguridad del controlador, modificar el controlador para que luego de un período significativo sin recibir mensajes de control en el topic <code>/cmd_vel</code> envíe un comando de parada a las juntas de las ruedas</li>
+<li>Modificar el tipo de mensaje recibido de <code>geometry_msgs/Twist</code> a <code>geometry_msgs/TwistStamped</code></li>
 </ul>
-<div style="page-break-after: always;"></div>
-<p>En el mismo paquete, crear un archivo <em>launch</em> de nombre <code>description.launch.py</code>, en el cuál se deberá procesar el archivo <em>XACRO</em> con la descripción del robot y se deberá publicar la misma a través del paquete <code>robot_state_publisher</code>. El <em>launch</em> deberá recibir, a través de un parámetro de tipo <em>bool</em> llamado <code>testing</code>, la condición para ejecutar o no el paquete <code>joint_state_publisher_gui</code> y <code>RViz</code>.</p>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Este archivo será útil para probar el archivo del ejercicio anterior, por lo que se recomienda realizarlos en paralelo</p>
-</div>
-</div>
-</div>
-</section>
-<section id="gazebo" class="level2">
-<h2 class="anchored" data-anchor-id="gazebo">Gazebo</h2>
-<p>Editar el o los archivos <em>XACRO</em> del ejercicio 1, de manera que sea/n compatible/s con los requerimientos de <em>Gazebo</em>, haciendo uso de los <em>macros</em> disponibles en el archivo <code>inertial_macros.xacro</code>.</p>
-<p>Crear un paquete <code>(*)_gz</code> y un archivo <em>launch</em> nuevo, que ejecute <em>Gazebo</em>, procese la descripción del robot y, utilizando el ejecutable <code>spawn_entity.py</code>, cargue el robot en el simulador. Puede reutilizar el archivo creado en el ejercicio 2 incluyéndolo (no debe ejecutar el <code>joint_state_publisher_gui</code> ni <code>RViz</code>).</p>
-</section>
-<section id="ros2-control" class="level2">
-<h2 class="anchored" data-anchor-id="ros2-control">ROS2 control</h2>
-<p>Editar el archivo de definición del robot y agregar los elementos necesarios para configurar <em>ROS2 control</em> y <em>Gazebo</em> de forma tal que las juntas correspondientes a las ruedas de tracción reciban comandos de velocidad y devuelvan el estado de posición y velocidad. Para esto deberá añadir los <em>tags</em> <code>&lt;ros2_control&gt;</code> y <code>&lt;gazebo&gt;</code>.</p>
-<p>Crear un paquete <code>(*)_control</code>, con una carpeta <code>config</code> y un archivo de configuración en formato <em>YAML</em> con los parámetros necesarios para que el <code>controller_manager</code> de <em>ROS2 control</em> cargue un <code>JointStateBroadcaster</code> y dos controladores de velocidad de tipo <code>JointGroupVelocityController</code>, uno para cada rueda de tracción.</p>
-<p>Editar el archivo <em>launch</em> del ejercicio 3 para invocar al comando <code>load_controller</code> de <code>ros2_control</code> y cargar los controladores del inciso anterior.</p>
-<div style="page-break-after: always;"></div>
-</section>
-<section id="cinemática" class="level2">
-<h2 class="anchored" data-anchor-id="cinemática">Cinemática</h2>
-<p>Calcular la velocidad lineal y angular del robot y de las ruedas para que se complete:</p>
-<ul>
-<li>una trayectoria recta de 1[m] en 10 [s].</li>
-<li>una trayectoria circular con un radio de 0.5 [m] en sentido horario en 20 [s].</li>
-</ul>
-<p>Examinar la definición de los mensajes de tipo <code>geometry_msgs/Twist</code> y describir cuál sería la secuencia de comandos de velocidad a aplicar al robot para seguir la trayectoria mostrada en la <a href="#fig-camino" class="quarto-xref">Figure&nbsp;1</a> utilizando dichos mensajes. La velocidad máxima de giro de los motores es de <span class="math inline">\(50 [rpm]\)</span>.</p>
-<div id="fig-camino" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-camino-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="entregable1_files/mediabag/camino.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-camino-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Trayectoria para el ejercicio 6
-</figcaption>
-</figure>
-</div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>El punto inicial del robot será asignado por el docente.</p>
+<p>Este mecanismo de seguridad se denomina <em>dead man’s switch</em></p>
 </div>
 </div>
 </div>
-<p>Examinar la definición de los mensajes del <em>topic</em> suscripto por el <code>JointGroupVelocityController</code>. Calcule las velocidades angulares de las ruedas para cada comando del ejercicio 6 y construya la secuencia de mensajes de comando correspondientes.</p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>El campo <code>layout</code> no se debe completar.</p>
-</div>
-</div>
-</div>
-<p>Dentro del paquete <code>(*)_control</code>, cree un nodo que reciba comandos de tipo <code>geometry_msgs/Twist</code> a través de un <em>topic</em> llamado <code>cmd_vel</code>, calcule las velocidades angulares en base al modelo cinemático inverso del robot y escriba los comandos de velocidad de cada rueda de tracción en los <em>topics</em> <code>left_wheel_cmd</code> y <code>right_wheel_cmd</code>. Tenga en cuenta que los parámetros del robot se encuentran en el <em>robot description</em>.</p>
 </section>
-<section id="odometría" class="level2">
-<h2 class="anchored" data-anchor-id="odometría">Odometría</h2>
-<p>Crear un nodo (en el mismo paquete que el ejercicio anterior o por separado) que lea el o los <em>topics</em> de posición de las juntas de las ruedas (publicados por el <code>JointStateBroadcaster</code>), calcule la odometría basado en el modelo cinemático directo del robot y publique la misma en el <em>topic</em> <code>\odom</code> con mensajes de tipo <code>nav_msgs/Odometry</code>. El nodo debe recibir como parámetro las dimensiones geométricas del modelo cinemático y los nombres correspondientes a las juntas de las ruedas de tracción.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>El campo <code>twist</code> y <code>covariance</code> en <code>pose</code> no se deben completar para el mensaje <code>nav_msgs/Odometry</code>.</p>
-</div>
-</div>
-<p>Cree un nuevo paquete <code>(*)_bringup</code> con un archivo <em>launch</em> en el cual se cargue todo el sistema desarrollado (URDF, <em>Gazebo</em>, los controladores de <em>ROS2 control</em>) y los nodos de los ejercicios 8 y 9. Recuerde configurar correctamente los parámetros y <em>topics</em> de cada nodo. Puede probar que el robot se encuentra funcionando utilizando el <code>teleop_twist_keyboard</code> o publicando mensajes de <code>Twist</code> como los del ejercicio 5 o 6.</p>
-</section>
-<section id="ros-2-y-tf2" class="level2">
-<h2 class="anchored" data-anchor-id="ros-2-y-tf2">ROS 2 y <code>tf2</code></h2>
+<section id="programación-del-nodo" class="level2">
+<h2 class="anchored" data-anchor-id="programación-del-nodo">Programación del nodo</h2>
 <ul>
-<li><p><strong>(Opción A)</strong> Crear un nodo que publique la transformación entre los <em>frames</em> <code>odom</code> y <code>base_link</code> a partir de los mensajes del <em>topic</em> <code>/odom</code>. Agregar la ejecución del mismo al <em>launch</em> del ejercicio anterior.</p></li>
-<li><p><strong>(Opción B)</strong> Modificar el nodo del ejercicio 9 para que que publique la transformación entre los <em>frames</em> <code>odom</code> y <code>base_link</code>. Agregar un parámetro para que cuando no se requiera esta transformación, no se publique.</p></li>
+<li><p>Cree un nodo que reciba mediante parámetros las coordenadas objetivo <span class="math inline">\((x_G, y_G)\)</span> y ejecute el algoritmo de control a una frecuencia fija</p></li>
+<li><p>Obtenga la posición del robot mediante el topic de odometría <code>/odom</code></p></li>
+<li><p>Escriba los comandos de velocidad lineal y angular en el topic <code>/cmd_vel</code> según la ley: <span class="math display">\[
+\begin{cases}
+\nu = k_\rho \rho \\
+\omega = k_\alpha \alpha + k_\beta \beta
+\end{cases}
+\]</span> donde <span class="math display">\[
+\begin{gather*}
+\rho = \sqrt{{\Delta x}^2 + {\Delta y}^2} \\
+\alpha = \arctan \left( {\frac{\Delta y}{\Delta x}} \right) - \theta\\
+\beta = -\theta - \alpha
+\end{gather*}
+\]</span></p></li>
+<li><p>Los ángulos <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span> deben expresarse siempre en el intervalo <span class="math inline">\((-\pi, \pi)\)</span></p></li>
+<li><p>Parametrizar los coeficientes <span class="math inline">\(k_\rho\)</span>, <span class="math inline">\(k_\beta\)</span> y <span class="math inline">\(k_\alpha\)</span> y realizar las verificaciones según el criterio de estabilidad <span class="math display">\[
+k_\rho &gt; 0 \quad k_\beta &lt; 0 \quad k_\alpha - k_\rho &gt; 0
+\]</span></p></li>
+<li><p>Utilice dos parámetros adicionales <span class="math inline">\(\nu_{max}\)</span> y <span class="math inline">\(\omega_{max}\)</span> para limitar el valor máximo de velocidad lineal y velocidad angular</p></li>
+<li><p>Utilice un parámetro <span class="math inline">\(\epsilon_{tol}\)</span> para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo</p></li>
 </ul>
-<p>Cree un archivo <em>launch</em> en el paquete <code>(*)_bringup</code> que extienda (inclusión o copia) al del ejercicio 10 y añada la ejecución de <code>RViz</code> junto con su respectivo archivo de configuración, el cual muestre el robot en el <em>frame</em> <code>odom</code> y las transformaciones de todos los <em>links</em> definidos en el <em>URDF</em>.</p>
-<div style="page-break-after: always;"></div>
+</section>
+<section id="configuraciń-del-launch" class="level2">
+<h2 class="anchored" data-anchor-id="configuraciń-del-launch">Configuraciń del <code>launch</code></h2>
+<ul>
+<li>Cree un archivo <code>go_to_point.launch.py</code> donde cargue la simulación y todo el sistema</li>
+<li>Configure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo</li>
+<li>Al menos realizar 4 pruebas, con puntos en cada uno de los cuadrantes del ángulo <span class="math inline">\(\beta\)</span></li>
+</ul>
+
+
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="anexo-a" class="level1 appendix unnumbered"><h2 class="anchored quarto-appendix-heading">Anexo A</h2><div class="quarto-appendix-contents">
-
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../entregables/01/figs/lateral.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../entregables/01/figs/frontal.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../entregables/01/figs/superior.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-<div style="font-size: 75%;">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 11%">
-<col style="width: 31%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Componente</th>
-<th style="text-align: center;">Masa [g]</th>
-<th style="text-align: center;">Largo [mm]</th>
-<th style="text-align: center;">Ancho [mm]</th>
-<th style="text-align: center;">Alto [mm]</th>
-<th style="text-align: left;"><em>Mesh</em></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Chasis</td>
-<td style="text-align: center;">800</td>
-<td style="text-align: center;">195</td>
-<td style="text-align: center;">100</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: left;"><code>chassis.stl</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Motor</td>
-<td style="text-align: center;">100</td>
-<td style="text-align: center;">70</td>
-<td style="text-align: center;">188</td>
-<td style="text-align: center;">225</td>
-<td style="text-align: left;"><code>motor.stl</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Ruedas</td>
-<td style="text-align: center;">150</td>
-<td style="text-align: center;">70</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">70</td>
-<td style="text-align: left;"><code>wheel.stl</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Base rueda giratoria</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">32</td>
-<td style="text-align: center;">38</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: left;"><code>caster_base.stl</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Base giratoria</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">33</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: left;"><code>caster_wheel_</code> <code>support.stl</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Rueda giratoria</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: left;"><code>caster_wheel.stl</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-
-
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -368,68 +244,6 @@ Note
       icon: icon
     };
     anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
         var filterRegex = new RegExp("https:\/\/acapovilla\.github\.io\/robotica-2025\/");

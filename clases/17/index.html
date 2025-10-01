@@ -126,218 +126,435 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Robótica</h1>
-  <p class="subtitle">Clase 11</p>
+  <p class="subtitle">Clase 17</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">Semana 12 - 02/06/2025</p>
+  <p class="date">Semana 23 - 01/10/2025</p>
+</section>
+<section id="navegación" class="slide level2">
+<h2>Navegación</h2>
+<blockquote>
+<p>Área más desafiante en robótica móvil</p>
+</blockquote>
+<h4 id="pilares"><u>4 pilares</u></h4>
+<ul>
+<li>Percepción</li>
+<li>Localización</li>
+<li><mark>Control</mark></li>
+<li>Cognición</li>
+</ul>
 </section>
 <section>
 
-<section id="odometría-1" class="slide level2">
-<h2>Odometría</h2>
+<section id="control-cinemático-1" class="slide level2 smaller">
+<h2>Control cinemático</h2>
+<div class="columns">
+<div class="column">
 <blockquote>
-<p>Cálculo de los cambios de posición de vehículos con ruedas, utilizando información proveniente de sensores</p>
+<p><u>Dos</u> problemas principales</p>
 </blockquote>
-<ul>
-<li><p>En Robótica móvil se utiliza para estimar (<span class="math inline">\(\neq\)</span> determinar) la posición relativa a una posición inicial (<u>localización relativa</u>)</p></li>
-<li><p>Implementación “<em>barata</em>” pero tiene mala precisión a largo plazo (acumula error)</p></li>
-</ul>
-</section>
-<section id="definición-matemática" class="slide level2 smaller">
-<h2>Definición matemática</h2>
-<ul>
-<li>Dada la pose incial <span class="math inline">\(\boldsymbol{\xi}\)</span> en un tiempo inicial <span class="math inline">\(t_0\)</span>, encontrar la pose para un tiempo futuro <span class="math inline">\(t_0 + \Delta t\)</span></li>
-</ul>
-<p><span class="math display">\[
-\boldsymbol{\xi}(t_0) = \begin{bmatrix} x_0 \\ y_0 \\ \theta_0 \end{bmatrix} \quad \textsf{Encontrar: } \, \boldsymbol{\xi}(t_0 + \Delta t) \; \forall \; \Delta t &gt; 0
-\]</span></p>
-<ul>
-<li><p>Cuando <span class="math inline">\(\Delta t\)</span> es lo suficientemente chico, se puede considerar que la velocidad es constante en el intervalo</p></li>
-<li><p>Por lo tanto se puede aproximar en un proceso iterativo usando ecuaciones de movimiento uniforme</p></li>
-</ul>
-<p><span class="math display">\[
-\boldsymbol{\xi}(t_{k+1}) \approx \boldsymbol{\xi}(t_k) + \dot{\boldsymbol{\xi}}(t_k)(t_{k+1}-t_{k})
-\]</span></p>
-</section>
-<section id="implementación" class="slide level2 smaller">
-<h2>Implementación</h2>
-<ul>
-<li><p>La más clásica es a través de encoders en las ruedas para obtener la velocidad de las mismas</p></li>
-<li><p>Usando el modelo cinemático directo (que relaciona la velocidad de las ruedas con la pose del vehículo):</p></li>
-</ul>
-<p><span class="math display">\[
-\require{color}
-{}^{O} \boldsymbol{\dot\xi}_{R} (t_{k}) =
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{\dot{x}_k} \\
-    \textcolor{ForestGreen}{\dot{y}_k} \\
-    \textcolor{Orange}{\dot\theta_k}
-\end{bmatrix}_{R}} =
-\begin{bmatrix}
-\cos{\textcolor{Orange}{\theta_k}} &amp; 0 \\
-\sin{\textcolor{Orange}{\theta_k}} &amp; 0 \\
-0 &amp; 1
-\end{bmatrix}
-\begin{bmatrix}
-    \frac{r}{2} &amp; \frac{r}{2}\\
-    \frac{r}{\textcolor{Gray}{b}} &amp; - \frac{r}{\textcolor{Gray}{b}}
-\end{bmatrix} \begin{bmatrix} \textcolor{Plum}{\dot\phi_{R_k}} \\ \textcolor{Plum}{\dot\phi_{L_k}} \end{bmatrix}
-\]</span></p>
-<p><span class="math display">\[
-{}^{O} \boldsymbol{\xi}_{R} (t_{k+1}) =
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k+1}} \\
-    \textcolor{ForestGreen}{{y}_{k+1}} \\
-    \textcolor{Orange}{\theta_{k+1}}
-\end{bmatrix}_{R}} \approx
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k}} \\
-    \textcolor{ForestGreen}{{y}_{k}} \\
-    \textcolor{Orange}{\theta_{k}}
-\end{bmatrix}_{R}} +
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{\dot{x}_k} \\
-    \textcolor{ForestGreen}{\dot{y}_k} \\
-    \textcolor{Orange}{\dot\theta_k}
-\end{bmatrix}_{R}}
-(t_{k+1}-t_{k})
-\]</span></p>
-</section>
-<section id="calculo-de-odometría-para-un-robot-diferencial" class="slide level2 smaller">
-<h2><span style="font-size: 75%;">Calculo de odometría para un robot diferencial</span></h2>
-<ul>
-<li>Sea <span class="math inline">\(\Delta t_k = t_{k+1} - t_k\)</span> el intervalo de tiempo entre <span class="math inline">\(t_k\)</span> y <span class="math inline">\(t_{k+1}\)</span></li>
-<li>Sea <span class="math inline">\(\textcolor{Plum}{\dot\phi_{{R|L},k}}\)</span> la velocidad de las ruedas der. e izq. en <span class="math inline">\(k\)</span>, puede aproximarse: <span class="math display">\[
-\textcolor{Plum}{\dot\phi_{R_k}} \approx \frac{\textcolor{Plum}{\Delta \phi_{R_k}}}{\Delta t_k} \qquad \textcolor{Plum}{\dot\phi_{L_k}} \approx \frac{\textcolor{Plum}{\Delta \phi_{L_k}}}{\Delta t_k}
-\]</span></li>
-</ul>
-</section>
-<section id="calculo-de-odometría-para-un-robot-diferencial-1" class="slide level2 smaller">
-<h2><span style="font-size: 75%;">Calculo de odometría para un robot diferencial</span></h2>
-<ul>
-<li>Reemplazando en el modelo cinemático:</li>
-</ul>
-<p><span class="math display">\[
-\begin{align}
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k+1}} \\
-    \textcolor{ForestGreen}{{y}_{k+1}} \\
-    \textcolor{Orange}{\theta_{k+1}}
-\end{bmatrix}_{R}} &amp;\approx
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k}} \\
-    \textcolor{ForestGreen}{{y}_{k}} \\
-    \textcolor{Orange}{\theta_{k}}
-\end{bmatrix}_{R}} +
-\begin{bmatrix}
-\cos{\textcolor{Orange}{\theta_k}} &amp; 0 \\
-\sin{\textcolor{Orange}{\theta_k}} &amp; 0 \\
-0 &amp; 1
-\end{bmatrix}
-\begin{bmatrix}
-    \frac{r}{2} &amp; \frac{r}{2}\\
-    \frac{r}{\textcolor{Gray}{b}} &amp; - \frac{r}{\textcolor{Gray}{b}}
-\end{bmatrix} \begin{bmatrix} \textcolor{Plum}{\dot\phi_{R_k}} \\ \textcolor{Plum}{\dot\phi_{L_k}} \end{bmatrix}
-(t_{k+1}-t_{k}) \\[1em]
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k+1}} \\
-    \textcolor{ForestGreen}{{y}_{k+1}} \\
-    \textcolor{Orange}{\theta_{k+1}}
-\end{bmatrix}_{R}} &amp;\approx
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k}} \\
-    \textcolor{ForestGreen}{{y}_{k}} \\
-    \textcolor{Orange}{\theta_{k}}
-\end{bmatrix}_{R}} +
-\begin{bmatrix}
-\cos{\textcolor{Orange}{\theta_k}} &amp; 0 \\
-\sin{\textcolor{Orange}{\theta_k}} &amp; 0 \\
-0 &amp; 1
-\end{bmatrix}
-\begin{bmatrix}
-    \frac{r}{2} &amp; \frac{r}{2}\\
-    \frac{r}{\textcolor{Gray}{b}} &amp; - \frac{r}{\textcolor{Gray}{b}}
-\end{bmatrix} \begin{bmatrix} \frac{\textcolor{Plum}{\Delta \phi_{R_k}}}{\Delta t_k} \\ \frac{\textcolor{Plum}{\Delta \phi_{L_k}}}{\Delta t_k} \end{bmatrix}
-(\Delta t_k)
-\end{align}
-\]</span></p>
-</section>
-<section id="calculo-de-odometría-para-un-robot-diferencial-2" class="slide level2 smaller">
-<h2><span style="font-size: 75%;">Calculo de odometría para un robot diferencial</span></h2>
-<ul>
-<li><span class="math inline">\(\Delta t_k\)</span> se simplifica en el cálculo de <span class="math inline">\(\Delta \phi\)</span> para cada rueda, por lo que el cálculo de odometría a través de estas ecuaciones no depede de <span class="math inline">\(\Delta t\)</span></li>
-</ul>
-<p><span class="math display">\[
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k+1}} \\
-    \textcolor{ForestGreen}{{y}_{k+1}} \\
-    \textcolor{Orange}{\theta_{k+1}}
-\end{bmatrix}_{R}} \approx
-\sideset{^{O}}{}{\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k}} \\
-    \textcolor{ForestGreen}{{y}_{k}} \\
-    \textcolor{Orange}{\theta_{k}}
-\end{bmatrix}_{R}} +
-\begin{bmatrix}
-\cos{\textcolor{Orange}{\theta_k}} &amp; 0 \\
-\sin{\textcolor{Orange}{\theta_k}} &amp; 0 \\
-0 &amp; 1
-\end{bmatrix}
-\begin{bmatrix}
-    \frac{r}{2} &amp; \frac{r}{2}\\
-    \frac{r}{\textcolor{Gray}{b}} &amp; - \frac{r}{\textcolor{Gray}{b}}
-\end{bmatrix} \begin{bmatrix} \textcolor{Plum}{\phi_{R_k}} \\ \textcolor{Plum}{\phi_{L_k}} \end{bmatrix}
-\]</span></p>
+<ol type="1">
+<li><p><em>Point tracking</em></p></li>
+<li><p><em>Pose tracking</em></p></li>
+</ol>
+</div><div class="column">
 <p><br></p>
-<p><span class="math display">\[
-\begin{cases}
-\textcolor{ForestGreen}{{x}_{k+1}} \approx \textcolor{ForestGreen}{{x}_{k}} + \frac{r}{2}                   (\textcolor{Plum}{\phi_{R_k}} + \textcolor{Plum}{\phi_{L_k}}) \cos{\textcolor{Orange}{\theta_k}} \\[.5em]
-\textcolor{ForestGreen}{{y}_{k+1}} \approx \textcolor{ForestGreen}{{y}_{k}} + \frac{r}{2}                   (\textcolor{Plum}{\phi_{R_k}} + \textcolor{Plum}{\phi_{L_k}}) \sin{\textcolor{Orange}{\theta_k}} \\[.5em]
-\textcolor{Orange}{\theta_{k+1}}   \approx \textcolor{Orange}{\theta_{k}}   + \frac{r}{\textcolor{Gray}{b}} (\textcolor{Plum}{\phi_{R_k}} - \textcolor{Plum}{\phi_{L_k}})
-\end{cases}
-\]</span></p>
+<p><br></p>
+<img data-src="index_files/mediabag/diff-bot-control.svg" style="width:100.0%">
+</div></div>
 </section>
-<section id="calculo-de-odometría-para-un-robot-diferencial-3" class="slide level2 smaller">
-<h2><span style="font-size: 75%;">Calculo de odometría para un robot diferencial</span></h2>
+<section id="control-a-lazo-abierto" class="slide level2 smaller">
+<h2>Control a lazo abierto</h2>
+<div class="columns">
+<div class="column">
 <ul>
-<li>Distancia recorrida por la rueda derecha: <span class="math inline">\(d_{R_k} = (\textcolor{Plum}{\phi_{R_k}} - \textcolor{Plum}{\phi_{R_{k-1}}}) r\)</span></li>
-<li>Distancia recorrida por la rueda izquierda: <span class="math inline">\(d_{L_k} = (\textcolor{Plum}{\phi_{L_k}} - \textcolor{Plum}{\phi_{L_{k-1}}}) r\)</span></li>
-<li>Distancia recorrida por el robot: <span class="math inline">\(\textcolor{Blue}{\Delta d_{k}} = \frac{d_{R_k} + d_{L_k}}{2}\)</span></li>
-<li>Desplazamiento angular del robot: <span class="math inline">\(\textcolor{Blue}{\Delta \theta_k} = \frac{d_{R_k} - d_{L_k}}{b}\)</span></li>
+<li>Encontrar una secuencia finita de controles para desplazar el robot desde cualquier posición inicial a cualquier otra posición deseada</li>
+<li>Este tipo de sistemas son localmente controlables y factibles</li>
+<li>Sin verificación del error final</li>
+<li><u>Problemas</u>:
+<ul>
+<li>Entornos dinámicos</li>
+<li>Adaptabilidad</li>
+<li>etc..</li>
+</ul></li>
+</ul>
+</div><div class="column">
+<img data-src="index_files/mediabag/diff-bot-open-loop.svg" style="width:100.0%">
+</div></div>
+</section>
+<section id="control-a-lazo-cerrado" class="slide level2 smaller">
+<h2>Control a lazo cerrado</h2>
+<ul>
+<li><p>Diseñar lazos de retroalimentación que estabilicen el sistema en torno a un punto del espacio de estados</p></li>
+<li><p>Sea <span class="math inline">\(q\)</span> la posición del robot y <span class="math inline">\(q_G = \begin{bmatrix} x_G &amp; y_G &amp; \theta_G \end{bmatrix}^\top\)</span> el punto de referencia</p></li>
+<li><p>Se entiende por estabilizar el sistema a diseñar una ley de control <span class="math inline">\(u(q, q_G)\)</span> tal que el sistema de lazo cerrado</p></li>
 </ul>
 <p><span class="math display">\[
-{}^{O} \boldsymbol{\xi}_{R} (t_{k+1}) =
-\begin{bmatrix}
-\textcolor{ForestGreen}{{x}_{k+1}}\\[.5em]
-\textcolor{ForestGreen}{{y}_{k+1}}\\[.5em]
-\textcolor{Orange}{\theta_{k+1}}  
-\end{bmatrix} \approx
-\begin{bmatrix}
-    \textcolor{ForestGreen}{{x}_{k}} + \textcolor{Blue}{\Delta d_{k}}     \cos{\textcolor{Orange}{\theta_k}} \\[.5em]
-    \textcolor{ForestGreen}{{y}_{k}} + \textcolor{Blue}{\Delta d_{k}}     \sin{\textcolor{Orange}{\theta_k}} \\[.5em]
-    \textcolor{Orange}{\theta_{k}}   + \textcolor{Blue}{\Delta \theta_k}
-\end{bmatrix}
+\dot{q} = \boldsymbol{A}(q) u(q, q_G) = f(q, q_G)
 \]</span></p>
-</section>
-<section id="calculo-de-odometría-para-un-robot-diferencial-4" class="slide level2 smaller">
-<h2><span style="font-size: 75%;">Calculo de odometría para un robot diferencial</span></h2>
-<blockquote>
-<p>Problemas</p>
-</blockquote>
-<ul>
-<li class="fragment">“<u><em>Dead reconing</em></u>”: Siempre se suma un incremento a una estimación anterior, ambos con cierto error, por lo que este se acumula (y nunca se corrige). Si bien funciona para cortas distancias, al tiempo la estimación se desvía del valor real (generalmente mucho).</li>
-<li class="fragment"><u>El modelo</u>: por naturaleza el modelo no es exactamente lo que sucede en la realidad, sobre todo cuando los supuestos no se cumplen.</li>
-<li class="fragment"><u>Deslizamiento</u>: La condición de no deslizamiento utilizada en el modelo difícilmente se cumpla siempre, y el error producido nunca se elimina.</li>
-<li class="fragment"><u>Calibración de parámetros</u>: Además de las mediciones, el modelo tiene dos parámetros <span class="math inline">\(r\)</span> y <span class="math inline">\(b\)</span>. La medición imperfecta de estos parámetros introduce un error en cada iteración. Se puede corregir con un re-ajuste.</li>
-</ul>
+<p>converja para cualquier estado inicial <span class="math inline">\(q(0)\)</span> a un punto de equilibrio en <span class="math inline">\(\mathcal{Q}\)</span></p>
+<p><span class="math display">\[
+\mathcal{Q} = \left\{ (x, y, \theta) = (x_G,  y_G, \theta_G + 2 \pi n); n = 0, \pm 1, \pm 2, \dots \right\}
+\]</span></p>
 </section></section>
 <section>
 
-<section id="taller-de-resolución-1" class="slide level2 center">
-<h2><a href="../../clases/11/tres.html">Taller de resolución</a></h2>
-<p>Ejercicios 9 al 12</p>
+<section id="seguimiento-de-punto-1" class="slide level2 smaller">
+<h2>Seguimiento de punto</h2>
+<blockquote>
+<p>Definición del problema</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Sea una posición y orientación arbitraria del robot</li>
+<li>Sea una posición objetivo</li>
+<li>Vector de error de pose: <span class="math display">\[
+\require{mathtools}
+e = {}^\textrm{R}{\begin{bmatrix} x &amp; y &amp; \theta \end{bmatrix}^{\intercal}}
+\]</span></li>
+</ul>
+<p>donde <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> y <span class="math inline">\(\theta\)</span> son las coordenadas objetivo en el marco de referencia del robot <span class="math inline">\(\left\{ X_\textrm{R}, Y_\textrm{R}, \theta \right\}\)</span></p>
+</div><div class="column">
+<img data-src="index_files/mediabag/diff-bot-frames.svg" style="width:100.0%">
+</div></div>
+</section>
+<section id="seguimiento-de-punto-2" class="slide level2 smaller">
+<h2>Seguimiento de punto</h2>
+<blockquote>
+<p>Definición del problema</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Se debe encontrar una matriz de control <span class="math inline">\(\boldsymbol{K}\)</span> (si existe), tal que los controles <span class="math inline">\(\nu(t)\)</span> y <span class="math inline">\(\omega(t)\)</span></li>
+</ul>
+<p><span class="math display">\[
+\begin{bmatrix}
+\nu(t) \\
+\omega(t)
+\end{bmatrix} = \boldsymbol{K} \cdot e =
+\boldsymbol{K} \cdot {\begin{bmatrix} x \\ y \\ \theta \end{bmatrix}}
+\]</span></p>
+<p>reduzcan el vector de error <span class="math inline">\(e\)</span> hacia <em>cero</em>:</p>
+<p><span class="math display">\[
+\lim_{t \to \infty} e(t) = 0
+\]</span></p>
+</div><div class="column">
+<p><img data-src="index_files/mediabag/diff-bot-frames.svg" style="width:100.0%"></p>
+</div></div>
+</section>
+<section id="seguimiento-de-punto-3" class="slide level2 smaller">
+<h2>Seguimiento de punto</h2>
+<blockquote>
+<p>Definición del problema</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Matriz de control <span class="math inline">\(\boldsymbol{K}\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\boldsymbol{K}(t,e) = \begin{bmatrix}
+k_{11} &amp; k_{12} &amp; k_{13} \\
+k_{21} &amp; k_{22} &amp; k_{23}
+\end{bmatrix}
+\]</span></p>
+<p>con <span class="math inline">\(k_{ij} = k(t,e)\)</span></p>
+<p><br></p>
+<p><span class="math display">\[
+\begin{bmatrix}
+\nu(t) \\
+\omega(t)
+\end{bmatrix} =
+\begin{bmatrix}
+k_{11} &amp; k_{12} &amp; k_{13} \\
+k_{21} &amp; k_{22} &amp; k_{23}
+\end{bmatrix}
+\cdot {\begin{bmatrix} x \\ y \\ \theta \end{bmatrix}}
+\]</span></p>
+</div><div class="column">
+<p><img data-src="index_files/mediabag/diff-bot-frames.svg" style="width:100.0%"></p>
+</div></div>
+</section>
+<section id="transformación-modelo-cinemático" class="slide level2">
+<h2>Transformación modelo cinemático</h2>
+<div class="columns">
+<div class="column">
+<div style="font-size:60%;">
+<ul>
+<li>Modelo cinemático de un robot diferencial para el marco inercial <span class="math inline">\(\left\{ X_\textrm{I}, Y_\textrm{I}, \theta \right\}\)</span>:</li>
+</ul>
+</div>
+<div style="font-size:60%;">
+<p><span class="math display">\[
+\sideset{^I}{}{
+\begin{bmatrix}
+\dot{x} \\
+\dot{y} \\
+\dot{\theta}
+\end{bmatrix}} =
+\begin{bmatrix}
+\cos{\theta} &amp; 0\\
+\sin{\theta} &amp; 0\\
+0            &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+\]</span></p>
+</div>
+<div style="font-size:60%;">
+<ul>
+<li>Transformación en coordenadas polares</li>
+</ul>
+</div>
+<div style="font-size:60%;">
+<p><span class="math display">\[
+\begin{cases}
+\rho = \sqrt{{\Delta x}^2 + {\Delta y}^2} \\
+\alpha = \arctan \left( {\frac{\Delta y}{\Delta x}} \right) - \theta\\
+\beta = -\theta - \alpha
+\end{cases}
+\]</span></p>
+</div>
+<div style="font-size:60%;">
+<p>para <span class="math inline">\(\alpha \in \boldsymbol{I_1} = \left( -\tfrac{\pi}{2} , \tfrac{\pi}{2} \right]\)</span></p>
+</div>
+</div><div class="column">
+<p><br></p>
+<p><img data-src="index_files/mediabag/diff-bot-frames.svg" style="width:100.0%"></p>
+</div></div>
+</section>
+<section id="transformación-modelo-cinemático-1" class="slide level2 smaller">
+<h2>Transformación modelo cinemático</h2>
+<ul>
+<li>Encontrar el nuevo sistema de ecuaciones:</li>
+</ul>
+<p><span class="math display">\[
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\boldsymbol{A} \cdot
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+\]</span></p>
+<div class="fragment">
+<ul>
+<li>Al derivar las expresiones de la transformación a coordenadas polares, se obtiene: <span class="math display">\[
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+-\cos{\alpha}                   &amp; 0\\
+\tfrac{\sin{\alpha}}{\rho}      &amp; -1\\
+-\tfrac{\sin{\alpha}}{\rho}     &amp; 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+\]</span></li>
+</ul>
+</div>
+<!-- #### [DESARROLLO]{.mark} -->
+</section>
+<section id="transformación-modelo-cinemático-2" class="slide level2">
+<h2>Transformación modelo cinemático</h2>
+<div style="font-size:70%;">
+<ul>
+<li>En resumen:</li>
+</ul>
+</div>
+<div style="font-size:60%;">
+<p><span class="math display">\[
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+-\cos{\alpha}                   &amp; 0\\
+\tfrac{\sin{\alpha}}{\rho}      &amp; -1\\
+-\tfrac{\sin{\alpha}}{\rho}     &amp; 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+\]</span></p>
+</div>
+<div style="font-size:70%;">
+<ul>
+<li>Si <span class="math inline">\(\alpha \in \boldsymbol{I_2} = \left( -\pi , -\tfrac{\pi}{2} \right] \cup \left( \tfrac{\pi}{2} , \pi \right]\)</span>, se puede redefinir la dirección hacia adelante tal que <span class="math inline">\(\nu = -\nu\)</span>, y obtener un sistema similar:</li>
+</ul>
+</div>
+<div style="font-size:60%;">
+<p><span class="math display">\[
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+\cos{\alpha}                   &amp; 0\\
+-\tfrac{\sin{\alpha}}{\rho}      &amp; 1\\
+\tfrac{\sin{\alpha}}{\rho}     &amp; 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+\]</span></p>
+</div>
+</section>
+<section id="transformación-modelo-cinemático-3" class="slide level2 smaller">
+<h2>Transformación modelo cinemático</h2>
+<blockquote>
+<p>Consideraciones</p>
+</blockquote>
+<ul>
+<li><p>La transformación de coordenadas no está definida en el punto <span class="math inline">\(x = y = 0\)</span> <!-- (el determinante de la matriz Jacobiana de la transformación no está definido, es infinito) --></p></li>
+<li><p>Para <span class="math inline">\(\alpha \in \boldsymbol{I_1}\)</span>, la dirección de avance del robot apunta hacia el objetivo, mientras que para <span class="math inline">\(\alpha \in \boldsymbol{I_2}\)</span>, apunta en dirección opuesta</p></li>
+<li><p>Al definir correctamente la dirección de avance del robot en su configuración inicial, siempre es posible que <span class="math inline">\(\alpha \in \boldsymbol{I_1}\)</span> en <span class="math inline">\(t = 0\)</span>. Sin embargo, esto no garantiza que <span class="math inline">\(\alpha\)</span> permanezca en <span class="math inline">\(\boldsymbol{I_1}\)</span> para todo tiempo <span class="math inline">\(t\)</span>. Por lo tanto, para evitar que el robot cambie de dirección al acercarse al objetivo, es necesario, diseñar el controlador de forma que <span class="math inline">\(\alpha \in \boldsymbol{I_1}\)</span> para todo <span class="math inline">\(t\)</span>, siempre que <span class="math inline">\(\alpha(0) \in \boldsymbol{I_1}\)</span></p></li>
+</ul>
+<p><mark>(ANÁLISIS DE ESTABILIDAD)</mark></p>
+</section>
+<section id="diseño-del-controlador" class="slide level2 smaller">
+<h2>Diseño del controlador</h2>
+<ul>
+<li>Se deben diseñar dos señales de control <span class="math inline">\(\nu\)</span> y <span class="math inline">\(\omega\)</span>, que lleven el robot desde la posición actual <span class="math inline">\(\left( \rho, \alpha, \beta \right)\)</span> a la posición objetivo</li>
+<li>El sistema presenta una discontinuidad en <span class="math inline">\(\rho = 0\)</span> (<span class="math inline">\(x = y = 0\)</span>)</li>
+<li>Si consideramos la ley de control lineal</li>
+</ul>
+<p><span class="math display">\[
+\begin{cases}
+\nu = k_\rho \rho \\
+\omega = k_\alpha \alpha + k_\beta \beta
+\end{cases}
+\]</span></p>
+<ul>
+<li>Se obtiene el sistema a lazo cerrado descripto por:</li>
+</ul>
+<p><span class="math display">\[
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+-\cos{\alpha}                   &amp; 0\\
+\tfrac{\sin{\alpha}}{\rho}      &amp; -1\\
+-\tfrac{\sin{\alpha}}{\rho}     &amp; 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+k_\rho \rho\\
+k_\alpha \alpha + k_\beta \beta
+\end{bmatrix} =
+\begin{bmatrix}
+-\cos{(\alpha)} k_\rho \rho \\
+\sin{(\alpha)} k_\rho - k_\alpha \alpha - k_\beta \beta \\
+-\sin{(\alpha)} k_\rho
+\end{bmatrix}
+\]</span></p>
+</section>
+<section id="diseño-del-controlador-1" class="slide level2 smaller">
+<h2>Diseño del controlador</h2>
+<p><span class="math display">\[
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+-\cos{(\alpha)} k_\rho \rho \\
+\sin{(\alpha)} k_\rho - k_\alpha \alpha - k_\beta \beta \\
+-\sin{(\alpha)} k_\rho
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>El sistema ya no presenta singularidad en <span class="math inline">\(\rho = 0\)</span></li>
+<li>Tiene un único punto de equilibrio en <span class="math inline">\(\left( \rho, \alpha, \beta \right) = \left( 0, 0, 0 \right)\)</span>, por lo tanto, conducirá al robot a dicho punto, que corresponde a la posición objetivo</li>
+<li><u>Los ángulos <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span> deben expresarse siempre en el intervalo <span class="math inline">\((-\pi, \pi)\)</span></u></li>
+<li>El control de velocidad lineal <span class="math inline">\(\nu\)</span> siempre tiene un signo constante: es positiva cuando <span class="math inline">\(\alpha(0) \in \boldsymbol{I_1}\)</span> y negativa en cualquier otro caso. El robot realiza la maniobra siempre en una sola dirección, sin invertir el sentido de su movimiento.</li>
+<li><mark>El sistema es estable para <span class="math inline">\(k_\rho &gt; 0\)</span>, <span class="math inline">\(k_\beta &lt; 0\)</span> y <span class="math inline">\(k_\alpha - k_\rho &gt; 0\)</span></mark></li>
+</ul>
+</section>
+<section id="simulaciones" class="slide level2 smaller">
+<h2>Simulaciones</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Trayectorias resultantes al inicializar el robot en un circulo de radio 2</li>
+<li>Valores de <span class="math inline">\(\theta = \left[ -135°; 180°\right]\)</span> a intervalos de <span class="math inline">\(45°\)</span></li>
+<li>Valores adoptados:
+<ul>
+<li><span class="math inline">\(k_\rho = 3.0\)</span></li>
+<li><span class="math inline">\(k_\alpha = 8.0\)</span></li>
+<li><span class="math inline">\(k_\beta = -1.5\)</span></li>
+</ul></li>
+</ul>
+</div><div class="column">
+<p><img data-src="figs/theta0-examples.svg"></p>
+</div></div>
+</section>
+<section id="simulaciones-1" class="slide level2 smaller">
+<h2>Simulaciones</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Análisis de sensibilidad de <span class="math inline">\(k_\rho\)</span></li>
+<li><span class="math inline">\(\theta_0 = 90°\)</span></li>
+<li><span class="math inline">\(k_\alpha = 8.0\)</span> y <span class="math inline">\(k_\beta = -1.5\)</span></li>
+</ul>
+</div><div class="column">
+<p><img data-src="figs/k_rho-examples.svg"></p>
+</div></div>
+</section>
+<section id="simulaciones-2" class="slide level2 smaller">
+<h2>Simulaciones</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Análisis de sensibilidad de <span class="math inline">\(k_\alpha\)</span></li>
+<li><span class="math inline">\(\theta_0 = 90°\)</span></li>
+<li><span class="math inline">\(k_\rho = 3.0\)</span> y <span class="math inline">\(k_\beta = -1.5\)</span></li>
+</ul>
+</div><div class="column">
+<p><img data-src="figs/k_alpha-examples.svg"></p>
+</div></div>
+</section>
+<section id="simulaciones-3" class="slide level2 smaller">
+<h2>Simulaciones</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Análisis de sensibilidad de <span class="math inline">\(k_\beta\)</span></li>
+<li><span class="math inline">\(\theta_0 = 90°\)</span></li>
+<li><span class="math inline">\(k_\rho = 3.0\)</span> y <span class="math inline">\(k_\alpha = 8.0\)</span></li>
+</ul>
+</div><div class="column">
+<p><img data-src="figs/k_beta-examples.svg"></p>
+</div></div>
+</section></section>
+<section>
+
+<section id="laboratorio-1" class="slide level2 center">
+<h2><a href="../../clases/17/lab.html">Laboratorio</a></h2>
+<p>Controlador <em>point follower</em></p>
 
 
 </section></section>
