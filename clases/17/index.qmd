@@ -1,0 +1,822 @@
+---
+title: "Robótica"
+subtitle: "Clase 17"
+date: "10/01/2025"
+date-format: "[Semana 23 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+filters:
+  - diagram
+diagram:
+    engine:
+        tikz:
+            execpath: pdflatex
+            header-includes:
+                # - '\usepackage{cancel}'
+                - '\usepackage{amsmath}'
+                - '\usetikzlibrary{arrows.meta, shapes, intersections, decorations.markings,bending}'
+                - '\usepackage{adjustbox}'
+                - '\usepackage{tikz-3dplot}'
+
+jupyter: python3
+---
+
+## Navegación
+
+> Área más desafiante en robótica móvil
+
+#### [4 pilares]{.underline}
+
+- Percepción
+- Localización
+- [Control]{.mark}
+- Cognición
+
+# Control cinemático {visibility="hidden"}
+
+## Control cinemático {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> [Dos]{.underline} problemas principales
+
+1. *Point tracking*
+
+2. *Pose tracking*
+
+
+:::
+::: {.column}
+
+<br>
+
+<br>
+
+```{.tikz width="100%"}
+%%| filename: diff-bot-control
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+
+
+  \begin{scope}[shift={(P)}, rotate=20, transform shape]
+    \begin{scope}[shift={(-0.75, 0.0)}, every node/.style={scale=1.2}]
+      % Etiqueta del marco de referencia A (debajo del origen, a la derecha)
+      %\node[below right, color=Blue] at (0,-0.1) {$\{\boldsymbol{A}\}$};
+      %\node[fill=Blue,circle,scale=0.4] at (0,0);
+
+      % Cuerpo del robot (rectángulo)
+      \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+      % Rueda derecha
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, -1.35) rectangle (0, -1.05);
+
+      % Rueda izquierda
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, 1.05) rectangle (0, 1.35);
+
+      % Línea punteada entre los centros de las ruedas
+      \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+      % Flecha de velocidad v_L (rueda inferior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, -1.2) -- (0.5, -1.2) node[midway, below] {$v_R$};
+
+      % Flecha de velocidad v_R (rueda superior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, 1.2) -- (0.5, 1.2) node[midway, above] {$v_L$};
+
+      % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+      \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+      (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+      % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+      \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+
+      % Marco del robot en (-0.75, 0)
+      \begin{scope}[shift={(-0.75, 0)}]
+        \draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[right] {$\boldsymbol{x}_R$};
+        \draw[->, thick, color=Maroon] (0,0) -- (0,3.0) node[left=2] {$\boldsymbol{y}_R$};
+        \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+        %\node[Maroon, above right] at (0,0) {\footnotesize $P$};
+
+        \begin{scope}[rotate=-20, transform shape]
+          \draw[solid, Blue] (0,0) -- ++(2.8,0);
+
+          \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (2.5,0) arc[start angle=0, end angle=20, radius=2.5] node[midway, right] {$\theta$};
+
+          \coordinate (P_inR) at (0,0);
+        \end{scope}
+
+        %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Maroon] (3.4,0) arc[start angle=0, end angle=15.3, radius=3.4] node[midway, right] {$\alpha$};
+
+        \begin{scope}[every node/.style={scale=0.75}, transform shape]
+          % Arco grueso con flecha sólida
+          \draw[-{Stealth[inset=0pt, length=7pt,flex]}, line width=3pt, Orange] (-225:0.4) arc[start angle=-225, end angle=0, radius=0.4] coordinate[pos=1.0](e331); %node[pos=0.6,below left] {$\omega (t)$};
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, ForestGreen] (0,1.5) -- ++(0,0.6) node[midway, right] {$\dot{y}$};
+        \end{scope}
+
+        \node[above right, Orange] at (e331) {$\omega (t)$};
+        
+        \draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, ForestGreen] (0, 0) -- ++(2.0, 0) node[pos=1, above] {$\nu (t)$};
+      \end{scope}
+
+    \end{scope}
+  \end{scope}
+
+  \begin{scope}[shift={(4.0, -8.0)}, every node/.style={scale=1.5}]
+    % Cuerpo del robot (rectángulo)
+    \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+    % Rueda derecha
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, -1.35) rectangle (0, -1.05);
+
+    % Rueda izquierda
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, 1.05) rectangle (0, 1.35);
+
+    % Línea punteada entre los centros de las ruedas
+    \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+    % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+    \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+    (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+    % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+    \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+    \begin{scope}[shift={(-0.75, 0)}, transform shape]
+      \draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[right] {};% {$\boldsymbol{x}_R$};
+      \draw[->, thick, color=Maroon] (0,0) -- (0,2.5) node[left=2] {};% {$\boldsymbol{y}_R$};
+      \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+      \coordinate (P2_inR) at (0,0);
+    \end{scope}
+  \end{scope}
+
+  \node[Blue, below left] at (-4.5,-5.0) {$\textsf{inicio}$};
+
+  \node[Blue, below left] at (4.0,-9.5) {$\textsf{objetivo}$};
+
+  \draw[very thick] (P_inR) .. controls ++(20:5) and ++(10:-5) .. (P2_inR);
+
+  \draw[very thick,dotted,Gray] (P_inR) -- (P2_inR);
+
+  \draw[opacity=0.5,fill=gray]
+    (-5,0) -- ++(10,0) -- ++(0,-0.5) -- ++(-4,0) -- ++(0,-0.9) -- ++(-4,0) -- ++(0,0.4) -- ++(-2,0) -- (-5,-1);
+
+  \draw[opacity=0.5,fill=gray]
+    (6.5,-6.5) -- ++(2,0) -- ++(0,-3) -- ++(-2,0) -- ++(0,3);
+
+  %\draw[very thick,Gray] (0,0) -- (P_inR) node[midway, above] {$\rho$};
+  %\draw[-{Stealth[scale=0.6,inset=0pt]},very thick,Gray] (0,0) -- ++(2.0,1.45) node[pos=1, above] {$\hat{x}$};
+  %\draw[{Stealth[scale=0.6,inset=0pt]}-, thick, Gray] (1.5,0) arc[start angle=0, end angle=35.3, radius=1.5] node[midway, right] {$\beta$};
+
+  %\draw[dashed,thick,Plum] (P_inR) -- ++(0.0,-2.0) coordinate[at end](x0);
+  %\draw[dashed,thick,Plum] (0,0) -- (0,0 |- P_inR) -- ++(0.0,-2.0) coordinate[at end](x1);
+  %\draw[solid,line width=5pt,Plum] (x0) -- (x1) node[midway, above] {$\Delta x$};
+
+  %\draw[dashed,thick,Plum] (P_inR) -- ++(-2.0,0.0) coordinate[at end](y0);
+  %\draw[dashed,thick,Plum] (0,0) -- (P_inR |- 0,0) -- ++(-2.0,0.0) coordinate[at end](y1);
+  %\draw[solid,line width=5pt,Plum] (y0) -- (y1) node[midway, left] {$\Delta y$};
+
+
+  % Ejes del marco A
+  %\def\axisLen{2.5}
+  %\draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I = \boldsymbol{x}_G$};
+  %\draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I = \boldsymbol{y}_G$};
+  %\node[fill=Blue, circle, scale=0.8] at (0,0) {};
+  %\node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+## Control a lazo abierto {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Encontrar una secuencia finita de controles para desplazar el robot desde cualquier posición inicial a cualquier otra posición deseada
+- Este tipo de sistemas son localmente controlables y factibles
+- Sin verificación del error final
+- [Problemas]{.underline}:
+  - Entornos dinámicos
+  - Adaptabilidad
+  - etc..  
+
+:::
+::: {.column}
+
+
+```{.tikz width="100%"}
+%%| filename: diff-bot-open-loop
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  %\coordinate (P) at (0.5,0.2);
+  %\coordinate (B) at (0,0);
+
+  \begin{scope}[shift={(2.5, 1.5)}]
+  \begin{scope}[shift={(0.0, 0.75)}, rotate=90, every node/.style={scale=1.0}]
+    % Cuerpo del robot (rectángulo)
+    \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+    % Rueda derecha
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, -1.35) rectangle (0, -1.05);
+
+    % Rueda izquierda
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, 1.05) rectangle (0, 1.35);
+
+    % Línea punteada entre los centros de las ruedas
+    \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+    % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+    \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+    (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+    % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+    \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+    \begin{scope}[shift={(-0.75, 0)}, transform shape]
+      %\draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[right] {};% {$\boldsymbol{x}_R$};
+      %\draw[->, thick, color=Maroon] (0,0) -- (0,3.0) node[left=2] {};% {$\boldsymbol{y}_R$};
+      \node[fill=Maroon, circle, scale=0.8] at (0,0) {};
+      \coordinate (P2_inR) at (0,0);
+    \end{scope}
+  \end{scope}
+  \end{scope}
+
+  \def\R{2.0}
+  \coordinate (C1) at (4.5,3.0);
+  \draw[dashed, Gray, thick] (C1) circle (\R);
+
+  %\path (f2) ++(0.0,\R) ++(-1.0,-0.2) coordinate (C2);
+  \path (2.5,3.0) arc (180:120:\R) ++(6.0,3.0) ++(0.0,\R) ++(-1.0,-0.2) coordinate(C2);
+  \draw[dashed, Gray, thick] (C2) circle (\R);
+
+  \draw[Maroon,line width=3pt,line cap=round] (2.5, 1.5) -- (2.5,3.0) arc (180:120:\R) -- ++(6.0,3.0) coordinate[at end](f2) arc (-60:30:\R) -- ++(-1.0,2.0)
+    node[fill=Maroon, circle, scale=0.8](goal) {};
+
+  \draw[opacity=0.5,fill=gray] (5.0,8.0) -- ++(3.5,0.5) -- ++(0.5,2.5) -- ++(-4,0.5) -- ++(-1,-1.5) -- cycle;
+
+  \draw[opacity=0.5,fill=gray] (6.0,1.5) -- ++(5.0,-0.5) -- ++(0.5,1.5) -- ++(-4,0.5) -- ++(0.0,1.5) -- ++(-1.5,-0.5) -- ++(-1,-1.5) -- cycle;
+
+  % Ejes del marco A
+  \def\axisLen{12}
+  \draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I$};
+  \draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I$};
+  \node[fill=Blue, circle, scale=0.8] at (0,0) {};
+  \node[Blue, above] at (goal) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+## Control a lazo cerrado {.smaller}
+
+- Diseñar lazos de retroalimentación que estabilicen el sistema en torno a un punto del espacio de estados
+
+- Sea $q$ la posición del robot y $q_G = \begin{bmatrix} x_G & y_G & \theta_G \end{bmatrix}^\top$ el punto de referencia
+
+- Se entiende por estabilizar el sistema a diseñar una ley de control $u(q, q_G)$ tal que el sistema de lazo cerrado
+
+$$
+\dot{q} = \boldsymbol{A}(q) u(q, q_G) = f(q, q_G)
+$$
+
+converja para cualquier estado inicial $q(0)$ a un punto de equilibrio en $\mathcal{Q}$
+
+$$
+\mathcal{Q} = \left\{ (x, y, \theta) = (x_G,  y_G, \theta_G + 2 \pi n); n = 0, \pm 1, \pm 2, \dots \right\}
+$$
+
+
+# Seguimiento de punto {visibility="hidden"}
+
+## Seguimiento de punto {.smaller}
+
+> Definición del problema
+
+::: {.columns}
+::: {.column}
+- Sea una posición y orientación arbitraria del robot
+- Sea una posición objetivo
+- Vector de error de pose:
+$$
+\require{mathtools}
+e = {}^\textrm{R}{\begin{bmatrix} x & y & \theta \end{bmatrix}^{\intercal}}
+$$
+
+donde $x$, $y$ y $\theta$ son las coordenadas objetivo en el marco de referencia del robot $\left\{ X_\textrm{R}, Y_\textrm{R}, \theta \right\}$
+ 
+:::
+::: {.column}
+
+```{.tikz width="100%"}
+%%| filename: diff-bot-frames
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+
+
+  \begin{scope}[shift={(P)}, rotate=20, transform shape]
+    \begin{scope}[shift={(-0.75, 0.0)}, every node/.style={scale=1.0}]
+      % Etiqueta del marco de referencia A (debajo del origen, a la derecha)
+      %\node[below right, color=Blue] at (0,-0.1) {$\{\boldsymbol{A}\}$};
+      %\node[fill=Blue,circle,scale=0.4] at (0,0);
+
+      % Cuerpo del robot (rectángulo)
+      \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+      % Rueda derecha
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, -1.35) rectangle (0, -1.05);
+
+      % Rueda izquierda
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, 1.05) rectangle (0, 1.35);
+
+      % Línea punteada entre los centros de las ruedas
+      \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+      % Flecha de velocidad v_L (rueda inferior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, -1.2) -- (0.5, -1.2) node[midway, below] {$v_R$};
+
+      % Flecha de velocidad v_R (rueda superior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, 1.2) -- (0.5, 1.2) node[midway, above] {$v_L$};
+
+      % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+      \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+      (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+      % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+      \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+
+      % Marco del robot en (-0.75, 0)
+      \begin{scope}[shift={(-0.75, 0)}]
+        \draw[->, thick, color=Maroon] (0,0) -- (4.0,0) node[right] {$\boldsymbol{x}_R$};
+        \draw[->, thick, color=Maroon] (0,0) -- (0,3.5) node[left=2] {$\boldsymbol{y}_R$};
+        \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+        \node[Maroon, above right] at (0,0) {\footnotesize $P$};
+
+        \begin{scope}[rotate=-20, transform shape]
+          \draw[solid, Blue] (0,0) -- ++(2.8,0);
+
+          \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (2.5,0) arc[start angle=0, end angle=20, radius=2.5] node[midway, right] {$\theta$};
+
+          \coordinate (P_inR) at (0,0);
+        \end{scope}
+
+        \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Maroon] (3.4,0) arc[start angle=0, end angle=15.3, radius=3.4] node[midway, right] {$\alpha$};
+
+        \begin{scope}[every node/.style={scale=0.75}, transform shape]
+          % Arco grueso con flecha sólida
+          \draw[-{Stealth[inset=0pt, length=7pt,flex]}, line width=3pt, Orange] (-225:0.4) arc[start angle=-225, end angle=0, radius=0.4] node[near start,below left] {$\omega$};
+          \draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, ForestGreen] (0, 0) -- ++(3.0, 0) node[pos=1, above] {$\nu$};
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, ForestGreen] (0,1.5) -- ++(0,0.6) node[midway, right] {$\dot{y}$};
+        \end{scope}
+      \end{scope}
+
+    \end{scope}
+  \end{scope}
+
+  \draw[very thick,Gray] (0,0) -- (P_inR) node[midway, above] {$\rho$};
+  \draw[-{Stealth[scale=0.6,inset=0pt]},very thick,Gray] (0,0) -- ++(2.0,1.45) node[pos=1, above] {$\hat{x}$};
+  \draw[{Stealth[scale=0.6,inset=0pt]}-, thick, Gray] (1.5,0) arc[start angle=0, end angle=35.3, radius=1.5] node[midway, right] {$\beta$};
+
+  \draw[dashed,thick,Plum] (P_inR) -- ++(0.0,-2.0) coordinate[at end](x0);
+  \draw[dashed,thick,Plum] (0,0) -- (0,0 |- P_inR) -- ++(0.0,-2.0) coordinate[at end](x1);
+  \draw[solid,line width=5pt,Plum] (x0) -- (x1) node[midway, above] {$\Delta x$};
+
+  \draw[dashed,thick,Plum] (P_inR) -- ++(-2.0,0.0) coordinate[at end](y0);
+  \draw[dashed,thick,Plum] (0,0) -- (P_inR |- 0,0) -- ++(-2.0,0.0) coordinate[at end](y1);
+  \draw[solid,line width=5pt,Plum] (y0) -- (y1) node[midway, left] {$\Delta y$};
+
+
+  % Ejes del marco A
+  \def\axisLen{2.5}
+  \draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I = \boldsymbol{x}_G$};
+  \draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I = \boldsymbol{y}_G$};
+  \node[fill=Blue, circle, scale=0.8] at (0,0) {};
+  \node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+## Seguimiento de punto {.smaller}
+
+> Definición del problema
+
+::: {.columns}
+::: {.column}
+- Se debe encontrar una matriz de control $\boldsymbol{K}$ (si existe), tal que los controles $\nu(t)$ y $\omega(t)$
+
+$$
+\begin{bmatrix}
+\nu(t) \\
+\omega(t)
+\end{bmatrix} = \boldsymbol{K} \cdot e = 
+\boldsymbol{K} \cdot {\begin{bmatrix} x \\ y \\ \theta \end{bmatrix}}
+$$
+
+reduzcan el vector de error $e$ hacia *cero*:
+
+$$
+\lim_{t \to \infty} e(t) = 0
+$$
+ 
+:::
+::: {.column}
+
+![](index_files/mediabag/diff-bot-frames.svg){width="100%"}
+
+:::
+:::
+
+## Seguimiento de punto {.smaller}
+
+> Definición del problema
+
+::: {.columns}
+::: {.column}
+- Matriz de control $\boldsymbol{K}$:
+
+$$
+\boldsymbol{K}(t,e) = \begin{bmatrix}
+k_{11} & k_{12} & k_{13} \\
+k_{21} & k_{22} & k_{23}
+\end{bmatrix}
+$$
+
+con $k_{ij} = k(t,e)$
+
+<br>
+
+$$
+\begin{bmatrix}
+\nu(t) \\
+\omega(t)
+\end{bmatrix} =
+\begin{bmatrix}
+k_{11} & k_{12} & k_{13} \\
+k_{21} & k_{22} & k_{23}
+\end{bmatrix}
+\cdot {\begin{bmatrix} x \\ y \\ \theta \end{bmatrix}}
+$$
+ 
+:::
+::: {.column}
+
+![](index_files/mediabag/diff-bot-frames.svg){width="100%"}
+
+
+:::
+:::
+
+## Transformación modelo cinemático
+
+::: {.columns}
+::: {.column}
+::: {style="font-size:60%;"}
+- Modelo cinemático de un robot diferencial para el marco inercial $\left\{ X_\textrm{I}, Y_\textrm{I}, \theta \right\}$:
+:::
+
+::: {style="font-size:60%;"}
+$$
+\sideset{^I}{}{ 
+\begin{bmatrix}
+\dot{x} \\
+\dot{y} \\
+\dot{\theta}
+\end{bmatrix}} =
+\begin{bmatrix}
+\cos{\theta} & 0\\
+\sin{\theta} & 0\\
+0            & 1
+\end{bmatrix}
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+$$
+:::
+
+::: {style="font-size:60%;"}
+- Transformación en coordenadas polares
+:::
+::: {style="font-size:60%;"}
+$$
+\begin{cases}
+\rho = \sqrt{{\Delta x}^2 + {\Delta y}^2} \\
+\alpha = \arctan \left( {\frac{\Delta y}{\Delta x}} \right) - \theta\\
+\beta = -\theta - \alpha
+\end{cases}
+$$
+:::
+
+::: {style="font-size:60%;"}
+para $\alpha \in \boldsymbol{I_1} = \left( -\tfrac{\pi}{2} , \tfrac{\pi}{2} \right]$
+:::
+
+:::
+::: {.column}
+
+<br>
+
+![](index_files/mediabag/diff-bot-frames.svg){width="100%"}
+
+
+:::
+:::
+
+## Transformación modelo cinemático {.smaller}
+
+- Encontrar el nuevo sistema de ecuaciones:
+
+$$
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\boldsymbol{A} \cdot
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+$$
+
+::: {.fragment}
+
+- Al derivar las expresiones de la transformación a coordenadas polares, se obtiene:
+$$
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+-\cos{\alpha}                   & 0\\
+\tfrac{\sin{\alpha}}{\rho}      & -1\\
+-\tfrac{\sin{\alpha}}{\rho}     & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+$$
+:::
+
+<!-- #### [DESARROLLO]{.mark} -->
+
+## Transformación modelo cinemático
+
+::: {style="font-size:70%;"}
+- En resumen:
+:::
+
+::: {style="font-size:60%;"}
+$$
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+-\cos{\alpha}                   & 0\\
+\tfrac{\sin{\alpha}}{\rho}      & -1\\
+-\tfrac{\sin{\alpha}}{\rho}     & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+$$
+:::
+
+::: {style="font-size:70%;"}
+- Si $\alpha \in \boldsymbol{I_2} = \left( -\pi , -\tfrac{\pi}{2} \right] \cup \left( \tfrac{\pi}{2} , \pi \right]$, se puede redefinir la dirección hacia adelante tal que $\nu = -\nu$, y obtener un sistema similar:
+:::
+
+::: {style="font-size:60%;"}
+$$
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+\cos{\alpha}                   & 0\\
+-\tfrac{\sin{\alpha}}{\rho}      & 1\\
+\tfrac{\sin{\alpha}}{\rho}     & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}
+$$
+:::
+
+## Transformación modelo cinemático {.smaller}
+
+> Consideraciones
+
+- La transformación de coordenadas no está definida en el punto $x = y = 0$ <!-- (el determinante de la matriz Jacobiana de la transformación no está definido, es infinito) -->
+- Para $\alpha \in \boldsymbol{I_1}$, la dirección de avance del robot apunta hacia el objetivo, mientras que para $\alpha \in \boldsymbol{I_2}$, apunta en dirección opuesta
+
+- Al definir correctamente la dirección de avance del robot en su configuración inicial, siempre es posible que $\alpha \in \boldsymbol{I_1}$ en $t = 0$. Sin embargo, esto no garantiza que $\alpha$ permanezca en $\boldsymbol{I_1}$ para todo tiempo $t$. Por lo tanto, para evitar que el robot cambie de dirección al acercarse al objetivo, es necesario, diseñar el controlador de forma que $\alpha \in \boldsymbol{I_1}$ para todo $t$, siempre que $\alpha(0) \in \boldsymbol{I_1}$
+
+
+[(ANÁLISIS DE ESTABILIDAD)]{.mark}
+
+## Diseño del controlador {.smaller}
+
+- Se deben diseñar dos señales de control $\nu$ y $\omega$, que lleven el robot desde la posición actual $\left( \rho, \alpha, \beta \right)$ a la posición objetivo
+- El sistema presenta una discontinuidad en $\rho = 0$ ($x = y = 0$)
+- Si consideramos la ley de control lineal
+
+$$
+\begin{cases}
+\nu = k_\rho \rho \\
+\omega = k_\alpha \alpha + k_\beta \beta
+\end{cases}
+$$
+
+- Se obtiene el sistema a lazo cerrado descripto por:
+
+$$
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} =
+\begin{bmatrix}
+-\cos{\alpha}                   & 0\\
+\tfrac{\sin{\alpha}}{\rho}      & -1\\
+-\tfrac{\sin{\alpha}}{\rho}     & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+k_\rho \rho\\
+k_\alpha \alpha + k_\beta \beta
+\end{bmatrix} = 
+\begin{bmatrix}
+-\cos{(\alpha)} k_\rho \rho \\
+ \sin{(\alpha)} k_\rho - k_\alpha \alpha - k_\beta \beta \\
+-\sin{(\alpha)} k_\rho 
+\end{bmatrix}
+$$
+
+## Diseño del controlador {.smaller}
+
+$$
+\begin{bmatrix}
+\dot{\rho} \\
+\dot{\alpha} \\
+\dot{\beta}
+\end{bmatrix} = 
+\begin{bmatrix}
+-\cos{(\alpha)} k_\rho \rho \\
+ \sin{(\alpha)} k_\rho - k_\alpha \alpha - k_\beta \beta \\
+-\sin{(\alpha)} k_\rho 
+\end{bmatrix}
+$$
+
+- El sistema ya no presenta singularidad en $\rho = 0$
+- Tiene un único punto de equilibrio en $\left( \rho, \alpha, \beta \right) = \left( 0, 0, 0 \right)$, por lo tanto, conducirá al robot a dicho punto, que corresponde a la posición objetivo
+- [Los ángulos $\alpha$ y $\beta$ deben expresarse siempre en el intervalo $(-\pi, \pi)$]{.underline}
+- El control de velocidad lineal $\nu$ siempre tiene un signo constante: es positiva cuando $\alpha(0) \in \boldsymbol{I_1}$ y negativa en cualquier otro caso. El robot realiza la maniobra siempre en una sola dirección, sin invertir el sentido de su movimiento.
+- [El sistema es estable para $k_\rho > 0$, $k_\beta < 0$ y $k_\alpha - k_\rho > 0$]{.mark}
+
+## Simulaciones {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Trayectorias resultantes al inicializar el robot en un circulo de radio 2
+- Valores de $\theta = \left[ -135°; 180°\right]$ a intervalos de $45°$
+- Valores adoptados:
+  - $k_\rho = 3.0$
+  - $k_\alpha = 8.0$
+  - $k_\beta = -1.5$
+
+:::
+::: {.column}
+
+![](figs/theta0-examples.svg)
+
+:::
+:::
+
+## Simulaciones {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Análisis de sensibilidad de $k_\rho$
+- $\theta_0 = 90°$
+- $k_\alpha = 8.0$ y $k_\beta = -1.5$
+
+:::
+::: {.column}
+
+![](figs/k_rho-examples.svg)
+
+:::
+:::
+
+## Simulaciones {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Análisis de sensibilidad de $k_\alpha$
+- $\theta_0 = 90°$
+- $k_\rho = 3.0$ y $k_\beta = -1.5$
+
+:::
+::: {.column}
+
+![](figs/k_alpha-examples.svg)
+
+:::
+:::
+
+## Simulaciones {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Análisis de sensibilidad de $k_\beta$
+- $\theta_0 = 90°$
+- $k_\rho = 3.0$ y $k_\alpha = 8.0$
+
+:::
+::: {.column}
+
+![](figs/k_beta-examples.svg)
+
+:::
+:::
+
+
+# Laboratorio {visibility="hidden"}
+
+## [Laboratorio](lab.qmd) {.center}
+
+Controlador *point follower*

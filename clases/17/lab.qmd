@@ -1,0 +1,60 @@
+---
+title: Clase 17 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+# Point-follower
+
+#### Objetivos
+
+* Implementar un controlador cinemático que dado un par de coordenadas objetivo envíe comandos de velocidad angular y velocidad lineal para conducir el robot a dicho punto
+
+## Modificar controlador de *differential drive*
+
+- Con el fin de mejorar la seguridad del controlador, modificar el controlador para que luego de un período significativo sin recibir mensajes de control en el topic `/cmd_vel` envíe un comando de parada a las juntas de las ruedas
+- Modificar el tipo de mensaje recibido de `geometry_msgs/Twist` a `geometry_msgs/TwistStamped` 
+
+::: {.callout-note appearance="simple"}
+Este mecanismo de seguridad se denomina *dead man's switch*
+:::
+
+## Programación del nodo
+
+- Cree un nodo que reciba mediante parámetros las coordenadas objetivo $(x_G, y_G)$ y ejecute el algoritmo de control a una frecuencia fija
+- Obtenga la posición del robot mediante el topic de odometría `/odom`
+- Escriba los comandos de velocidad lineal y angular en el topic `/cmd_vel` según la ley:
+$$
+\begin{cases}
+\nu = k_\rho \rho \\
+\omega = k_\alpha \alpha + k_\beta \beta
+\end{cases}
+$$
+donde
+$$
+\begin{gather*}
+\rho = \sqrt{{\Delta x}^2 + {\Delta y}^2} \\
+\alpha = \arctan \left( {\frac{\Delta y}{\Delta x}} \right) - \theta\\
+\beta = -\theta - \alpha
+\end{gather*}
+$$
+
+- Los ángulos $\alpha$ y $\beta$ deben expresarse siempre en el intervalo $(-\pi, \pi)$
+- Parametrizar los coeficientes $k_\rho$, $k_\beta$ y $k_\alpha$ y realizar las verificaciones según el criterio de estabilidad
+$$
+k_\rho > 0 \quad k_\beta < 0 \quad k_\alpha - k_\rho > 0
+$$
+- Utilice dos parámetros adicionales $\nu_{max}$ y $\omega_{max}$ para limitar el valor máximo de velocidad lineal y velocidad angular
+- Utilice un parámetro $\epsilon_{tol}$ para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo
+
+## Configuraciń del `launch`
+
+- Cree un archivo `go_to_point.launch.py` donde cargue la simulación y todo el sistema
+- Configure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo
+- Al menos realizar 4 pruebas, con puntos en cada uno de los cuadrantes del ángulo $\beta$
