@@ -1,0 +1,253 @@
+## Implementación {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Implementación **on-line**
+- Generar un potencial repulsivo solo para obstáculos percibidos
+
+$$
+\eta_0 < \textrm{max. lidar}
+$$
+
+- Para calcular la fuerza $\boldsymbol{F}^{R}_i$ solo es necesario conocer el despeje $\eta_i$ con respecto al obstáculo $i$
+
+:::
+::: {.column}
+
+```{.tikz width="100%"}
+%%| filename: lidar-implementation
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \def\R{6.0}
+  \coordinate (O) at (0,0);
+  \draw[Gray, solid, thick] (O) circle (\R);
+
+  \draw[fill=Gray, solid, thick, opacity=0.8] (O) circle (0.5);
+  \node[Blue, right=15] at (0,0) {\LARGE $\textsf{robot}$};
+
+  \node[Blue, below, align=center] at (0,-\R) {$\textsf{Cobertura del LIDAR}$};
+
+  \begin{scope}
+    \draw[opacity=0.4,fill=Maroon,dashed, very thick]
+      (-3.5,4) node(P1) {} -- ++(0,2.5) -- ++(7,0.5) -- ++(0,-2.5) node(P2) {} -- ++(-1.5,0) -- ++(0,1) -- ++(-3.5,-0.25) -- ++(0.25,-1.0) -- cycle;
+
+    \clip (-3.5,4) -- ++(0,2.5) -- ++(7,0.5) -- ++(0,-2.5) -- ++(-1.5,0) -- ++(0,1) -- ++(-3.5,-0.25) -- ++(0.25,-1.0) -- cycle;
+    %\clip (0,0) -- +(45:\R)  arc (45:135:\R);
+    \fill[Black, opacity=0.8] (O) circle (\R);
+  \end{scope}
+  
+  \begin{scope}
+    \draw[opacity=0.4,fill=Maroon,dashed, very thick]
+      (8,2.5) -- ++(2,-1.5) -- ++(-3,-6) -- ++(-3.5,-1.5) -- ++(-2,1) -- cycle;
+    
+    \clip (8,2.5) -- ++(2,-1.5) -- ++(-3,-6) -- ++(-3.5,-1.5) -- ++(-2,1) -- cycle;
+    \fill[Black, opacity=0.8] (O) circle (\R);
+  \end{scope}
+
+  \begin{scope}
+    \draw[opacity=0.4,fill=Maroon,dashed, very thick]
+      (-7,-3) -- ++(4.5,-1) -- ++(-3,-2) -- cycle;
+
+    \clip (-7,-3) -- ++(4.5,-1) -- ++(-3,-2) -- (-5.5, -6);
+    \fill[Black, opacity=0.8] (O) circle (\R);
+  \end{scope}
+
+  \draw[Gray, densely dashed, thick] (0,0) -- (P1);
+  \draw[Gray, densely dashed, thick] (0,0) -- (P2);
+  \draw[Gray, densely dashed, thick] (0,0) -- (-35:4.7) node(O2) {};
+
+  \node[Blue, below=20, align=center] at (90:\R) {\LARGE $\mathcal{C}_3$};
+  \node[Blue, above=20, align=center] at (225:\R) {\LARGE $\mathcal{C}_1$};
+  \node[Blue, left=20, align=center] at (-5:\R) {\LARGE $\mathcal{C}_2$};
+
+  \draw[<->, very thick, color=Maroon] (O2) ++(-0.6,-0.6) -- (-0.6,-0.6) node[midway, below] {\LARGE $\eta_2$};
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, color=Maroon] (O) -- ++(145:1.5) node[near end, below left] {\LARGE $- \nabla U^R_{2}$};
+
+  %\draw[densely dotted, thick] (-\R,0) -- (\R,0);% node[right] {$x$};
+  %\draw[densely dotted, thick] (0,-\R) -- (0,\R);% node[left] {$y$};
+
+  %\draw[->, thick, color=Maroon] (0,0) -- (-170:\R)  node[left] {$\boldsymbol{x}_R$};
+  %\draw[->, thick, color=Black]  (0,0) -- (150:\R) node[left] {$\boldsymbol{F}_T$};
+
+  %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (1.0,0) arc[start angle=0, end angle=-170, radius=1.0] node[midway, below left=2] {$\theta$};
+  %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Black] (1.0,0) arc[start angle=0, end angle=150, radius=1.0] node[midway, above right=-2] {$\theta_{\boldsymbol{F}_T}$};
+
+  %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (-170:2.8) arc[start angle=-170, end angle=-210, radius=2.8] node[midway, left] {$\boldsymbol{\omega} < 0$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+## Mediciones del LIDAR {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Sea la posición del robot $\textcolor{Maroon}{\boldsymbol{r_P}}$ y su orientación $\textcolor{Orange}{\theta}$
+- Dadas las mediciones del *LIDAR* $\textcolor{Plum}{(d, \alpha)}$, es posible calcular la coordenada de $\textcolor{Plum}{\boldsymbol{O}}$ en el marco inercial $\textcolor{Blue}{\left\{\boldsymbol{x}_I, \boldsymbol{y}_I \right\}}$
+
+$$
+\begin{align*}
+\textcolor{Plum}{x_\boldsymbol{O}} &= \textcolor{Maroon}{x_\boldsymbol{P}} + \textcolor{Plum}{d} \cdot \cos{(\textcolor{ForestGreen}{\gamma})}\\
+\textcolor{Plum}{y_\boldsymbol{O}} &= \textcolor{Maroon}{y_\boldsymbol{P}} + \textcolor{Plum}{d} \cdot \sin{(\textcolor{ForestGreen}{\gamma})}
+\end{align*}
+$$
+
+donde 
+$$
+\textcolor{ForestGreen}{\gamma} = \textcolor{Orange}{\theta} + \textcolor{Plum}{\alpha}
+$$
+
+<!-- SE PODRÍA PLANTEAR COMO TRANSFORMACIÓN -->
+
+:::
+::: {.column}
+
+```{.tikz width="100%" fig-align="center"}
+%%| filename: lidar-measures
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \def\robotRotation{40}
+
+  \begin{scope}[shift={(5.5, 4.0)}, every node/.style={scale=1.5}]
+  \begin{scope}[rotate=\robotRotation]
+    % Cuerpo del robot (rectángulo)
+    \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+    % Rueda derecha
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, -1.35) rectangle (0, -1.05);
+
+    % Rueda izquierda
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, 1.05) rectangle (0, 1.35);
+
+    % Línea punteada entre los centros de las ruedas
+    \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+    % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+    \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+    (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+    % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+    \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+    \begin{scope}[shift={(-0.75, 0)}, transform shape]
+      %\draw[dashed, thick, color=Gray] (0,0) -- ++(5.0,0);
+
+      \draw[->, very thick, color=Maroon] (0,0) -- (4.0,0) node[below=4, rotate=-\robotRotation]  {$\boldsymbol{x}_R$};
+      \draw[->, very thick, color=Maroon] (0,0) -- (0,2.5) node[left=2, rotate=-\robotRotation] {$\boldsymbol{y}_R$};
+      \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+
+      \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Plum] (2.8,0) arc[start angle=0, end angle=25, radius=2.8] node[pos=0.8, right, rotate=-\robotRotation, scale=1.0] {\large $\boldsymbol{\alpha}$};
+
+      \coordinate (P3_inR) at (0,0);
+    \end{scope}
+  \end{scope}
+  \end{scope}
+
+  %\node[Blue, below left] at (-4.5,-5.0) {$\textsf{previo}$};
+  %\node[Blue, below left] at (7.0,-9.6) {$\textsf{futuro}$};
+
+  %\draw[very thick] (P_inR) .. controls ++(20:5) and ++(10:-5) .. (P2_inR);
+
+  %\draw[very thick,dotted,Gray] (P_inR) -- (P2_inR);
+
+  %\draw[Gray, dashed, very thick] (P3_inR) ++(50:5) -- ++(-120:3);
+  %\draw[Gray, dashed, very thick] (P3_inR) ++(-120:3) -- ++(50:5) node[pos=1.0](ft) {};
+
+  \draw[dotted, thick] (P3_inR) circle (5.6);
+
+  \draw[opacity=0.5,fill=gray]
+    (11.5,12) -- ++(3,-1.5) -- ++(-0.5,-2) -- ++(-3.5,-1.5) -- ++(-4,2) node[pos=0.8](O) {} -- ++(0.5,2) -- cycle;
+
+  \draw[densely dashed, very thick, color=Blue] (P3_inR) -- ++(5.0,0);
+
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (P3_inR) ++(2.8,0) arc[start angle=0, end angle=\robotRotation, radius=2.8] node[midway, right] {\Large $\boldsymbol{\theta}$};
+
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, ForestGreen] (P3_inR) ++(4.5,0) arc[start angle=0, end angle=65, radius=4.5] node[midway, right] {\Large $\boldsymbol{\gamma}$};
+
+  %\draw[very thick, densely dashed] (O) -- (P3_inR);
+  \draw[very thick, solid, Plum] (P3_inR) -- (O) node[midway, left] {\Large $\boldsymbol{d}$} node[circle, fill=Plum, scale=0.8] {} node[Plum, above right] {$\boldsymbol{O}$};
+  %\draw[-{Stealth[inset=0pt,flex]}, line width=3pt, color=Plum] (P3_inR) -- ++(-120:3) node[below] {\Large $\boldsymbol{F}_R$};
+
+  %\draw[very thick,Gray] (0,0) -- (P_inR) node[midway, above] {$\rho$};
+  %\draw[-{Stealth[scale=0.6,inset=0pt]},very thick,Gray] (0,0) -- ++(2.0,1.45) node[pos=1, above] {$\hat{x}$};
+  %\draw[{Stealth[scale=0.6,inset=0pt]}-, thick, Gray] (1.5,0) arc[start angle=0, end angle=35.3, radius=1.5] node[midway, right] {$\beta$};
+
+  %\draw[dashed,thick,Plum] (P_inR) -- ++(0.0,-2.0) coordinate[at end](x0);
+  %\draw[dashed,thick,Plum] (0,0) -- (0,0 |- P_inR) -- ++(0.0,-2.0) coordinate[at end](x1);
+  %\draw[solid,line width=5pt,Plum] (x0) -- (x1) node[midway, above] {$\Delta x$};
+
+  %\draw[dashed,thick,Plum] (P_inR) -- ++(-2.0,0.0) coordinate[at end](y0);
+  %\draw[dashed,thick,Plum] (0,0) -- (P_inR |- 0,0) -- ++(-2.0,0.0) coordinate[at end](y1);
+  %\draw[solid,line width=5pt,Plum] (y0) -- (y1) node[midway, left] {$\Delta y$};
+
+  
+  \draw[->, line width=1.5pt, solid, Maroon] (0,0) -- (P3_inR) node[midway, below right] {\LARGE $\vec{\boldsymbol{r_P}}$};
+  \draw[->, line width=1.5pt, solid, color=Black] (0,0) -- (O)  node[pos=0.4, above left] {\LARGE $\vec{\boldsymbol{r_O}}$};
+
+  % Ejes del marco A
+  \def\axisLen{2.5}
+  \draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I$};
+  \draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I$};
+  \node[fill=Blue, circle, scale=0.8] at (0,0) {};
+  %\node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+
+## Mediciones del LIDAR {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Para el caso de las fuerzas repulsivas el valor de $\eta_i = \lVert \textcolor{Maroon}{\boldsymbol{P}} - \textcolor{Plum}{\boldsymbol{O}_i} \rVert$ se corresponde directamente con el valor medido por el lidar $\textcolor{Plum}{d}$
+
+- Solo se debe calcular la posición en $\textcolor{Blue}{\boldsymbol{x}_I}$ e $\textcolor{Blue}{\boldsymbol{y}_I}$ para obtener el vector
+
+$$
+\overrightarrow{\textcolor{Maroon}{\boldsymbol{P}}\textcolor{Plum}{\boldsymbol{O}_i}} = \textcolor{Maroon}{\boldsymbol{P}} - \textcolor{Plum}{\boldsymbol{O}_i}
+$$
+
+:::
+::: {.column}
+
+![](index_files/mediabag/lidar-measures.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+
+## Mediciones del LIDAR {.smaller}
+
+- El análisis se realizó simplificando el robot a un punto en el espacio
+- Para la implementación se debe tener en cuenta las dimensiones reales del robot
+- [Modelo simple]{.underline}: Asumir una forma circular con radio $\kappa$ que abarque toda el perímetro
+
+> Los campos potenciales de repulsión se pueden obtener simplemente expandiendo la silueta del obstáculo $\kappa$, lo mismo que disminuir el despeje $\eta_i = d_i - \kappa$

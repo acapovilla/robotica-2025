@@ -1,0 +1,606 @@
+## Campos potenciales artificiales {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Construir un campo potencial $\mathcal{C}$ donde el robot sea representado como una carga $q^+$
+>
+> - **Atraído** por el objetivo $\boldsymbol{G}$ (${q_G}^-$)
+> - **Repelido** por la región del obstáculo $\mathcal{C}_O$ (${q_O}^+$)
+
+- Por *ppio. de superposición* el campo total $U$ será la *suma de los potenciales* de atracción y repulsión
+:::
+::: {.column}
+
+![](figs/figure9A.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+## Campos potenciales artificiales {.smaller}
+
+- El *gradiente negativo* $-\vec{\nabla} U(\boldsymbol{P})$ indicará la dirección de movimiento *más prometedora*
+
+::: {.columns}
+::: {.column}
+
+![](figs/figure9A.svg){width="100%" fig-align="center"}
+
+:::
+::: {.column}
+
+![](figs/figure9B.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+
+## Potencial atractivo {.smaller}
+
+> Objetivo: guiar al robot al punto objetivo $\boldsymbol{G}$
+
+- Sea la distancia entre el robot en $\boldsymbol{P}$ y el punto objetivo $\boldsymbol{G}$:
+
+$$
+\boldsymbol{e}(\boldsymbol{P}) = 
+\begin{bmatrix}
+e_x \\
+e_y \\
+\end{bmatrix}
+= \boldsymbol{P} - \boldsymbol{G} =
+\begin{bmatrix}
+x_\boldsymbol{P} - x_\boldsymbol{G} \\
+y_\boldsymbol{P} - y_\boldsymbol{G} \\
+\end{bmatrix}
+$$
+
+- Se define la magnitud de $\boldsymbol{e}(\boldsymbol{P})$
+
+$$
+\lVert \boldsymbol{e}(\boldsymbol{P}) \rVert =  \sqrt{(x_\boldsymbol{P} - x_\boldsymbol{G})^2 + (y_\boldsymbol{P} - y_\boldsymbol{G})^2}\\
+\lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2 =  (x_\boldsymbol{P} - x_\boldsymbol{G})^2 + (y_\boldsymbol{P} - y_\boldsymbol{G})^2 = \boldsymbol{e}^\top \boldsymbol{e}\\
+$$
+
+## Potencial atractivo {.smaller}
+
+> Objetivo: guiar al robot al punto objetivo $\boldsymbol{G}$
+
+#### Dos ejemplos para $\mathcal{C}$ en $\mathbb{R}^2$:
+
+- Lineal con la distancia:
+
+$$
+U^{A}(\boldsymbol{P}) = \alpha \cdot \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert
+$$
+
+- Cuadrático con la distancia:
+
+$$
+U^{B}(\boldsymbol{P}) = \alpha \cdot \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2
+$$
+
+## Potencial atractivo {.smaller}
+
+> Lineal o cónico ($\alpha = k_a > 0$)
+
+$$
+U^{A}(\boldsymbol{P}) = k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert
+$$
+
+- Fuerza de atracción resultante es [constante]{.underline}
+
+$$
+\boldsymbol{F}^{A}(\boldsymbol{P}) = - \nabla U^{A}(\boldsymbol{P}) = k_a \underbrace{\frac{\boldsymbol{e}(\boldsymbol{P})}{\lVert \boldsymbol{e}(\boldsymbol{P}) \rVert}}_{\textrm{direccion}}
+$$
+
+## Potencial atractivo {.smaller}
+
+> Cuadrático o paraboloide ($\alpha = \tfrac{1}{2} k_a > 0$)
+
+$$
+U^{B}(\boldsymbol{P}) = \tfrac{1}{2} k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2 = \tfrac{1}{2} k_a {\boldsymbol{e}(\boldsymbol{P})}^\top \boldsymbol{e}(\boldsymbol{P})
+$$
+
+- Fuerza de atracción resultante es [lineal]{.underline} en $\boldsymbol{e}$
+
+$$
+\boldsymbol{F}^{B}(\boldsymbol{P}) = - \nabla U^{B}(\boldsymbol{P}) = k_a \boldsymbol{e}(\boldsymbol{P})
+$$
+
+
+## Potencial atractivo
+
+::: {style="font-size:70%;"}
+
+> **Cuál utilizar?**
+
+- $\boldsymbol{F}^{B}$ se comporta mejor en la vecindad de $\boldsymbol{G}$ que $\boldsymbol{F}^{A}$
+- $\boldsymbol{F}^{B}$ crece indefinidamente con $\boldsymbol{e}$, no así $\boldsymbol{F}^{A}$
+
+<br>
+
+- #### Una solución conveniente sería combinar los dos *perfiles*
+  - Lineal fuera del objetivo
+  - Cuadrático cerca del objetivo
+
+:::
+
+::: {style="font-size:60%;"}
+
+$$
+U_A (\boldsymbol{P}) =
+\begin{cases}
+\tfrac{1}{2} k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2  &\textrm{si} \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \leq \rho \\
+k_b \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert &\textrm{si}  \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert > \rho \\
+\end{cases}
+$$
+
+:::
+
+## Potencial atractivo
+
+::: {style="font-size:70%;"}
+
+> **Cuál utilizar?**
+
+- La continuidad para $\boldsymbol{F}^A(\boldsymbol{P})$ requiere que
+
+$$
+\lim_{ \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \to \rho^- } U_A (\boldsymbol{P}) = \lim_{ \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \to \rho^+ } U_A (\boldsymbol{P})
+$$
+
+- Por lo que
+
+$$
+k_a \boldsymbol{e}(\boldsymbol{P}) =  k_b \frac{\boldsymbol{e}(\boldsymbol{P})}{\lVert \boldsymbol{e}(\boldsymbol{P}) \rVert} \quad \textrm{para} \quad \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert = \rho
+$$
+
+por lo tanto $\boxed{k_b = \rho k_a}$
+
+:::
+
+## Potencial repulsivo {.smaller}
+
+> Objetivo: mantener el robot alejado de los obstáculos (zona $\mathcal{C}^O$)
+
+- Se asume que $\mathcal{C}^O$ fue particionada en partes convexas $\mathcal{C}_i^O$ (a partir de ahora $\mathcal{C}_i$)
+- Para cada $\mathcal{C}_i$ se define un campo de repulsión
+
+$$
+U_{i}(\boldsymbol{P}) =
+\begin{cases}
+\frac{k^R_{i}}{\gamma} \left( \frac{1}{\eta_i (\boldsymbol{P})} - \frac{1}{\eta^0_{i}} \right)^{\gamma}  &\textrm{si} \; \eta_i(\boldsymbol{P}) \leq \eta^0_{i} \\
+0                        &\textrm{si}  \; \eta_i(\boldsymbol{P}) > \eta^0_{i}   \\
+\end{cases}
+$$
+
+donde:
+
+- $k^R_{i} > 0$ y $\gamma \in \mathbb{Z}$ son los parámetros de *"forma"* de la función
+- $\eta^0_{i}$ es el límite del rango de influencia de $\mathcal{C}_i$
+- $\eta_i (\boldsymbol{P})$ es el despeje entre el robot en $\boldsymbol{P}$ y el obstáculo $\boldsymbol{O}_i$
+<!--
+$$
+\eta_i (\boldsymbol{P}) = \min_{\boldsymbol{O} \in \mathcal{C}_i} \lVert \boldsymbol{P} - \boldsymbol{O} \rVert
+$$
+-->
+
+
+## Potencial repulsivo {.smaller}
+
+> Análisis función de repulsión
+
+![](figs/figure10.svg){width="100$" fig-align="center"}
+
+## Potencial repulsivo {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Superficies equipotenciales siguen la forma del obstáculo
+- Fuerzas repulsivas son ortogonales
+- Se incrementan a medida que se acercan al obstáculo
+
+:::
+::: {.column}
+
+![](figs/figure11.svg){width="100$" fig-align="center"}
+
+:::
+:::
+
+## Potencial repulsivo {.smaller}
+
+- La fuerza de repulsión resultante queda definida como
+
+$$
+\boldsymbol{F}^{R}_i(\boldsymbol{P}) = - \nabla U^R_{i}(\boldsymbol{P}) = 
+\begin{cases}
+\frac{k^R_{i}}{\eta_i^2 (\boldsymbol{P})} \left( \frac{1}{\eta_i (\boldsymbol{P})} - \frac{1}{\eta^0_{i}} \right)^{\gamma - 1} \nabla \eta_i (\boldsymbol{P})  &\textrm{si} \; \eta_i(\boldsymbol{P}) \leq \eta^0_{i} \\
+0                        &\textrm{si}  \; \eta_i(\boldsymbol{P}) > \eta^0_{i}   \\
+\end{cases}
+$$
+
+- $\boldsymbol{F}^{R}_i$ es ortogonal a las superficies equipotenciales pasando a través de $\boldsymbol{P}$ y los puntos apuntando fuera del obstáculo
+- $\boldsymbol{F}^{R}_i$ es continua gracias a la convexidad de la partición en $\mathcal{C}^O$
+- Por ppio. de superposición:
+$$
+U_R (\boldsymbol{P}) = \sum_{i=1}^{m} U^R_{i}(\boldsymbol{P})
+$$
+
+## Potencial total {.smaller}
+
+::: {.columns}
+::: {.column}
+
+<!-- - Dado el potencial de atracción $U_A$ y el de repulsión $U_R$, por principio de superposición -->
+- Dado el potencial de atracción y el de repulsión, por principio de superposición:
+
+$$
+U_T (\boldsymbol{P}) = U_A (\boldsymbol{P}) + U_R (\boldsymbol{P})
+$$
+
+- El campo de fuerza total $\boldsymbol{F}_T$ queda definido como:
+
+$$
+\begin{align*}
+\boldsymbol{F}_T (\boldsymbol{P}) &= - \nabla U_T (\boldsymbol{P}) \\
+\boldsymbol{F}_T (\boldsymbol{P}) &= \boldsymbol{F}^A(\boldsymbol{P}) + \sum_{i=1}^{m} \boldsymbol{F}^R_i(\boldsymbol{P})
+\end{align*}
+$$
+
+::: {.callout-tip appearance="simple"}
+La fuerza total determinará la dirección y la velocidad de avance
+:::
+
+:::
+::: {.column}
+
+```{.tikz width="80%" fig-align="center"}
+%%| filename: total-force
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+  \def\robotRotation{50}
+
+  \begin{scope}[shift={(4.0, -7.0)}, every node/.style={scale=1.5}]
+  \begin{scope}[rotate=\robotRotation]
+    % Cuerpo del robot (rectángulo)
+    \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+    % Rueda derecha
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, -1.35) rectangle (0, -1.05);
+
+    % Rueda izquierda
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, 1.05) rectangle (0, 1.35);
+
+    % Línea punteada entre los centros de las ruedas
+    \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+    % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+    \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+    (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+    % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+    \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+    \begin{scope}[shift={(-0.75, 0)}, transform shape]
+      %\draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[right] {};% {$\boldsymbol{x}_R$};
+      %\draw[->, thick, color=Maroon] (0,0) -- (0,2.5) node[left=2] {};% {$\boldsymbol{y}_R$};
+      \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+      \coordinate (P3_inR) at (0,0);
+    \end{scope}
+  \end{scope}
+  \end{scope}
+
+  %\node[Blue, below left] at (-4.5,-5.0) {$\textsf{previo}$};
+  %\node[Blue, below left] at (7.0,-9.6) {$\textsf{futuro}$};
+
+  %\draw[very thick] (P_inR) .. controls ++(20:5) and ++(10:-5) .. (P2_inR);
+
+  %\draw[very thick,dotted,Gray] (P_inR) -- (P2_inR);
+
+  \draw[Gray, dashed, very thick] (P3_inR) ++(50:5) -- ++(-120:3);
+  \draw[Gray, dashed, very thick] (P3_inR) ++(-120:3) -- ++(50:5) node[pos=1.0](ft) {};
+
+  \draw[opacity=0.5,fill=gray]
+    (6.5,0.5) -- ++(3,-1.5) -- ++(-0.5,-2) -- ++(-3.5,-1.5) -- ++(-4,2) node[pos=0.9](O) {} -- ++(0.5,2) -- cycle;
+
+  %\draw[very thick, densely dashed] (O) -- (P3_inR);
+  \draw[black, very thick, densely dashed] (P3_inR) -- ++(58:3.6) node[circle, fill=Plum, scale=0.8](O) {} node[Plum, above right] {$\boldsymbol{O}$};
+  \draw[-{Stealth[inset=0pt,flex]}, line width=3pt, color=Plum] (P3_inR) -- ++(-120:3) node[below] {\Large $\boldsymbol{F}_R$};
+
+  \draw[black, very thick, densely dashed] (P3_inR) -- ++(50:12) node(G) {} node[Blue, above right] {$\boldsymbol{G}$};
+  %\node[Blue, above right] at (11,-2) {$\boldsymbol{G}$};
+  \node[fill=Blue, circle, scale=0.8] at (G) {};
+  \draw[-{Stealth[inset=0pt,flex]}, line width=3pt, color=Blue] (P3_inR) -- ++(50:5) node[right] {\Large $\boldsymbol{F}_A$};
+
+  \draw[black, dash dot, very thick, ForestGreen] (P3_inR) -- ++(35:6) node(dd) {};
+
+  \node[align=center, right] at (dd) {Dirección de movimiento \\ deseada};
+
+  \draw[-{Stealth[inset=0pt,flex]}, line width=3pt, color=ForestGreen] (P3_inR) -- (ft) node[below=5] {\Large $\boldsymbol{F}_T$};
+
+  %\draw[very thick,Gray] (0,0) -- (P_inR) node[midway, above] {$\rho$};
+  %\draw[-{Stealth[scale=0.6,inset=0pt]},very thick,Gray] (0,0) -- ++(2.0,1.45) node[pos=1, above] {$\hat{x}$};
+  %\draw[{Stealth[scale=0.6,inset=0pt]}-, thick, Gray] (1.5,0) arc[start angle=0, end angle=35.3, radius=1.5] node[midway, right] {$\beta$};
+
+  %\draw[dashed,thick,Plum] (P_inR) -- ++(0.0,-2.0) coordinate[at end](x0);
+  %\draw[dashed,thick,Plum] (0,0) -- (0,0 |- P_inR) -- ++(0.0,-2.0) coordinate[at end](x1);
+  %\draw[solid,line width=5pt,Plum] (x0) -- (x1) node[midway, above] {$\Delta x$};
+
+  %\draw[dashed,thick,Plum] (P_inR) -- ++(-2.0,0.0) coordinate[at end](y0);
+  %\draw[dashed,thick,Plum] (0,0) -- (P_inR |- 0,0) -- ++(-2.0,0.0) coordinate[at end](y1);
+  %\draw[solid,line width=5pt,Plum] (y0) -- (y1) node[midway, left] {$\Delta y$};
+
+
+  % Ejes del marco A
+  %\def\axisLen{2.5}
+  %\draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I = \boldsymbol{x}_G$};
+  %\draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I = \boldsymbol{y}_G$};
+  %\node[fill=Blue, circle, scale=0.8] at (0,0) {};
+  %\node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+
+## Potencial total {.smaller}
+
+::: {.columns}
+::: {.column}
+
+![](figs/figure12A.svg){width="100%" fig-align="center"}
+
+:::
+::: {.column}
+
+![](figs/figure12B.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+
+## Fuerza de atracción {.smaller}
+
+$$
+\boldsymbol{F}^A (\boldsymbol{P}) =
+- \nabla  U_A (\boldsymbol{P}) = -
+\begin{bmatrix}
+\frac{\partial U_A (\boldsymbol{P}) }{\partial x} \\
+\frac{\partial U_A (\boldsymbol{P}) }{\partial y}
+\end{bmatrix}
+$$
+
+- El gradiente en dirección $x$:
+$$
+\frac{\partial U_A (\boldsymbol{P}) }{\partial x} =
+\begin{cases}
+\frac{\partial}{\partial x} \left( \tfrac{1}{2} k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2 \right)  &\textrm{si} \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \leq \rho \\
+\frac{\partial}{\partial x} \left( \rho k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \right) &\textrm{si}  \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert > \rho
+\end{cases}
+$$
+
+- El gradiente en dirección $y$:
+$$
+\frac{\partial U_A (\boldsymbol{P}) }{\partial y} =
+\begin{cases}
+\frac{\partial}{\partial y} \left( \tfrac{1}{2} k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2 \right)  &\textrm{si} \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \leq \rho \\
+\frac{\partial}{\partial y} \left( \rho k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \right) &\textrm{si}  \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert > \rho
+\end{cases}
+$$
+
+## Fuerza de atracción {.smaller}
+
+- El gradiente de la función $\tfrac{1}{2} k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2$ con respecto a $x$:
+
+$$
+\frac{\partial}{\partial x} \left( \tfrac{1}{2} k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2 \right) = 
+\tfrac{1}{2} k_a \frac{\partial}{\partial x} \left( {e_x}^2 + {e_y}^2 \right) =
+\tfrac{1}{2} k_a \left( 2 e_x \right) =
+k_a e_x 
+$$
+
+- El gradiente de la función $\rho k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert$ con respecto a $x$:
+
+$$
+\begin{align}
+\frac{\partial}{\partial x} \left( \rho k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \right) &= 
+\rho k_a \frac{\partial}{\partial x} \left( \sqrt{{e_x}^2 + {e_y}^2} \right) \\
+&= \rho k_a \frac{1}{2 \sqrt{{e_x}^2 + {e_y}^2} } \frac{\partial}{\partial x} \left( {e_x}^2 + {e_y}^2 \right) =\\
+&= \rho k_a \frac{1}{2 \sqrt{{e_x}^2 + {e_y}^2} } \left( 2 e_x \right) = \rho k_a \frac{e_x}{\lVert \boldsymbol{e} \rVert}
+\end{align}
+$$
+
+## Fuerza de atracción {.smaller}
+
+<!--
+$$
+\begin{align*}
+\frac{\partial}{\partial x} \left( \tfrac{1}{2} k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2 \right) &= 
+\tfrac{1}{2} k_a \frac{\partial}{\partial x} \left( {e_x}^2 + {e_y}^2 \right) =
+k_a e_x \\
+\frac{\partial}{\partial x} \left( \rho k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \right) &= 
+\rho k_a \frac{\partial}{\partial x} \left( \sqrt{{e_x}^2 + {e_y}^2} \right) = 
+\rho k_a \frac{1}{2 e_x} \frac{\partial \left( {e_x}^2 \right)}{\partial x} = \rho k_a
+\end{align*}
+$$
+-->
+
+- Reemplazando en el gradiente en dirección $x$:
+
+$$
+\frac{\partial U_A (\boldsymbol{P}) }{\partial x} =
+\begin{cases}
+k_a e_x                                           &\textrm{si} \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \leq \rho \\
+\rho k_a \frac{e_x}{\lVert \boldsymbol{e} \rVert} &\textrm{si}  \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert > \rho
+\end{cases}
+$$
+
+- Lo mismo para el gradiente en dirección $y$:
+
+$$
+\frac{\partial U_A (\boldsymbol{P}) }{\partial y} =
+\begin{cases}
+k_a e_y                                           &\textrm{si} \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \leq \rho \\
+\rho k_a \frac{e_y}{\lVert \boldsymbol{e} \rVert} &\textrm{si}  \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert > \rho
+\end{cases}
+$$
+
+<!--
+$$
+\frac{\partial}{\partial y} \left( \tfrac{1}{2} k_a \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert^2 \right) = 
+\tfrac{1}{2} k_a \frac{\partial}{\partial y} \left( {e_x}^2 + {e_y}^2 \right) =
+k_a e_y
+$$
+-->
+
+
+## Fuerza de atracción {.smaller}
+
+- Con ambos resultados
+
+$$
+\boldsymbol{F}^A =
+- \nabla  U_A = 
+\begin{cases}
+- k_a \begin{bmatrix}
+e_y \\
+e_x
+\end{bmatrix} &\textrm{si} \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert \leq \rho \\
+- \rho k_a \frac{1}{\lVert \boldsymbol{e} \rVert} \begin{bmatrix}
+e_y \\
+e_x
+\end{bmatrix} &\textrm{si}  \; \lVert \boldsymbol{e}(\boldsymbol{P}) \rVert > \rho
+\end{cases}
+$$
+
+- Reemplazando $\boldsymbol{e}(\boldsymbol{P}) = \boldsymbol{P} - \boldsymbol{G}$:
+
+$$
+\boldsymbol{F}^A =
+- \nabla  U_A = 
+\begin{cases}
+- k_a \begin{bmatrix}
+x_\boldsymbol{P} - x_\boldsymbol{G} \\
+y_\boldsymbol{P} - y_\boldsymbol{G} \\
+\end{bmatrix} &\textrm{si} \; \lVert \boldsymbol{P} - \boldsymbol{G} \rVert \leq \rho \\
+- \rho k_a \frac{1}{\lVert \boldsymbol{P} - \boldsymbol{G} \rVert} \begin{bmatrix}
+x_\boldsymbol{P} - x_\boldsymbol{G} \\
+y_\boldsymbol{P} - y_\boldsymbol{G} \\
+\end{bmatrix} &\textrm{si}  \; \lVert \boldsymbol{P} - \boldsymbol{G} \rVert > \rho
+\end{cases}
+$$
+
+
+## Fuerzas de repulsión {.smaller}
+
+- Se definen los siguientes parámetros para la función potencial de repulsión:
+  - Exponente $\gamma = 2$
+  - Un valor constante para $k^R_{i} = k_R$
+  - Un valor constante para $\eta^0_{i} = \eta_0$
+
+$$
+\boldsymbol{F}^{R}_i(\boldsymbol{P}) = - \nabla U^R_{i}(\boldsymbol{P}) = 
+\begin{cases}
+\frac{k_R}{\eta_i^2 (\boldsymbol{P})} \left( \frac{1}{\eta_i (\boldsymbol{P})} - \frac{1}{\eta_0} \right) \nabla \eta_i (\boldsymbol{P})  &\textrm{si} \; \eta_i(\boldsymbol{P}) \leq \eta_0 \\
+0                        &\textrm{si}  \; \eta_i(\boldsymbol{P}) > \eta_0   \\
+\end{cases}
+$$
+
+- Resta obtener la expresión de $\nabla \eta_i (\boldsymbol{P})$
+
+## Fuerzas de repulsión {.smaller}
+
+- Sea $\eta_i (\boldsymbol{P})$ el despeje entre el robot en $\boldsymbol{P}$ y el punto más cercano $\boldsymbol{O}_i$ del obstáculo $\mathcal{C}_i$:
+
+$$
+\eta_i (\boldsymbol{P}) = \min_{\boldsymbol{O}_i \in \mathcal{C}_i} \lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert = \sqrt{(x_\boldsymbol{P} - x_{\boldsymbol{O}_i})^2 + (y_\boldsymbol{P} - y_{\boldsymbol{O}_i})^2}
+$$
+
+- Por lo tanto:
+
+$$
+\begin{align*}
+\frac{\partial \eta_i (\boldsymbol{P}) }{\partial x} = 
+\frac{\partial}{\partial x} \left( \sqrt{(x_\boldsymbol{P} - x_{\boldsymbol{O}_i})^2 + (y_\boldsymbol{P} - y_{\boldsymbol{O}_i})^2} \right) &= 
+%\frac{(x_\boldsymbol{P} - x_{\boldsymbol{O}_i})}{\sqrt{(x_\boldsymbol{P} - x_{\boldsymbol{O}_i})^2 + (y_\boldsymbol{P} - y_{\boldsymbol{O}_i})^2}} =
+\frac{(x_\boldsymbol{P} - x_{\boldsymbol{O}_i})}{\eta_i (\boldsymbol{P})}
+\\
+\frac{\partial \eta_i (\boldsymbol{P}) }{\partial y} =
+\frac{\partial}{\partial y} \left( \sqrt{(x_\boldsymbol{P} - x_{\boldsymbol{O}_i})^2 + (y_\boldsymbol{P} - y_{\boldsymbol{O}_i})^2} \right) &= 
+%\frac{(y_\boldsymbol{P} - y_{\boldsymbol{O}_i})}{\sqrt{(x_\boldsymbol{P} - x_{\boldsymbol{O}_i})^2 + (y_\boldsymbol{P} - y_{\boldsymbol{O}_i})^2}} =
+\frac{(y_\boldsymbol{P} - y_{\boldsymbol{O}_i})}{\eta_i (\boldsymbol{P})}
+\end{align*}
+$$
+
+## Fuerzas de repulsión {.smaller}
+
+- Queda definido
+
+$$
+\nabla \eta_i (\boldsymbol{P}) = 
+\begin{bmatrix}
+\frac{\partial \eta_i (\boldsymbol{P}) }{\partial x} \\
+\frac{\partial \eta_i (\boldsymbol{P}) }{\partial y}
+\end{bmatrix} =
+\frac{1}{\eta_i (\boldsymbol{P})}
+\begin{bmatrix}
+x_\boldsymbol{P} - x_{\boldsymbol{O}_i} \\
+y_\boldsymbol{P} - y_{\boldsymbol{O}_i}
+\end{bmatrix}
+$$
+
+- Reemplazando en la expresión de las fuerzas repulsivas $\boldsymbol{F}^{R}_i(\boldsymbol{P})$ 
+
+$$
+\boldsymbol{F}^{R}_i(\boldsymbol{P}) = - \nabla U^R_{i}(\boldsymbol{P}) = 
+\begin{cases}
+\frac{k_R}{\eta_i^3 (\boldsymbol{P})} \left( \frac{1}{\eta_i (\boldsymbol{P})} - \frac{1}{\eta_0} \right) \begin{bmatrix}
+x_\boldsymbol{P} - x_{\boldsymbol{O}_i} \\
+y_\boldsymbol{P} - y_{\boldsymbol{O}_i}
+\end{bmatrix}  &\textrm{si} \; \eta_i(\boldsymbol{P}) \leq \eta_0 \\
+0                        &\textrm{si}  \; \eta_i(\boldsymbol{P}) > \eta_0   \\
+\end{cases}
+$$
+
+## Fuerza total {.smaller}
+
+- El campo de fuerza total $\boldsymbol{F}_T$ queda definido como:
+
+$$
+\boldsymbol{F}_T = \boldsymbol{F}^A + \sum_{i=1}^{m} \boldsymbol{F}^R_i
+$$
+
+donde:
+
+$$
+\begin{align*}
+\boldsymbol{F}^A &=
+\begin{cases}
+- k_a \left( \boldsymbol{P} - \boldsymbol{G} \right) &\textrm{si} \; \lVert \boldsymbol{P} - \boldsymbol{G} \rVert \leq \rho \\
+- \rho k_a \frac{\boldsymbol{P} - \boldsymbol{G}}{\lVert \boldsymbol{P} - \boldsymbol{G} \rVert} &\textrm{si}  \; \lVert \boldsymbol{P} - \boldsymbol{G} \rVert > \rho
+\end{cases}\\[2em]
+\boldsymbol{F}^{R}_i &= 
+\begin{cases}
+\frac{k_R}{\lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert^3} \left( \frac{1}{\lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert} - \frac{1}{\eta_0} \right) \left( \boldsymbol{P} - \boldsymbol{O}_i \right) &\textrm{si} \; \lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert \leq \eta_0 \\
+0                        &\textrm{si}  \; \lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert > \eta_0   \\
+\end{cases}
+\end{align*}
+$$

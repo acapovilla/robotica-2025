@@ -1,0 +1,562 @@
+
+## Diseño del controlador {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Se deben diseñar dos señales de control $\textcolor{ForestGreen}{\nu(t)}$ y $\textcolor{Orange}{\omega(t)}$, que lleven el robot desde la posición actual a la posición objetivo
+- Debido a las restricciones *no-holonómicas* la resultante $\boldsymbol{F}_T$ no puede imponerse directamente 
+
+:::
+::: {.column}
+
+```{.tikz width="100%"}
+%%| filename: force-projection
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+  \def\robotRotation{120}
+
+  \begin{scope}[shift={(4.0, 3.0)}, every node/.style={scale=1.5}]
+  \begin{scope}[rotate=\robotRotation]
+    % Cuerpo del robot (rectángulo)
+    \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+    % Rueda derecha
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, -1.35) rectangle (0, -1.05);
+
+    % Rueda izquierda
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, 1.05) rectangle (0, 1.35);
+
+    % Línea punteada entre los centros de las ruedas
+    \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+    % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+    \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+    (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+    % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+    \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+    \begin{scope}[shift={(-0.75, 0)}, transform shape]
+      \draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[left, rotate=-\robotRotation] {$\boldsymbol{x}_R$};
+      \draw[->, thick, color=Maroon] (0,0) -- (0,2.5) node[left=2, rotate=-\robotRotation] {$\boldsymbol{y}_R$};
+      \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+      \coordinate (P3_inR) at (0,0);
+
+      \draw[-{Stealth[inset=0pt, length=7pt,flex]}, line width=3pt, Orange] (-20:0.4) arc[start angle=-20, end angle=200, radius=0.4] coordinate[pos=0.7](e331) {}; %node[pos=0.6,below left] {$\omega (t)$};
+      \node[below, Orange, rotate=-\robotRotation] at (e331) {$\boldsymbol{\omega}$};
+
+      \draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, ForestGreen] (0, 0) -- ++(1.5, 0) node[pos=1, left=2, rotate=-\robotRotation] {$\boldsymbol{\nu}$};
+    \end{scope}
+  \end{scope}
+  \end{scope}
+
+  \begin{scope}[shift={(P3_inR)}, transform shape]
+    \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (1.,0) arc[start angle=0, end angle=\robotRotation, radius=1.] node[midway, below left] {$\theta$};
+  \end{scope}
+
+          %\node[Blue, below left] at (-4.5,-5.0) {$\textsf{previo}$};
+          %\node[Blue, below left] at (7.0,-9.6) {$\textsf{futuro}$};
+
+          %\draw[very thick] (P_inR) .. controls ++(20:5) and ++(10:-5) .. (P2_inR);
+
+  %\draw[very thick,dotted,Gray] (P_inR) -- (P2_inR);
+
+  \draw[Gray, dash dot, thick] (P3_inR) -- ++(5,0);
+  \draw[Gray, dash dot, thick] (P3_inR) -- ++(0,4);
+
+  \draw[-{Stealth[inset=0pt,flex]}, very thick, color=Black] (P3_inR) -- ++(30:4.5) node[pos=1.0](ft) {} node[right] {\Large $\boldsymbol{F}_T$};
+
+  \draw[-{Stealth[inset=0pt,flex]}, very thick, color=Black] (P3_inR) -- (ft |- P3_inR) node[below] {$\boldsymbol{F}_{T_x}$};
+  \draw[-{Stealth[inset=0pt,flex]}, very thick, color=Black] (P3_inR) -- (P3_inR |- ft) node[above right] {$\boldsymbol{F}_{T_y}$};
+
+  \draw[Gray, dotted, thick] (P3_inR |- ft) -- (ft);
+  \draw[Gray, dotted, thick] (ft |- P3_inR) -- (ft);
+
+
+  % Ejes del marco A
+  \def\axisLen{2.5}
+  \draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I$};
+  \draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I$};
+  \node[fill=Blue, circle, scale=0.8] at (0,0) {};
+  %\node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+## Diseño del controlador {.smaller}
+
+<!-- > [Solución]{.underline}: obtener las velocidades factibles mediante una *pseudoinversión* -->
+
+- El modelo cinemático se puede expresar como $\boldsymbol{\dot{P}} = \boldsymbol{\mathcal{g}}(\boldsymbol{P}) \boldsymbol{u}$
+
+$$
+\underbrace{
+\sideset{^I}{}{ 
+\begin{bmatrix}
+\dot{x} \\
+\dot{y} \\
+\dot{\theta}
+\end{bmatrix}}}_{\boldsymbol{\dot{P}}} =
+\underbrace{
+\begin{bmatrix}
+\cos{\theta} & 0\\
+\sin{\theta} & 0\\
+0            & 1
+\end{bmatrix}}_{\boldsymbol{g}(\boldsymbol{P})}
+\underbrace{
+\begin{bmatrix}
+\nu\\
+\omega
+\end{bmatrix}}_{\boldsymbol{u}}
+$$
+
+- Dado que $\boldsymbol{g}_{n \times m}$ es rectangular con $n > m$, es imposible calcular $\boldsymbol{u}$ para un $\boldsymbol{\dot{P}}$ deseado
+
+
+## Diseño del controlador {.smaller}
+
+> [Solución]{.underline}: obtener las velocidades factibles mediante una *pseudoinversión*
+
+- Se propone utilizar una solución de *mínimos cuadrados*
+
+$$
+\boldsymbol{u} = \boldsymbol{\tilde{g}}(\boldsymbol{P}) \, \boldsymbol{\dot{P}} = \boldsymbol{\tilde{g}}(\boldsymbol{P}) \, \boldsymbol{F}_T
+$$
+
+
+donde
+
+$$
+\boldsymbol{\tilde{g}}(\boldsymbol{P}) = \left( \boldsymbol{g}^\top(\boldsymbol{P}) \boldsymbol{g}(\boldsymbol{P}) \right)^{-1}  \boldsymbol{g}^\top(\boldsymbol{P})
+$$
+
+$$
+\boldsymbol{g}(\boldsymbol{P}) =
+\begin{bmatrix}
+\cos{\theta} & 0\\
+\sin{\theta} & 0\\
+0            & 1
+\end{bmatrix} \quad \to \quad 
+\boldsymbol{\tilde{g}}(\boldsymbol{P}) =
+\begin{bmatrix}
+\cos{\theta} & \sin{\theta} & 0\\
+0 & 0 & 1
+\end{bmatrix}
+$$
+
+## Diseño del controlador {.smaller}
+
+> [Solución]{.underline}: obtener las velocidades factibles mediante una *pseudoinversión*
+
+$$
+\boldsymbol{g} =
+\begin{bmatrix}
+\cos{\theta} & 0\\
+\sin{\theta} & 0\\
+0            & 1
+\end{bmatrix} \quad 
+\boldsymbol{g}^\top =
+\begin{bmatrix}
+\cos{\theta} & \sin{\theta} & 0\\
+0 & 0 & 1
+\end{bmatrix}
+$$
+
+$$
+\boldsymbol{g}^\top \, \boldsymbol{g} =
+\begin{bmatrix}
+\cos{\theta} & \sin{\theta} & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\cos{\theta} & 0\\
+\sin{\theta} & 0\\
+0            & 1
+\end{bmatrix} =
+\begin{bmatrix}
+\cos^2{\theta} + \sin^2{\theta} & 0\\
+0 & 1
+\end{bmatrix} =
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix} = \mathbb{I}
+$$
+
+$$
+\left( \boldsymbol{g}^\top \, \boldsymbol{g} \right)^{-1}  = \mathbb{I}^{-1} = \mathbb{I}
+$$
+
+$$
+\left( \boldsymbol{g}^\top \, \boldsymbol{g} \right)^{-1} \boldsymbol{g}^\top = \mathbb{I} \, \boldsymbol{g}^\top = \boldsymbol{g}^\top =
+\begin{bmatrix}
+\cos{\theta} & \sin{\theta} & 0\\
+0 & 0 & 1
+\end{bmatrix}
+$$
+
+## Diseño del controlador {.smaller}
+
+- Reemplazando
+
+$$
+\boldsymbol{u} = \boldsymbol{\tilde{g}}(\boldsymbol{P}) \, \boldsymbol{F}_T =
+\begin{bmatrix}
+\cos{\theta} & \sin{\theta} & 0\\
+0 & 0 & 1
+\end{bmatrix}
+ \, \boldsymbol{F}_T
+$$
+
+- Por lo tanto, la solución por *mínimos cuadrados* para una fuerza artificial  $\boldsymbol{F}_T = \left[{F_T}_x , {F_T}_y , {F_T}_\theta \right]^\top$ es
+
+$$
+\boldsymbol{u}
+\begin{cases}
+\nu =  {F_T}_x \cos{\theta} + {F_T}_y \sin{\theta} \\
+\omega = {F_T}_\theta
+\end{cases}
+$$
+
+- Se puede interpretar $\nu$ como la proyección de la fuerza $\boldsymbol{F}_T$ sobre el eje del robot $\boldsymbol{X_R}$
+
+<!-- ::: {.callout-important appearance="simple"}
+y ${F_T}_\theta$ ??? 
+::: -->
+
+## Diseño del controlador {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- El campo potencial no produce una *"componente giratoria"* ${F_T}_\theta$
+- Este grado de libertad puede utilizarse para forzar al robot a alinearse con el campo vectorial $\boldsymbol{F}_T$
+
+$$
+\omega = {F_T}_\theta = k_\theta (\theta_{\boldsymbol{F}_T} - \theta) %\quad \textrm{con} \quad \theta_{\boldsymbol{F}_T} = \arctan 2 \left( {F_T}_y , {F_T}_x \right)
+$$
+
+donde
+
+$$
+\theta_{\boldsymbol{F}_T} = \arctan 2 \left( {F_T}_y , {F_T}_x \right)
+$$
+
+:::
+::: {.column}
+
+<br>
+
+```{.tikz width="100%"}
+%%| filename: angular-speed
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+  \def\robotRotation{120}
+
+  \begin{scope}[shift={(4.0, 3.0)}, every node/.style={scale=1.5}]
+  \begin{scope}[rotate=\robotRotation]
+    % Cuerpo del robot (rectángulo)
+    \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+    % Rueda derecha
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, -1.35) rectangle (0, -1.05);
+
+    % Rueda izquierda
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, 1.05) rectangle (0, 1.35);
+
+    % Línea punteada entre los centros de las ruedas
+    \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+    % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+    \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+    (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+    % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+    \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+    \begin{scope}[shift={(-0.75, 0)}, transform shape]
+      \draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[left, rotate=-\robotRotation] {$\boldsymbol{x}_R$};
+      \draw[->, thick, color=Maroon] (0,0) -- (0,2.5) node[left=2, rotate=-\robotRotation] {$\boldsymbol{y}_R$};
+      \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+      \coordinate (P3_inR) at (0,0);
+
+      \draw[-{Stealth[inset=0pt, length=7pt,flex]}, line width=3pt, Orange] (-20:0.4) arc[start angle=-20, end angle=200, radius=0.4] coordinate[pos=0.7](e331) {}; %node[pos=0.6,below left] {$\omega (t)$};
+      \node[below, Orange, rotate=-\robotRotation] at (e331) {$\boldsymbol{\omega}$};
+
+      \draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, ForestGreen] (0, 0) -- ++(1.5, 0) node[pos=1, left=2, rotate=-\robotRotation] {$\boldsymbol{\nu}$};
+    \end{scope}
+  \end{scope}
+  \end{scope}
+
+  \begin{scope}[shift={(P3_inR)}, transform shape]
+    \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (1.,0) arc[start angle=0, end angle=\robotRotation, radius=1.] node[midway, below left] {$\theta$};
+
+    \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (3.,0) arc[start angle=0, end angle=30, radius=3.] node[midway, right] {$\theta_{\boldsymbol{F}_T}$};
+  \end{scope}
+
+          %\node[Blue, below left] at (-4.5,-5.0) {$\textsf{previo}$};
+          %\node[Blue, below left] at (7.0,-9.6) {$\textsf{futuro}$};
+
+          %\draw[very thick] (P_inR) .. controls ++(20:5) and ++(10:-5) .. (P2_inR);
+
+  %\draw[very thick,dotted,Gray] (P_inR) -- (P2_inR);
+
+  \draw[Gray, dash dot, thick] (P3_inR) -- ++(5,0);
+  \draw[Gray, dash dot, thick] (P3_inR) -- ++(0,3.5);
+
+  \draw[-{Stealth[inset=0pt,flex]}, very thick, color=Black] (P3_inR) -- ++(30:4.5) node[pos=1.0](ft) {} node[right] {\Large $\boldsymbol{F}_T$};
+
+  \draw[-{Stealth[inset=0pt,flex]}, very thick, color=Black] (P3_inR) -- (ft |- P3_inR) node[below] {$\boldsymbol{F}_{T_x}$};
+  \draw[-{Stealth[inset=0pt,flex]}, very thick, color=Black] (P3_inR) -- (P3_inR |- ft) node[above right] {$\boldsymbol{F}_{T_y}$};
+
+  \draw[Gray, dotted, thick] (P3_inR |- ft) -- (ft);
+  \draw[Gray, dotted, thick] (ft |- P3_inR) -- (ft);
+
+
+  % Ejes del marco A
+  \def\axisLen{2.5}
+  \draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I$};
+  \draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I$};
+  \node[fill=Blue, circle, scale=0.8] at (0,0) {};
+  %\node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+## Diseño del controlador {.smaller visibility="hidden"}
+
+- Asumiendo que el punto objetivo $\boldsymbol{G}$ se encuentra en $(0, 0)$
+- Cerca del objetivo $\boldsymbol{F}_T \approx \boldsymbol{F}_A$ dado que $\boldsymbol{F}_R \ll \boldsymbol{F}_A$
+- Los controles se convierten en
+
+$$
+\begin{align*}
+\nu     &=  -k_a (x \cos{\theta} + y \sin{\theta}) \\
+\omega  &= k_\theta (\arctan 2 \left( -y , -x \right) - \theta)
+\end{align*}
+$$
+
+## Diseño del controlador {.smaller}
+
+> Valores de la función $\arctan2(x, y)$: discontinuidad en $\pm \pi$
+
+```{.tikz width="100%"}
+%%| filename: antan2-values
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \def\R{2.0}
+  \coordinate (O) at (0,0);
+
+  \draw[densely dashed, thick] (-\R,0) -- (\R,0);% node[right] {$x$};
+  \draw[densely dashed, thick] (0,-\R) -- (0,\R);% node[left] {$y$};
+
+  \draw[densely dashed, thick] (O) circle (\R);
+
+  \fill[Maroon,opacity=0.4]       (0,0) -- +(\R,0)  arc (0:90:\R);
+  \fill[ForestGreen,opacity=0.4]  (0,0) -- +(0,\R)  arc (90:180:\R);
+  \fill[Orange,opacity=0.4]       (0,0) -- +(-\R,0) arc (180:270:\R);
+  \fill[Blue,opacity=0.4]         (0,0) -- +(0,-\R) arc (270:360:\R);
+
+  \node[align=center] at (45:1.0) {$x\geq0$\\$y\geq0$};
+  \node[align=center] at (135:1.0) {$x<0$\\$y\geq0$};
+  \node[align=center] at (-135:1.0) {$x<0$\\$y<0$};
+  \node[align=center] at (-45:1.0) {$x\geq0$\\$y<0$};
+
+  \node[right] at (45:2.3)    {$0               \leq  \arctan2 \leq \tfrac{\pi}{2}$};
+  \node[left] at (135:2.3)    {$\tfrac{\pi}{2}  <     \arctan2 \leq \pi$};
+  \node[left] at (-135:2.3)   {$-\pi            \leq  \arctan2 <    -\tfrac{\pi}{2}$};
+  \node[right] at (-45:2.3)   {$-\tfrac{\pi}{2} \leq  \arctan2 <    0$};
+
+  \draw[{Stealth[scale=0.6,inset=0pt]}-{Stealth[scale=0.6,inset=0pt]}, thick, Plum] (160:2.8) arc[start angle=160, end angle=200, radius=2.8] node[midway, left] {Discontinuidad};
+
+  %\draw[->, thick, color=Maroon] (0,0) -- (-170:\R)  node[left] {$\boldsymbol{x}_R$};
+  %\draw[->, thick, color=Black]  (0,0) -- (150:\R) node[left] {$\boldsymbol{F}_T$};
+
+  %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (1.0,0) arc[start angle=0, end angle=-170, radius=1.0] node[midway, above] {$\theta$};
+  %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Black] (1.0,0) arc[start angle=0, end angle=150, radius=1.0] node[midway, below left] {$\theta_{\boldsymbol{F}_T}$};
+
+  %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (-170:2.8) arc[start angle=-170, end angle=-210, radius=2.8] node[midway, left] {$\boldsymbol{\omega}$};
+
+\end{tikzpicture}
+```
+
+## Diseño del controlador {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Casos particulares de $\theta$ y el ángulo de $\boldsymbol{F}_T$
+
+- [Caso A]{.underline}:
+
+$$
+\begin{gather*}
+\tfrac{\pi}{2}  <     \theta                      \leq  \pi \\
+-\pi            \leq  \theta_{\boldsymbol{F}_T}   <     -\tfrac{\pi}{2}
+\end{gather*}
+$$
+
+$$
+(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ -2 \pi ; -\pi \right) \to \omega < 0
+$$
+
+Por lo tanto se redefine
+$$
+\omega = k_\theta ((\theta_{\boldsymbol{F}_T} + 2 \pi) - \theta)
+$$
+
+para $\boldsymbol{F}_T$ en el 3er cuadrante y $\boldsymbol{x}_R$ en el 2do
+
+
+:::
+::: {.column}
+
+<br>
+
+```{.tikz width="100%"}
+%%| filename: antan2-A
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \def\R{2.0}
+  \coordinate (O) at (0,0);
+
+  \draw[densely dashed, thick] (-\R,0) -- (\R,0);% node[right] {$x$};
+  \draw[densely dashed, thick] (0,-\R) -- (0,\R);% node[left] {$y$};
+
+  \draw[densely dashed] (O) circle (\R);
+
+  \draw[->, thick, color=Maroon] (0,0) -- (150:\R)  node[left] {$\boldsymbol{x}_R$};
+  \draw[->, thick, color=Black]  (0,0) -- (-170:\R) node[left] {$\boldsymbol{F}_T$};
+
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (1.0,0) arc[start angle=0, end angle=150, radius=1.0] node[midway, above] {$\theta$};
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Black] (1.0,0) arc[start angle=0, end angle=-170, radius=1.0] node[midway, below left] {$\theta_{\boldsymbol{F}_T}$};
+
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (150:2.8) arc[start angle=150, end angle=190, radius=2.8] node[midway, left] {$\boldsymbol{\omega} > 0$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+## Diseño del controlador {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Casos particulares de $\theta$ y el ángulo de $\boldsymbol{F}_T$
+
+- [Caso B]{.underline}:
+
+$$
+\begin{gather*}
+-\pi            \leq  \theta                    <     -\tfrac{\pi}{2}\\
+\tfrac{\pi}{2}  <     \theta_{\boldsymbol{F}_T} \leq  \pi
+\end{gather*}
+$$
+
+$$
+(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ 2 \pi ; \pi \right) \to \omega > 0
+$$
+
+Por lo tanto se redefine
+$$
+\omega = k_\theta (\theta_{\boldsymbol{F}_T} - (\theta + 2 \pi))
+$$
+
+para $\boldsymbol{F}_T$ en el 2do cuadrante y $\boldsymbol{x}_R$ en el 3er
+
+:::
+::: {.column}
+
+<br>
+
+```{.tikz width="100%"}
+%%| filename: antan2-B
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \def\R{2.0}
+  \coordinate (O) at (0,0);
+
+  \draw[densely dashed, thick] (-\R,0) -- (\R,0);% node[right] {$x$};
+  \draw[densely dashed, thick] (0,-\R) -- (0,\R);% node[left] {$y$};
+
+  \draw[densely dashed] (O) circle (\R);
+
+  \draw[->, thick, color=Maroon] (0,0) -- (-170:\R)  node[left] {$\boldsymbol{x}_R$};
+  \draw[->, thick, color=Black]  (0,0) -- (150:\R) node[left] {$\boldsymbol{F}_T$};
+
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (1.0,0) arc[start angle=0, end angle=-170, radius=1.0] node[midway, below left=2] {$\theta$};
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Black] (1.0,0) arc[start angle=0, end angle=150, radius=1.0] node[midway, above right=-2] {$\theta_{\boldsymbol{F}_T}$};
+
+  \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (-170:2.8) arc[start angle=-170, end angle=-210, radius=2.8] node[midway, left] {$\boldsymbol{\omega} < 0$};
+
+\end{tikzpicture}
+```
+
+:::
+:::

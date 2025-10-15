@@ -1,0 +1,287 @@
+## Revisión conceptos matemáticos {.smaller}
+
+
+::: {.columns}
+::: {.column}
+
+> Función $\boldsymbol{\mathcal{f}}: \mathbb{R} \to \mathbb{R}$ asocia a cada punto un valor escalar
+
+> Derivada de la función $d \boldsymbol{\mathcal{f}}$ es la pendiente de la recta tangente en un punto $p$ que indica la tasa de cambio de la función en dicho punto
+
+:::
+::: {.column}
+
+![](figs/figure2.svg){fig-align="center"}
+
+:::
+:::
+
+
+## Revisión conceptos matemáticos {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Campo escalar: una función que a cada punto en una región del espacio le [asocia un valor escalar]{.underline}
+$$\boldsymbol{\mathcal{f}} : \mathbb{R}^{n} \to \mathbb{R}$$
+
+![](figs/figure3A.svg){width="90%" fig-align="center"}
+
+:::
+::: {.column}
+
+> Campo vectorial: una función que a cada punto en una región del espacio le [asocia un valor vectorial]{.underline} 
+$$\boldsymbol{\mathcal{f}} : \mathbb{R}^{n} \to \mathbb{R}^{n}$$
+
+![](figs/figure3B.svg){width="70%" fig-align="center"}
+
+:::
+:::
+
+## Revisión conceptos matemáticos {.smaller}
+
+::: {.columns}
+::: {.column}
+
+> Campo escalar: una función que a cada punto en una región del espacio le [asocia un valor escalar]{.underline}
+$$\boldsymbol{\mathcal{f}} : \mathbb{R}^{n} \to \mathbb{R}$$
+
+![](figs/figure3AB.svg){width="75%" fig-align="center"}
+
+:::
+::: {.column}
+
+> Campo vectorial: una función que a cada punto en una región del espacio le [asocia un valor vectorial]{.underline} 
+$$\boldsymbol{\mathcal{f}} : \mathbb{R}^{n} \to \mathbb{R}^{n}$$
+
+![](figs/figure3BB.svg){width="75%" fig-align="center"}
+
+:::
+:::
+
+
+## Revisión conceptos matemáticos {.smaller}
+
+> Para una función escalar $\boldsymbol{\mathcal{f}} : \mathbb{R}^{n} \to \mathbb{R}$ el gradiente $\nabla \boldsymbol{\mathcal{f}} : \mathbb{R}^{n} \to \mathbb{R}^n$ es tal que evaluado en un punto $\boldsymbol{p} = (x_1, x_2, \dots , x_n)$ [indica la dirección en la que la función $\boldsymbol{\mathcal{f}}$ aumenta más rápidamente]{.underline} desde $p$, y su módulo representa la tasa de variación de $\boldsymbol{\mathcal{f}}$ en la dirección del *vector gradiente*.
+
+$$
+\nabla \mathcal{f}(\boldsymbol{p}) = 
+\begin{bmatrix}
+\frac{\partial \mathcal{f}}{\partial x_1} (\boldsymbol{p}) \\
+\frac{\partial \mathcal{f}}{\partial x_2} (\boldsymbol{p}) \\
+\vdots\\
+\frac{\partial \mathcal{f}}{\partial x_n} (\boldsymbol{p}) \\
+\end{bmatrix}
+$$
+
+## Revisión conceptos matemáticos {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Campo escalar $f(x,y)$ 
+- Las flechas representan el gradiente $\nabla f(x,y)$
+- **Apuntan en la dirección de mayor crecimiento**
+
+:::
+::: {.column}
+
+![](figs/figure4.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+
+## Revisión conceptos físicos
+
+::: {style="font-size:70%;"}
+
+> Campo eléctrico de una carga puntual
+
+- Sea en el punto de origen $\mathcal{O}$ una carga $q$ y el punto $P$ donde se desea determinar el campo
+- Sea el vector distancia $\vec{\boldsymbol{r}} = \overrightarrow{\mathcal{O} P}$, y el vector unitario asociado $\hat{\boldsymbol{r}} = \vec{\boldsymbol{r}} / r$ donde $r = \lVert\vec{\boldsymbol{r}}\rVert$ 
+- La dirección y magnitud del campo $\vec{\boldsymbol{E}} (q, \vec{\boldsymbol{r}})$ se define como
+:::
+
+::: {style="font-size:60%;"}
+$$
+\vec{\boldsymbol{E}} = \underbrace{\frac{1}{4 \pi \epsilon_0}}_{\textrm{constante}} \cdot \overbrace{\frac{q}{r^2}}^{\textrm{magnitud}} \cdot \underbrace{\hat{\boldsymbol  {r}}}_{\textrm{dirección}}
+$$
+:::
+
+::: {style="font-size:70%;"}
+- La magnitud es proporcional al *tamaño* de la carga $q$ e inversamente proporcional al cuadrado de la distancia ($r^2$)
+:::
+
+## Revisión conceptos físicos {.smaller}
+
+> Campo eléctrico de una carga puntual
+
+::: {.columns}
+::: {.column style="text-align:center;"}
+
+![Apunta alejandose de la carga](figs/figure5A.svg){width="80%" fig-align="center"}
+
+:::
+::: {.column style="text-align:center;"}
+
+![Apunta acercándose a la carga](figs/figure5B.svg){width="80%" fig-align="center"}
+
+:::
+:::
+
+
+
+## Revisión conceptos físicos {.smaller}
+
+> Principio de superposición de campos eléctricos
+
+::: {.columns}
+::: {.column}
+- El efecto de múltiples cargas es la **suma vectorial** de los campos debido a cada carga puntual
+
+$$
+\vec{\boldsymbol{E}_T} = \vec{\boldsymbol{E}_1} + \vec{\boldsymbol{E}_2} + \vec{\boldsymbol{E}_3} + \dots 
+$$
+:::
+::: {.column}
+![](figs/figure6.svg){width="80%" fig-align="center"}
+:::
+:::
+
+
+
+## Revisión conceptos físicos {.smaller}
+
+> Línea de campo eléctrico
+
+::: {.columns}
+::: {.column}
+
+- Curva imaginaria tangente en cualquier punto a la dirección del vector $\vec{\boldsymbol{E}}$
+- Se alejan de las cargas positivas y van hacia las cargas negativas
+- Nunca se cruzan
+
+:::
+::: {.column}
+![](figs/figure7A.svg){width="100%" fig-align="center"}
+:::
+:::
+
+## Revisión conceptos físicos {.smaller}
+
+> Línea de campo eléctrico
+
+::: {.columns}
+::: {.column}
+
+- Curva imaginaria tangente en cualquier punto a la dirección del vector $\vec{\boldsymbol{E}}$
+- Se alejan de las cargas positivas y van hacia las cargas negativas
+- Nunca se cruzan
+
+:::
+::: {.column}
+
+![](figs/figure7B.svg){width="100%" fig-align="center"}
+:::
+:::
+
+
+
+## Revisión conceptos físicos {.smaller}
+
+> Energía potencial eléctrica
+
+- Para multiples cargas puntuales, la energía potencial asociada a la carga de prueba $q_0$ es la **suma algebraica**
+
+$$
+U = \frac{q_0}{4 \pi \epsilon_0} \sum_{i} \frac{q_i}{r_i}
+$$
+
+donde $r_i$ es la distancia entre la carga $q_0$ y $q_1$
+
+## Revisión conceptos físicos {.smaller}
+
+> Potencial eléctrico
+
+- Se define el **potencial** $V$ como la *energía potencial* $U$ *por unidad de carga*
+
+$$
+V = \frac{U}{q_0}
+$$
+
+- Para calcular el potencial debido a un conjunto de cargas puntuales:
+
+$$
+V = \frac{1}{4 \pi \epsilon_0} \sum_{i} \frac{q_i}{r_i}
+$$
+
+## Revisión conceptos físicos {.smaller}
+
+> Superficies equipotenciales
+
+
+::: {.columns}
+::: {.column}
+
+- Superficie en la cual el potencial eléctrico $V$ es el mismo
+- Se asemejan a curvas de nivel en un mapa topográfico
+
+::: {.callout-note appearance="simple"}
+#### Las líneas de campo y las superﬁcies equipotenciales siempre son perpendiculares entre sí
+:::
+
+:::
+::: {.column}
+
+![](figs/figure8A.svg){width="100%" fig-align="center"}
+:::
+:::
+
+## Revisión conceptos físicos {.smaller}
+
+> Superficies equipotenciales
+
+
+::: {.columns}
+::: {.column}
+
+- Superficie en la cual el potencial eléctrico $V$ es el mismo
+- Se asemejan a curvas de nivel en un mapa topográfico
+
+::: {.callout-note appearance="simple"}
+#### Las líneas de campo y las superﬁcies equipotenciales siempre son perpendiculares entre sí
+:::
+
+:::
+::: {.column}
+
+![](figs/figure8B.svg){width="100%" fig-align="center"}
+:::
+:::
+
+## Revisión conceptos físicos {.smaller}
+
+> Gradiente potencial
+
+- El campo $\vec{\boldsymbol{E}}$ es igual al gradiente negativo de $V$
+
+$$
+\vec{\boldsymbol{E}} = - \vec{\nabla} V
+$$
+
+- Para el caso de un campo *tri-dimensional*, donde $\vec{\boldsymbol{E}} = \hat{\boldsymbol{\mathcal{i}}} E_x + \hat{\boldsymbol{\mathcal{j}}} E_y + \hat{\boldsymbol{\mathcal{k}}} E_z$:
+
+$$
+\vec{\boldsymbol{E}} = 
+\begin{bmatrix}
+E_x \\
+E_y \\
+E_z
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{\partial V}{\partial x}\\
+\frac{\partial V}{\partial y} \\
+\frac{\partial V}{\partial z}
+\end{bmatrix}
+$$

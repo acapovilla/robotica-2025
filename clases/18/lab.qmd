@@ -1,0 +1,112 @@
+---
+title: Clase 18 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+# *Point-follower* con campo potencial artificial
+
+#### Objetivos
+
+* Implementar un controlador que dado un par de coordenadas objetivo envíe comandos de velocidad angular y velocidad lineal para conducir el robot a dicho punto
+* A partir de las mediciones de LIDAR evadir obstáculos utilizando campos potenciales artificiales
+
+## Algoritmo para el campo potencial artificial
+
+1. Obtener la posición del robot $\boldsymbol{P} = (x, y)$ y la orientación $\theta$ en el marco de odometría 
+2. Dada las coordenadas del punto objetivo $\boldsymbol{G}$ y el parámetro $\rho$, calcular la fuerza de atracción $\boldsymbol{F}^A$
+
+$$
+\boldsymbol{F}^A =
+\begin{cases}
+- k_a \left( \boldsymbol{P} - \boldsymbol{G} \right) &\textrm{si} \; \lVert \boldsymbol{P} - \boldsymbol{G} \rVert \leq \rho \\
+- \rho k_a \frac{\boldsymbol{P} - \boldsymbol{G}}{\lVert \boldsymbol{P} - \boldsymbol{G} \rVert} &\textrm{si}  \; \lVert \boldsymbol{P} - \boldsymbol{G} \rVert > \rho
+\end{cases}
+$$
+
+3. Dadas las mediciones del *LIDAR* realizar el procesamiento de las mismas
+
+> Para identificar obstáculos, se realizará una segmentación a partir de discontinuidades en las mediciones. Es decir, si entre una medición $i$ y una medición $i+n$ existen mediciones de valor `inf` (es decir, rayos no reflejados) es que se produjo una espacio libre y la medición $i$ pertenece a un obstáculo distinto de la medición $i+n$.
+
+4. Para cada obstáculo, obtener la medición de menor distancia $\textcolor{Plum}{d_i}$, y mediante su ángulo $\textcolor{Plum}{\alpha}$ correspondiente obtener las coordenadas de $\textcolor{Plum}{\boldsymbol{O}_i}$ en el marco inercial
+
+$$
+\begin{align*}
+\textcolor{Plum}{x_{\boldsymbol{O}_i}} &= \textcolor{Maroon}{x_\boldsymbol{P}} + \textcolor{Plum}{d_i} \cdot \cos{(\textcolor{ForestGreen}{\gamma_i})}\\
+\textcolor{Plum}{y_{\boldsymbol{O}_i}} &= \textcolor{Maroon}{y_\boldsymbol{P}} + \textcolor{Plum}{d_i} \cdot \sin{(\textcolor{ForestGreen}{\gamma_i})}
+\end{align*}
+$$
+
+donde 
+$$
+\textcolor{ForestGreen}{\gamma_i} = \textcolor{Orange}{\theta} + \textcolor{Plum}{\alpha_i}
+$$
+
+5. Calcular la fuerza repulsiva para cada obstáculo
+
+$$
+\boldsymbol{F}^{R}_i = 
+\begin{cases}
+\frac{k_R}{\lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert^3} \left( \frac{1}{\lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert} - \frac{1}{\eta_0} \right) \left( \boldsymbol{P} - \boldsymbol{O}_i \right) &\textrm{si} \; \lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert \leq \eta_0 \\
+0                        &\textrm{si}  \; \lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert > \eta_0   \\
+\end{cases}
+$$
+
+donde $\lVert \boldsymbol{P} - \boldsymbol{O}_i \rVert$ es la medición del *LIDAR*
+
+6. Calcular la fuerza total $\boldsymbol{F}_T$
+
+$$
+\boldsymbol{F}_T = \boldsymbol{F}^A + \sum_{i=1}^{m} \boldsymbol{F}^R_i
+$$
+
+7. Calcular la *componente angular* ${F_T}_\theta$
+
+$$
+{F_T}_\theta = k_\theta (\theta_{\boldsymbol{F}_T} - \theta)
+$$
+
+donde
+
+$$
+\theta_{\boldsymbol{F}_T} = \arctan 2 \left( {F_T}_y , {F_T}_x \right)
+$$
+
+::: {.callout-caution appearance="simple"}
+Considerar los casos especiales y la discontinuidad de la función $\arctan2(x, y)$
+:::
+
+8. Calcular la velocidad angular y lineal
+
+$$
+\begin{cases}
+\nu =  {F_T}_x \cos{\theta} + {F_T}_y \sin{\theta} \\
+\omega = {F_T}_\theta
+\end{cases}
+$$
+
+## Programación del nodo
+
+- Cree un nodo que reciba mediante parámetros las coordenadas del punto objetivo $\boldsymbol{G} = (x_G, y_G)$ y ejecute el algoritmo de control a una frecuencia fija
+- Obtenga la posición del robot mediante el topic de odometría `/odom`
+- Obtenga las mediciones del *LIDAR* mediante el topic `/scan` de tipo `LaserScan`
+- Escriba los comandos de velocidad lineal y angular en el topic `/cmd_vel`
+- Parametrizar los coeficientes $k_a$, $k_R$ y $k_\theta$ junto con los parámetros $\rho$ y $\eta_0$ de las funciones potenciales
+- Utilice dos parámetros adicionales, $\nu_{max}$ y $\omega_{max}$, para limitar el valor máximo de velocidad lineal y velocidad angular respectivamente
+- Utilice un parámetro $\epsilon_{tol}$ para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo si
+
+$$
+\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \epsilon_{tol}
+$$
+
+## Configuración del `launch`
+
+- Cree un archivo `go_to_point.launch.py` donde cargue la simulación y todo el sistema, utilizando un mundo de *Gazebo* con obstáculos de prueba
+- Configure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo
+- Realizar diversas pruebas con distintas posiciones y orientaciones iniciales del robot, y además distintos puntos objetivo.

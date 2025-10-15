@@ -1,0 +1,65 @@
+---
+title: "Robótica"
+subtitle: "Clase 18"
+date: "10/15/2025"
+date-format: "[Semana 24 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+filters:
+  - diagram
+diagram:
+    engine:
+        tikz:
+            execpath: pdflatex
+            header-includes:
+                # - '\usepackage{cancel}'
+                - '\usepackage{amsmath}'
+                - '\usetikzlibrary{arrows.meta, shapes, intersections, decorations.markings,bending}'
+                - '\usepackage{adjustbox}'
+                - '\usepackage{tikz-3dplot}'
+jupyter: python3
+---
+
+# Control con evasión de obstáculos {visibility="hidden"}
+
+{{< include _problem_formulation.qmd >}}
+
+# Conceptos matemáticos y físicos {visibility="hidden"}
+
+{{< include _maths_physics.qmd >}}
+
+# Campos potenciales artificiales {visibility="hidden"}
+
+{{< include _artificial_potential_fields.qmd >}}
+
+# Diseño del controlador {visibility="hidden"}
+
+{{< include _controller_design.qmd >}}
+
+# Implementación {visibility="hidden"}
+
+{{< include _implementation.qmd >}}
+
+# Problemas {visibility="hidden"}
+
+<!-- {{< include _problems_solutions.qmd >}} -->
+
+# Resumen {visibility="hidden"}
+
+{{< include _summary.qmd >}}
+
+# Laboratorio {visibility="hidden"}
+
+## [Laboratorio](lab.qmd) {.center}
+
+*Point-follower* con campo potencial artificial
+
