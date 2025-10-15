@@ -1859,21 +1859,21 @@
     "href": "clases/18/index.html#diseño-del-controlador-9",
     "title": "Robótica",
     "section": "Diseño del controlador",
-    "text": "Diseño del controlador\n\n\n\nCasos particulares de \\(\\theta\\) y el ángulo de \\(\\boldsymbol{F}_T\\)\n\n\nCaso A:\n\n\\[\n\\begin{gather*}\n\\tfrac{\\pi}{2}  &lt;     \\theta                      \\leq  \\pi \\\\\n-\\pi            \\leq  \\theta_{\\boldsymbol{F}_T}   &lt;     -\\tfrac{\\pi}{2}\n\\end{gather*}\n\\]\n\\[\n(\\theta_{\\boldsymbol{F}_T} - \\theta) \\in \\left[ -2 \\pi ; -\\pi \\right) \\to \\omega &lt; 0\n\\]\nPor lo tanto se redefine \\[\n\\omega = k_\\theta ((\\theta_{\\boldsymbol{F}_T} + 2 \\pi) - \\theta)\n\\]\npara \\(\\boldsymbol{F}_T\\) en el 3er cuadrante y \\(\\boldsymbol{x}_R\\) en el 2do"
+    "text": "Diseño del controlador\n\n\n\nCasos particulares de \\(\\theta\\) y el ángulo de \\(\\boldsymbol{F}_T\\)\n\n\nCaso A:\n\n\\[\n\\begin{gather*}\n\\tfrac{\\pi}{2}  &lt;     \\theta                      \\leq  \\pi \\\\\n-\\pi            \\leq  \\theta_{\\boldsymbol{F}_T}   &lt;     -\\tfrac{\\pi}{2}\n\\end{gather*}\n\\]\n\\[\n(\\theta_{\\boldsymbol{F}_T} - \\theta) \\in \\left[ -2 \\pi ; -\\pi \\right) \\to \\omega \\ngtr 0\n\\]\nPor lo tanto se redefine \\[\n\\omega = k_\\theta ((\\theta_{\\boldsymbol{F}_T} + 2 \\pi) - \\theta)\n\\]\npara \\(\\boldsymbol{F}_T\\) en el 3er cuadrante y \\(\\boldsymbol{x}_R\\) en el 2do"
   },
   {
     "objectID": "clases/18/index.html#diseño-del-controlador-10",
     "href": "clases/18/index.html#diseño-del-controlador-10",
     "title": "Robótica",
     "section": "Diseño del controlador",
-    "text": "Diseño del controlador\n\n\n\nCasos particulares de \\(\\theta\\) y el ángulo de \\(\\boldsymbol{F}_T\\)\n\n\nCaso B:\n\n\\[\n\\begin{gather*}\n-\\pi            \\leq  \\theta                    &lt;     -\\tfrac{\\pi}{2}\\\\\n\\tfrac{\\pi}{2}  &lt;     \\theta_{\\boldsymbol{F}_T} \\leq  \\pi\n\\end{gather*}\n\\]\n\\[\n(\\theta_{\\boldsymbol{F}_T} - \\theta) \\in \\left[ 2 \\pi ; \\pi \\right) \\to \\omega &gt; 0\n\\]\nPor lo tanto se redefine \\[\n\\omega = k_\\theta (\\theta_{\\boldsymbol{F}_T} - (\\theta + 2 \\pi))\n\\]\npara \\(\\boldsymbol{F}_T\\) en el 2do cuadrante y \\(\\boldsymbol{x}_R\\) en el 3er"
+    "text": "Diseño del controlador\n\n\n\nCasos particulares de \\(\\theta\\) y el ángulo de \\(\\boldsymbol{F}_T\\)\n\n\nCaso B:\n\n\\[\n\\begin{gather*}\n-\\pi            \\leq  \\theta                    &lt;     -\\tfrac{\\pi}{2}\\\\\n\\tfrac{\\pi}{2}  &lt;     \\theta_{\\boldsymbol{F}_T} \\leq  \\pi\n\\end{gather*}\n\\]\n\\[\n(\\theta_{\\boldsymbol{F}_T} - \\theta) \\in \\left[ 2 \\pi ; \\pi \\right) \\to \\omega \\nless 0\n\\]\nPor lo tanto se redefine \\[\n\\omega = k_\\theta (\\theta_{\\boldsymbol{F}_T} - (\\theta + 2 \\pi))\n\\]\npara \\(\\boldsymbol{F}_T\\) en el 2do cuadrante y \\(\\boldsymbol{x}_R\\) en el 3er"
   },
   {
     "objectID": "clases/18/index.html#implementación-1",
     "href": "clases/18/index.html#implementación-1",
     "title": "Robótica",
     "section": "Implementación",
-    "text": "Implementación\n\n\n\nImplementación on-line\nGenerar un potencial repulsivo solo para obstáculos percibidos\n\n\\[\n\\eta_0 &lt; \\textrm{max. lidar}\n\\]\n\nPara calcular la fuerza \\(\\boldsymbol{F}^{R}_i\\) solo es necesario conocer el despeje \\(\\eta_i\\) con respecto al obstáculo \\(i\\)"
+    "text": "Implementación\n\n\n\nImplementación on-line\nGenerar un potencial repulsivo solo para obstáculos percibidos\n\n\\[\n\\eta_0 &lt; \\textcolor{ForestGreen}{L}\n\\]\n\nPara calcular la fuerza \\(\\boldsymbol{F}^{R}_i\\) solo es necesario conocer el despeje \\(\\eta_i\\) con respecto al obstáculo \\(i\\)"
   },
   {
     "objectID": "clases/18/index.html#mediciones-del-lidar",
@@ -1897,11 +1897,81 @@
     "text": "Mediciones del LIDAR\n\nEl análisis se realizó simplificando el robot a un punto en el espacio\nPara la implementación se debe tener en cuenta las dimensiones reales del robot\nModelo simple: Asumir una forma circular con radio \\(\\kappa\\) que abarque toda el perímetro\n\n\nLos campos potenciales de repulsión se pueden obtener simplemente expandiendo la silueta del obstáculo \\(\\kappa\\), lo mismo que disminuir el despeje \\(\\eta_i = d_i - \\kappa\\)"
   },
   {
+    "objectID": "clases/18/index.html#problemas-de-los-campos-potenciales",
+    "href": "clases/18/index.html#problemas-de-los-campos-potenciales",
+    "title": "Robótica",
+    "section": "Problemas de los campos potenciales",
+    "text": "Problemas de los campos potenciales\n\nSe pueden identificar 4 problemas significativos\n\n\nNo permite el paso entre obstáculos poco espaciados\nOscilaciones producidas por obstáculos\nOscilaciones en pasajes angostos\n“Trampas” en mínimos locales"
+  },
+  {
+    "objectID": "clases/18/index.html#obstáculos-poco-espaciados",
+    "href": "clases/18/index.html#obstáculos-poco-espaciados",
+    "title": "Robótica",
+    "section": "Obstáculos poco espaciados",
+    "text": "Obstáculos poco espaciados\n\nAl intentar pasar a través de dos obstáculos cercanos (Ej.: el marco de una puerta) las fuerzas repulsivas combinadas apuntan hacia afuera de la abertura\nDependiendo de la magnitud relativa de la fuerza de atracción \\(\\boldsymbol{F}^A\\), el robot la atravesará o se alejará"
+  },
+  {
+    "objectID": "clases/18/index.html#oscilaciones-debido-a-obstáculos",
+    "href": "clases/18/index.html#oscilaciones-debido-a-obstáculos",
+    "title": "Robótica",
+    "section": "Oscilaciones debido a obstáculos",
+    "text": "Oscilaciones debido a obstáculos\n\n\n\nExisten casos donde el robot puede entrar en un comportamiento oscilatorio donde se acerca y se aleja de los obstáculos de forma inestable\n\n\nSolución: Filtro pasa bajo para el comando de velocidad angular"
+  },
+  {
+    "objectID": "clases/18/index.html#oscilaciones-en-pasajes-angostos",
+    "href": "clases/18/index.html#oscilaciones-en-pasajes-angostos",
+    "title": "Robótica",
+    "section": "Oscilaciones en pasajes angostos",
+    "text": "Oscilaciones en pasajes angostos\n\n\n\nUn caso particular del anterior\nEl robot se ve afectado por fuerzas repulsivas opuestas de forma simultánea\n\n\nSolución: dammping o amortiguación para el comando de velocidad"
+  },
+  {
+    "objectID": "clases/18/index.html#mínimos-locales",
+    "href": "clases/18/index.html#mínimos-locales",
+    "title": "Robótica",
+    "section": "Mínimos locales",
+    "text": "Mínimos locales\nSi el robot entra en un mínimo local \\(\\boldsymbol{P}_m\\) de \\(U_T\\) se detendrá\n\\[\n\\boldsymbol{F}_T (\\boldsymbol{P}_m) = -\\nabla U_T(\\boldsymbol{P}_m) = 0\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#mínimos-locales-1",
+    "href": "clases/18/index.html#mínimos-locales-1",
+    "title": "Robótica",
+    "section": "Mínimos locales",
+    "text": "Mínimos locales\n\nSolución: Campos rotacionales\n\n\nReemplazar o combinar la fuerza de repulsión por una que fuerce el robot a rodear el obstáculo\nCampos rotacionales:\n\n\\[\n\\boldsymbol{F}^V_i(\\boldsymbol{P}) = \\pm \\nabla \\times U^R_{i}(\\boldsymbol{P}) =\n\\pm \\begin{bmatrix}\n\\frac{\\partial U^R_{i}}{\\partial y} \\\\\n-\\frac{\\partial U^R_{i}}{\\partial x}\n\\end{bmatrix}\n\\]\n\nEl vector resultante es tangente a la superficie equipotencial"
+  },
+  {
+    "objectID": "clases/18/index.html#mínimos-locales-2",
+    "href": "clases/18/index.html#mínimos-locales-2",
+    "title": "Robótica",
+    "section": "Mínimos locales",
+    "text": "Mínimos locales"
+  },
+  {
     "objectID": "clases/18/index.html#resumen-1",
     "href": "clases/18/index.html#resumen-1",
     "title": "Robótica",
     "section": "Resumen",
-    "text": "Resumen\nRESUMEN"
+    "text": "Resumen\n\nEn resumen\n\n\n\n\nEl guiado del robot se realizará a partir de la resultante de la suma de 2 fuerzas\n\nUna de atracción hacia el punto objetivo\nUna de repulsión de los obstáculos\n\nMediante campos potenciales se construyeron las expresiones para ambas fuerzas"
+  },
+  {
+    "objectID": "clases/18/index.html#resumen-2",
+    "href": "clases/18/index.html#resumen-2",
+    "title": "Robótica",
+    "section": "Resumen",
+    "text": "Resumen\n\nEn resumen\n\n\nLa expresión para la fuerza de atracción \\(\\boldsymbol{F}^A\\) tiene dos parámetros de ajuste:\n\n\\(k_a\\) para controlar la intensidad\n\\(\\rho\\) para definir el límite de linealidad\n\nLa expresión para la fuerza de repulsión \\(\\boldsymbol{F}^{R}_i\\) tiene dos parámetros de ajuste:\n\n\\(k_R\\) para controlar la intensidad\n\\(\\eta_0\\) para definir el límite de influencia de los obstáculos"
+  },
+  {
+    "objectID": "clases/18/index.html#resumen-3",
+    "href": "clases/18/index.html#resumen-3",
+    "title": "Robótica",
+    "section": "Resumen",
+    "text": "Resumen\n\nEn resumen\n\n\nPara las expresiones de velocidad lineal \\(\\nu\\) y velocidad angular \\(\\omega\\) se optó por utilizar mínimos cuadrados\nLa expresión de \\(\\nu\\) se puede interpretar como la proyección de \\(\\boldsymbol{F}_T\\) sobre el eje del robot \\(\\boldsymbol{X_R}\\)\nLa expresión de \\(\\omega\\) se utilizó para forzar al robot a alinearse con el vector \\(\\boldsymbol{F}_T\\)\nAl calcular el ángulo de \\(\\boldsymbol{F}_T\\) como \\(\\arctan 2 \\left( {F_T}_y , {F_T}_x \\right)\\) hay que considerar ciertos casos especiales"
+  },
+  {
+    "objectID": "clases/18/index.html#resumen-4",
+    "href": "clases/18/index.html#resumen-4",
+    "title": "Robótica",
+    "section": "Resumen",
+    "text": "Resumen\n\nEn resumen\n\n\n\n\nUtilizando un sensor LIDAR los cáculos de las fuerzas de repulsión \\(\\boldsymbol{F}^{R}_i\\) se simplifican\nGenerar fuerzas repulsivas solo para obstáculos percibidos (\\(\\eta_i &lt; L\\))\nTener en cuenta la forma del robot al calcular los despejes \\(\\eta_i\\)"
   },
   {
     "objectID": "clases/18/index.html#laboratorio-1",

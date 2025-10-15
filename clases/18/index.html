@@ -1218,7 +1218,7 @@ y ${F_T}_\theta$ ???
 \end{gather*}
 \]</span></p>
 <p><span class="math display">\[
-(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ -2 \pi ; -\pi \right) \to \omega &lt; 0
+(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ -2 \pi ; -\pi \right) \to \omega \ngtr 0
 \]</span></p>
 <p>Por lo tanto se redefine <span class="math display">\[
 \omega = k_\theta ((\theta_{\boldsymbol{F}_T} + 2 \pi) - \theta)
@@ -1246,7 +1246,7 @@ y ${F_T}_\theta$ ???
 \end{gather*}
 \]</span></p>
 <p><span class="math display">\[
-(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ 2 \pi ; \pi \right) \to \omega &gt; 0
+(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ 2 \pi ; \pi \right) \to \omega \nless 0
 \]</span></p>
 <p>Por lo tanto se redefine <span class="math display">\[
 \omega = k_\theta (\theta_{\boldsymbol{F}_T} - (\theta + 2 \pi))
@@ -1268,7 +1268,7 @@ y ${F_T}_\theta$ ???
 <li>Generar un potencial repulsivo solo para obstáculos percibidos</li>
 </ul>
 <p><span class="math display">\[
-\eta_0 &lt; \textrm{max. lidar}
+\eta_0 &lt; \textcolor{ForestGreen}{L}
 \]</span></p>
 <ul>
 <li>Para calcular la fuerza <span class="math inline">\(\boldsymbol{F}^{R}_i\)</span> solo es necesario conocer el despeje <span class="math inline">\(\eta_i\)</span> con respecto al obstáculo <span class="math inline">\(i\)</span></li>
@@ -1329,13 +1329,193 @@ y ${F_T}_\theta$ ???
 <p>Los campos potenciales de repulsión se pueden obtener simplemente expandiendo la silueta del obstáculo <span class="math inline">\(\kappa\)</span>, lo mismo que disminuir el despeje <span class="math inline">\(\eta_i = d_i - \kappa\)</span></p>
 </blockquote>
 </section></section>
+<section>
 
+<section id="problemas-de-los-campos-potenciales" class="slide level2 smaller">
+<h2>Problemas de los campos potenciales</h2>
+<blockquote>
+<p>Se pueden identificar 4 problemas significativos</p>
+</blockquote>
+<ol type="1">
+<li>No permite el paso entre obstáculos poco espaciados</li>
+<li>Oscilaciones producidas por obstáculos</li>
+<li>Oscilaciones en pasajes angostos</li>
+<li>“Trampas” en mínimos locales</li>
+</ol>
+</section>
+<section id="obstáculos-poco-espaciados" class="slide level2 smaller">
+<h2>Obstáculos poco espaciados</h2>
+<ul>
+<li>Al intentar pasar a través de dos obstáculos cercanos (Ej.: el marco de una puerta) las fuerzas repulsivas combinadas apuntan hacia afuera de la abertura</li>
+<li>Dependiendo de la magnitud relativa de la fuerza de atracción <span class="math inline">\(\boldsymbol{F}^A\)</span>, el robot la atravesará o se alejará</li>
+</ul>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/figure16.svg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/figure15A.svg" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="oscilaciones-debido-a-obstáculos" class="slide level2 smaller">
+<h2>Oscilaciones debido a obstáculos</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Existen casos donde el robot puede entrar en un comportamiento oscilatorio donde se acerca y se aleja de los obstáculos de forma inestable</li>
+</ul>
+<blockquote>
+<p><u>Solución</u>: Filtro pasa bajo para el comando de velocidad angular</p>
+</blockquote>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/figure15B.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="oscilaciones-en-pasajes-angostos" class="slide level2 smaller">
+<h2>Oscilaciones en pasajes angostos</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Un caso particular del anterior</li>
+<li>El robot se ve afectado por fuerzas repulsivas opuestas de forma simultánea</li>
+</ul>
+<blockquote>
+<p><u>Solución</u>: <em>dammping</em> o amortiguación para el comando de velocidad</p>
+</blockquote>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/figure15C.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="mínimos-locales" class="slide level2 smaller">
+<h2>Mínimos locales</h2>
+<p>Si el robot entra en un mínimo local <span class="math inline">\(\boldsymbol{P}_m\)</span> de <span class="math inline">\(U_T\)</span> se detendrá</p>
+<p><span class="math display">\[
+\boldsymbol{F}_T (\boldsymbol{P}_m) = -\nabla U_T(\boldsymbol{P}_m) = 0
+\]</span></p>
 
+<img data-src="figs/figure15D.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="mínimos-locales-1" class="slide level2 smaller">
+<h2>Mínimos locales</h2>
+<blockquote>
+<p><u>Solución</u>: Campos rotacionales</p>
+</blockquote>
+<ul>
+<li><p>Reemplazar o combinar la fuerza de repulsión por una que fuerce el robot a rodear el obstáculo</p></li>
+<li><p>Campos rotacionales:</p></li>
+</ul>
+<p><span class="math display">\[
+\boldsymbol{F}^V_i(\boldsymbol{P}) = \pm \nabla \times U^R_{i}(\boldsymbol{P}) =
+\pm \begin{bmatrix}
+\frac{\partial U^R_{i}}{\partial y} \\
+-\frac{\partial U^R_{i}}{\partial x}
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>El vector resultante es tangente a la superficie equipotencial</li>
+</ul>
+</section>
+<section id="mínimos-locales-2" class="slide level2 smaller">
+<h2>Mínimos locales</h2>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/figure17A.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/figure17B.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section></section>
 <section>
 
 <section id="resumen-1" class="slide level2 smaller">
 <h2>Resumen</h2>
-<p><mark>RESUMEN</mark></p>
+<blockquote>
+<p>En resumen</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>El guiado del robot se realizará a partir de la <span style="color: rgb(21, 155, 82);">resultante</span> de la suma de 2 <em>fuerzas</em>
+<ul>
+<li>Una de <span style="color: rgb(46, 49, 146);"><em>atracción</em></span> hacia el punto objetivo</li>
+<li>Una de <span style="color: rgb(141, 25, 143);"><em>repulsión</em></span> de los obstáculos</li>
+</ul></li>
+<li>Mediante campos potenciales se construyeron las expresiones para ambas fuerzas</li>
+</ul>
+</div><div class="column">
+<img data-src="index_files/mediabag/diff-bot-control-final.svg" style="width:100.0%">
+</div></div>
+</section>
+<section id="resumen-2" class="slide level2 smaller">
+<h2>Resumen</h2>
+<blockquote>
+<p>En resumen</p>
+</blockquote>
+<ul>
+<li>La expresión para la fuerza de atracción <span class="math inline">\(\boldsymbol{F}^A\)</span> tiene dos parámetros de ajuste:
+<ul>
+<li><span class="math inline">\(k_a\)</span> para controlar la intensidad</li>
+<li><span class="math inline">\(\rho\)</span> para definir el límite de linealidad</li>
+</ul></li>
+<li>La expresión para la fuerza de repulsión <span class="math inline">\(\boldsymbol{F}^{R}_i\)</span> tiene dos parámetros de ajuste:
+<ul>
+<li><span class="math inline">\(k_R\)</span> para controlar la intensidad</li>
+<li><span class="math inline">\(\eta_0\)</span> para definir el límite de influencia de los obstáculos</li>
+</ul></li>
+</ul>
+</section>
+<section id="resumen-3" class="slide level2 smaller">
+<h2>Resumen</h2>
+<blockquote>
+<p>En resumen</p>
+</blockquote>
+<ul>
+<li>Para las expresiones de velocidad lineal <span class="math inline">\(\nu\)</span> y velocidad angular <span class="math inline">\(\omega\)</span> se optó por utilizar mínimos cuadrados</li>
+<li>La expresión de <span class="math inline">\(\nu\)</span> se puede interpretar como la proyección de <span class="math inline">\(\boldsymbol{F}_T\)</span> sobre el eje del robot <span class="math inline">\(\boldsymbol{X_R}\)</span></li>
+<li>La expresión de <span class="math inline">\(\omega\)</span> se utilizó para forzar al robot a alinearse con el vector <span class="math inline">\(\boldsymbol{F}_T\)</span></li>
+<li>Al calcular el ángulo de <span class="math inline">\(\boldsymbol{F}_T\)</span> como <span class="math inline">\(\arctan 2 \left( {F_T}_y , {F_T}_x \right)\)</span> hay que considerar ciertos casos especiales</li>
+</ul>
+</section>
+<section id="resumen-4" class="slide level2 smaller">
+<h2>Resumen</h2>
+<blockquote>
+<p>En resumen</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Utilizando un sensor <em>LIDAR</em> los cáculos de las fuerzas de repulsión <span class="math inline">\(\boldsymbol{F}^{R}_i\)</span> se simplifican</li>
+<li>Generar fuerzas repulsivas solo para obstáculos percibidos (<span class="math inline">\(\eta_i &lt; L\)</span>)</li>
+<li>Tener en cuenta la forma del robot al calcular los despejes <span class="math inline">\(\eta_i\)</span></li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/mediabag/lidar-implementation.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
 </section></section>
 <section>
 
