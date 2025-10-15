@@ -1481,7 +1481,7 @@
     "href": "clases/index.html",
     "title": "Clases",
     "section": "",
-    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.\n🖥️\n\n🛠️\n\n\n12\n02/06\nOdometría: Cálculo de posición en base al modelo cinemático directo.\n🖥️\n\n🛠️\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n🖥️\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nPresentación entregable 1\n\n\n\n\n\n16\n13/08\nSimulación de sensores en Gazebo\n🖥️\n🧪\n\n\n\n17\n20/08\nRevisión entregable 1\n🖥️\n\n\n\n\n19\n03/09\nCaso práctico simulación de sensors. Cámara. Seguidor de línea.\n🖥️\n🧪\n\n\n\n20\n10/09\nCaso práctico simulación de sensors (cont.)\n\n\n\n\n\n21\n17/09\nLocalización con odometría. Incertidumbre y estimación de posición.\n🖥️\n🧪\n\n\n\n23\n01/10\nDiseño, análisis y programación de un controlador a lazo cerrado, sin evasión de obstáculos\n🖥️\n🧪"
+    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.\n🖥️\n\n🛠️\n\n\n12\n02/06\nOdometría: Cálculo de posición en base al modelo cinemático directo.\n🖥️\n\n🛠️\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n🖥️\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nPresentación entregable 1\n\n\n\n\n\n16\n13/08\nSimulación de sensores en Gazebo\n🖥️\n🧪\n\n\n\n17\n20/08\nRevisión entregable 1\n🖥️\n\n\n\n\n19\n03/09\nCaso práctico simulación de sensors. Cámara. Seguidor de línea.\n🖥️\n🧪\n\n\n\n20\n10/09\nCaso práctico simulación de sensors (cont.)\n\n\n\n\n\n21\n17/09\nLocalización con odometría. Incertidumbre y estimación de posición.\n🖥️\n🧪\n\n\n\n23\n01/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, sin evasión de obstáculos\n🖥️\n🧪\n\n\n\n25\n15/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, con evasión de obstáculos\n🖥️\n🧪"
   },
   {
     "objectID": "clases/index.html#universidad-nacional-del-litoral-unl",
@@ -1491,11 +1491,424 @@
     "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
   },
   {
+    "objectID": "clases/18/lab.html",
+    "href": "clases/18/lab.html",
+    "title": "Clase 18 - Laboratorio",
+    "section": "",
+    "text": "Implementar un controlador que dado un par de coordenadas objetivo envíe comandos de velocidad angular y velocidad lineal para conducir el robot a dicho punto\nA partir de las mediciones de LIDAR evadir obstáculos utilizando campos potenciales artificiales\n\n\n\n\n\nObtener la posición del robot \\(\\boldsymbol{P} = (x, y)\\) y la orientación \\(\\theta\\) en el marco de odometría\nDada las coordenadas del punto objetivo \\(\\boldsymbol{G}\\) y el parámetro \\(\\rho\\), calcular la fuerza de atracción \\(\\boldsymbol{F}^A\\)\n\n\\[\n\\boldsymbol{F}^A =\n\\begin{cases}\n- k_a \\left( \\boldsymbol{P} - \\boldsymbol{G} \\right) &\\textrm{si} \\; \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\leq \\rho \\\\\n- \\rho k_a \\frac{\\boldsymbol{P} - \\boldsymbol{G}}{\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert} &\\textrm{si}  \\; \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &gt; \\rho\n\\end{cases}\n\\]\n\nDadas las mediciones del LIDAR realizar el procesamiento de las mismas\n\n\nPara identificar obstáculos, se realizará una segmentación a partir de discontinuidades en las mediciones. Es decir, si entre una medición \\(i\\) y una medición \\(i+n\\) existen mediciones de valor inf (es decir, rayos no reflejados) es que se produjo una espacio libre y la medición \\(i\\) pertenece a un obstáculo distinto de la medición \\(i+n\\).\n\n\nPara cada obstáculo, obtener la medición de menor distancia \\(\\textcolor{Plum}{d_i}\\), y mediante su ángulo \\(\\textcolor{Plum}{\\alpha}\\) correspondiente obtener las coordenadas de \\(\\textcolor{Plum}{\\boldsymbol{O}_i}\\) en el marco inercial\n\n\\[\n\\begin{align*}\n\\textcolor{Plum}{x_{\\boldsymbol{O}_i}} &= \\textcolor{Maroon}{x_\\boldsymbol{P}} + \\textcolor{Plum}{d_i} \\cdot \\cos{(\\textcolor{ForestGreen}{\\gamma_i})}\\\\\n\\textcolor{Plum}{y_{\\boldsymbol{O}_i}} &= \\textcolor{Maroon}{y_\\boldsymbol{P}} + \\textcolor{Plum}{d_i} \\cdot \\sin{(\\textcolor{ForestGreen}{\\gamma_i})}\n\\end{align*}\n\\]\ndonde \\[\n\\textcolor{ForestGreen}{\\gamma_i} = \\textcolor{Orange}{\\theta} + \\textcolor{Plum}{\\alpha_i}\n\\]\n\nCalcular la fuerza repulsiva para cada obstáculo\n\n\\[\n\\boldsymbol{F}^{R}_i =\n\\begin{cases}\n\\frac{k_R}{\\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert^3} \\left( \\frac{1}{\\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert} - \\frac{1}{\\eta_0} \\right) \\left( \\boldsymbol{P} - \\boldsymbol{O}_i \\right) &\\textrm{si} \\; \\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert \\leq \\eta_0 \\\\\n0                        &\\textrm{si}  \\; \\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert &gt; \\eta_0   \\\\\n\\end{cases}\n\\]\ndonde \\(\\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert\\) es la medición del LIDAR\n\nCalcular la fuerza total \\(\\boldsymbol{F}_T\\)\n\n\\[\n\\boldsymbol{F}_T = \\boldsymbol{F}^A + \\sum_{i=1}^{m} \\boldsymbol{F}^R_i\n\\]\n\nCalcular la componente angular \\({F_T}_\\theta\\)\n\n\\[\n{F_T}_\\theta = k_\\theta (\\theta_{\\boldsymbol{F}_T} - \\theta)\n\\]\ndonde\n\\[\n\\theta_{\\boldsymbol{F}_T} = \\arctan 2 \\left( {F_T}_y , {F_T}_x \\right)\n\\]\n\n\n\n\n\n\nConsiderar los casos especiales y la discontinuidad de la función \\(\\arctan2(x, y)\\)\n\n\n\n\nCalcular la velocidad angular y lineal\n\n\\[\n\\begin{cases}\n\\nu =  {F_T}_x \\cos{\\theta} + {F_T}_y \\sin{\\theta} \\\\\n\\omega = {F_T}_\\theta\n\\end{cases}\n\\]\n\n\n\n\nCree un nodo que reciba mediante parámetros las coordenadas del punto objetivo \\(\\boldsymbol{G} = (x_G, y_G)\\) y ejecute el algoritmo de control a una frecuencia fija\nObtenga la posición del robot mediante el topic de odometría /odom\nObtenga las mediciones del LIDAR mediante el topic /scan de tipo LaserScan\nEscriba los comandos de velocidad lineal y angular en el topic /cmd_vel\nParametrizar los coeficientes \\(k_a\\), \\(k_R\\) y \\(k_\\theta\\) junto con los parámetros \\(\\rho\\) y \\(\\eta_0\\) de las funciones potenciales\nUtilice dos parámetros adicionales, \\(\\nu_{max}\\) y \\(\\omega_{max}\\), para limitar el valor máximo de velocidad lineal y velocidad angular respectivamente\nUtilice un parámetro \\(\\epsilon_{tol}\\) para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo si\n\n\\[\n\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &lt; \\epsilon_{tol}\n\\]\n\n\n\n\nCree un archivo go_to_point.launch.py donde cargue la simulación y todo el sistema, utilizando un mundo de Gazebo con obstáculos de prueba\nConfigure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo\nRealizar diversas pruebas con distintas posiciones y orientaciones iniciales del robot, y además distintos puntos objetivo."
+  },
+  {
+    "objectID": "clases/18/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/18/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 18 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/18/lab.html#algoritmo-para-el-campo-potencial-artificial",
+    "href": "clases/18/lab.html#algoritmo-para-el-campo-potencial-artificial",
+    "title": "Clase 18 - Laboratorio",
+    "section": "",
+    "text": "Obtener la posición del robot \\(\\boldsymbol{P} = (x, y)\\) y la orientación \\(\\theta\\) en el marco de odometría\nDada las coordenadas del punto objetivo \\(\\boldsymbol{G}\\) y el parámetro \\(\\rho\\), calcular la fuerza de atracción \\(\\boldsymbol{F}^A\\)\n\n\\[\n\\boldsymbol{F}^A =\n\\begin{cases}\n- k_a \\left( \\boldsymbol{P} - \\boldsymbol{G} \\right) &\\textrm{si} \\; \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\leq \\rho \\\\\n- \\rho k_a \\frac{\\boldsymbol{P} - \\boldsymbol{G}}{\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert} &\\textrm{si}  \\; \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &gt; \\rho\n\\end{cases}\n\\]\n\nDadas las mediciones del LIDAR realizar el procesamiento de las mismas\n\n\nPara identificar obstáculos, se realizará una segmentación a partir de discontinuidades en las mediciones. Es decir, si entre una medición \\(i\\) y una medición \\(i+n\\) existen mediciones de valor inf (es decir, rayos no reflejados) es que se produjo una espacio libre y la medición \\(i\\) pertenece a un obstáculo distinto de la medición \\(i+n\\).\n\n\nPara cada obstáculo, obtener la medición de menor distancia \\(\\textcolor{Plum}{d_i}\\), y mediante su ángulo \\(\\textcolor{Plum}{\\alpha}\\) correspondiente obtener las coordenadas de \\(\\textcolor{Plum}{\\boldsymbol{O}_i}\\) en el marco inercial\n\n\\[\n\\begin{align*}\n\\textcolor{Plum}{x_{\\boldsymbol{O}_i}} &= \\textcolor{Maroon}{x_\\boldsymbol{P}} + \\textcolor{Plum}{d_i} \\cdot \\cos{(\\textcolor{ForestGreen}{\\gamma_i})}\\\\\n\\textcolor{Plum}{y_{\\boldsymbol{O}_i}} &= \\textcolor{Maroon}{y_\\boldsymbol{P}} + \\textcolor{Plum}{d_i} \\cdot \\sin{(\\textcolor{ForestGreen}{\\gamma_i})}\n\\end{align*}\n\\]\ndonde \\[\n\\textcolor{ForestGreen}{\\gamma_i} = \\textcolor{Orange}{\\theta} + \\textcolor{Plum}{\\alpha_i}\n\\]\n\nCalcular la fuerza repulsiva para cada obstáculo\n\n\\[\n\\boldsymbol{F}^{R}_i =\n\\begin{cases}\n\\frac{k_R}{\\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert^3} \\left( \\frac{1}{\\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert} - \\frac{1}{\\eta_0} \\right) \\left( \\boldsymbol{P} - \\boldsymbol{O}_i \\right) &\\textrm{si} \\; \\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert \\leq \\eta_0 \\\\\n0                        &\\textrm{si}  \\; \\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert &gt; \\eta_0   \\\\\n\\end{cases}\n\\]\ndonde \\(\\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert\\) es la medición del LIDAR\n\nCalcular la fuerza total \\(\\boldsymbol{F}_T\\)\n\n\\[\n\\boldsymbol{F}_T = \\boldsymbol{F}^A + \\sum_{i=1}^{m} \\boldsymbol{F}^R_i\n\\]\n\nCalcular la componente angular \\({F_T}_\\theta\\)\n\n\\[\n{F_T}_\\theta = k_\\theta (\\theta_{\\boldsymbol{F}_T} - \\theta)\n\\]\ndonde\n\\[\n\\theta_{\\boldsymbol{F}_T} = \\arctan 2 \\left( {F_T}_y , {F_T}_x \\right)\n\\]\n\n\n\n\n\n\nConsiderar los casos especiales y la discontinuidad de la función \\(\\arctan2(x, y)\\)\n\n\n\n\nCalcular la velocidad angular y lineal\n\n\\[\n\\begin{cases}\n\\nu =  {F_T}_x \\cos{\\theta} + {F_T}_y \\sin{\\theta} \\\\\n\\omega = {F_T}_\\theta\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "clases/18/lab.html#programación-del-nodo",
+    "href": "clases/18/lab.html#programación-del-nodo",
+    "title": "Clase 18 - Laboratorio",
+    "section": "",
+    "text": "Cree un nodo que reciba mediante parámetros las coordenadas del punto objetivo \\(\\boldsymbol{G} = (x_G, y_G)\\) y ejecute el algoritmo de control a una frecuencia fija\nObtenga la posición del robot mediante el topic de odometría /odom\nObtenga las mediciones del LIDAR mediante el topic /scan de tipo LaserScan\nEscriba los comandos de velocidad lineal y angular en el topic /cmd_vel\nParametrizar los coeficientes \\(k_a\\), \\(k_R\\) y \\(k_\\theta\\) junto con los parámetros \\(\\rho\\) y \\(\\eta_0\\) de las funciones potenciales\nUtilice dos parámetros adicionales, \\(\\nu_{max}\\) y \\(\\omega_{max}\\), para limitar el valor máximo de velocidad lineal y velocidad angular respectivamente\nUtilice un parámetro \\(\\epsilon_{tol}\\) para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo si\n\n\\[\n\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &lt; \\epsilon_{tol}\n\\]"
+  },
+  {
+    "objectID": "clases/18/lab.html#configuración-del-launch",
+    "href": "clases/18/lab.html#configuración-del-launch",
+    "title": "Clase 18 - Laboratorio",
+    "section": "",
+    "text": "Cree un archivo go_to_point.launch.py donde cargue la simulación y todo el sistema, utilizando un mundo de Gazebo con obstáculos de prueba\nConfigure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo\nRealizar diversas pruebas con distintas posiciones y orientaciones iniciales del robot, y además distintos puntos objetivo."
+  },
+  {
     "objectID": "index.html#universidad-nacional-del-litoral-unl",
     "href": "index.html#universidad-nacional-del-litoral-unl",
     "title": "Robótica 2025",
     "section": "Universidad Nacional del Litoral (UNL)\n",
     "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/18/index.html#point-follower-con-evasión-de-obstáculos",
+    "href": "clases/18/index.html#point-follower-con-evasión-de-obstáculos",
+    "title": "Robótica",
+    "section": "Point-follower con evasión de obstáculos",
+    "text": "Point-follower con evasión de obstáculos\n\n\\[\n\\require{color}\n\\]\n\n\n\n\nDefinición del problema\n\n\nSea una posición y orientación arbitraria del robot \\(\\textcolor{Maroon}{\\boldsymbol{P}(t)}\\) en el tiempo \\(t\\)\nSea una posición objetivo \\(\\textcolor{Blue}{\\boldsymbol{G}}\\) en el tiempo incial \\(t_0\\)\nSe debe encontrar una ley que mediante una serie de controles \\(\\textcolor{ForestGreen}{\\nu(t)}\\) y \\(\\textcolor{Orange}{\\omega(t)}\\) conduzca el robot del punto inicial \\(\\textcolor{Maroon}{\\boldsymbol{P}(t_0)}\\) al punto objetivo \\(\\textcolor{Blue}{\\boldsymbol{G}}\\) mientras se evaden los obstáculos"
+  },
+  {
+    "objectID": "clases/18/index.html#point-follower-con-evasión-de-obstáculos-1",
+    "href": "clases/18/index.html#point-follower-con-evasión-de-obstáculos-1",
+    "title": "Robótica",
+    "section": "Point-follower con evasión de obstáculos",
+    "text": "Point-follower con evasión de obstáculos\n\nEnfoque: campos potenciales (existen muchos otros)\n\n\nBasado en conceptos físicos: carga eléctrica, potencial eléctrico y ppio. de superposición\nDos alternativas:\n\nOff-line (con memoria o mapa)\nOn-line (dinámico sin memoria)"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-matemáticos",
+    "href": "clases/18/index.html#revisión-conceptos-matemáticos",
+    "title": "Robótica",
+    "section": "Revisión conceptos matemáticos",
+    "text": "Revisión conceptos matemáticos\n\n\n\nFunción \\(\\boldsymbol{\\mathcal{f}}: \\mathbb{R} \\to \\mathbb{R}\\) asocia a cada punto un valor escalar\n\n\nDerivada de la función \\(d \\boldsymbol{\\mathcal{f}}\\) es la pendiente de la recta tangente en un punto \\(p\\) que indica la tasa de cambio de la función en dicho punto"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-matemáticos-1",
+    "href": "clases/18/index.html#revisión-conceptos-matemáticos-1",
+    "title": "Robótica",
+    "section": "Revisión conceptos matemáticos",
+    "text": "Revisión conceptos matemáticos\n\n\n\nCampo escalar: una función que a cada punto en una región del espacio le asocia un valor escalar \\[\\boldsymbol{\\mathcal{f}} : \\mathbb{R}^{n} \\to \\mathbb{R}\\]\n\n\n\n\n\n\n\n\nCampo vectorial: una función que a cada punto en una región del espacio le asocia un valor vectorial \\[\\boldsymbol{\\mathcal{f}} : \\mathbb{R}^{n} \\to \\mathbb{R}^{n}\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-matemáticos-2",
+    "href": "clases/18/index.html#revisión-conceptos-matemáticos-2",
+    "title": "Robótica",
+    "section": "Revisión conceptos matemáticos",
+    "text": "Revisión conceptos matemáticos\n\n\n\nCampo escalar: una función que a cada punto en una región del espacio le asocia un valor escalar \\[\\boldsymbol{\\mathcal{f}} : \\mathbb{R}^{n} \\to \\mathbb{R}\\]\n\n\n\n\n\n\n\n\nCampo vectorial: una función que a cada punto en una región del espacio le asocia un valor vectorial \\[\\boldsymbol{\\mathcal{f}} : \\mathbb{R}^{n} \\to \\mathbb{R}^{n}\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-matemáticos-3",
+    "href": "clases/18/index.html#revisión-conceptos-matemáticos-3",
+    "title": "Robótica",
+    "section": "Revisión conceptos matemáticos",
+    "text": "Revisión conceptos matemáticos\n\nPara una función escalar \\(\\boldsymbol{\\mathcal{f}} : \\mathbb{R}^{n} \\to \\mathbb{R}\\) el gradiente \\(\\nabla \\boldsymbol{\\mathcal{f}} : \\mathbb{R}^{n} \\to \\mathbb{R}^n\\) es tal que evaluado en un punto \\(\\boldsymbol{p} = (x_1, x_2, \\dots , x_n)\\) indica la dirección en la que la función \\(\\boldsymbol{\\mathcal{f}}\\) aumenta más rápidamente desde \\(p\\), y su módulo representa la tasa de variación de \\(\\boldsymbol{\\mathcal{f}}\\) en la dirección del vector gradiente.\n\n\\[\n\\nabla \\mathcal{f}(\\boldsymbol{p}) =\n\\begin{bmatrix}\n\\frac{\\partial \\mathcal{f}}{\\partial x_1} (\\boldsymbol{p}) \\\\\n\\frac{\\partial \\mathcal{f}}{\\partial x_2} (\\boldsymbol{p}) \\\\\n\\vdots\\\\\n\\frac{\\partial \\mathcal{f}}{\\partial x_n} (\\boldsymbol{p}) \\\\\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-matemáticos-4",
+    "href": "clases/18/index.html#revisión-conceptos-matemáticos-4",
+    "title": "Robótica",
+    "section": "Revisión conceptos matemáticos",
+    "text": "Revisión conceptos matemáticos\n\n\n\nCampo escalar \\(f(x,y)\\)\nLas flechas representan el gradiente \\(\\nabla f(x,y)\\)\nApuntan en la dirección de mayor crecimiento"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos",
+    "href": "clases/18/index.html#revisión-conceptos-físicos",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\n\nCampo eléctrico de una carga puntual\n\n\nSea en el punto de origen \\(\\mathcal{O}\\) una carga \\(q\\) y el punto \\(P\\) donde se desea determinar el campo\nSea el vector distancia \\(\\vec{\\boldsymbol{r}} = \\overrightarrow{\\mathcal{O} P}\\), y el vector unitario asociado \\(\\hat{\\boldsymbol{r}} = \\vec{\\boldsymbol{r}} / r\\) donde \\(r = \\lVert\\vec{\\boldsymbol{r}}\\rVert\\)\nLa dirección y magnitud del campo \\(\\vec{\\boldsymbol{E}} (q, \\vec{\\boldsymbol{r}})\\) se define como\n\n\n\n\\[\n\\vec{\\boldsymbol{E}} = \\underbrace{\\frac{1}{4 \\pi \\epsilon_0}}_{\\textrm{constante}} \\cdot \\overbrace{\\frac{q}{r^2}}^{\\textrm{magnitud}} \\cdot \\underbrace{\\hat{\\boldsymbol  {r}}}_{\\textrm{dirección}}\n\\]\n\n\n\nLa magnitud es proporcional al tamaño de la carga \\(q\\) e inversamente proporcional al cuadrado de la distancia (\\(r^2\\))"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-1",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-1",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nCampo eléctrico de una carga puntual\n\n\n\n\n\n\nApunta alejandose de la carga\n\n\n\n\n\n\nApunta acercándose a la carga"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-2",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-2",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nPrincipio de superposición de campos eléctricos\n\n\n\n\nEl efecto de múltiples cargas es la suma vectorial de los campos debido a cada carga puntual\n\n\\[\n\\vec{\\boldsymbol{E}_T} = \\vec{\\boldsymbol{E}_1} + \\vec{\\boldsymbol{E}_2} + \\vec{\\boldsymbol{E}_3} + \\dots\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-3",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-3",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nLínea de campo eléctrico\n\n\n\n\nCurva imaginaria tangente en cualquier punto a la dirección del vector \\(\\vec{\\boldsymbol{E}}\\)\nSe alejan de las cargas positivas y van hacia las cargas negativas\nNunca se cruzan"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-4",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-4",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nLínea de campo eléctrico\n\n\n\n\nCurva imaginaria tangente en cualquier punto a la dirección del vector \\(\\vec{\\boldsymbol{E}}\\)\nSe alejan de las cargas positivas y van hacia las cargas negativas\nNunca se cruzan"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-5",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-5",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nEnergía potencial eléctrica\n\n\nPara multiples cargas puntuales, la energía potencial asociada a la carga de prueba \\(q_0\\) es la suma algebraica\n\n\\[\nU = \\frac{q_0}{4 \\pi \\epsilon_0} \\sum_{i} \\frac{q_i}{r_i}\n\\]\ndonde \\(r_i\\) es la distancia entre la carga \\(q_0\\) y \\(q_1\\)"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-6",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-6",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nPotencial eléctrico\n\n\nSe define el potencial \\(V\\) como la energía potencial \\(U\\) por unidad de carga\n\n\\[\nV = \\frac{U}{q_0}\n\\]\n\nPara calcular el potencial debido a un conjunto de cargas puntuales:\n\n\\[\nV = \\frac{1}{4 \\pi \\epsilon_0} \\sum_{i} \\frac{q_i}{r_i}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-7",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-7",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nSuperficies equipotenciales\n\n\n\n\nSuperficie en la cual el potencial eléctrico \\(V\\) es el mismo\nSe asemejan a curvas de nivel en un mapa topográfico\n\n\n\n\n\n\n\nLas líneas de campo y las superﬁcies equipotenciales siempre son perpendiculares entre sí"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-8",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-8",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nSuperficies equipotenciales\n\n\n\n\nSuperficie en la cual el potencial eléctrico \\(V\\) es el mismo\nSe asemejan a curvas de nivel en un mapa topográfico\n\n\n\n\n\n\n\nLas líneas de campo y las superﬁcies equipotenciales siempre son perpendiculares entre sí"
+  },
+  {
+    "objectID": "clases/18/index.html#revisión-conceptos-físicos-9",
+    "href": "clases/18/index.html#revisión-conceptos-físicos-9",
+    "title": "Robótica",
+    "section": "Revisión conceptos físicos",
+    "text": "Revisión conceptos físicos\n\nGradiente potencial\n\n\nEl campo \\(\\vec{\\boldsymbol{E}}\\) es igual al gradiente negativo de \\(V\\)\n\n\\[\n\\vec{\\boldsymbol{E}} = - \\vec{\\nabla} V\n\\]\n\nPara el caso de un campo tri-dimensional, donde \\(\\vec{\\boldsymbol{E}} = \\hat{\\boldsymbol{\\mathcal{i}}} E_x + \\hat{\\boldsymbol{\\mathcal{j}}} E_y + \\hat{\\boldsymbol{\\mathcal{k}}} E_z\\):\n\n\\[\n\\vec{\\boldsymbol{E}} =\n\\begin{bmatrix}\nE_x \\\\\nE_y \\\\\nE_z\n\\end{bmatrix} =\n\\begin{bmatrix}\n\\frac{\\partial V}{\\partial x}\\\\\n\\frac{\\partial V}{\\partial y} \\\\\n\\frac{\\partial V}{\\partial z}\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#campos-potenciales-artificiales-1",
+    "href": "clases/18/index.html#campos-potenciales-artificiales-1",
+    "title": "Robótica",
+    "section": "Campos potenciales artificiales",
+    "text": "Campos potenciales artificiales\n\n\n\nConstruir un campo potencial \\(\\mathcal{C}\\) donde el robot sea representado como una carga \\(q^+\\)\n\nAtraído por el objetivo \\(\\boldsymbol{G}\\) (\\({q_G}^-\\))\nRepelido por la región del obstáculo \\(\\mathcal{C}_O\\) (\\({q_O}^+\\))\n\n\n\nPor ppio. de superposición el campo total \\(U\\) será la suma de los potenciales de atracción y repulsión"
+  },
+  {
+    "objectID": "clases/18/index.html#campos-potenciales-artificiales-2",
+    "href": "clases/18/index.html#campos-potenciales-artificiales-2",
+    "title": "Robótica",
+    "section": "Campos potenciales artificiales",
+    "text": "Campos potenciales artificiales\n\nEl gradiente negativo \\(-\\vec{\\nabla} U(\\boldsymbol{P})\\) indicará la dirección de movimiento más prometedora"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-atractivo",
+    "href": "clases/18/index.html#potencial-atractivo",
+    "title": "Robótica",
+    "section": "Potencial atractivo",
+    "text": "Potencial atractivo\n\nObjetivo: guiar al robot al punto objetivo \\(\\boldsymbol{G}\\)\n\n\nSea la distancia entre el robot en \\(\\boldsymbol{P}\\) y el punto objetivo \\(\\boldsymbol{G}\\):\n\n\\[\n\\boldsymbol{e}(\\boldsymbol{P}) =\n\\begin{bmatrix}\ne_x \\\\\ne_y \\\\\n\\end{bmatrix}\n= \\boldsymbol{P} - \\boldsymbol{G} =\n\\begin{bmatrix}\nx_\\boldsymbol{P} - x_\\boldsymbol{G} \\\\\ny_\\boldsymbol{P} - y_\\boldsymbol{G} \\\\\n\\end{bmatrix}\n\\]\n\nSe define la magnitud de \\(\\boldsymbol{e}(\\boldsymbol{P})\\)\n\n\\[\n\\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert =  \\sqrt{(x_\\boldsymbol{P} - x_\\boldsymbol{G})^2 + (y_\\boldsymbol{P} - y_\\boldsymbol{G})^2}\\\\\n\\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert^2 =  (x_\\boldsymbol{P} - x_\\boldsymbol{G})^2 + (y_\\boldsymbol{P} - y_\\boldsymbol{G})^2 = \\boldsymbol{e}^\\top \\boldsymbol{e}\\\\\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-atractivo-1",
+    "href": "clases/18/index.html#potencial-atractivo-1",
+    "title": "Robótica",
+    "section": "Potencial atractivo",
+    "text": "Potencial atractivo\n\nObjetivo: guiar al robot al punto objetivo \\(\\boldsymbol{G}\\)\n\nDos ejemplos para \\(\\mathcal{C}\\) en \\(\\mathbb{R}^2\\):\n\nLineal con la distancia:\n\n\\[\nU^{A}(\\boldsymbol{P}) = \\alpha \\cdot \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert\n\\]\n\nCuadrático con la distancia:\n\n\\[\nU^{B}(\\boldsymbol{P}) = \\alpha \\cdot \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert^2\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-atractivo-2",
+    "href": "clases/18/index.html#potencial-atractivo-2",
+    "title": "Robótica",
+    "section": "Potencial atractivo",
+    "text": "Potencial atractivo\n\nLineal o cónico (\\(\\alpha = k_a &gt; 0\\))\n\n\\[\nU^{A}(\\boldsymbol{P}) = k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert\n\\]\n\nFuerza de atracción resultante es constante\n\n\\[\n\\boldsymbol{F}^{A}(\\boldsymbol{P}) = - \\nabla U^{A}(\\boldsymbol{P}) = k_a \\underbrace{\\frac{\\boldsymbol{e}(\\boldsymbol{P})}{\\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert}}_{\\textrm{direccion}}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-atractivo-3",
+    "href": "clases/18/index.html#potencial-atractivo-3",
+    "title": "Robótica",
+    "section": "Potencial atractivo",
+    "text": "Potencial atractivo\n\nCuadrático o paraboloide (\\(\\alpha = \\tfrac{1}{2} k_a &gt; 0\\))\n\n\\[\nU^{B}(\\boldsymbol{P}) = \\tfrac{1}{2} k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert^2 = \\tfrac{1}{2} k_a {\\boldsymbol{e}(\\boldsymbol{P})}^\\top \\boldsymbol{e}(\\boldsymbol{P})\n\\]\n\nFuerza de atracción resultante es lineal en \\(\\boldsymbol{e}\\)\n\n\\[\n\\boldsymbol{F}^{B}(\\boldsymbol{P}) = - \\nabla U^{B}(\\boldsymbol{P}) = k_a \\boldsymbol{e}(\\boldsymbol{P})\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-atractivo-4",
+    "href": "clases/18/index.html#potencial-atractivo-4",
+    "title": "Robótica",
+    "section": "Potencial atractivo",
+    "text": "Potencial atractivo\n\n\nCuál utilizar?\n\n\n\\(\\boldsymbol{F}^{B}\\) se comporta mejor en la vecindad de \\(\\boldsymbol{G}\\) que \\(\\boldsymbol{F}^{A}\\)\n\\(\\boldsymbol{F}^{B}\\) crece indefinidamente con \\(\\boldsymbol{e}\\), no así \\(\\boldsymbol{F}^{A}\\)\n\n\n\nUna solución conveniente sería combinar los dos perfiles\n\nLineal fuera del objetivo\nCuadrático cerca del objetivo\n\n\n\n\n\\[\nU_A (\\boldsymbol{P}) =\n\\begin{cases}\n\\tfrac{1}{2} k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert^2  &\\textrm{si} \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\leq \\rho \\\\\nk_b \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert &\\textrm{si}  \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert &gt; \\rho \\\\\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-atractivo-5",
+    "href": "clases/18/index.html#potencial-atractivo-5",
+    "title": "Robótica",
+    "section": "Potencial atractivo",
+    "text": "Potencial atractivo\n\n\nCuál utilizar?\n\n\nLa continuidad para \\(\\boldsymbol{F}^A(\\boldsymbol{P})\\) requiere que\n\n\\[\n\\lim_{ \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\to \\rho^- } U_A (\\boldsymbol{P}) = \\lim_{ \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\to \\rho^+ } U_A (\\boldsymbol{P})\n\\]\n\nPor lo que\n\n\\[\nk_a \\boldsymbol{e}(\\boldsymbol{P}) =  k_b \\frac{\\boldsymbol{e}(\\boldsymbol{P})}{\\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert} \\quad \\textrm{para} \\quad \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert = \\rho\n\\]\npor lo tanto \\(\\boxed{k_b = \\rho k_a}\\)"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-repulsivo",
+    "href": "clases/18/index.html#potencial-repulsivo",
+    "title": "Robótica",
+    "section": "Potencial repulsivo",
+    "text": "Potencial repulsivo\n\nObjetivo: mantener el robot alejado de los obstáculos (zona \\(\\mathcal{C}^O\\))\n\n\nSe asume que \\(\\mathcal{C}^O\\) fue particionada en partes convexas \\(\\mathcal{C}_i^O\\) (a partir de ahora \\(\\mathcal{C}_i\\))\nPara cada \\(\\mathcal{C}_i\\) se define un campo de repulsión\n\n\\[\nU_{i}(\\boldsymbol{P}) =\n\\begin{cases}\n\\frac{k^R_{i}}{\\gamma} \\left( \\frac{1}{\\eta_i (\\boldsymbol{P})} - \\frac{1}{\\eta^0_{i}} \\right)^{\\gamma}  &\\textrm{si} \\; \\eta_i(\\boldsymbol{P}) \\leq \\eta^0_{i} \\\\\n0                        &\\textrm{si}  \\; \\eta_i(\\boldsymbol{P}) &gt; \\eta^0_{i}   \\\\\n\\end{cases}\n\\]\ndonde:\n\n\\(k^R_{i} &gt; 0\\) y \\(\\gamma \\in \\mathbb{Z}\\) son los parámetros de “forma” de la función\n\\(\\eta^0_{i}\\) es el límite del rango de influencia de \\(\\mathcal{C}_i\\)\n\\(\\eta_i (\\boldsymbol{P})\\) es el despeje entre el robot en \\(\\boldsymbol{P}\\) y el obstáculo \\(\\boldsymbol{O}_i\\)"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-repulsivo-1",
+    "href": "clases/18/index.html#potencial-repulsivo-1",
+    "title": "Robótica",
+    "section": "Potencial repulsivo",
+    "text": "Potencial repulsivo\n\nAnálisis función de repulsión"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-repulsivo-2",
+    "href": "clases/18/index.html#potencial-repulsivo-2",
+    "title": "Robótica",
+    "section": "Potencial repulsivo",
+    "text": "Potencial repulsivo\n\n\n\nSuperficies equipotenciales siguen la forma del obstáculo\nFuerzas repulsivas son ortogonales\nSe incrementan a medida que se acercan al obstáculo"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-repulsivo-3",
+    "href": "clases/18/index.html#potencial-repulsivo-3",
+    "title": "Robótica",
+    "section": "Potencial repulsivo",
+    "text": "Potencial repulsivo\n\nLa fuerza de repulsión resultante queda definida como\n\n\\[\n\\boldsymbol{F}^{R}_i(\\boldsymbol{P}) = - \\nabla U^R_{i}(\\boldsymbol{P}) =\n\\begin{cases}\n\\frac{k^R_{i}}{\\eta_i^2 (\\boldsymbol{P})} \\left( \\frac{1}{\\eta_i (\\boldsymbol{P})} - \\frac{1}{\\eta^0_{i}} \\right)^{\\gamma - 1} \\nabla \\eta_i (\\boldsymbol{P})  &\\textrm{si} \\; \\eta_i(\\boldsymbol{P}) \\leq \\eta^0_{i} \\\\\n0                        &\\textrm{si}  \\; \\eta_i(\\boldsymbol{P}) &gt; \\eta^0_{i}   \\\\\n\\end{cases}\n\\]\n\n\\(\\boldsymbol{F}^{R}_i\\) es ortogonal a las superficies equipotenciales pasando a través de \\(\\boldsymbol{P}\\) y los puntos apuntando fuera del obstáculo\n\\(\\boldsymbol{F}^{R}_i\\) es continua gracias a la convexidad de la partición en \\(\\mathcal{C}^O\\)\nPor ppio. de superposición: \\[\nU_R (\\boldsymbol{P}) = \\sum_{i=1}^{m} U^R_{i}(\\boldsymbol{P})\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-total",
+    "href": "clases/18/index.html#potencial-total",
+    "title": "Robótica",
+    "section": "Potencial total",
+    "text": "Potencial total\n\n\n\n\nDado el potencial de atracción y el de repulsión, por principio de superposición:\n\n\\[\nU_T (\\boldsymbol{P}) = U_A (\\boldsymbol{P}) + U_R (\\boldsymbol{P})\n\\]\n\nEl campo de fuerza total \\(\\boldsymbol{F}_T\\) queda definido como:\n\n\\[\n\\begin{align*}\n\\boldsymbol{F}_T (\\boldsymbol{P}) &= - \\nabla U_T (\\boldsymbol{P}) \\\\\n\\boldsymbol{F}_T (\\boldsymbol{P}) &= \\boldsymbol{F}^A(\\boldsymbol{P}) + \\sum_{i=1}^{m} \\boldsymbol{F}^R_i(\\boldsymbol{P})\n\\end{align*}\n\\]\n\n\n\n\n\n\nLa fuerza total determinará la dirección y la velocidad de avance"
+  },
+  {
+    "objectID": "clases/18/index.html#potencial-total-1",
+    "href": "clases/18/index.html#potencial-total-1",
+    "title": "Robótica",
+    "section": "Potencial total",
+    "text": "Potencial total"
+  },
+  {
+    "objectID": "clases/18/index.html#fuerza-de-atracción",
+    "href": "clases/18/index.html#fuerza-de-atracción",
+    "title": "Robótica",
+    "section": "Fuerza de atracción",
+    "text": "Fuerza de atracción\n\\[\n\\boldsymbol{F}^A (\\boldsymbol{P}) =\n- \\nabla  U_A (\\boldsymbol{P}) = -\n\\begin{bmatrix}\n\\frac{\\partial U_A (\\boldsymbol{P}) }{\\partial x} \\\\\n\\frac{\\partial U_A (\\boldsymbol{P}) }{\\partial y}\n\\end{bmatrix}\n\\]\n\nEl gradiente en dirección \\(x\\): \\[\n\\frac{\\partial U_A (\\boldsymbol{P}) }{\\partial x} =\n\\begin{cases}\n\\frac{\\partial}{\\partial x} \\left( \\tfrac{1}{2} k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert^2 \\right)  &\\textrm{si} \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\leq \\rho \\\\\n\\frac{\\partial}{\\partial x} \\left( \\rho k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\right) &\\textrm{si}  \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert &gt; \\rho\n\\end{cases}\n\\]\nEl gradiente en dirección \\(y\\): \\[\n\\frac{\\partial U_A (\\boldsymbol{P}) }{\\partial y} =\n\\begin{cases}\n\\frac{\\partial}{\\partial y} \\left( \\tfrac{1}{2} k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert^2 \\right)  &\\textrm{si} \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\leq \\rho \\\\\n\\frac{\\partial}{\\partial y} \\left( \\rho k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\right) &\\textrm{si}  \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert &gt; \\rho\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#fuerza-de-atracción-1",
+    "href": "clases/18/index.html#fuerza-de-atracción-1",
+    "title": "Robótica",
+    "section": "Fuerza de atracción",
+    "text": "Fuerza de atracción\n\nEl gradiente de la función \\(\\tfrac{1}{2} k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert^2\\) con respecto a \\(x\\):\n\n\\[\n\\frac{\\partial}{\\partial x} \\left( \\tfrac{1}{2} k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert^2 \\right) =\n\\tfrac{1}{2} k_a \\frac{\\partial}{\\partial x} \\left( {e_x}^2 + {e_y}^2 \\right) =\n\\tfrac{1}{2} k_a \\left( 2 e_x \\right) =\nk_a e_x\n\\]\n\nEl gradiente de la función \\(\\rho k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert\\) con respecto a \\(x\\):\n\n\\[\n\\begin{align}\n\\frac{\\partial}{\\partial x} \\left( \\rho k_a \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\right) &=\n\\rho k_a \\frac{\\partial}{\\partial x} \\left( \\sqrt{{e_x}^2 + {e_y}^2} \\right) \\\\\n&= \\rho k_a \\frac{1}{2 \\sqrt{{e_x}^2 + {e_y}^2} } \\frac{\\partial}{\\partial x} \\left( {e_x}^2 + {e_y}^2 \\right) =\\\\\n&= \\rho k_a \\frac{1}{2 \\sqrt{{e_x}^2 + {e_y}^2} } \\left( 2 e_x \\right) = \\rho k_a \\frac{e_x}{\\lVert \\boldsymbol{e} \\rVert}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#fuerza-de-atracción-2",
+    "href": "clases/18/index.html#fuerza-de-atracción-2",
+    "title": "Robótica",
+    "section": "Fuerza de atracción",
+    "text": "Fuerza de atracción\n\n\nReemplazando en el gradiente en dirección \\(x\\):\n\n\\[\n\\frac{\\partial U_A (\\boldsymbol{P}) }{\\partial x} =\n\\begin{cases}\nk_a e_x                                           &\\textrm{si} \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\leq \\rho \\\\\n\\rho k_a \\frac{e_x}{\\lVert \\boldsymbol{e} \\rVert} &\\textrm{si}  \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert &gt; \\rho\n\\end{cases}\n\\]\n\nLo mismo para el gradiente en dirección \\(y\\):\n\n\\[\n\\frac{\\partial U_A (\\boldsymbol{P}) }{\\partial y} =\n\\begin{cases}\nk_a e_y                                           &\\textrm{si} \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\leq \\rho \\\\\n\\rho k_a \\frac{e_y}{\\lVert \\boldsymbol{e} \\rVert} &\\textrm{si}  \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert &gt; \\rho\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#fuerza-de-atracción-3",
+    "href": "clases/18/index.html#fuerza-de-atracción-3",
+    "title": "Robótica",
+    "section": "Fuerza de atracción",
+    "text": "Fuerza de atracción\n\nCon ambos resultados\n\n\\[\n\\boldsymbol{F}^A =\n- \\nabla  U_A =\n\\begin{cases}\n- k_a \\begin{bmatrix}\ne_y \\\\\ne_x\n\\end{bmatrix} &\\textrm{si} \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert \\leq \\rho \\\\\n- \\rho k_a \\frac{1}{\\lVert \\boldsymbol{e} \\rVert} \\begin{bmatrix}\ne_y \\\\\ne_x\n\\end{bmatrix} &\\textrm{si}  \\; \\lVert \\boldsymbol{e}(\\boldsymbol{P}) \\rVert &gt; \\rho\n\\end{cases}\n\\]\n\nReemplazando \\(\\boldsymbol{e}(\\boldsymbol{P}) = \\boldsymbol{P} - \\boldsymbol{G}\\):\n\n\\[\n\\boldsymbol{F}^A =\n- \\nabla  U_A =\n\\begin{cases}\n- k_a \\begin{bmatrix}\nx_\\boldsymbol{P} - x_\\boldsymbol{G} \\\\\ny_\\boldsymbol{P} - y_\\boldsymbol{G} \\\\\n\\end{bmatrix} &\\textrm{si} \\; \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\leq \\rho \\\\\n- \\rho k_a \\frac{1}{\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert} \\begin{bmatrix}\nx_\\boldsymbol{P} - x_\\boldsymbol{G} \\\\\ny_\\boldsymbol{P} - y_\\boldsymbol{G} \\\\\n\\end{bmatrix} &\\textrm{si}  \\; \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &gt; \\rho\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#fuerzas-de-repulsión",
+    "href": "clases/18/index.html#fuerzas-de-repulsión",
+    "title": "Robótica",
+    "section": "Fuerzas de repulsión",
+    "text": "Fuerzas de repulsión\n\nSe definen los siguientes parámetros para la función potencial de repulsión:\n\nExponente \\(\\gamma = 2\\)\nUn valor constante para \\(k^R_{i} = k_R\\)\nUn valor constante para \\(\\eta^0_{i} = \\eta_0\\)\n\n\n\\[\n\\boldsymbol{F}^{R}_i(\\boldsymbol{P}) = - \\nabla U^R_{i}(\\boldsymbol{P}) =\n\\begin{cases}\n\\frac{k_R}{\\eta_i^2 (\\boldsymbol{P})} \\left( \\frac{1}{\\eta_i (\\boldsymbol{P})} - \\frac{1}{\\eta_0} \\right) \\nabla \\eta_i (\\boldsymbol{P})  &\\textrm{si} \\; \\eta_i(\\boldsymbol{P}) \\leq \\eta_0 \\\\\n0                        &\\textrm{si}  \\; \\eta_i(\\boldsymbol{P}) &gt; \\eta_0   \\\\\n\\end{cases}\n\\]\n\nResta obtener la expresión de \\(\\nabla \\eta_i (\\boldsymbol{P})\\)"
+  },
+  {
+    "objectID": "clases/18/index.html#fuerzas-de-repulsión-1",
+    "href": "clases/18/index.html#fuerzas-de-repulsión-1",
+    "title": "Robótica",
+    "section": "Fuerzas de repulsión",
+    "text": "Fuerzas de repulsión\n\nSea \\(\\eta_i (\\boldsymbol{P})\\) el despeje entre el robot en \\(\\boldsymbol{P}\\) y el punto más cercano \\(\\boldsymbol{O}_i\\) del obstáculo \\(\\mathcal{C}_i\\):\n\n\\[\n\\eta_i (\\boldsymbol{P}) = \\min_{\\boldsymbol{O}_i \\in \\mathcal{C}_i} \\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert = \\sqrt{(x_\\boldsymbol{P} - x_{\\boldsymbol{O}_i})^2 + (y_\\boldsymbol{P} - y_{\\boldsymbol{O}_i})^2}\n\\]\n\nPor lo tanto:\n\n\\[\n\\begin{align*}\n\\frac{\\partial \\eta_i (\\boldsymbol{P}) }{\\partial x} =\n\\frac{\\partial}{\\partial x} \\left( \\sqrt{(x_\\boldsymbol{P} - x_{\\boldsymbol{O}_i})^2 + (y_\\boldsymbol{P} - y_{\\boldsymbol{O}_i})^2} \\right) &=\n%\\frac{(x_\\boldsymbol{P} - x_{\\boldsymbol{O}_i})}{\\sqrt{(x_\\boldsymbol{P} - x_{\\boldsymbol{O}_i})^2 + (y_\\boldsymbol{P} - y_{\\boldsymbol{O}_i})^2}} =\n\\frac{(x_\\boldsymbol{P} - x_{\\boldsymbol{O}_i})}{\\eta_i (\\boldsymbol{P})}\n\\\\\n\\frac{\\partial \\eta_i (\\boldsymbol{P}) }{\\partial y} =\n\\frac{\\partial}{\\partial y} \\left( \\sqrt{(x_\\boldsymbol{P} - x_{\\boldsymbol{O}_i})^2 + (y_\\boldsymbol{P} - y_{\\boldsymbol{O}_i})^2} \\right) &=\n%\\frac{(y_\\boldsymbol{P} - y_{\\boldsymbol{O}_i})}{\\sqrt{(x_\\boldsymbol{P} - x_{\\boldsymbol{O}_i})^2 + (y_\\boldsymbol{P} - y_{\\boldsymbol{O}_i})^2}} =\n\\frac{(y_\\boldsymbol{P} - y_{\\boldsymbol{O}_i})}{\\eta_i (\\boldsymbol{P})}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#fuerzas-de-repulsión-2",
+    "href": "clases/18/index.html#fuerzas-de-repulsión-2",
+    "title": "Robótica",
+    "section": "Fuerzas de repulsión",
+    "text": "Fuerzas de repulsión\n\nQueda definido\n\n\\[\n\\nabla \\eta_i (\\boldsymbol{P}) =\n\\begin{bmatrix}\n\\frac{\\partial \\eta_i (\\boldsymbol{P}) }{\\partial x} \\\\\n\\frac{\\partial \\eta_i (\\boldsymbol{P}) }{\\partial y}\n\\end{bmatrix} =\n\\frac{1}{\\eta_i (\\boldsymbol{P})}\n\\begin{bmatrix}\nx_\\boldsymbol{P} - x_{\\boldsymbol{O}_i} \\\\\ny_\\boldsymbol{P} - y_{\\boldsymbol{O}_i}\n\\end{bmatrix}\n\\]\n\nReemplazando en la expresión de las fuerzas repulsivas \\(\\boldsymbol{F}^{R}_i(\\boldsymbol{P})\\)\n\n\\[\n\\boldsymbol{F}^{R}_i(\\boldsymbol{P}) = - \\nabla U^R_{i}(\\boldsymbol{P}) =\n\\begin{cases}\n\\frac{k_R}{\\eta_i^3 (\\boldsymbol{P})} \\left( \\frac{1}{\\eta_i (\\boldsymbol{P})} - \\frac{1}{\\eta_0} \\right) \\begin{bmatrix}\nx_\\boldsymbol{P} - x_{\\boldsymbol{O}_i} \\\\\ny_\\boldsymbol{P} - y_{\\boldsymbol{O}_i}\n\\end{bmatrix}  &\\textrm{si} \\; \\eta_i(\\boldsymbol{P}) \\leq \\eta_0 \\\\\n0                        &\\textrm{si}  \\; \\eta_i(\\boldsymbol{P}) &gt; \\eta_0   \\\\\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#fuerza-total",
+    "href": "clases/18/index.html#fuerza-total",
+    "title": "Robótica",
+    "section": "Fuerza total",
+    "text": "Fuerza total\n\nEl campo de fuerza total \\(\\boldsymbol{F}_T\\) queda definido como:\n\n\\[\n\\boldsymbol{F}_T = \\boldsymbol{F}^A + \\sum_{i=1}^{m} \\boldsymbol{F}^R_i\n\\]\ndonde:\n\\[\n\\begin{align*}\n\\boldsymbol{F}^A &=\n\\begin{cases}\n- k_a \\left( \\boldsymbol{P} - \\boldsymbol{G} \\right) &\\textrm{si} \\; \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\leq \\rho \\\\\n- \\rho k_a \\frac{\\boldsymbol{P} - \\boldsymbol{G}}{\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert} &\\textrm{si}  \\; \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &gt; \\rho\n\\end{cases}\\\\[2em]\n\\boldsymbol{F}^{R}_i &=\n\\begin{cases}\n\\frac{k_R}{\\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert^3} \\left( \\frac{1}{\\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert} - \\frac{1}{\\eta_0} \\right) \\left( \\boldsymbol{P} - \\boldsymbol{O}_i \\right) &\\textrm{si} \\; \\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert \\leq \\eta_0 \\\\\n0                        &\\textrm{si}  \\; \\lVert \\boldsymbol{P} - \\boldsymbol{O}_i \\rVert &gt; \\eta_0   \\\\\n\\end{cases}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-1",
+    "href": "clases/18/index.html#diseño-del-controlador-1",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\n\n\nSe deben diseñar dos señales de control \\(\\textcolor{ForestGreen}{\\nu(t)}\\) y \\(\\textcolor{Orange}{\\omega(t)}\\), que lleven el robot desde la posición actual a la posición objetivo\nDebido a las restricciones no-holonómicas la resultante \\(\\boldsymbol{F}_T\\) no puede imponerse directamente"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-2",
+    "href": "clases/18/index.html#diseño-del-controlador-2",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\n\nEl modelo cinemático se puede expresar como \\(\\boldsymbol{\\dot{P}} = \\boldsymbol{\\mathcal{g}}(\\boldsymbol{P}) \\boldsymbol{u}\\)\n\n\\[\n\\underbrace{\n\\sideset{^I}{}{\n\\begin{bmatrix}\n\\dot{x} \\\\\n\\dot{y} \\\\\n\\dot{\\theta}\n\\end{bmatrix}}}_{\\boldsymbol{\\dot{P}}} =\n\\underbrace{\n\\begin{bmatrix}\n\\cos{\\theta} & 0\\\\\n\\sin{\\theta} & 0\\\\\n0            & 1\n\\end{bmatrix}}_{\\boldsymbol{g}(\\boldsymbol{P})}\n\\underbrace{\n\\begin{bmatrix}\n\\nu\\\\\n\\omega\n\\end{bmatrix}}_{\\boldsymbol{u}}\n\\]\n\nDado que \\(\\boldsymbol{g}_{n \\times m}\\) es rectangular con \\(n &gt; m\\), es imposible calcular \\(\\boldsymbol{u}\\) para un \\(\\boldsymbol{\\dot{P}}\\) deseado"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-3",
+    "href": "clases/18/index.html#diseño-del-controlador-3",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\nSolución: obtener las velocidades factibles mediante una pseudoinversión\n\n\nSe propone utilizar una solución de mínimos cuadrados\n\n\\[\n\\boldsymbol{u} = \\boldsymbol{\\tilde{g}}(\\boldsymbol{P}) \\, \\boldsymbol{\\dot{P}} = \\boldsymbol{\\tilde{g}}(\\boldsymbol{P}) \\, \\boldsymbol{F}_T\n\\]\ndonde\n\\[\n\\boldsymbol{\\tilde{g}}(\\boldsymbol{P}) = \\left( \\boldsymbol{g}^\\top(\\boldsymbol{P}) \\boldsymbol{g}(\\boldsymbol{P}) \\right)^{-1}  \\boldsymbol{g}^\\top(\\boldsymbol{P})\n\\]\n\\[\n\\boldsymbol{g}(\\boldsymbol{P}) =\n\\begin{bmatrix}\n\\cos{\\theta} & 0\\\\\n\\sin{\\theta} & 0\\\\\n0            & 1\n\\end{bmatrix} \\quad \\to \\quad\n\\boldsymbol{\\tilde{g}}(\\boldsymbol{P}) =\n\\begin{bmatrix}\n\\cos{\\theta} & \\sin{\\theta} & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-4",
+    "href": "clases/18/index.html#diseño-del-controlador-4",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\nSolución: obtener las velocidades factibles mediante una pseudoinversión\n\n\\[\n\\boldsymbol{g} =\n\\begin{bmatrix}\n\\cos{\\theta} & 0\\\\\n\\sin{\\theta} & 0\\\\\n0            & 1\n\\end{bmatrix} \\quad\n\\boldsymbol{g}^\\top =\n\\begin{bmatrix}\n\\cos{\\theta} & \\sin{\\theta} & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\]\n\\[\n\\boldsymbol{g}^\\top \\, \\boldsymbol{g} =\n\\begin{bmatrix}\n\\cos{\\theta} & \\sin{\\theta} & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\n\\cos{\\theta} & 0\\\\\n\\sin{\\theta} & 0\\\\\n0            & 1\n\\end{bmatrix} =\n\\begin{bmatrix}\n\\cos^2{\\theta} + \\sin^2{\\theta} & 0\\\\\n0 & 1\n\\end{bmatrix} =\n\\begin{bmatrix}\n1 & 0\\\\\n0 & 1\n\\end{bmatrix} = \\mathbb{I}\n\\]\n\\[\n\\left( \\boldsymbol{g}^\\top \\, \\boldsymbol{g} \\right)^{-1}  = \\mathbb{I}^{-1} = \\mathbb{I}\n\\]\n\\[\n\\left( \\boldsymbol{g}^\\top \\, \\boldsymbol{g} \\right)^{-1} \\boldsymbol{g}^\\top = \\mathbb{I} \\, \\boldsymbol{g}^\\top = \\boldsymbol{g}^\\top =\n\\begin{bmatrix}\n\\cos{\\theta} & \\sin{\\theta} & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-5",
+    "href": "clases/18/index.html#diseño-del-controlador-5",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\nReemplazando\n\n\\[\n\\boldsymbol{u} = \\boldsymbol{\\tilde{g}}(\\boldsymbol{P}) \\, \\boldsymbol{F}_T =\n\\begin{bmatrix}\n\\cos{\\theta} & \\sin{\\theta} & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\, \\boldsymbol{F}_T\n\\]\n\nPor lo tanto, la solución por mínimos cuadrados para una fuerza artificial \\(\\boldsymbol{F}_T = \\left[{F_T}_x , {F_T}_y , {F_T}_\\theta \\right]^\\top\\) es\n\n\\[\n\\boldsymbol{u}\n\\begin{cases}\n\\nu =  {F_T}_x \\cos{\\theta} + {F_T}_y \\sin{\\theta} \\\\\n\\omega = {F_T}_\\theta\n\\end{cases}\n\\]\n\nSe puede interpretar \\(\\nu\\) como la proyección de la fuerza \\(\\boldsymbol{F}_T\\) sobre el eje del robot \\(\\boldsymbol{X_R}\\)"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-6",
+    "href": "clases/18/index.html#diseño-del-controlador-6",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\n\n\nEl campo potencial no produce una “componente giratoria” \\({F_T}_\\theta\\)\nEste grado de libertad puede utilizarse para forzar al robot a alinearse con el campo vectorial \\(\\boldsymbol{F}_T\\)\n\n\\[\n\\omega = {F_T}_\\theta = k_\\theta (\\theta_{\\boldsymbol{F}_T} - \\theta) %\\quad \\textrm{con} \\quad \\theta_{\\boldsymbol{F}_T} = \\arctan 2 \\left( {F_T}_y , {F_T}_x \\right)\n\\]\ndonde\n\\[\n\\theta_{\\boldsymbol{F}_T} = \\arctan 2 \\left( {F_T}_y , {F_T}_x \\right)\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-8",
+    "href": "clases/18/index.html#diseño-del-controlador-8",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\nValores de la función \\(\\arctan2(x, y)\\): discontinuidad en \\(\\pm \\pi\\)"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-9",
+    "href": "clases/18/index.html#diseño-del-controlador-9",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\n\n\nCasos particulares de \\(\\theta\\) y el ángulo de \\(\\boldsymbol{F}_T\\)\n\n\nCaso A:\n\n\\[\n\\begin{gather*}\n\\tfrac{\\pi}{2}  &lt;     \\theta                      \\leq  \\pi \\\\\n-\\pi            \\leq  \\theta_{\\boldsymbol{F}_T}   &lt;     -\\tfrac{\\pi}{2}\n\\end{gather*}\n\\]\n\\[\n(\\theta_{\\boldsymbol{F}_T} - \\theta) \\in \\left[ -2 \\pi ; -\\pi \\right) \\to \\omega &lt; 0\n\\]\nPor lo tanto se redefine \\[\n\\omega = k_\\theta ((\\theta_{\\boldsymbol{F}_T} + 2 \\pi) - \\theta)\n\\]\npara \\(\\boldsymbol{F}_T\\) en el 3er cuadrante y \\(\\boldsymbol{x}_R\\) en el 2do"
+  },
+  {
+    "objectID": "clases/18/index.html#diseño-del-controlador-10",
+    "href": "clases/18/index.html#diseño-del-controlador-10",
+    "title": "Robótica",
+    "section": "Diseño del controlador",
+    "text": "Diseño del controlador\n\n\n\nCasos particulares de \\(\\theta\\) y el ángulo de \\(\\boldsymbol{F}_T\\)\n\n\nCaso B:\n\n\\[\n\\begin{gather*}\n-\\pi            \\leq  \\theta                    &lt;     -\\tfrac{\\pi}{2}\\\\\n\\tfrac{\\pi}{2}  &lt;     \\theta_{\\boldsymbol{F}_T} \\leq  \\pi\n\\end{gather*}\n\\]\n\\[\n(\\theta_{\\boldsymbol{F}_T} - \\theta) \\in \\left[ 2 \\pi ; \\pi \\right) \\to \\omega &gt; 0\n\\]\nPor lo tanto se redefine \\[\n\\omega = k_\\theta (\\theta_{\\boldsymbol{F}_T} - (\\theta + 2 \\pi))\n\\]\npara \\(\\boldsymbol{F}_T\\) en el 2do cuadrante y \\(\\boldsymbol{x}_R\\) en el 3er"
+  },
+  {
+    "objectID": "clases/18/index.html#implementación-1",
+    "href": "clases/18/index.html#implementación-1",
+    "title": "Robótica",
+    "section": "Implementación",
+    "text": "Implementación\n\n\n\nImplementación on-line\nGenerar un potencial repulsivo solo para obstáculos percibidos\n\n\\[\n\\eta_0 &lt; \\textrm{max. lidar}\n\\]\n\nPara calcular la fuerza \\(\\boldsymbol{F}^{R}_i\\) solo es necesario conocer el despeje \\(\\eta_i\\) con respecto al obstáculo \\(i\\)"
+  },
+  {
+    "objectID": "clases/18/index.html#mediciones-del-lidar",
+    "href": "clases/18/index.html#mediciones-del-lidar",
+    "title": "Robótica",
+    "section": "Mediciones del LIDAR",
+    "text": "Mediciones del LIDAR\n\n\n\nSea la posición del robot \\(\\textcolor{Maroon}{\\boldsymbol{r_P}}\\) y su orientación \\(\\textcolor{Orange}{\\theta}\\)\nDadas las mediciones del LIDAR \\(\\textcolor{Plum}{(d, \\alpha)}\\), es posible calcular la coordenada de \\(\\textcolor{Plum}{\\boldsymbol{O}}\\) en el marco inercial \\(\\textcolor{Blue}{\\left\\{\\boldsymbol{x}_I, \\boldsymbol{y}_I \\right\\}}\\)\n\n\\[\n\\begin{align*}\n\\textcolor{Plum}{x_\\boldsymbol{O}} &= \\textcolor{Maroon}{x_\\boldsymbol{P}} + \\textcolor{Plum}{d} \\cdot \\cos{(\\textcolor{ForestGreen}{\\gamma})}\\\\\n\\textcolor{Plum}{y_\\boldsymbol{O}} &= \\textcolor{Maroon}{y_\\boldsymbol{P}} + \\textcolor{Plum}{d} \\cdot \\sin{(\\textcolor{ForestGreen}{\\gamma})}\n\\end{align*}\n\\]\ndonde \\[\n\\textcolor{ForestGreen}{\\gamma} = \\textcolor{Orange}{\\theta} + \\textcolor{Plum}{\\alpha}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#mediciones-del-lidar-1",
+    "href": "clases/18/index.html#mediciones-del-lidar-1",
+    "title": "Robótica",
+    "section": "Mediciones del LIDAR",
+    "text": "Mediciones del LIDAR\n\n\n\nPara el caso de las fuerzas repulsivas el valor de \\(\\eta_i = \\lVert \\textcolor{Maroon}{\\boldsymbol{P}} - \\textcolor{Plum}{\\boldsymbol{O}_i} \\rVert\\) se corresponde directamente con el valor medido por el lidar \\(\\textcolor{Plum}{d}\\)\nSolo se debe calcular la posición en \\(\\textcolor{Blue}{\\boldsymbol{x}_I}\\) e \\(\\textcolor{Blue}{\\boldsymbol{y}_I}\\) para obtener el vector\n\n\\[\n\\overrightarrow{\\textcolor{Maroon}{\\boldsymbol{P}}\\textcolor{Plum}{\\boldsymbol{O}_i}} = \\textcolor{Maroon}{\\boldsymbol{P}} - \\textcolor{Plum}{\\boldsymbol{O}_i}\n\\]"
+  },
+  {
+    "objectID": "clases/18/index.html#mediciones-del-lidar-2",
+    "href": "clases/18/index.html#mediciones-del-lidar-2",
+    "title": "Robótica",
+    "section": "Mediciones del LIDAR",
+    "text": "Mediciones del LIDAR\n\nEl análisis se realizó simplificando el robot a un punto en el espacio\nPara la implementación se debe tener en cuenta las dimensiones reales del robot\nModelo simple: Asumir una forma circular con radio \\(\\kappa\\) que abarque toda el perímetro\n\n\nLos campos potenciales de repulsión se pueden obtener simplemente expandiendo la silueta del obstáculo \\(\\kappa\\), lo mismo que disminuir el despeje \\(\\eta_i = d_i - \\kappa\\)"
+  },
+  {
+    "objectID": "clases/18/index.html#resumen-1",
+    "href": "clases/18/index.html#resumen-1",
+    "title": "Robótica",
+    "section": "Resumen",
+    "text": "Resumen\nRESUMEN"
+  },
+  {
+    "objectID": "clases/18/index.html#laboratorio-1",
+    "href": "clases/18/index.html#laboratorio-1",
+    "title": "Robótica",
+    "section": "Laboratorio",
+    "text": "Laboratorio\nPoint-follower con campo potencial artificial"
   },
   {
     "objectID": "clases/08/index.html#urdf-unified-robot-definition-format",
