@@ -1,3 +1,251 @@
 ## Resumen {.smaller}
 
-[RESUMEN]{.mark}
+> En resumen
+
+::: {.columns}
+::: {.column}
+
+- El guiado del robot se realizará a partir de la [resultante]{style="color: rgb(21, 155, 82);"} de la suma de 2 *fuerzas*
+  - Una de [*atracción*]{style="color: rgb(46, 49, 146);"} hacia el punto objetivo
+  - Una de [*repulsión*]{style="color: rgb(141, 25, 143);"} de los obstáculos
+- Mediante campos potenciales se construyeron las expresiones para ambas fuerzas
+
+:::
+::: {.column}
+
+```{.tikz width="100%"}
+%%| filename: diff-bot-control-final
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+
+
+  \begin{scope}[shift={(P)}, rotate=25, transform shape]
+    \begin{scope}[shift={(-0.75, 0.0)}, every node/.style={scale=1.2}]
+      % Etiqueta del marco de referencia A (debajo del origen, a la derecha)
+      %\node[below right, color=Blue] at (0,-0.1) {$\{\boldsymbol{A}\}$};
+      %\node[fill=Blue,circle,scale=0.4] at (0,0);
+
+      % Cuerpo del robot (rectángulo)
+      \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+      % Rueda derecha
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, -1.35) rectangle (0, -1.05);
+
+      % Rueda izquierda
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, 1.05) rectangle (0, 1.35);
+
+      % Línea punteada entre los centros de las ruedas
+      \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+      % Flecha de velocidad v_L (rueda inferior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, -1.2) -- (0.5, -1.2) node[midway, below] {$v_R$};
+
+      % Flecha de velocidad v_R (rueda superior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, 1.2) -- (0.5, 1.2) node[midway, above] {$v_L$};
+
+      % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+      \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+      (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+      % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+      \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+
+      % Marco del robot en (-0.75, 0)
+      \begin{scope}[shift={(-0.75, 0)}]
+        \draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[right] {$\boldsymbol{x}_R$};
+        \draw[->, thick, color=Maroon] (0,0) -- (0,3.0) node[left=2] {$\boldsymbol{y}_R$};
+        \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+        \node[Maroon, above right] at (0,0) {\large $\boldsymbol{P}(t_0)$};
+
+        \begin{scope}[rotate=-20, transform shape]
+          %\draw[solid, Blue] (0,0) -- ++(2.8,0);
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (2.5,0) arc[start angle=0, end angle=20, radius=2.5] node[midway, right] {$\theta$};
+          \coordinate (P_inR) at (0,0);
+        \end{scope}
+
+        %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Maroon] (3.4,0) arc[start angle=0, end angle=15.3, radius=3.4] node[midway, right] {$\alpha$};
+
+        %\begin{scope}[every node/.style={scale=0.75}, transform shape]
+        %  % Arco grueso con flecha sólida
+        %  \draw[-{Stealth[inset=0pt, length=7pt,flex]}, line width=3pt, Orange] (-225:0.4) arc[start angle=-225, end angle=0, radius=0.4] coordinate[pos=1.0](e331); %node[pos=0.6,below left] {$\omega (t)$};
+        %  %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, ForestGreen] (0,1.5) -- ++(0,0.6) node[midway, right] {$\dot{y}$};
+        %\end{scope}
+
+        %\node[above right, Orange] at (e331) {$\omega (t)$};
+        
+        %\draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, ForestGreen] (0, 0) -- ++(2.0, 0) node[pos=1, above] {$\nu (t)$};
+      \end{scope}
+
+    \end{scope}
+  \end{scope}
+
+  \begin{scope}[shift={(7.0, -8.0)}, every node/.style={scale=1.5}]
+  \begin{scope}[rotate=15]
+    % Cuerpo del robot (rectángulo)
+    \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+    % Rueda derecha
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, -1.35) rectangle (0, -1.05);
+
+    % Rueda izquierda
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, 1.05) rectangle (0, 1.35);
+
+    % Línea punteada entre los centros de las ruedas
+    \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+    % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+    \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+    (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+    % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+    \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+    \begin{scope}[shift={(-0.75, 0)}, transform shape]
+      \draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[right] {};% {$\boldsymbol{x}_R$};
+      \draw[->, thick, color=Maroon] (0,0) -- (0,2.5) node[left=2] {};% {$\boldsymbol{y}_R$};
+      \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+      \coordinate (P2_inR) at (0,0);
+    \end{scope}
+  \end{scope}
+  \end{scope}
+
+
+  \begin{scope}[shift={(1.0, -6.0)}, every node/.style={scale=1.5}]
+  \begin{scope}[rotate=-50]
+    % Cuerpo del robot (rectángulo)
+    \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+    % Rueda derecha
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, -1.35) rectangle (0, -1.05);
+
+    % Rueda izquierda
+    \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+    (-1.5, 1.05) rectangle (0, 1.35);
+
+    % Línea punteada entre los centros de las ruedas
+    \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+    % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+    \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+    (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+    % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+    \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+    \begin{scope}[shift={(-0.75, 0)}, transform shape]
+      %\draw[->, thick, color=Maroon] (0,0) -- (3.0,0) node[right] {};% {$\boldsymbol{x}_R$};
+      %\draw[->, thick, color=Maroon] (0,0) -- (0,2.5) node[left=2] {};% {$\boldsymbol{y}_R$};
+      \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+      \coordinate (P3_inR) at (0,0);
+    \end{scope}
+  \end{scope}
+  \end{scope}
+
+  \node[Blue, below left] at (-4.5,-5.0) {$\textsf{previo}$};
+  \node[Blue, below left] at (7.0,-9.6) {$\textsf{futuro}$};
+
+  \draw[very thick] (P_inR) .. controls ++(20:5) and ++(10:-5) .. (P2_inR);
+
+  \draw[very thick,dotted,Gray] (P_inR) -- (P2_inR);
+
+  \draw[opacity=0.5,fill=gray]
+    (6.5,0.5) -- ++(3,-1.5) -- ++(-0.5,-2) -- ++(-3.5,-1.5) -- ++(-4,2) node[pos=0.9](O) {} -- ++(0.5,2) -- cycle;
+
+  %\draw[very thick, densely dashed] (O) -- (P3_inR);
+  \draw[black, very thick, densely dashed] (P3_inR) -- ++(60:3.1) node[circle, fill=Plum, scale=0.8](O) {} node[Plum, above right] {$\boldsymbol{O}$};
+  \draw[-{Stealth[inset=0pt,flex]}, line width=3pt, color=Plum] (P3_inR) -- ++(-120:3) node[below] {\Large $\boldsymbol{F}_R$};
+
+  \draw[black, very thick, densely dashed] (P3_inR) -- ++(20:12) node(G) {} node[Blue, above right] {$\boldsymbol{G}$};
+  %\node[Blue, above right] at (11,-2) {$\boldsymbol{G}$};
+  \node[fill=Blue, circle, scale=0.8] at (G) {};
+  \draw[-{Stealth[inset=0pt,flex]}, line width=3pt, color=Blue] (P3_inR) -- ++(20:3) node[above] {\Large $\boldsymbol{F}_A$};
+
+  \draw[Gray, dashed, very thick] (P3_inR) ++(20:3) -- ++(-120:3);
+  \draw[Gray, dashed, very thick] (P3_inR) ++(-120:3) -- ++(20:3);
+
+  \draw[-{Stealth[inset=0pt,flex]}, line width=3pt, color=ForestGreen] (P3_inR) -- ++(-50:2.2) node[below] {\Large $\boldsymbol{F}_T$};
+
+  %\draw[very thick,Gray] (0,0) -- (P_inR) node[midway, above] {$\rho$};
+  %\draw[-{Stealth[scale=0.6,inset=0pt]},very thick,Gray] (0,0) -- ++(2.0,1.45) node[pos=1, above] {$\hat{x}$};
+  %\draw[{Stealth[scale=0.6,inset=0pt]}-, thick, Gray] (1.5,0) arc[start angle=0, end angle=35.3, radius=1.5] node[midway, right] {$\beta$};
+
+  %\draw[dashed,thick,Plum] (P_inR) -- ++(0.0,-2.0) coordinate[at end](x0);
+  %\draw[dashed,thick,Plum] (0,0) -- (0,0 |- P_inR) -- ++(0.0,-2.0) coordinate[at end](x1);
+  %\draw[solid,line width=5pt,Plum] (x0) -- (x1) node[midway, above] {$\Delta x$};
+
+  %\draw[dashed,thick,Plum] (P_inR) -- ++(-2.0,0.0) coordinate[at end](y0);
+  %\draw[dashed,thick,Plum] (0,0) -- (P_inR |- 0,0) -- ++(-2.0,0.0) coordinate[at end](y1);
+  %\draw[solid,line width=5pt,Plum] (y0) -- (y1) node[midway, left] {$\Delta y$};
+
+
+  % Ejes del marco A
+  %\def\axisLen{2.5}
+  %\draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I = \boldsymbol{x}_G$};
+  %\draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I = \boldsymbol{y}_G$};
+  %\node[fill=Blue, circle, scale=0.8] at (0,0) {};
+  %\node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+## Resumen {.smaller}
+
+> En resumen
+
+- La expresión para la fuerza de atracción $\boldsymbol{F}^A$ tiene dos parámetros de ajuste:
+  - $k_a$ para controlar la intensidad
+  - $\rho$ para definir el límite de linealidad
+
+- La expresión para la fuerza de repulsión $\boldsymbol{F}^{R}_i$ tiene dos parámetros de ajuste:
+  - $k_R$ para controlar la intensidad
+  - $\eta_0$ para definir el límite de influencia de los obstáculos
+
+## Resumen {.smaller}
+
+> En resumen
+
+- Para las expresiones de velocidad lineal $\nu$ y velocidad angular $\omega$ se optó por utilizar mínimos cuadrados
+- La expresión de $\nu$ se puede interpretar como la proyección de $\boldsymbol{F}_T$ sobre el eje del robot $\boldsymbol{X_R}$
+- La expresión de $\omega$ se utilizó para forzar al robot a alinearse con el vector $\boldsymbol{F}_T$
+- Al calcular el ángulo de $\boldsymbol{F}_T$ como $\arctan 2 \left( {F_T}_y , {F_T}_x \right)$ hay que considerar ciertos casos especiales
+
+## Resumen {.smaller}
+
+> En resumen
+
+::: {.columns}
+::: {.column}
+
+- Utilizando un sensor *LIDAR* los cáculos de las fuerzas de repulsión $\boldsymbol{F}^{R}_i$ se simplifican
+- Generar fuerzas repulsivas solo para obstáculos percibidos ($\eta_i < L$)
+- Tener en cuenta la forma del robot al calcular los despejes $\eta_i$
+
+:::
+::: {.column}
+
+![](index_files/mediabag/lidar-implementation.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
