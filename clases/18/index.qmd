@@ -51,7 +51,8 @@ jupyter: python3
 
 # Problemas {visibility="hidden"}
 
-<!-- {{< include _problems_solutions.qmd >}} -->
+{{< include _problems_solutions.qmd >}}
+
 
 # Resumen {visibility="hidden"}
 

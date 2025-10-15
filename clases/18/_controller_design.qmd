@@ -443,7 +443,7 @@ $$
 $$
 
 $$
-(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ -2 \pi ; -\pi \right) \to \omega < 0
+(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ -2 \pi ; -\pi \right) \to \omega \ngtr 0
 $$
 
 Por lo tanto se redefine
@@ -511,7 +511,7 @@ $$
 $$
 
 $$
-(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ 2 \pi ; \pi \right) \to \omega > 0
+(\theta_{\boldsymbol{F}_T} - \theta) \in \left[ 2 \pi ; \pi \right) \to \omega \nless 0
 $$
 
 Por lo tanto se redefine

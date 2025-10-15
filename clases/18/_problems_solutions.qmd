@@ -1,0 +1,109 @@
+
+## Problemas de los campos potenciales {.smaller}
+
+> Se pueden identificar 4 problemas significativos
+
+1. No permite el paso entre obstáculos poco espaciados
+3. Oscilaciones producidas por obstáculos
+4. Oscilaciones en pasajes angostos
+2. "Trampas" en mínimos locales
+
+
+## Obstáculos poco espaciados {.smaller}
+
+- Al intentar pasar a través de dos obstáculos cercanos (Ej.: el marco de una puerta) las fuerzas repulsivas combinadas apuntan hacia afuera de la abertura
+- Dependiendo de la magnitud relativa de la fuerza de atracción $\boldsymbol{F}^A$, el robot la atravesará o se alejará
+
+::: {.columns}
+::: {.column}
+
+![](figs/figure16.svg){width="80%" fig-align="center"}
+
+:::
+::: {.column}
+
+![](figs/figure15A.svg){width="75%" fig-align="center"}
+
+:::
+:::
+
+
+## Oscilaciones debido a obstáculos {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Existen casos donde el robot puede entrar en un comportamiento oscilatorio donde se acerca y se aleja de los obstáculos de forma inestable
+
+> [Solución]{.underline}: Filtro pasa bajo para el comando de velocidad angular
+
+:::
+::: {.column}
+
+![](figs/figure15B.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+## Oscilaciones en pasajes angostos {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Un caso particular del anterior
+- El robot se ve afectado por fuerzas repulsivas opuestas de forma simultánea
+
+> [Solución]{.underline}: *dammping* o amortiguación para el comando de velocidad
+
+:::
+::: {.column}
+
+![](figs/figure15C.svg){width="100%" fig-align="center"}
+
+:::
+:::
+
+
+## Mínimos locales {.smaller}
+
+Si el robot entra en un mínimo local $\boldsymbol{P}_m$ de $U_T$ se detendrá 
+
+$$
+\boldsymbol{F}_T (\boldsymbol{P}_m) = -\nabla U_T(\boldsymbol{P}_m) = 0
+$$
+
+![](figs/figure15D.svg){width="100%" fig-align="center"}
+
+
+## Mínimos locales {.smaller}
+
+> [Solución]{.underline}: Campos rotacionales
+
+- Reemplazar o combinar la fuerza de repulsión por una que fuerce el robot a rodear el obstáculo
+
+- Campos rotacionales:
+
+$$
+\boldsymbol{F}^V_i(\boldsymbol{P}) = \pm \nabla \times U^R_{i}(\boldsymbol{P}) =
+\pm \begin{bmatrix}
+\frac{\partial U^R_{i}}{\partial y} \\
+-\frac{\partial U^R_{i}}{\partial x}
+\end{bmatrix}
+$$
+
+- El vector resultante es tangente a la superficie equipotencial
+
+## Mínimos locales {.smaller}
+
+::: {.columns}
+::: {.column}
+
+![](figs/figure17A.svg){width="100%" fig-align="center"}
+
+:::
+::: {.column}
+
+![](figs/figure17B.svg){width="100%" fig-align="center"}
+
+:::
+::: 
