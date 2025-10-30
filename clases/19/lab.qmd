@@ -1,0 +1,69 @@
+---
+title: Clase 19 - Laboratorio
+format:
+    html:
+        code-fold: true
+        code-copy: false
+        #code-overflow: wrap
+        toc: true
+bread-crumbs: true
+page-navigation: true
+---
+
+# Algoritmo *Bug2* con máquinas de estado finito 
+
+#### Objetivos
+
+* Implementar un controlador que dado un par de coordenadas objetivo envíe comandos de velocidad angular y velocidad lineal para conducir el robot a dicho punto
+* Utilizar como base el algoritmo *Go-To-Point*
+* A partir de las mediciones de LIDAR evadir obstáculos utilizando el algoritmo de tipo *Bug2*
+* Utilizar máquinas de estado finito para relacionar las entradas al sistema y las salidas de control
+
+## Algoritmo *Bug2*
+
+#### Algoritmo
+
+- [Paso 1]{.underline}: El camino al objetivo está libre?
+  - ✔️ Girar al objetivo y avanzar (*Go-To-Point*)
+  - ❌ Continuar al paso 2
+- [Paso 2]{.underline}: Guardar la posición y rodear el obstáculo (*Wall-follower*)
+- [Paso 3]{.underline}: La posición actual cruza la recta?
+  - ✔️ Si la distancia al objetivo es menor, volver al paso 1
+  - ❌ El objetivo no puede alcanzarse
+
+#### Máquina de estado
+
+![](index_files/mediabag/fsm-bug2.svg){width="100%" fig-align="center"}
+
+
+#### Tabla de transiciones
+
+|                       | $\gamma \not\approx 0$ | $\gamma \approx 0$ | $\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \approx 0$ |  $R_\textrm{F} < d$ $\small \begin{cases}R_\textrm{F} > d \\ R_\textrm{FL} > d \\ R_\textrm{FR} < d\end{cases}$ | $\boldsymbol{P} \in \overline{\boldsymbol{P}_0 \boldsymbol{G}}$ $\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \lVert \boldsymbol{H} - \boldsymbol{G} \rVert$ |
+|:-- |:--:|:--:|:--:|:--:|:--:|
+| **Girar al objetivo** | Girar al objetivo | Avanzar | -         | -                                                     | -                 |
+| **Avanzar**           | Girar al objetivo | -       | Finalizar | Rodear obstáculo<br>$\boldsymbol{H}:=\boldsymbol{P}$  | -                 |
+| **Rodear obstáculo**  | -                 | -       | Finalizar | Rodear obstáculo                                      | Girar al objetivo |
+
+: {.hover .strip}
+
+
+
+## Programación del nodo
+
+- Cree un nodo que reciba mediante parámetros las coordenadas del punto objetivo $\boldsymbol{G} = (x_G, y_G)$ y ejecute el algoritmo de control a una frecuencia fija
+- Obtenga la posición del robot mediante el topic de odometría `/odom`. Calcule el error de posición $\lVert \boldsymbol{P} - \boldsymbol{G} \rVert$ y orientación $\theta$ teniendo en cuenta la discontinuidad de la función $\arctan2(\cdot)$
+- Obtenga las mediciones del *LIDAR* mediante el topic `/scan` de tipo `LaserScan`. Segmente los puntos en las zonas correspondientes
+- Escriba los comandos de velocidad lineal y angular en el topic `/cmd_vel`
+- Parametrizar los coeficientes $\epsilon_\theta$ y $d$, para ajustar el curso del robot y la distancia al obstáculo respectivamente
+- Utilice dos parámetros adicionales, $\nu_{max}$ y $\omega_{max}$, para limitar el valor máximo de velocidad lineal y velocidad angular respectivamente
+- Utilice un parámetro $\epsilon_{\boldsymbol{P}}$ para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo si
+
+$$
+\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \epsilon_{\boldsymbol{P}}
+$$
+
+## Configuración del `launch`
+
+- Cree un archivo `go_to_point.launch.py` donde cargue la simulación y todo el sistema, utilizando un mundo de *Gazebo* con obstáculos de prueba
+- Configure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo
+- Realizar diversas pruebas con distintas posiciones y orientaciones iniciales del robot, y además de distintos puntos objetivo.

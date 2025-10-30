@@ -1,0 +1,1149 @@
+---
+title: "Robótica"
+subtitle: "Clase 19"
+date: "10/29/2025"
+date-format: "[Semana 27 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: Robótica - TUAR - FICH - UNL
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+filters:
+  - diagram
+diagram:
+    engine:
+        tikz:
+            execpath: pdflatex
+            header-includes:
+#                - '\usepackage{cancel}'
+               - '\usepackage{amsmath}'
+               - '\usetikzlibrary{automata, positioning, arrows.meta, calc, shapes, intersections, decorations.markings, bending}'
+               - '\usepackage{adjustbox}'
+jupyter: python3
+---
+
+# Navegación {visibility="hidden"}
+
+## Navegación
+
+> Área más desafiante en robótica móvil
+
+#### [4 pilares]{.underline}
+
+- Percepción
+- Localización
+- Control
+- [Cognición]{.mark} (o inteligencia)
+
+
+<!-- ######### AGREGAR INFO DE COGNICIÓN PARA ROBÓTICA ######### -->
+
+
+# Máquinas de estado finito {visibility="hidden"}
+
+## Máquinas de estado finito (*fsm*) {.smaller}
+
+- #### Máquina abstracta que consiste en:
+  - Un conjunto de **estados** $S$ (incluyendo uno inicial $s_0$)
+  - Un *alfabeto* de posibles **entradas** ($\Sigma$) <!-- - Un *alfabeto* que sirve como posibles **entradas** a la máquina ($\Sigma$) -->
+  - Funciones de **transición** que relacionan un estado con otro para una entrada dada:
+  $$
+  s_i \stackrel{c}{\rightarrow} s_j
+  $$
+cada transición tiene una condición $c$ que determina cuando se aplica
+
+> [Salidas]{.underline}: Según el tipo de *fsm* es que dependen cómo y cuando se producen las salidas
+
+## Máquinas de estado finito (*fsm*) {.smaller}
+
+> Se pueden representar como una cinco-tupla
+
+::: {.callout-note appearance="minimal" style=".callout.callout-style-default {text-align: center;}"}
+
+$$
+\hspace{18em} \LARGE \left( \Sigma, \Gamma, S, s_0, \delta \right)
+$$
+
+:::
+
+- $\Sigma$: Entradas (conjunto no vacío finito)
+- $\Gamma$: Salidas
+- $S$: Estados
+- $s_0 \in S$: Estado inicial
+- $\delta$: Funciones de transición $\delta: S \times \Sigma \to S \times \Gamma$ 
+
+## Ejemplo de *fsm* {.smaller}
+
+> Procedimiento de autenticación para un sistema, app, página web, etc.
+
+- #### [Comportamiento]{.underline}
+  - Espera el nombre de usuario y la contraseña
+  - Si los datos son correctos, permite el acceso
+  - Si los datos son incorrectos, muestra un mensaje y vuelve al estado inicial
+  - Si el usuario cierra sesión, vuelve al estado inicial
+
+## Ejemplo de *fsm*: Inicio de sesión {.smaller}
+
+::: {.hidden}
+$$
+\def\sc#1{\dosc#1\csod}
+\def\dosc#1#2\csod{{\rm #1{\small #2}}}
+$$
+:::
+
+::: {.incremental}
+- Estados
+$$S = \left\{ \sc{ESPERANDO}\sc{CREDENCIALES}, \sc{ACCESO}\sc{PERMITIDO} \right\}$$
+
+- Entradas:
+$$\Sigma = \left\{ \sc{CREDENCIALES}\sc{VALIDAS}, \sc{CREDENCIALES}\sc{INVALIDAS}, \sc{CERRAR}\sc{SESION} \right\}$$ 
+
+- Salidas:
+$$\Gamma = \left\{ \sc{PERMITIR}\sc{ACCESO}, \sc{MENSAJE}\sc{CREDENCIALES}\sc{INVALIDAS},\\ \sc{MENSAJE}\sc{SESION}\sc{CERRADA} \right\}$$
+
+- Estado inicial:
+$$s_0 = \sc{ESPERANDO}\sc{CREDENCIALES}$$
+
+- Funciones de transición: $\delta ?$
+
+:::
+
+## Ejemplo de *fsm*: Inicio de sesión {.smaller}
+
+> Tabla de transición y de salida
+
+- La función de transición $\delta$ se puede representar mediante una tabla
+  - Filas $\to$ Estados $S$
+  - Columnas $\to$ Entradas $\Sigma$
+  - Celda $\to$ Tupla $s,\sigma$ indicando el siguiente estado y la salida
+
+## Ejemplo de *fsm*: Inicio de sesión {.smaller}
+
+> Tabla de transición y de salida
+
+|                             | Credenciales válidas                | Credenciales inválidas  | Cerrar sesión                                     |
+|:--------------------------- | ----------------------------------- | ----------------------- | ------------------------------------------------- |
+| **Esperando credenciales**  | Acceso permitido;<br>[Permitir acceso]{.underline}   | Esperando credenciales;<br>[Mensaje credenciales inválidas]{.underline}  | -             |
+| **Acceso permitido**        | -                                   | -                       | Esperando credenciales;<br>[Mensaje sesión cerrada]{.underline}  |
+
+## Ejemplo de *fsm*: Inicio de sesión {.smaller}
+
+- Las máquinas de estado pueden representarse mediante diagramas de estado <!-- (tipo particular de grafo) -->
+
+```{.tikz width="100%" fig-align="center"}
+%%| filename: fsm1
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \tikzset{
+            ->,                                       % makes the edges directed
+            >=stealth,                                % makes the arrow heads bold
+            node distance=8cm,                      % specifies the minimum distance between two nodes. Change if necessary.
+            every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+            initial text=$ $,                         % sets the text that appears on the start arrow
+  }
+
+  \node[state, align=center, initial] (q1) {Esperando \\ crendenciales};
+  \node[state, align=center, right of=q1] (q2) {Acceso \\ permitido};
+  %\node[state, initial, right of=q1] (q2) {start};
+  %\node[state, accepting] at (1.5, 2) (q3) {accept};
+
+  \draw
+    (q1) edge[loop below, below, align=center] node{Credenciales \\ inválidas} (q1)
+    (q1) edge[bend left, above] node{Credenciales válidas} (q2)
+    (q2) edge[bend left, below] node{Cerrar sesión} (q1)
+    ;
+
+  \node[fill=blue!25,align=center,font=\scriptsize] at (-2.5,.8) {Indicador del\\estado inicial};
+  \node[fill=blue!25,align=center,font=\scriptsize] at (8.7,1.4) {Estado};
+  \node[fill=blue!25,align=center,font=\scriptsize] at (6.4,-1.5) {Transición};
+  \node[fill=blue!25,align=center,font=\scriptsize] at (-1.5,-2.) {Transición\\al mismo\\estado};
+
+\end{tikzpicture}
+```
+
+## Máquinas de estado finito {.smaller}
+
+> Estados
+
+- El estado de un sistema es una [condición en un punto particular en el tiempo]{.underline}
+- Afecta a cómo el sistema reacciona a las entradas
+- Es un *"resúmen"* del pasado
+
+## Máquinas de estado finito {.smaller}
+
+> Transiciones
+
+- La definición de una *fsm* no determina *"cuando"* evaluar las funciones de transición
+- Por lo tanto puede *reaccionar*:
+  - Cuando se aplica una entrada ➡️ **disparada por evento**
+  - A intervalos regulares ➡️ **disparada por tiempo**
+
+::: {.notes}
+
+- Nada define *"cuando"* una *fsm* debe evaluar las funciones de transición
+- Al ser un sistema discreto no se menciona explícitamente cuanto tiempo debe pasar entre transiciones
+- El contexto de operación define cuando deben reaccionar
+
+:::
+
+## Máquinas de estado finito {.smaller}
+
+- #### Dos tipos: *George Mealy* y *Edward Moore*
+
+<br>
+
+>  **_fsm_ de tipo Moore**: La salida [solo]{.underline} depende del estado actual
+
+<br>
+
+> **_fsm_ de tipo Mealy**: La salida depende del estado actual y la entrada
+
+## Mealy vs Moore {.smaller}
+
+- Cualquier máquina de *Moore* puede convertirse en una de *Mealy* equivalente
+- No siempre una de *Mealy* puede convertirse en una de *Moore*
+- Las de tipo *Mealy* tienden a ser más compactas (menos estados) y la salida es instantánea a la entrada
+- Las de tipo *Moore* se utilizan para una salida persistente
+
+## Clasificación de *fsm* {visibility="hidden"}
+
+# Máquinas de estados extendidas {visibility="hidden"}
+
+## Máquinas de estados extendidas {.smaller}
+
+- La notación se vuelve engorrosa al aumentar la cantidad de estados
+- Muchas aplicaciones requiren múltiples fuentes de entrada
+
+- #### [Solución]{.underline}: Modelo extendido de *fsm*
+  - Variables de estado interna
+  - Transiciones activadas por expresiones booleanas
+  - Salidas pueden ser llamadas a funciones
+
+## Máquinas de estados extendidas {visibility="hidden"}
+
+- Notación
+
+
+## Ejemplo de *fsm*: Inicio de sesión V2 {.smaller}
+
+> **[Mejora de seguridad]{.underline}**: Luego de múltiples intentos fallidos, bloquear la cuenta
+
+
+- Estados
+
+$$S = \left\{ \sc{ESPERANDO}\sc{CREDENCIALES}, \sc{ACCESO}\sc{PERMITIDO},\\ \boxed{\sc{CUENTA}\sc{BLOQUEADA}} \right\}$$
+
+- Variable interna: $\sc{INTENTOS}$
+
+- Estado inicial:
+$$s_0 = \sc{ESPERANDO}\sc{CREDENCIALES}, \sc{INTENTOS} = 0$$
+
+- Parámetros: $\sc{MAXIMO}\sc{INTENTOS} = 3$
+
+## Ejemplo de *fsm*: Inicio de sesión V2 {.smaller}
+
+
+::: {.columns}
+::: {.column width="10%"}
+
+<br>
+
+:::
+::: {.column width="75%"}
+
+
+```{.tikz width="100%"}
+%%| filename: fsm1-v2
+%%| fig-align: center
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \tikzset{
+            ->,                                       % makes the edges directed
+            >={Latex[length=3mm]},                                % makes the arrow heads bold
+            node distance=8cm,                      % specifies the minimum distance between two nodes. Change if necessary.
+            every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+            initial text=,                         % sets the text that appears on the start arrow
+            initial distance=1.5,
+  }
+
+  \node[state, align=center, initial] (q1) {Esperando \\ crendenciales} node[left=2.5, align=center] {intentos = 0;\\maximo intentos = 3};
+  \node[state, align=center, right of=q1] (q2) {Acceso \\ permitido};
+  %\node[state, align=center, below left of=q1, accepting] (q3) {Cuenta \\ bloqueada};
+  \node[state, align=center, accepting] (q3) at (-3,-5) {Cuenta \\ bloqueada};
+
+  \draw
+    (q1) edge[loop above, above, align=center] node{Credenciales inválidas $\wedge$\\intentos $\leq$ máximo intentos;\\intentos += 1} (q1)
+    (q1) edge[bend left, above, align=center] node{Credenciales válidas;\\intentos = 0} (q2)
+    (q2) edge[bend left, below] node{Cerrar sesión} (q1)
+    (q1) edge[bend right, right, align=center] node{Credenciales inválidas $\wedge$\\intentos $>$ máximo intentos} (q3)
+    ;
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+
+# Algoritmo 1: *Point-follower* {visibility="hidden"}
+
+{{< include _point_follower.qmd >}}
+
+
+# Algoritmo 2: *Wall-follower* {visibility="hidden"}
+
+## Aplicación de *fsm* a robótica {.smaller}
+
+> [Ejemplo 2]{.underline}: Seguidor de obstáculo o *Wall follower*
+
+::: {.columns}
+::: {.column}
+
+- **Objetivo**: Dada una pared (u obstáculo), recorrer el perímetro siempre hacia el mismo lado
+- Requiere un tipo de sensor de proximidad, se utilizará el de tipo *LIDAR*
+
+:::
+::: {.column}
+
+![](wall-follower.png){width="80%" fig-align="center"}
+
+:::
+:::
+
+## [Ejemplo 2]{.underline}: *Wall follower*  {.smaller}
+
+
+#### Algoritmo
+
+::: {.incremental}
+- [Paso 1]{.underline}: Hay una pared u obstáculo al frente?
+  - ✔️ Continuar al paso 2
+  - ❌ Buscar la pared u obstáculo (girar a la izquierda)
+- [Paso 2]{.underline}: La pared u obstáculo está a la derecha?
+  - ✔️ Continuar al paso 3
+  - ❌ Hay una pared u obstáculo al frente?
+    - ✔️ Girar a la izquierda (para que la pared u obstáculo quede a la derecha)
+    - ❌ Volver al paso 1
+- [Paso 3]{.underline}: El obstáculo sigue a la derecha?
+  - ✔️ Avanzar
+  - ❌ Volver al paso 2
+:::
+
+## [Ejemplo 2]{.underline}: *Wall follower*  {.smaller}
+
+> Detección de obstáculos con *LIDAR*
+
+::: {.columns}
+::: {.column}
+
+- Implementación simple: dividir la rotación completa en zonas
+- Por cada zona obtener la mínima medición
+- Comparar el valor con un umbral definido
+
+:::
+::: {.column}
+
+
+```{.tikz width="100%"}
+%%| filename: lidar-implementation
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \def\R{6.0}
+  \coordinate (O) at (0,0);
+  \draw[Gray, solid, thick] (O) circle (\R);
+
+  \node[Blue, below, align=center] at (0,-\R) {$\textsf{Cobertura del LIDAR}$};
+
+  \begin{scope}
+    \draw[opacity=0.4,fill=Plum,dashed, very thick]
+      (-3.5,4) node(P1) {} -- ++(0,2.5) -- ++(7,0.5) -- ++(0,-2.5) node(P2) {} -- ++(-1.5,0) -- ++(0,1) -- ++(-3.5,-0.25) -- ++(0.25,-1.0) -- cycle;
+
+    \clip (-3.5,4) -- ++(0,2.5) -- ++(7,0.5) -- ++(0,-2.5) -- ++(-1.5,0) -- ++(0,1) -- ++(-3.5,-0.25) -- ++(0.25,-1.0) -- cycle;
+    %\clip (0,0) -- +(45:\R)  arc (45:135:\R);
+    \fill[Black, opacity=0.8] (O) circle (\R);
+  \end{scope}
+  
+  \begin{scope}
+    \draw[opacity=0.4,fill=Plum,dashed, very thick]
+      (8,2.5) -- ++(2,-1.5) -- ++(-3,-6) -- ++(-3.5,-1.5) -- ++(-2,1) -- cycle;
+    
+    \clip (8,2.5) -- ++(2,-1.5) -- ++(-3,-6) -- ++(-3.5,-1.5) -- ++(-2,1) -- cycle;
+    \fill[Black, opacity=0.8] (O) circle (\R);
+  \end{scope}
+
+  \begin{scope}
+    \draw[opacity=0.4,fill=Plum,dashed, very thick]
+      (-7,-3) -- ++(4.5,-1) -- ++(-3,-2) -- cycle;
+
+    \clip (-7,-3) -- ++(4.5,-1) -- ++(-3,-2) -- (-5.5, -6);
+    \fill[Black, opacity=0.8] (O) circle (\R);
+  \end{scope}
+
+  %\draw[ForestGreen, solid, very thick] (0,0) -- ++(30:\R) node[pos=1.0, right] {$\textsf{Máximo alcance} = L$};
+
+  %\draw[Gray, densely dashed, thick] (0,0) -- (P1);
+  %\draw[Gray, densely dashed, thick] (0,0) -- (P2);
+  %\draw[Gray, densely dashed, thick] (0,0) -- (-35:4.7) node(O2) {}; 
+
+  \draw[Gray, densely dashed, thick] (0,0) -- ++(22.5:\R);
+  
+  \draw[Gray, densely dashed, thick] (0,0) -- ++(67.5:\R);
+  \node[black] at (\R*0.5,\R*0.5)   {\LARGE $R_\textrm{FR}$};
+  
+  \draw[Gray, densely dashed, thick] (0,0) -- ++(112.5:\R);
+  \node[black] at (0.0,\R*0.5)     {\LARGE $R_\textrm{F}$};
+  
+  \draw[Gray, densely dashed, thick] (0,0) -- ++(157.5:\R);
+  \node[black] at (-\R*0.5,\R*0.5)  {\LARGE $R_\textrm{FL}$};
+  
+  \draw[Gray, densely dashed, thick] (0,0) -- ++(202.5:\R);
+  %\node[black, midway, below] at (202.5:\R) {\large $R_\textrm{L}$};
+  
+  \draw[Gray, densely dashed, thick] (0,0) -- ++(247.5:\R);
+  %\node[black, midway, right] at (247.5:\R) {\large $R_\textrm{RL}$};
+  
+  \draw[Gray, densely dashed, thick] (0,0) -- ++(292.5:\R);
+  %\node[black, midway, right] at (292.5:\R) {\large $R_\textrm{R}$};
+  
+  \draw[Gray, densely dashed, thick] (0,0) -- ++(337.5:\R);
+  %\node[black, midway, above] at (337.5:\R) {\large $R_\textrm{RR}$};
+  
+
+  \draw[fill=Gray, solid, thick, opacity=0.8] (O) circle (0.5);
+  \node[Blue, right=0.5] at (0,0) {\LARGE $\textsf{robot}$};
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+## *Wall-follower* con *fsm* {.smaller}
+
+> Identificar los *componentes* de la máquina
+
+::: {.incremental}
+- Estados: $S = \left\{ \textrm{BuscarObstaculo}, \textrm{GirarIzquierda}, \textrm{Avanzar} \right\}$
+- Entradas: $\Sigma = \left\{  R_\textrm{F}, R_\textrm{FL}, R_\textrm{FR} \right\}$
+- Salidas: $\Gamma = \left\{ \nu, \omega \right\}$
+- Parámetro: $d = \textrm{DistanciaPared}$
+- Estado inicial: $s_0 = \textrm{BuscarObstaculo}$
+
+- Funciones de transición: $\delta ?$
+:::
+
+## *Wall-follower* con *fsm* {.smaller}
+
+::: {.hidden}
+$$
+\require{color}
+\def\obstacle{\textcolor{Maroon}{\boldsymbol{<}}}
+$$
+:::
+
+> Tabla de condiciones
+
+|        | $R_\textrm{F} \stackrel{?}{\lessgtr} d$ | $R_\textrm{FL} \stackrel{?}{\lessgtr} d$ | $R_\textrm{FR} \stackrel{?}{\lessgtr} d$ | Siguiente estado |
+|:------ |:--:|:--:|:--:|:------ |
+| Sin obstáculos              | $>$          | $>$           | $>$           | **Buscar Obstáculo**   |
+| Al frente                   | $\obstacle$  | $>$           | $>$           | **Girar Izquierda**    |
+| A izquierda                 | $>$          | $\obstacle$   | $>$           | **Buscar Obstáculo**   |
+| A derecha                   | $>$          | $>$           | $\obstacle$   | **Avanzar**            |
+| Al frente e izquierda       | $\obstacle$  | $\obstacle$   | $>$           | **Girar Izquierda**    |
+| Al frente y derecha         | $\obstacle$  | $>$           | $\obstacle$   | **Girar Izquierda**    |
+| A izquierda y derecha       | $>$          | $\obstacle$   | $\obstacle$   | **Buscar Obstáculo**   |
+| Frente, izquierda y derecha | $\obstacle$  | $\obstacle$   | $\obstacle$   | **Girar Izquierda**    |
+
+## *Wall-follower* con *fsm* {.smaller}
+
+> Tabla de condiciones
+
+|        | $R_\textrm{F} \stackrel{?}{\lessgtr} d$ | $R_\textrm{FL} \stackrel{?}{\lessgtr} d$ | $R_\textrm{FR} \stackrel{?}{\lessgtr} d$ | Siguiente estado |
+|:------ |:--:|:--:|:--:|:------ |
+| Sin obstáculos              | $>$                   | $>$           | $>$           | **Buscar Obstáculo**   |
+| Al frente                   | [$\obstacle$]{.mark}  | $>$           | $>$           | [**Girar Izquierda**]{.mark}    |
+| A izquierda                 | $>$                   | $\obstacle$   | $>$           | **Buscar Obstáculo**   |
+| A derecha                   | $>$                   | $>$           | $\obstacle$   | **Avanzar**            |
+| Al frente e izquierda       | [$\obstacle$]{.mark}  | $\obstacle$   | $>$           | [**Girar Izquierda**]{.mark}    |
+| Al frente y derecha         | [$\obstacle$]{.mark}  | $>$           | $\obstacle$   | [**Girar Izquierda**]{.mark}    |
+| A izquierda y derecha       | $>$                   | $\obstacle$   | $\obstacle$   | **Buscar Obstáculo**   |
+| Frente, izquierda y derecha | [$\obstacle$]{.mark}  | $\obstacle$   | $\obstacle$   | [**Girar Izquierda**]{.mark}    |
+
+## *Wall-follower* con *fsm* {.smaller}
+
+> Tabla de transición
+
+|                           | $$R_\textrm{F} < d$$ | $\dots$ |
+|:--- |:---:|:---:|
+| **Buscar Obstáculo**      | Girar Izquierda | $\dots$ | 
+| **Girar Izquierda**       | Girar Izquierda | $\dots$ | 
+| **Avanzar**               | Girar Izquierda | $\dots$ | 
+
+: {.hover .bordered tbl-colwidths="[25,25,10]"}
+
+
+
+## *Wall-follower* con *fsm* {.smaller}
+
+> Tabla de condiciones
+
+|        | $R_\textrm{F} \stackrel{?}{\lessgtr} d$ | $R_\textrm{FL} \stackrel{?}{\lessgtr} d$ | $R_\textrm{FR} \stackrel{?}{\lessgtr} d$ | Siguiente estado |
+|:------ |:--:|:--:|:--:|:------ |
+| Sin obstáculos              | $>$                   | $>$           | $>$                   | **Buscar Obstáculo**   |
+| A izquierda                 | $>$                   | $\obstacle$   | $>$                   | **Buscar Obstáculo**   |
+| A derecha                   | [$>$]{.mark}          | [$>$]{.mark}  | [$\obstacle$]{.mark}  | [**Avanzar**]{.mark}   |
+| A izquierda y derecha       | $>$                   | $\obstacle$   | $\obstacle$           | **Buscar Obstáculo**   |
+
+
+::: {.fragment}
+
+|                           | $$R_\textrm{F} < d$$ | $$R_\textrm{F} > d \wedge R_\textrm{FL} > d \wedge R_\textrm{FR} < d$$ |
+|:--- |:---:|:---:|
+| **Buscar Obstáculo**      | Girar Izquierda | Avanzar | 
+| **Girar Izquierda**       | Girar Izquierda | Avanzar | 
+| **Avanzar**               | Girar Izquierda | Avanzar | 
+
+: {.hover .bordered tbl-colwidths="[30,30,30]"}
+
+:::
+
+## *Wall-follower* con *fsm* {.smaller}
+
+> Tabla de condiciones
+
+|        | $R_\textrm{F} \stackrel{?}{\lessgtr} d$ | $R_\textrm{FL} \stackrel{?}{\lessgtr} d$ | $R_\textrm{FR} \stackrel{?}{\lessgtr} d$ | Siguiente estado |
+|:------ |:--:|:--:|:--:|:------ |
+| Sin obstáculos              | [$>$]{.mark}          | $>$                   | [$>$]{.mark}          | [**Buscar Obstáculo**]{.mark}   |
+| A izquierda                 | [$>$]{.mark}          | $\obstacle$           | [$>$]{.mark}          | [**Buscar Obstáculo**]{.mark}   |
+| A derecha                   | $>$                   | $>$                   | $\obstacle$           | **Avanzar**            |
+| A izquierda y derecha       | [$>$]{.mark}          | [$\obstacle$]{.mark}  | [$\obstacle$]{.mark}  | [**Buscar Obstáculo**]{.mark}   |
+
+
+
+|                           | $$R_\textrm{F} < d$$ | $$R_\textrm{F} > d \wedge R_\textrm{FL} > d \wedge R_\textrm{FR} < d$$ |
+|:--- |:---:|:---:|
+| **Buscar Obstáculo**      | Girar Izquierda | Avanzar | 
+| **Girar Izquierda**       | Girar Izquierda | Avanzar | 
+| **Avanzar**               | Girar Izquierda | Avanzar | 
+
+: {.hover .bordered tbl-colwidths="[30,30,30]"}
+
+
+## *Wall-follower* con *fsm* {.smaller}
+
+> Tabla de transición
+
+|                           | $$R_\textrm{F} < d$$ | $$R_\textrm{F} > d \\ R_\textrm{FL} > d \\ R_\textrm{FR} < d$$ | $$R_\textrm{F} > d \wedge R_\textrm{FL} < d \wedge R_\textrm{FR} < d\\R_\textrm{F} > d \wedge R_\textrm{FR} > d$$ |
+|:--- |:---:|:---:|:---:|
+| **Buscar Obstáculo**      | Girar Izquierda | Avanzar | Buscar Obstáculo |
+| **Girar Izquierda**       | Girar Izquierda | Avanzar | Buscar Obstáculo |
+| **Avanzar**               | Girar Izquierda | Avanzar | Buscar Obstáculo |
+
+: {.hover .bordered tbl-colwidths="[30,30,30]"}
+
+
+## *Wall-follower* con *fsm* {.smaller}
+
+> Máquina de estado de tipo *Moore*
+
+::: {.columns}
+::: {.column width="20%"}
+
+<br>
+
+:::
+::: {.column width="70%"}
+
+
+```{.tikz width="100%" fig-align="center"}
+%%| filename: fsm-wall-follower-moore
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \tikzset{
+            ->,                                       % makes the edges directed
+            >=stealth,                                % makes the arrow heads bold
+            node distance=5cm,                        % specifies the minimum distance between two nodes. Change if necessary.
+            every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+            initial text=$d$,                         % sets the text that appears on the start arrow
+  }
+
+  \def\sepEstados{4}
+
+  \node[state with output, align=center, initial] (q1) {Buscar\\obstáculo  \nodepart{lower} $\nu > 0$\\$\omega < 0$};
+  \node[state with output, align=center] (q4) at (\sepEstados*2,0) {Girar\\Izquierda \nodepart{lower} $\nu = 0$\\$\omega > 0$};
+  \node[state with output, align=center] (q2) at (\sepEstados,\sepEstados) {Avanzar \nodepart{lower} $\nu > 0$\\$\omega = 0$};
+  %\node[state, initial below left, right of=q1] (q2) {start};
+  
+  %\node[state with output, accepting, left of=q2, align=center] (q3) {Fin \nodepart{lower} $\nu = 0$\\$\omega = 0$};
+
+  \draw
+    (q1) edge[loop below, below, align=center] node{$R_\textrm{F} > d \wedge R_\textrm{FL} < d \wedge R_\textrm{FR} < d$\\$R_\textrm{F} > d \wedge R_\textrm{FR} > d$} (q1)
+    (q4) edge[loop right, below right, align=center] node{$R_\textrm{F} < d$} (q4)
+    (q1) edge[above, align=center] node{$R_\textrm{F} < d$} (q4)
+    (q4) edge[bend left, below, align=center] node{$R_\textrm{F} > d \wedge R_\textrm{FL} < d \wedge R_\textrm{FR} < d$\\$R_\textrm{F} > d \wedge R_\textrm{FR} > d$} (q1)
+    (q1) edge[bend right, above left, align=center] node{$R_\textrm{F} > d$\\$R_\textrm{FL} > d$\\$R_\textrm{FR} < d$} (q2)
+    (q4) edge[bend right, above right, align=center] node{$R_\textrm{F} > d$\\$R_\textrm{FL} > d$\\$R_\textrm{FR} < d$} (q2)
+    (q2) edge[bend right, left, align=center] node{$R_\textrm{F} > d \wedge R_\textrm{FL} < d \wedge R_\textrm{FR} < d$\\$R_\textrm{F} > d \wedge R_\textrm{FR} > d$} (q1)
+    (q2) edge[bend right, left, align=center] node{$R_\textrm{F} < d$} (q4)
+    (q2) edge[loop above, above, align=center] node{$R_\textrm{F} > d$\\$R_\textrm{FL} > d$\\$R_\textrm{FR} < d$} (q2)
+     
+    ;
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+## *Wall-follower* con *fsm* {.smaller}
+
+::: {.columns}
+::: {.column width="45%"}
+
+> Implementación *fsm* tipo *Moore*
+
+- Las transiciones y las salidas son independientes
+
+- La función de control aplica los comandos según la variable `state`:
+  - `0`: Buscar obstáculo
+  - `1`: Girar a izquierda
+  - `2`: Avanzar
+
+:::
+::: {.column width="55%"}
+
+
+```{.python code-line-numbers="true" code-line-numbers="|8-11|14-18|19-22|23-26|27-29|31"}
+class GoToPoint(Node):
+  def __init__(self):
+    #...
+    # Creación del publisher
+    self.pub = self.create_publisher(
+        Twist, 'cmd_vel', 10)
+    
+    # Creación del timer
+    self.timer = self.create_timer(
+        0.1, self.timer_callback)
+    self.state = 0
+    self.msg = Twist()
+
+  def timer_callback(self):        
+    if self.state == 0:
+      # Buscar obstáculo
+      self.msg.linear.x = 0.2
+      self.msg.angular.z = -np.pi/4
+    elif self.state == 1:
+      # Girar a izquierda
+      self.msg.linear.x = 0.0
+      self.msg.angular.z = np.pi/4
+    elif self.state == 2:
+      # Avanzar
+      self.msg.linear.x = 0.25
+      self.msg.angular.z = 0.0
+    else:
+      self.msg = Twist()
+      self.get_logger().error("Estado desconocido")
+  
+  self.pub.publish(self.msg)
+```
+
+:::
+:::
+
+## *Wall-follower* con *fsm* {.smaller}
+
+> Implementación
+
+- La función de transición depende solo de las mediciones del *LIDAR*
+- Por lo tanto las transiciones se pueden implementar en el callback de `scan`
+
+
+```{.python code-line-numbers="true" code-line-numbers="|2-4|6-13|16-40" style="max-height: 45rem;"}
+def sub_callback(self, msg: LaserScan):
+    # Convertir mediciones a vector de numpy
+    # y acotar entre rango máximo y mínimo
+    ranges = np.clip(np.array(msg.ranges), msg.range_min, msg.range_max)
+    
+    # Segmentar por regiones
+    regiones = {
+        'RIGHT':        np.min(ranges[ZONES[2]]),
+        'FRONT_RIGHT':  np.min(ranges[ZONES[3]]),
+        'FRONT':        np.min(ranges[ZONES[4]]),
+        'FRONT_LEFT':   np.min(ranges[ZONES[5]]),
+        'LEFT':         np.min(ranges[ZONES[6]]),
+    }
+
+    ### TRANSICIONES
+    _d = self.wall_distance
+    if regiones['FRONT'] > _d and regiones['FRONT_LEFT'] > _d and regiones['FRONT_RIGHT'] > _d:
+        # Ninguna pared detectada
+        self.cambiar_estado(0)
+    elif regiones['FRONT'] < _d and regiones['FRONT_LEFT'] > _d and regiones['FRONT_RIGHT'] > _d:
+        # Pared al frente
+        self.cambiar_estado(1)
+    elif regiones['FRONT'] > _d and regiones['FRONT_LEFT'] < _d and regiones['FRONT_RIGHT'] > _d:
+        # Pared a la izquierda
+        self.cambiar_estado(0)
+    elif regiones['FRONT'] > _d and regiones['FRONT_LEFT'] > _d and regiones['FRONT_RIGHT'] < _d:
+        # Pared a la derecha
+        self.cambiar_estado(2)
+    elif regiones['FRONT'] < _d and regiones['FRONT_LEFT'] < _d and regiones['FRONT_RIGHT'] > _d:
+        # Pared al frente e izquierda
+        self.cambiar_estado(1)
+    elif regiones['FRONT'] < _d and regiones['FRONT_LEFT'] > _d and regiones['FRONT_RIGHT'] < _d:
+        # Pared al frente y derecha
+        self.cambiar_estado(1)
+    elif regiones['FRONT'] < _d and regiones['FRONT_LEFT'] < _d and regiones['FRONT_RIGHT'] < _d:
+        # Frente, izquierda y derecha
+        self.cambiar_estado(1)
+    elif regiones['FRONT'] > _d and regiones['FRONT_LEFT'] < _d and regiones['FRONT_RIGHT'] < _d:
+        # Solo izquierda y derecha
+        self.cambiar_estado(0)
+    else:
+        self.get_logger().warning("Caso desconocido")
+```
+
+# Algoritmo 3: *Bug0* {visibility="hidden"}
+
+## Aplicación de *fsm* a robótica {.smaller}
+
+> [Ejemplo 3]{.underline}: *Go-To-Point* con evasión de obstáculo
+
+::: {.columns}
+::: {.column}
+
+- Seguir el contorno de cada obstáculo en el camino hacia el objetivo $\boldsymbol{G}$
+- Algoritmo de evasión más simple
+- Conocido como **Bug0**
+:::
+::: {.column}
+
+![](figure-bug0.webp){fig-align="center"}
+
+<!-- https://medium.com/@sefakurtipek/robot-motion-planning-bug-algorithms-34cf5175ab39 -->
+
+:::
+:::
+
+
+## [Ejemplo 3]{.underline}: *Bug0*  {.smaller}
+
+::: {.columns}
+::: {.column}
+
+#### Algoritmo
+
+::: {.incremental}
+- [Paso 1]{.underline}: El camino al objetivo está libre?
+  - ✔️ *Ir al objetivo*
+  - ❌ Continuar al paso 2
+- [Paso 2]{.underline}: Hay un obstáculo para evadir?
+  - ✔️ *Rodear obstáculo*
+  - ❌ Continuar al paso 1
+:::
+
+::: {.fragment}
+
+::: {.callout-tip appearance="simple"}
+Se pueden combinar los dos algoritmos anteriores: *Go-To-Point* y *Wall-follower*
+:::
+
+:::
+
+:::
+::: {.column}
+
+![](bug0.svg)
+
+:::
+:::
+
+
+## Composición de *fsm* {.smaller}
+
+- [Desventaja de las *fsm*]{.underline}: La mayoría de sistemas reales el número de estados es grande (a veces infinito)
+- Problemas para representar directamente el gran espacio de estados
+
+<br>
+
+> **Divide y vencerás**: resolver un problema difícil, dividiéndolo en partes más simples
+
+## Composición de *fsm* {.smaller}
+
+> Diferentes tipos de composición:
+
+- Concurrente:
+  - Según la reacción:
+    - Sincrónica (o simultánea)
+    - Asincrónica (o independiente)
+  - Según el orden:
+    - Paralelo (*side-by-side*)
+    - Serie (cascada)
+    - Re-alimentación (*feedback*)
+- #### Jerárquica
+
+## Composición jerárquica de *fsm* {.smaller}
+
+> La idea principal es el *refinamiento* del estado (definición sencilla)
+
+![](figure-1.png){width="30%" fig-align="center"}
+
+::: {.callout-caution appearance="simple"}
+
+#### Qué pasa si la máquina está en el estado $C$ y $g_1$ se activa al mismo tiempo que $g_4$? 
+
+:::
+
+## Composición jerárquica de *fsm* {.smaller}
+
+> Se evalúa la transición *más profunda* (o más refinada), luego la máquina de estado contenedor, luego su contenedora, y así sucesivamente
+
+- Ejemplo de composición jerárquica y su equivalente
+
+::: {layout-ncol="2"}
+
+![](figure-1.png){fig-align="center"}
+
+![](figure-2.png){fig-align="center"}
+
+:::
+
+## *Bug0* con *fsm* jerárquica {.smaller}
+
+
+::: {.columns}
+::: {.column}
+
+> [Ejemplo 3]{.underline}: *Bug0*
+
+#### Algoritmo
+
+- [Paso 1]{.underline}: El camino al objetivo está libre?
+  - ✔️ *Ir al objetivo*
+  - ❌ Continuar al paso 2
+- [Paso 2]{.underline}: Hay un obstáculo para evadir?
+  - ✔️ *Rodear obstáculo*
+  - ❌ Continuar al paso 1
+
+:::
+::: {.column}
+
+```{.tikz width="100%" fig-align="center"}
+%%| filename: fsm-bug0
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \tikzset{
+            ->,                                       % makes the edges directed
+            >=stealth,                                % makes the arrow heads bold
+            node distance=5cm,                        % specifies the minimum distance between two nodes. Change if necessary.
+            every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+            initial text={$ $},                         % sets the text that appears on the start arrow
+  }
+
+  \def\sepEstados{4}
+
+  \node[state, align=center, initial] (q1) {$\mathbf{M_1}$\\Ir al\\objetivo};
+  \node[state, align=center, below right of=q1] (q2) {$\mathbf{M_2}$\\Rodear\\obstáculo};
+
+  \node[state, accepting] (q3) at (5,1.5) {Fin};
+
+  \draw
+    (q1) edge[bend right, left, align=center] node{$\mathbf{M_2}$ $\neq$ BuscarObstaculo} (q2)
+    (q2) edge[bend right, right, align=center] node{$\mathbf{M_2}$ $=$ BuscarObstaculo} (q1)
+    (q1) edge[bend left, above, align=center] node{$\mathbf{M_1}$ $=$ Finalizar} (q3)
+    ;
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+
+## *Bug0* con *fsm* jerárquica {.smaller}
+
+::: {.columns}
+::: {.column width="45%"}
+
+> Implementación
+
+- Se definen 2 estados independientes para $\mathbf{M_1}$ y $\mathbf{M_2}$:
+  - *Go-to-point*: `g2p_state`
+  - *Wall-follower*: `wf_state`
+- Se reutiliza el código de ambas *fsm*
+- Se redefine la función de control y se predefinen los comandos de `Twist`
+
+:::
+::: {.column width="55%"}
+
+
+```{.python code-line-numbers="true" code-line-numbers="|4-5|5-11|12-19|20-21"}
+class GoToPoint(Node):
+  #...
+  def timer_callback(self):        
+    if self.wf_state == 0 and self.g2p_state != 3:
+      # Si no hay pared al frente
+      if self.g2p_state == 0:
+        self.msg = self.corregir_curso_izq()
+      elif self.g2p_state == 1:
+        self.msg = self.corregir_curso_der()
+      elif self.g2p_state == 2:
+        self.msg = self.avanzar()
+    elif self.wf_state == 1 and self.g2p_state != 3:
+      # Si tiene una pared al frente y 
+      #   no llegó a destino
+      self.msg = self.girar_izq()
+    elif self.wf_state == 2 and self.g2p_state != 3:
+      # Si la pared está a la derecha y 
+      #   no llegó a destino
+      self.msg = self.seguir_obstáculo()
+    elif self.g2p_state == 3:
+      self.finalizar()
+    else:
+      self.msg = Twist()
+      self.get_logger().error("Estado desconocido")
+      pass
+```
+
+:::
+:::
+
+## *Bug0* con *fsm* jerárquica {.smaller}
+
+> [Problema]{.underline}: Al ser un algoritmo básico tiene casos donde falla
+
+<br>
+
+![](bugtraps.svg)
+
+
+## Alternativa a *Bug0*: *Bug1* {.smaller}
+
+> [Ejemplo 4]{.underline}: algoritmo *Bug1*
+
+::: {.columns}
+::: {.column}
+
+
+- Al encontrar un obstáculo, guardar la posición actual $H$ y la distancia al objetivo $d_H$
+- Rodear completamente el obstáculo hasta volver a $H$ obteniendo el punto de menor distancia al objetivo $L$ tal que $d_L \leq d_H$
+- Dirigirse nuevamente a $L$ rodeando el objetivo, corregir el curso y continuar al objetivo
+
+::: {.fragment}
+
+::: {.callout-tip appearance="simple"}
+Algoritmo ineficiente pero eficaz
+:::
+
+:::
+
+:::
+::: {.column}
+
+![](figure-bug1.webp){fig-align="center"}
+
+:::
+:::
+
+# Algoritmo 4: *Bug2* {visibility="hidden"}
+
+## Alternativa a *Bug1*: *Bug2* {.smaller}
+
+> [Ejemplo 5]{.underline}: algoritmo *Bug2*
+
+::: {.columns}
+::: {.column}
+
+- Se traza una recta entre el punto inicial y el objetivo
+- Avanzar por la recta hasta que: 
+  - Se alcance el objetivo (Fin)
+  - Se encuentra un obstáculo
+- Seguir el contorno del objeto hasta que:
+  - Se alcance el objetivo (Fin)
+  - Se cruza la recta en un punto a menor distancia que la del punto de contacto (vuelve al paso anterior)
+
+:::
+::: {.column}
+
+<br>
+
+![](bug2.svg){fig-align="center"}
+
+:::
+:::
+
+
+## [Ejemplo 5]{.underline}: *Bug2*  {.smaller}
+
+::: {.columns}
+::: {.column}
+
+#### Algoritmo
+
+::: {.incremental}
+<!-- - [Paso 0]{.underline}: Se alcanzó el objetivo?
+  - ✔️ Finalizar
+  - ❌ Continuar al paso 2 -->
+- [Paso 1]{.underline}: El camino al objetivo está libre?
+  - ✔️ Girar al objetivo y avanzar
+  - ❌ Continuar al paso 2
+- [Paso 2]{.underline}: Guardar la posición y rodear el obstáculo hacia la izquierda
+- [Paso 3]{.underline}: La posición actual cruza la recta?
+  - ✔️ Si la distancia al objetivo es menor, volver al paso 1
+  - ❌ El objetivo no puede alcanzarse
+:::
+
+:::
+::: {.column}
+
+<br>
+
+![](bug2.svg){fig-align="center"}
+
+:::
+:::
+
+
+## *Bug2* con *fsm* {.smaller}
+
+> Identificar los *componentes* de la máquina
+
+::: {.incremental}
+- Estados: $S = \left\{ \textrm{GirarAlObjetivo}, \textrm{Avanzar}, \textrm{RodearObstaculo} \right\}$
+- Entradas: $\Sigma = \left\{ \boldsymbol{P}, \theta \right\} + \left\{  R_\textrm{F}, R_\textrm{FL}, R_\textrm{FR} \right\}$ 
+- Salidas: $\Gamma = \left\{ \nu, \omega \right\}$
+- Parámetro: $\boldsymbol{G}, d = \textrm{DistanciaPared}$
+- Variable: $\gamma = \textrm{CursoAlObjetivo}, \boldsymbol{H} = \textrm{PuntoContacto}, \boldsymbol{P}_0 = \textrm{Posición inicial}$
+- Estado inicial: $s_0 = \textrm{GirarAlObjetivo}$
+:::
+
+## *Bug2* con *fsm* {.smaller}
+
+> Tabla de transición
+
+::: {.fragment}
+
+|                       | $\gamma \not\approx 0$ | $\gamma \approx 0$ | $\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \approx 0$ |  $R_\textrm{F} < d$ $$\small \begin{cases}R_\textrm{F} > d \\ R_\textrm{FL} > d \\ R_\textrm{FR} < d\end{cases}$$ | $\boldsymbol{P} \in \overline{\boldsymbol{P}_0 \boldsymbol{G}}$ $\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \lVert \boldsymbol{H} - \boldsymbol{G} \rVert$ |
+|:-- |:--:|:--:|:--:|:--:|:--:|
+| **Girar al objetivo** | Girar al objetivo | Avanzar | -         | -                                                     | -                 |
+| **Avanzar**           | Girar al objetivo | -       | Finalizar | Rodear obstáculo<br>$\boldsymbol{H}:=\boldsymbol{P}$  | -                 |
+| **Rodear obstáculo**  | -                 | -       | Finalizar | Rodear obstáculo                                      | Girar al objetivo |
+
+: {.hover .bordered}
+
+:::
+
+
+## *Bug2* con *fsm* {.smaller}
+
+> Máquina de estado
+
+::: {.columns}
+::: {.column width="15%"}
+
+<br>
+
+:::
+::: {.column width="70%"}
+
+```{.tikz width="80%" fig-align="center"}
+%%| filename: fsm-bug2
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \tikzset{
+            ->,                                       % makes the edges directed
+            >=stealth,                                % makes the arrow heads bold
+            node distance=4cm,                        % specifies the minimum distance between two nodes. Change if necessary.
+            every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+            initial text={$ $},                         % sets the text that appears on the start arrow
+  }
+
+  \def\sepEstados{4}
+
+  \node[state, align=center, initial] (q1) {$\mathbf{M_1}$\\Girar al\\objetivo};
+  \node[state with output, align=center, below of=q1] (q3) {Avanzar \nodepart{lower} $\nu > 0$\\$\omega = 0$};
+  \node[state, align=center] (q2) at (6,-2) {$\mathbf{M_2}$\\Rodear\\obstáculo};
+
+  \node[state, accepting](q4) at (-3,-7) {Fin};
+
+  \draw
+    (q1) edge[loop above, above, align=center] node{$|\gamma| > \epsilon_\theta$} (q1)
+    (q3) edge[bend left, left, align=center] node{$|\gamma| > \epsilon_\theta$} (q1)
+    (q1) edge[bend left, right, align=center] node{$|\gamma| < \epsilon_\theta$} (q3)
+    (q3) edge[loop left, left, align=center] node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert > \epsilon_{\boldsymbol{P}}$} (q3)
+    (q3) edge[bend right, above left, align=center] node{$R_\textrm{F} < d$\\$\boldsymbol{H}:=\boldsymbol{P}$} (q2)
+    %(q2) edge[bend right, right, align=center] node{$\boldsymbol{P} \in \overline{\boldsymbol{P}_0 \boldsymbol{G}}$\\$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \lVert \boldsymbol{H} - \boldsymbol{G} \rVert$} (q1)
+    (q2) edge[bend right, above=0.5, align=center] node[above=0.3]{$\boldsymbol{P} \in \overline{\boldsymbol{P}_0 \boldsymbol{G}}$\\$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \lVert \boldsymbol{H} - \boldsymbol{G} \rVert$} (q1)
+    (q3) edge[above, left, align=center] node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \epsilon_{\boldsymbol{P}}$} (q4)
+    (q2) edge[bend left, below right, align=center] node[right=0.2]{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \epsilon_{\boldsymbol{P}}$} (q4)
+    ;
+
+\end{tikzpicture}
+```
+
+
+:::
+:::
+
+# Laboratorio {visibility="hidden"}
+
+## [Laboratorio](lab.qmd) {.center}
+
+Implementación *Bug2* con *fsm*

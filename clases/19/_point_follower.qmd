@@ -1,0 +1,781 @@
+## Aplicación de *fsm* a robótica {.smaller}
+
+> [Ejemplo 1]{.underline}: Seguimiento de punto o *Point follower* (sin obstáculos)
+
+::: {.columns}
+::: {.column}
+
+::: {.hidden}
+$\require{color}$
+:::
+
+- Sea una posición y orientación inicial arbitraria del robot $\textcolor{Maroon}{\boldsymbol{P}(t_0)}$
+- Sea una posición objetivo $\textcolor{Blue}{\boldsymbol{G}}$
+- Se debe diseñar un algoritmo que mediante una serie de controles $\textcolor{ForestGreen}{\nu(t)}$ y $\textcolor{Orange}{\omega(t)}$ conduzca el robot al punto objetivo
+
+:::
+::: {.column}
+
+![](index_files/mediabag/example1-fig3.svg){width="100%"}
+
+:::
+:::
+
+
+## [Ejemplo 1]{.underline}: *Point follower*  {.smaller}
+
+> 3 posibles casos
+
+::: {.columns}
+::: {.column}
+
+1. [**Caso trivial**]{.underline}: el robot se encuentra en el objetivo
+
+$$ \textcolor{Maroon}{\boldsymbol{P}} \equiv \textcolor{Blue}{\boldsymbol{G}} $$
+
+- Comandos:
+
+$$
+\begin{cases}
+\textcolor{ForestGreen}{\nu} = 0\\ %\nu = 0\\
+\textcolor{Orange}{\omega} = 0 %\omega = 0
+\end{cases}
+$$
+
+:::
+::: {.column}
+
+```{.tikz width="100%"}
+%%| filename: example1-fig1
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+
+  %\draw[dashed, thick,Gray] (0,0) -- (P); % node[midway, above] {$\rho$};
+
+  \begin{scope}[shift={(P)}, rotate=40.5, transform shape]
+    \begin{scope}[shift={(-0.75, 0.0)}, every node/.style={scale=1.0}]
+      % Etiqueta del marco de referencia A (debajo del origen, a la derecha)
+      %\node[below right, color=Blue] at (0,-0.1) {$\{\boldsymbol{A}\}$};
+      %\node[fill=Blue,circle,scale=0.4] at (0,0);
+
+      % Cuerpo del robot (rectángulo)
+      \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+      % Rueda derecha
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, -1.35) rectangle (0, -1.05);
+
+      % Rueda izquierda
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, 1.05) rectangle (0, 1.35);
+
+      % Línea punteada entre los centros de las ruedas
+      \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+      % Flecha de velocidad v_L (rueda inferior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, -1.2) -- (0.5, -1.2) node[midway, below] {$v_R$};
+
+      % Flecha de velocidad v_R (rueda superior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, 1.2) -- (0.5, 1.2) node[midway, above] {$v_L$};
+
+      % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+      \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+      (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+      % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+      \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+
+      % Marco del robot en (-0.75, 0)
+      \begin{scope}[shift={(-0.75, 0)}]
+        \draw[->, thick, color=Maroon] (0,0) -- (4.0,0) node[above] {$\boldsymbol{x}_R$};
+        \draw[->, thick, color=Maroon] (0,0) -- (0,3.5) node[left=0.15] {$\boldsymbol{y}_R$};
+        \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+        \node[Maroon, above right] at (0,0) {\footnotesize $P$};
+
+        \begin{scope}[rotate=-20, transform shape]
+          %\draw[densely dashed, Blue] (0,0) -- ++(2.8,0);
+
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (2.5,0) arc[start angle=0, end angle=20, radius=2.5] node[midway, right] {\large $\theta$};
+
+          \coordinate (P_inR) at (0,0);
+        \end{scope}
+
+        %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Maroon] (3.4,0) arc[start angle=0, end angle=15.3, radius=3.4] node[midway, right] {\large $\boldsymbol{\gamma}$};
+
+        \begin{scope}[every node/.style={scale=0.75}, transform shape]
+          % Arco grueso con flecha sólida
+          %\draw[-{Stealth[inset=0pt, length=7pt,flex]}, line width=3pt, Orange] (-225:0.4) arc[start angle=-225, end angle=0, radius=0.4] node[scale=1.5, near end,below left] {\large $\omega$};
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, ForestGreen] (0, 0) -- ++(3.0, 0) node[pos=1, above] {\large $\nu$};
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, ForestGreen] (0,1.5) -- ++(0,0.6) node[midway, right] {$\dot{y}$};
+        \end{scope}
+      \end{scope}
+
+    \end{scope}
+  \end{scope}
+
+  % Ejes del marco A
+  \coordinate (origin) at (-8,-6);
+  \def\axisLen{5}
+  \node[fill=Blue, circle, scale=0.8] at (origin) {};
+  \draw[->,very thick,color=Blue] (origin) -- ++(\axisLen,0) node[above=0.2] {\large $\boldsymbol{x}_A$};
+  \draw[->,very thick,color=Blue] (origin) -- ++(0,\axisLen) node[above] {\large $\boldsymbol{y}_A$};
+
+  %\def\axisLen{2.5}
+  %\draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I = \boldsymbol{x}_G$};
+  %\draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I = \boldsymbol{y}_G$};
+  \node[fill=Blue, circle, scale=0.8] at (P_inR) {};
+  \node[Blue, right=0.15] at (P_inR) {$\textcolor{Blue}{\boldsymbol{G}}$};
+
+  \node[fill=white, circle, scale=0.8] at (0,0) {} node[white, below=0.2] {$\boldsymbol{G}$};
+  \node[white, above left] at (0,0) {$\textsf{objetivo}$}; % Para mantener el ancho
+
+\end{tikzpicture}
+```
+
+:::
+::: 
+
+## [Ejemplo 1]{.underline}: *Point follower* {.smaller}
+
+> 3 posibles casos
+
+::: {.columns}
+::: {.column}
+
+2. [**Caso sencillo**]{.underline}: el eje $\textcolor{Maroon}{\boldsymbol{x}_R}$ del robot apunta al objetivo
+
+$$\textcolor{Maroon}{\boldsymbol{\gamma}} = 0$$
+
+- Comandos:
+
+$$
+\begin{cases}
+\textcolor{ForestGreen}{\nu} > 0\\
+\textcolor{Orange}{\omega} = 0
+\end{cases}
+$$
+
+:::
+::: {.column}
+
+```{.tikz width="100%"}
+%%| filename: example1-fig2
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+
+  \draw[dashed, thick,Gray] (0,0) -- (P); % node[midway, above] {$\rho$};
+
+  \begin{scope}[shift={(P)}, rotate=40.5, transform shape]
+    \begin{scope}[shift={(-0.75, 0.0)}, every node/.style={scale=1.0}]
+      % Etiqueta del marco de referencia A (debajo del origen, a la derecha)
+      %\node[below right, color=Blue] at (0,-0.1) {$\{\boldsymbol{A}\}$};
+      %\node[fill=Blue,circle,scale=0.4] at (0,0);
+
+      % Cuerpo del robot (rectángulo)
+      \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+      % Rueda derecha
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, -1.35) rectangle (0, -1.05);
+
+      % Rueda izquierda
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, 1.05) rectangle (0, 1.35);
+
+      % Línea punteada entre los centros de las ruedas
+      \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+      % Flecha de velocidad v_L (rueda inferior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, -1.2) -- (0.5, -1.2) node[midway, below] {$v_R$};
+
+      % Flecha de velocidad v_R (rueda superior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, 1.2) -- (0.5, 1.2) node[midway, above] {$v_L$};
+
+      % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+      \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+      (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+      % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+      \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+
+      % Marco del robot en (-0.75, 0)
+      \begin{scope}[shift={(-0.75, 0)}]
+        \draw[->, thick, color=Maroon] (0,0) -- (4.0,0) node[above] {$\boldsymbol{x}_R$};
+        \draw[->, thick, color=Maroon] (0,0) -- (0,3.5) node[left=0.15] {$\boldsymbol{y}_R$};
+        \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+        \node[Maroon, above right] at (0,0) {\footnotesize $P$};
+
+        \begin{scope}[rotate=-20, transform shape]
+          %\draw[densely dashed, Blue] (0,0) -- ++(2.8,0);
+
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (2.5,0) arc[start angle=0, end angle=20, radius=2.5] node[midway, right] {\large $\theta$};
+
+          \coordinate (P_inR) at (0,0);
+        \end{scope}
+
+        %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Maroon] (3.4,0) arc[start angle=0, end angle=15.3, radius=3.4] node[midway, right] {\large $\boldsymbol{\gamma}$};
+
+        \begin{scope}[every node/.style={scale=0.75}, transform shape]
+          % Arco grueso con flecha sólida
+          %\draw[-{Stealth[inset=0pt, length=7pt,flex]}, line width=3pt, Orange] (-225:0.4) arc[start angle=-225, end angle=0, radius=0.4] node[scale=1.5, near end,below left] {\large $\omega$};
+          \draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, ForestGreen] (0, 0) -- ++(3.0, 0) node[pos=1, above] {\large $\nu$};
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, ForestGreen] (0,1.5) -- ++(0,0.6) node[midway, right] {$\dot{y}$};
+        \end{scope}
+      \end{scope}
+
+    \end{scope}
+  \end{scope}
+
+  % Ejes del marco A
+  \coordinate (origin) at (-8,-6);
+  \def\axisLen{5}
+  \node[fill=Blue, circle, scale=0.8] at (origin) {};
+  \draw[->,very thick,color=Blue] (origin) -- ++(\axisLen,0) node[above=0.2] {\large $\boldsymbol{x}_A$};
+  \draw[->,very thick,color=Blue] (origin) -- ++(0,\axisLen) node[above] {\large $\boldsymbol{y}_A$};
+
+  %\def\axisLen{2.5}
+  %\draw[->,very thick,color=Blue] (0,0) -- (\axisLen,0) node[below=2] {$\boldsymbol{x}_I = \boldsymbol{x}_G$};
+  %\draw[->,very thick,color=Blue] (0,0) -- (0,\axisLen) node[above] {$\boldsymbol{y}_I = \boldsymbol{y}_G$};
+  \node[fill=Blue, circle, scale=0.8] at (0,0) {} node[below=0.2] {$\textcolor{Blue}{\boldsymbol{G}}$};
+  \node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+::: 
+
+
+##  [Ejemplo 1]{.underline}: *Point follower* {.smaller}
+
+> 3 posibles casos
+
+::: {.columns}
+::: {.column}
+
+3. [**Caso general**]{.underline}: el eje $\textcolor{Maroon}{\boldsymbol{x}_R}$ del robot **no** apunta al objetivo
+
+$$\textcolor{Maroon}{\boldsymbol{\gamma}} \neq 0$$
+
+<br>
+
+::: {.callout-caution appearance="simple"}
+
+Al ser **no-holonómico**, primero se debe establecer el curso al objetivo
+
+:::
+
+:::
+::: {.column}
+
+```{.tikz width="100%"}
+%%| filename: example1-fig3
+%%| fig-align: 'center'
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  
+  \coordinate (P) at (-3.5,-3.0);
+  \coordinate (B) at (0,0);
+
+
+  \begin{scope}[shift={(P)}, rotate=20, transform shape]
+    \begin{scope}[shift={(-0.75, 0.0)}, every node/.style={scale=1.0}]
+      % Etiqueta del marco de referencia A (debajo del origen, a la derecha)
+      %\node[below right, color=Blue] at (0,-0.1) {$\{\boldsymbol{A}\}$};
+      %\node[fill=Blue,circle,scale=0.4] at (0,0);
+
+      % Cuerpo del robot (rectángulo)
+      \draw[fill=gray!20, draw=black, thick] (-1.5,-1) rectangle (1.5,1);
+
+      % Rueda derecha
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, -1.35) rectangle (0, -1.05);
+
+      % Rueda izquierda
+      \draw[fill=gray!80, draw=black, thick, rounded corners=0.15cm]
+      (-1.5, 1.05) rectangle (0, 1.35);
+
+      % Línea punteada entre los centros de las ruedas
+      \draw[gray!50, thick,dash pattern=on 2pt off 1pt] (-0.75, -1.05) -- (-0.75, 1.05);
+
+      % Flecha de velocidad v_L (rueda inferior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, -1.2) -- (0.5, -1.2) node[midway, below] {$v_R$};
+
+      % Flecha de velocidad v_R (rueda superior)
+      %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick] (0.1, 1.2) -- (0.5, 1.2) node[midway, above] {$v_L$};
+
+      % Dibujo del cuerpo de la rueda (rectángulo gris oscuro con bordes redondeados)
+      \draw[fill=gray!60, draw=black, thick, rounded corners=0.1cm] 
+      (0.8, -0.1) rectangle ++(0.5, 0.2);
+
+      % Dibujo del eje de giro (círculo blanco con borde negro a la izquierda)
+      \draw[fill=white, draw=black, thick] (0.8, 0) circle (0.05);
+
+
+      % Marco del robot en (-0.75, 0)
+      \begin{scope}[shift={(-0.75, 0)}]
+        \draw[->, thick, color=Maroon] (0,0) -- (4.0,0) node[right] {$\boldsymbol{x}_R$};
+        \draw[->, thick, color=Maroon] (0,0) -- (0,3.5) node[left=0.15] {$\boldsymbol{y}_R$};
+        \node[fill=Maroon, circle, scale=0.4] at (0,0) {};
+        \node[Maroon, above right] at (0,0) {\footnotesize $P$};
+
+        \begin{scope}[rotate=-20, transform shape]
+          \draw[densely dashed, Blue] (0,0) -- ++(2.8,0);
+
+          \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Orange] (2.5,0) arc[start angle=0, end angle=20, radius=2.5] node[midway, right] {\large $\theta$};
+
+          \coordinate (P_inR) at (0,0);
+        \end{scope}
+
+        \draw[-{Stealth[scale=0.6,inset=0pt]}, thick, Maroon] (3.4,0) arc[start angle=0, end angle=15.3, radius=3.4] node[midway, right] {\large $\boldsymbol{\gamma}$};
+
+        \begin{scope}[every node/.style={scale=0.75}, transform shape]
+          % Arco grueso con flecha sólida
+          \draw[-{Stealth[inset=0pt, length=7pt,flex]}, line width=3pt, Orange] (-225:0.4) arc[start angle=-225, end angle=0, radius=0.4] node[scale=1.5, near end,below left] {\large $\omega$};
+          \draw[-{Stealth[scale=0.6,inset=0pt]}, very thick, ForestGreen] (0, 0) -- ++(3.0, 0) node[pos=1, above] {\large $\nu$};
+          %\draw[-{Stealth[scale=0.6,inset=0pt]}, thick, ForestGreen] (0,1.5) -- ++(0,0.6) node[midway, right] {$\dot{y}$};
+        \end{scope}
+      \end{scope}
+
+    \end{scope}
+  \end{scope}
+
+  \draw[very thick,Gray] (0,0) -- (P_inR) node[midway, above] {$\rho$};
+  %\draw[-{Stealth[scale=0.6,inset=0pt]},very thick,Gray] (0,0) -- ++(2.0,1.45) node[pos=1, above] {$\hat{x}$};
+  %\draw[{Stealth[scale=0.6,inset=0pt]}-, thick, Gray] (1.5,0) arc[start angle=0, end angle=35.3, radius=1.5] node[midway, right] {$\beta$};
+
+  % Ejes del marco A
+  \coordinate (origin) at (-8,-6);
+  \def\axisLen{5}
+  \node[fill=Blue, circle, scale=0.8] at (origin) {};
+  \draw[->,very thick,color=Blue] (origin) -- ++(\axisLen,0) node[above=0.2] {\large $\boldsymbol{x}_A$};
+  \draw[->,very thick,color=Blue] (origin) -- ++(0,\axisLen) node[above] {\large $\boldsymbol{y}_A$};
+
+  \node[fill=Blue, circle, scale=0.8] at (0,0) {} node[below=0.2] {$\textcolor{Blue}{\boldsymbol{G}}$};;
+  \node[Blue, above left] at (0,0) {$\textsf{objetivo}$};
+
+\end{tikzpicture}
+```
+
+:::
+::: 
+
+
+##  [Ejemplo 1]{.underline}: *Point follower* {.smaller}
+
+
+::: {.columns}
+::: {.column}
+
+#### Algoritmo
+
+::: {.incremental}
+- [Paso 1]{.underline}: El curso es lo suficientemente bueno?
+  - ✔️ Continuar al paso 2
+  - ❌ Enderezar
+- [Paso 2]{.underline}: Está cercano al punto?
+  - ✔️ Finalizar
+  - ❌ Avanzar
+:::
+
+:::
+::: {.column}
+
+<br>
+
+![](index_files/mediabag/example1-fig3.svg){width="100%"}
+
+:::
+:::
+
+## *Point-follower* con *fsm* {.smaller}
+
+> Identificar los *componentes* de la máquina
+
+::: {.columns}
+::: {.column}
+
+::: {.incremental}
+- Estados: $S = \left\{ \textrm{Girar}, \textrm{Avanzar} \right\}$
+- Entradas: $\Sigma = \left\{ \boldsymbol{P}, \theta \right\}$
+- Salidas: $\Gamma = \left\{ \nu, \omega \right\}$
+- Parámetro: $\boldsymbol{G}$
+- Variable: $\gamma$
+- Estado inicial: $s_0 = \textrm{Girar}$
+
+- Funciones de transición: $\delta ?$
+:::
+
+:::
+::: {.column}
+
+![](index_files/mediabag/example1-fig3.svg){width="100%"}
+
+:::
+:::
+
+
+## *Point-follower* con *fsm* {.smaller}
+
+> Tabla de transición y de salida
+
+::: {.fragment}
+
+|               | $\gamma < 0$ | $\gamma = 0$ | $\gamma > 0$ |  $\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \neq 0$ | $\lVert \boldsymbol{P} - \boldsymbol{G} \rVert = 0$ |
+|:------------- |:------------:|:------------:|:------------:|:---------------------------------------------------------:|:-----------------------------------------------------:|
+| **Girar**     | Girar<br>$$\nu = 0\\ \omega < 0$$| Avanzar<br>$$\nu = 0\\ \omega = 0$$ | Girar<br>$$\nu = 0\\ \omega > 0$$ | - | - |
+| **Avanzar**   | -            | -            | -            | Avanzar<br>$$\nu > 0\\ \omega = 0$$                        | Avanzar<br>$$\nu = 0\\ \omega = 0$$ |
+
+: {.hover .bordered tbl-colwidths="[10,18,18,18,18,18]"}
+
+:::
+
+
+## *Point-follower* con *fsm* {.smaller}
+
+> Máquina de estado de tipo *Mealy*
+
+::: {.columns}
+::: {.column width="15%"}
+
+<br>
+
+:::
+::: {.column width="70%"}
+
+
+```{.tikz width="100%" fig-align="center"}
+%%| filename: fsm-point-follower-mealy
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \tikzset{
+            ->,                                       % makes the edges directed
+            >=stealth,                                % makes the arrow heads bold
+            node distance=5cm,                        % specifies the minimum distance between two nodes. Change if necessary.
+            every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+            initial text=$\boldsymbol{G}$,                         % sets the text that appears on the start arrow
+  }
+
+  \node[state, align=center, initial] (q1) {Girar};
+  \node[state, align=center, right of=q1] (q2) {Avanzar};
+  %\node[state, initial, right of=q1] (q2) {start};
+  \node[state, accepting] (q3) at (3,-3) {Fin};
+
+  \draw
+    (q1) edge[loop below, below, align=center] node{$\gamma < 0$\\$\nu = 0; \omega < 0$} (q1)
+    (q1) edge[loop above, above, align=center] node{$\gamma > 0$\\$\nu = 0; \omega > 0$} (q1)
+    (q1) edge[bend left, above, align=center] node{$\gamma \approx 0$\\$\nu = 0; \omega = 0$} (q2)
+    (q2) edge[bend left, below, align=center] node{$\gamma \not\approx 0$\\$\nu = 0; \omega = 0$} (q1)
+    (q2) edge[loop above, above, align=center] node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \approx 0$\\$\nu > 0; \omega = 0$} (q2)
+              %node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert > \epsilon$\\$\nu > 0; \omega = 0$} (q2)
+    (q2) edge[bend left, right, align=center] node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \not\approx 0$\\$\nu = 0; \omega = 0$} (q3)
+              %node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \epsilon$\\$\nu = 0; \omega = 0$} (q3)
+    ;
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+## *Point-follower* con *fsm* {.smaller}
+
+> Máquina de estado de tipo *Moore*
+
+::: {.columns}
+::: {.column width="20%"}
+
+<br>
+
+:::
+::: {.column width="70%"}
+
+
+```{.tikz width="80%" fig-align="center"}
+%%| filename: fsm-point-follower-moore
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \tikzset{
+            ->,                                       % makes the edges directed
+            >=stealth,                                % makes the arrow heads bold
+            node distance=5cm,                        % specifies the minimum distance between two nodes. Change if necessary.
+            every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+            initial text=$\boldsymbol{G}$,                         % sets the text that appears on the start arrow
+  }
+
+  \def\sepEstados{4}
+
+  \node[state with output, align=center, initial] (q1) {Girar\\Izquierda  \nodepart{lower} $\nu = 0$\\$\omega > 0$};
+  \node[state with output, align=center] (q4) at (\sepEstados*2,0) {Girar\\Derecha \nodepart{lower} $\nu = 0$\\$\omega < 0$};
+  \node[state with output, align=center] (q2) at (\sepEstados,\sepEstados) {Avanzar \nodepart{lower} $\nu > 0$\\$\omega = 0$};
+  %\node[state, initial below left, right of=q1] (q2) {start};
+  
+  \node[state with output, accepting, left of=q2, align=center] (q3) {Fin \nodepart{lower} $\nu = 0$\\$\omega = 0$};
+
+  \draw
+    (q1) edge[loop below, below, align=center] node{$\gamma > 0$} (q1) %node{$\gamma > 0$\\$\nu = 0; \omega > 0$} (q1)
+    (q4) edge[loop below, below, align=center] node{$\gamma < 0$} (q4) %node{$\gamma < 0$\\$\nu = 0; \omega < 0$} (q4)
+    (q1) edge[above, align=center] node{$\gamma < 0$} (q4)
+    (q4) edge[bend left, below, align=center] node{$\gamma > 0$} (q1)
+    (q1) edge[bend left, left, align=center] node{$\gamma \approx 0$} (q2) %node{$\gamma \approx 0$\\$\nu = 0; \omega = 0$} (q2)
+    (q4) edge[bend right, right, align=center] node{$\gamma \approx 0$} (q2)
+    (q2) edge[bend left, left, align=center] node{$\gamma \not\approx 0$} (q1) %node{$\gamma \not\approx 0$\\$\nu = 0; \omega = 0$} (q1)
+    (q2) edge[bend right, right, align=center] node{$\gamma \not\approx 0$} (q4)
+    (q2) edge[loop above, above, align=center] node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \not\approx 0$} (q2)
+                %node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert > \epsilon$} (q2)
+    (q2) edge[bend right, above, align=center] node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \approx 0$} (q3)
+                %node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \epsilon$} (q3)
+    ;
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+## *Point-follower* con *fsm* {.smaller}
+
+::: {.columns}
+::: {.column width="45%"}
+
+> Implementación *fsm* tipo *Moore*
+
+- Las transiciones y las salidas son independientes
+
+- La función de control aplica los comandos según la variable `state`:
+  - `0`: Girar a izquierda
+  - `1`: Girar a derecha
+  - `2`: Avanzar
+  - `3`: Finalizar
+
+:::
+::: {.column width="55%"}
+
+
+```{.python code-line-numbers="true" code-line-numbers="|8-11|14-18|19-22|23-26|27-34|35-37|39"}
+class GoToPoint(Node):
+  def __init__(self):
+    #...
+    # Creación del publisher
+    self.pub = self.create_publisher(
+        Twist, 'cmd_vel', 10)
+    
+    # Creación del timer
+    self.timer = self.create_timer(
+        0.1, self.timer_callback)
+    self.state = 0
+    self.msg = Twist()
+
+  def timer_callback(self):        
+    if self.state == 0:
+      # Corregir curso izquierda
+      self.msg.linear.x = 0.0
+      self.msg.angular.z = np.pi/4
+    elif self.state == 1:
+      # Corregir curso derecha
+      self.msg.linear.x = 0.0
+      self.msg.angular.z = -np.pi/4
+    elif self.state == 2:
+      # Avanzar
+      self.msg.linear.x = 0.25
+      self.msg.angular.z = 0.0
+    elif self.state == 3:
+      # Finalizar
+      # Publicar un comando de Twist para detenerse
+      self.pub.publish(Twist())
+      self.get_logger().info("Done")
+      # Terminar la ejecución
+      self.destroy_node()
+      raise SystemExit
+    else:
+      self.msg = Twist()
+      self.get_logger().error("Estado desconocido")
+  
+  self.pub.publish(self.msg)
+```
+
+:::
+:::
+
+## *Point-follower* con *fsm* {.smaller}
+
+::: {.columns}
+::: {.column width="45%"}
+
+- Antes de continuar será necesario definir las comparaciones por $\approx$ y $\not\approx$
+- Se introducen dos parámetros:
+  - Tolerancia angular: $\epsilon_\theta$
+  - Tolerancia posicional: $\epsilon_\boldsymbol{P}$
+
+$$
+\gamma \approx 0 \to |\gamma| < \epsilon_\theta\\
+\gamma \not\approx 0 \to |\gamma| > \epsilon_\theta\\
+$$
+
+$$
+\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \approx 0 \to \lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \epsilon_\boldsymbol{P}\\
+\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \not\approx 0 \to \lVert \boldsymbol{P} - \boldsymbol{G} \rVert > \epsilon_\boldsymbol{P}
+$$
+
+:::
+::: {.column width="5%"}
+
+<br>
+
+:::
+::: {.column width="50%"}
+
+
+```{.tikz width="100%" fig-align="center"}
+%%| filename: fsm-point-follower-moore-v2
+
+\begin{tikzpicture}
+  \definecolor{Black}{RGB}{0,0,0}
+  \definecolor{Blue}{RGB}{46, 49, 146}              % pigment: {0.2, 0.2, 0.6}
+  \definecolor{ForestGreen}{RGB}{21, 155, 82}       % web: {0.13, 0.55, 0.13}
+  \definecolor{Orange}{RGB}{244, 110, 43}           % web color: {1.0, 0.65, 0.0}
+  \definecolor{Maroon}{rgb}{0.76, 0.13, 0.28}       % brightmaroon
+  \definecolor{Gray}{RGB}{145, 143, 143}            % html/cssgray: {0.5, 0.5, 0.5}
+  \definecolor{Plum}{RGB}{141, 25, 143}             % traditional: {0.56, 0.27, 0.52}
+
+  \tikzset{
+            ->,                                       % makes the edges directed
+            >=stealth,                                % makes the arrow heads bold
+            node distance=5cm,                        % specifies the minimum distance between two nodes. Change if necessary.
+            every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+            initial text={$\boldsymbol{G}$,$\epsilon_\theta$,$\epsilon_{\boldsymbol{P}}$}, % sets the text that appears on the start arrow
+  }
+
+  \def\sepEstados{4}
+
+  \node[state with output, align=center, initial] (q1) {Girar\\Izquierda  \nodepart{lower} $\nu = 0$\\$\omega > 0$};
+  \node[state with output, align=center] (q4) at (\sepEstados*2,0) {Girar\\Derecha \nodepart{lower} $\nu = 0$\\$\omega < 0$};
+  \node[state with output, align=center] (q2) at (\sepEstados,\sepEstados) {Avanzar \nodepart{lower} $\nu > 0$\\$\omega = 0$};
+  %\node[state, initial below left, right of=q1] (q2) {start};
+  
+  \node[state with output, accepting, left of=q2, align=center] (q3) {Fin \nodepart{lower} $\nu = 0$\\$\omega = 0$};
+
+  \draw
+    (q1) edge[loop below, below, align=center] node{$|\gamma| > \epsilon_\theta$,$\gamma > 0$} (q1)
+    (q4) edge[loop below, below, align=center] node{$|\gamma| > \epsilon_\theta$,$\gamma < 0$} (q4)
+    (q1) edge[above, align=center] node{$|\gamma| > \epsilon_\theta$,$\gamma < 0$} (q4)
+    (q4) edge[bend left, below, align=center] node{$|\gamma| > \epsilon_\theta$,$\gamma > 0$} (q1)
+    (q1) edge[bend left, left, align=center] node{$|\gamma| < \epsilon_\theta$} (q2)  %node{$\gamma \approx 0$} (q2) 
+    (q4) edge[bend right, right, align=center] node{$|\gamma| < \epsilon_\theta$} (q2)  %node{$\gamma \approx 0$} (q2)
+    (q2) edge[bend left, left, align=center] node{$|\gamma| > \epsilon_\theta$} (q1)  %node{$\gamma \not\approx 0$} (q1) 
+    (q2) edge[bend right, right, align=center] node{$|\gamma| > \epsilon_\theta$} (q4) %node{$\gamma \not\approx 0$} (q4)
+    (q2) edge[loop above, above, align=center] node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert > \epsilon_{\boldsymbol{P}}$} (q2)
+    (q2) edge[bend right, above, align=center] node{$\lVert \boldsymbol{P} - \boldsymbol{G} \rVert < \epsilon_{\boldsymbol{P}}$} (q3)
+    ;
+
+\end{tikzpicture}
+```
+
+:::
+:::
+
+
+## *Point-follower* con *fsm* {.smaller}
+
+::: {.columns}
+::: {.column width="45%"}
+
+> Implementación
+
+- La función de transición depende solo de la posición y orientación del robot
+- Por lo tanto las transiciones se pueden implementar en el callback de `odom`
+
+:::
+::: {.column width="55%"}
+
+
+```{.python code-line-numbers="true" code-line-numbers="|2-3|4-7|9-12|14-26|28-33"}
+def sub_callback(self, msg: Odometry):
+    # Obtener la posición y la orientación del robot
+    x, y, theta = #...
+    # Calculo del error respecto del objetivo
+    e_x = self.x_goal - x
+    e_y = self.y_goal - y
+    e_pos = np.hypot(e_x, e_y)
+    
+    theta_d = np.arctan2(e_y, e_x)
+    # Corregir discontinuidad de arctan2(.)
+    # ...
+    e_theta = theta_d - theta
+
+    ### TRANSICIONES
+    if np.abs(e_theta) > self.angular_tolerance \
+      and e_theta > 0.0:
+        self.cambiar_estado(0)
+    elif np.abs(e_theta) > self.angular_tolerance \
+      and e_theta < 0.0:
+        self.cambiar_estado(1)
+    elif np.abs(e_theta) <= self.angular_tolerance \
+      and e_pos > self.goal_tolerance:
+        self.cambiar_estado(2)
+    elif np.abs(e_theta) <= self.angular_tolerance \
+      and e_pos <= self.goal_tolerance:
+        self.cambiar_estado(3)
+
+def cambiar_estado(self, nuevo_estado):
+    if self.state != nuevo_estado:
+        self.state = nuevo_estado
+
+        self.get_logger().info(f"Cambio de estado \
+            {self.state} -> {nuevo_estado}")
+
+```
+
+:::
+:::
