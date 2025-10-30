@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Robótica 2025</title>
+<title>Clase 19 - Laboratorio – Robótica 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9c54bebe4522b0dd20b0b0c77034dc0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3a2893c2363331b62a610d238e486396.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Clase 19 - Laboratorio</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -101,242 +130,160 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section></div>
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
+      <a href="../../index.html" class="sidebar-logo-link">
       </a>
       </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#algoritmo-bug2-con-máquinas-de-estado-finito" id="toc-algoritmo-bug2-con-máquinas-de-estado-finito" class="nav-link active" data-scroll-target="#algoritmo-bug2-con-máquinas-de-estado-finito">Algoritmo <em>Bug2</em> con máquinas de estado finito</a>
+  <ul class="collapse">
+  <li><a href="#algoritmo-bug2" id="toc-algoritmo-bug2" class="nav-link" data-scroll-target="#algoritmo-bug2">Algoritmo <em>Bug2</em></a></li>
+  <li><a href="#programación-del-nodo" id="toc-programación-del-nodo" class="nav-link" data-scroll-target="#programación-del-nodo">Programación del nodo</a></li>
+  <li><a href="#configuración-del-launch" id="toc-configuración-del-launch" class="nav-link" data-scroll-target="#configuración-del-launch">Configuración del <code>launch</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Clase 19 - Laboratorio</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-body">
 
-<section id="clases" class="level1">
-<h1>Clases</h1>
-<div class="callout callout-style-default callout-note callout-titled" title="">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="algoritmo-bug2-con-máquinas-de-estado-finito" class="level1">
+<h1>Algoritmo <em>Bug2</em> con máquinas de estado finito</h1>
+<section id="objetivos" class="level4">
+<h4 class="anchored" data-anchor-id="objetivos">Objetivos</h4>
+<ul>
+<li>Implementar un controlador que dado un par de coordenadas objetivo envíe comandos de velocidad angular y velocidad lineal para conducir el robot a dicho punto</li>
+<li>Utilizar como base el algoritmo <em>Go-To-Point</em></li>
+<li>A partir de las mediciones de LIDAR evadir obstáculos utilizando el algoritmo de tipo <em>Bug2</em></li>
+<li>Utilizar máquinas de estado finito para relacionar las entradas al sistema y las salidas de control</li>
+</ul>
+</section>
+<section id="algoritmo-bug2" class="level2">
+<h2 class="anchored" data-anchor-id="algoritmo-bug2">Algoritmo <em>Bug2</em></h2>
+<section id="algoritmo" class="level4">
+<h4 class="anchored" data-anchor-id="algoritmo">Algoritmo</h4>
+<ul>
+<li><u>Paso 1</u>: El camino al objetivo está libre?
+<ul>
+<li>✔️ Girar al objetivo y avanzar (<em>Go-To-Point</em>)</li>
+<li>❌ Continuar al paso 2</li>
+</ul></li>
+<li><u>Paso 2</u>: Guardar la posición y rodear el obstáculo (<em>Wall-follower</em>)</li>
+<li><u>Paso 3</u>: La posición actual cruza la recta?
+<ul>
+<li>✔️ Si la distancia al objetivo es menor, volver al paso 1</li>
+<li>❌ El objetivo no puede alcanzarse</li>
+</ul></li>
+</ul>
+</section>
+<section id="máquina-de-estado" class="level4">
+<h4 class="anchored" data-anchor-id="máquina-de-estado">Máquina de estado</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/mediabag/fsm-bug2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>El siguiente cronograma podrá ser actualizado con el correr del cursado</p>
-</div>
-</div>
-<table class="table-striped table-hover caption-top table">
+</section>
+<section id="tabla-de-transiciones" class="level4">
+<h4 class="anchored" data-anchor-id="tabla-de-transiciones">Tabla de transiciones</h4>
+<table class="table-hover strip caption-top table">
 <colgroup>
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 60%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Semana</th>
-<th>Fecha</th>
-<th>Tema</th>
-<th style="text-align: center;">Slides</th>
-<th style="text-align: center;"><span title="Laboratorio">Lab</span></th>
-<th style="text-align: center;"><span title="Taller de resolución">T.R</span></th>
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><span class="math inline">\(\gamma \not\approx 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\gamma \approx 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\lVert \boldsymbol{P} - \boldsymbol{G} \rVert \approx 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(R_\textrm{F} &lt; d\)</span> <span class="math inline">\(\small \begin{cases}R_\textrm{F} &gt; d \\ R_\textrm{FL} &gt; d \\ R_\textrm{FR} &lt; d\end{cases}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\boldsymbol{P} \in \overline{\boldsymbol{P}_0 \boldsymbol{G}}\)</span> <span class="math inline">\(\lVert \boldsymbol{P} - \boldsymbol{G} \rVert &lt; \lVert \boldsymbol{H} - \boldsymbol{G} \rVert\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td>17/03</td>
-<td>Introducción a la Robótica. Organización de la materia. Herramientas de trabajo.</td>
-<td style="text-align: center;"><a href="../clases/01" aria-label="Clase 1 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: left;"><strong>Girar al objetivo</strong></td>
+<td style="text-align: center;">Girar al objetivo</td>
+<td style="text-align: center;">Avanzar</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2</td>
-<td>24/03</td>
-<td><strong>Feriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: left;"><strong>Avanzar</strong></td>
+<td style="text-align: center;">Girar al objetivo</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Finalizar</td>
+<td style="text-align: center;">Rodear obstáculo<br><span class="math inline">\(\boldsymbol{H}:=\boldsymbol{P}\)</span></td>
+<td style="text-align: center;">-</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">3</td>
-<td>31/03</td>
-<td>ROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.</td>
-<td style="text-align: center;"><a href="../clases/02" aria-label="Clase 2 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/02/lab.html" aria-label="Clase 2 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td>07/04</td>
-<td>ROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.</td>
-<td style="text-align: center;"><a href="../clases/03" aria-label="Clase 3 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/03/lab.html" aria-label="Clase 3 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td>14/04</td>
-<td>Revisión conceptos clase anterior. Programación de nodos, compilación y ejecución.</td>
-<td style="text-align: center;"><a href="../clases/04" aria-label="Clase 4 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/04/lab.html" aria-label="Clase 4 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td>21/04</td>
-<td>Programación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.</td>
-<td style="text-align: center;"><a href="../clases/05" aria-label="Clase 5 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/05/lab.html" aria-label="Clase 5 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td>28/04</td>
-<td>Parámetros en nodos y <code>roslaunch</code>, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.</td>
-<td style="text-align: center;"><a href="../clases/06" aria-label="Clase 6 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/06/lab.html" aria-label="Clase 6 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td>05/05</td>
-<td>Traslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete <code>tf2</code>.</td>
-<td style="text-align: center;"><a href="../clases/07" aria-label="Clase 7 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/07/lab.html" aria-label="Clase 7 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td>12/05</td>
-<td>U.R.D.F: Representación de geometría de un robot. Uso de XACRO, <code>robot_state_publisher</code> y <code>tf2</code>.</td>
-<td style="text-align: center;"><a href="../clases/08" aria-label="Clase 8 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="../clases/08/tres.html" aria-label="Clase 8 t.r." title="Taller de resolución">🛠️</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td>19/05</td>
-<td>Gazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete <code>ros2_control</code> y <code>gz_ros2_contol</code>. <em>Hardware interface</em> y controladores.</td>
-<td style="text-align: center;"><a href="../clases/09" aria-label="Clase 9 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="../clases/09/tres.html" aria-label="Clase 9 t.r." title="Taller de resolución">🛠️</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td>26/05</td>
-<td>Cinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.</td>
-<td style="text-align: center;"><a href="../clases/10" aria-label="Clase 10 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="../clases/10/tres.html" aria-label="Clase 10 t.r." title="Taller de resolución">🛠️</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">12</td>
-<td>02/06</td>
-<td>Odometría: Cálculo de posición en base al modelo cinemático directo.</td>
-<td style="text-align: center;"><a href="../clases/11" aria-label="Clase 11 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="../clases/11/tres.html" aria-label="Clase 11 t.r." title="Taller de resolución">🛠️</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">13</td>
-<td>09/06</td>
-<td>Percepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.</td>
-<td style="text-align: center;"><a href="../clases/12" aria-label="Clase 12 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">14</td>
-<td>16/06</td>
-<td><strong>Feriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">15</td>
-<td>23/06</td>
-<td>Presentación entregable 1</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">16</td>
-<td>13/08</td>
-<td>Simulación de sensores en Gazebo</td>
-<td style="text-align: center;"><a href="../clases/13" aria-label="Clase 13 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/13/lab.html" aria-label="Clase 13 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">17</td>
-<td>20/08</td>
-<td>Revisión entregable 1</td>
-<td style="text-align: center;"><a href="../clases/14" aria-label="Clase 14 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">19</td>
-<td>03/09</td>
-<td>Caso práctico simulación de sensors. Cámara. Seguidor de línea.</td>
-<td style="text-align: center;"><a href="../clases/15" aria-label="Clase 15 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/15/lab.html" aria-label="Clase 15 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">20</td>
-<td>10/09</td>
-<td>Caso práctico simulación de sensors (cont.)</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">21</td>
-<td>17/09</td>
-<td>Localización con odometría. Incertidumbre y estimación de posición.</td>
-<td style="text-align: center;"><a href="../clases/16" aria-label="Clase 16 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/16/lab.html" aria-label="Clase 16 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">23</td>
-<td>01/10</td>
-<td>Diseño, análisis e implementación de un controlador a lazo cerrado, sin evasión de obstáculos</td>
-<td style="text-align: center;"><a href="../clases/17" aria-label="Clase 17 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/17/lab.html" aria-label="Clase 17 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">25</td>
-<td>15/10</td>
-<td>Diseño, análisis e implementación de un controlador a lazo cerrado, con evasión de obstáculos</td>
-<td style="text-align: center;"><a href="../clases/18" aria-label="Clase 18 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/18/lab.html" aria-label="Clase 18 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">27</td>
-<td>29/10</td>
-<td>Cognición: Programación de comportamiento. Máquinas de estados finitos</td>
-<td style="text-align: center;"><a href="../clases/19" aria-label="Clase 19 slides" title="Slides">🖥️</a></td>
-<td style="text-align: center;"><a href="../clases/19/lab.html" aria-label="Clase 19 lab" title="Lab">🧪</a></td>
-<td style="text-align: center;"></td>
+<td style="text-align: left;"><strong>Rodear obstáculo</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Finalizar</td>
+<td style="text-align: center;">Rodear obstáculo</td>
+<td style="text-align: center;">Girar al objetivo</td>
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+<section id="programación-del-nodo" class="level2">
+<h2 class="anchored" data-anchor-id="programación-del-nodo">Programación del nodo</h2>
+<ul>
+<li>Cree un nodo que reciba mediante parámetros las coordenadas del punto objetivo <span class="math inline">\(\boldsymbol{G} = (x_G, y_G)\)</span> y ejecute el algoritmo de control a una frecuencia fija</li>
+<li>Obtenga la posición del robot mediante el topic de odometría <code>/odom</code>. Calcule el error de posición <span class="math inline">\(\lVert \boldsymbol{P} - \boldsymbol{G} \rVert\)</span> y orientación <span class="math inline">\(\theta\)</span> teniendo en cuenta la discontinuidad de la función <span class="math inline">\(\arctan2(\cdot)\)</span></li>
+<li>Obtenga las mediciones del <em>LIDAR</em> mediante el topic <code>/scan</code> de tipo <code>LaserScan</code>. Segmente los puntos en las zonas correspondientes</li>
+<li>Escriba los comandos de velocidad lineal y angular en el topic <code>/cmd_vel</code></li>
+<li>Parametrizar los coeficientes <span class="math inline">\(\epsilon_\theta\)</span> y <span class="math inline">\(d\)</span>, para ajustar el curso del robot y la distancia al obstáculo respectivamente</li>
+<li>Utilice dos parámetros adicionales, <span class="math inline">\(\nu_{max}\)</span> y <span class="math inline">\(\omega_{max}\)</span>, para limitar el valor máximo de velocidad lineal y velocidad angular respectivamente</li>
+<li>Utilice un parámetro <span class="math inline">\(\epsilon_{\boldsymbol{P}}\)</span> para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo si</li>
+</ul>
+<p><span class="math display">\[
+\lVert \boldsymbol{P} - \boldsymbol{G} \rVert &lt; \epsilon_{\boldsymbol{P}}
+\]</span></p>
+</section>
+<section id="configuración-del-launch" class="level2">
+<h2 class="anchored" data-anchor-id="configuración-del-launch">Configuración del <code>launch</code></h2>
+<ul>
+<li>Cree un archivo <code>go_to_point.launch.py</code> donde cargue la simulación y todo el sistema, utilizando un mundo de <em>Gazebo</em> con obstáculos de prueba</li>
+<li>Configure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo</li>
+<li>Realizar diversas pruebas con distintas posiciones y orientaciones iniciales del robot, y además de distintos puntos objetivo.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -349,68 +296,6 @@ Note
       icon: icon
     };
     anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
         var filterRegex = new RegExp("https:\/\/acapovilla\.github\.io\/robotica-2025\/");

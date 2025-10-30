@@ -1481,7 +1481,7 @@
     "href": "clases/index.html",
     "title": "Clases",
     "section": "",
-    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.\n🖥️\n\n🛠️\n\n\n12\n02/06\nOdometría: Cálculo de posición en base al modelo cinemático directo.\n🖥️\n\n🛠️\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n🖥️\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nPresentación entregable 1\n\n\n\n\n\n16\n13/08\nSimulación de sensores en Gazebo\n🖥️\n🧪\n\n\n\n17\n20/08\nRevisión entregable 1\n🖥️\n\n\n\n\n19\n03/09\nCaso práctico simulación de sensors. Cámara. Seguidor de línea.\n🖥️\n🧪\n\n\n\n20\n10/09\nCaso práctico simulación de sensors (cont.)\n\n\n\n\n\n21\n17/09\nLocalización con odometría. Incertidumbre y estimación de posición.\n🖥️\n🧪\n\n\n\n23\n01/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, sin evasión de obstáculos\n🖥️\n🧪\n\n\n\n25\n15/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, con evasión de obstáculos\n🖥️\n🧪"
+    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.\n🖥️\n\n🛠️\n\n\n12\n02/06\nOdometría: Cálculo de posición en base al modelo cinemático directo.\n🖥️\n\n🛠️\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n🖥️\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nPresentación entregable 1\n\n\n\n\n\n16\n13/08\nSimulación de sensores en Gazebo\n🖥️\n🧪\n\n\n\n17\n20/08\nRevisión entregable 1\n🖥️\n\n\n\n\n19\n03/09\nCaso práctico simulación de sensors. Cámara. Seguidor de línea.\n🖥️\n🧪\n\n\n\n20\n10/09\nCaso práctico simulación de sensors (cont.)\n\n\n\n\n\n21\n17/09\nLocalización con odometría. Incertidumbre y estimación de posición.\n🖥️\n🧪\n\n\n\n23\n01/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, sin evasión de obstáculos\n🖥️\n🧪\n\n\n\n25\n15/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, con evasión de obstáculos\n🖥️\n🧪\n\n\n\n27\n29/10\nCognición: Programación de comportamiento. Máquinas de estados finitos\n🖥️\n🧪"
   },
   {
     "objectID": "clases/index.html#universidad-nacional-del-litoral-unl",
@@ -1489,6 +1489,41 @@
     "title": "Clases",
     "section": "Universidad Nacional del Litoral (UNL)\n",
     "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/19/lab.html",
+    "href": "clases/19/lab.html",
+    "title": "Clase 19 - Laboratorio",
+    "section": "",
+    "text": "Implementar un controlador que dado un par de coordenadas objetivo envíe comandos de velocidad angular y velocidad lineal para conducir el robot a dicho punto\nUtilizar como base el algoritmo Go-To-Point\nA partir de las mediciones de LIDAR evadir obstáculos utilizando el algoritmo de tipo Bug2\nUtilizar máquinas de estado finito para relacionar las entradas al sistema y las salidas de control\n\n\n\n\n\n\n\nPaso 1: El camino al objetivo está libre?\n\n✔️ Girar al objetivo y avanzar (Go-To-Point)\n❌ Continuar al paso 2\n\nPaso 2: Guardar la posición y rodear el obstáculo (Wall-follower)\nPaso 3: La posición actual cruza la recta?\n\n✔️ Si la distancia al objetivo es menor, volver al paso 1\n❌ El objetivo no puede alcanzarse\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\gamma \\not\\approx 0\\)\n\\(\\gamma \\approx 0\\)\n\\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\approx 0\\)\n\\(R_\\textrm{F} &lt; d\\) \\(\\small \\begin{cases}R_\\textrm{F} &gt; d \\\\ R_\\textrm{FL} &gt; d \\\\ R_\\textrm{FR} &lt; d\\end{cases}\\)\n\\(\\boldsymbol{P} \\in \\overline{\\boldsymbol{P}_0 \\boldsymbol{G}}\\) \\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &lt; \\lVert \\boldsymbol{H} - \\boldsymbol{G} \\rVert\\)\n\n\n\n\nGirar al objetivo\nGirar al objetivo\nAvanzar\n-\n-\n-\n\n\nAvanzar\nGirar al objetivo\n-\nFinalizar\nRodear obstáculo\\(\\boldsymbol{H}:=\\boldsymbol{P}\\)\n-\n\n\nRodear obstáculo\n-\n-\nFinalizar\nRodear obstáculo\nGirar al objetivo\n\n\n\n\n\n\n\n\nCree un nodo que reciba mediante parámetros las coordenadas del punto objetivo \\(\\boldsymbol{G} = (x_G, y_G)\\) y ejecute el algoritmo de control a una frecuencia fija\nObtenga la posición del robot mediante el topic de odometría /odom. Calcule el error de posición \\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert\\) y orientación \\(\\theta\\) teniendo en cuenta la discontinuidad de la función \\(\\arctan2(\\cdot)\\)\nObtenga las mediciones del LIDAR mediante el topic /scan de tipo LaserScan. Segmente los puntos en las zonas correspondientes\nEscriba los comandos de velocidad lineal y angular en el topic /cmd_vel\nParametrizar los coeficientes \\(\\epsilon_\\theta\\) y \\(d\\), para ajustar el curso del robot y la distancia al obstáculo respectivamente\nUtilice dos parámetros adicionales, \\(\\nu_{max}\\) y \\(\\omega_{max}\\), para limitar el valor máximo de velocidad lineal y velocidad angular respectivamente\nUtilice un parámetro \\(\\epsilon_{\\boldsymbol{P}}\\) para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo si\n\n\\[\n\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &lt; \\epsilon_{\\boldsymbol{P}}\n\\]\n\n\n\n\nCree un archivo go_to_point.launch.py donde cargue la simulación y todo el sistema, utilizando un mundo de Gazebo con obstáculos de prueba\nConfigure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo\nRealizar diversas pruebas con distintas posiciones y orientaciones iniciales del robot, y además de distintos puntos objetivo."
+  },
+  {
+    "objectID": "clases/19/lab.html#universidad-nacional-del-litoral-unl",
+    "href": "clases/19/lab.html#universidad-nacional-del-litoral-unl",
+    "title": "Clase 19 - Laboratorio",
+    "section": "Universidad Nacional del Litoral (UNL)\n",
+    "text": "Universidad Nacional del Litoral (UNL)\n\n\nFacultad de Ingeniería y Ciencias Hídricas (FICH) \n\nTecnicatura en Automatización y Robótica (TUAR)"
+  },
+  {
+    "objectID": "clases/19/lab.html#algoritmo-bug2",
+    "href": "clases/19/lab.html#algoritmo-bug2",
+    "title": "Clase 19 - Laboratorio",
+    "section": "",
+    "text": "Paso 1: El camino al objetivo está libre?\n\n✔️ Girar al objetivo y avanzar (Go-To-Point)\n❌ Continuar al paso 2\n\nPaso 2: Guardar la posición y rodear el obstáculo (Wall-follower)\nPaso 3: La posición actual cruza la recta?\n\n✔️ Si la distancia al objetivo es menor, volver al paso 1\n❌ El objetivo no puede alcanzarse\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\gamma \\not\\approx 0\\)\n\\(\\gamma \\approx 0\\)\n\\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\approx 0\\)\n\\(R_\\textrm{F} &lt; d\\) \\(\\small \\begin{cases}R_\\textrm{F} &gt; d \\\\ R_\\textrm{FL} &gt; d \\\\ R_\\textrm{FR} &lt; d\\end{cases}\\)\n\\(\\boldsymbol{P} \\in \\overline{\\boldsymbol{P}_0 \\boldsymbol{G}}\\) \\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &lt; \\lVert \\boldsymbol{H} - \\boldsymbol{G} \\rVert\\)\n\n\n\n\nGirar al objetivo\nGirar al objetivo\nAvanzar\n-\n-\n-\n\n\nAvanzar\nGirar al objetivo\n-\nFinalizar\nRodear obstáculo\\(\\boldsymbol{H}:=\\boldsymbol{P}\\)\n-\n\n\nRodear obstáculo\n-\n-\nFinalizar\nRodear obstáculo\nGirar al objetivo"
+  },
+  {
+    "objectID": "clases/19/lab.html#programación-del-nodo",
+    "href": "clases/19/lab.html#programación-del-nodo",
+    "title": "Clase 19 - Laboratorio",
+    "section": "",
+    "text": "Cree un nodo que reciba mediante parámetros las coordenadas del punto objetivo \\(\\boldsymbol{G} = (x_G, y_G)\\) y ejecute el algoritmo de control a una frecuencia fija\nObtenga la posición del robot mediante el topic de odometría /odom. Calcule el error de posición \\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert\\) y orientación \\(\\theta\\) teniendo en cuenta la discontinuidad de la función \\(\\arctan2(\\cdot)\\)\nObtenga las mediciones del LIDAR mediante el topic /scan de tipo LaserScan. Segmente los puntos en las zonas correspondientes\nEscriba los comandos de velocidad lineal y angular en el topic /cmd_vel\nParametrizar los coeficientes \\(\\epsilon_\\theta\\) y \\(d\\), para ajustar el curso del robot y la distancia al obstáculo respectivamente\nUtilice dos parámetros adicionales, \\(\\nu_{max}\\) y \\(\\omega_{max}\\), para limitar el valor máximo de velocidad lineal y velocidad angular respectivamente\nUtilice un parámetro \\(\\epsilon_{\\boldsymbol{P}}\\) para configurar una tolerancia dentro de la cual se considerará alcanzado el punto objetivo si\n\n\\[\n\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &lt; \\epsilon_{\\boldsymbol{P}}\n\\]"
+  },
+  {
+    "objectID": "clases/19/lab.html#configuración-del-launch",
+    "href": "clases/19/lab.html#configuración-del-launch",
+    "title": "Clase 19 - Laboratorio",
+    "section": "",
+    "text": "Cree un archivo go_to_point.launch.py donde cargue la simulación y todo el sistema, utilizando un mundo de Gazebo con obstáculos de prueba\nConfigure adecuadamente los parámetros del controlador para poder alcanzar distintos puntos objetivo\nRealizar diversas pruebas con distintas posiciones y orientaciones iniciales del robot, y además de distintos puntos objetivo."
   },
   {
     "objectID": "clases/18/lab.html",
@@ -1979,6 +2014,398 @@
     "title": "Robótica",
     "section": "Laboratorio",
     "text": "Laboratorio\nPoint-follower con campo potencial artificial"
+  },
+  {
+    "objectID": "clases/19/index.html#navegación-1",
+    "href": "clases/19/index.html#navegación-1",
+    "title": "Robótica",
+    "section": "Navegación",
+    "text": "Navegación\n\nÁrea más desafiante en robótica móvil\n\n4 pilares\n\nPercepción\nLocalización\nControl\nCognición (o inteligencia)"
+  },
+  {
+    "objectID": "clases/19/index.html#máquinas-de-estado-finito-fsm",
+    "href": "clases/19/index.html#máquinas-de-estado-finito-fsm",
+    "title": "Robótica",
+    "section": "Máquinas de estado finito (fsm)",
+    "text": "Máquinas de estado finito (fsm)\n\nMáquina abstracta que consiste en:\n\nUn conjunto de estados \\(S\\) (incluyendo uno inicial \\(s_0\\))\nUn alfabeto de posibles entradas (\\(\\Sigma\\)) \nFunciones de transición que relacionan un estado con otro para una entrada dada: \\[\ns_i \\stackrel{c}{\\rightarrow} s_j\n\\] cada transición tiene una condición \\(c\\) que determina cuando se aplica\n\n\n\nSalidas: Según el tipo de fsm es que dependen cómo y cuando se producen las salidas"
+  },
+  {
+    "objectID": "clases/19/index.html#máquinas-de-estado-finito-fsm-1",
+    "href": "clases/19/index.html#máquinas-de-estado-finito-fsm-1",
+    "title": "Robótica",
+    "section": "Máquinas de estado finito (fsm)",
+    "text": "Máquinas de estado finito (fsm)\n\nSe pueden representar como una cinco-tupla\n\n\n\n\n\n\\[\n\\hspace{18em} \\LARGE \\left( \\Sigma, \\Gamma, S, s_0, \\delta \\right)\n\\]\n\n\n\n\n\n\\(\\Sigma\\): Entradas (conjunto no vacío finito)\n\\(\\Gamma\\): Salidas\n\\(S\\): Estados\n\\(s_0 \\in S\\): Estado inicial\n\\(\\delta\\): Funciones de transición \\(\\delta: S \\times \\Sigma \\to S \\times \\Gamma\\)"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-de-fsm",
+    "href": "clases/19/index.html#ejemplo-de-fsm",
+    "title": "Robótica",
+    "section": "Ejemplo de fsm",
+    "text": "Ejemplo de fsm\n\nProcedimiento de autenticación para un sistema, app, página web, etc.\n\n\nComportamiento\n\nEspera el nombre de usuario y la contraseña\nSi los datos son correctos, permite el acceso\nSi los datos son incorrectos, muestra un mensaje y vuelve al estado inicial\nSi el usuario cierra sesión, vuelve al estado inicial"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión",
+    "href": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión",
+    "title": "Robótica",
+    "section": "Ejemplo de fsm: Inicio de sesión",
+    "text": "Ejemplo de fsm: Inicio de sesión\n\n\\[\n\\def\\sc#1{\\dosc#1\\csod}\n\\def\\dosc#1#2\\csod{{\\rm #1{\\small #2}}}\n\\]\n\n\nEstados \\[S = \\left\\{ \\sc{ESPERANDO}\\sc{CREDENCIALES}, \\sc{ACCESO}\\sc{PERMITIDO} \\right\\}\\]\nEntradas: \\[\\Sigma = \\left\\{ \\sc{CREDENCIALES}\\sc{VALIDAS}, \\sc{CREDENCIALES}\\sc{INVALIDAS}, \\sc{CERRAR}\\sc{SESION} \\right\\}\\]\nSalidas: \\[\\Gamma = \\left\\{ \\sc{PERMITIR}\\sc{ACCESO}, \\sc{MENSAJE}\\sc{CREDENCIALES}\\sc{INVALIDAS},\\\\ \\sc{MENSAJE}\\sc{SESION}\\sc{CERRADA} \\right\\}\\]\nEstado inicial: \\[s_0 = \\sc{ESPERANDO}\\sc{CREDENCIALES}\\]\nFunciones de transición: \\(\\delta ?\\)"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-1",
+    "href": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-1",
+    "title": "Robótica",
+    "section": "Ejemplo de fsm: Inicio de sesión",
+    "text": "Ejemplo de fsm: Inicio de sesión\n\nTabla de transición y de salida\n\n\nLa función de transición \\(\\delta\\) se puede representar mediante una tabla\n\nFilas \\(\\to\\) Estados \\(S\\)\nColumnas \\(\\to\\) Entradas \\(\\Sigma\\)\nCelda \\(\\to\\) Tupla \\(s,\\sigma\\) indicando el siguiente estado y la salida"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-2",
+    "href": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-2",
+    "title": "Robótica",
+    "section": "Ejemplo de fsm: Inicio de sesión",
+    "text": "Ejemplo de fsm: Inicio de sesión\n\nTabla de transición y de salida\n\n\n\n\n\n\n\n\n\n\n\nCredenciales válidas\nCredenciales inválidas\nCerrar sesión\n\n\n\n\nEsperando credenciales\nAcceso permitido;Permitir acceso\nEsperando credenciales;Mensaje credenciales inválidas\n-\n\n\nAcceso permitido\n-\n-\nEsperando credenciales;Mensaje sesión cerrada"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-3",
+    "href": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-3",
+    "title": "Robótica",
+    "section": "Ejemplo de fsm: Inicio de sesión",
+    "text": "Ejemplo de fsm: Inicio de sesión\n\nLas máquinas de estado pueden representarse mediante diagramas de estado"
+  },
+  {
+    "objectID": "clases/19/index.html#máquinas-de-estado-finito-1",
+    "href": "clases/19/index.html#máquinas-de-estado-finito-1",
+    "title": "Robótica",
+    "section": "Máquinas de estado finito",
+    "text": "Máquinas de estado finito\n\nEstados\n\n\nEl estado de un sistema es una condición en un punto particular en el tiempo\nAfecta a cómo el sistema reacciona a las entradas\nEs un “resúmen” del pasado"
+  },
+  {
+    "objectID": "clases/19/index.html#máquinas-de-estado-finito-2",
+    "href": "clases/19/index.html#máquinas-de-estado-finito-2",
+    "title": "Robótica",
+    "section": "Máquinas de estado finito",
+    "text": "Máquinas de estado finito\n\nTransiciones\n\n\nLa definición de una fsm no determina “cuando” evaluar las funciones de transición\nPor lo tanto puede reaccionar:\n\nCuando se aplica una entrada ➡️ disparada por evento\nA intervalos regulares ➡️ disparada por tiempo\n\n\n\n\nNada define “cuando” una fsm debe evaluar las funciones de transición\nAl ser un sistema discreto no se menciona explícitamente cuanto tiempo debe pasar entre transiciones\nEl contexto de operación define cuando deben reaccionar"
+  },
+  {
+    "objectID": "clases/19/index.html#máquinas-de-estado-finito-3",
+    "href": "clases/19/index.html#máquinas-de-estado-finito-3",
+    "title": "Robótica",
+    "section": "Máquinas de estado finito",
+    "text": "Máquinas de estado finito\n\nDos tipos: George Mealy y Edward Moore\n\n\n\nfsm de tipo Moore: La salida solo depende del estado actual\n\n\n\nfsm de tipo Mealy: La salida depende del estado actual y la entrada"
+  },
+  {
+    "objectID": "clases/19/index.html#mealy-vs-moore",
+    "href": "clases/19/index.html#mealy-vs-moore",
+    "title": "Robótica",
+    "section": "Mealy vs Moore",
+    "text": "Mealy vs Moore\n\nCualquier máquina de Moore puede convertirse en una de Mealy equivalente\nNo siempre una de Mealy puede convertirse en una de Moore\nLas de tipo Mealy tienden a ser más compactas (menos estados) y la salida es instantánea a la entrada\nLas de tipo Moore se utilizan para una salida persistente"
+  },
+  {
+    "objectID": "clases/19/index.html#máquinas-de-estados-extendidas-1",
+    "href": "clases/19/index.html#máquinas-de-estados-extendidas-1",
+    "title": "Robótica",
+    "section": "Máquinas de estados extendidas",
+    "text": "Máquinas de estados extendidas\n\nLa notación se vuelve engorrosa al aumentar la cantidad de estados\nMuchas aplicaciones requiren múltiples fuentes de entrada\nSolución: Modelo extendido de fsm\n\nVariables de estado interna\nTransiciones activadas por expresiones booleanas\nSalidas pueden ser llamadas a funciones"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-v2",
+    "href": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-v2",
+    "title": "Robótica",
+    "section": "Ejemplo de fsm: Inicio de sesión V2",
+    "text": "Ejemplo de fsm: Inicio de sesión V2\n\nMejora de seguridad: Luego de múltiples intentos fallidos, bloquear la cuenta\n\n\nEstados\n\n\\[S = \\left\\{ \\sc{ESPERANDO}\\sc{CREDENCIALES}, \\sc{ACCESO}\\sc{PERMITIDO},\\\\ \\boxed{\\sc{CUENTA}\\sc{BLOQUEADA}} \\right\\}\\]\n\nVariable interna: \\(\\sc{INTENTOS}\\)\nEstado inicial: \\[s_0 = \\sc{ESPERANDO}\\sc{CREDENCIALES}, \\sc{INTENTOS} = 0\\]\nParámetros: \\(\\sc{MAXIMO}\\sc{INTENTOS} = 3\\)"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-v2-1",
+    "href": "clases/19/index.html#ejemplo-de-fsm-inicio-de-sesión-v2-1",
+    "title": "Robótica",
+    "section": "Ejemplo de fsm: Inicio de sesión V2",
+    "text": "Ejemplo de fsm: Inicio de sesión V2"
+  },
+  {
+    "objectID": "clases/19/index.html#aplicación-de-fsm-a-robótica",
+    "href": "clases/19/index.html#aplicación-de-fsm-a-robótica",
+    "title": "Robótica",
+    "section": "Aplicación de fsm a robótica",
+    "text": "Aplicación de fsm a robótica\n\nEjemplo 1: Seguimiento de punto o Point follower (sin obstáculos)\n\n\n\n\n\\(\\require{color}\\)\n\n\nSea una posición y orientación inicial arbitraria del robot \\(\\textcolor{Maroon}{\\boldsymbol{P}(t_0)}\\)\nSea una posición objetivo \\(\\textcolor{Blue}{\\boldsymbol{G}}\\)\nSe debe diseñar un algoritmo que mediante una serie de controles \\(\\textcolor{ForestGreen}{\\nu(t)}\\) y \\(\\textcolor{Orange}{\\omega(t)}\\) conduzca el robot al punto objetivo"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-1-point-follower",
+    "href": "clases/19/index.html#ejemplo-1-point-follower",
+    "title": "Robótica",
+    "section": "Ejemplo 1: Point follower",
+    "text": "Ejemplo 1: Point follower\n\n3 posibles casos\n\n\n\n\nCaso trivial: el robot se encuentra en el objetivo\n\n\\[ \\textcolor{Maroon}{\\boldsymbol{P}} \\equiv \\textcolor{Blue}{\\boldsymbol{G}} \\]\n\nComandos:\n\n\\[\n\\begin{cases}\n\\textcolor{ForestGreen}{\\nu} = 0\\\\ %\\nu = 0\\\\\n\\textcolor{Orange}{\\omega} = 0 %\\omega = 0\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-1-point-follower-1",
+    "href": "clases/19/index.html#ejemplo-1-point-follower-1",
+    "title": "Robótica",
+    "section": "Ejemplo 1: Point follower",
+    "text": "Ejemplo 1: Point follower\n\n3 posibles casos\n\n\n\n\nCaso sencillo: el eje \\(\\textcolor{Maroon}{\\boldsymbol{x}_R}\\) del robot apunta al objetivo\n\n\\[\\textcolor{Maroon}{\\boldsymbol{\\gamma}} = 0\\]\n\nComandos:\n\n\\[\n\\begin{cases}\n\\textcolor{ForestGreen}{\\nu} &gt; 0\\\\\n\\textcolor{Orange}{\\omega} = 0\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-1-point-follower-2",
+    "href": "clases/19/index.html#ejemplo-1-point-follower-2",
+    "title": "Robótica",
+    "section": "Ejemplo 1: Point follower",
+    "text": "Ejemplo 1: Point follower\n\n3 posibles casos\n\n\n\n\nCaso general: el eje \\(\\textcolor{Maroon}{\\boldsymbol{x}_R}\\) del robot no apunta al objetivo\n\n\\[\\textcolor{Maroon}{\\boldsymbol{\\gamma}} \\neq 0\\]\n\n\n\n\n\n\n\nAl ser no-holonómico, primero se debe establecer el curso al objetivo"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-1-point-follower-3",
+    "href": "clases/19/index.html#ejemplo-1-point-follower-3",
+    "title": "Robótica",
+    "section": "Ejemplo 1: Point follower",
+    "text": "Ejemplo 1: Point follower\n\n\nAlgoritmo\n\nPaso 1: El curso es lo suficientemente bueno?\n\n✔️ Continuar al paso 2\n❌ Enderezar\n\nPaso 2: Está cercano al punto?\n\n✔️ Finalizar\n❌ Avanzar"
+  },
+  {
+    "objectID": "clases/19/index.html#point-follower-con-fsm",
+    "href": "clases/19/index.html#point-follower-con-fsm",
+    "title": "Robótica",
+    "section": "Point-follower con fsm",
+    "text": "Point-follower con fsm\n\nIdentificar los componentes de la máquina\n\n\n\n\nEstados: \\(S = \\left\\{ \\textrm{Girar}, \\textrm{Avanzar} \\right\\}\\)\nEntradas: \\(\\Sigma = \\left\\{ \\boldsymbol{P}, \\theta \\right\\}\\)\nSalidas: \\(\\Gamma = \\left\\{ \\nu, \\omega \\right\\}\\)\nParámetro: \\(\\boldsymbol{G}\\)\nVariable: \\(\\gamma\\)\nEstado inicial: \\(s_0 = \\textrm{Girar}\\)\nFunciones de transición: \\(\\delta ?\\)"
+  },
+  {
+    "objectID": "clases/19/index.html#point-follower-con-fsm-1",
+    "href": "clases/19/index.html#point-follower-con-fsm-1",
+    "title": "Robótica",
+    "section": "Point-follower con fsm",
+    "text": "Point-follower con fsm\n\nTabla de transición y de salida\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\gamma &lt; 0\\)\n\\(\\gamma = 0\\)\n\\(\\gamma &gt; 0\\)\n\\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\neq 0\\)\n\\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert = 0\\)\n\n\n\n\nGirar\nGirar\\[\\nu = 0\\\\ \\omega &lt; 0\\]\nAvanzar\\[\\nu = 0\\\\ \\omega = 0\\]\nGirar\\[\\nu = 0\\\\ \\omega &gt; 0\\]\n-\n-\n\n\nAvanzar\n-\n-\n-\nAvanzar\\[\\nu &gt; 0\\\\ \\omega = 0\\]\nAvanzar\\[\\nu = 0\\\\ \\omega = 0\\]"
+  },
+  {
+    "objectID": "clases/19/index.html#point-follower-con-fsm-2",
+    "href": "clases/19/index.html#point-follower-con-fsm-2",
+    "title": "Robótica",
+    "section": "Point-follower con fsm",
+    "text": "Point-follower con fsm\n\nMáquina de estado de tipo Mealy"
+  },
+  {
+    "objectID": "clases/19/index.html#point-follower-con-fsm-3",
+    "href": "clases/19/index.html#point-follower-con-fsm-3",
+    "title": "Robótica",
+    "section": "Point-follower con fsm",
+    "text": "Point-follower con fsm\n\nMáquina de estado de tipo Moore"
+  },
+  {
+    "objectID": "clases/19/index.html#point-follower-con-fsm-4",
+    "href": "clases/19/index.html#point-follower-con-fsm-4",
+    "title": "Robótica",
+    "section": "Point-follower con fsm",
+    "text": "Point-follower con fsm\n\n\n\nImplementación fsm tipo Moore\n\n\nLas transiciones y las salidas son independientes\nLa función de control aplica los comandos según la variable state:\n\n0: Girar a izquierda\n1: Girar a derecha\n2: Avanzar\n3: Finalizar\n\n\n\nclass GoToPoint(Node):\n  def __init__(self):\n    #...\n    # Creación del publisher\n    self.pub = self.create_publisher(\n        Twist, 'cmd_vel', 10)\n    \n    # Creación del timer\n    self.timer = self.create_timer(\n        0.1, self.timer_callback)\n    self.state = 0\n    self.msg = Twist()\n\n  def timer_callback(self):        \n    if self.state == 0:\n      # Corregir curso izquierda\n      self.msg.linear.x = 0.0\n      self.msg.angular.z = np.pi/4\n    elif self.state == 1:\n      # Corregir curso derecha\n      self.msg.linear.x = 0.0\n      self.msg.angular.z = -np.pi/4\n    elif self.state == 2:\n      # Avanzar\n      self.msg.linear.x = 0.25\n      self.msg.angular.z = 0.0\n    elif self.state == 3:\n      # Finalizar\n      # Publicar un comando de Twist para detenerse\n      self.pub.publish(Twist())\n      self.get_logger().info(\"Done\")\n      # Terminar la ejecución\n      self.destroy_node()\n      raise SystemExit\n    else:\n      self.msg = Twist()\n      self.get_logger().error(\"Estado desconocido\")\n  \n  self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/19/index.html#point-follower-con-fsm-5",
+    "href": "clases/19/index.html#point-follower-con-fsm-5",
+    "title": "Robótica",
+    "section": "Point-follower con fsm",
+    "text": "Point-follower con fsm\n\n\n\nAntes de continuar será necesario definir las comparaciones por \\(\\approx\\) y \\(\\not\\approx\\)\nSe introducen dos parámetros:\n\nTolerancia angular: \\(\\epsilon_\\theta\\)\nTolerancia posicional: \\(\\epsilon_\\boldsymbol{P}\\)\n\n\n\\[\n\\gamma \\approx 0 \\to |\\gamma| &lt; \\epsilon_\\theta\\\\\n\\gamma \\not\\approx 0 \\to |\\gamma| &gt; \\epsilon_\\theta\\\\\n\\]\n\\[\n\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\approx 0 \\to \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &lt; \\epsilon_\\boldsymbol{P}\\\\\n\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\not\\approx 0 \\to \\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &gt; \\epsilon_\\boldsymbol{P}\n\\]"
+  },
+  {
+    "objectID": "clases/19/index.html#point-follower-con-fsm-6",
+    "href": "clases/19/index.html#point-follower-con-fsm-6",
+    "title": "Robótica",
+    "section": "Point-follower con fsm",
+    "text": "Point-follower con fsm\n\n\n\nImplementación\n\n\nLa función de transición depende solo de la posición y orientación del robot\nPor lo tanto las transiciones se pueden implementar en el callback de odom\n\n\ndef sub_callback(self, msg: Odometry):\n    # Obtener la posición y la orientación del robot\n    x, y, theta = #...\n    # Calculo del error respecto del objetivo\n    e_x = self.x_goal - x\n    e_y = self.y_goal - y\n    e_pos = np.hypot(e_x, e_y)\n    \n    theta_d = np.arctan2(e_y, e_x)\n    # Corregir discontinuidad de arctan2(.)\n    # ...\n    e_theta = theta_d - theta\n\n    ### TRANSICIONES\n    if np.abs(e_theta) &gt; self.angular_tolerance \\\n      and e_theta &gt; 0.0:\n        self.cambiar_estado(0)\n    elif np.abs(e_theta) &gt; self.angular_tolerance \\\n      and e_theta &lt; 0.0:\n        self.cambiar_estado(1)\n    elif np.abs(e_theta) &lt;= self.angular_tolerance \\\n      and e_pos &gt; self.goal_tolerance:\n        self.cambiar_estado(2)\n    elif np.abs(e_theta) &lt;= self.angular_tolerance \\\n      and e_pos &lt;= self.goal_tolerance:\n        self.cambiar_estado(3)\n\ndef cambiar_estado(self, nuevo_estado):\n    if self.state != nuevo_estado:\n        self.state = nuevo_estado\n\n        self.get_logger().info(f\"Cambio de estado \\\n            {self.state} -&gt; {nuevo_estado}\")"
+  },
+  {
+    "objectID": "clases/19/index.html#aplicación-de-fsm-a-robótica-1",
+    "href": "clases/19/index.html#aplicación-de-fsm-a-robótica-1",
+    "title": "Robótica",
+    "section": "Aplicación de fsm a robótica",
+    "text": "Aplicación de fsm a robótica\n\nEjemplo 2: Seguidor de obstáculo o Wall follower\n\n\n\n\nObjetivo: Dada una pared (u obstáculo), recorrer el perímetro siempre hacia el mismo lado\nRequiere un tipo de sensor de proximidad, se utilizará el de tipo LIDAR"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-2-wall-follower",
+    "href": "clases/19/index.html#ejemplo-2-wall-follower",
+    "title": "Robótica",
+    "section": "Ejemplo 2: Wall follower",
+    "text": "Ejemplo 2: Wall follower\nAlgoritmo\n\nPaso 1: Hay una pared u obstáculo al frente?\n\n✔️ Continuar al paso 2\n❌ Buscar la pared u obstáculo (girar a la izquierda)\n\nPaso 2: La pared u obstáculo está a la derecha?\n\n✔️ Continuar al paso 3\n❌ Hay una pared u obstáculo al frente?\n\n✔️ Girar a la izquierda (para que la pared u obstáculo quede a la derecha)\n❌ Volver al paso 1\n\n\nPaso 3: El obstáculo sigue a la derecha?\n\n✔️ Avanzar\n❌ Volver al paso 2"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-2-wall-follower-1",
+    "href": "clases/19/index.html#ejemplo-2-wall-follower-1",
+    "title": "Robótica",
+    "section": "Ejemplo 2: Wall follower",
+    "text": "Ejemplo 2: Wall follower\n\nDetección de obstáculos con LIDAR\n\n\n\n\nImplementación simple: dividir la rotación completa en zonas\nPor cada zona obtener la mínima medición\nComparar el valor con un umbral definido"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm",
+    "href": "clases/19/index.html#wall-follower-con-fsm",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\nIdentificar los componentes de la máquina\n\n\nEstados: \\(S = \\left\\{ \\textrm{BuscarObstaculo}, \\textrm{GirarIzquierda}, \\textrm{Avanzar} \\right\\}\\)\nEntradas: \\(\\Sigma = \\left\\{  R_\\textrm{F}, R_\\textrm{FL}, R_\\textrm{FR} \\right\\}\\)\nSalidas: \\(\\Gamma = \\left\\{ \\nu, \\omega \\right\\}\\)\nParámetro: \\(d = \\textrm{DistanciaPared}\\)\nEstado inicial: \\(s_0 = \\textrm{BuscarObstaculo}\\)\nFunciones de transición: \\(\\delta ?\\)"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-1",
+    "href": "clases/19/index.html#wall-follower-con-fsm-1",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\n\\[\n\\require{color}\n\\def\\obstacle{\\textcolor{Maroon}{\\boldsymbol{&lt;}}}\n\\]\n\n\nTabla de condiciones\n\n\n\n\n\n\n\n\n\n\n\n\n\\(R_\\textrm{F} \\stackrel{?}{\\lessgtr} d\\)\n\\(R_\\textrm{FL} \\stackrel{?}{\\lessgtr} d\\)\n\\(R_\\textrm{FR} \\stackrel{?}{\\lessgtr} d\\)\nSiguiente estado\n\n\n\n\nSin obstáculos\n\\(&gt;\\)\n\\(&gt;\\)\n\\(&gt;\\)\nBuscar Obstáculo\n\n\nAl frente\n\\(\\obstacle\\)\n\\(&gt;\\)\n\\(&gt;\\)\nGirar Izquierda\n\n\nA izquierda\n\\(&gt;\\)\n\\(\\obstacle\\)\n\\(&gt;\\)\nBuscar Obstáculo\n\n\nA derecha\n\\(&gt;\\)\n\\(&gt;\\)\n\\(\\obstacle\\)\nAvanzar\n\n\nAl frente e izquierda\n\\(\\obstacle\\)\n\\(\\obstacle\\)\n\\(&gt;\\)\nGirar Izquierda\n\n\nAl frente y derecha\n\\(\\obstacle\\)\n\\(&gt;\\)\n\\(\\obstacle\\)\nGirar Izquierda\n\n\nA izquierda y derecha\n\\(&gt;\\)\n\\(\\obstacle\\)\n\\(\\obstacle\\)\nBuscar Obstáculo\n\n\nFrente, izquierda y derecha\n\\(\\obstacle\\)\n\\(\\obstacle\\)\n\\(\\obstacle\\)\nGirar Izquierda"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-2",
+    "href": "clases/19/index.html#wall-follower-con-fsm-2",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\nTabla de condiciones\n\n\n\n\n\n\n\n\n\n\n\n\n\\(R_\\textrm{F} \\stackrel{?}{\\lessgtr} d\\)\n\\(R_\\textrm{FL} \\stackrel{?}{\\lessgtr} d\\)\n\\(R_\\textrm{FR} \\stackrel{?}{\\lessgtr} d\\)\nSiguiente estado\n\n\n\n\nSin obstáculos\n\\(&gt;\\)\n\\(&gt;\\)\n\\(&gt;\\)\nBuscar Obstáculo\n\n\nAl frente\n\\(\\obstacle\\)\n\\(&gt;\\)\n\\(&gt;\\)\nGirar Izquierda\n\n\nA izquierda\n\\(&gt;\\)\n\\(\\obstacle\\)\n\\(&gt;\\)\nBuscar Obstáculo\n\n\nA derecha\n\\(&gt;\\)\n\\(&gt;\\)\n\\(\\obstacle\\)\nAvanzar\n\n\nAl frente e izquierda\n\\(\\obstacle\\)\n\\(\\obstacle\\)\n\\(&gt;\\)\nGirar Izquierda\n\n\nAl frente y derecha\n\\(\\obstacle\\)\n\\(&gt;\\)\n\\(\\obstacle\\)\nGirar Izquierda\n\n\nA izquierda y derecha\n\\(&gt;\\)\n\\(\\obstacle\\)\n\\(\\obstacle\\)\nBuscar Obstáculo\n\n\nFrente, izquierda y derecha\n\\(\\obstacle\\)\n\\(\\obstacle\\)\n\\(\\obstacle\\)\nGirar Izquierda"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-3",
+    "href": "clases/19/index.html#wall-follower-con-fsm-3",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\nTabla de transición\n\n\n\n\n\n\n\n\n\n\n\\[R_\\textrm{F} &lt; d\\]\n\\(\\dots\\)\n\n\n\n\nBuscar Obstáculo\nGirar Izquierda\n\\(\\dots\\)\n\n\nGirar Izquierda\nGirar Izquierda\n\\(\\dots\\)\n\n\nAvanzar\nGirar Izquierda\n\\(\\dots\\)"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-4",
+    "href": "clases/19/index.html#wall-follower-con-fsm-4",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\nTabla de condiciones\n\n\n\n\n\n\n\n\n\n\n\n\n\\(R_\\textrm{F} \\stackrel{?}{\\lessgtr} d\\)\n\\(R_\\textrm{FL} \\stackrel{?}{\\lessgtr} d\\)\n\\(R_\\textrm{FR} \\stackrel{?}{\\lessgtr} d\\)\nSiguiente estado\n\n\n\n\nSin obstáculos\n\\(&gt;\\)\n\\(&gt;\\)\n\\(&gt;\\)\nBuscar Obstáculo\n\n\nA izquierda\n\\(&gt;\\)\n\\(\\obstacle\\)\n\\(&gt;\\)\nBuscar Obstáculo\n\n\nA derecha\n\\(&gt;\\)\n\\(&gt;\\)\n\\(\\obstacle\\)\nAvanzar\n\n\nA izquierda y derecha\n\\(&gt;\\)\n\\(\\obstacle\\)\n\\(\\obstacle\\)\nBuscar Obstáculo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[R_\\textrm{F} &lt; d\\]\n\\[R_\\textrm{F} &gt; d \\wedge R_\\textrm{FL} &gt; d \\wedge R_\\textrm{FR} &lt; d\\]\n\n\n\n\nBuscar Obstáculo\nGirar Izquierda\nAvanzar\n\n\nGirar Izquierda\nGirar Izquierda\nAvanzar\n\n\nAvanzar\nGirar Izquierda\nAvanzar"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-5",
+    "href": "clases/19/index.html#wall-follower-con-fsm-5",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\nTabla de condiciones\n\n\n\n\n\n\n\n\n\n\n\n\n\\(R_\\textrm{F} \\stackrel{?}{\\lessgtr} d\\)\n\\(R_\\textrm{FL} \\stackrel{?}{\\lessgtr} d\\)\n\\(R_\\textrm{FR} \\stackrel{?}{\\lessgtr} d\\)\nSiguiente estado\n\n\n\n\nSin obstáculos\n\\(&gt;\\)\n\\(&gt;\\)\n\\(&gt;\\)\nBuscar Obstáculo\n\n\nA izquierda\n\\(&gt;\\)\n\\(\\obstacle\\)\n\\(&gt;\\)\nBuscar Obstáculo\n\n\nA derecha\n\\(&gt;\\)\n\\(&gt;\\)\n\\(\\obstacle\\)\nAvanzar\n\n\nA izquierda y derecha\n\\(&gt;\\)\n\\(\\obstacle\\)\n\\(\\obstacle\\)\nBuscar Obstáculo\n\n\n\n\n\n\n\n\n\n\n\n\n\\[R_\\textrm{F} &lt; d\\]\n\\[R_\\textrm{F} &gt; d \\wedge R_\\textrm{FL} &gt; d \\wedge R_\\textrm{FR} &lt; d\\]\n\n\n\n\nBuscar Obstáculo\nGirar Izquierda\nAvanzar\n\n\nGirar Izquierda\nGirar Izquierda\nAvanzar\n\n\nAvanzar\nGirar Izquierda\nAvanzar"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-6",
+    "href": "clases/19/index.html#wall-follower-con-fsm-6",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\nTabla de transición\n\n\n\n\n\n\n\n\n\n\n\n\\[R_\\textrm{F} &lt; d\\]\n\\[R_\\textrm{F} &gt; d \\\\ R_\\textrm{FL} &gt; d \\\\ R_\\textrm{FR} &lt; d\\]\n\\[R_\\textrm{F} &gt; d \\wedge R_\\textrm{FL} &lt; d \\wedge R_\\textrm{FR} &lt; d\\\\R_\\textrm{F} &gt; d \\wedge R_\\textrm{FR} &gt; d\\]\n\n\n\n\nBuscar Obstáculo\nGirar Izquierda\nAvanzar\nBuscar Obstáculo\n\n\nGirar Izquierda\nGirar Izquierda\nAvanzar\nBuscar Obstáculo\n\n\nAvanzar\nGirar Izquierda\nAvanzar\nBuscar Obstáculo"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-7",
+    "href": "clases/19/index.html#wall-follower-con-fsm-7",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\nMáquina de estado de tipo Moore"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-8",
+    "href": "clases/19/index.html#wall-follower-con-fsm-8",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\n\n\nImplementación fsm tipo Moore\n\n\nLas transiciones y las salidas son independientes\nLa función de control aplica los comandos según la variable state:\n\n0: Buscar obstáculo\n1: Girar a izquierda\n2: Avanzar\n\n\n\nclass GoToPoint(Node):\n  def __init__(self):\n    #...\n    # Creación del publisher\n    self.pub = self.create_publisher(\n        Twist, 'cmd_vel', 10)\n    \n    # Creación del timer\n    self.timer = self.create_timer(\n        0.1, self.timer_callback)\n    self.state = 0\n    self.msg = Twist()\n\n  def timer_callback(self):        \n    if self.state == 0:\n      # Buscar obstáculo\n      self.msg.linear.x = 0.2\n      self.msg.angular.z = -np.pi/4\n    elif self.state == 1:\n      # Girar a izquierda\n      self.msg.linear.x = 0.0\n      self.msg.angular.z = np.pi/4\n    elif self.state == 2:\n      # Avanzar\n      self.msg.linear.x = 0.25\n      self.msg.angular.z = 0.0\n    else:\n      self.msg = Twist()\n      self.get_logger().error(\"Estado desconocido\")\n  \n  self.pub.publish(self.msg)"
+  },
+  {
+    "objectID": "clases/19/index.html#wall-follower-con-fsm-9",
+    "href": "clases/19/index.html#wall-follower-con-fsm-9",
+    "title": "Robótica",
+    "section": "Wall-follower con fsm",
+    "text": "Wall-follower con fsm\n\nImplementación\n\n\nLa función de transición depende solo de las mediciones del LIDAR\nPor lo tanto las transiciones se pueden implementar en el callback de scan\n\ndef sub_callback(self, msg: LaserScan):\n    # Convertir mediciones a vector de numpy\n    # y acotar entre rango máximo y mínimo\n    ranges = np.clip(np.array(msg.ranges), msg.range_min, msg.range_max)\n    \n    # Segmentar por regiones\n    regiones = {\n        'RIGHT':        np.min(ranges[ZONES[2]]),\n        'FRONT_RIGHT':  np.min(ranges[ZONES[3]]),\n        'FRONT':        np.min(ranges[ZONES[4]]),\n        'FRONT_LEFT':   np.min(ranges[ZONES[5]]),\n        'LEFT':         np.min(ranges[ZONES[6]]),\n    }\n\n    ### TRANSICIONES\n    _d = self.wall_distance\n    if regiones['FRONT'] &gt; _d and regiones['FRONT_LEFT'] &gt; _d and regiones['FRONT_RIGHT'] &gt; _d:\n        # Ninguna pared detectada\n        self.cambiar_estado(0)\n    elif regiones['FRONT'] &lt; _d and regiones['FRONT_LEFT'] &gt; _d and regiones['FRONT_RIGHT'] &gt; _d:\n        # Pared al frente\n        self.cambiar_estado(1)\n    elif regiones['FRONT'] &gt; _d and regiones['FRONT_LEFT'] &lt; _d and regiones['FRONT_RIGHT'] &gt; _d:\n        # Pared a la izquierda\n        self.cambiar_estado(0)\n    elif regiones['FRONT'] &gt; _d and regiones['FRONT_LEFT'] &gt; _d and regiones['FRONT_RIGHT'] &lt; _d:\n        # Pared a la derecha\n        self.cambiar_estado(2)\n    elif regiones['FRONT'] &lt; _d and regiones['FRONT_LEFT'] &lt; _d and regiones['FRONT_RIGHT'] &gt; _d:\n        # Pared al frente e izquierda\n        self.cambiar_estado(1)\n    elif regiones['FRONT'] &lt; _d and regiones['FRONT_LEFT'] &gt; _d and regiones['FRONT_RIGHT'] &lt; _d:\n        # Pared al frente y derecha\n        self.cambiar_estado(1)\n    elif regiones['FRONT'] &lt; _d and regiones['FRONT_LEFT'] &lt; _d and regiones['FRONT_RIGHT'] &lt; _d:\n        # Frente, izquierda y derecha\n        self.cambiar_estado(1)\n    elif regiones['FRONT'] &gt; _d and regiones['FRONT_LEFT'] &lt; _d and regiones['FRONT_RIGHT'] &lt; _d:\n        # Solo izquierda y derecha\n        self.cambiar_estado(0)\n    else:\n        self.get_logger().warning(\"Caso desconocido\")"
+  },
+  {
+    "objectID": "clases/19/index.html#aplicación-de-fsm-a-robótica-2",
+    "href": "clases/19/index.html#aplicación-de-fsm-a-robótica-2",
+    "title": "Robótica",
+    "section": "Aplicación de fsm a robótica",
+    "text": "Aplicación de fsm a robótica\n\nEjemplo 3: Go-To-Point con evasión de obstáculo\n\n\n\n\nSeguir el contorno de cada obstáculo en el camino hacia el objetivo \\(\\boldsymbol{G}\\)\nAlgoritmo de evasión más simple\nConocido como Bug0"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-3-bug0",
+    "href": "clases/19/index.html#ejemplo-3-bug0",
+    "title": "Robótica",
+    "section": "Ejemplo 3: Bug0",
+    "text": "Ejemplo 3: Bug0\n\n\nAlgoritmo\n\nPaso 1: El camino al objetivo está libre?\n\n✔️ Ir al objetivo\n❌ Continuar al paso 2\n\nPaso 2: Hay un obstáculo para evadir?\n\n✔️ Rodear obstáculo\n❌ Continuar al paso 1\n\n\n\n\n\n\n\n\n\nSe pueden combinar los dos algoritmos anteriores: Go-To-Point y Wall-follower"
+  },
+  {
+    "objectID": "clases/19/index.html#composición-de-fsm",
+    "href": "clases/19/index.html#composición-de-fsm",
+    "title": "Robótica",
+    "section": "Composición de fsm",
+    "text": "Composición de fsm\n\nDesventaja de las fsm: La mayoría de sistemas reales el número de estados es grande (a veces infinito)\nProblemas para representar directamente el gran espacio de estados\n\n\n\nDivide y vencerás: resolver un problema difícil, dividiéndolo en partes más simples"
+  },
+  {
+    "objectID": "clases/19/index.html#composición-de-fsm-1",
+    "href": "clases/19/index.html#composición-de-fsm-1",
+    "title": "Robótica",
+    "section": "Composición de fsm",
+    "text": "Composición de fsm\n\nDiferentes tipos de composición:\n\n\nConcurrente:\n\nSegún la reacción:\n\nSincrónica (o simultánea)\nAsincrónica (o independiente)\n\nSegún el orden:\n\nParalelo (side-by-side)\nSerie (cascada)\nRe-alimentación (feedback)\n\n\nJerárquica"
+  },
+  {
+    "objectID": "clases/19/index.html#composición-jerárquica-de-fsm",
+    "href": "clases/19/index.html#composición-jerárquica-de-fsm",
+    "title": "Robótica",
+    "section": "Composición jerárquica de fsm",
+    "text": "Composición jerárquica de fsm\n\nLa idea principal es el refinamiento del estado (definición sencilla)\n\n\n\n\n\n\n\n\nQué pasa si la máquina está en el estado \\(C\\) y \\(g_1\\) se activa al mismo tiempo que \\(g_4\\)?"
+  },
+  {
+    "objectID": "clases/19/index.html#composición-jerárquica-de-fsm-1",
+    "href": "clases/19/index.html#composición-jerárquica-de-fsm-1",
+    "title": "Robótica",
+    "section": "Composición jerárquica de fsm",
+    "text": "Composición jerárquica de fsm\n\nSe evalúa la transición más profunda (o más refinada), luego la máquina de estado contenedor, luego su contenedora, y así sucesivamente\n\n\nEjemplo de composición jerárquica y su equivalente"
+  },
+  {
+    "objectID": "clases/19/index.html#bug0-con-fsm-jerárquica",
+    "href": "clases/19/index.html#bug0-con-fsm-jerárquica",
+    "title": "Robótica",
+    "section": "Bug0 con fsm jerárquica",
+    "text": "Bug0 con fsm jerárquica\n\n\n\nEjemplo 3: Bug0\n\nAlgoritmo\n\nPaso 1: El camino al objetivo está libre?\n\n✔️ Ir al objetivo\n❌ Continuar al paso 2\n\nPaso 2: Hay un obstáculo para evadir?\n\n✔️ Rodear obstáculo\n❌ Continuar al paso 1"
+  },
+  {
+    "objectID": "clases/19/index.html#bug0-con-fsm-jerárquica-1",
+    "href": "clases/19/index.html#bug0-con-fsm-jerárquica-1",
+    "title": "Robótica",
+    "section": "Bug0 con fsm jerárquica",
+    "text": "Bug0 con fsm jerárquica\n\n\n\nImplementación\n\n\nSe definen 2 estados independientes para \\(\\mathbf{M_1}\\) y \\(\\mathbf{M_2}\\):\n\nGo-to-point: g2p_state\nWall-follower: wf_state\n\nSe reutiliza el código de ambas fsm\nSe redefine la función de control y se predefinen los comandos de Twist\n\n\nclass GoToPoint(Node):\n  #...\n  def timer_callback(self):        \n    if self.wf_state == 0 and self.g2p_state != 3:\n      # Si no hay pared al frente\n      if self.g2p_state == 0:\n        self.msg = self.corregir_curso_izq()\n      elif self.g2p_state == 1:\n        self.msg = self.corregir_curso_der()\n      elif self.g2p_state == 2:\n        self.msg = self.avanzar()\n    elif self.wf_state == 1 and self.g2p_state != 3:\n      # Si tiene una pared al frente y \n      #   no llegó a destino\n      self.msg = self.girar_izq()\n    elif self.wf_state == 2 and self.g2p_state != 3:\n      # Si la pared está a la derecha y \n      #   no llegó a destino\n      self.msg = self.seguir_obstáculo()\n    elif self.g2p_state == 3:\n      self.finalizar()\n    else:\n      self.msg = Twist()\n      self.get_logger().error(\"Estado desconocido\")\n      pass"
+  },
+  {
+    "objectID": "clases/19/index.html#bug0-con-fsm-jerárquica-2",
+    "href": "clases/19/index.html#bug0-con-fsm-jerárquica-2",
+    "title": "Robótica",
+    "section": "Bug0 con fsm jerárquica",
+    "text": "Bug0 con fsm jerárquica\n\nProblema: Al ser un algoritmo básico tiene casos donde falla"
+  },
+  {
+    "objectID": "clases/19/index.html#alternativa-a-bug0-bug1",
+    "href": "clases/19/index.html#alternativa-a-bug0-bug1",
+    "title": "Robótica",
+    "section": "Alternativa a Bug0: Bug1",
+    "text": "Alternativa a Bug0: Bug1\n\nEjemplo 4: algoritmo Bug1\n\n\n\n\nAl encontrar un obstáculo, guardar la posición actual \\(H\\) y la distancia al objetivo \\(d_H\\)\nRodear completamente el obstáculo hasta volver a \\(H\\) obteniendo el punto de menor distancia al objetivo \\(L\\) tal que \\(d_L \\leq d_H\\)\nDirigirse nuevamente a \\(L\\) rodeando el objetivo, corregir el curso y continuar al objetivo\n\n\n\n\n\n\n\n\nAlgoritmo ineficiente pero eficaz"
+  },
+  {
+    "objectID": "clases/19/index.html#alternativa-a-bug1-bug2",
+    "href": "clases/19/index.html#alternativa-a-bug1-bug2",
+    "title": "Robótica",
+    "section": "Alternativa a Bug1: Bug2",
+    "text": "Alternativa a Bug1: Bug2\n\nEjemplo 5: algoritmo Bug2\n\n\n\n\nSe traza una recta entre el punto inicial y el objetivo\nAvanzar por la recta hasta que:\n\nSe alcance el objetivo (Fin)\nSe encuentra un obstáculo\n\nSeguir el contorno del objeto hasta que:\n\nSe alcance el objetivo (Fin)\nSe cruza la recta en un punto a menor distancia que la del punto de contacto (vuelve al paso anterior)"
+  },
+  {
+    "objectID": "clases/19/index.html#ejemplo-5-bug2",
+    "href": "clases/19/index.html#ejemplo-5-bug2",
+    "title": "Robótica",
+    "section": "Ejemplo 5: Bug2",
+    "text": "Ejemplo 5: Bug2\n\n\nAlgoritmo\n\n\nPaso 1: El camino al objetivo está libre?\n\n✔️ Girar al objetivo y avanzar\n❌ Continuar al paso 2\n\nPaso 2: Guardar la posición y rodear el obstáculo hacia la izquierda\nPaso 3: La posición actual cruza la recta?\n\n✔️ Si la distancia al objetivo es menor, volver al paso 1\n❌ El objetivo no puede alcanzarse"
+  },
+  {
+    "objectID": "clases/19/index.html#bug2-con-fsm",
+    "href": "clases/19/index.html#bug2-con-fsm",
+    "title": "Robótica",
+    "section": "Bug2 con fsm",
+    "text": "Bug2 con fsm\n\nIdentificar los componentes de la máquina\n\n\nEstados: \\(S = \\left\\{ \\textrm{GirarAlObjetivo}, \\textrm{Avanzar}, \\textrm{RodearObstaculo} \\right\\}\\)\nEntradas: \\(\\Sigma = \\left\\{ \\boldsymbol{P}, \\theta \\right\\} + \\left\\{  R_\\textrm{F}, R_\\textrm{FL}, R_\\textrm{FR} \\right\\}\\)\nSalidas: \\(\\Gamma = \\left\\{ \\nu, \\omega \\right\\}\\)\nParámetro: \\(\\boldsymbol{G}, d = \\textrm{DistanciaPared}\\)\nVariable: \\(\\gamma = \\textrm{CursoAlObjetivo}, \\boldsymbol{H} = \\textrm{PuntoContacto}, \\boldsymbol{P}_0 = \\textrm{Posición inicial}\\)\nEstado inicial: \\(s_0 = \\textrm{GirarAlObjetivo}\\)"
+  },
+  {
+    "objectID": "clases/19/index.html#bug2-con-fsm-1",
+    "href": "clases/19/index.html#bug2-con-fsm-1",
+    "title": "Robótica",
+    "section": "Bug2 con fsm",
+    "text": "Bug2 con fsm\n\nTabla de transición\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\gamma \\not\\approx 0\\)\n\\(\\gamma \\approx 0\\)\n\\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert \\approx 0\\)\n\\(R_\\textrm{F} &lt; d\\) \\[\\small \\begin{cases}R_\\textrm{F} &gt; d \\\\ R_\\textrm{FL} &gt; d \\\\ R_\\textrm{FR} &lt; d\\end{cases}\\]\n\\(\\boldsymbol{P} \\in \\overline{\\boldsymbol{P}_0 \\boldsymbol{G}}\\) \\(\\lVert \\boldsymbol{P} - \\boldsymbol{G} \\rVert &lt; \\lVert \\boldsymbol{H} - \\boldsymbol{G} \\rVert\\)\n\n\n\n\nGirar al objetivo\nGirar al objetivo\nAvanzar\n-\n-\n-\n\n\nAvanzar\nGirar al objetivo\n-\nFinalizar\nRodear obstáculo\\(\\boldsymbol{H}:=\\boldsymbol{P}\\)\n-\n\n\nRodear obstáculo\n-\n-\nFinalizar\nRodear obstáculo\nGirar al objetivo"
+  },
+  {
+    "objectID": "clases/19/index.html#bug2-con-fsm-2",
+    "href": "clases/19/index.html#bug2-con-fsm-2",
+    "title": "Robótica",
+    "section": "Bug2 con fsm",
+    "text": "Bug2 con fsm\n\nMáquina de estado"
+  },
+  {
+    "objectID": "clases/19/index.html#laboratorio-1",
+    "href": "clases/19/index.html#laboratorio-1",
+    "title": "Robótica",
+    "section": "Laboratorio",
+    "text": "Laboratorio\nImplementación Bug2 con fsm"
   },
   {
     "objectID": "clases/08/index.html#urdf-unified-robot-definition-format",
