@@ -1,0 +1,76 @@
+Para utilizar el modelo provisto debe descomprimir ambas carpetas del archivo `entregable-2.zip` dentro de una carpeta `models` dentro del paquete a utilizar. Luego debe modificar el archivo `setup.py` de dicho paquete para poder *instalar* los modelos:
+
+```{.python filename="setup.py"}
+from setuptools import find_packages, setup
+
+import os
+from glob import glob
+
+NOMBRE_DEL_PAQUETE = # Completar con el nombre del paquete
+
+setup(
+  name=NOMBRE_DEL_PAQUETE,
+  version='0.0.0',
+  packages=find_packages(exclude=['test']),
+  data_files=[
+    ('share/ament_index/resource_index/packages',
+      ['resource/' + NOMBRE_DEL_PAQUETE]),
+    # Install models inside the 'models/*' folder
+    *[(os.path.join('share', NOMBRE_DEL_PAQUETE, os.path.split(p)[0]), [p])
+      for p in glob(os.path.join('models', '**', '*.*'), recursive=True)]
+  ],
+  # ...
+)
+```
+
+Para insertar el modelo dentro del mundo de *Gazebo*:
+
+```{.python filename="gazebo.launch.py"}
+from launch import LaunchDescription
+from launch.actions import
+  IncludeLaunchDescription, AppendEnvironmentVariable
+from launch.substitutions import PathJoinSubstitution
+from launch.launch_description_sources import
+  PythonLaunchDescriptionSource
+from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
+# ...
+
+NOMBRE_DEL_PAQUETE = # Completar con el nombre del paquete
+
+def generate_launch_description():
+  gz_model_path = AppendEnvironmentVariable(
+    'GZ_SIM_RESOURCE_PATH',
+    PathJoinSubstitution([
+      FindPackageShare(NOMBRE_DEL_PAQUETE), "models"
+    ]),
+  )
+  
+  # Launch Gazebo
+  gz_sim = IncludeLaunchDescription(
+    PythonLaunchDescriptionSource(
+      PathJoinSubstitution(
+        [FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py']
+      ),
+    ),
+    launch_arguments={
+      'gz_args': '-r empty.sdf',
+    }.items()
+  )
+  
+  load_warehouse = Node(
+    package="ros_gz_sim",
+    executable="create",
+    arguments=[
+      "-entity", "warehouse",
+      "-file", "model://Warehouse",
+    ],
+    output="screen",
+  )
+
+  return LaunchDescription([
+    gz_model_path,
+    gz_sim,
+    load_warehouse,
+  ])
+```

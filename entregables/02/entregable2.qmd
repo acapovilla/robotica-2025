@@ -1,0 +1,90 @@
+---
+title: ""
+format:
+  pdf:
+    engine: pdflatex
+    documentclass: article
+    classoption: a4paper,12pt,oneside,final,onecolumn
+    lang: es
+    geometry:
+        - margin=1in
+    toc: false
+    number-sections: true
+    number-depth: 2
+    colorlinks: false
+# filters:
+#   - diagram
+# diagram:
+#     engine:
+#         tikz:
+#             execpath: pdflatex
+#             header-includes:
+#                 - '\usetikzlibrary{arrows.meta, shapes, intersections, calc}'
+#                 - '\usepackage{tikz-dimline}'
+#                 - '\usepackage{amsmath}'
+#                 - '\usepackage{adjustbox}'
+#                 - '\usepackage{graphicx}'
+---
+
+\begin{center}
+Introducción a la Robótica
+
+Tecnicatura en Automatización y Robótica
+
+FICH - UNL
+
+\huge Trabajo final integrador 
+
+\large Guía de trabajos prácticos 2025 - Entregable 2
+\end{center}
+
+
+- Fecha de entrega: a convenir con el docente
+
+- Formato de entrega: Archivo comprimido con el código fuente de los paquetes. Utilizar formato pdf en caso de entregar ejercicios de desarrollo o documentos de texto. Proveer en un archivo de texto `README.md` con los comandos necesarios para la ejecución de el/los paquete/s que respondan a la resolución de los ejercicios.
+
+- Archivos disponibles: `entregable-2.zip`
+  - 2 carpetas (`AprilTag_36h11` y `Warehouse`) con los modelos necesario para la simulación.
+
+# Descripción del escenario
+
+La empresa *Distribuidora Central S.A.*, dedicada a la gestión y almacenamiento de productos, enfrenta dificultades para verificar de manera eficiente si los pasillos de su depósito se encuentran despejados antes del inicio de las operaciones diarias. Con el objetivo de automatizar esta tarea, lo contrata a usted para desarrollar un sistema autónomo de inspección selectiva de pasillos.
+
+La empresa pone a disposición un robot móvil diferencial de iguales características al desarrollador en el **entregable 1**. Además, el prototipo cuenta con una cámara **Raspberry Pi Camera Module v2** y un sensor LIDAR **SLAMTEC RPLIDAR C1**, los cuales permiten la detección de marcadores y la identificación de obstáculos en el entorno.
+
+Para las primeras etapas del proyecto, la empresa solicita una demostración simulada del sistema de inspección antes de su implementación real en el depósito. Con este fin, el escenario fue relevado y modelado digitalmente en un archivo *SDF*, representando la disposición y características del espacio físico de la empresa. El entorno de trabajo corresponde a una zona de almacenamiento, conformada por ocho pasillos de estanterías, organizados en dos bloques de cuatro pasillos enfrentados y separados por un corredor central. A lo largo de este corredor se encuentra un trazado de línea guía que servirá como referencia para el desplazamiento del robot. Cada pasillo se encuentra identificado mediante un marcador ubicado en su entrada y otro a metros del inicio, lo que permitirá reconocer el número de identificación. Algunos pasillos pueden incluir obstáculos (por ejemplo cajas), cuya detección forma parte de la tarea de inspección solicitada.
+
+\newpage
+
+::: {layout="[[-20,60,-20], [-20,60,-20]]"}
+
+![](figura1.png)
+
+![](figura2.png)
+
+:::
+
+El robot iniciará su recorrido desde la zona de partida ubicada en coordenadas `x: -0.9 y: 0.5` (frame de referencia `world`) con orientación $\pi/2$ y deberá desplazarse hasta el pasillo cuyo identificador coincida con el número recibido como orden de inspección. Una vez frente a la entrada del pasillo designado, el robot deberá detenerse, realizar una inspección utilizando el sensor LIDAR y/o cámara, y determinar si el pasillo se encuentra libre o bloqueado. En caso de detectar un obstáculo, deberá informar la distancia aproximada desde la entrada del pasillo hasta el objeto detectado, como parte del reporte de inspección.
+
+# Funciones y comportamientos requeridos
+
+1. **Recepción del identificador de pasillo**: El robot deberá recibir un número de identificación de pasillo a través del topic `\inspection_goal` de tipo `std_msgs/Int32`
+2. **Seguimiento de línea**: Utilizando la cámara y un algoritmo de seguimiento de linea, deberá desplazarse a lo largo del trazado central, manteniendo la trayectoria indicada con linea amarilla
+3. **Identificación de pasillos**: Durante su desplazamiento, el robot deberá detectar los marcadores *AprilTag* ubicados en cada pasillo y reconocer su número de identificación
+4. **Inspección del pasillo**: Al identificar el marcador correspondiente al número de pasillo recibido, el robot deberá realizar la inspección del pasillo utilizando los sensores disponibles:
+    - En caso de detectar un obstáculo dentro del pasillo, estimar e informar la distancia entre la entrada del pasillo y el obstáculo más cercano
+    - En caso contrario, reportar que el pasillo se encuentra despejado
+
+<!--
+# Desafíos adicionales
+
+A continuación se detallan tareas o situaciones adicionales a resolver de forma opcional:
+
+- **Retorno al punto de partida**: Una vez finalizada la inspección del pasillo asignado, el robot deberá regresar de manera autónoma a la posición inicial, siguiendo nuevamente el trazado central, y quedar en estado de espera para recibir una nueva orden de inspección
+- **Gestión de múltiples tareas de inspección**: Extender el sistema para permitir que el robot reciba y ejecute una lista de identificadores de pasillos de manera secuencial, realizando la inspección de cada uno y reportando los resultados individualmente.
+- **Evitación de obstáculos en el corredor central**: Incorporar una estrategia básica de evasión de obstáculos que permita al robot esquivar elementos imprevistos durante el desplazamiento por el trazado central, sin abandonar significativamente la línea guía.
+-->
+
+# Anexo {.appendix .unnumbered}
+
+{{< include _appendixA.qmd >}}

@@ -34,6 +34,14 @@ format:
     >
     > [Archivos adicionales:]{.smallcaps} <a href="entregables/01/resources/entregable-1.zip" download target="_blank">`entregable-1.zip`</a>
 
+- ### Entregable 2 - Trabajo final integrador
+
+    > [Fecha de entrega: -]{.smallcaps}
+    >
+    > [Guía:]{.smallcaps} <a href="entregables/02/entregable2.pdf" download target="_blank">`entregable2.pdf`</a>
+    >
+    > [Archivos adicionales:]{.smallcaps} <a href="entregables/02/resources/entregable-2.zip" download target="_blank">`entregable-2.zip`</a>
+
 
 <!-- # Bibliografía -->
 
