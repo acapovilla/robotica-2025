@@ -2814,6 +2814,153 @@
     "text": "Laboratorio\nPoint-follower con campo potencial artificial"
   },
   {
+    "objectID": "clases/20/index.html#marcas-fiduciarias-1",
+    "href": "clases/20/index.html#marcas-fiduciarias-1",
+    "title": "Robótica",
+    "section": "Marcas fiduciarias",
+    "text": "Marcas fiduciarias\n\nObjeto dentro del campo de visión de una imágen utilizado como referencia o medida\n\n\n\nMúltiples aplicaciones\n\nMedicina: se necesita precisión menor a 1 [mm]\nRealidad aumentada: detectar superficies y orientaciones de forma correcta\nMetrología, fabricación de PCB, imprenta, entre otros\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLos marcadores fiduciales representan una herramienta eficaz para solucionar estos problemas en diversas aplicaciones y tareas de visión artificial, como la detección de objetos, la estimación de la posición de la cámara y cualquier tarea que requiera una fuente robusta de características de imagen."
+  },
+  {
+    "objectID": "clases/20/index.html#marcas-fiduciarias-2",
+    "href": "clases/20/index.html#marcas-fiduciarias-2",
+    "title": "Robótica",
+    "section": "Marcas fiduciarias",
+    "text": "Marcas fiduciarias\n\nAplicaciones en visión computacional y robótica\n\n\n\n\nPermiten un seguimiento 3D preciso para calcular la posición, la orientación y la escala de los objetos\nFormas con patrones específicos diseñados para una fácil detección en diferentes condiciones de iluminación, ángulos y distancias\nCada marcador forma parte de un sistema con un algoritmo de detección y una codificación\n\n\n\n\n\n\n\n\n\n\nLos marcadores fiduciales son objetos creados, como cuadrículas en blanco y negro, tableros de ajedrez o formas con patrones específicos. Estos marcadores se colocan en un entorno o escena para ayudar a los sistemas de imagen a encontrar puntos de referencia.\nEl término «fiducial» proviene del latín «fiducia», que significa confianza, reflejando su función como puntos de referencia fiables para mediciones espaciales.\nPrecisión: ofrece puntos de referencia confiables para un posicionamiento, alineación y seguimiento precisos. Esta característica mejora la precisión espacial en sistemas complejos como dispositivos de imagen, robots y plataformas de realidad aumentada.\nAutomatización: optimiza la calibración y la alineación. Esta propiedad de los marcadores fiduciales permite que las máquinas operen con mínima intervención humana en robótica y procesos de inspección automatizados.\nRepetibilidad: garantiza resultados consistentes en imágenes repetidas. Este caso de uso es vital en imágenes médicas, escaneo 3D y fabricación automatizada.\nSimplificación: facilita tareas como la detección de objetos, la reconstrucción 3D y la navegación espacial.\nSeguimiento en tiempo real: proporciona información instantánea para aplicaciones como la captura de movimiento, la navegación de drones y las simulaciones interactivas.\nRelación calidad-precio: ofrece soluciones asequibles y de alto valor para una funcionalidad y un rendimiento mejorados.\nEstas ventajas de los marcadores fiduciales los convierten en elementos invaluables tanto para la investigación como para las aplicaciones comerciales.\nUna vez aplicados y configurados correctamente, ayudan con el seguimiento, la localización, la calibración de cámaras y la detección de objetos en aplicaciones como la robótica, la realidad aumentada y la fabricación."
+  },
+  {
+    "objectID": "clases/20/index.html#apriltags",
+    "href": "clases/20/index.html#apriltags",
+    "title": "Robótica",
+    "section": "AprilTags",
+    "text": "AprilTags\n\nSistema visual muy utilizado en realidad aumentada y robótica\n\n\n\n\nLos marcadores pueden ser creados desde cualquier impresora\nEl software de detección calcula con precisión la posición y orientación 3D, junto con su ID\nSe diseño para una fácil integración en aplicaciones y sistemas embebidos\nEl algoritmo de detección está implementado en C y disponible Python, Matlab, Java e iOS\n\n\n\n\n\n\n\n\n\nDesarrollado por APRIL Robotics Laboratory at the University of Michigan\nAprilTag library implementation defines standards on how sets of tags should be designed\nAprilTags have been in development since 2011, and have been refined over the years to increase the robustness and speed of detection"
+  },
+  {
+    "objectID": "clases/20/index.html#apriltags-1",
+    "href": "clases/20/index.html#apriltags-1",
+    "title": "Robótica",
+    "section": "AprilTags",
+    "text": "AprilTags\n\nCódigo binario en 2D, como el código QR\nEstán diseñados para codificar muchos menos datos (entre 4 y 12 bits)\nPermite detectarlas con mayor robustez y desde mayores distancias\n\n\n\n\n\n\n\n\\(\\approx\\) 9bits de información\n\n\n\n\n\n\n\n50 caracteres\n\n\n\n\n\n\nA popular camera-based technology is AprilTag, a scanned image similar to a QR Code. Its effectiveness and quick set-up on custom Signal Sleeves led to wide adoption"
+  },
+  {
+    "objectID": "clases/20/index.html#apriltags-36h11",
+    "href": "clases/20/index.html#apriltags-36h11",
+    "title": "Robótica",
+    "section": "AprilTags 36h11",
+    "text": "AprilTags 36h11\n\n\n\nGrilla de 6x6 pixeles, cada celda representando 1 bit\nBorde adicional en blanco y luego negro alrededor\nTeoricamente \\(2^{36} = 68.719.476.736\\) valores, pero solo se utilizan \\(587\\):\n\nRobustez ante errores de color (bit-flip)\nNo incluir patrones simples (cuadrados o rayas)\nGarantizar asimetría para excluir rotaciones ambiguas\n\n\n\n\n\n\n\nID: 42"
+  },
+  {
+    "objectID": "clases/20/index.html#procesamiento",
+    "href": "clases/20/index.html#procesamiento",
+    "title": "Robótica",
+    "section": "Procesamiento",
+    "text": "Procesamiento"
+  },
+  {
+    "objectID": "clases/20/index.html#procesamiento-1",
+    "href": "clases/20/index.html#procesamiento-1",
+    "title": "Robótica",
+    "section": "Procesamiento",
+    "text": "Procesamiento\n\n\n\nEscala de grises + decimación"
+  },
+  {
+    "objectID": "clases/20/index.html#procesamiento-2",
+    "href": "clases/20/index.html#procesamiento-2",
+    "title": "Robótica",
+    "section": "Procesamiento",
+    "text": "Procesamiento\n\n\n\nEscala de grises + decimación\nUmbral adaptativo"
+  },
+  {
+    "objectID": "clases/20/index.html#procesamiento-3",
+    "href": "clases/20/index.html#procesamiento-3",
+    "title": "Robótica",
+    "section": "Procesamiento",
+    "text": "Procesamiento\n\n\n\nEscala de grises + decimación\nUmbral adaptativo\nSegmentación"
+  },
+  {
+    "objectID": "clases/20/index.html#procesamiento-4",
+    "href": "clases/20/index.html#procesamiento-4",
+    "title": "Robótica",
+    "section": "Procesamiento",
+    "text": "Procesamiento\n\n\n\nEscala de grises + decimación\nUmbral adaptativo\nSegmentación\nDetección de cuadriláteros"
+  },
+  {
+    "objectID": "clases/20/index.html#procesamiento-5",
+    "href": "clases/20/index.html#procesamiento-5",
+    "title": "Robótica",
+    "section": "Procesamiento",
+    "text": "Procesamiento\n\n\n\nEscala de grises + decimación\nUmbral adaptativo\nSegmentación\nDetección de cuadriláteros\nDecodificación de datos"
+  },
+  {
+    "objectID": "clases/20/index.html#procesamiento-6",
+    "href": "clases/20/index.html#procesamiento-6",
+    "title": "Robótica",
+    "section": "Procesamiento",
+    "text": "Procesamiento\n\n\n\nEscala de grises + decimación\nUmbral adaptativo\nSegmentación\nDetección de cuadriláteros\nDecodificación de datos\nResultado final\n\n\n\n\n\nhttps://docs.wpilib.org/en/stable/docs/software/vision-processing/apriltag/apriltag-intro.html#processing-technique"
+  },
+  {
+    "objectID": "clases/20/index.html#apriltag_ros",
+    "href": "clases/20/index.html#apriltag_ros",
+    "title": "Robótica",
+    "section": "apriltag_ros",
+    "text": "apriltag_ros\n\nPaquete para la detección de AprilTags en tiempo real\n\n\nNodo para procesar imágenes con el algoritmo AprilTag 3\nSoporta múltiples familias de tags\nPublica poses 3D y transformaciones tf2 de cada etiqueta detectada\nInstalación:\n  $ sudo apt install ros-jazzy-apriltag-ros\n\n\n\n\n\n\n\n\n\n\ngraphname\n\n\n\nt___detections\n\n\n/detections\n\n\n\n\n\nt___camera_info\n\n\n/camera_info\n\n\n\n\n\nn___apriltag\n\n\n/apriltag\n\n\n\n\n\nt___camera_info-&gt;n___apriltag\n\n\n\n\n\nn___apriltag-&gt;t___detections\n\n\n\n\n\nn_n__tf\n\n\n\n\n\n/tf\n\n\n\n\n\nn___apriltag-&gt;n_n__tf\n\n\n\n\n\nn___ros_gz_bridge\n\n\n/ros_gz_bridge\n\n\n\n\n\nn___ros_gz_bridge-&gt;t___camera_info\n\n\n\n\n\nt___camera\n\n\n/camera\n\n\n\n\n\nn___ros_gz_bridge-&gt;t___camera\n\n\n\n\n\nt___camera-&gt;n___apriltag\n\n\n\n\n\n\n\n\nFigure 1"
+  },
+  {
+    "objectID": "clases/20/index.html#nodo-apriltag_node",
+    "href": "clases/20/index.html#nodo-apriltag_node",
+    "title": "Robótica",
+    "section": "Nodo apriltag_node",
+    "text": "Nodo apriltag_node\n\nEjecución:\n  $ ros2 run apriltag_ros apriltag_node\nSuscribe:\n\n/image_rect de tipo sensor_msgs/Image\n/camera_info de tipo sensor_msgs/CameraInfo\n\nPublica:\n\n/detections de tipo apriltag_msgs/AprilTagDetectionArray\n/tf de tipo tf2_msgs/TFMessage"
+  },
+  {
+    "objectID": "clases/20/index.html#mensajes-apriltagdetection",
+    "href": "clases/20/index.html#mensajes-apriltagdetection",
+    "title": "Robótica",
+    "section": "Mensajes AprilTagDetection",
+    "text": "Mensajes AprilTagDetection\n\nEl nodo publica un arreglo de todas las detecciones encontradas:\n\n\n\nAprilTagDetectionArray.msg\n\nstd_msgs/Header header\nAprilTagDetection[] detections      ⬅️\n\n\nPor cada detección se tienen los siguientes datos:\n\n\n\nAprilTagDetection.msg\n\nstring family\nint32 id\nint32 hamming\nfloat32 goodness\nfloat32 decision_margin\nPoint centre                    # Centro en coordenadas de píxeles (x,y)\nPoint[4] corners                # Esquinas de la etiqueta ((x1,y1),(x2,y2),...)\nfloat64[9] homography           # Matriz homográfica (para conversión a Pose 3D)\n\n\n\nfamily: Familia del tag detectado Ej.: tag36h11, tag25h9, etc.\nid: Identificador único dentro de la familia\nhamming: Número de bits distintos entre el tag detectado y la mejor coincidencia válida\ngoodness: Indica qué tan bien coincide el borde detectado con el borde esperado\ndecision_margin: Cuanto mayor, más clara la diferencia entre cuadrados blancos/negros\ncentre: Posición del centro del tag en la imagen\ncorners: Coordenadas de las 4 esquinas en pixeles\nhomography: Matriz que proyecta puntos del plano del tag -&gt; plano de la imagen"
+  },
+  {
+    "objectID": "clases/20/index.html#nodo-apriltag_node-1",
+    "href": "clases/20/index.html#nodo-apriltag_node-1",
+    "title": "Robótica",
+    "section": "Nodo apriltag_node",
+    "text": "Nodo apriltag_node\n\nParámetros admitidos:\n\n\nfamily: Familia de etiquetas a detectar\nsize: Tamaño (por defecto) de las etiquetas\nmax_hamming: No aceptar etiquetasa con errores\ndetector:\n\ndecimate: Reducción de la resolución (min. \\(1.0\\))\nblur, refine y sharpening: Ajustar parámetros de la detección\ndebug: Mostrar resultados intermedios (False)\nthreads: Cantidad de hilos de CPU para detección (1)\n\npose_estimation_method: Algoritmo para estimar la Pose (pnp)\nimage_transport: Tipo de mensaje de imagen (raw o compressed)\n\n\nAdjustable Parameters\n\nDecimation: factor impacts how much the image is down-sampled before processing. Increasing it will increase detection speed, at the cost of not being able to see tags which are far away\nBlur: applies smoothing to the input image to decrease noise, which increases speed when fitting quads to pixels, at the cost of precision. For most good cameras, this may be left at zero.\nThreads changes the number of parallel threads which the algorithm uses to process the image. Certain steps may be sped up by allowing multithreading. In general, you want this to be approximately equal to the number of physical cores in your CPU, minus the number of cores which will be used for other processing tasks.\nTag size: https://github.com/AprilRobotics/apriltag#pose-estimation\n\nNote: The tag size should not be measured from the outside of the tag. The tag size is defined as the distance between the detection corners, or alternately, the length of the edge between the white border and the black border. The following illustration marks the detection corners with red Xs and the tag size with a red arrow for a tag from the 48h12Custom tag family."
+  },
+  {
+    "objectID": "clases/20/index.html#nodo-apriltag_node-2",
+    "href": "clases/20/index.html#nodo-apriltag_node-2",
+    "title": "Robótica",
+    "section": "Nodo apriltag_node",
+    "text": "Nodo apriltag_node\n\nSe recomienda crear un archivo de configuración yaml en la carpeta config:\n\n\n\napriltag-config.yaml\n\napriltag:                 # Nombre del nodo\n  ros__parameters:\n    image_transport: raw \n    family: 36h11         # Familia de la etiqueta\n    size: 0.12            # Tamaño por defecto en metros\n    profile: false\n\n    # Ajuste de la detección\n    max_hamming: 0\n    detector:\n      threads: 1\n      decimate: 1.0       # Si la imágen tuviese mucha resolución se recominda reducir\n      blur: 0.0\n      refine: true\n      sharpening: 0.25\n      debug: false\n\n    pose_estimation_method: \"pnp\""
+  },
+  {
+    "objectID": "clases/20/index.html#nodo-apriltag_node-3",
+    "href": "clases/20/index.html#nodo-apriltag_node-3",
+    "title": "Robótica",
+    "section": "Nodo apriltag_node",
+    "text": "Nodo apriltag_node\n\nAgregar al *.launch.py:\n\n    #.. \n    node_apriltag_detector = Node(\n        package = 'apriltag_ros',\n        executable = 'apriltag_node',\n        name = 'apriltag',\n        parameters = [\n            PathJoinSubstitution(\n              [FindPackageShare('&lt;NOMBRE_PAQUETE&gt;'), 'config', 'apriltag-config.yaml']\n            )\n        ],\n    )\n    #.."
+  },
+  {
+    "objectID": "clases/20/index.html#imágen-rectificada",
+    "href": "clases/20/index.html#imágen-rectificada",
+    "title": "Robótica",
+    "section": "Imágen rectificada",
+    "text": "Imágen rectificada\n\nPara calcular correctamente la pose 3D del marcador se necesita trabajar con una imagen sin distorsión\nLas cámaras reales introducen distorsiones que deforman líneas rectas y afectan la geometría proyectada\nLa rectificación corrige esas deformaciones utilizando la calibración de la cámara\n\n\n\n\n\n\n\n\nSe utiliza el rectify_node del paquete image_proc\n\n\n\n\n\n\n\n\n\n\n\n\ngraphname\n\n\n\nt___camera_info\n\n\n/camera_info\n\n\n\n\n\nn___apriltag\n\n\n/apriltag\n\n\n\n\n\nt___camera_info-&gt;n___apriltag\n\n\n\n\n\nn___RectifyNode\n\n\n/RectifyNode\n\n\n\n\n\nt___camera_info-&gt;n___RectifyNode\n\n\n\n\n\nt___detections\n\n\n/detections\n\n\n\n\n\nn___apriltag-&gt;t___detections\n\n\n\n\n\nn_n__tf\n\n\n\n\n\n/tf\n\n\n\n\n\nn___apriltag-&gt;n_n__tf\n\n\n\n\n\nt___image_rect\n\n\n/image_rect\n\n\n\n\n\nn___RectifyNode-&gt;t___image_rect\n\n\n\n\n\nn___ros_gz_bridge\n\n\n/ros_gz_bridge\n\n\n\n\n\nn___ros_gz_bridge-&gt;t___camera_info\n\n\n\n\n\nt___camera\n\n\n/camera\n\n\n\n\n\nn___ros_gz_bridge-&gt;t___camera\n\n\n\n\n\nt___camera-&gt;n___RectifyNode\n\n\n\n\n\nt___image_rect-&gt;n___apriltag\n\n\n\n\n\n\n\n\nFigure 2"
+  },
+  {
+    "objectID": "clases/20/index.html#launch-con-rectify_node",
+    "href": "clases/20/index.html#launch-con-rectify_node",
+    "title": "Robótica",
+    "section": "Launch con rectify_node",
+    "text": "Launch con rectify_node\n\n\nbringup.launch.py\n\n    #.. \n    node_image_proc = Node(\n        package = 'image_proc',\n        executable = 'rectify_node',\n        output = 'screen',\n        parameters = [{ 'use_sim_time': True }],\n        remappings=[\n            ('image', '/camera'),\n        ],\n    )\n    \n    apriltag_config_file = PathJoinSubstitution(\n        [FindPackageShare('&lt;NOMBRE_PAQUETE&gt;'), 'config', 'apriltag-config.yaml']\n    )\n    \n    node_apriltag_detector = Node(\n        package = 'apriltag_ros',\n        executable = 'apriltag_node',\n        name = 'apriltag',\n        output = 'screen',\n        parameters = [{ 'use_sim_time': True }, apriltag_config_file ],\n    )\n    #.."
+  },
+  {
+    "objectID": "clases/20/index.html#entregable-2-1",
+    "href": "clases/20/index.html#entregable-2-1",
+    "title": "Robótica",
+    "section": "Entregable 2",
+    "text": "Entregable 2\nAplicación práctica para AprilTags"
+  },
+  {
     "objectID": "index.html#universidad-nacional-del-litoral-unl",
     "href": "index.html#universidad-nacional-del-litoral-unl",
     "title": "Robótica 2025",
@@ -2895,7 +3042,7 @@
     "href": "clases/index.html",
     "title": "Clases",
     "section": "",
-    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.\n🖥️\n\n🛠️\n\n\n12\n02/06\nOdometría: Cálculo de posición en base al modelo cinemático directo.\n🖥️\n\n🛠️\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n🖥️\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nPresentación entregable 1\n\n\n\n\n\n16\n13/08\nSimulación de sensores en Gazebo\n🖥️\n🧪\n\n\n\n17\n20/08\nRevisión entregable 1\n🖥️\n\n\n\n\n19\n03/09\nCaso práctico simulación de sensors. Cámara. Seguidor de línea.\n🖥️\n🧪\n\n\n\n20\n10/09\nCaso práctico simulación de sensors (cont.)\n\n\n\n\n\n21\n17/09\nLocalización con odometría. Incertidumbre y estimación de posición.\n🖥️\n🧪\n\n\n\n23\n01/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, sin evasión de obstáculos\n🖥️\n🧪\n\n\n\n25\n15/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, con evasión de obstáculos\n🖥️\n🧪\n\n\n\n27\n29/10\nCognición: Programación de comportamiento. Máquinas de estados finitos\n🖥️\n🧪"
+    "text": "Note\n\n\n\nEl siguiente cronograma podrá ser actualizado con el correr del cursado\n\n\n\n\n\n\n\n\n\n\n\n\n\nSemana\nFecha\nTema\nSlides\nLab\nT.R\n\n\n\n\n1\n17/03\nIntroducción a la Robótica. Organización de la materia. Herramientas de trabajo.\n🖥️\n\n\n\n\n2\n24/03\nFeriado 24 de Marzo - Día nacional de la memoria por la verdad y la justicia\n\n\n\n\n\n3\n31/03\nROS2: Definición y propósito. Conceptos básicos (nodos, topics, mensajes). Instalación y ejemplos básicos.\n🖥️\n🧪\n\n\n\n4\n07/04\nROS2: Componentes adicionales (contexto, parámetros, servicios). Paquete y librerías. Ejercicios de aplicación.\n🖥️\n🧪\n\n\n\n5\n14/04\nRevisión conceptos clase anterior. Programación de nodos, compilación y ejecución.\n🖥️\n🧪\n\n\n\n6\n21/04\nProgramación Orientada a Objetos aplicada en ROS2. Ejemplos de aplicación.\n🖥️\n🧪\n\n\n\n7\n28/04\nParámetros en nodos y roslaunch, programación y ventajas de uso en proyectos de ROS2. Logging. Práctica integradora unidad 1.\n🖥️\n🧪\n\n\n\n8\n05/05\nTraslación y rotación 2D. Transformaciones homogéneas. ROS2 R.E.P. y paquete tf2.\n🖥️\n🧪\n\n\n\n9\n12/05\nU.R.D.F: Representación de geometría de un robot. Uso de XACRO, robot_state_publisher y tf2.\n🖥️\n\n🛠️\n\n\n10\n19/05\nGazebo: Entorno de simulación. Uso conjunto con ROS2. Paquete ros2_control y gz_ros2_contol. Hardware interface y controladores.\n🖥️\n\n🛠️\n\n\n11\n26/05\nCinemática y locomoción: modelo cinemático de un robot diferencial. Cinemática inversa y directa.\n🖥️\n\n🛠️\n\n\n12\n02/06\nOdometría: Cálculo de posición en base al modelo cinemático directo.\n🖥️\n\n🛠️\n\n\n13\n09/06\nPercepción: sensores. Clasificación y caracterización. Tipos y ejemplos según variable a medir.\n🖥️\n\n\n\n\n14\n16/06\nFeriado 17 de Junio - Paso a la inmortalidad del Gral. Martín de Güemes (trasladable, 16 de junio)\n\n\n\n\n\n15\n23/06\nPresentación entregable 1\n\n\n\n\n\n16\n13/08\nSimulación de sensores en Gazebo\n🖥️\n🧪\n\n\n\n17\n20/08\nRevisión entregable 1\n🖥️\n\n\n\n\n19\n03/09\nCaso práctico simulación de sensors. Cámara. Seguidor de línea.\n🖥️\n🧪\n\n\n\n20\n10/09\nCaso práctico simulación de sensors (cont.)\n\n\n\n\n\n21\n17/09\nLocalización con odometría. Incertidumbre y estimación de posición.\n🖥️\n🧪\n\n\n\n23\n01/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, sin evasión de obstáculos\n🖥️\n🧪\n\n\n\n25\n15/10\nDiseño, análisis e implementación de un controlador a lazo cerrado, con evasión de obstáculos\n🖥️\n🧪\n\n\n\n27\n29/10\nCognición: Programación de comportamiento. Máquinas de estados finitos\n🖥️\n🧪\n\n\n\n30\n19/11\nMarcas fiduciarias y etiquetas visuales. Caso práctico con AprilTags\n🖥️"
   },
   {
     "objectID": "clases/index.html#universidad-nacional-del-litoral-unl",

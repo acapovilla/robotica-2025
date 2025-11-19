@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
+
+  <title>Robótica 2025 – Robótica</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbddfaabaaccfd8a5ddbf403c6be5566.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Robótica</h1>
+  <p class="subtitle">Clase 20</p>
+
+<div class="quarto-title-authors">
+</div>
+
+  <p class="date">Semana 30 - 19/11/2025</p>
+</section>
+<section>
+
+<section id="marcas-fiduciarias-1" class="slide level2 smaller">
+<h2>Marcas fiduciarias</h2>
+<blockquote>
+<p>Objeto dentro del campo de visión de una imágen utilizado como referencia o medida</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<h4 id="múltiples-aplicaciones">Múltiples aplicaciones</h4>
+<ul>
+<li><u>Medicina</u>: se necesita precisión menor a 1 [mm]</li>
+<li><u>Realidad aumentada</u>: detectar superficies y orientaciones de forma correcta</li>
+<li>Metrología, fabricación de PCB, imprenta, entre otros</li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/23220-Spectral-Sensor-Scale-Croped.jpg" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/14520-SparkFun_Capacitive_Touch_Breakout_-Annotated.jpg" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
+</figure>
+</div>
+</div></div>
+<aside class="notes">
+<p>Los marcadores fiduciales representan una herramienta eficaz para solucionar estos problemas en diversas aplicaciones y tareas de visión artificial, como la detección de objetos, la estimación de la posición de la cámara y cualquier tarea que requiera una fuente robusta de características de imagen.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="marcas-fiduciarias-2" class="slide level2 smaller">
+<h2>Marcas fiduciarias</h2>
+<blockquote>
+<p>Aplicaciones en visión computacional y robótica</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Permiten un seguimiento 3D preciso para calcular la posición, la orientación y la escala de los objetos</li>
+<li>Formas con patrones específicos diseñados para una fácil detección en diferentes condiciones de iluminación, ángulos y distancias</li>
+<li>Cada marcador forma parte de un sistema con un algoritmo de detección y una codificación</li>
+</ul>
+</div><div class="column">
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.it-jim.com/wp-content/uploads/2025/05/existing-fiducial-marker-systems-min.jpg" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div></div>
+<aside class="notes">
+<p>Los marcadores fiduciales son objetos creados, como cuadrículas en blanco y negro, tableros de ajedrez o formas con patrones específicos. Estos marcadores se colocan en un entorno o escena para ayudar a los sistemas de imagen a encontrar puntos de referencia.</p>
+<p>El término «fiducial» proviene del latín «fiducia», que significa confianza, reflejando su función como puntos de referencia fiables para mediciones espaciales.</p>
+<p>Precisión: ofrece puntos de referencia confiables para un posicionamiento, alineación y seguimiento precisos. Esta característica mejora la precisión espacial en sistemas complejos como dispositivos de imagen, robots y plataformas de realidad aumentada.</p>
+<p>Automatización: optimiza la calibración y la alineación. Esta propiedad de los marcadores fiduciales permite que las máquinas operen con mínima intervención humana en robótica y procesos de inspección automatizados.</p>
+<p>Repetibilidad: garantiza resultados consistentes en imágenes repetidas. Este caso de uso es vital en imágenes médicas, escaneo 3D y fabricación automatizada.</p>
+<p>Simplificación: facilita tareas como la detección de objetos, la reconstrucción 3D y la navegación espacial.</p>
+<p>Seguimiento en tiempo real: proporciona información instantánea para aplicaciones como la captura de movimiento, la navegación de drones y las simulaciones interactivas.</p>
+<p>Relación calidad-precio: ofrece soluciones asequibles y de alto valor para una funcionalidad y un rendimiento mejorados.</p>
+<p>Estas ventajas de los marcadores fiduciales los convierten en elementos invaluables tanto para la investigación como para las aplicaciones comerciales.</p>
+<p>Una vez aplicados y configurados correctamente, ayudan con el seguimiento, la localización, la calibración de cámaras y la detección de objetos en aplicaciones como la robótica, la realidad aumentada y la fabricación.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+</section>
+<section>
+
+<section id="apriltags" class="slide level2 smaller">
+<h2>AprilTags</h2>
+<blockquote>
+<p>Sistema visual muy utilizado en realidad aumentada y robótica</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Los marcadores pueden ser creados desde cualquier impresora</li>
+<li>El software de detección calcula con precisión la posición y orientación 3D, junto con su <em>ID</em></li>
+<li>Se diseño para una fácil integración en aplicaciones y sistemas embebidos</li>
+<li>El algoritmo de detección está implementado en C y disponible <em>Python</em>, <em>Matlab</em>, <em>Java</em> e <em>iOS</em></li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://april.eecs.umich.edu/media/apriltag/tagformats_web.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+<aside class="notes">
+<p>Desarrollado por APRIL Robotics Laboratory at the University of Michigan</p>
+<p>AprilTag library implementation defines standards on how sets of tags should be designed</p>
+<p>AprilTags have been in development since 2011, and have been refined over the years to increase the robustness and speed of detection</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="apriltags-1" class="slide level2 smaller">
+<h2>AprilTags</h2>
+<ul>
+<li>Código binario en 2D, como el código <em>QR</em></li>
+<li>Están diseñados para codificar muchos menos datos (entre 4 y 12 bits)</li>
+<li>Permite detectarlas con mayor robustez y desde mayores distancias</li>
+</ul>
+<div class="quarto-layout-panel" data-layout-ncol="2" style="text-align:center;">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/tag36h11-42.png" style="width:60.0%"></p>
+<figcaption><span class="math inline">\(\approx\)</span> 9bits de información</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Qr-4.svg/1280px-Qr-4.svg.png" style="width:60.0%"></p>
+<figcaption>50 caracteres</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>A popular camera-based technology is AprilTag, a scanned image similar to a QR Code. Its effectiveness and quick set-up on custom Signal Sleeves led to wide adoption</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="apriltags-36h11" class="slide level2 smaller">
+<h2>AprilTags 36h11</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Grilla de 6x6 pixeles, cada celda representando 1 bit</li>
+<li>Borde adicional en blanco y luego negro alrededor</li>
+<li>Teoricamente <span class="math inline">\(2^{36} = 68.719.476.736\)</span> valores, pero solo se utilizan <span class="math inline">\(587\)</span>:
+<ul>
+<li>Robustez ante errores de color (<em>bit-flip</em>)</li>
+<li>No incluir patrones simples (cuadrados o rayas)</li>
+<li>Garantizar asimetría para excluir rotaciones ambiguas</li>
+</ul></li>
+</ul>
+</div><div class="column">
+<div style="text-align:center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="tag36h11-42.png" style="width:75.0%"></p>
+<figcaption><code>ID: 42</code></figcaption>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="procesamiento" class="slide level2">
+<h2>Procesamiento</h2>
+<div class="columns">
+<div class="column">
+
+</div><div class="column">
+<p><img data-src="https://docs.wpilib.org/en/stable/_images/orig_img.webp"></p>
+</div></div>
+</section>
+<section id="procesamiento-1" class="slide level2">
+<h2>Procesamiento</h2>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>Escala de grises + decimación</li>
+</ol>
+</div><div class="column">
+<p><img data-src="https://docs.wpilib.org/en/stable/_images/decimate.webp"></p>
+</div></div>
+</section>
+<section id="procesamiento-2" class="slide level2">
+<h2>Procesamiento</h2>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>Escala de grises + decimación</li>
+<li>Umbral adaptativo</li>
+</ol>
+</div><div class="column">
+<p><img data-src="https://docs.wpilib.org/en/stable/_images/adaptive_threshold.webp"></p>
+</div></div>
+</section>
+<section id="procesamiento-3" class="slide level2">
+<h2>Procesamiento</h2>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>Escala de grises + decimación</li>
+<li>Umbral adaptativo</li>
+<li>Segmentación</li>
+</ol>
+</div><div class="column">
+<p><img data-src="https://docs.wpilib.org/en/stable/_images/segmentation.webp"></p>
+</div></div>
+</section>
+<section id="procesamiento-4" class="slide level2">
+<h2>Procesamiento</h2>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>Escala de grises + decimación</li>
+<li>Umbral adaptativo</li>
+<li>Segmentación</li>
+<li>Detección de cuadriláteros</li>
+</ol>
+</div><div class="column">
+<p><img data-src="https://docs.wpilib.org/en/stable/_images/detected_quads.webp"></p>
+</div></div>
+</section>
+<section id="procesamiento-5" class="slide level2">
+<h2>Procesamiento</h2>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>Escala de grises + decimación</li>
+<li>Umbral adaptativo</li>
+<li>Segmentación</li>
+<li>Detección de cuadriláteros</li>
+<li>Decodificación de datos</li>
+</ol>
+</div><div class="column">
+<p><img data-src="https://docs.wpilib.org/en/stable/_images/decode_id.webp"></p>
+</div></div>
+</section>
+<section id="procesamiento-6" class="slide level2">
+<h2>Procesamiento</h2>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>Escala de grises + decimación</li>
+<li>Umbral adaptativo</li>
+<li>Segmentación</li>
+<li>Detección de cuadriláteros</li>
+<li>Decodificación de datos</li>
+<li>Resultado final</li>
+</ol>
+</div><div class="column">
+<p><img data-src="https://docs.wpilib.org/en/stable/_images/fit_ext_quad.webp"></p>
+</div></div>
+<aside class="notes">
+<p>https://docs.wpilib.org/en/stable/docs/software/vision-processing/apriltag/apriltag-intro.html#processing-technique</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="apriltag_ros" class="slide level2 smaller">
+<h2><code>apriltag_ros</code></h2>
+<blockquote>
+<p>Paquete para la detección de AprilTags en tiempo real</p>
+</blockquote>
+<ul>
+<li><p>Nodo para procesar imágenes con el algoritmo <em>AprilTag 3</em></p></li>
+<li><p>Soporta múltiples familias de tags</p></li>
+<li><p>Publica poses 3D y transformaciones <code>tf2</code> de cada etiqueta detectada</p></li>
+<li><p>Instalación:</p>
+<pre><code>  $ sudo apt install ros-jazzy-apriltag-ros</code></pre></li>
+</ul>
+<div style="margin-top: -3em;">
+<div class="cell" data-file="apriltag-topics.dot" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-apriltag-topics" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-apriltag-topics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 508.00 98.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
+<title>graphname</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-94 504,-94 504,4 -4,4"></polygon>
+<!-- t___detections -->
+<g id="node1" class="node">
+<title>t___detections</title>
+<g id="a_node1"><a href="topic_3A__detections" title="topic:/detections">
+<polygon fill="none" stroke="black" points="500,-90 405,-90 405,-54 500,-54 500,-90"></polygon>
+<text text-anchor="middle" x="452.5" y="-67.8" font-family="Times,serif" font-size="14.00">/detections</text>
+</a>
+</g>
+</g>
+<!-- t___camera_info -->
+<g id="node2" class="node">
+<title>t___camera_info</title>
+<g id="a_node2"><a href="topic_3A__camera_info" title="topic:/camera_info">
+<polygon fill="none" stroke="black" points="277,-90 170,-90 170,-54 277,-54 277,-90"></polygon>
+<text text-anchor="middle" x="223.5" y="-67.8" font-family="Times,serif" font-size="14.00">/camera_info</text>
+</a>
+</g>
+</g>
+<!-- n___apriltag -->
+<g id="node3" class="node">
+<title>n___apriltag</title>
+<g id="a_node3"><a href="__apriltag" title="/apriltag">
+<ellipse fill="none" stroke="black" cx="341" cy="-45" rx="50" ry="18"></ellipse>
+<text text-anchor="middle" x="341" y="-40.8" font-family="Times,serif" font-size="14.00">/apriltag</text>
+</a>
+</g>
+</g>
+<!-- t___camera_info&#45;&gt;n___apriltag -->
+<g id="edge1" class="edge">
+<title>t___camera_info-&gt;n___apriltag</title>
+<path fill="none" stroke="black" d="M277.18,-59.69C280.97,-58.8 284.8,-57.91 288.58,-57.02"></path>
+<polygon fill="black" stroke="black" points="289.53,-60.39 298.47,-54.71 287.94,-53.58 289.53,-60.39"></polygon>
+</g>
+<!-- n___apriltag&#45;&gt;t___detections -->
+<g id="edge3" class="edge">
+<title>n___apriltag-&gt;t___detections</title>
+<path fill="none" stroke="black" d="M382.77,-55.05C386.7,-56.02 390.72,-57.01 394.77,-58.01"></path>
+<polygon fill="black" stroke="black" points="394.24,-61.49 404.79,-60.48 395.92,-54.69 394.24,-61.49"></polygon>
+</g>
+<!-- n_n__tf -->
+<g id="node6" class="node">
+<title>n_n__tf</title>
+<g id="a_node6"><a href="topic_3A__tf" title="topic:/tf">
+<polygon fill="none" stroke="black" points="479.5,-36 429.5,-36 425.5,-32 425.5,0 475.5,0 479.5,-4 479.5,-36"></polygon>
+<polyline fill="none" stroke="black" points="475.5,-32 425.5,-32 "></polyline>
+<polyline fill="none" stroke="black" points="475.5,-32 475.5,0 "></polyline>
+<polyline fill="none" stroke="black" points="475.5,-32 479.5,-36 "></polyline>
+<text text-anchor="middle" x="452.5" y="-13.8" font-family="Times,serif" font-size="14.00">/tf</text>
+</a>
+</g>
+</g>
+<!-- n___apriltag&#45;&gt;n_n__tf -->
+<g id="edge4" class="edge">
+<title>n___apriltag-&gt;n_n__tf</title>
+<path fill="none" stroke="black" d="M382.77,-34.95C393.45,-32.31 404.88,-29.5 415.29,-26.93"></path>
+<polygon fill="black" stroke="black" points="416.43,-30.25 425.3,-24.46 414.76,-23.46 416.43,-30.25"></polygon>
+</g>
+<!-- n___ros_gz_bridge -->
+<g id="node4" class="node">
+<title>n___ros_gz_bridge</title>
+<g id="a_node4"><a href="__ros_gz_bridge" title="/ros_gz_bridge">
+<ellipse fill="none" stroke="black" cx="78" cy="-45" rx="78" ry="18"></ellipse>
+<text text-anchor="middle" x="78" y="-40.8" font-family="Times,serif" font-size="14.00">/ros_gz_bridge</text>
+</a>
+</g>
+</g>
+<!-- n___ros_gz_bridge&#45;&gt;t___camera_info -->
+<g id="edge5" class="edge">
+<title>n___ros_gz_bridge-&gt;t___camera_info</title>
+<path fill="none" stroke="black" d="M139.03,-56.29C145.84,-57.58 152.79,-58.88 159.64,-60.17"></path>
+<polygon fill="black" stroke="black" points="159.09,-63.63 169.56,-62.04 160.38,-56.75 159.09,-63.63"></polygon>
+</g>
+<!-- t___camera -->
+<g id="node5" class="node">
+<title>t___camera</title>
+<g id="a_node5"><a href="topic_3A__camera" title="topic:/camera">
+<polygon fill="none" stroke="black" points="260.5,-36 186.5,-36 186.5,0 260.5,0 260.5,-36"></polygon>
+<text text-anchor="middle" x="223.5" y="-13.8" font-family="Times,serif" font-size="14.00">/camera</text>
+</a>
+</g>
+</g>
+<!-- n___ros_gz_bridge&#45;&gt;t___camera -->
+<g id="edge6" class="edge">
+<title>n___ros_gz_bridge-&gt;t___camera</title>
+<path fill="none" stroke="black" d="M139.03,-33.71C151.5,-31.36 164.46,-28.92 176.34,-26.68"></path>
+<polygon fill="black" stroke="black" points="177.29,-30.07 186.47,-24.78 175.99,-23.19 177.29,-30.07"></polygon>
+</g>
+<!-- t___camera&#45;&gt;n___apriltag -->
+<g id="edge2" class="edge">
+<title>t___camera-&gt;n___apriltag</title>
+<path fill="none" stroke="black" d="M260.73,-26.47C269.66,-28.56 279.4,-30.83 288.9,-33.05"></path>
+<polygon fill="black" stroke="black" points="288.13,-36.47 298.66,-35.34 289.72,-29.65 288.13,-36.47"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-apriltag-topics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nodo-apriltag_node" class="slide level2 smaller">
+<h2>Nodo <code>apriltag_node</code></h2>
+<ul>
+<li><p>Ejecución:</p>
+<pre><code>  $ ros2 run apriltag_ros apriltag_node</code></pre></li>
+<li><p><u>Suscribe</u>:</p>
+<ul>
+<li><code>/image_rect</code> de tipo <code>sensor_msgs/Image</code></li>
+<li><code>/camera_info</code> de tipo <code>sensor_msgs/CameraInfo</code></li>
+</ul></li>
+<li><p><u>Publica</u>:</p>
+<ul>
+<li><code>/detections</code> de tipo <code>apriltag_msgs/AprilTagDetectionArray</code></li>
+<li><code>/tf</code> de tipo <code>tf2_msgs/TFMessage</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="mensajes-apriltagdetection" class="slide level2 smaller">
+<h2>Mensajes <code>AprilTagDetection</code></h2>
+<ul>
+<li>El nodo publica un arreglo de todas las detecciones encontradas:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>AprilTagDetectionArray.msg</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="AprilTagDetectionArray.msg" data-code-line-numbers=""><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb3-1"><a></a>std_msgs/Header header</span>
+<span id="cb3-2"><a></a>AprilTagDetection[] detections      ⬅️</span></code></pre></div>
+</div>
+<ul>
+<li>Por cada detección se tienen los siguientes datos:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>AprilTagDetection.msg</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="AprilTagDetection.msg" data-code-line-numbers="|1|2|3-5|6|7|8"><pre class="sourceCode numberSource default number-lines"><code class="sourceCode default"><span id="cb4-1"><a></a>string family</span>
+<span id="cb4-2"><a></a>int32 id</span>
+<span id="cb4-3"><a></a>int32 hamming</span>
+<span id="cb4-4"><a></a>float32 goodness</span>
+<span id="cb4-5"><a></a>float32 decision_margin</span>
+<span id="cb4-6"><a></a>Point centre                    # Centro en coordenadas de píxeles (x,y)</span>
+<span id="cb4-7"><a></a>Point[4] corners                # Esquinas de la etiqueta ((x1,y1),(x2,y2),...)</span>
+<span id="cb4-8"><a></a>float64[9] homography           # Matriz homográfica (para conversión a Pose 3D)</span></code></pre></div>
+</div>
+<aside class="notes">
+<ul>
+<li>family: Familia del tag detectado Ej.: tag36h11, tag25h9, etc.</li>
+<li>id: Identificador único dentro de la familia</li>
+<li>hamming: Número de bits distintos entre el tag detectado y la mejor coincidencia válida</li>
+<li>goodness: Indica qué tan bien coincide el borde detectado con el borde esperado</li>
+<li>decision_margin: Cuanto mayor, más clara la diferencia entre cuadrados blancos/negros</li>
+<li>centre: Posición del centro del tag en la imagen</li>
+<li>corners: Coordenadas de las 4 esquinas en pixeles</li>
+<li>homography: Matriz que proyecta puntos del plano del tag -&gt; plano de la imagen</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="nodo-apriltag_node-1" class="slide level2 smaller">
+<h2>Nodo <code>apriltag_node</code></h2>
+<blockquote>
+<p>Parámetros admitidos:</p>
+</blockquote>
+<ul>
+<li class="fragment"><code>family</code>: Familia de etiquetas a detectar</li>
+<li class="fragment"><code>size</code>: Tamaño (por defecto) de las etiquetas</li>
+<li class="fragment"><code>max_hamming</code>: No aceptar etiquetasa <em>con errores</em></li>
+<li class="fragment"><code>detector</code>:
+<ul>
+<li class="fragment"><code>decimate</code>: Reducción de la resolución (min. <span class="math inline">\(1.0\)</span>)</li>
+<li class="fragment"><code>blur</code>, <code>refine</code> y <code>sharpening</code>: Ajustar parámetros de la detección</li>
+<li class="fragment"><code>debug</code>: Mostrar resultados intermedios (<code>False</code>)</li>
+<li class="fragment"><code>threads</code>: Cantidad de hilos de CPU para detección (1)</li>
+</ul></li>
+<li class="fragment"><code>pose_estimation_method</code>: Algoritmo para estimar la <em>Pose</em> (<code>pnp</code>)</li>
+<li class="fragment"><code>image_transport</code>: Tipo de mensaje de imagen (<code>raw</code> o <code>compressed</code>)</li>
+</ul>
+<aside class="notes">
+<p>Adjustable Parameters</p>
+<ul>
+<li><p>Decimation: factor impacts how much the image is down-sampled before processing. Increasing it will increase detection speed, at the cost of not being able to see tags which are far away</p></li>
+<li><p>Blur: applies smoothing to the input image to decrease noise, which increases speed when fitting quads to pixels, at the cost of precision. For most good cameras, this may be left at zero.</p></li>
+<li><p>Threads changes the number of parallel threads which the algorithm uses to process the image. Certain steps may be sped up by allowing multithreading. In general, you want this to be approximately equal to the number of physical cores in your CPU, minus the number of cores which will be used for other processing tasks.</p></li>
+<li><p>Tag size: https://github.com/AprilRobotics/apriltag#pose-estimation</p></li>
+</ul>
+<p>Note: The tag size should not be measured from the outside of the tag. The tag size is defined as the distance between the detection corners, or alternately, the length of the edge between the white border and the black border. The following illustration marks the detection corners with red Xs and the tag size with a red arrow for a tag from the 48h12Custom tag family.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="nodo-apriltag_node-2" class="slide level2 smaller">
+<h2>Nodo <code>apriltag_node</code></h2>
+<ul>
+<li>Se recomienda crear un archivo de configuración <code>yaml</code> en la carpeta <code>config</code>:</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>apriltag-config.yaml</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="apriltag-config.yaml" data-code-line-numbers="False"><pre class="sourceCode numberSource yaml number-lines"><code class="sourceCode yaml"><span id="cb5-1"><a></a><span class="fu">apriltag</span><span class="kw">:</span><span class="co">                 # Nombre del nodo</span></span>
+<span id="cb5-2"><a></a><span class="at">  </span><span class="fu">ros__parameters</span><span class="kw">:</span></span>
+<span id="cb5-3"><a></a><span class="at">    </span><span class="fu">image_transport</span><span class="kw">:</span><span class="at"> raw </span></span>
+<span id="cb5-4"><a></a><span class="at">    </span><span class="fu">family</span><span class="kw">:</span><span class="at"> 36h11</span><span class="co">         # Familia de la etiqueta</span></span>
+<span id="cb5-5"><a></a><span class="at">    </span><span class="fu">size</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.12</span><span class="co">            # Tamaño por defecto en metros</span></span>
+<span id="cb5-6"><a></a><span class="at">    </span><span class="fu">profile</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a><span class="co">    # Ajuste de la detección</span></span>
+<span id="cb5-9"><a></a><span class="at">    </span><span class="fu">max_hamming</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
+<span id="cb5-10"><a></a><span class="at">    </span><span class="fu">detector</span><span class="kw">:</span></span>
+<span id="cb5-11"><a></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb5-12"><a></a><span class="at">      </span><span class="fu">decimate</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0</span><span class="co">       # Si la imágen tuviese mucha resolución se recominda reducir</span></span>
+<span id="cb5-13"><a></a><span class="at">      </span><span class="fu">blur</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.0</span></span>
+<span id="cb5-14"><a></a><span class="at">      </span><span class="fu">refine</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-15"><a></a><span class="at">      </span><span class="fu">sharpening</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.25</span></span>
+<span id="cb5-16"><a></a><span class="at">      </span><span class="fu">debug</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-17"><a></a></span>
+<span id="cb5-18"><a></a><span class="at">    </span><span class="fu">pose_estimation_method</span><span class="kw">:</span><span class="at"> </span><span class="st">"pnp"</span></span></code></pre></div>
+</div>
+</section>
+<section id="nodo-apriltag_node-3" class="slide level2 smaller">
+<h2>Nodo <code>apriltag_node</code></h2>
+<ul>
+<li>Agregar al <code>*.launch.py</code>:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">#.. </span></span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>    node_apriltag_detector <span class="op">=</span> Node(</span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>        package <span class="op">=</span> <span class="st">'apriltag_ros'</span>,</span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>        executable <span class="op">=</span> <span class="st">'apriltag_node'</span>,</span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> <span class="st">'apriltag'</span>,</span>
+<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a>        parameters <span class="op">=</span> [</span>
+<span id="cb6-7"><a aria-hidden="true" tabindex="-1"></a>            PathJoinSubstitution(</span>
+<span id="cb6-8"><a aria-hidden="true" tabindex="-1"></a>              [FindPackageShare(<span class="st">'&lt;NOMBRE_PAQUETE&gt;'</span>), <span class="st">'config'</span>, <span class="st">'apriltag-config.yaml'</span>]</span>
+<span id="cb6-9"><a aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb6-10"><a aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb6-11"><a aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-12"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">#.. </span></span></code></pre></div>
+</section>
+<section id="imágen-rectificada" class="slide level2 smaller">
+<h2>Imágen rectificada</h2>
+<ul>
+<li>Para calcular correctamente la pose 3D del marcador se necesita trabajar con una imagen sin distorsión</li>
+<li>Las cámaras reales introducen distorsiones que deforman líneas rectas y afectan la geometría proyectada</li>
+<li>La rectificación corrige esas deformaciones utilizando la calibración de la cámara</li>
+</ul>
+<p><br></p>
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Se utiliza el <code>rectify_node</code> del paquete <code>image_proc</code></p>
+</div>
+</div>
+</div>
+<div style="margin-top: -3em;">
+<div class="cell" data-file="image-rect-topics.dot" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-image-rect-topics" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-image-rect-topics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 778.00 102.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 98)">
+<title>graphname</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-98 774,-98 774,4 -4,4"></polygon>
+<!-- t___camera_info -->
+<g id="node1" class="node">
+<title>t___camera_info</title>
+<g id="a_node1"><a href="topic_3A__camera_info" title="topic:/camera_info">
+<polygon fill="none" stroke="black" points="277,-90 170,-90 170,-54 277,-54 277,-90"></polygon>
+<text text-anchor="middle" x="223.5" y="-67.8" font-family="Times,serif" font-size="14.00">/camera_info</text>
+</a>
+</g>
+</g>
+<!-- n___apriltag -->
+<g id="node2" class="node">
+<title>n___apriltag</title>
+<g id="a_node2"><a href="__apriltag" title="/apriltag">
+<ellipse fill="none" stroke="black" cx="611" cy="-49" rx="50" ry="18"></ellipse>
+<text text-anchor="middle" x="611" y="-44.8" font-family="Times,serif" font-size="14.00">/apriltag</text>
+</a>
+</g>
+</g>
+<!-- t___camera_info&#45;&gt;n___apriltag -->
+<g id="edge1" class="edge">
+<title>t___camera_info-&gt;n___apriltag</title>
+<path fill="none" stroke="black" d="M277.01,-68.98C340.84,-65.29 451.83,-58.82 547,-53 548.47,-52.91 549.96,-52.82 551.46,-52.73"></path>
+<polygon fill="black" stroke="black" points="551.74,-56.22 561.5,-52.1 551.31,-49.23 551.74,-56.22"></polygon>
+</g>
+<!-- n___RectifyNode -->
+<g id="node3" class="node">
+<title>n___RectifyNode</title>
+<g id="a_node3"><a href="__RectifyNode" title="/RectifyNode">
+<ellipse fill="none" stroke="black" cx="362" cy="-26" rx="71" ry="18"></ellipse>
+<text text-anchor="middle" x="362" y="-21.8" font-family="Times,serif" font-size="14.00">/RectifyNode</text>
+</a>
+</g>
+</g>
+<!-- t___camera_info&#45;&gt;n___RectifyNode -->
+<g id="edge2" class="edge">
+<title>t___camera_info-&gt;n___RectifyNode</title>
+<path fill="none" stroke="black" d="M277.27,-54.22C287.62,-50.73 298.47,-47.07 308.8,-43.59"></path>
+<polygon fill="black" stroke="black" points="310.15,-46.83 318.51,-40.32 307.91,-40.2 310.15,-46.83"></polygon>
+</g>
+<!-- t___detections -->
+<g id="node6" class="node">
+<title>t___detections</title>
+<g id="a_node6"><a href="topic_3A__detections" title="topic:/detections">
+<polygon fill="none" stroke="black" points="770,-94 675,-94 675,-58 770,-58 770,-94"></polygon>
+<text text-anchor="middle" x="722.5" y="-71.8" font-family="Times,serif" font-size="14.00">/detections</text>
+</a>
+</g>
+</g>
+<!-- n___apriltag&#45;&gt;t___detections -->
+<g id="edge5" class="edge">
+<title>n___apriltag-&gt;t___detections</title>
+<path fill="none" stroke="black" d="M652.77,-59.05C656.7,-60.02 660.72,-61.01 664.77,-62.01"></path>
+<polygon fill="black" stroke="black" points="664.24,-65.49 674.79,-64.48 665.92,-58.69 664.24,-65.49"></polygon>
+</g>
+<!-- n_n__tf -->
+<g id="node8" class="node">
+<title>n_n__tf</title>
+<g id="a_node8"><a href="topic_3A__tf" title="topic:/tf">
+<polygon fill="none" stroke="black" points="749.5,-40 699.5,-40 695.5,-36 695.5,-4 745.5,-4 749.5,-8 749.5,-40"></polygon>
+<polyline fill="none" stroke="black" points="745.5,-36 695.5,-36 "></polyline>
+<polyline fill="none" stroke="black" points="745.5,-36 745.5,-4 "></polyline>
+<polyline fill="none" stroke="black" points="745.5,-36 749.5,-40 "></polyline>
+<text text-anchor="middle" x="722.5" y="-17.8" font-family="Times,serif" font-size="14.00">/tf</text>
+</a>
+</g>
+</g>
+<!-- n___apriltag&#45;&gt;n_n__tf -->
+<g id="edge6" class="edge">
+<title>n___apriltag-&gt;n_n__tf</title>
+<path fill="none" stroke="black" d="M652.77,-38.95C663.45,-36.31 674.88,-33.5 685.29,-30.93"></path>
+<polygon fill="black" stroke="black" points="686.43,-34.25 695.3,-28.46 684.76,-27.46 686.43,-34.25"></polygon>
+</g>
+<!-- t___image_rect -->
+<g id="node7" class="node">
+<title>t___image_rect</title>
+<g id="a_node7"><a href="topic_3A__image_rect" title="topic:/image_rect">
+<polygon fill="none" stroke="black" points="547,-44 447,-44 447,-8 547,-8 547,-44"></polygon>
+<text text-anchor="middle" x="497" y="-21.8" font-family="Times,serif" font-size="14.00">/image_rect</text>
+</a>
+</g>
+</g>
+<!-- n___RectifyNode&#45;&gt;t___image_rect -->
+<g id="edge7" class="edge">
+<title>n___RectifyNode-&gt;t___image_rect</title>
+<path fill="none" stroke="black" d="M433.01,-26C434.16,-26 435.32,-26 436.47,-26"></path>
+<polygon fill="black" stroke="black" points="436.74,-29.5 446.74,-26 436.74,-22.5 436.74,-29.5"></polygon>
+</g>
+<!-- n___ros_gz_bridge -->
+<g id="node4" class="node">
+<title>n___ros_gz_bridge</title>
+<g id="a_node4"><a href="__ros_gz_bridge" title="/ros_gz_bridge">
+<ellipse fill="none" stroke="black" cx="78" cy="-45" rx="78" ry="18"></ellipse>
+<text text-anchor="middle" x="78" y="-40.8" font-family="Times,serif" font-size="14.00">/ros_gz_bridge</text>
+</a>
+</g>
+</g>
+<!-- n___ros_gz_bridge&#45;&gt;t___camera_info -->
+<g id="edge8" class="edge">
+<title>n___ros_gz_bridge-&gt;t___camera_info</title>
+<path fill="none" stroke="black" d="M139.03,-56.29C145.84,-57.58 152.79,-58.88 159.64,-60.17"></path>
+<polygon fill="black" stroke="black" points="159.09,-63.63 169.56,-62.04 160.38,-56.75 159.09,-63.63"></polygon>
+</g>
+<!-- t___camera -->
+<g id="node5" class="node">
+<title>t___camera</title>
+<g id="a_node5"><a href="topic_3A__camera" title="topic:/camera">
+<polygon fill="none" stroke="black" points="260.5,-36 186.5,-36 186.5,0 260.5,0 260.5,-36"></polygon>
+<text text-anchor="middle" x="223.5" y="-13.8" font-family="Times,serif" font-size="14.00">/camera</text>
+</a>
+</g>
+</g>
+<!-- n___ros_gz_bridge&#45;&gt;t___camera -->
+<g id="edge9" class="edge">
+<title>n___ros_gz_bridge-&gt;t___camera</title>
+<path fill="none" stroke="black" d="M139.03,-33.71C151.5,-31.36 164.46,-28.92 176.34,-26.68"></path>
+<polygon fill="black" stroke="black" points="177.29,-30.07 186.47,-24.78 175.99,-23.19 177.29,-30.07"></polygon>
+</g>
+<!-- t___camera&#45;&gt;n___RectifyNode -->
+<g id="edge3" class="edge">
+<title>t___camera-&gt;n___RectifyNode</title>
+<path fill="none" stroke="black" d="M260.72,-20.12C267.59,-20.53 275.01,-20.96 282.6,-21.41"></path>
+<polygon fill="black" stroke="black" points="282.47,-24.9 292.66,-21.99 282.88,-17.92 282.47,-24.9"></polygon>
+</g>
+<!-- t___image_rect&#45;&gt;n___apriltag -->
+<g id="edge4" class="edge">
+<title>t___image_rect-&gt;n___apriltag</title>
+<path fill="none" stroke="black" d="M547.12,-36.09C550.48,-36.78 553.86,-37.47 557.23,-38.16"></path>
+<polygon fill="black" stroke="black" points="556.73,-41.63 567.23,-40.22 558.14,-34.78 556.73,-41.63"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-image-rect-topics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="launch-con-rectify_node" class="slide level2 smaller">
+<h2>Launch con <code>rectify_node</code></h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bringup.launch.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="bringup.launch.py" data-code-line-numbers="|2-10|12-22"><pre class="sourceCode numberSource py number-lines"><code class="sourceCode python"><span id="cb7-1"><a></a>    <span class="co">#.. </span></span>
+<span id="cb7-2"><a></a>    node_image_proc <span class="op">=</span> Node(</span>
+<span id="cb7-3"><a></a>        package <span class="op">=</span> <span class="st">'image_proc'</span>,</span>
+<span id="cb7-4"><a></a>        executable <span class="op">=</span> <span class="st">'rectify_node'</span>,</span>
+<span id="cb7-5"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
+<span id="cb7-6"><a></a>        parameters <span class="op">=</span> [{ <span class="st">'use_sim_time'</span>: <span class="va">True</span> }],</span>
+<span id="cb7-7"><a></a>        remappings<span class="op">=</span>[</span>
+<span id="cb7-8"><a></a>            (<span class="st">'image'</span>, <span class="st">'/camera'</span>),</span>
+<span id="cb7-9"><a></a>        ],</span>
+<span id="cb7-10"><a></a>    )</span>
+<span id="cb7-11"><a></a>    </span>
+<span id="cb7-12"><a></a>    apriltag_config_file <span class="op">=</span> PathJoinSubstitution(</span>
+<span id="cb7-13"><a></a>        [FindPackageShare(<span class="st">'&lt;NOMBRE_PAQUETE&gt;'</span>), <span class="st">'config'</span>, <span class="st">'apriltag-config.yaml'</span>]</span>
+<span id="cb7-14"><a></a>    )</span>
+<span id="cb7-15"><a></a>    </span>
+<span id="cb7-16"><a></a>    node_apriltag_detector <span class="op">=</span> Node(</span>
+<span id="cb7-17"><a></a>        package <span class="op">=</span> <span class="st">'apriltag_ros'</span>,</span>
+<span id="cb7-18"><a></a>        executable <span class="op">=</span> <span class="st">'apriltag_node'</span>,</span>
+<span id="cb7-19"><a></a>        name <span class="op">=</span> <span class="st">'apriltag'</span>,</span>
+<span id="cb7-20"><a></a>        output <span class="op">=</span> <span class="st">'screen'</span>,</span>
+<span id="cb7-21"><a></a>        parameters <span class="op">=</span> [{ <span class="st">'use_sim_time'</span>: <span class="va">True</span> }, apriltag_config_file ],</span>
+<span id="cb7-22"><a></a>    )</span>
+<span id="cb7-23"><a></a>    <span class="co">#.. </span></span></code></pre></div>
+</div>
+</section></section>
+<section>
+
+<section id="entregable-2-1" class="slide level2 center">
+<h2>Entregable 2</h2>
+<p>Aplicación práctica para <em>AprilTags</em></p>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p><a href="../../">Robótica - TUAR - FICH - UNL</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/acapovilla\.github\.io\/robotica-2025\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
