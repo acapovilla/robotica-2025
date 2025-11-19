@@ -29,5 +29,7 @@ El siguiente cronograma podrá ser actualizado con el correr del cursado
 |23 | 01/10 | Diseño, análisis e implementación de un controlador a lazo cerrado, sin evasión de obstáculos | [🖥️](/clases/17 "Slides"){aria-label="Clase 17 slides"} | [🧪](/clases/17/lab.html "Lab"){aria-label="Clase 17 lab"} |
 |25 | 15/10 | Diseño, análisis e implementación de un controlador a lazo cerrado, con evasión de obstáculos | [🖥️](/clases/18 "Slides"){aria-label="Clase 18 slides"} | [🧪](/clases/18/lab.html "Lab"){aria-label="Clase 18 lab"} |
 |27 | 29/10 | Cognición: Programación de comportamiento. Máquinas de estados finitos | [🖥️](/clases/19 "Slides"){aria-label="Clase 19 slides"} | [🧪](/clases/19/lab.html "Lab"){aria-label="Clase 19 lab"} |
+|30 | 19/11 | Marcas fiduciarias y etiquetas visuales. Caso práctico con *AprilTags*| [🖥️](/clases/20 "Slides"){aria-label="Clase 20 slides"} | |
+
 
 : {.striped .hover tbl-colwidths="[8, 8, 60, 8, 8, 8]"}

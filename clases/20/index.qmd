@@ -1,0 +1,515 @@
+---
+title: "Robótica"
+subtitle: "Clase 20"
+date: "11/19/2025"
+date-format: "[Semana 30 -] DD/MM/YYYY"
+institute: "FICH - UNL"
+format:
+  revealjs:
+    theme: default
+    #chalkboard: true
+    footer: <a href="/">Robótica - TUAR - FICH - UNL</a>
+    menu: false
+    slide-number: c
+    code-copy: false
+    code-overflow: wrap
+    fig-format: svg
+    history: false
+# filters:
+#   - diagram
+# diagram:
+#     engine:
+#         tikz:
+#             execpath: pdflatex
+#             header-includes:
+# #                - '\usepackage{cancel}'
+#                - '\usepackage{amsmath}'
+#                - '\usetikzlibrary{automata, positioning, arrows.meta, calc, shapes, intersections, decorations.markings, bending}'
+#                - '\usepackage{adjustbox}'
+jupyter: python3
+---
+
+# Marcas fiduciarias {visibility="hidden"}
+
+## Marcas fiduciarias {.smaller}
+
+> Objeto dentro del campo de visión de una imágen utilizado como referencia o medida
+
+
+::: {.columns}
+::: {.column}
+
+#### Múltiples aplicaciones
+
+- [Medicina]{.underline}: se necesita precisión menor a 1 [mm]
+- [Realidad aumentada]{.underline}: detectar superficies y orientaciones de forma correcta
+- Metrología, fabricación de PCB, imprenta, entre otros
+
+:::
+::: {.column}
+
+![](figs/23220-Spectral-Sensor-Scale-Croped.jpg){width="60%" fig-align="center"}
+
+![](figs/14520-SparkFun_Capacitive_Touch_Breakout_-Annotated.jpg){width="40%" fig-align="center"}
+
+:::
+:::
+
+::: {.notes}
+Los marcadores fiduciales representan una herramienta eficaz para solucionar estos problemas en diversas aplicaciones y tareas de visión artificial, como la detección de objetos, la estimación de la posición de la cámara y cualquier tarea que requiera una fuente robusta de características de imagen.
+:::
+
+
+## Marcas fiduciarias {.smaller}
+
+> Aplicaciones en visión computacional y robótica
+
+::: {.columns}
+::: {.column}
+
+- Permiten un seguimiento 3D preciso para calcular la posición, la orientación y la escala de los objetos
+- Formas con patrones específicos diseñados para una fácil detección en diferentes condiciones de iluminación, ángulos y distancias
+- Cada marcador forma parte de un sistema con un algoritmo de detección y una codificación
+
+:::
+::: {.column}
+
+<br>
+
+![](https://www.it-jim.com/wp-content/uploads/2025/05/existing-fiducial-marker-systems-min.jpg){width="90%" fig-align="center"}
+
+:::
+:::
+
+
+
+::: {.notes}
+Los marcadores fiduciales son objetos creados, como cuadrículas en blanco y negro, tableros de ajedrez o formas con patrones específicos. Estos marcadores se colocan en un entorno o escena para ayudar a los sistemas de imagen a encontrar puntos de referencia.
+
+El término «fiducial» proviene del latín «fiducia», que significa confianza, reflejando su función como puntos de referencia fiables para mediciones espaciales.
+
+Precisión: ofrece puntos de referencia confiables para un posicionamiento, alineación y seguimiento precisos. Esta característica mejora la precisión espacial en sistemas complejos como dispositivos de imagen, robots y plataformas de realidad aumentada.
+
+Automatización: optimiza la calibración y la alineación. Esta propiedad de los marcadores fiduciales permite que las máquinas operen con mínima intervención humana en robótica y procesos de inspección automatizados.
+
+Repetibilidad: garantiza resultados consistentes en imágenes repetidas. Este caso de uso es vital en imágenes médicas, escaneo 3D y fabricación automatizada.
+
+Simplificación: facilita tareas como la detección de objetos, la reconstrucción 3D y la navegación espacial.
+
+Seguimiento en tiempo real: proporciona información instantánea para aplicaciones como la captura de movimiento, la navegación de drones y las simulaciones interactivas.
+
+Relación calidad-precio: ofrece soluciones asequibles y de alto valor para una funcionalidad y un rendimiento mejorados.
+
+Estas ventajas de los marcadores fiduciales los convierten en elementos invaluables tanto para la investigación como para las aplicaciones comerciales.
+
+Una vez aplicados y configurados correctamente, ayudan con el seguimiento, la localización, la calibración de cámaras y la detección de objetos en aplicaciones como la robótica, la realidad aumentada y la fabricación.
+:::
+
+
+## Marcas fiduciarias {visibility="hidden"}
+
+![CLASIFICACION DE MARCADORES?]{.mark}
+
+<!-- https://www.it-jim.com/blog/fiducial-markers-types/ -->
+
+
+# AprilTag {visibility="hidden"}
+
+## AprilTags {.smaller}
+
+> Sistema visual muy utilizado en realidad aumentada y robótica
+
+::: {.columns}
+::: {.column}
+
+- Los marcadores pueden ser creados desde cualquier impresora
+- El software de detección calcula con precisión la posición y orientación 3D, junto con su *ID*
+- Se diseño para una fácil integración en aplicaciones y sistemas embebidos
+- El algoritmo de detección está implementado en C y disponible *Python*, *Matlab*, *Java* e *iOS*
+
+:::
+::: {.column}
+
+![](https://april.eecs.umich.edu/media/apriltag/tagformats_web.png){width="80%" fig-align="center"}
+
+:::
+:::
+
+
+::: {.notes}
+Desarrollado por APRIL Robotics Laboratory at the University of Michigan
+
+AprilTag library implementation defines standards on how sets of tags should be designed
+
+AprilTags have been in development since 2011, and have been refined over the years to increase the robustness and speed of detection
+:::
+
+## AprilTags {.smaller}
+
+- Código binario en 2D, como el código *QR*
+- Están diseñados para codificar muchos menos datos (entre 4 y 12 bits)
+- Permite detectarlas con mayor robustez y desde mayores distancias
+
+::: {layout-ncol="2" layout-valign="center" style="text-align:center;"}
+
+![$\approx$ 9bits de información](figs/tag36h11-42.png){width="60%" fig-align="center"}
+
+![50 caracteres](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Qr-4.svg/1280px-Qr-4.svg.png){width="60%" fig-align="center"}
+
+:::
+
+
+
+::: {.notes}
+A popular camera-based technology is AprilTag, a scanned image similar to a QR Code. Its effectiveness and quick set-up on custom Signal Sleeves led to wide adoption
+:::
+
+## AprilTags 36h11 {.smaller}
+
+::: {.columns}
+::: {.column}
+
+- Grilla de 6x6 pixeles, cada celda representando 1 bit
+- Borde adicional en blanco y luego negro alrededor
+- Teoricamente $2^{36} = 68.719.476.736$ valores, pero solo se utilizan $587$:
+    - Robustez ante errores de color (*bit-flip*)
+    - No incluir patrones simples (cuadrados o rayas)
+    - Garantizar asimetría para excluir rotaciones ambiguas
+
+:::
+::: {.column}
+
+::: {style="text-align:center;"}
+![`ID: 42`](tag36h11-42.png){width="75%" fig-align="center"}
+:::
+
+:::
+:::
+
+## Procesamiento
+
+::: {.columns}
+::: {.column}
+
+:::
+::: {.column}
+
+![](https://docs.wpilib.org/en/stable/_images/orig_img.webp)
+
+:::
+:::
+
+## Procesamiento
+
+::: {.columns}
+::: {.column}
+
+1. Escala de grises + decimación
+
+:::
+::: {.column}
+
+![](https://docs.wpilib.org/en/stable/_images/decimate.webp)
+
+:::
+:::
+
+
+## Procesamiento
+
+::: {.columns}
+::: {.column}
+
+1. Escala de grises + decimación
+2. Umbral adaptativo
+
+:::
+::: {.column}
+
+![](https://docs.wpilib.org/en/stable/_images/adaptive_threshold.webp)
+
+:::
+:::
+
+
+## Procesamiento
+
+::: {.columns}
+::: {.column}
+
+1. Escala de grises + decimación
+2. Umbral adaptativo
+3. Segmentación
+
+:::
+::: {.column}
+
+![](https://docs.wpilib.org/en/stable/_images/segmentation.webp)
+
+:::
+:::
+
+
+## Procesamiento
+
+::: {.columns}
+::: {.column}
+
+1. Escala de grises + decimación
+2. Umbral adaptativo
+3. Segmentación
+4. Detección de cuadriláteros
+
+:::
+::: {.column}
+
+![](https://docs.wpilib.org/en/stable/_images/detected_quads.webp)
+
+:::
+:::
+
+
+## Procesamiento
+
+::: {.columns}
+::: {.column}
+
+1. Escala de grises + decimación
+2. Umbral adaptativo
+3. Segmentación
+4. Detección de cuadriláteros
+5. Decodificación de datos
+
+:::
+::: {.column}
+
+![](https://docs.wpilib.org/en/stable/_images/decode_id.webp)
+
+:::
+:::
+
+
+## Procesamiento
+
+::: {.columns}
+::: {.column}
+
+1. Escala de grises + decimación
+2. Umbral adaptativo
+3. Segmentación
+4. Detección de cuadriláteros
+5. Decodificación de datos
+6. Resultado final
+
+:::
+::: {.column}
+
+![](https://docs.wpilib.org/en/stable/_images/fit_ext_quad.webp)
+
+:::
+:::
+
+
+::: {.notes}
+https://docs.wpilib.org/en/stable/docs/software/vision-processing/apriltag/apriltag-intro.html#processing-technique
+:::
+
+
+## `apriltag_ros` {.smaller}
+
+> Paquete para la detección de AprilTags en tiempo real
+
+- Nodo para procesar imágenes con el algoritmo *AprilTag 3* 
+- Soporta múltiples familias de tags
+- Publica poses 3D y transformaciones `tf2` de cada etiqueta detectada
+- Instalación:
+  
+        $ sudo apt install ros-jazzy-apriltag-ros
+
+::: {style="margin-top: -3em;"}
+```{dot}
+//| label: fig-apriltag-topics
+//| file: apriltag-topics.dot
+```
+:::
+
+## Nodo `apriltag_node` {.smaller}
+
+- Ejecución:
+
+        $ ros2 run apriltag_ros apriltag_node
+
+- [Suscribe]{.underline}:
+  - `/image_rect` de tipo `sensor_msgs/Image`
+  - `/camera_info` de tipo `sensor_msgs/CameraInfo`
+
+- [Publica]{.underline}:
+  - `/detections` de tipo `apriltag_msgs/AprilTagDetectionArray`
+  - `/tf` de tipo `tf2_msgs/TFMessage`
+
+
+## Mensajes `AprilTagDetection` {.smaller}
+
+- El nodo publica un arreglo de todas las detecciones encontradas:
+
+```{.default filename="AprilTagDetectionArray.msg" code-line-numbers=""}
+std_msgs/Header header
+AprilTagDetection[] detections      ⬅️
+```
+
+- Por cada detección se tienen los siguientes datos:
+
+```{.default filename="AprilTagDetection.msg" code-line-numbers="|1|2|3-5|6|7|8"}
+string family
+int32 id
+int32 hamming
+float32 goodness
+float32 decision_margin
+Point centre                    # Centro en coordenadas de píxeles (x,y)
+Point[4] corners                # Esquinas de la etiqueta ((x1,y1),(x2,y2),...)
+float64[9] homography           # Matriz homográfica (para conversión a Pose 3D)
+```
+
+
+::: {.notes}
+
+- family: Familia del tag detectado Ej.: tag36h11, tag25h9, etc.
+- id: Identificador único dentro de la familia
+- hamming: Número de bits distintos entre el tag detectado y la mejor coincidencia válida
+- goodness: Indica qué tan bien coincide el borde detectado con el borde esperado
+- decision_margin: Cuanto mayor, más clara la diferencia entre cuadrados blancos/negros
+- centre: Posición del centro del tag en la imagen
+- corners: Coordenadas de las 4 esquinas en pixeles
+- homography: Matriz que proyecta puntos del plano del tag -> plano de la imagen
+
+:::
+
+## Nodo `apriltag_node` {.smaller}
+
+> Parámetros admitidos:
+
+::: {.incremental}
+- `family`: Familia de etiquetas a detectar
+- `size`: Tamaño (por defecto) de las etiquetas
+- `max_hamming`: No aceptar etiquetasa *con errores*
+- `detector`:
+  - `decimate`: Reducción de la resolución (min. $1.0$)
+  - `blur`, `refine` y `sharpening`: Ajustar parámetros de la detección
+  - `debug`: Mostrar resultados intermedios (`False`)
+  - `threads`: Cantidad de hilos de CPU para detección (1)
+- `pose_estimation_method`: Algoritmo para estimar la *Pose* (`pnp`)
+- `image_transport`: Tipo de mensaje de imagen (`raw` o `compressed`)
+:::
+
+::: {.notes}
+Adjustable Parameters
+
+- Decimation: factor impacts how much the image is down-sampled before processing. Increasing it will increase detection speed, at the cost of not being able to see tags which are far away
+
+- Blur: applies smoothing to the input image to decrease noise, which increases speed when fitting quads to pixels, at the cost of precision. For most good cameras, this may be left at zero.
+
+- Threads changes the number of parallel threads which the algorithm uses to process the image. Certain steps may be sped up by allowing multithreading. In general, you want this to be approximately equal to the number of physical cores in your CPU, minus the number of cores which will be used for other processing tasks.
+
+- Tag size: https://github.com/AprilRobotics/apriltag#pose-estimation
+
+Note: The tag size should not be measured from the outside of the tag. The tag size is defined as the distance between the detection corners, or alternately, the length of the edge between the white border and the black border. The following illustration marks the detection corners with red Xs and the tag size with a red arrow for a tag from the 48h12Custom tag family.
+:::
+
+## Nodo `apriltag_node` {.smaller}
+
+- Se recomienda crear un archivo de configuración `yaml` en la carpeta `config`:
+
+```{.yaml filename="apriltag-config.yaml" code-line-numbers="False"}
+apriltag:                 # Nombre del nodo
+  ros__parameters:
+    image_transport: raw 
+    family: 36h11         # Familia de la etiqueta
+    size: 0.12            # Tamaño por defecto en metros
+    profile: false
+
+    # Ajuste de la detección
+    max_hamming: 0
+    detector:
+      threads: 1
+      decimate: 1.0       # Si la imágen tuviese mucha resolución se recominda reducir
+      blur: 0.0
+      refine: true
+      sharpening: 0.25
+      debug: false
+
+    pose_estimation_method: "pnp"
+```
+
+## Nodo `apriltag_node` {.smaller}
+
+- Agregar al `*.launch.py`:
+
+```{.py code-line-numbers="false"}
+    #.. 
+    node_apriltag_detector = Node(
+        package = 'apriltag_ros',
+        executable = 'apriltag_node',
+        name = 'apriltag',
+        parameters = [
+            PathJoinSubstitution(
+              [FindPackageShare('<NOMBRE_PAQUETE>'), 'config', 'apriltag-config.yaml']
+            )
+        ],
+    )
+    #.. 
+```
+
+
+## Imágen rectificada {.smaller}
+
+- Para calcular correctamente la pose 3D del marcador se necesita trabajar con una imagen sin distorsión
+- Las cámaras reales introducen distorsiones que deforman líneas rectas y afectan la geometría proyectada
+- La rectificación corrige esas deformaciones utilizando la calibración de la cámara
+
+
+<br>
+
+::: {.callout-tip appearance="simple"}
+Se utiliza el `rectify_node` del paquete `image_proc`
+:::
+
+::: {style="margin-top: -3em;"}
+```{dot}
+//| label: fig-image-rect-topics
+//| file: image-rect-topics.dot
+```
+:::
+
+## Launch con `rectify_node` {.smaller}
+
+```{.py filename="bringup.launch.py" code-line-numbers="|2-10|12-22"}
+    #.. 
+    node_image_proc = Node(
+        package = 'image_proc',
+        executable = 'rectify_node',
+        output = 'screen',
+        parameters = [{ 'use_sim_time': True }],
+        remappings=[
+            ('image', '/camera'),
+        ],
+    )
+    
+    apriltag_config_file = PathJoinSubstitution(
+        [FindPackageShare('<NOMBRE_PAQUETE>'), 'config', 'apriltag-config.yaml']
+    )
+    
+    node_apriltag_detector = Node(
+        package = 'apriltag_ros',
+        executable = 'apriltag_node',
+        name = 'apriltag',
+        output = 'screen',
+        parameters = [{ 'use_sim_time': True }, apriltag_config_file ],
+    )
+    #.. 
+```
+
+# Entregable 2 {visibility="hidden"}
+
+## Entregable 2 {.center}
+
+Aplicación práctica para *AprilTags*
